@@ -400,7 +400,7 @@
   </details>
   <hr>
   <!------------------------------------------------------------------------------------->
-  <h2 class="headerExtra"> Type Narrowing </h2>
+  <h2 class="headerExtra"> Type Narrowing & Type extraction</h2>
   <p> - Type Narrowing is a technique which narrows down type possibilityes from a set of types (ex: we narrow down an
     <mark>any</mark> type to <mark>string</mark> so we can use string methods on the narrowed value)
   </p>
@@ -408,6 +408,8 @@
     checking / using the TypeScript <mark>as</mark> operator </p>
   <pre class="syntax">
     <strong>val</strong> as <strong>tsType</strong>                                     // identifies the <strong>val</strong> as <strong>tsType</strong>     
+    
+    typeof <strong>val</strong>                                        // returns the <strong>tsType</strong> of <strong>val</strong>
     </pre>
   <details class="example">
     <summary> DEMO </summary>
@@ -464,6 +466,14 @@
     function getSpeed(animal: Fish | Bird): number {
         return (animal as Fish).getSwimSpeed();     // argument identified as Fish type 
     }
+    
+    
+// type extraction ----------------------------------------------------------
+    type Test = 'abc';
+    type Test2 = typeof x;                      // extracts the type of <mark>x</mark>
+    
+    const x: Test = 'abc';
+    const y: Test2 = 'abc';                     // using extracted type 
     </pre>
   </details>
   <hr>

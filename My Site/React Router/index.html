@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title> React Router v6.4 </title>
+  <title> React Router (react-router-dom v6.4) </title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -12,11 +12,22 @@
 </head>
 
 <body>
-  <h1> React Router v6.4</h1>
+  <h1> React Router (react-router-dom v6.4) </h1>
   <p> Updated ( 2022-02-27 )</p>
   <p class="sitenav">
-    <a href="../index.html" title="home">MySite></a> React Router v6.4
+    <a href="../index.html" title="home">MySite></a> React Router
   </p>
+  <table class="table">
+    <tr>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+        <td> npm install react-router </td>
+        <td> install React Rooter (including react-router-dom) </td>
+    </tr>
+  </table>
+
   <h2 style="color:green;"><u> Useful Links : </u></h2>
   <p><a href="https://reactrouter.com/en/main" target="_blank">reactrouter.com</a></p>
   <h2 style="color:green;"><u> Remember This : </u></h2>
@@ -155,7 +166,7 @@
   import { Navigate, useParams, useLoaderData, useLocation, useNavigation } from 'react-router-dom'
   
   
-  export default function SomeComponent() {
+  export default function <strong>SomeComponent()</strong> {
     const params = useParams()            // return an object containing param values on the current route (if any)
     const loaderData = useLoaderData()    // returns the <mark>loaderFn</mark> returned value 
     const location = useLocation()        // returns an object containing location information (like the current url path)
