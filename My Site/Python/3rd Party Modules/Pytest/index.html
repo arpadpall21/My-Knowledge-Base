@@ -321,8 +321,7 @@
   <!--------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="header"> Parametrize <mark>@pytest.mark.parametrize()</mark> </h2>
-  <p> - with parametrize we can different values to test arguments, this is useful if we want to run our test several
-    times </p>
+  <p> - with parametrize we can control how many times the test case should run with different values (passed as parameters) </p>
   <pre class='syntax'>
   # @pytest.mark.parametrize(<strong>arg<i>,...</i>:str</strong>, [<strong class='openable'>tuple<div>
       <p> ex: <mark>@pytest.mark.parametrize('arg1,arg2', [(1, 2), (11, 22)])</mark> </p>
@@ -338,7 +337,7 @@
     import pytest
     
     
-    @pytest.mark.parametrize('input,expected', [(2, 4), (4, 16), (100, 10_000)])    # test will run 3 timse
+    @pytest.mark.parametrize('input,expected', [(2, 4), (4, 16), (100, 10_000)])    # test will run 3 times
     def test_one(input, expected):
         assert input * input == expected
   </pre>

@@ -143,6 +143,14 @@
         </span>
       </td>
     </tr>
+    <tr class="05.02">
+      <td>
+        all(<strong>iterable</strong>)
+      </td>
+      <td>
+        - returns <mark>True</mark> if all <strong>iterable</strong> members are truthy, returns <mark>False</mark> otherwise
+      </td>
+    </tr>
   </table>
   <br>
   <table class="table">
@@ -1020,7 +1028,7 @@
   </details>
   <hr>
   <!-------------------------------------------------------------------------------------------->
-  <h2 class="header"> The <mark>sorted()</mark> global function </h2>
+  <h2 class="header"> The <mark>sorted()</mark> / <mark>all()</mark> global functions </h2>
   <details class="example">
     <summary> DEMO </summary>
     <pre>
@@ -1060,6 +1068,14 @@
     myTuplew = (4, 145, 844, 2, 12, 10, -4)
     sorted(myTuplew, reverse=True)                                                     // -> [844, 145, 12, 10, 4, 2, -4]
                                                                                        // sorts the list in descending order     
+    
+    
+// all() ------------------------------------------------------------------------------
+    some_list = ['a', 1, True]
+    some_set = ('a', 0, True)
+    
+    all(some_list)                                                                     // -> True
+    all(some_set)                                                                      // -> False    
     </pre>
   </details>
   <hr>

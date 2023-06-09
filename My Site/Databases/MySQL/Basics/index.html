@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Basics </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Basics </h1>
+  <p> Updated ( 2020-07-26 / 2023-05-30 )</p>
+  <p class="sitenav"> <a href="../../../index.html">MySite></a>
+    <a href="../../index.html" title="Learn WebDesign">Databases></a>
+    <a href="../index.html" title="Learn WebDesign">MySQL></a> Basics
+  </p>
+  <table class="table">
+    <caption>
+      Statements
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Statement </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td> SHOW PROCESSLIST </td>
+      <td> - number of threads executing within the SQL server (detailed informations about connected clients) </td>
+    </tr>
+    <tr class="05.02">
+      <td> DELIMITER <strong>delimiter</strong> </td>
+      <td> - set the client delimiter (not server level) (Default: <mark>;</mark>) </td>
+    </tr>
+    <tr class="05.03">
+      <td> status | \s</td>
+      <td> - prints status informations (connections, delimiter, etc...) </td>
+    </tr>
+    <tr class="10.01">
+      <td> SELECT @@autocommit </td>
+      <td> - returns the status of the autocommit (Default: <mark>1</mark> = enabled) </td>
+    </tr>
+    <tr class="10.02">
+      <td> SET autocommit = 1|0 </td>
+      <td>
+        - enables|disables autocommit <br>
+        - autocommit enabled = statements are commited <u>and cannot rolled back</u> as soon as executed <br>
+        - autocommit disabled = statements must be commited manually <u>and can rolled back before they are commited</u>
+      </td>
+    </tr>
+    <tr class="15.01">
+      <td> COMMIT </td>
+      <td> - commits all statements since the last commit <u>(commited statements are finalized and cannot rolled
+          back)</u> </td>
+    </tr>
+    <tr class="15.02">
+      <td> ROLLBACK </td>
+      <td> - undoes all statements since the last commit </td>
+    </tr>
+    <tr class="20.01">
+      <td> BEGIN | BEGIN WORK | START TRANSCATION </td>
+      <td> - disables autocommit untill the next <mark>COMMIT</mark> statement is called </td>
+    </tr>
+    <tr class="50.01">
+      <td colspan="2"> Comments </td>
+    </tr>
+    <tr class="50.02">
+      <td> -- <i>comment</i> </td>
+      <td> - single line comment </td>
+    </tr>
+    <tr class="50.03">
+      <td> #comment </td>
+      <td> - single line comment </td>
+    </tr>
+    <tr class="50.04">
+      <td> /*comment*/ </td>
+      <td> - multi line comment </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      CLI
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td> mysql --version </td>
+      <td> - prints the MySQL server version </td>
+    </tr>
+    <tr class="10.01">
+      <td> <em>mysql&gt;</em> exit </td>
+      <td> - exit client </td>
+    </tr>
+    <tr class="15.01">
+      <td> mysql_secure_installation </td>
+      <td>
+        - sets up <span class="openable">secure parameters<div>
+            <p><b><u> Sets Up: </u></b></p>
+            <p> - root password </p>
+            <p> - can remove root accounts accessible from outside the localhost </p>
+            <p> - can remove anonymus accounts </p>
+            <p> - can remove test databases </p>
+          </div></span>
+      </td>
+    </tr>
+    <tr class="20.01">
+      <td> <em>$</em> mysql -u <strong>userName</strong> <small>[-p]</small> </td>
+      <td>
+        - logs-in to MySQL server with the specified username (the administrator logs-in with the system password,
+        (<mark>$ mysql</mark> then requires the password) [TESTED: 2020-07-30]) <br>
+        - (<small>-p</small>) requires the password (for users having passwords)
+      </td>
+    </tr>
+    <tr class="25.01">
+      <td colspan="2"> Back Up / Resotre Databases </td>
+    </tr>
+    <tr class="25.02">
+      <td> <em>$</em> sudo mysqldump <small>[-u <i>userName</i> -p]</small> <strong>dbName</strong> &gt;
+        <strong>filePath</strong>.sql
+      </td>
+      <td> - creates a backup file of the specified database </td>
+    </tr>
+    <tr class="25.03">
+      <td> <em>$</em> mysql <small>[-u <i>userName</i> -p]</small> <strong>dbName</strong> &lt;
+        <strong>dbFilePath</strong>.sql
+      </td>
+      <td>
+        - restores the specified database from the backup file <u>(the database must exist in the mysql-server)</u> <br>
+        - the <strong>dbName</strong> can be different than the database name in the backup file (this is how we can
+        rename databases in MySQL)
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - Statements that modify databases or table structures are commited implicitly regardless of autocommit (ex:
+    dropping a database or table cannot rolled back!) </p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - MySQL runs as daemon on Linux systems </p>
+  <p> - by default autocommit is enabled (statements are commited as soon as executed -> changes are permanent in the
+    database) </p>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre class="cmd">
+    mysql> SELECT * FROM myTable;                                                      // statement must end with a semicolon 
+    
+    mysql> -- SELECT * FROM myTable;                                                   // statement commented out 
+    </pre>
+    <pre class="cmd">
+// manage autocommit ------------------------------------------------------------------
+    mysql> SELECT @@autocommit;                                                        // returns the autocommit status (enabled by default)  
+    
+    mysql> SET autocommit = 0;                                                         // disables autocommit
+    </pre>
+    <p> - autocommit enabled </p>
+    <pre class="cmd">
+    mysql> INSERT INTO table_1 VALUES('a', 'b', 'c');                                  // statements are commited as soon as executed but cannot rolled back (normal behaviour)    
+                                                                                         
+// transaction ------------------------------------------------------------------------
+    mysql> BEGIN;                                                                      // statements are not commited untill the next COMMIT statement (opens a transaction)    
+    
+    mysql> INSERT INTO table_1 VALUES('a', 'b', 'c');                                  // statement is executed (changes are visible) but not yet commited 
+                                                                                         // can rolled back but will be lost if an error occurs or mysql exits    
+  // ROLLBACK--------------------------------------------------------------------------
+    mysql> ROLLBACK;                                                                   // undoes all statements since the BEGIN statement 
+    
+  // COMMIT ---------------------------------------------------------------------------
+    mysql> COMMIT;                                                                     // commits all statements since the BEGIN statement (closes the transaction)    
+    </pre>
+    <p> - autocommit disabled </p>
+    <pre class="cmd">
+    mysql> INSERT INTO table_1 VALUES('a', 'b', 'c');                                  // statements are not commited untill the next COMMIT statement 
+    
+  // ROLLBACK--------------------------------------------------------------------------
+    mysql> ROLLBACK;                                                                   // undoes all statements since the last COMMIT statement  
+    
+  // COMMIT ---------------------------------------------------------------------------
+    mysql> COMMIT;                                                                     // commits all statements since the last COMMIT statement     
+    
+// -! there's no point using transaction when autocommit is disabled ------------------
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> transaction <mark>BEGIN</mark> / <mark>END</mark> TEST </u></h4>
+    <p> - autocommit enabled </p>
+    <pre class="cmd">
+    mysql> BEGIN;                                                                      // starts the transaction  
+    Query OK, 0 rows affected (0.00 sec)
+    
+    mysql> INSERT INTO Students VALUES(24, 'Gyurcsan', 'Ferenc');
+    Query OK, 1 row affected (0.00 sec)
+    
+    mysql> DELETE FROM Students WHERE first_name='Pall';
+    Query OK, 1 row affected (0.00 sec)                                                // -! if we exit mysql here all statements after the 'BEGIN' statement are undoed 
+    
+  // ROLLBACK -------------------------------------------------------------------------
+    mysql> ROLLBACK;                                                                   // redoes all statements after the BEGIN statement   
+    
+  // COMMIT ---------------------------------------------------------------------------
+    mysql> COMMIT;                                                                     // commits (finalizes) all statements after the BEGIN statement    
+                                                                                         // once the statements are commited they cannot be rolledback anymore    
+    </pre>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> autocommit disabled TEST </u></h4>
+    <pre class="cmd">
+    mysql> SET autocommit=0;
+    Query OK, 0 rows affected (0.00 sec)
+    
+    mysql> SELECT @@autocommit;
+    +--------------+
+    | @@autocommit |                                                                   // autocommit disabled  
+    +--------------+
+    |            0 |
+    +--------------+
+    1 row in set (0.00 sec)
+    
+// ------------------------------------------------------------------------------------
+    mysql> SELECT * FROM Students;
+    +------------+------------+-----------+
+    | student_id | first_name | last_name |
+    +------------+------------+-----------+
+    |          1 | Pall       | Arpad     |
+    |          2 | Biro       | Biro      |
+    |          3 | Gyula      | Szolosi   |
+    |          4 | Feri       | Gaspar    |
+    |          5 | Lui        | Lukacs    |
+    |          7 | Ferenc     | Gaspar    |
+    |          8 | Lukacs     | Levente   |
+    |         21 | Feri       | Kaszas    |
+    |         22 | Kati       | Jo        |
+    |         23 | Kaszas     | Ferenc    |
+    +------------+------------+-----------+
+    10 rows in set (0.00 sec)
+    
+    mysql> DELETE FROM Students;                                                       
+    Query OK, 10 rows affected (0.00 sec)
+    
+    mysql> SELECT * FROM Students;                                                     // all table content is deleted 
+    Empty set (0.00 sec)
+    
+    mysql> ROLLBACK;                                                                   // we can rollback (redo) statements becase they are not commited   
+    Query OK, 0 rows affected (0.01 sec)
+    
+    mysql> SELECT * FROM Students;                                                     
+    +------------+------------+-----------+
+    | student_id | first_name | last_name |
+    +------------+------------+-----------+
+    |          1 | Pall       | Arpad     |
+    |          2 | Biro       | Biro      |
+    |          3 | Gyula      | Szolosi   |
+    |          4 | Feri       | Gaspar    |
+    |          5 | Lui        | Lukacs    |
+    |          7 | Ferenc     | Gaspar    |
+    |          8 | Lukacs     | Levente   |
+    |         21 | Feri       | Kaszas    |
+    |         22 | Kati       | Jo        |
+    |         23 | Kaszas     | Ferenc    |
+    +------------+------------+-----------+
+    10 rows in set (0.00 sec)
+    
+// -------------------------------------------------------------------------------------
+    mysql> DELETE FROM Students;                                                       
+    Query OK, 10 rows affected (0.00 sec)
+    
+    mysql> SELECT * FROM Students;                                                     // all table content is deleted 
+    Empty set (0.00 sec)
+    
+    mysql> COMMIT;                                                                     // all statemets are coomited and cannot be rolled back anymore  
+    
+    mysql> ROLLBACK;                                                                   // this has no effect 
+    Query OK, 0 rows affected (0.01 sec)
+    
+    mysql> SELECT * FROM Students;                                                     // all table content is deleted 
+    Empty set (0.00 sec)
+    </pre>
+  </details>
+  <hr>
+  <!---------------------------------------------------------------------------------------------------------------->
+  <h2 class="headerExtra"><u> Database Connection, Session, Transaction </u></h2>
+  <p> - <b>Connection:</b> a communication between the database and the client (user), <u>a connection is established
+      when a user logs in to a database and is terminated when the user logs out</u> </p>
+  <p> - <b>Session:</b> is the logical connection, 'semi-permanent container of state for an information exchange' (the
+    SQL server can open multiple sessions at the same time in order to improve performance with the client) </p>
+  <p> - <b>Transaction:</b> multiple SQL statements that are executed together as a single unit (a transaction is fully
+    commited or not commited at all) </p>
+  <hr>
+  <!---------------------------------------------------------------------------------------------------------------->
+  <h2 class="headerExtra"><u> Migration </u></h2>
+  <p> - SQL database migration is basically changing the table schemas in the database, when migrating: </p>
+  <p style="text-indent: 30px;"> - when removing a table column all data in that column will be lost </p>
+  <p style="text-indent: 30px;"> - when no value is given <mark>NULL</mark> is used, if the nullable constraint is false then the default value is used </p>
+  <p style="text-indent: 30px;"> - when changing the column data type MYSQL 'tries' to convert the data to the new type, <u>but this might leed to data loss</u></p>
+  <hr>
+<!---------------------------------------------------------------------------------------------------------------->
+  <h2 class="headerExtra"><u> CLI </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre class="cmd">
+    mysql&gt; SELECT * FROM Customres;                                                    // selects all records in the 'Customers' Table
+    
+// database backup and restoration ----------------------------------------------------
+    pall@Ryzen:~$ sudo mysqldump testDB &gt; backup.sql                                   // creates a backup file of the 'testDB' database   
+    
+    pall@Ryzen:~$ sudo mysql testDB &lt; backup.sql                                       // restores the 'testDB' database from the backup file 
+                                                                                       // -! the 'testDB' database must exist in the server before restoring 
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> log-in TEST </u></h4>
+    <pre class="cmd">
+// log-in as administrator ------------------------------------------------------------
+    $ sudo mysql                                                                       // longin as administrator 
+    [sudo] password for pall:                                                          // requires the system password  
+    
+// log-in as user ---------------------------------------------------------------------
+    mysql -u pall -p
+    Enter password:                                                                    // requires the user password 
+    </pre>
+    <hr>
+    <!----------------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> backup / restore TEST </u></h4>
+    <pre class='cmd'>
+    pall@Ryzen:~$ sudo mysqldump testDB &gt; backup.sql                                   // creates a backup file of the 'testDB' database   
+    
+    pall@Ryzen:~$ sudo mysql testDB &lt; backup.sql                                       // restores the 'testDB' database from the backup file 
+                                                                                       // -! the 'testDB' database must exist in the server before restoring 
+    </pre>
+  </details>
+  <hr>
+
+
+  <br><br>
+</body>
+
+</html>

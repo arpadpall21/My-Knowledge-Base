@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> ORMs </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/styles.css">
+  <script src="../../Assets/script.js"></script>
+</head>
+
+<body>
+  <h1> ORMs </h1>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="Learn WebDesign">Databases></a> ORMs
+  </p>
+
+  <p> - ORM stands for <b>O</b>bject-<b>R</b>elationoal <b>M</b>apping, it's a technique for converting data between incompatible systems using object-oriented approach </p>
+  <p> - in an ORM system, each class <u>(Model)</u> maps to a table in the underlying database </p>
+  <p> - there are 2 patters how ORMs map objects to the database: </p>
+  <p style="text-indent: 30px;"> - <b>Active Record pattern</b> (easy and straightforward to use): </p>
+  <p style="text-indent: 60px;"> - the model is directly coupled, each model instance represent a row in the databse (there's no layer between the model and the database) </p>
+  <p style="text-indent: 60px;"> - each model has its own methods for CRUD operations with the database </p>
+  <p style="text-indent: 30px;"> - <b>Data Mapper pattern</b> (flexible): </p>
+  <p style="text-indent: 60px;"> - the model is losely coupled with the databse (there is a mapper layer between the model and the database) </p>
+  <p style="text-indent: 60px;"> - the model is separated from the database handling logic </p>
+
+  <hr>
+  <div class="content">
+    <h2><a class="ver-live" href="SQLAlchemy/index.html"> SQLAlchemy </a> </h2>
+  </div>
+</body>
+
+</html>

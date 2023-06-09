@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Constraints </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Constraints </h1>
+  <p> Updated ( 2020-08-03 / 2020-08-25 / 2020-09-15 / 2023-05-19 )</p>
+  <p class="sitenav"> <a href="../../../index.html">MySite></a>
+    <a href="../../index.html" title="Learn WebDesign">Databases></a>
+    <a href="../index.html" title="Learn WebDesign">MySQL></a> Constraints
+  </p>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - each SQL table require a PRIMARY KEY (unique identifier) </p>
+  </p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - Constraints are used to limit the type of data that can go into a table </p>
+  <p> - if a constraint is violated the SQL operation is aborted </p>
+  <pre class="syntax">
+<span style="color:mediumSeaGreen;">// <mark>PRIMARY KEY</mark> --------------------------------------------------------------------
+// uniquely identifies each record (combination of UNIQUE and NOT NULL constraints) <u>(required, but only one allowed in a table)</u>
+// --------------------------------------------------------------------------------</span>
+    CREATE TABLE <strong>table</strong>(<strong>col</strong> <strong>type</strong> PRIMARY KEY, <i>...</i>)                                      // primary key (or composite key) created when the table is created   
+    CREATE TABLE <strong>table</strong>(<strong>col</strong> <strong>type</strong><i>, ...</i>, PRIMARY KEY(<strong>col</strong><i>, ...</i>))
+    CREATE TABLE <strong>table</strong>(<strong>col</strong> <strong>type</strong><i>, ...</i>, CONSTRAINT <strong>constId</strong> PRIMARY KEY (<strong>col</strong><i>, ...</i>))   
+    
+    ALTER TABLE <strong>table</strong> ADD PRIMARY KEY (<strong>col</strong><i>, ...</i>)                                       // sets a primary key (or composite key) to an existing table    
+    ALTER TABLE <strong>table</strong> ADD CONSTRAINT <strong>constId</strong> PRIMARY KEY (<strong>col</strong><i>, ...</i>)  
+    
+    ALTER TABLE <strong>table</strong> DROP PRIMARY KEY                                                 // removes the primary key (or composite key) from the table   
+    
+    
+<span style="color:mediumSeaGreen;">// <mark>FOREIGN KEY</mark> --------------------------------------------------------------------
+// fields refer to <u class="openable">existing<div>
+                <p> - any foreign key value must refer to an existing primary key value </p>
+                <p> - in other words we cannot insert a foreign key value if the parent primary key field does not contain the value what we want to insert </p>
+            </div></u> primary key fields (in the same or another table) <u>(links two tables together)</u>  
+// FOREIGN KEYs are indexed (INDEX constraint is set with the FOREIGN KEY)
+// --------------------------------------------------------------------------------</span> 
+    CREATE TABLE <strong>table</strong>(<strong>col</strong> <strong>type</strong><i>, ...</i>, FOREIGN KEY (<strong>col</strong>) REFERENCES <strong>paretnTable</strong>(<strong>primKey</strong>) <small class="openable">[ON DELETE|ON UPDATE <i>const</i>]<div>
+        <p style="text-decoration:underline; font-weight:bold; font-size:1.1em;"> Option controls what happens to the FOREIGN KEY value when the linked PRIMARY KEY value is deleted (<mark>ON DELETE</mark>) or modified (<mark>ON UPDATED</mark>) </p>
+        <p style="text-decoration:underline; font-size:1.1em;"> Constraint Values : </p>
+        <p> - <mark>NO ACTION</mark> or <mark>RESTRICT</mark> - the linked PRIMARY KEY value cannot be deleted|updated (DEFAULT: when not set) </p>
+        <p> - <mark>SET NULL</mark> - when the linked PRIMARY KEY value is deleted|updated the FOREIGN KEY value will be set to <mark>NULL</mark> </p>
+        <p> - <mark>CASCADE</mark> - when the linked PRIMARY KEY value is deleted|updated the FOREIGN KEY value (record) will be deleted|updated along with the PRIMARY KEY record </p>
+        <p> - these options can be seen when printing <mark>SHOW CREATE TABLE</mark> </p>
+    </div></small>)   // set foreign key(s) when the table is created <u>(<strong>constId</strong> automatically assigned if created without constraint Id, <mark>SHOW CREATE TABLE <strong>table</strong></mark> to check)</u>    
+    CREATE TABLE <strong>table</strong>(<strong>col</strong> <strong>type</strong><i>, ...</i>, CONSTRAINT <strong>constId</strong> FOREIGN KEY (<strong>col</strong>) REFERENCES <strong>parentTable</strong>(<strong>primKey</strong>) <small class="openable">[ON DELETE|ON UPDATE <i>const</i>]<div>
+        <p style="text-decoration:underline; font-weight:bold; font-size:1.1em;"> Option controls what happens to the FOREIGN KEY value when the linked PRIMARY KEY value is deleted (<mark>ON DELETE</mark>) or modified (<mark>ON UPDATED</mark>) </p>
+        <p style="text-decoration:underline; font-size:1.1em;"> Constraint Values : </p>
+        <p> - <mark>NO ACTION</mark> or <mark>RESTRICT</mark> - the linked PRIMARY KEY value cannot be deleted|updated (DEFAULT: when not set) </p>
+        <p> - <mark>SET NULL</mark> - when the linked PRIMARY KEY value is deleted|updated the FOREIGN KEY value will be set to <mark>NULL</mark> </p>
+        <p> - <mark>CASCADE</mark> - when the linked PRIMARY KEY value is deleted|updated the FOREIGN KEY value (record) will be deleted|updated along with the PRIMARY KEY record </p>
+        <p> - these options can be seen when printing <mark>SHOW CREATE TABLE</mark> </p>
+    </div></small>)  
+    
+    ALTER TABLE <strong>table</strong> ADD FOREIGN KEY (<strong>col</strong>) REFERENCES <strong>parentTable</strong>(<strong>primKey</strong>) <small class="openable">[ON DELETE|ON UPDATE <i>const</i>]<div>
+        <p style="text-decoration:underline; font-weight:bold; font-size:1.1em;"> Option controls what happens to the FOREIGN KEY value when the linked PRIMARY KEY value is deleted (<mark>ON DELETE</mark>) or modified (<mark>ON UPDATED</mark>) </p>
+        <p style="text-decoration:underline; font-size:1.1em;"> Constraint Values : </p>
+        <p> - <mark>NO ACTION</mark> or <mark>RESTRICT</mark> - the linked PRIMARY KEY value cannot be deleted|updated (DEFAULT: when not set) </p>
+        <p> - <mark>SET NULL</mark> - when the linked PRIMARY KEY value is deleted|updated the FOREIGN KEY value will be set to <mark>NULL</mark> </p>
+        <p> - <mark>CASCADE</mark> - when the linked PRIMARY KEY value is deleted|updated the FOREIGN KEY value (record) will be deleted|updated along with the PRIMARY KEY record </p>
+        <p> - these options can be seen when printing <mark>SHOW CREATE TABLE</mark> </p>
+    </div></small>                    // adds a foreign key to an existing table <u>(<strong>constId</strong> automatically assigned if created without constraint Id, <mark>SHOW CREATE TABLE <strong>table</strong></mark> to check)</u>    
+    ALTER TABLE <strong>table</strong> ADD CONSTRAINT <strong>constId</strong> FOREIGN KEY (<strong>col</strong>) REFERENCES <strong>parentTable</strong>(<strong>primKey</strong>) <small class="openable">[ON DELETE|ON UPDATE <i>const</i>]<div>
+        <p style="text-decoration:underline; font-weight:bold; font-size:1.1em;"> Option controls what happens to the FOREIGN KEY value when the linked PRIMARY KEY value is deleted (<mark>ON DELETE</mark>) or modified (<mark>ON UPDATED</mark>) </p>
+        <p style="text-decoration:underline; font-size:1.1em;"> Constraint Values : </p>
+        <p> - <mark>NO ACTION</mark> or <mark>RESTRICT</mark> - the linked PRIMARY KEY value cannot be deleted|updated (DEFAULT: when not set) </p>
+        <p> - <mark>SET NULL</mark> - when the linked PRIMARY KEY value is deleted|updated the FOREIGN KEY value will be set to <mark>NULL</mark> </p>
+        <p> - <mark>CASCADE</mark> - when the linked PRIMARY KEY value is deleted|updated the FOREIGN KEY value (record) will be deleted|updated along with the PRIMARY KEY record </p>
+        <p> - these options can be seen when printing <mark>SHOW CREATE TABLE</mark> </p>
+    </div></small>     
+                                                                               
+    ALTER TABLE <strong>table</strong> DROP FOREIGN KEY <strong>constId</strong>                                         // drops the foreign key referenced by the constraint Id (<strong>constId</strong>) (<mark>SHOW CREATE TABLE <strong>table</strong></mark> to check)     
+    ALTER TABLE <strong>table</strong> DROP CONSTRIANT <strong>constId</strong> 
+    
+    SET FOREIGN_KEY_CHECKS=0|1                                                         // disables|enables foreign key constraints 
+  
+  
+<span style="color:mediumSeaGreen;">// <mark>NOT NULL</mark> -----------------------------------------------------------------------
+// fields cannot have NULL (must have 'real' value)
+// --------------------------------------------------------------------------------</span>
+    CREATE TABLE <strong>table</strong>(<strong>col</strong> <strong>type</strong> NOT NULL<i>, ...</i>)                                         // NOT NULL constraint added when creating a new table   
+    
+    ALTER TABLE <strong>table</strong> MODIFY COLUMN <strong>col type</strong> NOT NULL                                  // adds a NOT NULL constraint to an existing table's column simply by modifying the column    
+    
+    ALTER TABLE <strong>table</strong> MODIFY COLUMN <strong>col type</strong>                                           // simply omit this constraint when modifying the column in order to remove it      
+  
+  
+<span style="color:mediumSeaGreen;">// <mark>UNIQUE</mark> -------------------------------------------------------------------------
+// fields cannot have duplicate values (must have unique values)
+// --------------------------------------------------------------------------------</span>
+    CREATE TABLE <strong>table</strong>(<strong>col type</strong> UNIQUE<i>, ...</i>)                                           // UNIQUE constraint added when the table is created <u>(<strong>constId</strong> automatically assigned if created without constraint Id, <mark>SHOW CREATE TABLE <strong>table</strong></mark> to check)</u>    
+    CREATE TABLE <strong>table</strong>(<strong>col type</strong>, UNIQUE(<strong>col</strong><i>, ...</i>))       
+    CREATE TABLE <strong>table</strong>(<strong>col type</strong>, CONSTRAINT <strong>constId</strong> UNIQUE (<strong>col</strong><i>, ...</i>))       
+    
+    ALTER TABLE <strong>table</strong> MODIFY COLUMN <strong>col type</strong> UNIQUE                                    // adds a UNIQUE constraint to an existing table's column <u>(<strong>constId</strong> automatically assigned if created without constraint Id, <mark>SHOW CREATE TABLE <strong>table</strong></mark> to check)</u>    
+    ALTER TABLE <strong>table</strong> ADD UNIQUE(<strong>col</strong><i>, ...</i>)    
+    ALTER TABLE <strong>table</strong> ADD CONSTRAINT <strong>constId</strong> UNIQUE(<strong>col</strong><i>, ...</i>)    
+    
+    ALTER TABLE <strong>table</strong> DROP CONSTRAINT <strong>constId</strong>                                          // removes referenced UNIQUE constraints (<strong>constId</strong>) (<mark>SHOW CREATE TABLE <strong>table</strong></mark> to check)    
+    ALTER TABLE <strong>table</strong> DROP INDEX <strong>constId</strong>
+    
+    
+<span style="color:mediumSeaGreen;">// <mark>DEFAULT</mark> ------------------------------------------------------------------------
+// specifes a default value for the column
+// --------------------------------------------------------------------------------</span>
+    CREATE TABLE <strong>table</strong>(<strong>col type</strong> DEFAULT <strong>defVal</strong><i>, ...</i>)                                   // Default constraint set when the table is created   
+    
+    ALTER TABLE <strong>table</strong> ALTER <strong>col</strong> SET DEFAULT <strong>defVal</strong>                                     // sets a default constraint of an existing table column   
+    
+    ALTER TABLE <strong>table</strong> ALTER <strong>col</strong> DROP DEFAULT                                           // drops the default constraint of the specified table column    
+  
+  
+<span style="color:mediumSeaGreen;">// <mark>CHECK</mark> --------------------------------------------------------------------------
+// specifies a condition that must be met for the field
+// --------------------------------------------------------------------------------</span>
+    CREATE TABLE <strong>table</strong>(<strong>col type</strong><i>, ...</i>, CHECK (<strong class="openable">exp<div>
+        <p> - condition can be specified for one field only</p>
+    </div></strong>))                                    // set when the table is created <u>(<strong>constId</strong> automatically assigned if created without constraint Id, <mark>SHOW CREATE TABLE <strong>table</strong></mark> to check)</u>    
+    CREATE TABLE <strong>table</strong>(<strong>col type</strong><i>, ...</i>, CONSTRAINT <strong>constId</strong> CHECK (<strong class="openable">exp<div>
+        <p> - condition can be specified for multiple fields</p>
+    </div></strong>))                
+    
+    ALTER TABLE <strong>table</strong> ADD CHECK (<strong class="openable">exp<div>
+        <p> - condition can be specified for one field only</p>
+    </div></strong>)                                                 // sets one or multiple CHECK constraint to a column in an existing table <u>(<strong>constId</strong> automatically assigned if created without constraint Id, <mark>SHOW CREATE TABLE <strong>table</strong></mark> to check)</u>    
+    ALTER TABLE <strong>table</strong> ADD CONSTRAINT <strong>constId</strong> CHECK (<strong class="openable">exp<div>
+        <p> - condition can be specified for multiple fields</p>
+    </div></strong>)  
+    
+    ALTER TABLE <strong>table</strong> DROP CHECK <strong>constId</strong>                                               // removes the referenced CHECK constraint (<strong>constId</strong>) (<mark>SHOW CREATE TABLE <strong>table</strong></mark> to check)    
+    ALTER TABLE <strong>table</strong> DROP CONSTRAINT <strong>constId</strong>
+  
+  
+<span style="color:mediumSeaGreen;">// <mark>AUTO_INCREMENT</mark> -----------------------------------------------------------------
+// automatically increments the next value in the column (relative to the previous value) <u>(works only for PRIMARY KEY columns)</u>
+// --------------------------------------------------------------------------------</span>
+    CREATE TABLE <strong>table</strong>(<strong>col type</strong> PRIMARY KEY AUTO_INCREMENT<i>, ...</i>)                       // sets the auto increment constraint when creating a new table    
+    
+    ALTER TABLE <strong>table</strong> MODIFY COLUMN <strong>col type</strong> AUTO_INCREMENT                            // adds a AUTO_INCREMENT constraint to an existing table's column simply by modifying the column     
+    
+    ALTER TABLE <strong>table</strong> MODIFY COLUMN <strong>col type</strong>                                           // simply omit this constraint when modifying the column in order to remove it
+    
+    
+<span style="color:mediumSeaGreen;">// <mark>INDEX</mark> -----------------------------------------------------------------
+// creates an index (indexed data is retrieved more quickly <u>but updated more slowly</u>)
+// there are unique and non-unique indexes (unique indexes ensure that all values in the column are different (like the UNIQUE constraint))
+// --------------------------------------------------------------------------------</span>
+    CREATE INDEX <strong>indexId</strong> ON <strong>table</strong>(<strong>col</strong><i>, ...</i>)                                            // adds non-unique or unique index(es) to the specified column(s)    
+    CREATE UNIQUE INDEX <strong>indexId</strong> ON <strong>table</strong>(<strong>col</strong><i>, ...</i>) 
+    
+    ALTER TABLE <strong>table</strong> DROP INDEX <strong>indexId</strong>                                               // removes the referenced index 
+    </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <p> <mark>PRIMARY KEY</mark> </p>
+    <pre class="cmd">
+    mysql> CREATE TABLE Persons(
+        -> ID INT PRIMARY KEY,                                                         // field set as primary key 
+        -> FristName VARCHAR(30), 
+        -> LastName VARCHAR(30));
+        
+  // ----------------------------
+    mysql> CREATE TABLE Persons(
+        -> ID INT,
+        -> FirstName VARCHAR(30),
+        -> LastName VARCHAR(30),
+        -> PRIMARY KEY(ID));                                                           // the 'ID' field is set as primary key 
+    
+// Composite Keys ---------------------------------------------------------------------
+    mysql> CREATE TABLE Persons(
+        -> ID INT,
+        -> FirstName VARCHAR(30),
+        -> LastName VARCHAR(30),
+        -> PRIMARY KEY(ID, FirstName));                                                // creates a composite key (2 fields are used for primary key) (table constraint)   
+        
+  // ----------------------------
+    mysql> CREATE TABLE Persons(
+        -> ID INT,
+        -> FirstName VARCHAR(30),
+        -> LastName VARCHAR(30),
+        -> CONSTRAINT myPrimaryKey PRIMARY KEY(ID, LastName));                         // creates a composite key with the 'myPrimaryKey' name (table constraint)   
+    
+// Add / Remove -----------------------------------------------------------------------
+    mysql> ALTER TABLE Persons ADD PRIMARY KEY (ID);    
+    mysql> ALTER TABLE Persons ADD PRIMARY KEY (ID, FirstName);    
+    
+    mysql> ALTER TABLE Persons ADD CONSTRAINT myPrimaryKeys PRIMARY KEY(ID, FirstName);// table-level constraint
+    
+// Remove -----------------------------------------------------------------------------
+    mysql> ALTER TABLE Persons DROP PRIMARY KEY;                                       // drops all the primary keys  
+    
+    mysql> ALTER TABLE Persons DROP PRIMARY KEY;                                       // drops all the primary keys  
+    </pre>
+    <p> <mark>FOREIGN KEY</mark> </p>
+    <pre class="cmd">
+    mysql> CREATE TABLE Persons(
+        -> ID INT,
+        -> FirstName VARCHAR(30),
+        -> LastName VARCHAR(30),
+        -> Ord INT,
+        -> FOREIGN KEY (Ord) REFERENCES Orders(OrderID));                              // setting up a foreign key (the 'OrderID' is the primary key of the 'Orders' table)  // -! the reference column must be the primary key of the targeted table    
+                                                                                         // -! it's impossible to remove this foreign key [WHEN TESTED: 2020-08-06]    
+  // ----------------------------
+    mysql> CREATE TABLE Oersons(
+        -> ID INT, 
+        -> FirstName VARCHAR(30), 
+        -> LastName VARCHAR(30), 
+        -> Ord INT, 
+        -> CONSTRAINT myFor FOREIGN KEY (Ord) REFERENCES orders(orderID));             // the added foreign key(s) is referenced by a constraint name 'myFor'   
+        
+// Add --------------------------------------------------------------------------------
+    mysql> ALTER TABLE Persons ADD FOREIGN KEY (Ord) REFERENCES orders(orderID);       // -! it's impossible to remove this foreign key [WHEN TESTED: 2020-08-06]    
+        
+    mysql> ALTER TABLE Persons ADD CONSTRAINT myFor FOREIGN KEY (Ord) REFERENCES Orders(OrderID);   
+    
+// Remove -----------------------------------------------------------------------------
+    mysql> ALTER TABLE persons DROP FOREIGN KEY myFor;                                 // the 'myFor' is the constraint what references the foreing keys in the table  
+                                                                                         // -! if the foreign key was created without constraint name it's impossible to remove it [WHEN TESTED: 2020-08-06]    
+        
+// Enalbe / Disable Foreign keys ------------------------------------------------------
+    mysql> SET FOREIGN_KEY_CHECKS = 0;                                                 // disables foreign keys    
+    mysql> SET FOREIGN_KEY_CHECKS = 1;                                                 // enable foreign keys    
+    </pre>
+    <p> <mark>NOT NULL</mark> </p>
+    <pre class="cmd">
+    mysql> CREATE TABLE Persons(                                                       // field cannot hold NULL value   
+        -> ID INT NOT NULL,
+        -> FirstName VARCHAR(30),
+        -> LastName VARCHAR(30));
+    
+// Add --------------------------------------------------------------------------------
+    mysql> ALTER TABLE Persons MODIFY COLUMN ID INT NOT NULL;                          // simply add NOT NULL when modifying the column   
+    
+// Remove -----------------------------------------------------------------------------
+    mysql> ALTER TABLE Persons MODIFY COLUMN ID INT;                                   // simply omit this constraint when modifying the column   
+    </pre>
+    <p> <mark>UNIQUE</mark> </p>
+    <pre class="cmd">
+    mysql> CREATE TABLE Persons(
+        -> ID INT UNIQUE,                                                              // column created with UNIQUE constraint         // -! UNIQE constraint added like this cannot be removed from the column anymore  
+        -> FirstName VARCHAR(30),
+        -> LastName VARCHAR(30));
+    
+  // ----------------------------
+    mysql> CREATE TABLE Persons( 
+        -> ID INT,
+        -> FirstName VARCHAR(30),
+        -> LastName VARCHAR(30), 
+        -> UNIQUE (ID, FirstName));                                                    // the 'ID' column is created with UNIQUE        // -! UNIQE constraint added like this cannot be removed from the column anymore  constraint   
+    
+  // ----------------------------
+    mysql> CREATE TABLE Persons(
+        -> ID INT,
+        -> FirstName VARCHAR(30),
+        -> LastName VARCHAR(30),
+        -> CONSTRAINT UC_Persons UNIQUE (ID, FirstName));                              // the 'UC_Persons' constraint references the UNIQUE constraints   
+    
+// Add --------------------------------------------------------------------------------
+    mysql> ALTER TABLE Persons MODIFY COLUMN FirstName VARCHAR(30) UNIQUE;             // simply add UNIQUE when modifying the column   // -! UNIQE constraint added like this cannot be removed from the column anymore  
+    
+    mysql> ALTER TABLE Persons ADD UNIQUE (ID, FirstName);                             // adds UNIQUE constraints to 'ID' and 'FirstName' columns  // -! UNIQE constraint added like this cannot be removed from the column anymore  
+    
+    mysql> ALTER TABLE Persons ADD CONSTRAINT UC_Persons UNIQUE (ID, FirstName);       // add UNIQE constraint with a constraint name 'UC_Persons'   
+    
+// Remove -----------------------------------------------------------------------------
+    mysql> ALTER TABLE Persons DROP CONSTRAINT UC_Persons;                             // removes the referenced constraint             // -! unreferenced UNIQUE constraints cannot be removed
+    
+    mysql> ALTER TABLE Persons DROP INDEX UC_Persons;                                  // removes the referenced constraint             // -! unreferenced UNIQUE constraints cannot be removed
+    </pre>
+    <p> <mark>DEFAULT</mark> </p>
+    <pre class="cmd">
+    mysql> CREATE TABLE Persons(
+        -> ID INT,
+        -> FirstName VARCHAR(30) DEFAULT 'unspecified',                                // default field value specified 
+        -> LastName VARCHAR(30) DEFAULT 'unspecified');                                // default field value specified
+    
+// Add --------------------------------------------------------------------------------
+    mysql> ALTER TABLE Persons ALTER FirstName SET DEFAULT 'unspecified';              // sets a default value for the 'FirstName' column   
+    
+// Remove -----------------------------------------------------------------------------
+    mysql> ALTER TABLE Persons ALTER FirstName DROP DEFAULT;                           // default value removed from the 'FirstName' column  
+    </pre>
+    <p> <mark>CHECK</mark> </p>
+    <pre class="cmd">
+    mysql> CREATE TABLE Persons(
+        -> ID INT,                                                                     // higher values than 0 only! 
+        -> FirstName VARCHAR(30),
+        -> LastName VARCHAR(30),
+        -> CHECK (ID > 0));                                                            // -! this CHECK constraint cannot be removed because it isn't referenced by a constraint name (<strong>constId</strong>) 
+        
+  // ----------------------------
+    mysql> CREATE TABLE Persons(
+        -> ID INT,                                                                     // higher values than 0 only!
+        -> FirstName VARCHAR(30),
+        -> LastName VARCHAR(30),                                                       // 'Pall' value allowed only
+        -> CONSTRAINT CHK_Persons CHECK (ID > 0 AND LastName = 'Pall'));               // multiple column conditions can be specified 
+        
+// Add --------------------------------------------------------------------------------
+    mysql> ALTER TABLE Persons ADD CHECK (ID > 0);                                     // CHECK constraint added to the 'ID' column // -! once this constraint is set it cannot be removed or modified!    
+    
+    mysql> ALTER TABLE Persons ADD CONSTRAINT CHK_Persons CHECK (ID > 0 AND LastName = 'pall'); // CHECK constraint added to two columns 
+    
+// Remove -----------------------------------------------------------------------------
+    mysql> ALTER TABLE Persons DROP CONSTRAINT CHK_Persons;                            // removes the CHECK constraints referenced by the 'CHK_Persons' constraint name   
+    
+    mysql> ALTER TABLE Persons DROP CHECK CHK_Persons;                                 // removes the CHECK constraints referenced by the 'CHK_Persons' constraint name   
+    </pre>
+    <p> <mark>AUTO_INCREMENT</mark> </p>
+    <pre class="cmd">
+    mysql> CREATE TABLE Persons(
+        -> ID INT PRIMARY KEY AUTO_INCREMENT,                                          // field automatically increments ist value (must be a primary key)   
+        -> FirstName VARCHAR(30),
+        -> LastName VARCHAR(30));
+        
+    mysql> ALTER TABLE Persons AUTO_INCREMENT = 21;                                    // resets the increment value (the next inserted value will be automatically assigned 21)   
+            
+// Add --------------------------------------------------------------------------------
+    mysql> ALTER TABLE Persons MODIFY COLUMN ID INT AUTO_INCREMENT;                    // sets AUTO_INCREMENT constraint to the column   
+    
+// Remove -----------------------------------------------------------------------------
+    mysql> ALTER TABLE Persons MODIFY COLUMN ID INT;                                   // simply omit this constraint to remove it 
+    </pre>
+    <p> <mark>INDEX</mark> </p>
+    <pre class="cmd">
+// Add --------------------------------------------------------------------------------
+    mysql> CREATE INDEX IND_Persons ON Persons(ID, FirstName);                         // adds non-unique index to 'ID' and 'FirstName' columns   
+    
+  // ----------------------------
+    mysql> CREATE UNIQUE INDEX IND_Persons ON Persons(ID, FirstName);                  // adds unique index to 'ID' and 'FirstName' columns   
+    
+// Remove -----------------------------------------------------------------------------
+    mysql> ALTER TABLE Persons DROP INDEX IND_Persons;                                 // removes the index referenced by 'IND_Persons' 
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> Foreign key <mark>ON DELETE</mark> constraint TEST </u></h4>
+    <pre class="cmd">
+    mysql> SELECT * FROM Students;
+    +-----------+-----------+----------+------------+
+    | studentID | FirstName | LastName | PassportNR |
+    +-----------+-----------+----------+------------+
+    |         1 | PALL      | Arpad    |     421564 |
+    |         2 | Bircsy    | Biro     |     145789 |
+    |         3 | Gyula     | Szolosi  |     445124 |
+    |         4 | Feri      | Gaspar   |     995641 |
+    |        21 | Feri      | Kaszas   |     445156 |
+    |        99 | Zoli      | Hadnagy  |     845463 |
+    +-----------+-----------+----------+------------+
+    6 rows in set (0.00 sec)
+    
+    mysql> CREATE TABLE Class(
+        -> student_id INT,
+        -> class VARCHAR(30),
+        -> FOREIGN KEY(student_id) REFERENCES Students(studentID) ON DELETE SET NULL); // foreign key constraint on table creation 
+    Query OK, 0 rows affected (0.04 sec)
+    
+    mysql> DESC Class;
+    +------------+-------------+------+-----+---------+-------+
+    | Field      | Type        | Null | Key | Default | Extra |
+    +------------+-------------+------+-----+---------+-------+
+    | student_id | int         | YES  | MUL | NULL    |       |
+    | class      | varchar(30) | YES  |     | NULL    |       |
+    +------------+-------------+------+-----+---------+-------+
+    2 rows in set (0.00 sec)
+    
+// -------------------------------------------------------------------------------------
+    mysql> CREATE TABLE Class(
+        -> student_id INT,
+        -> class VARCHAR(30),
+        -> CONSTRAINT forKey FOREIGN KEY(student_id) REFERENCES Students(studentID) ON DELETE SET NULL);    // foreign key constraint id used   
+    Query OK, 0 rows affected (0.03 sec)
+
+    mysql> DESC Class;
+    +------------+-------------+------+-----+---------+-------+
+    | Field      | Type        | Null | Key | Default | Extra |
+    +------------+-------------+------+-----+---------+-------+
+    | student_id | int         | YES  | MUL | NULL    |       |
+    | class      | varchar(30) | YES  |     | NULL    |       |
+    +------------+-------------+------+-----+---------+-------+
+    2 rows in set (0.00 sec)
+    
+    
+    </pre>
+  </details>
+
+
+  <br><br>
+</body>
+
+</html>

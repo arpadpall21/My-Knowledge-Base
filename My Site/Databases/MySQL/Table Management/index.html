@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Table Management </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Table Management </h1>
+  <p> Updated ( 2020-08-03 / 2020-08-25 / 2020-09-15 / 2023-05-22 )</p>
+  <p class="sitenav"> <a href="../../../index.html">MySite></a>
+    <a href="../../index.html" title="Learn WebDesign">Databases></a>
+    <a href="../index.html" title="Learn WebDesign">MySQL></a> Table Management
+  </p>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - the <mark>MUL</mark> Key (printed in MySQL) means 'Multiple' (first non-unique index of multiple) (first unique
+    index of multiple) <u>(foreign keys require INDEXES so <mark>MUL</mark> can also means foreign key indirecly)</u>
+  </p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <pre class="syntax">
+SYNTAX:     CREATE <small>[TEMPORARY]</small> TABLE <i>db.</i><strong>table</strong>(<strong>col dataType</strong> <i>constraint, ...</i>)            // creates a new table in the current or (in the specifed) database     
+                                                                                          (<small>TEMPORARY</small>) <span class="openable">creates a temporary table<div>
+                <p> - a Temporary table is a session table (only the current user can access it and automatically deleted when the session is closed)
+                <p> - the user can query temporary tables just like any other tables but <u style="color:orangered;">Temporary tables CANNOT be listed with any listing statements like <mark>SHOW TABLES</mark> etc... </u> (because they belong to the connection and not to the database) [TESTED: 2020-10-10 MySQL v8.0.21] </p>
+                <p> - can have the same name as a base table (in such cases the base table is hidden) <u style="color:orangered;">(don't do this, creates name confusion)</u> </p>
+            </div></span> which belong to the connection    
+            CREATE <small>[TEMPORARY]</small> TABLE <i>db.</i><strong>table</strong> AS <strong>selectStatement</strong>                       // creates the table what is returned by the select statement <u>(cannot set existirng table) (Primary and Foreign key constraints are not copied)</u>    
+                                                                                          (<small>TEMPORARY</small>) <span class="openable">creates a temporary table<div>
+                <p> - a Temporary table is a session table (only the current user can access it and automatically deleted when the session is closed)
+                <p> - the user can query temporary tables just like any other tables but <u style="color:orangered;">Temporary tables CANNOT be listed with any listing statements like <mark>SHOW TABLES</mark> etc... </u> (because they belong to the connection and not to the database) [TESTED: 2020-10-10 MySQL v8.0.21] </p>
+                <p> - can have the same name as a base table (in such cases the base table is hidden) <u style="color:orangered;">(don't do this, creates name confusion)</u> </p>
+            </div></span> which belong to the connection    
+            
+            
+            ALTER TABLE <strong>table</strong> RENAME TO <strong>newTable</strong>                                       // renames the specified table
+            ALTER TABLE <strong>table</strong> ADD <strong>col dataType</strong>                                         // adds a new filed (column) to the table  
+            ALTER TABLE <strong>table</strong> RENAME COLUMN <strong>col</strong> TO <strong>newCol</strong>                              // renames the specified column 
+            ALTER TABLE <strong>table</strong> MODIFY COLUMN <strong>col dataType</strong> <i>constraint</i>                    // changes the datatype (and constraint) of the specified field (column)   
+            ALTER TABLE <strong>table</strong> DROP COLUMN <strong>col</strong>                                          // deletes the specifed filed (column)  
+            
+            
+            DROP <small>[TEMPORARY]</small> TABLE <strong>table</strong><i>, ...</i>                                          // deletes the specified <u>base or temporary</u> table(s)
+                                                                                          (<small>TEMPORARY</small>) deletes only temporary tables 
+            TRUNCATE TABLE <strong>table</strong>                                                       // deletes the table content without deleting the table structure    
+            
+            
+            SHOW TABLES;                                                               // prints all tables in the current database   
+            SHOW FULL TABLES IN <strong>db</strong>                                                     // prints all tables <u>and the table type (BASE or VIEW)</u> in the specified database    
+            
+            
+            DESCRIBE|DESC|EXPLAIN <strong>table</strong>                                                // prints the table structure (fileds, datatype, etc...) 
+            SHOW CREATE TABLE <strong>table</strong>                                                    // prints detailed informations about the <u>current</u> table sturcture <u>(including field constraint settings and constraint Ids)</u>    
+    </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre class="cmd">
+// CREATE TABLE -----------------------------------------------------------------------
+    CREATE TABLE cars(car_id INT PRIMARY KEY, mark varchar(20), type varchar(20));     // creates a new table with 3 fields   
+    CREATE TABLE cars_2 AS SELECT * FROM cars;                                         // creates a new table by copying everithing from the 'cars' table   
+    CREATE TABLE cars_3 AS SELECT mark, type FROM cars;                                // creates a new table by copying 2 explicit fileds from the 'cars' table   
+    
+// ALTER TABLE ------------------------------------------------------------------------
+    ALTER TABLE cars RENAME TO kocsik;                                                 // renames the table   
+    ALTER TABLE kocsik ADD engine_size INT;                                            // adds a new filed to the 'kocsik' table 
+    ALTER TABLE kocsik RENAME COLUMN engine_size TO engine;                            // renames the 'engine_size' filed to 'engine'
+    ALTER TABLE kocsik MODIFY COLUMN type INT UNIQUE;                                  // modifies the column datatype and constraint 
+    ALTER TABLE kocsik DROP COLUMN type;                                               // deletes the 'type' column (with all stored data in the column)    
+    
+// TRUNCATE TABLE / DROP TABLE --------------------------------------------------------
+    TRUNCATE TABLE kocsik;                                                             // removes all the table's content (but keeps the table structure itself)    
+    
+    DROP TABLE kocsik;                                                                 // deletes the table from the database 
+    
+// SHOW TABLES / SHOW FULL TABLES IN / DESC / -----------------------------------------
+    SHOW TABLES;                                                                       // prints all tables in the current database 
+    SHOW FULL TABLES In myDB;                                                          // prints all tables and table type in the 'myDB' database 
+    
+    DESC kocsik;                                                                       // prints the table structure of the 'kocsik' table 
+    </pre>
+    <pre class="cmd" open>
+// SHOW CREATE TABLE ------------------------------------------------------------------
+    mysql> SHOW CREATE TABLE Class;                                                    // prints a detailed structure of the 'Class' table (with all constraints and their settings)  
+    +-------------------------------------------------------------------------------------------------------------
+    | Class | CREATE TABLE `Class` (
+    `class_id` int NOT NULL AUTO_INCREMENT,                                            // AUTO_INCREMENT constraint 
+    `class` varchar(30) DEFAULT 'no class',                                            // DEFAULT value 'no class'
+    `student_id` int DEFAULT NULL,
+    `student_age` int DEFAULT NULL,
+    `motivationRate` smallint DEFAULT NULL,
+    `student_name` varchar(30) DEFAULT NULL,
+    PRIMARY KEY (`class_id`),                                                          // PRIMARY KEY on 'class_id' field  
+    UNIQUE KEY `student_name` (`student_name`),                                        // UNIQUE constraint on 'student_name' field
+    KEY `forKey` (`student_id`),                                                       // INDEX constraint on 'student_id' (set along with the primary key)  // -! not a FOREIGN KEY
+    KEY `ind` (`motivationRate`),                                                      // INDEX (referenced by 'ind' constraint ID)                          // -! not a FOREIGN KEY
+    CONSTRAINT `forKey` FOREIGN KEY (`student_id`) REFERENCES `Students` (`student_id`),    // FOREIGN KEY on 'student_id' referencing the 'Students.student_id' table.colum (under the 'forKey' constraint Id)    
+    CONSTRAINT `Class_chk_1` CHECK ((`student_age` >= 18))                             // CHECK constraint  
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
+    +-------------------------------------------------------------------------------------------------------------
+    1 row in set (0.00 sec)
+    </pre>
+    <p> - Temporary Tables </p>
+    <pre class="cmd">
+    mysql> CREATE TEMPORARY TABLE tempTable(col1 INT);                                 // creates the 'tempTable' temporary table (automatically deleted when the session ends)    
+    
+    mysql> INSERT INTO tempTable VALUES(21);                                           // quering temporary tables work the same way as base tables   
+    
+    mysql> SHOW TABLES;                                                                // temporary tables are not listed here (or in any table listing commands) (they belong to the connection and not to the database)    
+    
+// same temporary table name ----------------------------------------------------------
+    mysql> CREATE TEMPORARY TABLE Employee AS SELECT * FROM Employee;                  // temporary tables can have the same name as base tables    // -! bad practice (creates name confusion)
+                                                                                         // the created 'Employee' temporary table will hide the base 'Emplyee' table    
+                                                                                         // from here we modify the 'Emplyee' temporary table (but not the 'Emplyee' base table)
+                                                                                         
+  // delete temporary table -----------------------------------------------------------
+    mysql> DROP TABLE Employee;                                                        // drops the 'Employee' temporary table but not the base 'Employee' table  
+    mysql> DROP TABLE Employee;                                                        // -! calling again will drop the base 'Employee' table (this statement drops both temporary and base tables)
+    
+    mysql> DROP TEMPORARY TABLE Employee;                                              // drops the 'Employee' temporary table only (does not drop base tables)
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> <mark>CREATE TABLE</mark> / <mark>DESCRIBE</mark> / <mark>DROP TABLE</mark> TEST
+      </u></h4>
+    <pre class="cmd">
+    mysql> CREATE TABLE students(student_id INT PRIMARY KEY, name VARCHAR(20), major VARCHAR(20));
+    Query OK, 0 rows affected (0.03 sec)
+    
+    mysql> DESCRIBE students;
+    +------------+-------------+------+-----+---------+-------+
+    | Field      | Type        | Null | Key | Default | Extra |
+    +------------+-------------+------+-----+---------+-------+
+    | student_id | int         | NO   | PRI | NULL    |       |
+    | name       | varchar(20) | YES  |     | NULL    |       |
+    | major      | varchar(20) | YES  |     | NULL    |       |
+    +------------+-------------+------+-----+---------+-------+
+    3 rows in set (0.00 sec)
+    
+    mysql> DROP TABLE students;
+    Query OK, 0 rows affected (0.02 sec)    
+    </pre>
+    <!---------------------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 style="color:darkblue;"><u> creating a table by using another table TEST </u></h4>
+    <pre class="cmd">
+    mysql> CREATE TABLE students_2 AS SELECT * FROM students;                          // creates a new copy of the 'students' table as 'students_2'
+    Query OK, 0 rows affected (0.03 sec)
+    Records: 0  Duplicates: 0  Warnings: 0
+    
+    mysql> CREATE TABLE students_3 AS SELECT student_id, name FROM students;           // a new 'students_3' table is created but only the 'student_id' and 'name' columns are copied from the source table    
+    Query OK, 0 rows affected (0.03 sec)
+    Records: 0  Duplicates: 0  Warnings: 0
+    </pre>
+    <!---------------------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 style="color:darkblue;"><u> <mark>ALTER TABLE</mark> TEST </u></h4>
+    <pre class="cmd">
+    mysql> ALTER TABLE students_5 RENAME TO harward;                                   // renames the table 
+    Query OK, 0 rows affected (0.02 sec)
+    
+    mysql> ALTER TABLE harward ADD house VARCHAR(20);                                  // adds a new filed (column) to the table 
+    Query OK, 0 rows affected (0.02 sec)
+    Records: 0  Duplicates: 0  Warnings: 0
+    
+    ALTER TABLE harward RENAME COLUMN house TO house_nr;                               // renames the 'house' column to 'house_nr'
+    Query OK, 0 rows affected (0.02 sec)
+    Records: 0  Duplicates: 0  Warnings: 0
+    
+    mysql> ALTER TABLE harward MODIFY COLUMN house_nr INT;                             // changes the filed (column) datatype to INT  
+    Query OK, 0 rows affected (0.06 sec)
+    Records: 0  Duplicates: 0  Warnings: 0
+    
+    mysql> ALTER TABLE harward DROP COLUMN house_nr;                                   // deletes the 'house_nr' filed (column)   
+    Query OK, 0 rows affected (0.05 sec)
+    Records: 0  Duplicates: 0  Warnings: 0    
+    </pre>
+    <!---------------------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 style="color:darkblue;"><u> <mark>SHOW CREATE TABLE</mark> TEST </u></h4>
+    <p> - TESTED on mysql v8.0.21 </p>
+    <pre class="cmd">
+    mysql> SHOW CREATE TABLE Class;
+    +-------------------------------------------------------------------------------------------------------------
+    | Class | CREATE TABLE `Class` (
+    `class_id` int NOT NULL AUTO_INCREMENT,                                            // AUTO_INCREMENT constraint 
+    `class` varchar(30) DEFAULT 'no class',                                            // DEFAULT value 'no class'
+    `student_id` int DEFAULT NULL,
+    `student_age` int DEFAULT NULL,
+    `motivationRate` smallint DEFAULT NULL,
+    `student_name` varchar(30) DEFAULT NULL,
+    PRIMARY KEY (`class_id`),                                                          // PRIMARY KEY on 'class_id' field  
+    UNIQUE KEY `student_name` (`student_name`),                                        // UNIQUE constraint on 'student_name' field
+    KEY `forKey` (`student_id`),                                                       // INDEX constraint on 'student_id' (set along with the primary key)
+    KEY `ind` (`motivationRate`),                                                      // INDEX (referenced by 'ind' constraint ID) 
+    CONSTRAINT `forKey` FOREIGN KEY (`student_id`) REFERENCES `Students` (`student_id`),    // FOREIGN KEY on 'student_id' referencing the 'Students.student_id' table.colum (under the 'forKey' constraint Id)    
+    CONSTRAINT `Class_chk_1` CHECK ((`student_age` >= 18))                             // CHECK constraint  
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
+    +-------------------------------------------------------------------------------------------------------------
+    1 row in set (0.00 sec)
+    
+    </pre>
+    <!---------------------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 style="color:darkblue;"><u> <mark>SHOW TABLES</mark> / <mark>SHOW FULL TABLES IN</mark> TEST </u></h4>
+    <pre class="cmd">
+    mysql> SHOW TABLES;
+    +------------------+
+    | Tables_in_testDB |
+    +------------------+
+    | Class            |
+    | Cls_W            |
+    | Person           |
+    | Student_W        |
+    | Students         |
+    +------------------+
+    5 rows in set (0.00 sec)
+    
+    mysql> SHOW FULL TABLES IN testDB;
+    +------------------+------------+
+    | Tables_in_testDB | Table_type |
+    +------------------+------------+
+    | Class            | BASE TABLE |
+    | Cls_W            | VIEW       |                                                  // very handy to see view 
+    | Person           | BASE TABLE |
+    | Student_W        | VIEW       |
+    | Students         | BASE TABLE |
+    +------------------+------------+
+    5 rows in set (0.01 sec)
+    </pre>
+    <!---------------------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 style="color:darkblue;"><u> <mark>CREATE TEMPORARY TABLE</mark> / <mark>DROP [TEMPORARY] TABLE</mark> TEST </u>
+    </h4>
+    <pre class="cmd">
+    mysql> CREATE TEMPORARY TABLE tempTable(                                           // creates a temporary table  
+        ->   tempCol INT);
+    Query OK, 0 rows affected (0.00 sec)
+    
+    mysql> INSERT INTO tempTable VALUES(21);                                           // we can query the same way temporary tables just like we do base tables    
+    Query OK, 1 row affected (0.00 sec)
+    
+    mysql> INSERT INTO tempTable VALUES(22);
+    Query OK, 1 row affected (0.00 sec)
+    
+    mysql> TABLE tempTable;                                                            // current temporary table content  
+    +---------+
+    | tempCol |
+    +---------+
+    |      21 |
+    |      22 |
+    +---------+
+    2 rows in set (0.00 sec)
+    
+// same name temporary table ----------------------------------------------------------
+    mysql> TABLE Class;                                                                // 'Class' base table   
+    +------------+------------+
+    | student_id | class_name |
+    +------------+------------+
+    |          2 | Biology    |
+    |          5 | Math       |
+    |          7 | Algebra    |
+    +------------+------------+
+    3 rows in set (0.00 sec)
+    
+    mysql> CREATE TEMPORARY TABLE Class(                                               // we can create a temporary table with the same name    // -! this is BAD practice (never create temporary tables under the same name )     
+        ->   tempCol INT);
+    Query OK, 0 rows affected (0.00 sec)
+    
+    mysql> INSERT INTO Class VALUES(12);                                               // from here we are dealing with ONLY the temporary table under the name 'Class'    
+    Query OK, 1 row affected (0.00 sec)
+    
+    mysql> INSERT INTO Class VALUES(22);
+    Query OK, 1 row affected (0.00 sec)
+    
+    mysql> TABLE Class;                                                                // temporary 'Class' table content 
+    +---------+
+    | tempCol |
+    +---------+
+    |      12 |
+    |      22 |
+    +---------+
+    2 rows in set (0.00 sec)
+    
+    mysql> DROP TEMPORARY TABLE Class;                                                 // drops the 'Class' temporary table  
+    Query OK, 0 rows affected (0.00 sec)
+    
+    mysql> TABLE Class;                                                                // the original 'Class' base table is not modified because it was hidden behind the 'Class' temporary table  
+    +------------+------------+
+    | student_id | class_name |
+    +------------+------------+
+    |          2 | Biology    |
+    |          5 | Math       |
+    |          7 | Algebra    |
+    +------------+------------+
+    3 rows in set (0.00 sec)
+    
+// CREATE TEMPORARY TABLE ... AS ------------------------------------------------------
+    mysql> CREATE TEMPORARY TABLE tempTable AS SELECT * FROM Class;                    // creates a temporary table based on a base table   
+    Query OK, 3 rows affected (0.00 sec)
+    Records: 3  Duplicates: 0  Warnings: 0
+    
+    mysql> TABLE tempTable;
+    +------------+------------+
+    | student_id | class_name |
+    +------------+------------+
+    |          2 | Biology    |
+    |          5 | Math       |
+    |          7 | Algebra    |
+    +------------+------------+
+    3 rows in set (0.00 sec)
+    
+    mysql> DROP TABLE testTAble;                                                       // -! also drops temporary table  
+    Query OK, 0 rows affected (0.00 sec)
+    
+    mysql> TABLE testTAble;                                                            // temporary table dropped   
+    ERROR 1146 (42S02): Table 'testDB.testTAble' doesn't exist
+    
+// deleting temporary table with DROP TABLE -------------------------------------------
+    mysql> TABLE Class;                                                                // we have a base and a temporary table named 'Class' (this is the temporary one the base what we see)    
+    +---------+
+    | tempCol |
+    +---------+
+    |       2 |
+    |       5 |
+    |       7 |
+    +---------+
+    3 rows in set (0.00 sec)    
+    
+    mysql> DROP TABLE Class;                                                           // deletes the temporary table only (because the 'Class' table name is referenced first by the temporary table)    
+    Query OK, 0 rows affected (0.00 sec)
+    
+    mysql> TABLE Class;                                                                // original base table  
+    +------------+------------+                                                        // -! this is the reason why should never use same table names (gets confusing which is which and can lead to data loss!)    
+    | student_id | class_name |
+    +------------+------------+
+    |          2 | Biology    |
+    |          5 | Math       |
+    |          7 | Algebra    |
+    +------------+------------+
+    3 rows in set (0.00 sec)
+    </pre>
+  </details>
+  <!---------------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> Save|Load table content into|from a text file </u></h2>
+  <pre class="syntax">
+SYNTAX:     SELECT *|<strong>col</strong><i>, ...</i> INTO OUTFILE <strong>'filePath'</strong> <small class="openable">options<div>
+                <p><small>[FILEDS [TERMINATED BY <i>'char'</i>] [ENCLOSED BY <i>char</i>]]</small> - specifies the characters how fields are terminated (character between fields) or enclosed</p>
+                <p><small>[LINES [TERMINATED BY <i>'char'</i>] [STARTING BY <i>'char'</i>]]</small> - specifies the characters how lines (records) start and end </p>
+                <br>
+                <p><u> - at least one sub-option must be specified </u></p>
+                <p> - option parameters can be ASCII characters only </p>
+            </div></small> FROM <strong>table</strong>              // saves the selected table <span class="openable">into an external file<div>
+                <p> - check the <mark>secure_file_priv</mark> system variable to see where the file can be saved, on Linux (Ubuntu) the default location is <mark>'/var/lib/mysql-files/'</mark> directory </p>
+                <p> - the saved file is owned by the <mark>mysql</mark> user and group and has <mark>-rw-r-----</mark> privileges </p>
+            </div>
+            </span> <u>(cannot overwrite existing files)</u>     
+            <strong>selectStatement</strong> INTO OUTFILE <strong>'filePath'</strong> <small class="openable">options<div>
+                <p><small>[FILEDS [TERMINATED BY <i>'char'</i>] [ENCLOSED BY <i>char</i>]]</small> - specifies the characters how fields are terminated (character between fields) or enclosed</p>
+                <p><small>[LINES [TERMINATED BY <i>'char'</i>] [STARTING BY <i>'char'</i>]]</small> - specifies the characters how lines (records) start and end </p>
+                <br>
+                <p><u> - at least one sub-option must be specified </u></p>
+                <p> - option parameters can be ASCII characters only </p>
+            </div></small>                           // this syntax is supported form MySQL v8.0.20 (does the same as above)
+                                                                                          (<small>options</small>) formats the file 
+            
+            LOAD DATA INFILE <strong>'filePath'</strong> INTO TABLE <i>db.</i><strong>table</strong> <small class="openable">options<div>
+                <p><small>[FILEDS [TERMINATED BY <i>'char'</i>] [ENCLOSED BY <i>char</i>]]</small> - specifies the characters how fields are terminated (character between fields) or enclosed</p>
+                <p><small>[LINES [TERMINATED BY <i>'char'</i>] [STARTING BY <i>'char'</i>]]</small> - specifies the characters how lines (records) start and end </p>
+                <br>
+                <p><u> - at least one sub-option must be specified </u></p>
+                <p> - option parameters can be ASCII characters only </p>
+            </div></small>                   // <span class="openable">loads the file content into the specified table<div>
+                <p> - the target table must have the same number of columns and datatype as the source file has (some datatypes might be parsed tough) </p> 
+                <p> - this statement never override existing records (add duplicates instead) </p>
+                <p> - the read file location is restricted by the <mark>secure_file_priv</mark> server variable </p>
+                <p> - check the <mark>secure_file_priv</mark> system variable to see from which directory the files can be read, on Linux (Ubuntu) the default location is <mark>'/var/lib/mysql-files/'</mark> directory </p>
+            </div></span>   
+                                                                                          (<small>options</small>) defines the format how the parser interpretes the file 
+    </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre class="cmd">
+// data from table to file ------------------------------------------------------------
+    mysql> SELECT * INTO OUTFILE '/var/lib/mysql-files/table_1.txt' FROM table_1;      // saves the table content into the 'table_1.txt' file  
+    mysql> SELECT * FROM table_1 INTO OUTFILE '/var/lib/mysql-files/table_1.txt'       // does the same as above    // -! prefered syntax but supported from MySQL v8.0.20   
+    
+    mysql> TABLE table_2 INTO OUTIFLE '/var/lib/mysql-files/table_2.txt'               // -! by default MySQL server only can read and write from '/var/lib/mysql-files/' directory (check 'secure_file_priv' system variable)    
+        -> LINES STARTING BY '&gt;' TERMINATED BY '&lt;\n'                                   // options format the file   
+        -> FIELDS ENCLOSED BY '|';
+        
+// data from file to table ------------------------------------------------------------
+    mysql> LOAD DATA INFILE '/var/lib/mysql-files/table_1.txt' INTO TABLE someTable_1; // reads data from the 'table_1.txt' file and writes to the 'someTable_1' table    
+    
+    mysql> LOAD DATA INFILE '/var/lib/mysql-files/table_2.txt' INTO TABLE someTable_2  // -! by default MySQL server only can read and write from '/var/lib/mysql-files/' directory (check 'secure_file_priv' system variable)    
+        -> LINES STARTING BY '&gt;' TERMINATED BY '&lt;\n'                                   // options define how the parser interprets the file 
+        -> FIELDS ENCLOSED BY '|';
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> store records into files <mark>INTO OUTFILE</mark> TEST </u></h4>
+    <pre class="cmd">
+    mysql> SELECT * INTO OUTFILE '/var/lib/mysql-files/table_1.txt' FROM Students;     // table content is written to the 'table_1.txt' file  
+    Query OK, 13 rows affected (0.00 sec)
+    
+    mysql> SELECT * INTO OUTFILE '/var/lib/mysql-files/table_1.txt' FROM Students;     // this statement cannot overwrite existing files (for security reasons)   
+    ERROR 1086 (HY000): File '/var/lib/mysql-files/table_1.txt' already exists
+    
+// MySQL v8.0.20 syntax ---------------------------------------------------------------
+    mysql> SELECT * FROM Students INTO OUTFILE '/var/lib/mysql-files/table_1.txt';     
+    
+// file options -----------------------------------------------------------------------
+    mysql> SELECT * 
+        -> INTO OUTFILE '/var/lib/mysql-files/table_1.txt' LINES STARTING BY '->' TERMINATED BY '&lt;-\n'   // lines (record) start and end characters set   
+        -> FROM Students;
+        
+    mysql> TABLE Students 
+        -> INTO OUTFILE '/var/lib/mysql-files/table_1.txt' FIELDS ENCLOSED BY '*';     // fields enclosed by the '*' character in the saved file    
+    </pre>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> load data from file to table <mark>LOAD DATA INFILE</mark> TEST </u></h4>
+    <pre class="cmd">
+    mysql> LOAD DATA INFILE '/var/lib/mysql-files/testTable.txt' INTO TABLE testTable; // data is written to the table   
+    Query OK, 6 rows affected (0.01 sec)
+    Records: 6  Deleted: 0  Skipped: 0  Warnings: 0
+    
+    mysql> TABLE testTable;
+    +------+-------+------------+
+    | col1 | col2  | col3       |
+    +------+-------+------------+
+    |    1 | egy   | 2020-09-01 |
+    |    2 | ketto | 2020-09-02 |
+    |    3 | harom | 2020-09-03 |
+    |    4 | negy  | 2020-09-04 |
+    |    5 | ot    | 2020-09-05 |
+    |    6 | hat   | 2020-09-06 |
+    +------+-------+------------+
+    6 rows in set (0.00 sec)
+    
+    mysql> LOAD DATA INFILE '/var/lib/mysql-files/testTable.txt' INTO TABLE testTable;
+    Query OK, 6 rows affected (0.01 sec)
+    Records: 6  Deleted: 0  Skipped: 0  Warnings: 0
+    
+    mysql> TABLE testTable;                                                            // additinal data is simply added (never overrides exsiting data)    
+    +------+-------+------------+
+    | col1 | col2  | col3       |
+    +------+-------+------------+
+    |    1 | egy   | 2020-09-01 |
+    |    2 | ketto | 2020-09-02 |
+    |    3 | harom | 2020-09-03 |
+    |    4 | negy  | 2020-09-04 |
+    |    5 | ot    | 2020-09-05 |
+    |    6 | hat   | 2020-09-06 |
+    |    1 | egy   | 2020-09-01 |
+    |    2 | ketto | 2020-09-02 |
+    |    3 | harom | 2020-09-03 |
+    |    4 | negy  | 2020-09-04 |
+    |    5 | ot    | 2020-09-05 |
+    |    6 | hat   | 2020-09-06 |
+    +------+-------+------------+
+    12 rows in set (0.00 sec)
+    
+// target table not matching the source table schema ----------------------------------
+    mysql> EXPLAIN testTable2;
+    +-------+-------------+------+-----+---------+-------+
+    | Field | Type        | Null | Key | Default | Extra |
+    +-------+-------------+------+-----+---------+-------+
+    | col1  | int         | YES  |     | NULL    |       |
+    | col2  | varchar(30) | YES  |     | NULL    |       |
+    | col3  | date        | YES  |     | NULL    |       |
+    | col4  | longblob    | YES  |     | NULL    |       |
+    +-------+-------------+------+-----+---------+-------+    
+    
+    mysql> LOAD DATA INFILE '/var/lib/mysql-files/testTable.txt' INTO TABLE testTable2; // does not load because the target table has more columns than the source table (in the text file)    
+    ERROR 1261 (01000): Row 1 doesn't contain data for all columns
+    
+    mysql> EXPLAIN testTable2;
+    +-------+-------------+------+-----+---------+-------+
+    | Field | Type        | Null | Key | Default | Extra |
+    +-------+-------------+------+-----+---------+-------+
+    | col1  | int         | YES  |     | NULL    |       |
+    | col2  | varchar(30) | YES  |     | NULL    |       |
+    | col3  | int         | YES  |     | NULL    |       |
+    +-------+-------------+------+-----+---------+-------+
+    3 rows in set (0.00 sec)
+    
+    mysql> LOAD DATA INFILE '/var/lib/mysql-files/testTable.txt' INTO TABLE testTable2; // data type is not matching (not loaded)
+    ERROR 1265 (01000): Data truncated for column 'col3' at row 1
+    mysql> TABLE testTable2;
+    Empty set (0.00 sec)
+    
+// options ----------------------------------------------------------------------------
+    mysql> LOAD DATA INFILE '/var/lib/mysql-files/testTable.txt' INTO TABLE testTable2  // the file is not loaded because the option define how the parser should read the file which is not matching how the file is formated   
+        -> FIELDS ENCLOSED BY '|' LINES STARTING BY '->';
+    Query OK, 0 rows affected (0.00 sec)
+    Records: 0  Deleted: 0  Skipped: 0  Warnings: 0
+    </pre>
+  </details>
+
+
+  <br><br>
+</body>
+
+</html>

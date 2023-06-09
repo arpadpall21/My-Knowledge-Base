@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> SQLAlchemy Data Types </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../../Assets/stylesPages.css">
+  <script src="../../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> SQLAlchemy Data Types </h1>
+  <p> Updated ( 2023-05-26 )</p>
+  <p class="sitenav"> <a href="../../../../index.html">MySite></a>
+    <a href="../../../index.html" title="Learn WebDesign">Databases></a>
+    <a href="../../index.html" title="Learn WebDesign">ORMs></a>
+    <a href="../index.html" title="Learn WebDesign">SQLAlchemy></a> SQLAlchemy Data Types
+  </p>
+
+  <table class="table">
+    <caption>
+      SQLAlchemy CamelCase to MySQL data type map
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:20%;"> SQLAlchemy type </th>
+      <th style="width:20%;"> MySQL type </th>
+      <th style="width:20%;"> Python type </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td colspan="4">Boolean</td>
+    </tr>
+    <tr class="05.02">
+      <td>Boolean</td>
+      <td>TINYINT</td>
+      <td>bool</td>
+      <td> - boolean </td>
+    </tr>
+    <tr class="10.01">
+      <td colspan="4">Date</td>
+    </tr>
+    <tr class="10.02">
+      <td>Time</td>
+      <td>TIME</td>
+      <td>datetime.time()</td>
+      <td> - time</td>
+    </tr>
+    <tr class="10.03">
+      <td>Date</td>
+      <td>DATE</td>
+      <td>datetime.date()</td>
+      <td> - date </td>
+    </tr>
+    <tr class="10.04">
+      <td>DateTime</td>
+      <td>DATETIME</td>
+      <td>datetime.datetime()</td>
+      <td> - date and time </td>
+    </tr>
+    <tr class="10.05">
+      <td>Interval</td>
+      <td>DATETIME</td>
+      <td>datetime.timedelta()</td>
+      <td> - time difference </td>
+    </tr>
+    <tr class="15.01">
+      <td colspan="4">Number</td>
+    </tr>
+    <tr class="15.02">
+      <td>Integer</td>
+      <td>INT</td>
+      <td>int</td>
+      <td> - integer </td>
+    </tr>
+    <tr class="15.03">
+      <td>SmallInteger</td>
+      <td>SMALLINT</td>
+      <td>int</td>
+      <td> - integer </td>
+    </tr>
+    <tr class="15.04">
+      <td>BigInteger</td>
+      <td>BIGINT</td>
+      <td>int</td>
+      <td> - integer </td>
+    </tr>
+    <tr class="15.05">
+      <td>Float</td>
+      <td>FLOAT</td>
+      <td>float</td>
+      <td> - 32 bit floating point number </td>
+    </tr>
+    <tr class="15.06">
+      <td>Double</td>
+      <td>DOUBLE</td>
+      <td>float</td>
+      <td> - 64 bit floating point number </td>
+    </tr>
+    <tr class="15.07">
+      <td>Numeric</td>
+      <td>DECIMAL</td>
+      <td>Decimal()</td>
+      <td> - decimal (precise decimal storing) </td>
+    </tr>
+    <tr class="20.01">
+      <td colspan="4">String</td>
+    </tr>
+    <tr class="20.02">
+      <td>String(<strong>len:int</strong>)</td>
+      <td>VARCHAR</td>
+      <td>str</td>
+      <td> - variable length string </td>
+    </tr>
+    <tr class="20.03">
+      <td>Text<small>(<i>len:int</i>)</small></td>
+      <td>TEXT</td>
+      <td>str</td>
+      <td> - text (<i>len</i> gives the text type (ex: <mark>Text(1) = TINYTEXT</mark>)) </td>
+    </tr>
+    <tr class="20.04">
+      <td>Unicode(<strong>len:int</strong>)</td>
+      <td>VARCHAR</td>
+      <td>str</td>
+      <td> - assumes having other than ASCII characters </td>
+    </tr>
+    <tr class="20.05">
+      <td>UnicodeText</td>
+      <td>TEXT</td>
+      <td>str</td>
+      <td> - assumes having other than ASCII characters </td>
+    </tr>
+    <tr class="25.01">
+      <td colspan="4">Binary</td>
+    </tr>
+    <tr class="25.02">
+      <td>LargeBinary</td>
+      <td>BLOB</td>
+      <td>bytes|bytearray</td>
+      <td> - binary data</td>
+    </tr>
+    <tr class="25.03">
+      <td>PickleType</td>
+      <td>BLOB</td>
+      <td>any Python object</td>
+      <td> - serializes objects with the <mark>pickle</mark> lib</td>
+    </tr>
+    <tr class="30.01">
+      <td colspan="4">Enum</td>
+    </tr>
+    <tr class="30.02">
+      <td>Enum</td>
+      <td>ENUM</td>
+      <td><span class="openable"><mark>enum.Enum</mark> subclass<div>
+            <pre>
+    import enum
+    
+    class MyEnum(enum.Enum):
+        one = 'one'
+        two = 'two'
+        three = 'three'
+        </pre>
+          </div></span> listing possible string values</td>
+      <td> - one of the listed string </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - SQLAlchemy maps data types to databases in 2 ways : </p>
+  <p style="text-indent: 30px;"> - uses CameCase classes (above table) <u>(depending on the database used types may be
+      different)</u></p>
+  <p style="text-indent: 30px;"> - uses UPPERCASE classes that represent direct SQL data types </p>
+  <pre class="syntax">
+  from sqlalchemy import <strong>camelCaseTypes</strong>                      // import camel case types (<mark>String</mark>, <mark>Integer</mark>, etc.)
+  
+  from sqlalchemy.dialects.mysql import <strong>upperCaseTypes</strong>       // import upper case types (<mark>VARCHAR</mark>, <mark>INTEGER</mark>, etc.)
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> CamelCase data types </h4>
+    <pre>
+    import datetime
+    import enum
+    from decimal import Decimal
+    from sqlalchemy import (URL, create_engine, Column,
+        BigInteger,
+        Boolean,
+        Date,
+        DateTime,
+        Double,
+        Enum,
+        Float,
+        Integer,
+        Interval,
+        LargeBinary,
+        Numeric,
+        PickleType,
+        SmallInteger,
+        String,
+        Text,
+        Time,
+        Unicode,
+        UnicodeText,
+        Uuid,
+    )
+    from sqlalchemy.ext.declarative import declarative_base
+    from sqlalchemy.orm import sessionmaker
+    
+    Base = declarative_base()
+    
+    
+    class MyEnum(enum.Enum):
+        one = 'one'
+        two = 'two'
+        three = 'three'
+    
+    
+    class TestTable(Base):
+        __tablename__ = 'TestTable'
+    
+        a = Column('BigInteger', BigInteger, primary_key=True)
+        b = Column('Boolean', Boolean, default=False)
+        c = Column('Date', Date)
+        e = Column('DateTime', DateTime)
+        f = Column('Double', Double)
+        g = Column('Enum', Enum(MyEnum))
+        h = Column('Float', Float)
+        i = Column('Integer', Integer)
+        j = Column('Interval', Interval)
+        k = Column('LargeBinary', LargeBinary)
+        l = Column('Numeric', Numeric(20, 10))
+        m = Column('PickleType', PickleType)
+        n = Column('SmallInteger', SmallInteger)
+        o = Column('String', String(20))
+        p = Column('Text', Text)
+        q = Column('Time', Time)
+        r = Column('Unicode', Unicode(20))
+        s = Column('UnicodeText', UnicodeText)
+    
+        def __init__(self, a, b, c, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s):
+            self.a = a
+            self.b = b
+            self.c = c
+            self.e = e
+            self.f = f
+            self.g = g
+            self.h = h
+            self.i = i
+            self.j = j
+            self.k = k
+            self.l = l
+            self.m = m
+            self.n = n
+            self.o = o
+            self.p = p
+            self.q = q
+            self.r = r
+            self.s = s
+    
+    
+    url_obj = URL.create(
+        'mysql+mysqlconnector',
+        username='test_user',
+        password='test_password',
+        host='localhost',
+        port=3306,
+        database='sqlalchemy_test'
+    )
+    engine = create_engine(url_obj, echo=True)
+    connection = engine.connect()
+    Base.metadata.create_all(bind=engine)
+    
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    
+    
+    session.add(TestTable(
+        None,                                          # BigInteger    
+        True,                                          # Boolean       
+        datetime.date(2023, 5, 26),                    # Date       
+        datetime.datetime(2023, 5, 26, 23, 59, 4),     # DateTime       
+        23.33,                                         # Double       
+        MyEnum.two,                                    # Enum       
+        333.3333,                                      # Float       
+        884,                                           # Integer       
+        datetime.timedelta(1, 2, 4),                   # Interval       
+        bytearray(b'lkkjlkjsdflkjdlfjslkfj'),          # LargeBinary   
+        Decimal('9999999999.9999999999'),              # Numeric       
+        {'a': 1, 'b': [1, False, (3, 2)]},             # PickleType      
+        2.2,                                           # SmallInteger       
+        'some string ❤',                               # String       
+        'another string ❤',                            # Text       
+        datetime.time(23, 59, 4),                      # Time     
+        'unicode string ❤',                            # Unicode       
+        'unicode string ❤'                             # UnicodeText    
+    ))
+    
+    session.commit()
+    </pre>
+    <h4 class="header"> UPPERCASE data types </h4>
+    <pre>
+    import datetime
+    
+    from sqlalchemy import URL, create_engine, Column
+    from sqlalchemy.dialects.mysql import INTEGER, TINYTEXT, VARCHAR, TIMESTAMP     # MySQL types
+    from sqlalchemy.ext.declarative import declarative_base
+    from sqlalchemy.orm import sessionmaker
+    
+    Base = declarative_base()
+    
+    
+    class TestTable2(Base):
+        __tablename__ = 'TestTable2'
+    
+        _int = Column('INT', INTEGER, primary_key=True)
+        varchar = Column('VARCHAR', VARCHAR(34))
+        tinytext = Column('TINYTEXT', TINYTEXT)
+        timestamp = Column('TIMESTAMP', TIMESTAMP)
+    
+        def __init__(self, _int, varchar, tinytext, timestamp):
+            self._int = _int
+            self.varchar = varchar
+            self.tinytext = tinytext
+            self.timestamp = timestamp
+    
+    
+    url_obj = URL.create(
+        'mysql+mysqlconnector',
+        username='test_user',
+        password='test_password',
+        host='localhost',
+        port=3306,
+        database='sqlalchemy_test'
+    )
+    engine = create_engine(url_obj, echo=True)
+    connection = engine.connect()
+    Base.metadata.create_all(bind=engine)
+    
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    
+    session.add(TestTable2(
+        None,
+        'Hello World!',
+        'Hello World!',
+        datetime.datetime.now()
+    ))
+    
+    session.commit()
+    </pre>
+  </details>
+
+
+  <br><br>
+</body>
+
+</html>

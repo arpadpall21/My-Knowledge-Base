@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Migration with Alembic </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../../Assets/stylesPages.css">
+  <script src="../../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Migration with Alembic </h1>
+  <p> Updated ( 2023-06-08 )</p>
+  <p class="sitenav"> <a href="../../../../index.html">MySite></a>
+    <a href="../../../index.html" title="Learn WebDesign">Databases></a>
+    <a href="../../index.html" title="Learn WebDesign">ORMs></a>
+    <a href="../index.html" title="Learn WebDesign">SQLAlchemy></a> Migration with Alembic
+  </p>
+
+  <table class="table">
+    <caption>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> CMD </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td>
+        alembic init <strong>dir</strong> 
+      </td>
+      <td>
+        - creates (initializes) the alembic migration environment (a folder (<strong>dir</strong>) which contains migration related files and the <mark>alembic.ini</mark> file in the current directory)
+      </td>
+    </tr>
+    <tr class="10.01">
+      <td>
+        alembic revision <small>[-m <i>name</i>]
+      </td>
+      <td>
+        - generates the 'next' migration script <br>
+        - works only if we are already on top of the migration hierarchy (all previous migration scripts are played to the database)
+      </td>
+    </tr>
+      <tr class="10.02"><td></td><td></td></tr>
+    <tr class="10.03">
+      <td>
+        alembic revision --autogenerate <small>[-m <i>name</i>]
+      </td>
+      <td>
+        - compares changes between database tables and SQLAlchemy models then automatically generates the 'next' migration script based on the difference
+      </td>
+    </tr>
+    <tr class="15.01">
+      <td>
+        alembic upgrade heads
+      </td>
+      <td>
+        - plays all migration scripts to the database (that are not yet played in the migration hierarchy)
+      </td>
+    </tr>
+      <tr class="15.02"><td></td><td></td></tr>
+    <tr class="15.03">
+      <td>
+        alembic upgrade <strong>revisionNumber|step</strong>
+      </td>
+      <td>
+        - plays migration scripts up to <strong>revisionNumber</strong> or up by <strong>step</strong> in the migration hierarchy
+      </td>
+    </tr>
+    <tr class="15.04">
+      <td>
+        alembic downgrade base
+      </td>
+      <td>
+        - down plays all migration scripts to the database, at the base removes all tables from the database
+      </td>
+    </tr>
+      <tr class="15.05"><td></td><td></td></tr>
+    <tr class="15.06">
+      <td>
+        alembic downgrade <strong>revisionNumber|-step</strong>
+      </td>
+      <td>
+        - down plays migration scripts down to <strong>revisionNumber</strong> or down by <strong>step</strong> in the migration hierarchy (step is a negative number ex: <mark>alembic downgrade -1</mark>)
+      </td>
+    </tr>
+    <tr class="25.01">
+      <td>
+        alembic history
+      </td>
+      <td>
+        - prints the migration script hierarchy on the command line 
+      </td>
+    </tr>
+    <tr class="25.02">
+      <td>
+        alembic current
+      </td>
+      <td>
+        - prints the current migration script revision mumber which is currently played in the database
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      Alembic migration capabilities
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:33%;"> Will Change </th>
+      <th style="width:33%;"> Can Change </th>
+      <th> Cannot Change </th>
+    </tr>
+    <tr>
+      <td> add/remove tables </td>
+      <td> column data type <a href="https://alembic.sqlalchemy.org/en/latest/api/runtime.html#alembic.runtime.environment.EnvironmentContext.configure.params.compare_type" target="_blank">(disabled by default)</a> </td>
+      <td> table name </td>
+    </tr>
+    <tr>
+      <td> add/remove columns </td>
+      <td> </td>
+      <td> column name </td>
+    </tr>
+    <tr>
+      <td> nullable status of columns </td>
+      <td> </td>
+      <td> special SQLAlchemy types (like Enum) because the backend handles data types differently </td>
+    </tr>
+  </table>
+
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - Alembic is an SQL database migration tool that versions and manages changes to the database schema, it's a standalone migration tool, but works very well with SQLAlchemy </p>
+  <p> - we create migration scripts with the <mark>alembic revision</mark> command where we manually write the upgrade/downgrade changes to the database schema compared to the current schema </p>
+  <p> - migration scripts are used to version changes to the database schema, they refer to each other in a hierarchy tracked by revision numbers </p>
+  <p> - the current revision number is stored in the <mark>alembic_version</mark> table in the database </p>
+  <p> - migration scripts can be played to the database with the <mark>alembic upgrade</mark> command (which acutally migrates the database schema) </p>
+  <p> - we can navigate up/down the migration stack, Alembic will automatically play the migration scripts in the correct order </p>
+  <!------------------------------------------------------------------------------------------>
+  <hr>
+  <h2 class="header"> Setup & Usage </h2>
+  <p> - after installation run the <mark>alembic init <strong>dir</strong></mark> command to create the migration environment (an <mark>alembic.ini</mark> file is created as well as a directory <mark><strong>dir</strong></mark> with Alembic files) </p>
+  <p> - in the <mark>alembic.ini</mark> file we need to specify the database connection (this is where Alembic is connected to the database) </p>
+  <pre>
+// alembic.ini (file) -----------
+  // ...
+  
+  sqlalchemy.url = mysql+mysqlconnector://test_user:test_password@localhost:3306/sqlalchemy_test      // database connection (SQLAlchemy URL)
+  
+  // ...
+  </pre>
+  <p> - to create a migration script run the <mark>alembic revision</mark> command, this will create a migration script file in the <mark><strong>dir</strong>/versions</mark> directory </p>
+  <p> - the migration script needs to be changed manually where we write the upgrade/downgrade changes to the database schema compared to the current schema </p>
+  <p> - then migration scripts can be played to the database </p>
+  <!------------------------------------------------------------------------------------------>
+  <hr>
+  <h2 class="headerExtra"> SQLAlchemy support </h2>
+  <p> - Alembic really shines when used with SQLAlchemy, it can <u>automatically generate</u> migration scripts based on the difference between the database schema and the SQLAlchemy models </p>
+  <p> - in order to setup Alembic with QLAlchemy your models needs to be imported in the <mark><strong>dir</strong>/env.py</mark> file and used as <mark>target_metadata</mark> </p>
+  <pre>
+// env.py (file) -----------
+  // ...
+  
+  from &lt;file_where_your_base_model_is_located&gt; import Base        # import your Base model (Base is the base class for all your models)
+  target_metadata = Base.metadata                                 # config your model as <mark>target_metadata</mark>
+  
+  // ...
+  </pre>
+  <p> - then run the <mark>alembic revision --autogenerate</mark> command to automatically generate a migration script based on the difference between the database schema and the SQLAlchemy models </p>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <pre class="cmd">
+    $ alembic init migrations                         // create the migration environment
+    
+    // step 1: edit <mark>alembic.ini</mark> file <mark>sqlalchemy.url</mark> to connect to the database
+    // step 2: edit <mark>env.py</mark> file to import your models (set up <mark>target_metadata</mark> variable)
+    </pre>
+    <pre>
+// directory structure -------------
+    .
+    |- alembic.ini
+    |- main.py                    // SQLAlchemy models are located here
+    |- migrations                 // Alembic files are located here
+        |- env.py
+        |- script.py.mako
+        |- versions
+            |- 1a2b3c4d5e6f.py    // migration scripts
+            |- ...
+    </pre>
+    <pre>
+// alembic.ini (file) -------------- 
+    // ...
+    
+    sqlalchemy.url = mysql+mysqlconnector://test_user:test_password@localhost:3306/sqlalchemy_test      // database connection (SQLAlchemy URL)
+    
+    // ...
+    </pre>
+    <pre>
+// env.py (file) ------------------- 
+    // ...
+    
+    from main import Base                   # importing the Base class
+    target_metadata = Base.metadata         # Base model used as <mark>target_metadata</mark>
+    
+    // ...
+    </pre>
+    <pre>
+// main.py (file) ------------------
+    from sqlalchemy import URL, create_engine, Column, Integer, String
+    from sqlalchemy.orm import sessionmaker, declarative_base
+    
+    
+    Base = declarative_base()     // Base class for all models
+    
+    
+    class Person(Base):
+        __tablename__ = 'person'
+        id = Column('id', Integer, primary_key=True)
+        name = Column('name', String(30))
+    
+    // ...
+    </pre>
+    <pre class="cmd">
+    $ alembic revision --autogenerate -m 'init'         // automatically generate a migration script based on the difference between the database schema and the SQLAlchemy models
+    
+    $ alembic upgrade heads                             // play the migration script to the database
+    
+    
+// up/down navigation on the migration stack ----------------
+    $ alembic downgrade -1                              // downgrade the database schema by one revision
+    $ alembic downgrade base                            // downgrade the database schema to the base revision (removes all tables from the database)
+    
+    $ alembic upgrade +1                                // upgrade the database schema by one revision
+    $ alembic upgrade heads                             // upgrade the database schema to the head revision (plays all the scripts in the migration stack)
+    </pre>
+  </details>
+
+  <br><br>
+</body>
+
+</html>

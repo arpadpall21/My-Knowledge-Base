@@ -166,7 +166,7 @@
     (JavaScript-like aproach), each attribute part on the object is a MagicMock object itself </p>
   <p> - we have high control over MagicMock instances, we can set its return or side effect values </p>
   <p> - MagciMock instances record actions performed on them so we can make test assertions about actions by using
-    MagicMock assertion methods </p>
+    <a href="https://docs.python.org/3/library/unittest.mock.html#unittest.mock.Mock.assert_called" target="_blank"> MagicMock assertion methods</a> </p>
   <p> - the idea is that we patch an object/function what becomes a MagicMock instance, as the test goes on demand the
     necessary attributes are created on the MagciMock instance </p>
   <pre class='syntax'>
@@ -178,7 +178,7 @@
               available)
             </p>
           </div></strong> <strong>**kwargs</strong>, <a
-          href="file:///Users/apall/Documents/my_knowledge_code_base/My%20Site/Python/Built-in%20Modules/unittest/index.html">moreArgs...</a>)    // creates and return a <strong>magicMock</strong> instance what creates attirbutes on demand (each attribute is a <strong>magicMock</strong>)
+          href="https://docs.python.org/3/library/unittest.mock.html#the-mock-class" target="_blank">moreArgs...</a>)    // creates and return a <strong>magicMock</strong> instance what creates attirbutes on demand (each attribute is a <strong>magicMock</strong>)
                                                                                                 // also has an <strong>asyncMock</strong> version <a href='https://docs.python.org/3/library/unittest.mock.html#unittest.mock.AsyncMock' target="_blank">[link]</a>
   </pre>
   <details class="example">
