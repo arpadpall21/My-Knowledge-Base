@@ -122,10 +122,14 @@
       <td colspan="2"> Back Up / Resotre Databases </td>
     </tr>
     <tr class="25.02">
-      <td> <em>$</em> sudo mysqldump <small>[-u <i>userName</i> -p]</small> <strong>dbName</strong> &gt;
+      <td> <em>$</em> sudo mysqldump <small>[--column-statistics=0]</small> <small>[-u <i>userName</i> -p]</small> <strong>dbName</strong> &gt;
         <strong>filePath</strong>.sql
       </td>
-      <td> - creates a backup file of the specified database </td>
+      <td> 
+        - creates a backup file of the specified database <br>
+        - (<small>--column-statistics=0</small>) disable column statistics when dumping 
+      
+      </td>
     </tr>
     <tr class="25.03">
       <td> <em>$</em> mysql <small>[-u <i>userName</i> -p]</small> <strong>dbName</strong> &lt;

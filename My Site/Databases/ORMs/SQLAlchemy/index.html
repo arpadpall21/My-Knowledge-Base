@@ -352,14 +352,14 @@
     
     class <strong>Model</strong>(Base):                              <span style="color:darkgray;"># models a table in the db</span>
         __tablename__ = <strong>tableName:str</strong>
-        <strong>colName</strong> = Column(<strong>colName:str</strong>, <strong>Type</strong>, <i class="openable">constraints<div>
+        <strong>colName</strong> = Column(<strong>Type</strong>, <i class="openable">constraints<div>
             <p> <mark>primary_key=<strong>bol</strong></mark> </p>
             <p> <mark>autoincrement=<strong>bol</strong></mark> (in MySQL this is restricted to the primary key) </p>
             <p> <mark>default=<strong>val|callable</strong></mark> </p>
             <p> <mark>index=<strong>bol</strong></mark> </p>
             <p> <mark>nullable=<strong>bol</strong></mark> (default <mark>True</mark>, when set to <mark>False</mark> the column does not accept <mark>NULL</mark> value) </p>
             <p> <mark>unique=<strong>bol</strong></mark> </p>
-        </div></i>)   <span style="color:darkgray;"># describes a column in the table </span>
+        </div></i>)        <span style="color:darkgray;"># describes a column in the table </span>
         <i>...</i>
     
     
@@ -386,7 +386,7 @@
   </div></strong>, echo=<strong class="openable">bool<div>
       <p> - prints the generated SQL statemenst on the console </p>
     </div></strong>)
-    connection = engine.connect()
+    engine.connect()
     
     Base.metadata.create_all(bind=engine)           <span style="color:darkgray;"># creates modeled tables in the db (if not exist)</span>   <span style="color:orange;">// -! if migrations are managed by <mark>alembic</mark> this should not be used</span>    
     
@@ -412,9 +412,9 @@
     class Person(Base):
         __tablename__ = 'person'
     
-        id = Column('id', Integer, primary_key=True)
-        name = Column('name', String(30))
-        date_of_birth = Column('date_of_birth', Date)
+        id = Column(Integer, primary_key=True)
+        name = Column(String(30))
+        date_of_birth = Column(Date)
     
     
 # different ways to connect
@@ -457,9 +457,9 @@
     class Person(Base):
         __tablename__ = 'person'
         
-        id = Column('id', Integer, primary_key=True)
-        name = Column('name', String(30))
-        date_of_birth = Column('date_of_birth', Date)
+        id = Column(Integer, primary_key=True)
+        name = Column(String(30))
+        date_of_birth = Column(Date)
         
         def __init__(self, id, name, date_of_birth):
             self.id = id
@@ -494,9 +494,9 @@
     class Person(Base):
         __tablename__ = 'person'
     
-        id = Column('id', Integer, primary_key=True)                                # primary key
-        name = Column('name', String(30), nullable=False, unique=True, index=True)  # unique, indexed, cannot have NULL value
-        updated = Column('date_of_birth', Date, default=datetime.datetime.now())    # providing default value 
+        id = Column(Integer, primary_key=True)                              # primary key
+        name = Column(String(30), nullable=False, unique=True, index=True)  # unique, indexed, cannot have NULL value
+        updated = Column(Date, default=datetime.datetime.now())             # providing default value 
     
     
     url = URL.create(
@@ -579,10 +579,10 @@
     class Person(Base):
         __tablename__ = 'person'
     
-        id = Column('id', Integer, primary_key=True)
-        name = Column('name', String(30))
-        age = Column('age', Integer)
-        updated = Column('date_of_birth', Date, default=datetime.datetime.now())
+        id = Column(Integer, primary_key=True)
+        name = Column(String(30))
+        age = Column(Integer)
+        updated = Column(Date, default=datetime.datetime.now())
     
     
     url = URL.create(
@@ -629,10 +629,10 @@
     class Person(Base):
         __tablename__ = 'person'
     
-        id = Column('id', Integer, primary_key=True)
-        name = Column('name', String(30))
-        age = Column('age', Integer)
-        updated = Column('date_of_birth', Date, default=datetime.datetime.now())
+        id = Column(Integer, primary_key=True)
+        name = Column(String(30))
+        age = Column(Integer)
+        updated = Column(Date, default=datetime.datetime.now())
     
     
     url = URL.create(
@@ -681,10 +681,10 @@
     class Person(Base):
         __tablename__ = 'person'
     
-        id = Column('id', Integer, primary_key=True)
-        name = Column('name', String(30))
-        age = Column('age', Integer)
-        updated = Column('date_of_birth', Date, default=datetime.datetime.now())
+        id = Column(Integer, primary_key=True)
+        name = Column(String(30))
+        age = Column(Integer)
+        updated = Column(Date, default=datetime.datetime.now())
     
     
     url = URL.create(
@@ -750,10 +750,10 @@
     class Person(Base):
         __tablename__ = 'Person'
     
-        id = Column('id', Integer, primary_key=True)
-        name = Column('name', String(30))
-        surname = Column('surname', String(30))
-        salary = Column('salary', Integer)
+        id = Column(Integer, primary_key=True)
+        name = Column(String(30))
+        surname = Column(String(30))
+        salary = Column(Integer)
     
     
     url = URL.create(
@@ -797,10 +797,10 @@
     class Person(Base):
         __tablename__ = 'Person'
     
-        id = Column('id', Integer, primary_key=True)
-        name = Column('name', String(30))
-        surname = Column('surname', String(30))
-        salary = Column('salary', Integer)
+        id = Column(Integer, primary_key=True)
+        name = Column(String(30))
+        surname = Column(String(30))
+        salary = Column(Integer)
     
     
     url = URL.create(
@@ -858,10 +858,10 @@
     class Person(Base):
         __tablename__ = 'Person'
     
-        id = Column('id', Integer, primary_key=True)
-        name = Column('name', String(30))
-        surname = Column('surname', String(30))
-        salary = Column('salary', Integer)
+        id = Column(Integer, primary_key=True)
+        name = Column(String(30))
+        surname = Column(String(30))
+        salary = Column(Integer)
     
     
     url = URL.create(
@@ -912,10 +912,10 @@
     class Person(Base):
         __tablename__ = 'Person'
     
-        id = Column('id', Integer, primary_key=True)
-        name = Column('name', String(30))
-        surname = Column('surname', String(30))
-        salary = Column('salary', Integer)
+        id = Column(Integer, primary_key=True)
+        name = Column(String(30))
+        surname = Column(String(30))
+        salary = Column(Integer)
     
     
     url = URL.create(
@@ -955,10 +955,10 @@
     class Person(Base):
         __tablename__ = 'Person'
     
-        id = Column('id', Integer, primary_key=True)
-        name = Column('name', String(30))
-        surname = Column('surname', String(30))
-        salary = Column('salary', Integer)
+        id = Column(Integer, primary_key=True)
+        name = Column(String(30))
+        surname = Column(String(30))
+        salary = Column(Integer)
     
     
     url = URL.create(
@@ -1005,10 +1005,10 @@
     class Person(Base):
         __tablename__ = 'Person'
     
-        id = Column('id', Integer, primary_key=True)
-        name = Column('name', String(30))
-        surname = Column('surname', String(30))
-        salary = Column('salary', Integer)
+        id = Column(Integer, primary_key=True)
+        name = Column(String(30))
+        surname = Column(String(30))
+        salary = Column(Integer)
     
     
     url = URL.create(
@@ -1048,7 +1048,7 @@
   <p> - relations are described on record level, records have their relation attribute where we can coltrol their relations </p>
   <p> - relations are automatically updated when we change one side </p>
   <pre class="syntax">
-    from sqlalchemy import create_engine, Column, <strong>Type</strong>
+    from sqlalchemy import create_engine, Column, ForeignKey, <strong>Type</strong>
     from sqlalchemy.orm import sessionmaker, declarative_base, relationship
     
     Base = declarative_base()
@@ -1057,21 +1057,26 @@
 <span style="color:darkgray;">// one-to-one (<mark>uselist=False</mark>) & one-to-many (<mark>uselist=True</mark>) relation -----------------------------</span>
     class <strong>ParentModel</strong>(Base):
         __tablename__ = <strong>parentName:str</strong>
-        <strong>primaryKey</strong> = Column(<strong>colName:str</strong>, <strong>Type</strong>, primary_key=True)
+        <strong>primaryKey</strong> = Column(<strong>Type</strong>, primary_key=True)
         <i>...</i>
-        <strong>parentRelationAttr</strong> = relationship(<strong>ChildModel:str</strong>, back_populates=<strong>childRelationAttr:str</strong><small>, uselist=<i>bool</i></small>)                   <span style="color:darkgray;"># describes the relations (on records this is the attribute where relations are available)</span>    
+        <strong>parentRelationAttr</strong> = relationship(<strong>ChildModel:str</strong>, back_populates=<strong>childRelationAttr:str</strong>, <small class="openable">uselist=<i>bool</i><div>
+          <p> - <mark>True</mark> (Default) -> one-to-many relation </p>
+          <p> - <mark>False</mark> (Default) -> one-to-one relation </p>
+        </div></small>)                  <span style="color:darkgray;"># describes the relations (on records this is the attribute where relations are available)</span>    
     
     
     class <strong>ChildModel</strong>(Base):
         __tablename__ = <strong>childName:str</strong>
-        <strong>foreignKey</strong> = Column(<strong>colName:str</strong>, <strong>Type</strong>, ForeignKey(<strong>parentName.p_key:str</strong>, <small>ondelete=<i class="openable">constraint<div>
+        <strong>foreignKey</strong> = Column(<strong>Type</strong>, ForeignKey(<strong>parentName.p_key:str</strong>, <small>ondelete=<i class="openable">constraint<div>
           <h4> Operation when deleting the parent primary key </h4>
-          <p> - <mark>'restrict'</mark> - parent primary key cannot be deleted (default) </p>
+          <p> - <mark>'no action'</mark> - no action will be taken (default) </p>
+          <p> - <mark>'restrict'</mark> - parent primary key cannot be deleted </p>
           <p> - <mark>'cascade'</mark> - deleting the parent primary key record will delete the foreign key record </p>
           <p> - <mark>'set null'</mark> - deleting the parent primary key will set the foreign key to <mark>NULL</mark> </p>
         </div></i>, onupdate=<i class="openable">constraint<div>
           <h4> Operation when modifying the parent primary key </h4>
-          <p> - <mark>'restrict'</mark> - parent primary key cannot be modified (default) </p>
+          <p> - <mark>'no action'</mark> - no action will be taken (default) </p>
+          <p> - <mark>'restrict'</mark> - parent primary key cannot be modified </p>
           <p> - <mark>'cascade'</mark> - modifying the parent primary key will modify the foreign key as well </p>
           <p> - <mark>'set null'</mark> - modifying the parent primary key will set the foreign key to <mark>NULL</mark> </p>
         </div></i></small>))    <span style="color:darkgray;"># foreign key describes the relation with the parent primary key</span>    
@@ -1082,22 +1087,22 @@
 <span style="color:darkgray;">// many-to-many relation ------------------------------------------------------------------------</span>
     class <strong>Model_A</strong>(Base):
         __tablename__ = <strong>aName:str</strong>
-        <strong>primaryKey</strong> = Column(<strong>colName:str</strong>, <strong>Type</strong>, primary_key=True)
+        <strong>primaryKey</strong> = Column(<strong>Type</strong>, primary_key=True)
         <i>...</i>
         <strong>relationAttr_A</strong> relationship(<strong>Model_B:str</strong>, secondary=<strong>linkModelName:str</strong>)       <span style="color:darkgray;"># describes the relations (on records this is the attribute where relations are available)</span>    
         
         
     class <strong>Model_B</strong>(Base):
         __tablename__ = <strong>bName:str</strong>
-        <strong>primaryKey</strong> = Column(<strong>colName:str</strong>, <strong>Type</strong>, primary_key=True)
+        <strong>primaryKey</strong> = Column(<strong>Type</strong>, primary_key=True)
         <i>...</i>
         <strong>relationAttr_B</strong> relationship(<strong>Model_A:str</strong>, secondary=<strong>linkModleName:str</strong>)
         
         
     class <strong>LinkModel</strong>(Base):                         <span style="color:darkgray;"># link table</span>
         __tablename__ = <strong>linkModelName:str</strong>
-        <strong>colNameA</strong> = Column(<strong>colName:str</strong>, <strong>Type</strong>, ForeignKey(<strong>aName.primaryKey:str</strong>), primary_key=True)
-        <strong>colNameB</strong> = Column(<strong>colName:str</strong>, <strong>Type</strong>, ForeignKey(<strong>bName.primaryKey:str</strong>), primary_key=True)
+        <strong>colNameA</strong> = Column(<strong>Type</strong>, ForeignKey(<strong>aName.primaryKey:str</strong>), primary_key=True)
+        <strong>colNameB</strong> = Column(<strong>Type</strong>, ForeignKey(<strong>bName.primaryKey:str</strong>), primary_key=True)
   </pre>
   <details class="example">
     <summary> DEMO (can be pseudocode) </summary>
@@ -1112,8 +1117,8 @@
     class Person(Base):
         __tablename__ = 'person'
     
-        id = Column('id', Integer, primary_key=True)
-        name = Column('name', String(30))
+        id = Column(Integer, primary_key=True)
+        name = Column(String(30))
     
         bank_accounts = relationship('BankAccount', back_populates='persons')           # describes a one-to-many relation
         address = relationship('Address', back_populates='person', uselist=False)       # describes a one-to-one relation
@@ -1122,9 +1127,9 @@
     class BankAccount(Base):
         __tablename__ = 'bank_account'
     
-        id = Column('id', Integer, primary_key=True)
-        person_id = Column('person_id', Integer, ForeignKey('person.id', ondelete='cascade', onupdate='cascade'))
-        balance = Column('balance', Integer)
+        id = Column(Integer, primary_key=True)
+        person_id = Column(Integer, ForeignKey('person.id', ondelete='cascade', onupdate='cascade'))
+        balance = Column(Integer)
     
         persons = relationship('Person', back_populates='bank_accounts')
     
@@ -1132,9 +1137,9 @@
     class Address(Base):
         __tablename__ = 'address'
     
-        id = Column('id', Integer, primary_key=True)
-        person_id = Column('person_id', Integer, ForeignKey('person.id', ondelete='cascade', onupdate='cascade'))
-        address = Column('address', String(30))
+        id = Column(Integer, primary_key=True)
+        person_id = Column(Integer, ForeignKey('person.id', ondelete='cascade', onupdate='cascade'))
+        address = Column(String(30))
     
         person = relationship('Person', back_populates='address')
     
@@ -1212,8 +1217,8 @@
     class Employee(Base):
         __tablename__ = 'employee'
     
-        id = Column('id', Integer, primary_key=True)
-        name = Column('name', String(30))
+        id = Column(Integer, primary_key=True)
+        name = Column(String(30))
     
         desks = relationship('Desk', secondary='link')
     
@@ -1221,7 +1226,7 @@
     class Desk(Base):
         __tablename__ = 'desk'
     
-        id = Column('id', Integer, primary_key=True)
+        id = Column(Integer, primary_key=True)
     
         employees = relationship('Employee', secondary='link')
     
@@ -1229,8 +1234,8 @@
     class Link(Base):           # link table
         __tablename__ = 'link'
     
-        employee_id = Column('employee_id', Integer, ForeignKey('employee.id'), primary_key=True)
-        desk_id = Column('desk_id', Integer, ForeignKey('desk.id'), primary_key=True)
+        employee_id = Column(Integer, ForeignKey('employee.id'), primary_key=True)
+        desk_id = Column(Integer, ForeignKey('desk.id'), primary_key=True)
     
     
     url = URL.create(
@@ -1314,15 +1319,15 @@
     class Person(Base):
         __tablename__ = 'Person'
     
-        name = Column('name', String(30), primary_key=True)
-        bank_account_number = Column('bank_account_number', Integer)
+        name = Column(String(30), primary_key=True)
+        bank_account_number = Column(Integer)
     
     
     class BankAccount(Base):
         __tablename__ = 'BankAccount'
     
-        account_number = Column('account_number', Integer, primary_key=True)
-        balance = Column('balance', Integer)
+        account_number = Column(Integer, primary_key=True)
+        balance = Column(Integer)
     
     
     url = URL.create(
@@ -1413,27 +1418,27 @@
     class Student(Base):
         __tablename__ = 'student'
     
-        id = Column('id', Integer, primary_key=True)
-        name = Column('name', String(30))
+        id = Column(Integer, primary_key=True)
+        name = Column(String(30))
     
     
     class Class(Base):
         __tablename__ = 'class'
     
-        id = Column('id', Integer, primary_key=True)
-        class_name = Column('class_name', String(30))
+        id = Column(Integer, primary_key=True)
+        class_name = Column(String(30))
     
     
     class Address(Base):
         __tablename__ = 'address'
-        id = Column('id', Integer, primary_key=True)
-        address = Column('address', String(30))
+        id = Column(Integer, primary_key=True)
+        address = Column(String(30))
     
     
     class Origin(Base):
         __tablename__ = 'origin'
-        id = Column('id', Integer, primary_key=True)
-        origin = Column('origin', String(30))
+        id = Column(Integer, primary_key=True)
+        origin = Column(String(30))
     
     
     url = URL.create(

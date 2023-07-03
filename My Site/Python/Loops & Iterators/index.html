@@ -22,40 +22,41 @@
         <th style="width:30%;"> Method / Attribute </th>
         <th> Description </th>
     </tr>
-    <tr class="05.01">
+    <tr class="04.01">
         <td> 
-            <strong>obj</strong>.__iter__
+            iter(<strong>iterable</strong>)
         </td>
         <td> 
-            - the object is iterable if it has this attribute 
+            - from an <strong>interable</strong> creates and returns an <strong>iterator</strong> object 
+        </td>
+    </tr>
+    <tr class="05.01">
+        <td> 
+            <strong>iterator</strong>.__iter__
+        </td>
+        <td> 
+            - an object is iterator object if implements the <mark>__iter__</mark> method
         </td>
     </tr>
     <tr class="10.02">
         <td> 
-            <strong>genObj|iterObj</strong>.__next__()
+            <strong>iterator</strong>.__next__()
         </td>
         <td> 
-            - returns the next member of <strong>genObj|iterObj</strong> (raises a <mark>StopIteration</mark> error if the <strong>genObj|iterObj</strong> is overcalled)
+            - yields the next member of <strong>iterator</strong> <br>
+            - if overcalled raises a <mark>StopIteration</mark> error
                 <span id="browserSupport" title="Updated: 2022-03-23">
                     <span><i class="fab fa-python"></i> 3.x </span>
                 </span>
         </td>
     </tr>
-    <tr class="10.01">
-        <td> 
-            iter(<strong>iterable</strong>)
-        </td>
-        <td> 
-            - creates and returns an iterator (<strong>iterObj</strong>) object 
-        </td>
-    </tr>
     <tr class="10.03">
         <td> 
-            next(<strong>genObj|iterObj</strong>, <i>def:any</i>)
+            next(<strong>iterator</strong>, <i>default:any</i>)
         </td>
         <td> 
-            - returns the next member of <strong>genObj|iterObj</strong> <br>
-            - if overcalled returns the default value (<i>def</i>) or raises a <mark>StopIteration</mark> error if the the default value is not specified   
+            - yields the next member of <strong>iterator</strong> <br>
+            - if overcalled yields <i>default</i> (if <i>def</i> is not specified raises a <mark>StopIteration</mark> error)
                 <span id="browserSupport" title="Updated: 2022-03-23">
                     <span><i class="fab fa-python"></i> 2.6 </span>
                 </span>
@@ -177,7 +178,7 @@
     [i for i in range(1, 6)]                // -> [1, 2, 3, 4, 5]                    // list of comprehension
     {i for i in range(1, 6)}                // -> {1, 2, 3, 4, 5}                    // set of comprehension
     {i:i for i in range(1, 6)}              // -> {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}     // dictionary of comprehension    // -! 1st expression is a key:val pair
-    (i for i in range(1, 6))                // -! tuple of comprehension is not possible this returns a generator object    
+    (i for i in range(1, 6))                // -! tuple of comprehension is not possible this returns an iterator
     
 // filtering --------------------------------------------------------------------
     [i for i in range(1, 21) if i % 2 == 0] // -> [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]   // even numbers only
@@ -235,17 +236,17 @@
 </details>
 <!---------------------------------------------------------------------------------------------->
 <hr>
-<h2 class="header"> The Generator (function) </h2>
-    <p> - the generator function gives us a nice concise way to create our on generator object (which is an iterator basically) </p>
+<h2 class="header"> Generator (function) </h2>
+    <p> - a generator (function) is basically an implementation of an iterator, we can define what values to yield </p>
     <pre class="syntax">
-    def genFunc():                                                                     // function having the <mark>yield</mark> keyword becomes a generator function 
-        yield <strong>exp</strong>                                                                      // calling the <mark>next()</mark> method on the <strong>genObj</strong> object will return the value after the <mark>yield</mark> keyword <u>then pauses the execution of the generator function body until the <mark>next()</mark> is called again</u>    
+    def genFunc():                                                                     // function having the <mark>yield</mark> keyword becomes a generator
+        yield <strong>exp</strong>                                                                      // calling the <mark>next()</mark> method on the returned <strong>iterator</strong> will yield the value after the <mark>yield</mark> keyword <u>then pauses the generator execution until the <mark>next()</mark> is called again</u>    
         <i>...</i>                                                                            // the last <mark>yield</mark> value is the last item in the generation (no the <mark>return</mark> value)
         
         return <strong>val</strong>                                                                     // the <mark>return</mark> value is raised as <mark>StopIteration</mark> error value if the <strong>genObj</strong> is overcalled 
     
     
-    <strong>genObj</strong> = genFunc()                                                                 // the generator function creates and return a generator object on which we can call the <mark>__next__()</mark> or <mark>next()</mark> to get the next member    
+    <strong>iterator</strong> = genFunc()                                                               // the generator creates and return an iterator (on which we can call the <mark>__next__()</mark> or <mark>next()</mark> to get the next member)    
     </pre>
 <details class="example">
 <summary> DEMO </summary>

@@ -103,7 +103,7 @@
   
   
 <span style="color:mediumSeaGreen;">// <mark>UNIQUE</mark> -------------------------------------------------------------------------
-// fields cannot have duplicate values (must have unique values)
+// fields cannot have duplicate values (must have unique values) (works in composition with other fields, like the composite key)
 // --------------------------------------------------------------------------------</span>
     CREATE TABLE <strong>table</strong>(<strong>col type</strong> UNIQUE<i>, ...</i>)                                           // UNIQUE constraint added when the table is created <u>(<strong>constId</strong> automatically assigned if created without constraint Id, <mark>SHOW CREATE TABLE <strong>table</strong></mark> to check)</u>    
     CREATE TABLE <strong>table</strong>(<strong>col type</strong>, UNIQUE(<strong>col</strong><i>, ...</i>))       

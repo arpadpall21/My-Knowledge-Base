@@ -32,6 +32,8 @@
   <p> - Python is a dynamically typed programming language meaning there's no type checking at compile time, howerver
     from Python v3.5 provides syntax for type hinting <a href="https://docs.python.org/3/library/typing.html"
       target="_blank">[link]</a></p>
+  <p> - in Python everything is an object, object types are defined by classes, when we talk about types we talk about
+    classes in typing context</p> 
   <p> - the type annotation syntax is <u>not</u> enforced by the Python compiler, however type annotation offers code
     completition (once a varialbe type is annotated later on the code editor can offer methods on that type) </p>
   <p> - third party tools (like <mark class="mark">mypy</mark>) can use these type hints to check for typing errors </p>
@@ -42,7 +44,7 @@
     <strong>varName</strong>: <strong>pyType</strong>                                                                     // type annotates the variable (later on the variable must have the correct type assigned)
     <strong>varName</strong>: <strong>pyType</strong> = <strong>val</strong>                                                               // type annotates and declares the varialbe     
     
-    def <strong>fnName</strong>(<small><i>varName</i>: <i>type</i></small>) -> <strong>pyType</strong>:                                                // annotates the function's return type   
+    def <strong>fnName</strong>(<strong>argName: pyType <small>= <i>defVal</i></small></strong>) -> <strong>pyType</strong>:                                     // annotates the function's return type   
         <span style='color:darkgray;'>// body...</span>
     
     __annotations__                                                                     // returns a dictionary with all type annotated variables <u>in this file</u>
@@ -317,8 +319,27 @@
     print( get_element(['one', 'two', 'three']) )   // -> 'one'
   </pre>
   </details>
+  <!----------------------------------------------------------------------------------->
+  <hr>
+  <h2 class='headerExtra'> Type Extraction </h2>
+  <pre class="syntax">
+  from typing import get_type_hints
   
   
+  get_type_hints(<strong>function</strong>)                                                              // returns the type hints in a <strong>dict</strong>
+  </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
+    from typing import get_type_hints
+    
+    
+    def my_function(a: int, b: str) -> float:
+        pass
+    
+    get_type_hints(my_function)        // -> {'a': &lt;class 'int'&gt;, 'b': &lt;class 'str'&gt;, 'return': &lt;class 'float'&gt;}
+    </pre>
+  </details>
   <br><br>
 </body>
 

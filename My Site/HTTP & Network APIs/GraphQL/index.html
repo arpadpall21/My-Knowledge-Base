@@ -1,0 +1,2297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> GraphQL </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> GraphQL </h1>
+  <p> Updated ( 2023-06-14 )</p>
+  <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
+    <a href="../index.html">HTTP & REST Api></a> GraphQL
+  </p>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <h4 class="header"> GraphQL implementation </h4>
+    <p> Server side: </p>
+    <p style="text-indent: 30px;"> - I was using <mark><a href="https://pypi.org/project/ariadne/" target="_blank">ariadne</a></mark> python library to implement a GraphQL server </p>
+    <p style="text-indent: 30px;"> - for python server implementation I was using <mark><a href="https://pypi.org/project/uvicorn/" target="_blank">uvicorn</a></mark> python library (ASGI server that also supports websocket connections) </p>
+    <p> Client side: </p>
+    <p style="text-indent: 30px;"> - for HTTP <mark>Query</mark> and <mark>Mutation</mark> requests I was using the application <mark>GraphiQL</mark> </p>
+    <p style="text-indent: 30px;"> - for WS <mark>Subscription</mark> requests I was using the <mark>py-graphql-client</mark> library </p>
+    <h4 class="header"> Versionless Api </h4>
+    <p> - GraphQL docs recommends not to version GraphQL endpoints, instead we should add a new field to our GraphQL schema and keep the old one for backward compatible </p>
+    <h4 class="header"> null instead of error </h4>
+    <p> - if some reason data is not available on a field (resorce server is down, etc...) it's recommended to return <mark>null</mark> instead of an error </p>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - GraphQL is an network API query languages built on top of HTTP and websocket connection (on HTTP level always sends a POST request and receives a 200 OK response) </p>
+  <p> - it uses its own SDL (Schema Definition Language) to request the server, the response is a JSON object having a top level <mark class='mark'>data</mark> or <mark class='mark'>errors</mark> fields containing the response data or eventual errors </p>
+  <p> - unlike REST servers GraphQL servers expose their resources on a single endpoint (usually <mark class='mark'>/graphql</mark>), the response JSON has the same shape as the request shema </p>
+  <p> - the infamous GrapQL graph is a JSON-like object (schema), the server exposes its resources on the graph fields </p>
+  <p> - the client requests resources by specifying the fileds on this graph <u>(we cannot request for a whole object on the schema, instead we have to describe what fields we want on that object)</u> </p>
+  <p> - There are 3 query types that the server accepts: </p>
+  <p style='text-indent:30px;'> - <mark>Query</mark> -> getting data from the server (like GET) </p>
+  <p style='text-indent:30px;'> - <mark>Mutation</mark> -> modifying data on the server (like POST / PUT / DELETE) <u>mutation queries are executed sequentially on the server in order to avoid race conditions</u></p>
+  <p style='text-indent:30px;'> - <mark>Subscription</mark> -> client subscribes to an event and gets notified by the server (pub-sub) <u>works through web socket connection</u></p>
+<pre class='syntax'>
+<span style='color:darkgray;'>// GraphQL server SDL </span>
+    
+    type <strong>queryType</strong> {                           // describes the <strong>queryType</strong> (<mark>Query</mark> -> get data) (<mark>Mutation</mark> -> modify data on the server) (<mark>Subscription</mark> -> client subscribes to a server event (pub-sub))    
+        <strong>field</strong>: <strong>type</strong>                            // the field type describes the resource type    
+        <strong>field</strong>: <strong>type</strong><small>(<strong>arg</strong>: <i>type<small>!</small>, ...</i>)</small>           // arguments are received and processed by the server, any field can have arguments (<mark><strong>arg: type</strong>!</mark> &lt;- <mark>!</mark> at the end means required argument)    
+        <strong>field</strong>: {                               // the field can be an object (this is how the graph is structured)
+            <strong>type</strong>
+            <span style='color:darkgray;'>...</span>
+        }
+        <span style='color:darkgray;'>...</span>
+    }
+</pre>
+<pre class='syntax'>
+<span style='color:darkgray;'>// GraphQL query SDL </span>
+    
+    <i>queryType</i> <i>Name</i> {                           // the query type and name are optional (falls back to default -> <mark>query</mark>)
+      <strong>field</strong>
+      <strong>field</strong> {
+        <strong>field</strong>                                  // request fields that are needed only 
+      }
+      <i>...</i>
+    }
+    
+<span style='color:darkgray;'> #arguments -------------------------------</span>
+    <i>queryType</i> <i>Name</i> {
+      <strong>field</strong>(<strong>arg</strong>: <strong>val</strong><i>, ...</i>)                     // passing values to arguments 
+      <i>...</i>
+    }
+    
+    
+<span style='color:darkgray;'> #aliases ---------------------------------</span>
+    <i>queryType</i> <i>Name</i> {
+      <strong>alias1</strong>: <strong>sdl_1</strong>                            // queries can be aliased (ex: this is useful when we want to query the same resource in different ways)
+      <strong>alias2</strong>: <strong>sdl_2</strong>
+    }
+    
+    
+<span style='color:darkgray;'> #variables -------------------------------</span>
+    <strong>queryType</strong> <i>Name</i> ($<strong>varName</strong>: <strong>type</strong><i>, ...</i>) {     // variable names and types are passed at query level   
+      <strong>field</strong>: <strong>type</strong>(<strong>arg</strong>: $<strong>varName</strong>)               // variable can be used anywhere in the query as value 
+    }
+    
+    
+    {                                          // the client should have a place where variable key/value pairs are declared (JSON usually)
+      "<strong>varName</strong>": <strong>val</strong>,                          // <strong>var</strong> type must match with <strong>type</strong>
+      <i>...</i>
+    }
+    
+    
+<span style='color:darkgray;'> #directives ------------------------------</span>
+    <i>queryType</i> <i>Name</i> {
+      <strong>field</strong>     @include(<em>if: $<strong>bool</strong></em>)            // field included in the response if the variable (<em>$<strong>bool</strong></em>) is <mark>true</mark>, excluded otherwise   
+      <strong>field</strong>     @skip(<em>if: $<strong>bool</strong></em>)               // field excluded in the response if the variable (<em>$<strong>bool</strong></em>) is <mark>true</mark>, included otherwise
+    }
+    
+    
+<span style='color:darkgray;'> #fragments -------------------------------</span>
+    <i>queryType</i> <i>Name</i> {
+      <strong>alias1</strong>: <strong>type</strong> {
+          ...<strong>fragment</strong>                          // we are basically spreading the <strong>field</strong>s of <strong>type</strong> here 
+      }
+    }
+    
+    fragment <strong>fragment</strong> on <strong>type</strong> {
+        <strong>field</strong>                                  // list the <strong>type</strong> fields that the fragments should (spread) when passed in query as fragment 
+        <i>...</i>
+    }
+    
+    
+<span style='color:darkgray;'> #inline fragments ------------------------</span>
+    <i>queryType</i> <i>Name</i> {
+          <strong>field</strong> {                              // when <strong>field</strong> value type is union (can be <strong>type_1</strong>, <strong>type_2</strong>, etc...)   
+            ... on <strong>type_1</strong> {                    // when <strong>field</strong> value type is <strong>type_1</strong> the below listed fields will be as response   
+              <span style="color:darkgray;">// type_1 fields...</span>
+            }
+            ... on <strong>type_2</strong> {                    // when <strong>field</strong> value type is <strong>type_2</strong> the below listed fields will be as response   
+              <span style="color:darkgray;">// type_2 fields...</span>
+            }
+            <span style="color:darkgray;">...</span>
+          }
+        }
+  </pre>
+  <p> - to implement a GraphQL server or client we need a library that supports GraphQL (I'm using python ariadne with uvicorn (FastApi ASGI server) as server and GraphiQL client here) </p>
+  <p> - almost all languages have GraphQL support <a href='https://graphql.org/code/' target="_blank">[link]</a></p>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <br>
+    <details class="example">
+    <summary> Basics </summary>
+    <pre style='margin-bottom:0; background-color:lightblue;'>
+# request ---------------------------------
+    {
+      name
+      address {
+        city          # only request fields that are needed
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "name": "Arpad",
+        "address": {
+          "city": "Budapest"
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color:lightblue;'>
+# request ---------------------------------
+    {
+      address         // -! cannot request entire objects (only object fields) (this would be an error response)
+    }
+    </pre>
+    <pre style='margin:0;'>
+# implementation --------------------------
+    
+    from ariadne import QueryType, make_executable_schema, gql
+    from ariadne.asgi import GraphQL
+    from uvicorn import Config, Server
+    
+    
+    type_defs = gql("""             # GraphQL schema
+        type Query {
+            name: String!
+            address: Address!
+        }
+    
+        type Address {
+            city: String!
+            street: String!
+            number: Int!
+        }
+    """)
+    
+    query = QueryType()
+    
+    
+    @query.field('name')
+    def name_resolver(*_):
+        return 'Arpad'
+    
+    
+    @query.field('address')
+    def address_resolver(*_):
+        return {
+            'city': 'Budapest',
+            'street': 'Kacsa Utca',
+            'number': 5,
+        }
+    
+    
+    schema = make_executable_schema(type_defs, query)
+    app = GraphQL(schema, debug=True)
+    
+    
+    if __name__ == '__main__':
+        config = Config(app, port=3000)
+        config.routes = [("/", app), ("/graphql", app)]       # single endpoint
+    
+        server = Server(config)
+        server.run()
+    </pre>
+    </details>
+    <br>
+    <details class="example">
+    <summary> Query / Mutation / Subscription </summary>
+    <pre style='margin-bottom:0; background-color:lightblue;'>
+# request ---------------------------------
+  # request 1 -------------------
+    query getAllProducts{
+      products {
+        name
+        price
+        origin {
+          country
+          continent
+        }
+      }
+    }
+    
+  # request 2 -------------------
+    mutation addProduct($product: InputProduct!){
+      addProduct(product: $product)
+    }
+    
+    # variables ----
+    {
+      "product": {
+        "name": "Plum",
+        "price": 1.39,
+        "origin": {
+          "country": "Hungary",
+          "continent": "Europe"
+        }
+      }
+    }
+    
+  # request 3 -------------------
+    query getAllProducts{
+      products {
+        name
+        price
+        origin {
+          country
+          continent
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+  # response 1 ------------------
+    {
+      "data": {
+        "products": [
+          {
+            "name": "Melon",
+            "price": 2.99,
+            "origin": {
+              "country": "Kongo",
+              "continent": "Africa"
+            }
+          }
+        ]
+      }
+    }
+  
+  # response 2 ------------------
+    {
+      "data": {
+        "addProduct": true
+      }
+    }
+    
+  # response 3 ------------------
+    {
+      "data": {
+        "products": [
+          {
+            "name": "Melon",
+            "price": 2.99,
+            "origin": {
+              "country": "Kongo",
+              "continent": "Africa"
+            }
+          },
+          {
+            "name": "Plum",
+            "price": 1.39,
+            "origin": {
+              "country": "Hungary",
+              "continent": "Europe"
+            }
+          }
+        ]
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color:lighgray;' class='cmd'>
+# web socket client responses -------------
+    python client.py
+    websocket client connected!
+    recently added products: [{'name': 'Melon', 'price': 2.99, 'origin': {'country': 'Kongo', 'continent': 'Africa'}}]
+    recently added products: [{'name': 'Plum', 'price': 1.39, 'origin': {'country': 'Hungary', 'continent': 'Europe'}}]
+    </pre>
+    <pre style='margin:0;'>
+# server implementation -------------------
+    
+    import asyncio
+    
+    from ariadne import gql, make_executable_schema, QueryType, MutationType, SubscriptionType
+    from ariadne.asgi import GraphQL
+    from uvicorn import Config, Server
+    
+    
+    products = [
+        {
+            "name": "Melon",
+            "price": 2.99,
+            "origin": {
+                "country": "Kongo",
+                "continent": "Africa"
+            }
+        }
+    ]
+    nr_of_products = len(products)
+    
+    type_defs = gql("""
+        type Query {                    # get all products
+            products: [Product]!
+        }
+    
+        type Mutation {                 # add new products
+            addProduct(product: InputProduct!): Boolean
+        }
+    
+        type Subscription {             # notifies the subscribed clients about the added new products
+            notifyNewProduct: [Product]
+        }
+    
+        input InputProduct {            # input type -> just like Product but as input
+            name: String!
+            price: Float!
+            origin: InputOrigin
+        }
+    
+        input InputOrigin {
+            country: String
+            continent: String
+        }
+    
+        type Product {
+            name: String!
+            price: Float!
+            origin: Origin
+        }
+    
+        type Origin {
+            country: String
+            continent: String
+        }
+    """)
+    
+    
+    query = QueryType()
+    mutation = MutationType()
+    subscription = SubscriptionType()
+    
+    
+    @query.field('products')
+    def resolve_products(*_):
+        return products
+    
+    
+    @mutation.field('addProduct')
+    def resolve_add_product(*_, product):
+        try:
+            products.append(product)
+            return True
+        except Exception:
+            return False
+    
+    
+    @subscription.field('notifyNewProduct')
+    def resolve_notify_new_product(notifyNewProduct, *_,):
+        return notifyNewProduct
+    
+    
+    @subscription.source('notifyNewProduct')
+    async def notify_new_product(obj, info):        # posts all products when connected then posts newly added products only
+        base_nr_of_products = 0
+        while True:
+            product_nr_difference = len(products) - base_nr_of_products
+            if product_nr_difference > 0:
+                yield products[-product_nr_difference:]
+                base_nr_of_products = len(products)
+            await asyncio.sleep(2)
+    
+    
+    schema = make_executable_schema(type_defs, query, mutation, subscription)
+    app = GraphQL(schema, debug=True)
+    
+    if __name__ == '__main__':
+        config = Config(app, port=3000)
+        config.routes = [("/", app), ("/graphql", app)]
+    
+        server = Server(config)
+        server.run()
+    
+    
+# ws client implementation ----------------
+    
+    from time import sleep
+    from graphql_client import GraphQLClient
+    
+    query = """
+        subscription {
+            notifyNewProduct {
+                name
+                price
+                origin {
+                    country
+                    continent
+                }
+            }
+        }
+    """
+    
+    
+    def callback(id, data):
+        payload = data['payload']['data']['notifyNewProduct']
+        print(f'recently added products: {payload}')
+    
+    
+    with GraphQLClient('ws://localhost:3000/graphql') as client:
+        sub_id = client.subscribe(query, callback=callback)
+        print('websocket client connected!')
+        sleep(3600)
+    </pre>
+    </details>
+    <br>
+    <details class="example">
+    <summary> Arguments </summary>
+    <pre style='margin-bottom:0; background-color:lightblue;'>
+# request ---------------------------------
+    {
+      employee(id: 2, convertNameToUppercase: true) {
+        id
+        name
+      }
+      products(priceHigherThan: 3.6) {
+        name
+        price
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "employee": {
+          "id": "2",
+          "name": "SALLY"
+        },
+        "products": [
+          {
+            "name": "lollipop",
+            "price": 5.02
+          },
+          {
+            "name": "ice",
+            "price": 4
+          }
+        ]
+      }
+    }    
+  </pre>
+    <pre style='margin:0;'>
+# implementation --------------------------
+    
+    from ariadne import gql, make_executable_schema, QueryType
+    from ariadne.asgi import GraphQL
+    from uvicorn import Config, Server
+    
+    
+    type_defs = gql("""
+        type Query {
+            employee(id: Int!, convertNameToUppercase: Boolean): Employee     # 2nd argument is optional
+            products(priceHigherThan: Float!): [Product]!
+        }
+    
+        type Employee {
+            id: ID!
+            name: String!
+        }
+    
+        type Product {
+            name: String!
+            price: Float!
+        }
+    """)
+    
+    employees = [
+        {'id': 1, 'name': 'Bob', 'is_cool': True},
+        {'id': 2, 'name': 'Sally', 'is_cool': False},
+    ]
+    products = [
+        {'name': 'chocolate', 'price': 2.34},
+        {'name': 'lollipop', 'price': 5.02},
+        {'name': 'ice', 'price': 4.00},
+        {'name': 'marshmallow', 'price': 3.56},
+    ]
+    
+    query = QueryType()
+    
+    
+    @query.field('employee')
+    def resolve_employee(*_, id, convertNameToUppercase=None):
+        employee = next(filter(lambda employee: employee['id'] == id, employees), None)
+        if employee and convertNameToUppercase:
+            employee['name'] = employee['name'].upper()
+        return employee
+    
+    
+    @query.field('products')
+    def resolve_products(*_, priceHigherThan):
+        return list(filter(lambda product: product['price'] > priceHigherThan, products))
+    
+    schema = make_executable_schema(type_defs, query)
+    app = GraphQL(schema, debug=True)
+    
+    
+    if __name__ == '__main__':
+        config = Config(app, port=3000)
+        config.routes = [("/", app), ("/graphql", app)]       # single endpoint
+        
+        server = Server(config)
+        server.run()
+    </pre>
+    </details>
+    <br>
+    <details class="example">
+    <summary> Aliases </summary>
+    <pre style='margin-bottom:0; background-color:lightblue;'>
+# request ---------------------------------
+    {
+      alias1: products {
+        name
+        price
+      }
+      alias2: products(priceHigherThan: 3.7) {
+        name
+        price
+      }
+    }
+    
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "alias1": [
+          {
+            "name": "chocolate",
+            "price": 2.34
+          },
+          {
+            "name": "lollipop",
+            "price": 5.02
+          },
+          {
+            "name": "ice",
+            "price": 4
+          },
+          {
+            "name": "marshmallow",
+            "price": 3.56
+          }
+        ],
+        "alias2": [
+          {
+            "name": "lollipop",
+            "price": 5.02
+          },
+          {
+            "name": "ice",
+            "price": 4
+          }
+        ]
+      }
+    }
+  </pre>
+    <pre style='margin:0;'>
+# implementation --------------------------
+    
+    from ariadne import gql, make_executable_schema, QueryType
+    from ariadne.asgi import GraphQL
+    from uvicorn import Config, Server
+    
+    
+    type_defs = gql("""
+        type Query {
+            products(priceHigherThan: Float): [Product]!
+        }
+    
+        type Product {
+            name: String!
+            price: Float!
+        }
+    """)
+    
+    products = [
+        {'name': 'chocolate', 'price': 2.34},
+        {'name': 'lollipop', 'price': 5.02},
+        {'name': 'ice', 'price': 4.00},
+        {'name': 'marshmallow', 'price': 3.56},
+    ]
+    
+    query = QueryType()
+    
+    
+    @query.field('products')
+    def resolve_products(*_, priceHigherThan=None):
+        if priceHigherThan is None:
+            return products
+        return list(filter(lambda product: product['price'] > priceHigherThan, products))
+    
+    
+    schema = make_executable_schema(type_defs, query)
+    app = GraphQL(schema, debug=True)
+    
+    if __name__ == '__main__':
+        config = Config(app, port=3000)
+        config.routes = [("/", app), ("/graphql", app)]       # single endpoint
+        
+        server = Server(config)
+        server.run()
+    </pre>
+    </details>
+    <br>
+    <details class="example">
+    <summary> Variables </summary>
+    <pre style='margin-bottom:0; background-color:lightblue;'>
+# request ---------------------------------
+    query getProducts($price: Float) {        # variables must be passed at query level (if value is required in the SDL the variable type here must be required as well -> <mark>!</mark> (not the case here))
+      products(priceHigherThan: $price) {
+        name
+        price
+      }
+    }
+    
+# variables -------------------------------
+    {
+      "price": 3.7
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "products": [
+          {
+            "name": "lollipop",
+            "price": 5.02
+          },
+          {
+            "name": "ice",
+            "price": 4
+          }
+        ]
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color:lightblue;'>
+# request ---------------------------------
+    query getProduct($price: Float) {
+      allProducts: products {
+        ...productFragment
+      }
+    
+      productsMoreExpensiveThan3_7: products(priceHigherThan: $price) {
+        ...productFragment
+      }
+    }
+    
+    fragment productFragment on Product {
+      name
+      price
+      origin {
+        country
+        continent
+      }
+    }
+    
+# variables -------------------------------
+    {
+      "price": 3.7
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "allProducts": [
+          {
+            "name": "chocolate",
+            "price": 2.34,
+            "origin": {
+              "country": "America",
+              "continent": "America"
+            }
+          },
+          {
+            "name": "lollipop",
+            "price": 5.02,
+            "origin": {
+              "country": "Canada",
+              "continent": "America"
+            }
+          },
+          {
+            "name": "ice",
+            "price": 4,
+            "origin": {
+              "country": "Iceland",
+              "continent": "Europa"
+            }
+          },
+          {
+            "name": "marshmallow",
+            "price": 3.56,
+            "origin": {
+              "country": "Russia",
+              "continent": "Asia"
+            }
+          }
+        ],
+        "productsMoreExpensiveThan3_7": [
+          {
+            "name": "lollipop",
+            "price": 5.02,
+            "origin": {
+              "country": "Canada",
+              "continent": "America"
+            }
+          },
+          {
+            "name": "ice",
+            "price": 4,
+            "origin": {
+              "country": "Iceland",
+              "continent": "Europa"
+            }
+          }
+        ]
+      }
+    }
+    </pre>
+    <pre style='margin:0;'>
+# implementation --------------------------
+    
+    from ariadne import gql, make_executable_schema, QueryType
+    from ariadne.asgi import GraphQL
+    from uvicorn import Config, Server
+    
+    
+    products = [
+        {
+            'name': 'chocolate',
+            'price': 2.34,
+            'origin': {
+                'country': 'America',
+                'continent': 'America'
+            },
+        },
+        {
+            'name': 'lollipop',
+            'price': 5.02,
+            'origin': {
+                'country': 'Canada',
+                'continent': 'America'
+            },
+        },
+        {
+            'name': 'ice',
+            'price': 4.00,
+            'origin': {
+                'country': 'Iceland',
+                'continent': 'Europa'
+            },
+        },
+        {
+            'name': 'marshmallow',
+            'price': 3.56,
+            'origin': {
+                'country': 'Russia',
+                'continent': 'Asia'
+            },
+        },
+    ]
+    
+    type_defs = gql("""
+        type Query {
+            products(priceHigherThan: Float!): [Product]!
+        }
+    
+        type Product {
+            name: String!
+            price: Float!
+            origin: Origin!
+        }
+    
+        type Origin {
+            country: String!
+            continent: String!
+        }
+    """)
+    
+    
+    query = QueryType()
+    
+    
+    @query.field('products')
+    def resolve_products(*_, priceHigherThan=None):
+        if priceHigherThan is None:
+            return products
+        return list(filter(lambda product: product['price'] > priceHigherThan, products))
+    
+    
+    schema = make_executable_schema(type_defs, query)
+    app = GraphQL(schema, debug=True)
+    
+    
+    if __name__ == '__main__':
+        config = Config(app, port=3000)
+        config.routes = [("/", app), ("/graphql", app)]       # single endpoint
+        
+        server = Server(config)
+        server.run()
+    </pre>
+    </details>
+    <br>
+    <details class="example">
+    <summary> Directives </summary>
+    <pre style='margin-bottom:0; background-color:lightblue;'>
+# request ---------------------------------
+    query Prices($includePrice: Boolean!) {
+      products {
+        name
+        price @include(if: $includePrice)         # include or not the prcie
+      }
+    }
+    
+# variables -------------------------------
+    {
+      "includePrice": true
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "products": [
+          {
+            "name": "chocolate",
+            "price": 2.34
+          },
+          {
+            "name": "lollipop",
+            "price": 5.02
+          },
+          {
+            "name": "ice",
+            "price": 4
+          },
+          {
+            "name": "marshmallow",
+            "price": 3.56
+          }
+        ]
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color:lightblue;'>
+# request ---------------------------------
+    query Prices($includeOrigin: Boolean!) {
+      products {
+        name
+        price
+        origin @include(if: $includeOrigin){
+          country
+          continent
+        }
+      }
+    }
+    
+# variables -------------------------------
+    {
+      "includeOrigin": false
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "products": [
+          {
+            "name": "chocolate",
+            "price": 2.34
+          },
+          {
+            "name": "lollipop",
+            "price": 5.02
+          },
+          {
+            "name": "ice",
+            "price": 4
+          },
+          {
+            "name": "marshmallow",
+            "price": 3.56
+          }
+        ]
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color:lightblue;'>
+# request ---------------------------------
+    query Prices($includeOrigin: Boolean!) {
+      products {
+        name
+        price
+        origin @include(if: $includeOrigin){
+          country
+          continent
+        }
+      }
+    }
+    
+# variables -------------------------------
+    {
+      "includeOrigin": true
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "products": [
+          {
+            "name": "chocolate",
+            "price": 2.34,
+            "origin": {
+              "country": "America",
+              "continent": "America"
+            }
+          },
+          {
+            "name": "lollipop",
+            "price": 5.02,
+            "origin": {
+              "country": "Canada",
+              "continent": "America"
+            }
+          },
+          {
+            "name": "ice",
+            "price": 4,
+            "origin": {
+              "country": "Iceland",
+              "continent": "Europa"
+            }
+          },
+          {
+            "name": "marshmallow",
+            "price": 3.56,
+            "origin": {
+              "country": "Russia",
+              "continent": "Asia"
+            }
+          }
+        ]
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color:lightblue;'>
+# request ---------------------------------
+    query Prices($excludeOrigin: Boolean!) {
+      products {
+        name
+        price
+        origin @skip(if: $excludeOrigin){
+          country
+          continent
+        }
+      }
+    }
+    
+# variables -------------------------------
+    {
+      "excludeOrigin": true
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "products": [
+          {
+            "name": "chocolate",
+            "price": 2.34
+          },
+          {
+            "name": "lollipop",
+            "price": 5.02
+          },
+          {
+            "name": "ice",
+            "price": 4
+          },
+          {
+            "name": "marshmallow",
+            "price": 3.56
+          }
+        ]
+      }
+    }
+    </pre>
+    <pre style='margin:0;'>
+# implementation --------------------------
+    
+    from ariadne import gql, make_executable_schema, QueryType
+    from ariadne.asgi import GraphQL
+    from uvicorn import Config, Server
+    
+    products = [
+        {
+            'name': 'chocolate',
+            'price': 2.34,
+            'origin': {
+                'country': 'America',
+                'continent': 'America'
+            },
+        },
+        {
+            'name': 'lollipop',
+            'price': 5.02,
+            'origin': {
+                'country': 'Canada',
+                'continent': 'America'
+            },
+        },
+        {
+            'name': 'ice',
+            'price': 4.00,
+            'origin': {
+                'country': 'Iceland',
+                'continent': 'Europa'
+            },
+        },
+        {
+            'name': 'marshmallow',
+            'price': 3.56,
+            'origin': {
+                'country': 'Russia',
+                'continent': 'Asia'
+            },
+        },
+    ]
+    
+    type_defs = gql("""
+        type Query {
+            products: [Product]!
+        }
+    
+        type Product {
+            name: String!
+            price: Float!
+            origin: Origin
+        }
+    
+        type Origin {
+            country: String
+            continent: String
+        }
+    """)
+    
+    query = QueryType()
+    
+    
+    @query.field('products')
+    def resolve_products(*_):
+        return products
+    
+    
+    schema = make_executable_schema(type_defs, query)
+    app = GraphQL(schema, debug=True)
+    
+    
+    if __name__ == '__main__':
+        config = Config(app, port=3000)
+        config.routes = [("/", app), ("/graphql", app)]
+    
+        server = Server(config)
+        server.run()
+    </pre>
+    </details>
+    <br>
+    <details class="example">
+    <summary> Fragments </summary>
+    <pre style='margin-bottom:0; background-color:lightblue;'>
+# request ---------------------------------
+    {
+      allProducts: products {
+        ...product
+      }
+      productsMoreExpensiveThan3_7: products(priceHigherThan: 3.7) {
+        ...product
+      }
+    }
+    
+    fragment product on Product {
+      name
+      price
+      origin {
+        country
+        continent
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "allProducts": [
+          {
+            "name": "chocolate",
+            "price": 2.34,
+            "origin": {
+              "country": "America",
+              "continent": "America"
+            }
+          },
+          {
+            "name": "lollipop",
+            "price": 5.02,
+            "origin": {
+              "country": "Canada",
+              "continent": "America"
+            }
+          },
+          {
+            "name": "ice",
+            "price": 4,
+            "origin": {
+              "country": "Iceland",
+              "continent": "Europa"
+            }
+          },
+          {
+            "name": "marshmallow",
+            "price": 3.56,
+            "origin": {
+              "country": "Russia",
+              "continent": "Asia"
+            }
+          }
+        ],
+        "productsMoreExpensiveThan3_7": [
+          {
+            "name": "lollipop",
+            "price": 5.02,
+            "origin": {
+              "country": "Canada",
+              "continent": "America"
+            }
+          },
+          {
+            "name": "ice",
+            "price": 4,
+            "origin": {
+              "country": "Iceland",
+              "continent": "Europa"
+            }
+          }
+        ]
+      }
+    }
+    </pre>
+    <pre style='margin:0;'>
+# implementation --------------------------
+    
+    from ariadne import gql, make_executable_schema, QueryType
+    from ariadne.asgi import GraphQL
+    from uvicorn import Config, Server
+    
+    
+    type_defs = gql("""
+        type Query {
+            products(priceHigherThan: Float): [Product]!
+        }
+    
+        type Product {
+            name: String!
+            price: Float!
+            origin: Origin!
+        }
+    
+        type Origin {
+            country: String!
+            continent: String!
+        }
+    """)
+    
+    products = [
+        {
+            'name': 'chocolate',
+            'price': 2.34,
+            'origin': {
+                'country': 'America',
+                'continent': 'America'
+            },
+        },
+        {
+            'name': 'lollipop',
+            'price': 5.02,
+            'origin': {
+                'country': 'Canada',
+                'continent': 'America'
+            },
+        },
+        {
+            'name': 'ice',
+            'price': 4.00,
+            'origin': {
+                'country': 'Iceland',
+                'continent': 'Europa'
+            },
+        },
+        {
+            'name': 'marshmallow',
+            'price': 3.56,
+            'origin': {
+                'country': 'Russia',
+                'continent': 'Asia'
+            },
+        },
+    ]
+    
+    query = QueryType()
+    
+    
+    @query.field('products')
+    def resolve_products(*_, priceHigherThan=None):
+        if priceHigherThan is None:
+            return products
+        return list(filter(lambda product: product['price'] > priceHigherThan, products))
+    
+    
+    schema = make_executable_schema(type_defs, query)
+    app = GraphQL(schema, debug=True)
+    
+    if __name__ == '__main__':
+        config = Config(app, port=3000)
+        config.routes = [("/", app), ("/graphql", app)]       # single endpoint
+        
+        server = Server(config)
+        server.run()
+    </pre>
+    </details>
+    <br>
+    <details class="example">
+    <summary> Inline Fragments </summary>
+    <pre style='margin-bottom:0; background-color:lightblue;'>
+# request ---------------------------------
+    query Camera {
+      camera(cameraType: "digital") {
+        ... on MechanicalCamera {           # if response type is MechanicalCamera these fields will be as response    
+          mark
+          nrOfOptics
+          filmLength
+        }
+        ... on DigitalCamera {              # if response type is DigitalCamera these fields will be as response    
+          mark
+          nrOfOptics
+          displaySize
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "camera": {
+          "displaySize": 30,
+          "mark": "Nikon",
+          "nrOfOptics": 1
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color:lightblue;'>
+# request ---------------------------------
+    query Camera {
+      camera(cameraType: "mechanical") {
+        ... on MechanicalCamera {
+          mark
+          nrOfOptics
+          filmLength
+        }
+        ... on DigitalCamera {
+          mark
+          nrOfOptics
+          displaySize
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "camera": {
+          "filmLength": 24,
+          "mark": "Cannon",
+          "nrOfOptics": 2
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color:lightblue;'>
+# request ---------------------------------
+    query Camera {
+      camera(cameraType: "hybrid") {      # no type found for that argument
+        ... on MechanicalCamera {
+          mark
+          nrOfOptics
+          filmLength
+        }
+        ... on DigitalCamera {
+          mark
+          nrOfOptics
+          displaySize
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "camera": null
+      }
+    }
+    </pre>
+    <pre style='margin:0;'>
+# implementation --------------------------
+    
+    from ariadne import gql, make_executable_schema, QueryType, ObjectType, UnionType
+    from ariadne.asgi import GraphQL
+    from uvicorn import Config, Server
+    
+    
+    type_defs = gql("""
+        type Query {
+            camera(cameraType: String): Camera
+        }
+    
+        union Camera = MechanicalCamera | DigitalCamera         # union type can be MechanicalCamera or DigitalCamera
+    
+        type MechanicalCamera {
+            mark: String!
+            nrOfOptics: Int!
+            filmLength: Int!
+        }
+    
+        type DigitalCamera {
+            mark: String!
+            nrOfOptics: Int!
+            displaySize: Int!
+        }
+    """)
+    
+    
+    query = QueryType()
+    camera = UnionType('Camera')
+    
+    
+    # object types are defined to easier implement union types
+    class MechanicalCamera(ObjectType):
+        def __init__(self, mark, nrOfOptics, filmLength):
+            self.mark = mark
+            self.nrOfOptics = nrOfOptics
+            self.filmLength = filmLength
+    
+    
+    class DigitalCamera(ObjectType):
+        def __init__(self, mark, nrOfOptics, displaySize):
+            self.mark = mark
+            self.nrOfOptics = nrOfOptics
+            self.displaySize = displaySize
+    
+    
+    @camera.type_resolver
+    def camera_type_resolver(obj, *_):              # returns the type as a string (the obj argument is the return value of 'resolve_camera')
+        if isinstance(obj, MechanicalCamera):
+            return MechanicalCamera.__name__        # return the type as a string
+        if isinstance(obj, DigitalCamera):
+            return DigitalCamera.__name__
+    
+    
+    @query.field('camera')
+    def resolve_camera(*_, cameraType):
+        if cameraType == 'mechanical':
+            return MechanicalCamera('Cannon', 2, 24)
+        elif cameraType == 'digital':
+            return DigitalCamera('Nikon', 1, 30)
+        return None
+    
+    
+    schema = make_executable_schema(type_defs, query, camera)
+    app = GraphQL(schema, debug=True)
+    
+    if __name__ == '__main__':
+        config = Config(app, port=3000)
+        config.routes = [("/", app), ("/graphql", app)]
+    
+        server = Server(config)
+        server.run()
+    </pre>
+    </details>
+  </details>
+<hr>
+<!---------------------------------------------------------------->
+<h2 class="header"> Types </h2>
+  <p> - GraphQL performs type validation on requests automatically (this is a big plus) </p>
+  <p> - GraplQL is language agnostinc so it uses its own types not the types of the underlying programming language </p>
+  <pre class='syntax'>
+<span style='color:darkgray;'>// GraphQL types </span>
+    
+  <span style='color:darkgray;'>#scalar types ----------------------------</span>
+    String
+    Int
+    Float
+    Boolean
+    ID                                         // string holding a unique identifier
+    enum <strong>Enum</strong> {                                // declares an Enum type, string values from a predefined set of values (enum implementation depends on the server implementation)
+      <strong>stringValue</strong>
+      <i>...</i>
+    }
+    
+    
+  <span style='color:darkgray;'>#union type ------------------------------</span>
+    union <strong>Union</strong> = <strong>type_1</strong> | <strong>type_2</strong> <i>...</i>          // <strong>Union</strong> can be any of the listed types (inline fragments must be used to query union types)
+    
+    type <strong>type_1</strong>    <span style="color:darkgray;"># type_1 definition</span>
+    type <strong>type_2</strong>    <span style="color:darkgray;"># type_2 definition</span>
+    
+    
+  <span style='color:darkgray;'>#object type -----------------------------</span>
+    type <strong>Object</strong> {                              // declares an object, it can have fields of any type (this is how the graph is built)
+      <strong>field</strong>: <strong>type</strong><small>!</small>
+      <i>...</i>
+    }
+    [<strong>type</strong>]                                     // array holding <strong>type</strong>s (GraphQL Arrays hold the same types or types that use the same interface)
+    
+    
+  <span style='color:darkgray;'>#input type ------------------------------</span>
+    input <strong>Object</strong> {                             // works exactly like an object type but specified as input for a mutation
+      <strong>field</strong>: <strong>type</strong><small>!</small>
+      <i>...</i>
+    }
+  
+  
+  <span style='color:darkgray;'>#nullability -----------------------------</span>
+    <strong>type</strong><small>!</small>                                      // if <strong>type</strong> is not followed by <mark>!</mark> -> nullable type (the server can respond with <mark>null</mark> instead of the value)    
+                                               // if <strong>type</strong> is followed by <mark>!</mark>     -> not nullable (the server garantees to respond with a value)   
+  
+  
+  <span style='color:darkgray;'>#interface -------------------------------</span>
+    interface <strong>Interface</strong> {                      // declares an interface, describes fields that a type must implement
+      <strong>field_A</strong>: <strong>type</strong><small>!</small>
+      <strong>field_B</strong>: <strong>type</strong><small>!</small>
+      <i>...</i>
+    }
+    
+    type <strong>Object</strong> implements <strong>Interface</strong> {         // declares an object that implements <strong>Inteface</strong>
+      <strong>field_A</strong>: <strong>type</strong><small>!</small>                           // interface fields must be implemented
+      <strong>field_B</strong>: <strong>type</strong><small>!</small>
+      <i>...</i>
+    }
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <br>
+    <details class="example">
+    <summary> Types </summary>
+    <pre style='margin-bottom:0; background-color:lightblue;'>
+# request ---------------------------------
+    query Person {
+      person(id: 1) {
+        id
+        name
+        age
+        height
+        active
+        sex
+      }
+      allPersons {                      # array of Person types (we specify what Person type fields we want to receive)
+        name
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "person": {
+          "id": "1",
+          "name": "Sally",
+          "age": 21,
+          "height": 1.67,
+          "active": true,
+          "sex": "female"
+        },
+        "allPersons": [
+          {
+            "name": "Sally"
+          },
+          {
+            "name": "Bob"
+          },
+          {
+            "name": "Mury"
+          }
+        ]
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color:lightblue;'>
+# request ---------------------------------
+    query Person {
+      person(id: 10) {                  # nullable -> may return null
+        id
+        name
+        age
+        height
+        active
+        sex
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "person": null
+      }
+    }
+    </pre>
+    <pre style='margin:0;'>
+# implementation --------------------------
+    from ariadne import gql, make_executable_schema, QueryType
+    from ariadne.asgi import GraphQL
+    from uvicorn import Config, Server
+    
+    products = []
+    
+    type_defs = gql("""
+        type Query {
+            person(id: ID): Person      # nullable -> return value is not garanteed by the server   
+            allPersons: [Person!]!      # server garantees to return an Array with Person types 
+        }                                 # ex: <mark>[Person]!</mark> -> response can be an empty Array
+                                          # ex: <mark>[Person!]</mark> -> response can be <mark>null</mark> or an Array with Person types
+        type Person {                   # object type
+            id: ID!
+            name: String
+            age: Int
+            height: Float
+            active: Boolean
+            sex: Sex                    # depending on the implementation one of the enum values must be returned here
+        }
+    
+        enum Sex {                      # enum defines possible string values
+            male
+            female
+            other
+        }
+    """)
+    
+    persons = [
+        {'id': '1', 'name': 'Sally', 'age': 21, 'height': 1.67, 'active': True, 'sex': 'female'},
+        {'id': '2', 'name': 'Bob', 'age': 31, 'height': 1.76, 'active': True, 'sex': 'male'},
+        {'id': '3', 'name': 'Mury', 'age': 39, 'height': 1.68, 'active': False, 'sex': 'OTHER'},
+    ]
+    
+    query = QueryType()
+    
+    
+    @query.field('person')
+    def resolve_person(*_, id):
+        return next(filter(lambda person: person['id'] == id, persons), None)
+    
+    
+    @query.field('allPersons')
+    def resolve_persosns(*_):
+        return persons
+    
+    
+    schema = make_executable_schema(type_defs, query)
+    app = GraphQL(schema, debug=True)
+    
+    
+    if __name__ == '__main__':
+        config = Config(app, port=3000)
+        config.routes = [("/", app), ("/graphql", app)]       # single endpoint
+        
+        server = Server(config)
+        server.run()
+    </pre>
+    </details>
+    <br>
+    <details class="example">
+    <summary> Input Type </summary>
+    <pre style='margin-bottom:0; background-color:lightblue;'>
+# request ---------------------------------
+  # request 1
+    mutation AddProduct ($product: InputProduct!) {
+      addProduct(product: $product)
+    } 
+    
+  # request 2
+    query Products {
+      getAllProducts {
+        name
+        price
+        origin {
+          country
+          continent
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+  # response 1
+    {
+      "data": {
+        "addProduct": true
+      }
+    } 
+    
+  # response 2
+    {
+      "data": {
+        "getAllProducts": [
+          {
+            "name": "Apple",
+            "price": 2.43,
+            "origin": {
+              "country": "Hungary",
+              "continent": "Europe"
+            }
+          }
+        ]
+      }
+    }
+    </pre>
+    <pre style='margin:0;'>
+# implementation --------------------------
+    
+    from ariadne import gql, make_executable_schema, QueryType, MutationType
+    from ariadne.asgi import GraphQL
+    from uvicorn import Config, Server
+    
+    
+    type_defs = gql("""
+        type Query {
+            getAllProducts: [Product]!
+        }
+    
+        type Mutation {
+            addProduct(product: InputProduct!): Boolean!
+        }
+    
+        type Product {
+            name: String!
+            price: Float!
+            origin: Location!
+        }
+        
+        type Location {
+            country: String!
+            continent: String!
+        }
+        
+        input InputProduct {            # same as object but as input type
+            name: String!
+            price: Float!
+            origin: InputLocation!      # any sub object input must be an input type as well
+        }
+        
+        input InputLocation {
+            country: String!
+            continent: String!
+        }
+    """)
+    
+    products = []
+    
+    query = QueryType()
+    mutation = MutationType()
+    
+    
+    @query.field('getAllProducts')
+    def resolve_get_all_products(*_):
+        return products
+    
+    
+    @mutation.field('addProduct')
+    def resolve_add_product(*_, product):
+        products.append(product)
+        return True
+    
+    
+    schema = make_executable_schema(type_defs, query, mutation)
+    app = GraphQL(schema, debug=True)
+    
+    
+    if __name__ == '__main__':
+        config = Config(app, port=3000)
+        config.routes = [("/", app), ("/graphql", app)]
+        
+        server = Server(config)
+        server.run()
+    </pre>
+    </details>
+    <br>
+    <details class="example">
+    <summary> Union Type </summary>
+    <pre style='margin-bottom:0; background-color:lightblue;'>
+# request ---------------------------------
+    query Camera {
+      camera(cameraType: "digital") {
+        ... on MechanicalCamera {           # if response type is MechanicalCamera these fields will be as response    
+          mark
+          nrOfOptics
+          filmLength
+        }
+        ... on DigitalCamera {              # if response type is DigitalCamera these fields will be as response    
+          mark
+          nrOfOptics
+          displaySize
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "camera": {
+          "displaySize": 30,
+          "mark": "Nikon",
+          "nrOfOptics": 1
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color:lightblue;'>
+# request ---------------------------------
+    query Camera {
+      camera(cameraType: "mechanical") {
+        ... on MechanicalCamera {
+          mark
+          nrOfOptics
+          filmLength
+        }
+        ... on DigitalCamera {
+          mark
+          nrOfOptics
+          displaySize
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "camera": {
+          "filmLength": 24,
+          "mark": "Cannon",
+          "nrOfOptics": 2
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color:lightblue;'>
+# request ---------------------------------
+    query Camera {
+      camera(cameraType: "hybrid") {      # no type found for that argument
+        ... on MechanicalCamera {
+          mark
+          nrOfOptics
+          filmLength
+        }
+        ... on DigitalCamera {
+          mark
+          nrOfOptics
+          displaySize
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "camera": null
+      }
+    }
+    </pre>
+    <pre style='margin:0;'>
+# implementation --------------------------
+    
+    from ariadne import gql, make_executable_schema, QueryType, ObjectType, UnionType
+    from ariadne.asgi import GraphQL
+    from uvicorn import Config, Server
+    
+    
+    type_defs = gql("""
+        type Query {
+            camera(cameraType: String): Camera                  # cameraType can be MechanicalCamera or DigitalCamera
+        }
+    
+        union Camera = MechanicalCamera | DigitalCamera 
+    
+        type MechanicalCamera {
+            mark: String!
+            nrOfOptics: Int!
+            filmLength: Int!
+        }
+    
+        type DigitalCamera {
+            mark: String!
+            nrOfOptics: Int!
+            displaySize: Int!
+        }
+    """)
+    
+    
+    query = QueryType()
+    camera = UnionType('Camera')
+    
+    
+    # object types are defined to easier implement union types
+    class MechanicalCamera(ObjectType):
+        def __init__(self, mark, nrOfOptics, filmLength):
+            self.mark = mark
+            self.nrOfOptics = nrOfOptics
+            self.filmLength = filmLength
+    
+    
+    class DigitalCamera(ObjectType):
+        def __init__(self, mark, nrOfOptics, displaySize):
+            self.mark = mark
+            self.nrOfOptics = nrOfOptics
+            self.displaySize = displaySize
+    
+    
+    @camera.type_resolver
+    def camera_type_resolver(obj, *_):              # returns the type as a string (the obj argument is the return value of 'resolve_camera')
+        if isinstance(obj, MechanicalCamera):
+            return MechanicalCamera.__name__        # return the type as a string
+        if isinstance(obj, DigitalCamera):
+            return DigitalCamera.__name__
+    
+    
+    @query.field('camera')
+    def resolve_camera(*_, cameraType):
+        if cameraType == 'mechanical':
+            return MechanicalCamera('Cannon', 2, 24)
+        elif cameraType == 'digital':
+            return DigitalCamera('Nikon', 1, 30)
+        return None
+    
+    
+    schema = make_executable_schema(type_defs, query, camera)
+    app = GraphQL(schema, debug=True)
+    
+    if __name__ == '__main__':
+        config = Config(app, port=3000)
+        config.routes = [("/", app), ("/graphql", app)]
+    
+        server = Server(config)
+        server.run()
+    </pre>
+    </details>
+    <br>
+    <details class="example">
+    <summary> Interface </summary>
+    <pre style='margin-bottom:0; background-color:lightblue;'>
+# request ---------------------------------
+    query Camera {
+      mechanicalCamera {
+        mark
+        nrOfOptics
+        filmLength
+      }
+      digitalCamera {
+        mark
+        nrOfOptics
+        displaySize
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "digitalCamera": {
+          "displaySize": 17,
+          "mark": "Nikon",
+          "nrOfOptics": 1
+        },
+        "mechanicalCamera": {
+          "filmLength": 24,
+          "mark": "Nikon",
+          "nrOfOptics": 1
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0;'>
+# implementation --------------------------
+    
+    from ariadne import gql, make_executable_schema, QueryType
+    from ariadne.asgi import GraphQL
+    from uvicorn import Config, Server
+    
+    
+    type_defs = gql("""
+        type Query {
+            mechanicalCamera: MechanicalCamera
+            digitalCamera: DigitalCamera
+        }
+    
+        interface Camera {
+            mark: String!
+            nrOfOptics: Int!
+        }
+    
+        type MechanicalCamera implements Camera {       # implements Camera interface
+            mark: String!
+            nrOfOptics: Int!
+            filmLength: Int!
+        }
+    
+        type DigitalCamera implements Camera {          # implements Camera interface
+            mark: String!
+            nrOfOptics: Int!
+            displaySize: Int!
+        }
+    """)
+    
+    query = QueryType()
+    
+    
+    @query.field('mechanicalCamera')
+    def resolve_mechanical_camera(*_):
+        return {
+            'mark': 'Nikon',
+            'nrOfOptics': 1,
+            'filmLength': 24
+        }
+    
+    
+    @query.field('digitalCamera')
+    def resolve_digital_camera(*_):
+        return {
+            'mark': 'Nikon',
+            'nrOfOptics': 1,
+            'displaySize': 17,
+        }
+    
+    
+    schema = make_executable_schema(type_defs, query)
+    app = GraphQL(schema, debug=True)
+    
+    if __name__ == '__main__':
+        config = Config(app, port=3000)
+        config.routes = [("/", app), ("/graphql", app)]
+    
+        server = Server(config)
+        server.run()
+    </pre>
+    </details>
+  </details>
+<hr>
+<!---------------------------------------------------------------->
+<h2 class="header"> Introspection </h2>
+  <p> - introspection is used to query information about the schema from the client side (unfortunately there's no way to request for the full server SDL schema) </p>
+  <pre class='syntax'>
+<span style="color:darkgray;">// GraphQL query SDL</span>
+
+    {                                          // requests all the types implemented in the schema
+      __schema {
+        types {
+          name
+        }
+      }
+    }
+  
+  
+    {
+      __type(name: <strong>type:str</strong>) {                 // requests informations about the specific <strong>type</strong>
+        name
+        kind
+        fields {
+          name
+          type {
+            name
+            kind
+          }
+        }
+      }
+    }
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <pre style='margin-bottom:0; background-color:lightblue;'>
+# request ---------------------------------
+    {                                          // requests all types implemented in the schema
+      __schema {
+        types {
+          name
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "__schema": {
+          "types": [
+            {
+              "name": "Query"
+            },
+            {
+              "name": "String"
+            },
+            {
+              "name": "ID"
+            },
+            {
+              "name": "Mutation"
+            },
+            {
+              "name": "Camera"
+            },
+            {
+              "name": "MechanicalCamera"
+            },
+            {
+              "name": "Int"
+            },
+            {
+              "name": "DigitalCamera"
+            },
+            {
+              "name": "Person"
+            },
+            {
+              "name": "Location"
+            },
+            {
+              "name": "Boolean"
+            },
+            {
+              "name": "__Schema"
+            },
+            {
+              "name": "__Type"
+            },
+            {
+              "name": "__TypeKind"
+            },
+            {
+              "name": "__Field"
+            },
+            {
+              "name": "__InputValue"
+            },
+            {
+              "name": "__EnumValue"
+            },
+            {
+              "name": "__Directive"
+            },
+            {
+              "name": "__DirectiveLocation"
+            }
+          ]
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color:lightblue;'>
+# request ---------------------------------
+    {
+      __type(name: "Query") {
+        name
+        kind
+        fields {
+          name
+          type {
+            name
+            kind
+          }
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "__type": {
+          "name": "Query",
+          "kind": "OBJECT",
+          "fields": [
+            {
+              "name": "camera",
+              "type": {
+                "name": "Camera",
+                "kind": "UNION"
+              }
+            },
+            {
+              "name": "getPerson",
+              "type": {
+                "name": "Person",
+                "kind": "OBJECT"
+              }
+            }
+          ]
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color:lightblue;'>
+# request ---------------------------------
+    {
+      __type(name: "Person") {
+        name
+        kind
+        fields {
+          name
+          type {
+            name
+            kind
+          }
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0; background-color: lightgreen;'>
+# response --------------------------------
+    {
+      "data": {
+        "__type": {
+          "name": "Person",
+          "kind": "OBJECT",
+          "fields": [
+            {
+              "name": "id",
+              "type": {
+                "name": null,
+                "kind": "NON_NULL"
+              }
+            },
+            {
+              "name": "name",
+              "type": {
+                "name": null,
+                "kind": "NON_NULL"
+              }
+            },
+            {
+              "name": "location",
+              "type": {
+                "name": "Location",
+                "kind": "OBJECT"
+              }
+            }
+          ]
+        }
+      }
+    }
+    </pre>
+    <pre style='margin:0;'>
+# implementation --------------------------
+    
+    from ariadne import gql, make_executable_schema, QueryType
+    from ariadne.asgi import GraphQL
+    from uvicorn import Config, Server
+    
+    
+    type_defs = gql("""
+        type Query {
+            mechanicalCamera: MechanicalCamera
+            digitalCamera: DigitalCamera
+        }
+    
+        interface Camera {
+            mark: String!
+            nrOfOptics: Int!
+        }
+    
+        type MechanicalCamera implements Camera {       # implements Camera interface
+            mark: String!
+            nrOfOptics: Int!
+            filmLength: Int!
+        }
+    
+        type DigitalCamera implements Camera {          # implements Camera interface
+            mark: String!
+            nrOfOptics: Int!
+            displaySize: Int!
+        }
+    """)
+    
+    query = QueryType()
+    
+    
+    @query.field('mechanicalCamera')
+    def resolve_mechanical_camera(*_):
+        return {
+            'mark': 'Nikon',
+            'nrOfOptics': 1,
+            'filmLength': 24
+        }
+    
+    
+    @query.field('digitalCamera')
+    def resolve_digital_camera(*_):
+        return {
+            'mark': 'Nikon',
+            'nrOfOptics': 1,
+            'displaySize': 17,
+        }
+    
+    
+    schema = make_executable_schema(type_defs, query)
+    app = GraphQL(schema, debug=True)
+    
+    if __name__ == '__main__':
+        config = Config(app, port=3000)
+        config.routes = [("/", app), ("/graphql", app)]
+    
+        server = Server(config)
+        server.run()
+    </pre>
+  </details>
+<hr>
+<!---------------------------------------------------------------->
+<h2 class="header"> REST Api VS GraphQL </h2>
+  <p> - GraphQL is NOT a replacement for REST Api, it does some things better and some things worse </p>
+  <p> - GraphQL is more suited for large applications with complex data requirements, REST Api is more suited for simple applications with simple data requirements </p>
+  <p> - Pros GrapQL over REST Api : </p>
+  <p style="text-indent: 30px;"> - Uses a single API endpoint </p>
+  <p style="text-indent: 30px;"> - In a single request we can specify exactly what we want (no multiple roundtrips needed for different resources, this leads to a performance increase) </p>
+  <p style="text-indent: 30px;"> - Strongly typed schema -> there's a type validation on request </p>
+
+  <p> - Cons GrapQL over REST Api : </p>
+  <p style="text-indent: 30px;"> - Learning and implementing GraphQL is failry complex </p>
+  <p style="text-indent: 30px;"> - Has no support for HTTP caching mechanism </p>
+  <p style="text-indent: 30px;"> - Has no native file upload feature </p>
+
+
+  <br><br>
+</body>
+
+</html>
