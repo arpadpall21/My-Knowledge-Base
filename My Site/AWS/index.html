@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> AWS </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../Assets/stylesPages.css">
+  <script src="../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> AWS </h1>
+  <p> Updated: ( 2023-07-04 )</p>
+  <p class="sitenav"> <a href="../index.html">MySite></a> AWS </p>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> Werger Vogels (Amazon CTO) says <b>"Everything fails all the time"</b></p>
+  <p> Concepts: </p>
+  <p style="text-indent: 30px;"> - <mark class="mark">Cloud Computing</mark> -> on-demand delivery of IT resources and applications via the internet with pay-as-you-go pricing </p>
+  <p style="text-indent: 30px;"> - <mark class="mark">Elasticity</mark> -> scale up and down as you need </p>
+  <p style="text-indent: 30px;"> - <mark class="mark">Agility</mark> -> we can try out things quickly and fail fast without the upfront cost </p>
+  <p style="text-indent: 30px;"> - <mark class="mark">Least Privilege Access</mark> -> only give the minimum access required to perform a task </p>
+  <p style="text-indent: 30px;"> - <mark class="mark">Shared Responsibility Model</mark> </p>
+  <p style="text-indent: 60px;"> -> AWS is responsible for the security of the cloud </p>
+  <p style="text-indent: 60px;"> -> the customer is responsible for the security in the cloud </p>
+  <p style="text-indent: 30px;"> - <mark class="mark">Well-Architected Framework</mark> - best practices and guidelines developed by AWS having 6 pillars: </p>
+  <p style="text-indent: 60px;"> - <mark class="mark">Operational Excellence</mark> -> <mark class="mark">Security</mark> -> <mark class="mark">Reliability</mark> -> <mark class="mark">Performance Efficiency</mark> -> <mark class="mark">Cost Optimization</mark> -> <mark class="mark">Sustainability</mark></p>
+  <p style="text-indent: 30px;"> - <mark class="mark">OpEx</mark> - Operational Expenditure (ongoing operational expenses) </p>
+  <p style="text-indent: 30px;"> - <mark class="mark">CapEx</mark> - Capital Expenditure (upfront capital investment) </p>
+  <p style="text-indent: 30px;"> - <mark class="mark">TCO</mark> - Total Cost of Ownership </p>
+  <hr>
+  <!----------------------------------------------------------------------------------------------->
+  <h2 class="header"> Cloud Computing Models </h2>
+  <p> - <mark class="mark">IaaS</mark> (Infrastructure as a Service) -> you manage your infrastructure -> High Control but High Maintenance over the infrastructure </p>
+  <p> - <mark class="mark">PaaS</mark> (Platform as a Service) -> you manage applications and data -> Medium Control and Maintenance over the infrastructure </p>
+  <p> - <mark class="mark">SaaS</mark> (Software as a Service) -> you manage nothing -> Low Control but also Low Maintenance over the infrastructure </p>
+  <hr>
+  <!----------------------------------------------------------------------------------------------->
+  <h2 class="header"> Deployment Models </h2>
+  <p> - <mark class="mark">on-premise</mark> (private) -> you have to buy hardware and software and manage it yourself </p>
+  <p> - <mark class="mark">cloud</mark> (public) -> you use public cloud providers like AWS </p>
+  <p> - <mark class="mark">hybrid</mark> -> mix of on-premise and cloud </p>
+  <hr>
+  <!----------------------------------------------------------------------------------------------->
+  <h2 class="headerExtra"> AWS Global Infrastructure </h2>
+  <p> - <mark class="mark">AWS Regions</mark> -> physical location in the world <u>with multiple availability zones</u> </p>
+  <p> - <mark class="mark">Availability Zone (AZ)</mark> -> one or more data centers, each with redundant power, networking and connectivity (to ensure redundancy within that region) </p>
+  <p> - <mark class="mark">Local Zones</mark> -> AWS infrastructure typically in large cities where no AWS region exists (to reduce latency) </p>
+  <p> - <mark class="mark">Wavelength Zones</mark> -> AWS infrastructure for 5G networks (to reduce latency) </p>
+  <p> - <mark class="mark">Edge Locations</mark> -> used caching content (to reduce latency) (CloudFront -> Amazon's CDN) </p>
+  <table class="table">
+    <caption>
+      AWS Account Infrastructure Description
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Syntax </th>
+      <th> Description </th>
+    </tr>
+    <tr class="0">
+      <td>
+        <strong>area</strong>-<strong>region</strong>-<strong>areaNumber</strong><i>availabilityZone</i>
+      </td>
+      <td>
+        - AWS Account Infrastructure Description (ex: <mark>eu-west-1a</mark>)
+      </td>
+    </tr>
+  </table>
+  <hr>
+  <!----------------------------------------------------------------------------------------------->
+  <h2 class="header"> Cost & Support Management </h2>
+  <p> - AWS provides the following tools to manage our costs: </p>
+  <p style="text-indent: 30px;"> - <mark class="mark">AWS Budgets (AWS resource)</mark> -> custom budgets with set alerts and limitations </p>
+  <p style="text-indent: 30px;"> - <mark class="mark">Migration Hub (AWS resource)</mark> -> track and manage migrations to AWS </p>
+  <p style="text-indent: 30px;"> - <mark class="mark">Cost Explorer (AWS resource)</mark> -> visualizes our costs and usages </p>
+  <p style="text-indent: 30px;"> - we can create organizations within the same account and apply budgets to them </p>
+  <p style="text-indent: 30px;"> - we can tag resources and apply budgets to them </p>
+  <p style="text-indent: 30px;"> - AWS pricing calculator to create budget estimates </p>
+  <p> - AWS provides the following supporting tools: </p>
+  <p style="text-indent: 30px;"> - AWS provides the following support plans (in level order) <mark class="mark">Basic</mark> (free) -> <mark class="mark">Developer</mark> -> <mark class="mark">Business</mark> -> <mark class="mark">Enterprise</mark> </p>
+  <p style="text-indent: 30px;"> - <mark class="mark">AWS Personal Health Dashboard (AWS service)</mark> -> dashboard that provides alerts and remediation guidance when AWS is experiencing events that might affect you </p>
+  <p style="text-indent: 30px;"> - <mark class="mark">AWS Trusted Advisor (AWS service)</mark> -> provides real-time guidance to help us provision our resources following AWS best practices </p>
+  <hr>
+  <!----------------------------------------------------------------------------------------------->
+  <h2 class="header"> 3 ways to interact with AWS resources </h2>
+  <p> There are 3 ways to interact with AWS services: </p>
+  <p style="text-indent: 30px;"> - <mark class="mark">AWS Management Console</mark> -> GUI in the browser </p>
+  <p style="text-indent: 30px;"> - <mark class="mark">AWS Command Line Interface (CLI)</mark> -> full access to the same API as the AWS Management Console, it can be used in the AWS account browser or remotely </p>
+  <p style="text-indent: 30px;"> - <mark class="mark">SDK (Software Development Kit)</mark> -> programmatic access to AWS Services (supported by most programming languages ex: <mark>boto3</mark> in Python) -> used to automate tasks </p>
+  <hr>
+  <!----------------------------------------------------------------------------------------------->
+  <h2 class="header">AWS Users</h2>
+  <p> - AWS users can be created and managed in the <mark class="mark">IAM (Identity and Access Management)</mark> service </p>
+  <p> - There are 2 user types: </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Root User</mark> -> has full access to all AWS services </p>
+  <p style="text-indent: 30px;"> <mark class="mark">IAM User</mark> -> has managed (limited) access to AWS resources </p>
+  <p style="text-indent: 60px;"> <mark class="mark">User</mark> -> individual IAM User </p>
+  <p style="text-indent: 60px;"> <mark class="mark">Group</mark> -> collection of users with the same permissions (a user can belong to multiple groups) </p>
+  <p style="text-indent: 60px;"> <mark class="mark">Role</mark> -> can be assigned to a user or an AWS service in order to allow to access to specific AWS resources </p>
+  <p> - an AWS <mark class="mark">Policy</mark> is a JSON file describing a set of access rules to AWS services </p>
+  <p> - AWS also supports <mark class="mark">Identity Federation</mark> (3rd party identification solutions like OIDC) </p>
+  <hr>
+  <!----------------------------------------------------------------------------------------------->
+  <h2 class="header">AWS Disaster Recovery</h2>
+  <p> - AWS suggests 4 levels of Disaster Recovery strategies (Efficienty VS Cost): </p>
+  <p style="text-indent: 30px;"> (<mark>Cost +---</mark>) (<mark>Recovery Time ++++</mark>) -> <mark class="mark">Backup & Restore</mark> </p>
+  <p style="text-indent: 60px;"> - data is backed up in S3 </p>
+  <p style="text-indent: 30px;"> (<mark>Cost ++--</mark>) (<mark>Recovery Time +++-</mark>) -> <mark class="mark">Pilot Light</mark> </p>
+  <p style="text-indent: 60px;"> - a backup system running with only critical components required by the application </p>
+  <p style="text-indent: 30px;"> (<mark>Cost +++-</mark>) (<mark>Recovery Time ++--</mark>) -> <mark class="mark">Warm Standby</mark> </p>
+  <p style="text-indent: 60px;"> - a scaled-down backup system running the fully functional environment </p>
+  <p style="text-indent: 30px;"> (<mark>Cost ++++</mark>) (<mark>Recovery Time +---</mark>) -> <mark class="mark">Multi Site</mark> </p>
+  <p style="text-indent: 60px;"> - a fully functional environment is running as a backup </p>
+  <hr>
+  <!----------------------------------------------------------------------------------------------->
+  <h2 class="header">AWS Services, Resources, Tools</h2>
+  <h4 class="header"> Computing Services: </h4>
+  <p style="text-indent: 30px;"> <mark class="mark">EC2</mark> -> virtual machine </p>
+  <p style="text-indent: 60px;"> Concepts: </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">Instance Type</mark> -> defines a virtual machine type (processor, memory, etc..) (ex: <mark>t3.medium</mark>, <mark>m5.large</mark>) </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">Root Device Type</mark> -> storage for instance types </p>
+  <p style="text-indent: 120px;"> - <mark class="mark">Instance Store</mark> -> physical storage of the host machine (cannot be detached -> data will be lost when the instance is stopped)</p>
+  <p style="text-indent: 120px;"> - <mark class="mark">EBS (Elastic Block Store)</mark> -> network attached storage can be detached and attached to other instances </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">AMI (Amazon Machine Image)</mark> -> template for an EC2 instances </p>
+  <p style="text-indent: 60px;"> Payment Plans: </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">Dedicated Host</mark> -> physical server dedicated to us </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">Reserved Instance</mark> -> we reserve EC2 instances for a specified duration, upfront payment for the capacity we reserve (1 or 3 years) -> lowest cost for long term </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">On-Demand Instance</mark> -> we pay for the capacity we use per hour -> highest cost </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">Spot Instances</mark> -> this is basically bidding for unused capacity on AWS, it's suitable for workloads that can be terminated instantly -> variable pricing (cheapest option with reliability trade offs)</p>
+  <p style="text-indent: 60px;"> Architecting in EC2: </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">auto-scaling groups</mark> -> scaling rules that apply to EC2 instances belonging to the same group </p>
+  <p style="text-indent: 120px;"> - defines scaling options (min, max, desired), runs health checks on each instance in the group </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">elastic load balancing</mark> -> intelligent traffic distribution </p>
+  <p style="text-indent: 60px;"> Access Control: </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">security group</mark> -> firewall rules that apply to all EC2 instances belonging to the same group <u>(works on EC2 instance level)</u> </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">Network ACL (Access Control List)</mark> -> controls inbound and outbound traffic <u>(works on VPC level)</u> </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">VPN (Virtual Private Network)</mark> -> secure tunnel between our network and AWS (unlike Direct Connect this solution goes through the public internet) </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Lambda</mark> -> serverless computing (pay per usage) </p>
+  <p style="text-indent: 60px;"> - the Lambda service has excellent integration with other AWS services (S3, DynamoDB) </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Elastic Beanstalk</mark> -> ready-to-go platform for different programming languages </p>
+  <p style="text-indent: 60px;"> - Paas (Platform as a Service) -> you manage the application code and data -> AWS manages the rest (Monitoring, Deployment, Scaling, EC2 customization) </p>
+  <p style="text-indent: 30px;"> Container Management Services: </p>
+  <p style="text-indent: 60px;"> <mark class="mark">App Runner</mark> -> managed service for container management </p>
+  <p style="text-indent: 60px;"> <mark class="mark">Fargate</mark> -> serverless architecture for container management </p>
+  <p style="text-indent: 60px;"> <mark class="mark">ECS (Elastic Container Service)</mark> -> managed service for Docker containers </p>
+  <p style="text-indent: 60px;"> <mark class="mark">EKS (Elastic Kubernetes Service)</mark> -> managed service for Kubernetes containers </p>
+    <h4 class="header"> Network & Content Delivery Services: </h4>
+  <p style="text-indent: 30px;"> <mark class="mark">Route 53</mark> -> AWS Domain Name Service (global service) </p>
+  <p style="text-indent: 60px;"> - able to register domains and route AWS resources to these domains </p>
+  <p style="text-indent: 30px;"> <mark class="mark">VPC (Virtual Private Network)</mark> -> Logically isolated network with AWS </p>
+  <p style="text-indent: 60px;"> - this is basically a sub-network within an AWS account </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Direct Connect</mark> -> network connection between AWS and private data centers </p>
+  <p style="text-indent: 60px;"> - a private connection that doesn't go through the internet </p>
+  <p style="text-indent: 30px;"> <mark class="mark">API Gateway</mark> -> front door access for AWS services </p>
+  <p style="text-indent: 60px;"> - API management service that integrates with other AWS services (like Lambda, VPC, etc) </p>
+  <p style="text-indent: 30px;"> <mark class="mark">CloudFront</mark> -> AWS CDN basically </p>
+  <p style="text-indent: 60px;"> - caching content closer to the user in order to enhance performance </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Elastic Load Balancing</mark> -> AWS load balancer </p>
+  <p style="text-indent: 60px;"> - distributes incoming traffic across multiple targets (EC2 instances, containers, etc) </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Global Accelerator</mark> -> accelerating traffic through AWS infrastructure </p>
+  <p style="text-indent: 60px;"> - the idea here is to use the AWS global infrastructure instead of the internet (which according to AWS is faster) </p>
+    <h4 class="header"> File Storage and Data Transfer Services: </h4>
+  <p style="text-indent: 30px;"> <mark class="mark">S3</mark> -> standard AWS file storage solution </p>
+  <p style="text-indent: 60px;"> - stores files as objects in buckets </p>
+  <p style="text-indent: 60px;"> - buckets a classified as classes (classes are basically settings for the specified bucket) </p>
+  <p style="text-indent: 60px;"> - files can be accessed through URLs (static hosting is available) </p>
+  <p style="text-indent: 60px;"> S3 Classes: </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">S3 Standard</mark> -> for frequent access </p> </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">S3 Standard Infrequent Access</mark> -> for less frequent access </p> </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">S3 One Zone Infrequent Access</mark> -> files are stored in one availability zone only (cost-efficient but less resilient option) </p> </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">S3 Intelligent Tiering</mark> -> AWS automatically moves data to the most cost-effective tier </p> </p>
+  <p style="text-indent: 30px;"> <mark class="mark">S3 Glacier</mark> -> file archival solution </p>
+  <p style="text-indent: 60px;"> S3 Glacier Classes: </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">S3 Glacier Instant Retrieval</mark> -> archived data that needs to be accessed within milliseconds </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">S3 Glacier Flexible Retrieval</mark> -> archived for data that needs to be accessed in a range of minutes to hours (depending on configuration) </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">S3 Glacier Deep Archive</mark> -> archived data that needs to be accessed within 12 hours </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Elastic Block Store (EBS) </mark> -> persistent block storage for EC2 instances </p>
+  <p style="text-indent: 60px;"> - can take snapshots of EBS volumes and offers encryption features </p>
+  <p style="text-indent: 60px;"> - several volume types can be used (SSD HDD, etc...) </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Elastic File Syste (EFS) </mark> -> persistent block storage for EC2 instances <u>(for Linux EC2 only)</u></p>
+  <p style="text-indent: 60px;"> - can be mounted on multiple EC2 instances at the same time </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Snowball</mark> -> AWS service that physically transfers data into AWS (for petabyte-scale)</p>
+  <p style="text-indent: 60px;"> - AWS sends a physical drive where we save our data then we send the drive back, the data will be transferred to S3 at the end </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Snowball Mobile</mark> -> AWS service that physically transfers data into AWS (for exabyte scale)</p>
+  <p style="text-indent: 60px;"> - AWS sends a truck to physically transfer your data to an AWS data center, the data will be transferred to S3 at the end </p>
+    <h4 class="header"> Database Services and Utilities: </h4>
+  <p style="text-indent: 30px;"> <mark class="mark">Relational Database Service (RDS)</mark> -> AWS relational database management system service </p>
+  <p style="text-indent: 60px;"> - Launches within a VPC </p>
+  <p style="text-indent: 60px;"> - supports multiple DRMS servers (MySQL, PostgreSQL, etc...)</p>
+  <p style="text-indent: 30px;"> <mark class="mark">Aurora</mark> -> AWS RDMS server that supports both MySQL and PostgreSQL </p>
+  <p style="text-indent: 30px;"> <mark class="mark">DynamoDB</mark> -> AWS key-value pair and document-based database </p>
+  <p style="text-indent: 60px;"> - a serverless database that offers very high performance and scalability (according to AWS) </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Redshift</mark> -> AWS data-warehousing service (petabyte scale) </p>
+  <p style="text-indent: 60px;"> - offers analytics, monitoring, etc... services for big data </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Elasticache</mark> -> caching service </p>
+  <p style="text-indent: 60px;"> - serverless in-memory data (caching) service </p>
+  <p style="text-indent: 60px;"> - supports Reddis and Memcached </p>
+  <p style="text-indent: 30px;"> <mark class="mark">MemoDB</mark> -> Reddis compatible caching service </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Migration Service</mark> -> database migration into AWS </p>
+  <p style="text-indent: 30px;"> <mark class="mark">DocumentDB</mark> -> MongoDb compatible document database </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Neptune</mark> -> graph database </p>
+  <p style="text-indent: 30px;"> <mark class="mark">TimeStream</mark> -> time series database (saving data with timestamps) </p>
+    <h4 class="header"> App Integration Services: </h4>
+  <p style="text-indent: 30px;"> <mark class="mark">Simple Notification Service (SNS)</mark> -> fully managed pub-sub messaging service </p>
+  <p style="text-indent: 60px;"> - organizes messages into topics, has great integration with other AWS services </p>
+  <p style="text-indent: 60px;"> - sends messages to multiple subscribers </p>
+  <p style="text-indent: 60px;"> <u>- messages are short-lived, if the subscriber service is not available the message will be lost!</u> </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Simple Queue Service (SQS)</mark> -> fully managed queuing service </p>
+  <p style="text-indent: 60px;"> - queuing service that supports up to 256 Kb data payload, <u>if the receiving service is not available the data is preserved in the queue for 14 days</u> (great way to decouple services) </p>
+  <p style="text-indent: 60px;"> There are 2 queue types: </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">Standard Queue</mark> -> does not guarantee message order </p>
+  <p style="text-indent: 90px;"> - <mark class="mark">FIFO Queue</mark> -> guarantees the message order </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Step Functions</mark> -> serverless function orchestrator </p>
+  <p style="text-indent: 60px;"> - can coordinate multiple AWS services into serverless workflows </p>
+  <h4 class="header"> Management and Governance Services: </h4>
+  <p style="text-indent: 30px;"> <mark class="mark">CloudTrail</mark> -> tracks user activity </p>
+  <p style="text-indent: 60px;"> - track user activity API usage and infrastructure changes </p>
+  <p style="text-indent: 60px;"> - continuously monitors account activity and logs into an S3 bucket or CloudWatch logs </p>
+  <p style="text-indent: 30px;"> <mark class="mark">CloudFormation</mark> -> provisioning infrastructure based on templates (without additional cost) </p>
+  <p style="text-indent: 60px;"> - creates, updates or deletes AWS resources (automates infrastructure deployment -> infrastructure as a code approach) </p>
+  <p style="text-indent: 60px;"> - supports JSON or YAML </p>
+  <p style="text-indent: 30px;"> <mark class="mark">CloudWatch</mark> -> monitors and manages AWS resources </p>
+  <p style="text-indent: 60px;"> - collects logs, metrics and events, we can set alarms based on predefined settings </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Config</mark> -> tracks AWS resource configurations  </p>
+  <p style="text-indent: 60px;"> - continuously monitors and records AWS resource configuration changes (provides a config history) </p>
+  <p style="text-indent: 30px;"> <mark class="mark">SystemsManager</mark> -> grouped operation over an infrastructure </p>
+  <p style="text-indent: 60px;"> - provides tools to manage a grouped infrastructure (like task automation) </p>
+  <p style="text-indent: 60px;"> - has a parameter store where parameter purpose data can be stored </p>
+  <p style="text-indent: 30px;"> <mark class="mark">ControlTower</mark> -> centralizes multiple AWS account management </p>
+  <p style="text-indent: 60px;"> - gives a high-level overview of multiple AWS accounts </p>
+  <p style="text-indent: 30px;"> <mark class="mark">OpsWorks</mark> -> configuration management service </p>
+  <p style="text-indent: 60px;"> - provides individual configurations to services in the stack </p>
+  <p style="text-indent: 60px;"> - configuration is defined as code, supports Chef and Puppet </p>
+  <p style="text-indent: 30px;"> <mark class="mark">AWS Organizations</mark> -> AWS organization management </p>
+  <p style="text-indent: 60px;"> - allows organizations to manage multiple accounts under a single account</p>
+    <h4 class="header"> Security Services: </h4>
+  <p style="text-indent: 30px;"> <mark class="mark">Secrets Manager</mark> -> centralized service where secrets are stored and managed </p>
+  <p style="text-indent: 60px;"> - offers advanced secret storage features like auto-rotation etc... </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Artifact</mark> -> AWS security and compliance reports </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Well-Architected Tool</mark> -> review and improve your architectures with AWS best practices </p>
+  <p style="text-indent: 60px;"> - we enter our architecture parameters then AWS suggests best practices for implementation </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Cognito</mark> -> identity and access management for applications </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Guard Duty</mark> -> intelligent thread detection </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Shield</mark> -> protects against DDoS (Distributed Denial of Service) attacks </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Macie</mark> -> intelligent thread detection that uses Machine Learning </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Inspector</mark> -> Automated vulnerability detector that continuously evaluates resources </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Security Hub</mark> -> security overview across AWS accounts </p>
+  <p style="text-indent: 30px;"> <mark class="mark">CloudHSM (Hardware Security Module)</mark> -> a cloud-based physical security solution (to generate cryptographic keys, etc...) </p>
+    <h4 class="header"> Data Integration Services: </h4>
+  <p style="text-indent: 30px;"> <mark class="mark">Storage Gateway</mark> -> storage in the cloud solution </p>
+  <p style="text-indent: 30px;"> <mark class="mark">DataSync</mark> -> moving data in the cloud solution </p>
+    <h4 class="header"> Data Processing Services: </h4>
+  <p style="text-indent: 30px;"> <mark class="mark">Glue</mark> -> serverless extract, transform, load (ETL) services </p>
+  <p style="text-indent: 60px;"> - greatly integrates with AWS storage services (RDS, S3, Redshift, DynamoDB) </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Elastic Map Reduce (EMR)</mark> -> big data analysis </p>
+  <p style="text-indent: 60px;"> - integrates big data workloads such as Presto, Hive, etc... </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Data Pipeline</mark> -> data workflow orchestrator</p>
+  <p style="text-indent: 60px;"> - suports RDS, S3, Redshift and DynamoDB </p>
+    <h4 class="header"> Data Analysis Services: </h4>
+  <p style="text-indent: 30px;"> <mark class="mark">Athena</mark> -> interactive query service </p>
+  <p style="text-indent: 60px;"> - uses SQL queries to data query </p>
+  <p style="text-indent: 30px;"> <mark class="mark">QuickSight</mark> -> business intelligence service </p>
+  <p style="text-indent: 60px;"> - dynamic data dashboard for data stored in AWS </p>
+  <p style="text-indent: 30px;"> <mark class="mark">CloudSearch</mark> -> managed search service </p>
+  <p style="text-indent: 60px;"> - search solutions in the cloud </p>
+    <h4 class="header"> AI and Machine Learning: </h4>
+  <p style="text-indent: 30px;"> <mark class="mark">Rekognition</mark> -> Computer Vision service powered by Machine Learning </p>
+  <p style="text-indent: 60px;"> - recognizes things on image and video </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Translate</mark> -> language-to-language translation service </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Transcribe</mark> -> speach to text solution powered by Machine Learning </p>
+    <h4 class="header"> Pre-Defined Solutions: </h4>
+  <p style="text-indent: 30px;"> <mark class="mark">Service Catalog</mark> -> set of services that can be deployed </p>
+  <p style="text-indent: 30px;"> <mark class="mark">Marketplace</mark> -> 3rd party catalogs in AWS </p>
+    <h4 class="header"> Dev-Tools: </h4>
+  <p style="text-indent: 30px;"> <mark class="mark">CodeCommit</mark> -> managed source control service (uses Git) </p>
+  <p style="text-indent: 30px;"> <mark class="mark">CodeBuild</mark> -> fully managed continuous build and integration service </p>
+  <p style="text-indent: 30px;"> <mark class="mark">CodeDeploy</mark> -> fully managed deployment service to deploy custom applications </p>
+  <p style="text-indent: 30px;"> <mark class="mark">CodePipeline</mark> -> fully managed deployment service (higher level abstraction over other deployment tools) </p>
+  <p style="text-indent: 30px;"> <mark class="mark">CodeStar</mark> -> automation tool for other dev services </p>
+  
+  
+  <br><br>
+</body>
+
+</html>
