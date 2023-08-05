@@ -1,0 +1,1 @@
+2023/07/21 07:42:04 [error] 52885#0: *1 directory index of "/Users/apall/Documents/Personal/my_knowledge_code_base/My Site/NGINX/TEST/" is forbidden, client: 127.0.0.1, server: , request: "GET /test/ HTTP/1.1", host: "localhost:3000", referrer: "http://localhost:3000/test"

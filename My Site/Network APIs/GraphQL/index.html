@@ -15,7 +15,7 @@
   <h1> GraphQL </h1>
   <p> Updated ( 2023-06-14 )</p>
   <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
-    <a href="../index.html">HTTP & REST Api></a> GraphQL
+    <a href="../index.html">Network APIs></a> GraphQL
   </p>
   <details class="example" id="notes">
     <summary> Notes & Tips :</summary>
@@ -40,6 +40,7 @@
   <p> - it uses its own SDL (Schema Definition Language) to request the server, the response is a JSON object having a top level <mark class='mark'>data</mark> or <mark class='mark'>errors</mark> fields containing the response data or eventual errors </p>
   <p> - unlike REST servers GraphQL servers expose their resources on a single endpoint (usually <mark class='mark'>/graphql</mark>), the response JSON has the same shape as the request shema </p>
   <p> - the infamous GrapQL graph is a JSON-like object (schema), the server exposes its resources on the graph fields </p>
+  <p> - GraphQL performs <u>type validation on requests</u> (responds with an error if any wrong type is passed in the query SDL) </p>
   <p> - the client requests resources by specifying the fileds on this graph <u>(we cannot request for a whole object on the schema, instead we have to describe what fields we want on that object)</u> </p>
   <p> - There are 3 query types that the server accepts: </p>
   <p style='text-indent:30px;'> - <mark>Query</mark> -> getting data from the server (like GET) </p>
@@ -1444,7 +1445,6 @@
 <hr>
 <!---------------------------------------------------------------->
 <h2 class="header"> Types </h2>
-  <p> - GraphQL performs type validation on requests automatically (this is a big plus) </p>
   <p> - GraplQL is language agnostinc so it uses its own types not the types of the underlying programming language </p>
   <pre class='syntax'>
 <span style='color:darkgray;'>// GraphQL types </span>
