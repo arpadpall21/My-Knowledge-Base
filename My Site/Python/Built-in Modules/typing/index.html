@@ -77,17 +77,19 @@
   <pre class="syntax">
     <strong>type</strong>                                                                                // any builtin type (ex: <mark>str</mark>, <mark>int</mark>, etc...)
     
-    dict[<strong>pyType</strong>, <strong>pyType</strong>]                                                                // annotation for collection types   
+    
+    dict[<strong>pyType</strong>, <strong>pyType</strong>]                                                                // <span style="color:yellow">(v3.9+)</span> annotation for collection types   
     list[<strong>pyType</strong>]
     set[<strong>pyType</strong>]
     frozenset[<strong>pyType</strong>]
     tuple[<strong>pyType</strong><i>, pyType, ...</i>]
     
-    Dict[<strong>pyType</strong>, <strong>pyType</strong>]                                                                // the <mark>type</mark> module provides type aliases for the above annotation but also <a href="https://docs.python.org/3/library/typing.html?highlight=typing#typing.Concatenate" target="_blank">many more...</a>
+    Dict[<strong>pyType</strong>, <strong>pyType</strong>]                                                                // <span style="color:yellow">(v3.8 or below)</span> the <mark>typing</mark> module provides type aliases for the above annotation but also <a href="https://docs.python.org/3/library/typing.html?highlight=typing#typing.Concatenate" target="_blank">many more...</a>
     List[<strong>pyType</strong>]
     Set[<strong>pyType</strong>]
     FrozenSet[<strong>pyType</strong>]
     Tuple[<strong>pyType</strong><i>, pyType, ...</i>]
+    
     
     LiteralString                                                                       // literal string (ex: does not accept 'F' string <mark>f'{var}'</mark>)   
     TypedDict                                                                           // type dictionary, describes a dictionary structure and types <span class="openable">implemeted as class<div>

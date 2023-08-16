@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> FastAPI </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../Assets/stylesPages.css">
+  <script src="../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> FastAPI (v0.101.0)</h1>
+  <p> Updated: 2023-08-05 </p>
+    <p class="sitenav"> <a href="../index.html">MySite></a> FastAPI </p>
+
+
+  <p class="subSite"><a href=""> SubSite > </a></p>
+
+
+  <table class="table">
+    <caption>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Method / Property / statement ect... </th>
+      <th> Description </th>
+    </tr>
+    <tr class="0">
+      <td>
+        demo prop
+      </td>
+      <td>
+        - demo description
+        <span class="browserSupport" title="updated : yyyy-mm-dd">
+          <span><i class="fab fa-chrome"></i> 0/0 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> </span>
+          <span><i class="fab fa-opera"></i> </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> </span>
+          <span><i class="fab fa-safari"></i> </span>
+          <span><i class="fab fa-node-js"></i> </span>
+        </span>
+      </td>
+    </tr>
+
+
+
+
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+    <p><a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI (fastapi.tiangolo.com)</a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+
+
+
+
+
+  <!--
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+stage 1: high level overview 
+    - read through 
+    - create notes 
+    - deciede what exactly will you document down 
+    
+stage 2:  low level overview
+    - deeper understanding of all what you've taken down in stage 1
+    
+stage 3 : 
+    - organize and document down everything 
+    
+    
+    
+    - FastAPI is a web framework for building APIs in Python, based on standard Python type hints
+    - FastAPI is stands on the shoulders of giants <mark>Starlette</mark> (web part) and <mark>Pydantic</mark> (data parts)
+    
+    
+    - fastapi is based on json traffic
+    - fast to implement an api
+    - fast becasue supports async (based on an ASGI server) (therefore runs on top of an ASGI server -> used <mark>uvicorn[standard]</mark> here)
+    - does type validation
+    - does awesome Auto documentation which is mindblowing good! (reachable as <mark>/docs</mark> <-Swagger documentation or <mark>/redoc</mark> <- ReDoc documentation) (both these allow to interact with the backend server) (<mark>schemal.json</mark> <- prints the raw openapi json schema (basically both Swagger and ReDoc documentation is built on top of openApi standards))
+    - requires Python v3.7 (or higher)
+    
+    
+    - pip install 'uvicorn[standard]'
+    - pip install fastapi
+    (interestingly I had to restart my terminal in order for fastapi to be recognized)
+    
+    - uvicorn start command
+        - uvicorn <strong>serverFileName</strong>:app <i>flags</i>
+            - starts the uvicorn server
+            (--help) prints help
+            (--reload) automatically restarts the server when the server file changes
+            (--host <strong>hostname:str</strong>) server listens on <strong>hostname</strong> (Default: <mark>localhost</mark>)
+            (--port <strong>port:int</strong>) server listens on <strong>port</strong> (Default: <mark>8000</mark>) (<mark>0</mark> -> gets an available port)
+            (--uds <strong>domainSocket</strong>) server listens on <strong>domainSocket</strong> (creates the socket if not exist)
+    
+    
+    - pydantic is used mainly for request body validation (link https://docs.pydantic.dev/latest/api/fields/)
+      - pydantic also provides it own types for a more fine grained type validation
+      (link: https://fastapi.tiangolo.com/tutorial/extra-data-types/)
+      - we should mention supported types 
+    
+    
+    - query parameter and path parameter validations with Query(), Path(), Field() (pydantic) are mostly work the same way
+    
+    
+    - the return type is automatically documented by fastAPI when `response_model` in the @app.<httpMethod>(path:str, response_model=PydanticModel) for response type validation (this is useful for the auto documentation)
+        - response_model=None <- to disable response model generation
+        - we also can use return type annotation (python type annotation) (if both present the 'response_model takes the precedence')
+    
+    
+    
+    - install python-multipart in order to accept form type body (or receiving files) (demo this one a well!)
+    - the UploadFile type has the follwoing methods 
+        - filename / content_type / file (this return a file-like object in python)
+        - the followings are async methods 
+            - write(data:str|bytes)
+            - read(size:int)
+            - seek(offset:int)
+            - close()
+    
+    
+    jsonable_encoder(pydanticModel|dict)    -> transforms the passed data into valid json
+    
+    
+    - dependency injection https://fastapi.tiangolo.com/tutorial/dependencies/
+    - cors implementation https://fastapi.tiangolo.com/tutorial/cors/
+    
+    
+    - a middleware will run for each path operations (we can run a logic before and after each path operations)
+    
+    
+    - background tasks
+        - FastAPI supports background tasks (running some task in the background, however this is not designed to heavy loads, the idea is to same time (like eamil sending or log writing tasks happening in the background without blocking the response to the user))
+    
+    
+    - we can specify metadata in FastAPI(https://fastapi.tiangolo.com/tutorial/metadata/)
+        - this will be visible in api docs (OpenAPI documentation)
+    
+    
+    
+    - in order to be able to test fist isntall httpx
+        run the file with pytest (as normal)
+    
+    
+    - remember that if stuff is not passed as argument OpenAPI won't document it!
+        - if we don't provide data validation in our function the default return type is application/json
+    
+    
+    - the Response class is the parent class of all responses (accept content, status_code, headers, media_type)
+        - Response    (from fastapi.responses imort <ResponseClass>)
+            - JSONResponse
+            - HTMLResponse
+            - PlainTextResponse
+            - RedirectResponse    (default response code: 307 Temporary Redirect)
+            - StreamingResponse     (for continous stream, takes an async or normal generator to stream the response)
+    
+    
+    
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+?????????????????????????????????????????????????????????????????????????????????????????????
+WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
+?????????????????????????????????????????????????????????????????????????????????????????????
+    - do we have path beginning methods like in express (use)
+
+    - how the fuck we can use optional url parameters???
+    
+    - is there a difference between async and non async calls?
+        - apparently there's no difference (the async version is mostly used where we want to use some kind of 3rd party tools supporting async)
+
+
+
+
+
+-->
+
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+
+
+  <h2 class="headerExtra"><u> Title 1 </u></h2>
+  <h2 class="header"> Title 1.1 </h2>
+  <h3 class="header"> Title 1.1.1 </h3>
+  <h4 class="header"> Title 1.1.1.1 </h4>
+  <p> - stuff to learn <mark>syntax or command (or some tchnical stuff)</mark> bla bla bla </p>
+  <p> - stuff to learn <mark class="mark">highlights like file names and other things</mark> bla bla bla </p>
+  <p style="text-decoration:underline;"> - important information is underlined </p>
+  <p style="color:yellow;"> - very important information is written with yellow colors </p>
+  <p style="background-color:yellow;"> - highly important information has yellow background color </p>
+  <div style="background-color:red;">
+    <p> - red background block means not learned or not tested information! </p>
+    <p> - </p>
+  </div>
+
+  <pre class="syntax">
+SYNTAX :    main syntax
+            <em>literally used </em>
+            <small>literally used optional </small>
+            <prot style="color:#049500;">prototype chain</prot>
+            <strong>required value </strong>
+            <i>optional value </i>
+                - some descriptions will come here (like arguments)
+                - ??? (3 question marks) in syntax means not tested or not learned yet
+                
+            <span class="openable"> this is an openable element<div>
+                <p> - openable elements listed here in paragraphs </p>
+                <p> - </p>
+            </div></span>
+    </pre>
+
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <pre>
+    examples of the current lessons 
+    
+// -----------------------------------------
+
+// -----------------------------------------
+    </pre>
+  </details>
+
+  <pre class="cmd">
+    command line demo 
+    </pre>
+  <pre class="formula">
+    formula code (like conversion meter...)
+    </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> example title </u></h4>
+    <p> - live tests will come here </p>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    copy of the exaple code 
+        </pre>
+    </details>
+  </details>
+  <!---------------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+
+  <h2 class="test" style=""><a href="TEST/index.html"> TEST > </a></h2>
+
+
+  <br><br>
+</body>
+
+</html>

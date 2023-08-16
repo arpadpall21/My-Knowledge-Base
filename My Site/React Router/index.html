@@ -134,7 +134,7 @@
         path='<strong>route</strong>'                       // routes are nested (this element is rendered on the <mark><strong>/baseRoute/route</strong></mark>)    
         index                              // default parent (component rendered on the parent route)  
         element={<strong>reactComponent</strong>}           // the react component to be rendered on this path
-        errorElement={<strong>reactComponent</strong>}      // component rendered an error is bubbled up from a loader or an action function 
+        errorElement={<strong>reactComponent</strong>}      // component rendered if an error is bubbled up from a loader or an action function 
         caseSensitive                      // canse sensitive route matching 
         loader={<strong>promise</strong>}                   // an async function preloads data before the component is rendered (the idea is to start the component render and fetching some data in parallel)
         action={<strong>promise</strong>}                   // an async function triggered when a <mark>&lt;Form&gt;</mark> submit triggeres
