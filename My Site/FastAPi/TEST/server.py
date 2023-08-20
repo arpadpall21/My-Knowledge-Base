@@ -1,14 +1,31 @@
+
 #################################################################
 # simplest server
 #################################################################
-# from fastapi import FastAPI
+from typing import Annotated
 
-# app = FastAPI()
+from fastapi import FastAPI, Cookie, Query, Body
+from pydantic import BaseModel
 
 
-# @app.get('/')
-# def read_root():
-#     return "Hello World!"
+app = FastAPI()
+
+
+class Test(BaseModel):
+    body: str
+
+@app.get('/')
+def read_root():
+    return "Hello World!"
+
+
+@app.post('/post/{id}')
+def get_post(body: Annotated[str, Body()], body2: Annotated[str, Body()]):
+    print(id)
+    print(body)
+    # print(body)
+    return 'OK'
+
 
 
 #################################################################
@@ -138,9 +155,10 @@
 # async def get_items(limit: int, skip: int = 0):     # query parameter <mark>limit</mark> is required (has no default value), <mark>skip</mark> is optional (has default value)
 #     return items[skip:limit]
 
-# URL 
+
+# # URL 
 # # http://localhost:3000/items?skip=1&limit=6 
-# response
+# # response
 # # ["two", "three", "four", "five", "six,]
 
 
@@ -310,29 +328,6 @@
 
 
 #################################################################
-# pydantic field validation
-#################################################################
-# from fastapi import FastAPI
-# from pydantic import BaseModel, Field, HttpUrl
-
-
-# app = FastAPI()
-
-
-# class Job(BaseModel):
-#     title: str = Field(title='Job title', default=None, maxlength=90)       # field validation
-#     payrange: float = Field(description='payrange', gt=1500, le=3500)
-#     tax: float | None = None          # optional field
-#     url: HttpUrl
-
-
-# @app.post('/')
-# def post_root(job: Job):
-#     return job
-
-
-
-#################################################################
 # request body as Array
 #################################################################
 # from fastapi import FastAPI
@@ -491,45 +486,6 @@
 # @app.get('/person', response_model=Person, response_model_include={'name', 'surname', 'age'})
 # def get_person():
 #     return Person(name='Arpad', surname='Pall', age=38)
-
-
-
-#################################################################
-# pydantic model to dict / dict to pydantic model
-#################################################################
-# from pydantic import BaseModel
-
-
-# class Person(BaseModel):
-#     name: str
-#     age: int
-#     alive: bool = True
-
-# # pydantic model
-# person_pydantic_model = Person(name='Arpad', age=38)
-# print(type(person_pydantic_model))      # -> <class '__main__.Person'>      # pydantic model
-
-# # pydantic model to dict
-# person_dict = person_pydantic_model.dict()
-# print(person_dict)                  # -> {'name': 'Arpad', 'age': 38, 'alive': True} 
-
-# # pydantic model to dict excluding default values
-# person_dict = person_pydantic_model.dict(exclude_unset=True)        # unset values are excluded in the returned dictionary
-# print(person_dict)                  # -> {'name': 'Arpad', 'age': 38} 
-
-# # dict to pydantic model
-# person = {'name': 'Arpad', 'age': 38, 'alive': True}
-# person_pydantic_model = Person(**person)
-# print(person_pydantic_model)        # -> Person(name='Arpad' age=38 alive=True)
-
-# # pydantic model copy
-# new_person_pydantic_model = person_pydantic_model.copy()    # creates a pydantic model copy
-# print(new_person_pydantic_model)    # -> Person(name='Arpad' age=38 alive=True)
-
-# new_person_pydantic_model_2 = person_pydantic_model.copy(update={'age': 23})    # update data while copy
-# print(new_person_pydantic_model_2)  # -> Person(name='Arpad' age=23 alive=True)
-
-
 
 
 
@@ -938,6 +894,69 @@
 
 
 #################################################################
+# testing websockets (run tests with pytest)
+#################################################################
+# from fastapi import FastAPI
+# from fastapi.testclient import TestClient
+# from fastapi.websockets import WebSocket
+
+# app = FastAPI()
+
+
+# @app.websocket("/ws")
+# async def websocket(websocket: WebSocket):
+#     await websocket.accept()
+#     await websocket.send_json({"msg": "Hello WebSocket"})
+#     await websocket.close()
+
+
+# def test_websocket():
+#     client = TestClient(app)
+#     with client.websocket_connect("/ws") as websocket:
+#         data = websocket.receive_json()
+#         assert data == {"msg": "Hello WebSocket"}
+
+
+
+#################################################################
+# async testing (this required to install trio lib)
+#################################################################
+# import asyncio
+# from fastapi import FastAPI
+
+
+# app = FastAPI()
+
+
+# async def fake_db_call():
+#     await asyncio.sleep(20)        # simulating latency
+#     return 'some db data'
+
+
+# @app.get('/')
+# async def root():
+#     data = await fake_db_call()
+#     return data
+
+
+# test file *****************
+# import pytest
+# from httpx import AsyncClient
+
+# from server import app      # importing FastAPI app
+
+
+# @pytest.mark.anyio
+# async def test_api_db_call():
+#     async with AsyncClient(app=app, base_url="http://test") as client:
+#         response = await client.get('/')
+    
+#     assert response.status_code == 200
+#     assert response.json() == 'some db data'
+
+
+
+#################################################################
 # returning Response (this is not documented by OpenAPI) (this can be documented along with JSONResponse)
 #################################################################
 # from fastapi import FastAPI, Response
@@ -1026,3 +1045,341 @@
 #################################################################
 # StreamingResponse
 #################################################################
+# from fastapi import FastAPI
+# from fastapi.responses import StreamingResponse
+
+
+# app = FastAPI()
+
+
+# async def generate_some_fake_stream():
+#     for i in range(20):
+#         yield b'some fake stream bytes'
+
+
+# @app.get('/stream')
+# async def get_stream():
+#     return StreamingResponse(generate_some_fake_stream())
+
+
+
+#################################################################
+# FileResponse
+#################################################################
+# from pathlib import Path
+
+# from fastapi import FastAPI
+# from fastapi.responses import FileResponse
+
+
+# file_path = Path() / 'Jordan Video.mp4'
+# app = FastAPI()
+
+
+# @app.get('/jordan_video', response_class=FileResponse)
+# def get_jordan_video():
+#     return file_path
+
+
+# # or we can do
+# @app.get('/jordan_video_2')
+# def get_jordan_video_2():
+#     return FileResponse(file_path)
+
+
+
+#################################################################
+# documenting response codes 
+#################################################################
+# from fastapi import FastAPI, status
+# from fastapi.responses import JSONResponse
+# from pydantic import BaseModel
+
+# app = FastAPI()
+
+
+# class Item(BaseModel):
+#     name: str
+#     price: float
+
+
+# class Message404(BaseModel):
+#     message: str
+
+
+# items = [Item(name='potato', price=2.99).dict(), Item(name='tomato', price=2.49).dict()]
+
+
+# @app.get('/item/{item_name}', response_model=Item, responses={404: {'model': Message404}})    # documentation (OpenAPI) will know about the 404 return code as well
+# def get_item(item_name: str):
+#     item = next(filter(lambda item: item['name'] == item_name, items), None)
+#     return (JSONResponse(status_code=status.HTTP_200_OK, content=item)
+#             if item
+#             else JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content=Message404(message='Item not found').dict()))
+
+
+
+#################################################################
+# documenting response media type
+#################################################################
+# from fastapi import FastAPI
+# from fastapi.responses import PlainTextResponse
+# from pydantic import BaseModel
+
+
+# app = FastAPI()
+
+
+# class Test(BaseModel):
+#     test: str
+
+
+# @app.get(
+#     '/some_content',
+#     responses={
+#         201: {'description': 'Created new item'},          # passing description to different response codes
+#         404: {'description': 'Stuff not found!'},
+#     },
+#     response_class=PlainTextResponse            # documentation (OpenAPI) will know about the response media type
+# )
+# def get_item():
+#     return 'Some response'
+
+
+
+#################################################################
+# sending cookies
+#################################################################
+# from fastapi import FastAPI
+# from fastapi.responses import PlainTextResponse, HTMLResponse
+# from pydantic import BaseModel
+
+
+# app = FastAPI()
+
+
+# class Test(BaseModel):
+#     test: str
+
+
+# @app.get('/test', response_class=PlainTextResponse)
+# def get_item():
+#     response = PlainTextResponse(content='Some response')
+#     response.set_cookie(key='cookie_key_1', value='cookie_value_1')     # 2 set-cookie headers will be included in the response
+#     response.set_cookie(key='cookie_key_2', value='cookie_value_2')
+#     return response
+
+
+# @app.get('/test2', response_class=HTMLResponse)
+# def get_item():
+#     response = HTMLResponse(content = """
+#     <body>
+#     <form action="/files/" enctype="multipart/form-data" method="post">
+#     <input name="files" type="file" multiple>
+#     <input type="submit">
+#     </form>
+#     <form action="/uploadfiles/" enctype="multipart/form-data" method="post">
+#     <input name="files" type="file" multiple>
+#     <input type="submit">
+#     </form>
+#     </body>
+#         """)
+#     response.set_cookie(key='cookie_key_3', value='cookie_value_3')     # works in any response class
+#     response.set_cookie(key='cookie_key_4', value='cookie_value_4')
+#     return response
+
+
+
+#################################################################
+# accessing the request (https://www.starlette.io/requests)
+#################################################################
+# from fastapi import FastAPI, Request
+
+
+# app = FastAPI()
+
+
+# @app.get('/test')
+# def get_item(request: Request):
+#     print(request.method)       # // -> 'GET'
+#     print(request.url.path)     # // -> '/test'
+#     print(request.url.port)     # // -> 3000
+#     print(request.url.scheme)   # // -> 'http'
+
+
+
+#################################################################
+# using templates (Jinja2)
+#################################################################
+# from fastapi import FastAPI, Request
+# from fastapi.responses import HTMLResponse
+# from fastapi.templating import Jinja2Templates
+
+
+# app = FastAPI()
+# templates = Jinja2Templates(directory='.')
+# template_data = {
+#     'id': 2,
+#     'name': 'Arpad',
+#     'age': 38,
+#     'work': 'software engeneer',
+# }
+
+
+# @app.get('/test', response_class=HTMLResponse)
+# def get_test_template(request: Request):
+#     return templates.TemplateResponse('test.html', {'request': request, **template_data})
+
+
+
+#################################################################
+# GraphQL (ariadne)
+#################################################################
+# from fastapi import FastAPI
+# from ariadne import QueryType, make_executable_schema
+# from ariadne.asgi import GraphQL
+
+
+# type_defs = """
+#     type Query {
+#         name: String
+#         age: Int
+#     }
+# """
+
+# query = QueryType()
+
+
+# @query.field('name')
+# def resolve_name(*_):
+#     return 'Arpad'
+
+
+# @query.field('age')
+# def resolve_age(*_):
+#     return 38
+
+
+# schema = make_executable_schema(type_defs, query)
+# app = FastAPI()
+
+
+# app.mount("/graphql", GraphQL(schema, debug=True))
+
+
+
+#################################################################
+# websocket
+#################################################################
+# from fastapi import FastAPI, WebSocket
+# from fastapi.responses import HTMLResponse
+
+# app = FastAPI()
+
+# html = """
+# <!DOCTYPE html>
+# <html>
+#     <head>
+#         <title>Chat</title>
+#     </head>
+#     <body>
+#         <h1>WebSocket Chat</h1>
+#         <form action="" onsubmit="sendMessage(event)">
+#             <input type="text" id="messageText" autocomplete="off"/>
+#             <button>Send</button>
+#         </form>
+#         <ul id='messages'>
+#         </ul>
+#         <script>
+#             const ws = new WebSocket("ws://localhost:3000/ws");
+            
+#             ws.onmessage = function(event) {
+#                 console.log(event.data)
+#             };
+            
+#             function sendMessage(event) {
+#                 const input = document.getElementById("messageText")
+#                 ws.send(input.value)
+#                 event.preventDefault()
+#             }
+#         </script>
+#     </body>
+# </html>
+# """
+
+
+# @app.get('/', response_class=HTMLResponse)
+# async def get():
+#     return HTMLResponse(html)
+
+
+# @app.websocket("/ws")
+# async def websocket_endpoint(websocket: WebSocket):
+#     await websocket.accept()
+#     while True:
+#         data = await websocket.receive_text()       # will block until message received on the socket
+#         await websocket.send_text(f"Message text was: {data}")
+#     await websocket.close()
+
+
+# some stuff to document:
+    # await websocket.send_json({"msg": "Hello WebSocket"})
+
+
+
+#################################################################
+# running setup and teardown logic bebore/after the app starts/stops
+#################################################################
+# from asyncio import sleep
+# from contextlib import asynccontextmanager
+
+# from fastapi import FastAPI
+
+
+# @asynccontextmanager
+# async def app_setup_teardown(app: FastAPI):
+#     # doing some setup before the app start...
+#     await sleep(4)      # simulating expensive setup
+    
+#     yield
+    
+#     # doing some teardown after the app stop...
+#     print('teardown logic done.')
+
+
+# app = FastAPI(lifespan=app_setup_teardown)
+
+
+# @app.get('/test')
+# def get_test():
+#     return {'Hello': 'World'}
+
+
+
+#################################################################
+# running setup and teardown logic bebore/after the app starts/stops (the other way)
+#################################################################
+# from asyncio import sleep
+# from contextlib import asynccontextmanager
+
+# from fastapi import FastAPI
+
+
+# app = FastAPI()
+
+
+# @app.on_event("startup")
+# async def startup_event():
+#     # doing some setup before the app start...
+#     await sleep(4)      # simulating expensive setup
+
+
+# @app.on_event("shutdown")
+# async def shutdown_event():
+#     # doing some teardown after the app stop...
+#     print('teardown logic done.')
+
+
+# @app.get('/test')
+# def get_test():
+#     return {'Hello': 'World'}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Pydantic </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Pydantic </h1>
+  <p style="background-color: yellow;"> This is not a full documentation, I only learned the basic parts that needed
+    to use FastAPI (2023-08-19) </p>
+  <p> Updated ( 2023-08-19 )</p>
+  <p class="sitenav"> <a href="../../../index.html">MySite></a>
+    <a href="../../index.html">Python></a> Pydantic
+  </p>
+
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://docs.pydantic.dev/latest/" target="_blank">Pydantic (docs.pydantic.dev) </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - <mark>pydantic</mark> is a widely used data validation tool (it's awesome for server data validation, see
+    FastAPI) (run <mark>pip install pydantic</mark> to install) </p>
+  <p> - pydantic uses normal python type annotations syntax supporting all Python types (including types in
+    <mark>typing</mark> lib), but it has its own types for a more fine grained type validation like (ex:
+    <mark>PositiveInt</mark> etc...) <a href="https://docs.pydantic.dev/1.10/usage/types/#pydantic-types"
+      target="_blank">[pydantic types]</a>
+  </p>
+  <pre class="syntax">
+    from pydantic import BaseModel, Field, <strong class="openable">pydanticType<div>
+        <p> - pydantic type for a more fine grained type validation <a href="https://docs.pydantic.dev/1.10/usage/types/#pydantic-types" target="_blank">[pydantic types]</a> </p>
+    </div></strong>
+    
+    
+    class <strong>PydanticModel</strong>(BaseModel):                    // <strong>PydanticModel</strong> is used by tools (like FastAPI) to validate the data flowing through
+        <strong>field</strong>: <strong>type|pydanticType</strong> <small>[= <i>def:val</i>]</small>           // defining field/value (if the default value is omitted the field is required)
+        <strong>field</strong>: <strong>PydanticModel</strong>                           // field value can be <strong>PydanticModel</strong> to build further graph
+        <strong>field</strong>: <strong>type</strong> = Field(<a href="https://docs.pydantic.dev/latest/usage/fields/#numeric-constraints" target="_blank">args</a>)                      // fine grained field validation (like text length, value upper/lower limit, etc...)
+        <i>...</i>
+    
+    
+    <strong>pydanticInstance</strong> = <strong>PydanticModel</strong>(<strong>field</strong>=<strong>val</strong><i>, ...</i>)   // creates a <strong>pydanticInstance</strong> 
+    <strong>pydanticInstance</strong> = <strong>PydanticModel</strong>(**<strong>dict</strong>)           // a predefined dictionary can be spread as well
+                                                       // data validation is performed on instance creation (if incorrect fields and or values are passed a <mark>ValidationError</mark> is raised)
+    
+    
+    <strong>pydanticInstance</strong>.dict(<small class="openable">exclude_unset=True<div>
+        <p> - fileds having <mark>None</mark> value won't be reflected in the returned <strong>dict</strong></p>
+    </div></small>)         // returns a <strong>dict</strong> of the pydantic instance data 
+    <strong>pydanticInstance</strong>.copy(<small class="openable">update=<i>dict</i><div>
+        <p> - updates the new copy with the passed key/value pairs <u>there's no validation here, we can modify existing or create new key/value pairs </u></p>
+    </div></small>)                // creates and returns a new instance copy (different object)
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+  <h4 class="header"> Basics </h4>
+  <pre>
+    from pydantic import BaseModel
+    
+    
+    class Address(BaseModel):
+        city: str
+        street: str
+        number: int
+    
+    
+    class Person(BaseModel):
+        name: str
+        age: int = None             # optional fields (have default values)
+        address: Address = None
+    
+    
+// pydantic instance --------------------------------------
+    person = Person(name='Arpad', age=38)     // -> Person(name='Arpad' age=38 address=None)      # pydantic instance
+    
+    person_2_dict = {
+        'name': 'Arpad',
+        'age': 38,
+        'address': {
+            'city': 'Budapest',
+            'street': 'Kacsa',
+            'number': 5,
+        }
+    }
+    
+    person2 = Person(**person_2_dict)         // -> Person(name='Arpad' age=38 address=Address(city='Budapest', street='Kacsa', number=5))    # spreading dinctionary keys also works
+    
+    
+// pydantic instance to dict ------------------------------
+    person_2_d = person2.dict()               // -> {'name': 'Arpad', 'age': 38, 'address': {'city': 'Budapest', 'street': 'Kacsa', 'number': 5}}
+
+    person_1_d = person.dict(exclude_unset=True)    // -> {'name': 'Arpad', 'age': 38}     # fields having None value won't be reflected in the dictionary
+    
+    
+// copy pydantic instance ---------------------------------
+    person_copy = person.copy()              // -> Person(name='Arpad' age=38 address=None)     # creates a pydantic instance copy   
+    print(person is person_copy)             // -> False  # different objects
+    
+    person_copy_2 = person.copy(update={'new_key': 'new_val'})    // -> Person(name='Arpad' age=38 address=None, new_key='new_val')   // -! update the new copy on copy operation (this doesn't make any type validation)
+  </pre>
+  <h4 class="header"> Using pydantic types and field validation with <mark>Field()</mark> </h4>
+  <pre>
+    from pydantic import BaseModel, Field, HttpUrl, PositiveFloat, PositiveInt
+    
+    
+    class Job(BaseModel):
+        title: str = Field(title='Job title', default=None, min_length=5, maxlength=90)       # field validation
+        payrange: int | float = Field(description='payrange', gt=1500, le=3500)
+        tax: PositiveFloat | PositiveInt
+        url: HttpUrl
+    
+    
+    job = {
+        'title': 'software engineer',
+        'payrange': 2000,
+        'tax': 3.2,
+        'url': 'http://testhost.test/test',
+    }
+    
+    job_pydantic_instance = Job(**job)
+  </pre>
+  <h4 class="header"> Using pydantic model for type validation in FastAPI </h4>
+  <pre>
+    from fastapi import FastAPI
+    from pydantic import BaseModel
+    
+    
+    app = FastAPI()
+    fake_storage = []
+    
+    
+    class RequestBody(BaseModel):
+        id: int
+        name: str
+        location: str = None
+    
+    
+    class ResponseBody(BaseModel):
+        stored: bool
+    
+    
+    @app.post('/store', response_model=ResponseBody)
+    def post_store(request_body: RequestBody):
+        try:
+            fake_storage.append(request_body.dict())
+            return {'stored': True}
+        except Exception:
+            return {'stored': False}
+  </pre>
+  </details>
+<hr>
+<!------------------------------------------------------------------------------------->
+  <h2 class="headerExtra"> Environment Variable validation with pydantic </h2>
+  <p> - <mark>pydantic-settings</mark> can retrieve environment variables and perform type check on them (run <mark>pip install pydantic-settings</mark> to install it)</p>
+  <p> - works the same way as pydantic validation but for environment variables </p>
+  <pre class="syntax">
+    from pydantic_settings import BaseModel
+    
+    
+    class <strong>PydanticModel</strong>(BaseModel):
+        <strong>field</strong>: <strong>type</strong> <small>[= <i>def:val</i>]</small> 
+        <i>...</i>
+    
+    
+    <strong>pydanticInstance</strong> = <strong>PydanticModel</strong>()                 // extracts and type check environment variables specified in <strong>PydanticModel</strong> (raises a <mark>ValidationError</mark> on fail)
+                                                       // <strong>pydanticInstance</strong> holds extracted environment variables    
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+  <h4 class="header"> Basics </h4>
+  <pre>
+# # environment variables setup before program start -----------
+# export test_1='Hello World'
+# export test_3=1
+    
+    
+    from pydantic_settings import BaseSettings
+    
+    
+    class GetEnvs(BaseSettings):
+        test_1: str           # required 
+        test_2: int = 3       # optional
+        test_3: bool
+    
+    
+    envs = GetEnvs()                  // -> GetEnvs(test_1='x', test_2=3, test_3=True)
+    envs.dict()                       // -> {'test_1': 'Hello World', 'test_2': 3, 'test_3': True}
+  </pre>
+  </details>
+  
+  
+  <br><br>
+</body>
+
+</html>

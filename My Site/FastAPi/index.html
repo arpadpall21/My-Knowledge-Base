@@ -15,52 +15,98 @@
   <h1> FastAPI (v0.101.0)</h1>
   <p> Updated: 2023-08-05 </p>
     <p class="sitenav"> <a href="../index.html">MySite></a> FastAPI </p>
-
-
-  <p class="subSite"><a href=""> SubSite > </a></p>
-
-
   <table class="table">
     <caption>
+      Uvicorn
       <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
     </caption>
     <tr>
-      <th style="width:30%;"> Method / Property / statement ect... </th>
+      <th style="width:30%;"> CMD </th>
       <th> Description </th>
     </tr>
-    <tr class="0">
+    <tr class="05.01">
       <td>
-        demo prop
+        pip install 'uvicorn[standard]'
       </td>
       <td>
-        - demo description
-        <span class="browserSupport" title="updated : yyyy-mm-dd">
-          <span><i class="fab fa-chrome"></i> 0/0 -webkit- </span>
-          <span><i class="fab fa-firefox"></i> </span>
-          <span><i class="fab fa-opera"></i> </span>
-          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> </span>
-          <span><i class="fab fa-safari"></i> </span>
-          <span><i class="fab fa-node-js"></i> </span>
-        </span>
+        - install Uvicorn
       </td>
     </tr>
-
-
-
-
+    <tr class="10.01">
+      <td>
+        uvicorn <strong>pathToServerFile</strong>:<strong>fastApiApp</strong> <i>flags</i>
+      </td>
+      <td>
+        - starts the uvicorn server with the specified FastApi app <br>
+        <i>flags</i> <br>
+        (<small>--help</small>) prints help <br>
+        (<small>--reload</small>) automatically restarts the server when the server file changes <br>
+        (<small>--host <i>hostname:str</i></small>) server listens on <i>hostname</i> (Default: <mark>localhost</mark>) <br>
+        (<small>--port <i>port:int</i></small>) server listens on <strong>port</strong> (Default: <mark>8000</mark>) (<mark>0</mark> -> gets an available port) <br>
+        (<small>--uds <i>domainSocket</i></small>) server listens on <strong>domainSocket</strong> (creates the socket if not exist)
+      </td>
+    </tr>
   </table>
   <br>
-  <details class="example" id="notes">
+  <details class="example" id="notes" open>
     <summary> Notes & Tips :</summary>
-    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+    <p> - FastApi works really well with Uvicorn ASGI server, but other ASGI server frameworks can be used as well</p>
   </details>
   <h2 style="color:green;"><u> Useful Links : </u></h2>
     <p><a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI (fastapi.tiangolo.com)</a></p>
   <h2 style="color:green;"><u> Remember This : </u></h2>
-
+  <p> - we can use <mark>async def</mark> or simple <mark>def</mark> function to handle request, FastAPI handles them asynchronously (<mark>async def</mark> used to handle await calls) </p>
+  <p> - libraries not supporting async call can be passed in request handling functions, FastAPI handles them as well </p>
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - FastAPI is a web framework for building APIs, it can enforce type validation, FastAPI is built on top of <mark>Starlette</mark> (web part) and <mark>Pydantic</mark> (data parts) </p>
+  <p> - FastAPI run on top of an ASGI server (tested with Uvicorn), so it supports the async/event loop mechanism that makes it 'Fast' </p>
+  <p> - has a builtin auto API documentation mechanism supported by OpenAPI standards, reachable on:
+  <p style="text-indent:30px"> - <mark><strong>host</strong>/docs</mark> (Swagger style docs) </p>
+  <p style="text-indent:30px"> - <mark><strong>host</strong>/redoc</mark> (ReDoc style docs) </p>
+  <p style="text-indent:30px"> - <mark><strong>host</strong>/openapi.json</mark> (raw OpenAPI json schema) </p>
+  <pre class="syntax">
+    from typing import Annotated
+    
+    from fastapi import FastAPI, Query
+    
+    
+    <strong>app</strong> = FastAPI()
+    
+    
+    @<strong>app</strong>.<strong>httpMethod</strong>(<strong>fastApiRoute:str</strong>)
+    def <small class="openable">async<div>
+        <p> - FastAPI handles non async function just as async </p>
+        <p> - async function is mainly used when <mark>await</mark> logics are used in the function body </p>
+    </div></small> <strong>fn</strong>(<strong>param</strong><small>[: <i>type</i>=<i>defVal</i>]</small>,                                    // captures (and optionally validates) the value of route <strong>param</strong> if the argument name is the same as the route param name (ex: (<strong>fastApiRoute:str</strong> -> <mark>/get_id/{id}</mark> (arg name <mark>id</mark>))
+                  <strong>queryStringKey</strong><small>[: <i>type</i>=<i>defVal</i>]</small>,                           // captures (and optionally validates) the url query string key value if the argument name is the same as the query string key value in the url (ex: (url -> <mark>/hello?limit=5</mark>) (arg name <mark>limit</mark>))    
+                  <strong>queryStringKey</strong>: Annotated[<strong>type</strong>, Query(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>devVal</i></small>,     // another way to capture and validate query string key    
+                  <strong>body</strong>: <strong>PydanticModel</strong>,                                     // caputres and validates the request body according to <strong>PydanticModel</strong> validations (json request body)
+                  <strong>body|bodyKey</strong>: Annotated[<strong>type</strong>, Body(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>devVal</i></small>,        // another way to capture and validate the request body <u>(one arg = <strong>body</strong> / multiple args = <strong>bodyKey</strong>)</u> (json request body)
+                  
+                                                        <span style="color:orange;">// arguments without default value are required</span>
+    
+                                                      ):
+        <span style="color:darkgray;"># some logic...</span>
+        return <strong>data</strong>
+  
+  
+  <span style="color:darkgray;">// <strong>fastApiRoute</strong> ----------------------------------------------</span>
+    <strong>route</strong>                      // exact route
+    <strong>route</strong>{<strong>param</strong>}<i>route</i>          // extracts the route <strong>param</strong> and passes it into the route handling function as argument
+    <strong>route</strong>{<strong>route</strong>:path}<i>route</i>     // <strong>route</strong>:path matches any of the following route (works like the <mark>*</mark> in globs)
+  
+  
+  </pre>
 
 
+
+
+
+  <details class="example" open>
+    <summary> Example : </summary>
+    <pre class="cmd">
+    $ uvicorn server:app --port 3000 --reload           # server start command used in these demos
+    </pre>
 
 
 
@@ -80,36 +126,16 @@ stage 3 :
     
     
     
-    - FastAPI is a web framework for building APIs in Python, based on standard Python type hints
-    - FastAPI is stands on the shoulders of giants <mark>Starlette</mark> (web part) and <mark>Pydantic</mark> (data parts)
+    # all basic stuff
+    # request / responses types 
+    # redirect
+    # middleware (include setup and teardown logic)
+    # router
+    # background task
+    # testing
     
     
-    - fastapi is based on json traffic
-    - fast to implement an api
-    - fast becasue supports async (based on an ASGI server) (therefore runs on top of an ASGI server -> used <mark>uvicorn[standard]</mark> here)
-    - does type validation
-    - does awesome Auto documentation which is mindblowing good! (reachable as <mark>/docs</mark> <-Swagger documentation or <mark>/redoc</mark> <- ReDoc documentation) (both these allow to interact with the backend server) (<mark>schemal.json</mark> <- prints the raw openapi json schema (basically both Swagger and ReDoc documentation is built on top of openApi standards))
-    - requires Python v3.7 (or higher)
     
-    
-    - pip install 'uvicorn[standard]'
-    - pip install fastapi
-    (interestingly I had to restart my terminal in order for fastapi to be recognized)
-    
-    - uvicorn start command
-        - uvicorn <strong>serverFileName</strong>:app <i>flags</i>
-            - starts the uvicorn server
-            (--help) prints help
-            (--reload) automatically restarts the server when the server file changes
-            (--host <strong>hostname:str</strong>) server listens on <strong>hostname</strong> (Default: <mark>localhost</mark>)
-            (--port <strong>port:int</strong>) server listens on <strong>port</strong> (Default: <mark>8000</mark>) (<mark>0</mark> -> gets an available port)
-            (--uds <strong>domainSocket</strong>) server listens on <strong>domainSocket</strong> (creates the socket if not exist)
-    
-    
-    - pydantic is used mainly for request body validation (link https://docs.pydantic.dev/latest/api/fields/)
-      - pydantic also provides it own types for a more fine grained type validation
-      (link: https://fastapi.tiangolo.com/tutorial/extra-data-types/)
-      - we should mention supported types 
     
     
     - query parameter and path parameter validations with Query(), Path(), Field() (pydantic) are mostly work the same way
@@ -158,13 +184,34 @@ stage 3 :
         - if we don't provide data validation in our function the default return type is application/json
     
     
-    - the Response class is the parent class of all responses (accept content, status_code, headers, media_type)
+    - the Response class is the parent class of all responses (accepts: content, status_code, headers, media_type)
         - Response    (from fastapi.responses imort <ResponseClass>)
             - JSONResponse
             - HTMLResponse
             - PlainTextResponse
             - RedirectResponse    (default response code: 307 Temporary Redirect)
             - StreamingResponse     (for continous stream, takes an async or normal generator to stream the response)
+            - FileResponse        (async file streaming)
+    
+    
+    - <response>.set_cookie(key=key:str, value=val:str)     setting cookie in any response (<response> = any response instance type)
+    
+    
+    - FastAPI also supports dataclass (in place of pydantic)
+    
+    
+    - builtin middlewares
+        - https://fastapi.tiangolo.com/advanced/middleware/ 
+        - https://fastapi.tiangolo.com/advanced/wsgi/ <- this is how we can mount wsgi apps 
+    
+    
+    - install jinja2 (before template usage)
+    
+    
+    - install websockets 
+    
+    
+    - remember to run tests with pytest (for demo it might be better to split the test and the server files)
     
     
     
@@ -174,14 +221,71 @@ stage 3 :
 WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
 ?????????????????????????????????????????????????????????????????????????????????????????????
     - do we have path beginning methods like in express (use)
-
+        -> not really (some_path:path)
+    
+    
     - how the fuck we can use optional url parameters???
+        -> well I've got the answer for that!
+    
     
     - is there a difference between async and non async calls?
         - apparently there's no difference (the async version is mostly used where we want to use some kind of 3rd party tools supporting async)
+        - yep no difference even when we use simple there's an asynchronous logic underneath (so basically we use async def when we want to use some async lib within our function)
+    
+    
+    
+    - when the Party is over...
+    - yield from
+    
+    
+    - make object instance a callable __call__()
+    
+    
+    - async context manager (refactor context manager stuff) make sure from which python version this is available
+    
+    
+    - pytest async 
+        - https://tonybaloney.github.io/posts/async-test-patterns-for-pytest-and-unittest.html
+
+-->
 
 
 
+
+
+
+
+<!--
+    - FastAPI is a web framework for building APIs in Python, based on standard Python type hints
+    - FastAPI is stands on the shoulders of giants <mark>Starlette</mark> (web part) and <mark>Pydantic</mark> (data parts)
+    
+    
+    - fastapi is based on json traffic
+    - fast to implement an api
+    - fast becasue supports async (based on an ASGI server) (therefore runs on top of an ASGI server -> used <mark>uvicorn[standard]</mark> here)
+    - does type validation
+    - does awesome Auto documentation which is mindblowing good! (reachable as <mark>/docs</mark> <-Swagger documentation or <mark>/redoc</mark> <- ReDoc documentation) (both these allow to interact with the backend server) (<mark>schemal.json</mark> <- prints the raw openapi json schema (basically both Swagger and ReDoc documentation is built on top of openApi standards))
+    - requires Python v3.7 (or higher)
+    
+    
+    - pip install 'uvicorn[standard]'
+    - pip install fastapi
+    (interestingly I had to restart my terminal in order for fastapi to be recognized)
+    
+    - uvicorn start command
+        - uvicorn <strong>serverFileName</strong>:app <i>flags</i>
+            - starts the uvicorn server
+            (--help) prints help
+            (--reload) automatically restarts the server when the server file changes
+            (--host <strong>hostname:str</strong>) server listens on <strong>hostname</strong> (Default: <mark>localhost</mark>)
+            (--port <strong>port:int</strong>) server listens on <strong>port</strong> (Default: <mark>8000</mark>) (<mark>0</mark> -> gets an available port)
+            (--uds <strong>domainSocket</strong>) server listens on <strong>domainSocket</strong> (creates the socket if not exist)
+    
+    
+    - pydantic is used mainly for request body validation (link https://docs.pydantic.dev/latest/api/fields/)
+      - pydantic also provides it own types for a more fine grained type validation
+      (link: https://fastapi.tiangolo.com/tutorial/extra-data-types/)
+      - we should mention supported types 
 
 
 -->
