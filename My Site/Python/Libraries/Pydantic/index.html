@@ -55,6 +55,9 @@
                                                        // data validation is performed on instance creation (if incorrect fields and or values are passed a <mark>ValidationError</mark> is raised)
     
     
+    <strong>pydanticInstance</strong>.<strong>field</strong>                             // fields are accessible as attributes (like with <mark>dataclass</mark>)
+    
+    
     <strong>pydanticInstance</strong>.dict(<small class="openable">exclude_unset=True<div>
         <p> - fileds having <mark>None</mark> value won't be reflected in the returned <strong>dict</strong></p>
     </div></small>)         // returns a <strong>dict</strong> of the pydantic instance data 

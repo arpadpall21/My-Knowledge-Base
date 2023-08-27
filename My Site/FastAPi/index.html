@@ -58,311 +58,1317 @@
   <p> - we can use <mark>async def</mark> or simple <mark>def</mark> function to handle request, FastAPI handles them asynchronously (<mark>async def</mark> used to handle await calls) </p>
   <p> - libraries not supporting async call can be passed in request handling functions, FastAPI handles them as well </p>
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-  <p> - FastAPI is a web framework for building APIs, it can enforce type validation, FastAPI is built on top of <mark>Starlette</mark> (web part) and <mark>Pydantic</mark> (data parts) </p>
+  <p> - FastAPI is a web framework for building APIs, it can enforce type validation, FastAPI is built on top of <mark>Starlette</mark> (web part) and <mark>Pydantic</mark> (data part (we also can use Python's <mark>dataclass</mark>, but pydantic models offer way more features)) </p>
   <p> - FastAPI run on top of an ASGI server (tested with Uvicorn), so it supports the async/event loop mechanism that makes it 'Fast' </p>
   <p> - has a builtin auto API documentation mechanism supported by OpenAPI standards, reachable on:
   <p style="text-indent:30px"> - <mark><strong>host</strong>/docs</mark> (Swagger style docs) </p>
   <p style="text-indent:30px"> - <mark><strong>host</strong>/redoc</mark> (ReDoc style docs) </p>
   <p style="text-indent:30px"> - <mark><strong>host</strong>/openapi.json</mark> (raw OpenAPI json schema) </p>
+  <p> - by default FastAPI works with json response types, but also supports text, html, form <u>(install <mark>python-multipart</mark> for that)</u>, etc... </p>
   <pre class="syntax">
     from typing import Annotated
     
-    from fastapi import FastAPI, Query
+    from fastapi import FastAPI, Request, Path, Query, Header, Cookie, Body, Form, File, UploadFile, HTTPException
+    from fastapi.responses import <strong class="openable">ResponseClass<div>
+      <h4 class="header"> <strong>ResponseClass</strong> can be any of the below classes </h4>
+      <p> - <mark>Response</mark> all responses are subclasses of this class </p>
+      <p> - <mark>JSONResponse</mark> - returns json response </p>
+      <p> - <mark>HTMLResponse</mark> - html response </p>
+      <p> - <mark>PlainTextResponse</mark> - plain text response </p>
+      <p> - <mark>FileResponse(<strong>file_path</strong>)</mark> - file streaming response, takes a first path argument </p>
+      <p> - <mark>StreamingResponse(<strong>genObj</strong> - continous stream, takes an async or normal generator as argument </mark> </p>
+      <p> - <mark>RedirectResponse(url=<strong>url:str</strong>)</mark> - redirects the request, take a url argument (default response code: 307 Temporary Redirect) </p>
+    <hr>
+    <h4 class="header"> response attributes (all response classes support all the below attributes) ex: <mark>JSONResponse(status_code=200, content={'Hello': 'World'})</mark>) </h4>
+      <p> - <mark>status_code</mark> - set the HTTP status code for the response as int </p>
+      <p> - <mark>content</mark> - holds the content (body) of the response. It can be a string, bytes, dictionary, list depends on the response type </p>
+      <p> - <mark>headers</mark> - dictionary to set custom HTTP headers for the response </p>
+      <p> - <mark>set_cookie(<strong>cookieKey</strong>=<strong>val</strong><i>, ...</i>)</mark> - set cookies in the response </p>
+      <p> - <mark>delete_cookie(<strong>cookieKey</strong>=<strong>val</strong><i>, ...</i>)</mark> - used to delete cookies from the client's browser (basically expires the cookies) </p>
+      <p> - <mark>media_type</mark> - set the Content-Type header explicitly (ex: <mark>"text/html"</mark>) </p>
+      <p> - <mark>is_sent</mark> - boolean that indicates whether the response has been sent </p>
+    </div></strong>
     
+    <strong>app</strong> = FastAPI(<a href="https://fastapi.tiangolo.com/tutorial/metadata/" target="_blank">arg</a>)
+    
+    
+    @<strong>app</strong>.<strong>httpMethod</strong>(<strong>fastApiRoute:str</strong>,
+                    response_model=<strong>PydanticModel</strong>,                  // sets and annotates the json response (also sets the OpenAPI documentation)   
+                      response_model_exclude_unset=True,             // default values in <strong>pydanticInstance</strong> are excluded in the response    
+                    response_class=<strong>ResponseClass</strong>,                  // sets and annotates the response type (also sets the OpenAPI documentation)   
+                    response_code=<strong>int</strong>,                             // sets the response code (default: <mark>200</mark>) (also sets the OpenAPI documentation)
+                    responses=<strong class="openable">dict<div>
+                        <p> - key: <strong>status_code:int</strong> - response status code </p>
+                        <p> - value: <strong>dict</strong> - dictionary can contain the following items: </p>
+                        <p style="text-indent: 20px;"> <mark>model</mark>: <strong>ResponseClass|PydanticModel</strong> - response model for the given HTTP status code </p>
+                        <p style="text-indent: 20px;"> <mark>description</mark>: <strong>str</strong> - description of the response </p>
+                        <p style="text-indent: 20px;"> <mark>headers</mark>: <strong>dict</strong> - define custom headers to include in the response </p>
+                        <hr>
+                        <p> ex: </p>
+                        <p> <mark>@app.get('/some_path', responses={404: {'model': PydanticModel, 'description': 'some description'}})</mark> </p>
+                    </div></strong>,                               // OpenAPI documentation for multiple response codes 
+    def <small class="openable">async<div>
+        <p> - FastAPI handles non async function just as async </p>
+        <p> - async function is mainly used when <mark>await</mark> logics are used in the function body </p>
+    </div></small> <strong>pathFn</strong>(<strong>request</strong>: Request,                                        // captures the request object (contains client info, request body, headers, cookies, etc... <a href="https://www.starlette.io/requests/" target="_blank">[full link]</a>)
+                      <strong>param</strong><small>[: <i>type</i>=<i>defVal</i>]</small>,                                    // captures (and optionally validates) the value of route <strong>param</strong> if the argument name is the same as the route param name (ex: (<strong>fastApiRoute:str</strong> -> <mark>/get_id/{id}</mark> (arg name <mark>id</mark>))
+                        <strong>param</strong>: Annotated[<strong>type</strong>, Path(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>,             // capture and validate route param (more fine grained approach)
+                      <strong>queryStringKey</strong><small>[: <i>type</i>=<i>defVal</i>]</small>,                           // captures (and optionally validates) the url query string key value if the argument name is the same as the query string key value in the url (ex: (url -> <mark>/hello?limit=5</mark>) (arg name <mark>limit</mark>))    
+                        <strong>queryStringKey</strong>: Annotated[<strong>type</strong>, Query(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>,   // capture and validate query string key (a more fine grained approach)
+                      <strong>header</strong>: Annotated[<strong>type</strong>, Header(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>,          // captures and validates a request header 
+                      <strong>cookie</strong>: Annotated[<strong>type</strong>, Cookie(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>,          // captures and validates a request cookie
+                      <strong>body</strong>: <strong>PydanticModel</strong>,                                     // caputres and validates the request body according to <strong>PydanticModel</strong> validations (json request body)
+                        <strong>body|bodyKey</strong>: Annotated[<strong>type</strong>, Body(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>       // another way to capture and validate the request body <u>(one arg = <strong>body</strong> / multiple args = <strong>bodyKey</strong>)</u> (json request body)
+                      <strong>formField</strong>: Annotated[<strong>type</strong>, Form(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>,         // captures and validates a form field (form-data request)
+                      <strong>file</strong>: Annotated[byte|<span class="openable">UplodaFile<div>
+                      <p> - provides us with tools to work with the uploaded file </p>
+                      <p> - attributes : <a href="https://fastapi.tiangolo.com/tutorial/request-files/?h=uploadfile#uploadfile" target="_blank">[link]</a></p>
+                  </div></span>, File(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)],           // captures the file (file upload request)
+                                                                               <span style="color:orange;">// arguments without default value are required by the api</span>
+                                                                               <span style="color:orange;">// argument validations are documented by OpenAPI (<mark><strong>host</strong>/docs</mark> <mark><strong>host</strong>/redoc</mark>) </span>    
+                  ) -> <strong>PydanticModel</strong>:                                      // annotates the json response type (for OpenAPI documentation about the response json structure (<mark>response_model</mark> has higher precedence than this return type annotation))
+        
+      <span style="color:darkgray;">// error response ----------------</span>
+        raise HTTPException(<strong class="openable">arg<div>
+            <p> - <mark>status_code</mark>=<strong>int</strong> - status code </p>
+            <p> - <mark>detail</mark>=<strong>str</strong> - error message </p>
+            <p> - <mark>headers</mark>=<strong>dict</strong> - additional headers </p>
+        </div></strong>)                                          // FastAPI recommends to use HTTPException for error (400) responses <u>(but this solution doesn't work if we want custom message formats)</u>    
+        
+        <span style="color:darkgray;"># some logic...</span>
+        return <strong>ResponseClass()|data</strong>                                        // returns a response object (call the response class to the create response object), if <strong>data</strong> is returned the response type is application/json
+                                                                               <span style="color:orange;">// the returned responses are NOT documented by OpenAPI </span>
+    
+    
+    <span style="color:darkgray;">// <strong>fastApiRoute</strong> -----------------------------</span>
+    <strong>route</strong>                      // exact route
+    <strong>route</strong>{<strong>param</strong>}<i>route</i>          // captures the route <strong>param</strong> and passes it into the route handling function as argument
+    <strong>route</strong>{<strong>route</strong>:path}<i>route</i>     // <strong>route</strong>:path matches any of the following route  (works like the <mark>*</mark> in globs)     
+  </pre>
+  <pre class="syntax">
+<span style="color:darkgray;">// dependency injection <a href="https://fastapi.tiangolo.com/tutorial/dependencies/" target="_blank">[link]</a> ----------------------------------------------------</span>
+    from typing import Annotated
+    
+    from fastapi import FastAPI, Depends
+    
+    
+    async def <strong>dependency</strong>(<strong>arg</strong><i>, ...</i>):                                        // the dependency function receives the route handling function arguments     
+        return <strong>dependencyReturn</strong>                                            // we can compute and return the format as we like
+    
+    
+    @app.get(<strong>fastApiRoute</strong>)
+    def <strong>fn</strong>(<strong>depend</strong>: Annotated[<strong>dependencyReturnType</strong>, Depends(<strong>dependency</strong>)]):  // the route handling function arguments can be annotated with <mark>Depends()</mark> to indicate that the argument is a dependency
+        <strong>depend</strong>                                                             // this is the <strong>dependencyReturn</strong> value returned by the dependency function
+        <i>...</i>
+  </pre>
+  <pre class="syntax">
+<span style="color:darkgray;">// JSONifying dictionary data -----------------------------------------------------</span>
+    from fastapi.encoders import jsonable_encoder
+    
+    jsonable_encoder(<strong>dict|pydanticInstance</strong>)                                // converts and returns the <strong>dict</strong> to a json serializable <strong>dict</strong> (ex: datetime -> str)
+  </pre>
+  <pre class="syntax">
+<span style="color:darkgray;">// serving static files -----------------------------------------------------------</span>
+    from fastapi import FastAPI
+    from fastapi.staticfiles import StaticFiles
     
     <strong>app</strong> = FastAPI()
     
     
-    @<strong>app</strong>.<strong>httpMethod</strong>(<strong>fastApiRoute:str</strong>)
-    def <small class="openable">async<div>
-        <p> - FastAPI handles non async function just as async </p>
-        <p> - async function is mainly used when <mark>await</mark> logics are used in the function body </p>
-    </div></small> <strong>fn</strong>(<strong>param</strong><small>[: <i>type</i>=<i>defVal</i>]</small>,                                    // captures (and optionally validates) the value of route <strong>param</strong> if the argument name is the same as the route param name (ex: (<strong>fastApiRoute:str</strong> -> <mark>/get_id/{id}</mark> (arg name <mark>id</mark>))
-                  <strong>queryStringKey</strong><small>[: <i>type</i>=<i>defVal</i>]</small>,                           // captures (and optionally validates) the url query string key value if the argument name is the same as the query string key value in the url (ex: (url -> <mark>/hello?limit=5</mark>) (arg name <mark>limit</mark>))    
-                  <strong>queryStringKey</strong>: Annotated[<strong>type</strong>, Query(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>devVal</i></small>,     // another way to capture and validate query string key    
-                  <strong>body</strong>: <strong>PydanticModel</strong>,                                     // caputres and validates the request body according to <strong>PydanticModel</strong> validations (json request body)
-                  <strong>body|bodyKey</strong>: Annotated[<strong>type</strong>, Body(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>devVal</i></small>,        // another way to capture and validate the request body <u>(one arg = <strong>body</strong> / multiple args = <strong>bodyKey</strong>)</u> (json request body)
-                  
-                                                        <span style="color:orange;">// arguments without default value are required</span>
-    
-                                                      ):
-        <span style="color:darkgray;"># some logic...</span>
-        return <strong>data</strong>
-  
-  
-  <span style="color:darkgray;">// <strong>fastApiRoute</strong> ----------------------------------------------</span>
-    <strong>route</strong>                      // exact route
-    <strong>route</strong>{<strong>param</strong>}<i>route</i>          // extracts the route <strong>param</strong> and passes it into the route handling function as argument
-    <strong>route</strong>{<strong>route</strong>:path}<i>route</i>     // <strong>route</strong>:path matches any of the following route (works like the <mark>*</mark> in globs)
-  
-  
+    app.mount(<strong>fastApiRoute</strong>, StaticFiles(directory=<strong>path:str</strong>), name=<strong>name:str</strong>)
   </pre>
-
-
-
-
-
-  <details class="example" open>
+  <details class="example">
     <summary> Example : </summary>
     <pre class="cmd">
     $ uvicorn server:app --port 3000 --reload           # server start command used in these demos
     </pre>
-
-
-
-  <!--
----------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------
-stage 1: high level overview 
-    - read through 
-    - create notes 
-    - deciede what exactly will you document down 
-    
-stage 2:  low level overview
-    - deeper understanding of all what you've taken down in stage 1
-    
-stage 3 : 
-    - organize and document down everything 
-    
-    
-    
-    # all basic stuff
-    # request / responses types 
-    # redirect
-    # middleware (include setup and teardown logic)
-    # router
-    # background task
-    # testing
-    
-    
-    
-    
-    
-    - query parameter and path parameter validations with Query(), Path(), Field() (pydantic) are mostly work the same way
-    
-    
-    - the return type is automatically documented by fastAPI when `response_model` in the @app.<httpMethod>(path:str, response_model=PydanticModel) for response type validation (this is useful for the auto documentation)
-        - response_model=None <- to disable response model generation
-        - we also can use return type annotation (python type annotation) (if both present the 'response_model takes the precedence')
-    
-    
-    
-    - install python-multipart in order to accept form type body (or receiving files) (demo this one a well!)
-    - the UploadFile type has the follwoing methods 
-        - filename / content_type / file (this return a file-like object in python)
-        - the followings are async methods 
-            - write(data:str|bytes)
-            - read(size:int)
-            - seek(offset:int)
-            - close()
-    
-    
-    jsonable_encoder(pydanticModel|dict)    -> transforms the passed data into valid json
-    
-    
-    - dependency injection https://fastapi.tiangolo.com/tutorial/dependencies/
-    - cors implementation https://fastapi.tiangolo.com/tutorial/cors/
-    
-    
-    - a middleware will run for each path operations (we can run a logic before and after each path operations)
-    
-    
-    - background tasks
-        - FastAPI supports background tasks (running some task in the background, however this is not designed to heavy loads, the idea is to same time (like eamil sending or log writing tasks happening in the background without blocking the response to the user))
-    
-    
-    - we can specify metadata in FastAPI(https://fastapi.tiangolo.com/tutorial/metadata/)
-        - this will be visible in api docs (OpenAPI documentation)
-    
-    
-    
-    - in order to be able to test fist isntall httpx
-        run the file with pytest (as normal)
-    
-    
-    - remember that if stuff is not passed as argument OpenAPI won't document it!
-        - if we don't provide data validation in our function the default return type is application/json
-    
-    
-    - the Response class is the parent class of all responses (accepts: content, status_code, headers, media_type)
-        - Response    (from fastapi.responses imort <ResponseClass>)
-            - JSONResponse
-            - HTMLResponse
-            - PlainTextResponse
-            - RedirectResponse    (default response code: 307 Temporary Redirect)
-            - StreamingResponse     (for continous stream, takes an async or normal generator to stream the response)
-            - FileResponse        (async file streaming)
-    
-    
-    - <response>.set_cookie(key=key:str, value=val:str)     setting cookie in any response (<response> = any response instance type)
-    
-    
-    - FastAPI also supports dataclass (in place of pydantic)
-    
-    
-    - builtin middlewares
-        - https://fastapi.tiangolo.com/advanced/middleware/ 
-        - https://fastapi.tiangolo.com/advanced/wsgi/ <- this is how we can mount wsgi apps 
-    
-    
-    - install jinja2 (before template usage)
-    
-    
-    - install websockets 
-    
-    
-    - remember to run tests with pytest (for demo it might be better to split the test and the server files)
-    
-    
-    
----------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------
-?????????????????????????????????????????????????????????????????????????????????????????????
-WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
-?????????????????????????????????????????????????????????????????????????????????????????????
-    - do we have path beginning methods like in express (use)
-        -> not really (some_path:path)
-    
-    
-    - how the fuck we can use optional url parameters???
-        -> well I've got the answer for that!
-    
-    
-    - is there a difference between async and non async calls?
-        - apparently there's no difference (the async version is mostly used where we want to use some kind of 3rd party tools supporting async)
-        - yep no difference even when we use simple there's an asynchronous logic underneath (so basically we use async def when we want to use some async lib within our function)
-    
-    
-    
-    - when the Party is over...
-    - yield from
-    
-    
-    - make object instance a callable __call__()
-    
-    
-    - async context manager (refactor context manager stuff) make sure from which python version this is available
-    
-    
-    - pytest async 
-        - https://tonybaloney.github.io/posts/async-test-patterns-for-pytest-and-unittest.html
-
--->
-
-
-
-
-
-
-
-<!--
-    - FastAPI is a web framework for building APIs in Python, based on standard Python type hints
-    - FastAPI is stands on the shoulders of giants <mark>Starlette</mark> (web part) and <mark>Pydantic</mark> (data parts)
-    
-    
-    - fastapi is based on json traffic
-    - fast to implement an api
-    - fast becasue supports async (based on an ASGI server) (therefore runs on top of an ASGI server -> used <mark>uvicorn[standard]</mark> here)
-    - does type validation
-    - does awesome Auto documentation which is mindblowing good! (reachable as <mark>/docs</mark> <-Swagger documentation or <mark>/redoc</mark> <- ReDoc documentation) (both these allow to interact with the backend server) (<mark>schemal.json</mark> <- prints the raw openapi json schema (basically both Swagger and ReDoc documentation is built on top of openApi standards))
-    - requires Python v3.7 (or higher)
-    
-    
-    - pip install 'uvicorn[standard]'
-    - pip install fastapi
-    (interestingly I had to restart my terminal in order for fastapi to be recognized)
-    
-    - uvicorn start command
-        - uvicorn <strong>serverFileName</strong>:app <i>flags</i>
-            - starts the uvicorn server
-            (--help) prints help
-            (--reload) automatically restarts the server when the server file changes
-            (--host <strong>hostname:str</strong>) server listens on <strong>hostname</strong> (Default: <mark>localhost</mark>)
-            (--port <strong>port:int</strong>) server listens on <strong>port</strong> (Default: <mark>8000</mark>) (<mark>0</mark> -> gets an available port)
-            (--uds <strong>domainSocket</strong>) server listens on <strong>domainSocket</strong> (creates the socket if not exist)
-    
-    
-    - pydantic is used mainly for request body validation (link https://docs.pydantic.dev/latest/api/fields/)
-      - pydantic also provides it own types for a more fine grained type validation
-      (link: https://fastapi.tiangolo.com/tutorial/extra-data-types/)
-      - we should mention supported types 
-
-
--->
-
-
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-
-
-  <h2 class="headerExtra"><u> Title 1 </u></h2>
-  <h2 class="header"> Title 1.1 </h2>
-  <h3 class="header"> Title 1.1.1 </h3>
-  <h4 class="header"> Title 1.1.1.1 </h4>
-  <p> - stuff to learn <mark>syntax or command (or some tchnical stuff)</mark> bla bla bla </p>
-  <p> - stuff to learn <mark class="mark">highlights like file names and other things</mark> bla bla bla </p>
-  <p style="text-decoration:underline;"> - important information is underlined </p>
-  <p style="color:yellow;"> - very important information is written with yellow colors </p>
-  <p style="background-color:yellow;"> - highly important information has yellow background color </p>
-  <div style="background-color:red;">
-    <p> - red background block means not learned or not tested information! </p>
-    <p> - </p>
-  </div>
-
-  <pre class="syntax">
-SYNTAX :    main syntax
-            <em>literally used </em>
-            <small>literally used optional </small>
-            <prot style="color:#049500;">prototype chain</prot>
-            <strong>required value </strong>
-            <i>optional value </i>
-                - some descriptions will come here (like arguments)
-                - ??? (3 question marks) in syntax means not tested or not learned yet
-                
-            <span class="openable"> this is an openable element<div>
-                <p> - openable elements listed here in paragraphs </p>
-                <p> - </p>
-            </div></span>
-    </pre>
-
-  <details class="example">
-    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> handling route paths </h4>
     <pre>
-    examples of the current lessons 
+    from fastapi import FastAPI
     
-// -----------------------------------------
-
-// -----------------------------------------
+    
+    app = FastAPI()
+    
+# route declaration order matters
+    @app.get('/hello/world')        # wouldn't be reachable if it was declared after the below route (because <mark>/hello/{person}</mark> shadow this route)
+    def read_hello_world():
+        return 'Hello World!'
+    
+    
+    @app.get('/hello/{person}')
+    def read_hello_param(person: str):
+        return f'Hello {person}'
+    </pre>
+    <h4 class="header"> request object <mark>Request</mark> </h4>
+    <pre>
+    from fastapi import FastAPI, Request
+    
+    
+    app = FastAPI()
+    
+    
+    @app.post('/test')
+    async def get_item(request: Request):
+        request.method                          // -> 'POST'
+        request.url.path                        // -> '/test'
+        request.url.port                        // -> 3000
+        request.url.scheme                      // -> 'http'
+        await request.body()                    // -> b'some body content'
+    </pre>
+    <h4 class="header"> path parameter and query string capture and validation <mark>Path()</mark> / <mark>Query()</mark> </h4>
+    <pre>
+    from typing import Annotated
+    
+    from fastapi import FastAPI, Path, Query
+    
+    
+    app = FastAPI()
+    
+    
+# requets GET http://localhost:3000/item/fruit/3?limit=3&skip=23
+    @app.get('/item/{category}/{id}')       
+    def get_person(category: str,                                  # # captures the path parameters
+                   id: Annotated[int, Path(ge=0, le=1000)],          # fine grained path parameter validation
+                   limit: int,                                     # # camputes the query string parameters
+                   skip: Annotated[int, Query(min=0, max=100)]):     # fine grained query string parameter validation
+        category              // -> 'fruit'
+        id                    // -> 3
+        limit                 // -> 3
+        skip                  // -> 23
+    </pre>
+    <h4 class="header"> header & cookie validation <mark>Header()</mark> / <mark>Cookie()</mark> </h4>
+    <pre>
+    from typing import Annotated
+    
+    from fastapi import FastAPI, Cookie, Header
+    
+    
+    app = FastAPI()
+    
+    
+# request GET http://localhost:3000/test
+# added headers: 
+#               custom-header : custom_header_value
+#               Cookie        : some_cookie='some_cookie_value'
+    @app.get("/test/")
+    async def read_items(some_cookie: Annotated[str, Cookie(max_length=21)],          # request must have a cookie named 'some_cookie' its value will be validated against <mark>Cookie()</mark>
+                         custom_header: Annotated[str, Header(pattern="^c.*e$")],     # request must have 'custom_header' header and its value must be validated against 'Header()'
+                         optional_header: Annotated[str, Header()] = 'default'):      # optional header validation (if not present the default value will be used)
+        some_cookie                    // -> 'some_cookie_value'
+        custom_header                  // -> 'some_header_value'
+        optional_header                // -> 'default'
+    </pre>
+    <h4 class="header"> json request body validation with Pydantic and with <mark>Body()</mark> </h4>
+    <pre>
+    from typing import Annotated
+    
+    from fastapi import FastAPI, Body
+    from pydantic import BaseModel
+    
+    
+    app = FastAPI()
+    
+    
+    class Address(BaseModel):
+        street: str
+        city: str
+        country: str
+    
+    
+    class Person(BaseModel):
+        name: str
+        age: int
+        address: Address = None
+    
+    
+# request POST http://localhost:3000/person     AND POST http://localhost:3000/person2 (same body)
+# body:
+#       {
+#           "name": "Arpad",
+#           "age": 38,
+#           "address": {
+#               "street": "Vasi",
+#               "city": "Budapest",
+#               "country": "Hungary"
+#           }
+#       }
+    @app.post('/person')
+    def post_person(body: Person):    # json request body validation with pydantic # this the prefered way
+        body                          // -> Person(name='Arpad' age=38 address=Address(street='Vasi', city='Budapest', country='Hungary')       # pydantic model
+    
+    
+    @app.post('/person2')
+    def post_person(name: Annotated[str, Body()],        # json request body validation with Body (harder to validate thiw way)
+                    age: Annotated[int, Body()]):
+        name                          // -> 'Arpad'
+        age                           // -> 38
+    </pre>
+    <h4 class="header"> using python's dataclass instead of pydantic model </h4>
+    <pre>
+    from dataclasses import dataclass
+    
+    from fastapi import FastAPI
+    
+    app = FastAPI()
+    
+    
+# request POST http://localhost:3000/
+# body:{
+#       "name": "Arpad",
+#       "age": 38,
+#       "address": "some address"
+#     }
+    @dataclass
+    class Person:
+        name: str
+        age: int
+        address: str = None
+    
+    
+    @app.post('/', response_model=Person)
+    async def get_root(body: Person):
+        return body
+    </pre>
+    <h4 class="header"> form data request validation with <mark>Form()</mark> </h4>
+    <pre>
+    from typing import Annotated
+    
+    from fastapi import FastAPI, Form
+    
+    
+    app = FastAPI()
+    
+    
+# request POST http://localhost:3000/form (form-data request)
+# form fields: 
+#              username : some_username
+#              password : some_password
+    @app.post('/form')
+    def get_form(username: Annotated[str, Form(max_length=120)],
+                 password: Annotated[str, Form(pattern='^[\d\w]*$')]):
+        username              // -> 'some_username'
+        password              // -> 'some_password'
+    </pre>
+    <h4 class="header"> upload file <mark>File()</mark> / <mark>UploadFile</mark></h4>
+    <pre>
+    from typing import Annotated
+    
+    from fastapi import FastAPI, File, UploadFile
+    from fastapi.responses import HTMLResponse
+    
+    app = FastAPI()
+    
+    
+    @app.post("/files/")
+    async def create_files(files: Annotated[list[bytes], File()]):    # can receive multiple files (receives as bytes)
+        files             // -> list of uploaded files as bytes
+    
+    
+    @app.post("/uploadfiles/")
+    async def create_upload_files(file: AnnotatedUploadFile, File(description="Multiple files as UploadFile")]):
+        file.filename               # file type provides with more info about the uploaded file
+        file.content_type 
+    
+    
+    @app.get("/")
+    async def main():
+        content = """
+            &lt;body&gt;
+              &lt;form action="/files/" enctype="multipart/form-data" method="post"&gt;
+                &lt;input name="files" type="file" multiple&gt;
+                &lt;input type="submit"&gt;
+              &lt;/form&gt;
+              &lt;form action="/uploadfiles/" enctype="multipart/form-data" method="post"&gt;
+                &lt;input name="files" type="file" multiple&gt;
+                &lt;input type="submit"&gt;
+              &lt;/form&gt;
+            &lt;/body&gt;
+        """
+        return HTMLResponse(content=content)
+    </pre>
+    <h4 class="header"> using various HTTP methods (verbs) </h4>
+    <pre>
+    from fastapi import FastAPI
+    from pydantic import BaseModel
+    from typing import List
+    
+    app = FastAPI()
+    
+    
+    item_list = ['one', 'two', 'three']
+    
+    
+    class PutBody(BaseModel):
+        item: str
+    
+    
+    class PostBody(BaseModel):
+        items: List[str]
+    
+    
+    @app.get('/item/{item_idx}')
+    def read_item(item_idx: int):
+        if len(item_list) < item_idx + 1 or item_idx < 0:
+            return 'No such item exits'
+        return item_list[item_idx]
+    
+    
+    @app.get('/items')
+    def read_all_items(limit: int = -1):
+        if limit < 0 or limit > len(item_list):
+            return item_list
+        return item_list[:limit]
+    
+    
+    @app.post('/items')
+    def update_items(body: PostBody):
+        for item in body.items:
+            item_list.append(item)
+        return 'Items are added to the item list'
+    
+    
+    @app.put('/item')
+    def add_item(body: PutBody):
+        item_list.append(body.item)
+        return 'Added to item list'
+    
+    
+    @app.delete('/item/{item_idx}')
+    def delete_item(item_idx: int):
+        if len(item_list) < item_idx + 1 or item_idx < 0:
+            return 'No such item exits'
+        deleted_item = item_list.pop(item_idx)
+        return f'Item successfully deleted: {deleted_item}'
+    </pre>
+    <h4 class="header"> redirect <mark>RedirectResponse</mark> </h4>
+    <pre>
+    from fastapi import FastAPI
+    from fastapi.responses import RedirectResponse
+    
+    app = FastAPI()
+    
+    
+    @app.get('/got_to_youtube')
+    def get_root() -> RedirectResponse:
+        return RedirectResponse(url="https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+    </pre>
+    <h4 class="header"> creating any response type with <mark>Response</mark> </h4>
+    <pre>
+    from fastapi import FastAPI, Response
+    
+    
+    app = FastAPI()
+    
+    
+    @app.get('/test_1')
+    def get_test_1():
+        return Response(content='Hello World!', media_type='text/plain')
+    
+    
+    @app.get('/test_2')
+    def get_test_2():
+        data = """&lt;?xml version="1.0"?&gt;
+            &lt;person&gt;
+                &lt;name&gt;Arpad&lt;/name&gt;
+                &lt;age&gt;38&lt;/age&gt;
+            &lt;/person&gt;
+            """
+        return Response(
+            status_code=201,                        # custom status code
+            headers={'test': 'test'},               # additional headers
+            content=data,
+            media_type='application/xml')
+    </pre>
+    <h4 class="header"> html response <mark>HTMLResponse</mark> </h4>
+    <pre>
+    from fastapi import FastAPI, Response
+    from fastapi.responses import HTMLResponse
+    
+    
+    app = FastAPI()
+    
+    
+    @app.get('/get_html', response_class=HTMLResponse)      # this is who OpenAPI documentation will know the response media type
+    def get_html():
+        response = """
+        &lt;html&gt;
+            &lt;head&gt;
+                &lt;title&gt;Hello World!&lt;/title&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+                &lt;p&gt;Hello World!&lt;/p&gt;
+            &lt;/body&gt;
+        &lt;/html&gt;
+        """
+        return HTMLResponse(content=response)
+    </pre>
+    <h4 class="header"> html response <mark>PlainTextResponse</mark> </h4>
+    <pre>
+    from fastapi import FastAPI
+    from fastapi.responses import PlainTextResponse
+    
+    
+    app = FastAPI()
+    
+    
+    @app.get('/test', response_class=PlainTextResponse)
+    def get_test():
+        return 'Hello Wolrd!'
+    </pre>
+    <h4 class="header"> html response <mark>FileResponse</mark> </h4>
+    <pre>
+    from pathlib import Path
+    
+    from fastapi import FastAPI
+    from fastapi.responses import FileResponse
+    
+    
+    file_path = Path() / 'Jordan Video.mp4'     # video file
+    app = FastAPI()
+    
+    
+    @app.get('/jordan_video')
+    def get_jordan_video():
+        return FileResponse(file_path)
+    </pre>
+    <h4 class="header"> html response <mark>StreamingResponse</mark> </h4>
+    <pre>
+    from fastapi import FastAPI
+    from fastapi.responses import StreamingResponse
+    
+    
+    app = FastAPI()
+    
+    
+    async def generate_some_fake_stream():
+        for i in range(20):
+            yield b'some fake stream bytes'
+    
+    
+    @app.get('/stream')
+    async def get_stream():
+        return StreamingResponse(generate_some_fake_stream())
+    </pre>
+    <h4 class="header"> sending cookies in the response </h4>
+    <pre>
+    from fastapi import FastAPI
+    from fastapi.responses import PlainTextResponse, HTMLResponse
+    from pydantic import BaseModel
+    
+    
+    app = FastAPI()
+    
+    
+    class Test(BaseModel):
+        test: str
+    
+    
+    @app.get('/test', response_class=PlainTextResponse)
+    def get_item():
+        response = PlainTextResponse(content='Some response')
+        response.set_cookie(key='cookie_key_1', value='cookie_value_1')     # 2 set-cookie headers will be included in the response
+        response.set_cookie(key='cookie_key_2', value='cookie_value_2')
+        return response
+    
+    
+    @app.get('/test2', response_class=HTMLResponse)
+    def get_item():
+        response = HTMLResponse(content = """
+          &lt;body&gt;
+              &lt;form action="/files/" enctype="multipart/form-data" method="post"&gt;
+                  &lt;input name="files" type="file" multiple&gt;
+                  &lt;input type="submit"&gt;
+              &lt;/form&gt;
+              &lt;form action="/uploadfiles/" enctype="multipart/form-data" method="post"&gt;
+                  &lt;input name="files" type="file" multiple&gt;
+                  &lt;input type="submit"&gt;
+              &lt;/form&gt;
+          &lt;/body&gt;
+        """)
+        response.set_cookie(key='cookie_key_3', value='cookie_value_3')     # works in any response class
+        response.set_cookie(key='cookie_key_4', value='cookie_value_4')
+        return response
+    </pre>
+    <h4 class="header"> raising <mark>HTTPException</mark> </h4>
+    <pre>
+    from fastapi import FastAPI, HTTPException
+    from fastapi.responses import JSONResponse
+    
+    app = FastAPI()
+    
+    
+    @app.get('/some_problem')
+    def get_root():
+        raise HTTPException(                    # raising http exception
+            status_code=404,
+            detail='Some error occured...',     # error message
+            headers={'X-Error': 'some error'})
+        
+        # return JSONResponse(                  # we could use JSONResponse as well (but for the clean code perspective it's better to use HTTPException)
+        #     status_code=404,
+        #     content={'message': 'Some error occured...'},
+        #     headers={'X-Error': 'some error'})
+    </pre>
+    <h4 class="header"> return JSON structure and return type annotation </h4>
+    <pre>
+    from fastapi import FastAPI
+    from fastapi.responses import HTMLResponse, HTMLResponse, PlainTextResponse
+    from pydantic import BaseModel
+    
+    
+    app = FastAPI()
+    
+// json response ------------------------------------------------------------
+    class Item(BaseModel):
+        name: str
+        price: float
+        available: bool = False
+    
+    
+    # annotation in decorator
+    @app.get('/get_json', response_model=Item)    # docs will nicely show the response model (passing <mark>None</mark> will disable response modelling)
+    def get_json():
+        return Item(name='potato', price=3.22, available=True)
+    
+    
+    # annotation as return type
+    @app.get('/get_json_2')
+    def get_json_2() -> Item:
+        return Item(name='potato', price=3.22, available=True)
+    
+    
+    # multiple response json model annotation
+    class Transport(BaseModel):
+        mark: str
+    
+    
+    class Car(Transport):
+        engine_size: float
+    
+    
+    class Plane(Transport):
+        wing_size: float
+    
+    
+    @app.get('/transport')
+    def get_transport() -> Car | Plane:           # docs will nicely show both (but Car is prioritized)
+        return Plane(mark='fouent', wing_size=3.4)
+    
+    
+// html response ------------------------------------------------------------
+    @app.get('/get_html', response_class=HTMLResponse)      #html response type annotation
+    def get_html():
+        return HTMLResponse(content = """
+            &lt;body&gt;
+                &lt;form action="/files/" enctype="multipart/form-data" method="post"&gt;
+                    &lt;input name="files" type="file" multiple&gt;
+                    &lt;input type="submit"&gt;
+                &lt;/form&gt;
+                &lt;form action="/uploadfiles/" enctype="multipart/form-data" method="post"&gt;
+                    &lt;input name="files" type="file" multiple&gt;
+                    &lt;input type="submit"&gt;
+                &lt;/form&gt;
+            &lt;/body&gt;
+        """)
+    
+    
+// plain text response ------------------------------------------------------
+    @app.get('/get_text', response_class=PlainTextResponse)
+    def get_text():
+        return PlainTextResponse(content='Hello World!')
+    </pre>
+    <h4 class="header"> excluding pydantic fields from the response </h4>
+    <pre>
+    from fastapi import FastAPI
+    from pydantic import BaseModel
+    
+    
+    app = FastAPI()
+    
+    
+    class Person(BaseModel):
+        name: str
+        surname: str
+        age: int | None = None
+        alive: bool = True
+    
+    
+    # request GET http://localhost:3000/person 
+    # response:
+    #          {
+    #              "name": "Arpad",                  pydantic fields with default values are omitted
+    #              "surname": "Pall"
+    #          }
+    @app.get('/person', response_model=Person, response_model_exclude_unset=True)
+    def get_person():
+        return Person(name='Arpad', surname='Pall')         # default are <mark>age</mark> and <mark>alive</mark> but they are excluded from the response
+    </pre>
+    <h4 class="header"> setting the response code <mark>response_code</mark> </h4>
+    <pre>
+    from fastapi import FastAPI
+    from http import HTTPStatus
+    
+    
+    app = FastAPI()
+    items = ['potato', 'tomato', 'onion']
+    
+    
+    @app.get('/items', status_code=201)                             # by default response code is 200
+    def get_items():
+        return items
+    
+    
+    @app.put('/add_item/{item}', status_code=HTTPStatus.CREATED)    # setting the response code to 201
+    def get_stuff(item: str):
+        items.append(item)
+        return {'message': 'item added'}
+    </pre>
+    <h4 class="header"> OpenAPI documentation for multiple response codes with <mark>responses</mark> </h4>
+    <pre>
+    from fastapi import FastAPI, status, HTTPException
+    from fastapi.responses import JSONResponse
+    from pydantic import BaseModel
+    
+    app = FastAPI()
+    
+    
+    class Item(BaseModel):
+        name: str
+        price: float
+    
+    
+    class Message404(BaseModel):
+        message: str
+    
+    
+    items = [Item(name='potato', price=2.99).dict(), Item(name='tomato', price=2.49).dict()]
+    
+    
+    @app.get('/item/{name}',
+            response_model=Item,
+            responses={404: {'model': Message404}})         # we could list multiple response codes and their response models, description, headers 
+    def get_item(name: str):
+        item = next(filter(lambda item: item['name'] == name, items), None)
+        if item:
+            return JSONResponse(status_code=status.HTTP_200_OK, content=item)
+        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content=Message404(message='Item not found.').dict())
+    </pre>
+    <h4 class="header"> JSONifying data <mark>jsonable_encoder()</mark> </h4>
+    <pre>
+    from datetime import datetime
+    
+    from fastapi.encoders import jsonable_encoder
+    from pydantic import BaseModel
+    
+    
+    class Person(BaseModel):
+        name: str
+        birth_date_time: datetime
+        job_title: str | None = None
+    
+    person = Person(name='Arpad', birth_date_time=datetime(1985, 4, 21, 12, 34))
+    
+    jsonable_encoder(person)                              // -> {'name': 'Arpad', 'birth_date_time': '1985-04-21T12:34:00', 'job_title': None}
+    jsonable_encoder(person.dict(exclude_unset=True))     // -> {'name': 'Arpad', 'birth_date_time': '1985-04-21T12:34:00'}
+    </pre>
+    <h4 class="header"> serving static files </h4>
+    <pre>
+    from fastapi import FastAPI
+    from fastapi.staticfiles import StaticFiles
+    
+    STATIC_DIR = '/Users/apall/Documents/Personal/my_knowledge_code_base/My Site'
+    
+    
+    app = FastAPI()
+    
+    app.mount('/', StaticFiles(directory=STATIC_DIR), name='My Site')
+    </pre>
+    <h4 class="header"> dependency injection </h4>
+    <pre>
+    from typing import Annotated
+    
+    from fastapi import FastAPI, Depends
+    
+    app = FastAPI()
+    items = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']
+    
+    
+    async def setup(id: int, capitalize: bool = False):             # dependency definition
+        return {'id': id, 'capitalize': capitalize}
+    
+    
+    @app.get('/item/{idx}')
+    def get_item(setup: Annotated[dict, Depends(setup)]):
+        if setup['capitalize']:
+            return items[setup['id']].capitalize()
+        return items[setup['id']]
+    
+    
+    @app.get('/item2/{idx}')
+    def get_item_2(setup: Annotated[dict, Depends(setup)]):         # we can reuse the injected dependency
+        return items[query_params['skip']:query_params['limit']]
     </pre>
   </details>
-
-  <pre class="cmd">
-    command line demo 
+  <!------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Middleware </h2>
+  <p> - middlewares are a functions that provides a way to run some logic during requests </p>
+  <p> - its a great way to integrate common logics in our app: </p>
+  <p style="text-indent:30px;"> - CORS <a href="https://fastapi.tiangolo.com/tutorial/cors/" target="_blank">[link]</a> </p>
+  <p style="text-indent:30px;"> - other wsgi apps <a href="https://fastapi.tiangolo.com/advanced/wsgi/" target="_blank">[link]</a> </p>
+  <p style="text-indent:30px;"> - addvance middlewares <a href="https://fastapi.tiangolo.com/advanced/middleware/" target="_blank">[link]</a> </p>
+  <pre class="syntax">
+    from fastapi import FastAPI, Request
+    
+    <strong>app</strong> = FastAPI()
+    
+    
+    async def <strong>middlewareFn</strong>(request: Request, call_next):
+        request.url.path                                                   // this is how we can filter the requests
+        
+        <span style="color:darkgray;">// doing some logic before all path functions... </span>
+        <strong>response</strong> = await call_next(request)                                // calls path function(s)
+        <span style="color:darkgray;">// doing some logic after all path functions but before response... </span>
+        
+        return <strong>response</strong>
+    
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre class="cmd">
+    $ uvicorn server:app --port 3000 --reload           # server start command used in these demos
     </pre>
-  <pre class="formula">
-    formula code (like conversion meter...)
+    <h4 class="header"> middleware </h4>
+    <pre>
+    from asyncio import sleep
+    
+    from fastapi import FastAPI, Request
+    
+    app = FastAPI()
+    
+    
+    # middleware will trigger for each path operation
+    @app.middleware('http')
+    async def add_custom_header(request: Request, call_next):
+        if request.url.path == '/':
+            await sleep(2)                              # simulating some expensive logic before hitting the path function
+            response = await call_next(request)         # path function called here
+            response.headers['X-Test'] = 'test'         # doing something after all path functions is called (but before the response is sent back)
+            return response
+        return await call_next(request)
+    
+    
+    @app.get('/')
+    @app.get('/test')
+    def get_root():
+        return 'OK'
+    </pre>
+  </details>
+  <!------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Router </h2>
+  <p> - a FastAPI router is basically a way to group routes (ex: handles all responses after <mark>/items</mark> path) </p>
+  <pre class="syntax">
+    from fastapi import FastAPI, APIRouter
+    
+    <strong>app</strong> = FastAPI()
+    
+    <strong>router</strong> = APIRouter(prefix=<strong>route:str</strong>)                                   // capture all request behind <strong>route:str</strong>    
+    
+    
+    @<strong>router</strong>.<strong>httpMethod</strong>(<i>...</i>)                                                // path handling works the same, but on the <strong>router</strong> instance
+    async def <strong>pathFunction</strong>(<i>...</i>):
+        <span style="color:darkgray;">// some path logic...</span>
+    
+    
+    app.include_router(<strong>router</strong>)                                             // including <strong>router</strong> in the <strong>app</strong>     
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre class="cmd">
+    $ uvicorn server:app --port 3000 --reload           # server start command used in these demos
+    </pre>
+    <h4 class="header"> router </h4>
+    <pre>
+    from fastapi import FastAPI, APIRouter
+    
+    
+    app = FastAPI()
+    
+    test_router = APIRouter(prefix='/test')       # router prefixed with /test
+    
+    
+    @test_router.get('/one')                      # adding routes to the router (this will be <mark>/test/one</mark>)
+    def get_test_one():
+        return 'Test-1 OK'
+    
+    
+    @test_router.get('/two')
+    def get_test_two():
+        return 'Test-2 OK'
+    
+    
+    app.include_router(test_router)               # adding routher to the main route
+    </pre>
+  </details>
+  <!------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Using Templates (Jinja2) </h2>
+    <p> - in order to use templates <mark>jinja2</mark> must be installed </p>
+  <pre class="syntax">
+    from fastapi import FastAPI, Request
+    from fastapi.responses import HTMLResponse
+    from fastapi.templating import Jinja2Templates
+    
+    <strong>app</strong> = FastAPI()
+    <strong>template</strong> = Jinja2Templates(directory=<strong>templatesDirPath:str</strong>)             // path to template directory     
+    
+    
+    <strong>app</strong>.get(<strong>fastApiRoute</strong>, response_class=HTMLResponse)
+    def <strong>pathFn</strong>(request: Request):
+        return <strong>template</strong>.TemplateResponse(<strong>templateFile</strong>, {'request': request, **<strong>templateData:dict</strong>})
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre class="cmd">
+    $ uvicorn server:app --port 3000 --reload           # server start command used in these demos
+    </pre>
+    <h4 class="header"> using templates </h4>
+    <pre>
+    from fastapi import FastAPI, Request
+    from fastapi.responses import HTMLResponse
+    from fastapi.templating import Jinja2Templates
+    
+    app = FastAPI()
+    
+    
+    @app.get('/', response_class=HTMLResponse)
+    def get_test_template(request: Request):
+        template = Jinja2Templates(directory='.')
+        template_data = {
+            'id': 2,
+            'name': 'Arpad',
+            'age': 43,
+            'work': 'software engeneer',
+        }
+    
+        return template.TemplateResponse('test.html', {'request': request, **template_data})
+    </pre>
+  </details>
+  <!------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header">  GraphQL / Websockets </h2>
+    <p> - to use websockets the <mark>websockets</mark> lib must be installed </p>
+    <p> - I used <mark>ariadne</mark> for GraphQL implementation </p>
+    <pre class="syntax">
+<span style="color:darkgray;">// GraphQL ------------------------------------------------------------------------</span>
+    from fastapi import FastAPI
+    from ariadne import <strong>QueryType</strong>, make_executable_schema
+    from ariadne.asgi import GraphQL
+    
+    type_def = <strong>graphQlSDL:str</strong>
+    query = <strong>QueryType()</strong>
+    <strong>// query field definitions...</strong>
+    
+    schema = make_executable_schema(type_defs, query)
+    <strong>app</strong> = FastAPI()
+    
+    app.mount(<strong>path:str</strong>, GraphQL(schema, <small>debug=<i>bool</i></small>))                       // mounts as middleware    
+    </pre>
+    <pre class="syntax">
+<span style="color:darkgray;">// Websocket ----------------------------------------------------------------------</span>
+    from fastapi import FastAPI, WebSocket
+    from fastapi.responses import HTMLResponse 
+    
+    <strong>app</strong> = FastAPI()
+    
+    
+    @<strong>app</strong>.websocket(<strong>fastApiRoute</strong>)
+    async def <strong>wsHandlerFn</strong>(websocket: WebSocket):
+        await websocket.accept()                                           // connection 
+        
+        while True:
+            <span style="color:darkgray;">// receive --------------------</span>
+            <strong>data</strong> = await websocket.receive_text()                          // receiving text message (block futher execution until message received)
+            <strong>data</strong> = await websocket.bytes()                                 // receiving byte message (block futher execution until message received)
+            <strong>data</strong> = await websocket.json()                                  // receiving json message (block futher execution until message received)
+            
+            <span style="color:darkgray;">// send -----------------------</span>
+            await websocket.send_text(<strong>message:str</strong>)                         // sending message to the client
+            await websocket.send_bytes(<strong>message:bytes</strong>)                      // sending message to the client
+            await websocket.send_json(<strong>message:dict</strong>)                        // sending message to the client
+        
+        <span style="color:darkgray;">// closing connection ---------</span>
+        await websocket.close()                                            // waites for the websocket connection to be close
+        websocket.close(<small>code=<i>code:int</i></small>)                                     // closes the websocket connection ()
+        
+        
+        websocket.<strong class="openable">attribute<div>
+          <p> <mark>scope</mark> The ASGI scope dictionary for the WebSocket connection. It contains metadata about the connection, such as path parameters, query parameters, and headers </p>
+          <p> <mark>close_code</mark> -  The close code for the WebSocket connection, indicating the reason for closure if applicable </p>
+          <p> <mark>client</mark> - The client's IP address and port information </p>
+        </div></strong>                                               // other websocket attributes 
     </pre>
   <details class="example">
     <summary> Example : </summary>
-    <h4 style="color:darkblue;"><u> example title </u></h4>
-    <p> - live tests will come here </p>
-    <details>
-      <summary> CODE : </summary>
-      <pre>
-    copy of the exaple code 
-        </pre>
-    </details>
+    <pre class="cmd">
+    $ uvicorn server:app --port 3000 --reload           # server start command used in these demos
+    </pre>
+    <h4 class="header"> GraphQL (with ariadne) </h4>
+    <pre>
+    from fastapi import FastAPI
+    from ariadne import QueryType, make_executable_schema
+    from ariadne.asgi import GraphQL
+    
+    
+    type_defs = """
+        type Query {
+            name: String
+            age: Int
+        }
+    """
+    
+    query = QueryType()
+    
+    
+    @query.field('name')
+    def resolve_name(*_):
+        return 'Arpad'
+    
+    
+    @query.field('age')
+    def resolve_age(*_):
+        return 38
+    
+    
+    schema = make_executable_schema(type_defs, query)
+    app = FastAPI()
+    
+    
+    app.mount("/graphql", GraphQL(schema, debug=True))            # mounts as middleware 
+    </pre>
+    <h4 class="header"> websocket </h4>
+    <pre>
+    from fastapi import FastAPI, WebSocket
+    from fastapi.responses import HTMLResponse
+    
+    app = FastAPI()
+    html = """
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Chat&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;WebSocket Chat&lt;/h1&gt;
+            &lt;form action="" onsubmit="sendMessage(event)"&gt;
+                &lt;input type="text" id="messageText" autocomplete="off"/&gt;
+                &lt;button&gt;Send&lt;/button&gt;
+            &lt;/form&gt;
+            &lt;ul id='messages'&gt;
+            &lt;/ul&gt;
+            &lt;script&gt;
+                const ws = new WebSocket("ws://localhost:3000/ws");
+                
+                ws.onmessage = function(event) {
+                    console.log(event.data)
+                };
+                
+                function sendMessage(event) {
+                    const input = document.getElementById("messageText")
+                    ws.send(input.value)
+                    event.preventDefault()
+                }
+            &lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+    """
+    
+    
+    @app.get('/', response_class=HTMLResponse)
+    async def get():
+        return HTMLResponse(html)
+    
+    
+    @app.websocket("/ws")
+    async def websocket_endpoint(websocket: WebSocket):
+        await websocket.accept()
+        while True:
+            data = await websocket.receive_text()       # will block until message received on the socket
+            await websocket.send_text(f"Message text was: {data}")
+        await websocket.close()
+    </pre>
   </details>
-  <!---------------------------------------------------------------------------------------------------------------------------------->
+  <!------------------------------------------------------------------------------------------------------------->
   <hr>
-
-  <h2 class="test" style=""><a href="TEST/index.html"> TEST > </a></h2>
-
-
+  <h2 class="header"> Background Task / Setup and Teardown </h2>
+  <p> - a background task is an async function that executes (without blocking the main thread) <u>after the response is sent</u> back to the client </p>
+  <p> - the setup and teardown is a way to run some logic before and after the FastAPI starts/stops </p>
+  <pre class="syntax">
+<span style="color:darkgray;">// Background task-----------------------------------------------------------------</span>
+    from fastapi import FastAPI, BackgroundTasks
+    
+    <strong>app</strong> = FastAPI()
+    
+    
+    async def <strong>bgTaskFn</strong>(<strong>bgArg</strong><i>, ...</i>):
+        <span style="color:darkgray;">// some background task logic...</span>
+    
+    
+    @<strong>app</strong>.<strong>httpMethod</strong>(<strong>fastApiRoute</strong>)
+    async def <strong>pathFn</strong>(background_tasks: BackgroundTasks):
+        background_tasks.add_task(<strong>bgTaskFn</strong>, <strong>bgArg</strong><i>, ...</i>)                    // adding background task to the queue (start executing after the response is sent back)
+        
+  </pre>
+  <pre class="syntax">
+<span style="color:darkgray;">// Setup / Teardown ---------------------------------------------------------------</span>
+    from contextlib import asynccontextmanager
+    
+    from fastapi import FastAPI
+    
+    
+    @asynccontextmanager
+    async def <strong>setupTeardown</strong>(app: FastAPI):
+        <span style="color:darkgray;">// setup (before fastAPI starts) logic...</span>
+        yield
+        <span style="color:darkgray;">// teardown (after fastAPI stop) logic...</span>
+    
+    
+    app = FastAPI(lifespan=<strong>setupTeardown</strong>)
+    
+    
+    
+  <span style="color:darkgray;">// Setup / Teardown 2nd method --------------------------------------------------</span>
+    @app.on_event('startup')
+    async def <strong>setup</strong>():
+        <span style="color:darkgray;"># doing some setup logic before the app start...</span>
+    
+    
+    @app.on_event('shutdown')
+    async def <strong>teardown</strong>():
+        <span style="color:darkgray;"># doing some setup logic after the app start...</span>
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre class="cmd">
+    $ uvicorn server:app --port 3000 --reload           # server start command used in these demos
+    </pre>
+    <h4 class="header"> Background Task </h4>
+    <pre>
+    from asyncio import sleep
+    
+    from fastapi import FastAPI, BackgroundTasks
+    
+    
+    app = FastAPI()
+    
+    
+    async def some_backgroundtask(delay: int):
+        print('background task started...')
+        await sleep(delay)
+        print('background task end')
+    
+    
+    @app.get('/')
+    async def get_root(background_tasks: BackgroundTasks):
+        delay = 5
+        background_tasks.add_task(some_backgroundtask, delay)       # triggering background task (this won't block the response)
+        return 'OK'
+    </pre>
+    <h4 class="header"> Setup / Teardown </h4>
+    <pre>
+    from asyncio import sleep
+    from contextlib import asynccontextmanager
+    
+    from fastapi import FastAPI
+    
+    
+    @asynccontextmanager
+    async def app_setup_teardown(app: FastAPI):
+        # doing some setup before the app start...
+        await sleep(4)      # simulating expensive setup
+        
+        yield
+        
+        # doing some teardown after the app stop...
+        print('teardown logic done.')
+    
+    
+    app = FastAPI(lifespan=app_setup_teardown)
+    
+    
+    @app.get('/test')
+    def get_test():
+        return {'Hello': 'World'}
+    </pre>
+    <h4 class="header"> Setup / Teardown (2nd method)</h4>
+    <pre>
+    from asyncio import sleep
+    
+    from fastapi import FastAPI
+    
+    app = FastAPI()
+    
+    
+    @app.on_event("startup")
+    async def startup_event():
+        # doing some setup before the app start...
+        await sleep(4)      # simulating expensive setup
+    
+    
+    @app.on_event("shutdown")
+    async def shutdown_event():
+        # doing some teardown after the app stop...
+        print('teardown logic done.')
+    
+    
+    @app.get('/test')
+    def get_test():
+        return {'Hello': 'World'}
+    </pre>
+  </details>
+  <!------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Testing </h2>
+    <p> - FastAPI provides a test client to test your endpoints (for testing the <mark>httpx</mark> package must be installed)  </p>
+    <p> <a href="https://fastapi.tiangolo.com/tutorial/testing/" target="_blank">- Testing link</a> </p>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre class="cmd">
+    $ pytest                # test are performed with <mark>pytest</mark>
+    </pre>
+    <h4 class="header"> Simple Testing </h4>
+    <pre>
+    from fastapi import FastAPI
+    from fastapi.testclient import TestClient
+    
+    
+    app = FastAPI()
+    
+    
+    @app.get('/')
+    async def get_root():
+        return {'Hello': 'World'}
+    
+    
+// TEST ----------------------------------------------------------------------
+    test_client = TestClient(app)
+    
+    
+    def test_get_root():
+        response = test_client.get('/')
+        
+        assert response.status_code == 200
+        assert response.json() == {'Hello': 'World'}
+    </pre>
+    <h4 class="header"> Post Testing </h4>
+    <pre>
+    from typing import Annotated
+    
+    from fastapi import FastAPI, Header
+    from fastapi.testclient import TestClient
+    from pydantic import BaseModel
+    
+    
+    app = FastAPI()
+    
+    
+    class Person(BaseModel):
+        name: str
+        age: int | None = None
+    
+    
+    @app.post('/test', response_model=Person)
+    async def get_root(
+            required_header: Annotated[str, Header(min_length=10, max_length=10)],
+            person: Person):
+        print(required_header)
+        return person
+    
+    
+// TEST ----------------------------------------------------------------------
+    test_client = TestClient(app)
+    
+    
+    def test_api():
+        response = test_client.post(
+            '/test',
+            headers={
+                'required-header': 'ijskdjw13h',
+            },
+            json={
+                'name': 'Arpad',
+                'age': 38,
+            }
+        )
+    
+        assert response.status_code == 200
+        assert response.json() == {
+            'name': 'Arpad',
+            'age': 38,
+        }
+    </pre>
+    <h4 class="header"> Testing Websockets </h4>
+    <pre>
+    from fastapi import FastAPI
+    from fastapi.testclient import TestClient
+    from fastapi.websockets import WebSocket
+    
+    app = FastAPI()
+    
+    
+    @app.websocket("/ws")
+    async def websocket(websocket: WebSocket):
+        await websocket.accept()
+        await websocket.send_json({"msg": "Hello WebSocket"})
+        await websocket.close()
+    
+    
+// TEST ----------------------------------------------------------------------
+    def test_websocket():
+        client = TestClient(app)
+        
+        with client.websocket_connect("/ws") as websocket:
+            data = websocket.receive_json()
+            
+            assert data == {"msg": "Hello WebSocket"}
+    </pre>
+    <h4 class="header"> Async Testing </h4>
+    <pre>
+    import asyncio
+    from fastapi import FastAPI
+    
+    
+    app = FastAPI()
+    
+    
+    async def fake_db_call():
+        await asyncio.sleep(20)        # simulating latency
+        return 'some db data'
+    
+    
+    @app.get('/')
+    async def root():
+        data = await fake_db_call()
+        return data
+    
+    
+// TEST ----------------------------------------------------------------------
+    import pytest
+    from httpx import AsyncClient
+    
+    
+    @pytest.mark.asyncio
+    async def test_api_db_call():
+        async with AsyncClient(app=app, base_url="http://test") as client:
+            response = await client.get('/')
+        
+        assert response.status_code == 200
+        assert response.json() == 'some db data'
+    </pre>
+  </details>
+  
+  
   <br><br>
 </body>
 
