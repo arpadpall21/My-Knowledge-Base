@@ -14,24 +14,6 @@
     <p class="sitenav"> <a href="../../index.html">MySite></a>
         <a href="../index.html">Python></a> Functions  
     </p>
-<table class="table">
-<caption>
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
-    <tr>
-        <th style="width:30%;"> Method </th>
-        <th> Description </th>
-    </tr>
-    <tr class="05.01" id="map">
-        <td>
-            map(<strong>fn</strong>, <strong>iterableArg1</strong>, <i>iterableArg2, ...</i>)
-        </td>
-        <td>
-            - runs the passed function for each item in the iterable(s)<br>
-            - returns the result in a <strong>map</strong> iterable object
-        </td>
-    </tr>
-</table>
     <br>
     <details class="example" id="notes">
     <summary> Notes :</summary>
@@ -248,22 +230,6 @@
     
     someLambda1(1, 5)                                                                  // -> (1, 5)
     someLambda2(a=1, b=2)                                                              // -> {'a':1, 'b':2}
-    </pre>
-</details>
-<!---------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="header"> The <mark>map()</mark> function </h2>
-<details class="example">
-<summary> DEMO </summary>
-    <pre>
-    def test(a, b):
-        return a + b
-    
-    for i in map(test, [1, 32, -145], [1, 8, 145]):
-        print( i )                            // -> 2  |  40  |  0
-    
-    for i in map(test, ('a', 'b', 'c'), ('x', 'y', 'z')):
-        print( i )                            // -> "ax"  |  "by"  |  "cz"
     </pre>
 </details>
     

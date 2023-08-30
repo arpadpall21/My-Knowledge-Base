@@ -343,8 +343,36 @@
         assert input * input == expected
   </pre>
   </details>
-
-
+  <!--------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Async Testing </h2>
+  <p> - to test asynchronous code we can use the <mark>pytest-asyncio</mark> plugin (must be installed) </p>
+  <p> - Python 3.8 natively supports the AsynMock to create awaitable mock object <a href="../../Built-in Libraries/unittest/index.html#mock" target="_blank">[link]</a></p>
+  <pre class='syntax'>
+    import pytest
+    
+    
+    @pytest.mark.asyncio                 # allows async logic testing
+    async def test_<strong>testSuite</strong>():
+        await <strong>awaitable()</strong>                # awaitables can be tested 
+    
+    
+    @pytest.mark.asyncio                 # can be used in class level (all class methods can async test now)
+    class Test<strong>TestSuiteName</strong>:
+        async def test_<strong>testSuite</strong>():
+            await <strong>awaitable()</strong>
+        
+        <i>...</i>
+  </pre>
+  
+  <!---
+      - the pytest-asyncio also enables async fixtures 
+      
+      - async mock supported in Python 3.8+
+        -> async mock lib for python versions that are older than 3.8   -> https://pypi.org/project/asyncmock/
+      
+  
+  -->
   <br><br>
 </body>
 

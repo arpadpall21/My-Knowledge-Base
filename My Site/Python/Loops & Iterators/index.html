@@ -27,7 +27,7 @@
             iter(<strong>iterable</strong>)
         </td>
         <td> 
-            - from an <strong>interable</strong> creates and returns an <strong>iterator</strong> object 
+            - from an <strong>interable</strong> creates and returns an <strong>iterator</strong> object
         </td>
     </tr>
     <tr class="05.01">
@@ -241,7 +241,8 @@
     <pre class="syntax">
     def genFunc():                                                                     // function having the <mark>yield</mark> keyword becomes a generator
         yield <strong>exp</strong>                                                                      // calling the <mark>next()</mark> method on the returned <strong>iterator</strong> will yield the value after the <mark>yield</mark> keyword <u>then pauses the generator execution until the <mark>next()</mark> is called again</u>    
-        <i>...</i>                                                                            // the last <mark>yield</mark> value is the last item in the generation (no the <mark>return</mark> value)
+        
+        yield from <strong>genObj|iterable</strong>                                                     // delegates to another generator or iterable object to call their members     
         
         return <strong>val</strong>                                                                     // the <mark>return</mark> value is raised as <mark>StopIteration</mark> error value if the <strong>genObj</strong> is overcalled 
     
@@ -271,6 +272,23 @@
     next(genObj, 'defVal')                                                             // -> 'one'
     next(genObj, 'defVal')                                                             // -> 'two'
     next(genObj, 'defVal')                                                             // -> 'defVal'     // return the default value instead of raising the StopIteration error   
+    </pre>
+    <h4 class="header"> Delegating with <mark>yield from</mark> </h4>
+    <pre>
+    def sub_generator():
+        yield 11
+        yield 12
+        yield 13
+    
+    
+    def main_generator():
+        yield 'Start'
+        yield from sub_generator()
+        yield 'End'
+    
+    
+    for i in main_generator():
+        i                     // -> 'Start', 11, 12, 13, 'End'    
     </pre>
 </details>
 <!---------------------------------------------------------------------------------------------->

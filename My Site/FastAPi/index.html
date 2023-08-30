@@ -1338,12 +1338,11 @@
     import asyncio
     from fastapi import FastAPI
     
-    
     app = FastAPI()
     
     
     async def fake_db_call():
-        await asyncio.sleep(20)        # simulating latency
+        await asyncio.sleep(2)
         return 'some db data'
     
     
@@ -1359,10 +1358,10 @@
     
     
     @pytest.mark.asyncio
-    async def test_api_db_call():
+    async def test_api():
         async with AsyncClient(app=app, base_url="http://test") as client:
             response = await client.get('/')
-        
+    
         assert response.status_code == 200
         assert response.json() == 'some db data'
     </pre>

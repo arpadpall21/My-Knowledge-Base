@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> os </title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+    <script src="../../../Assets/scriptPages.js"></script>
+</head>
+<body>
+<h1> os </h1>
+    <p> Updated ( 2022-06-26 )</p>
+    <p class="sitenav"> <a href="../../../index.html">MySite></a>
+        <a href="../../index.html">Python></a>
+        <a href="../index.html">Built-in Libraries></a> os
+    </p>
+<table class="table">
+<caption>
+    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+</caption>
+    <tr>
+        <th style="width:30%;"> Method / Property / statement ect... </th>
+        <th> Description </th>
+    </tr>
+    <tr class="05.01">
+        <td>
+            <em>os</em>.name
+        </td>
+        <td>
+            - returns the name of the operating system
+        </td>
+    </tr>
+    <tr class="05.02">
+        <td>
+            <em>os</em>.uname()
+        </td>
+        <td>
+            - returns informations about the operating system in a tuple
+        </td>
+    </tr>
+    <tr class="10.01">
+        <td>
+            <em>os</em>.urandom(<strong>sizeByte:int</strong>)
+        </td>
+        <td>
+            - return a random <strong>bytes</strong> up to the set size <br>
+            - calls the OS specific randomness source -> suitable for cryptographyc use 
+        </td>
+    </tr>
+    <tr class="15.01">
+        <td>
+            <em>os</em>.environ
+        </td>
+        <td>
+            - gets or sets the process' environment variables as a dictionary
+        </td>
+    </tr>
+    <tr class="15.02">
+        <td>
+            <em>os</em>.getenv(<strong>key:str</strong>, <small>default=<i>None</i></small>)
+        </td>
+        <td>
+            - returns the environment variable's key value (as a string)
+        </td>
+    </tr>
+    <tr class="15.03">
+        <td>
+            <em>os</em>.get_exec_path()
+        </td>
+        <td>
+            - returns a list of directories where execuatbles are searched (the value of the <mark>PATH</mark> environment variable)
+        </td>
+    </tr>
+    <tr class="20.01">
+        <td>
+            <em>os</em>.getuid()
+        </td>
+        <td>
+            - returns the user id of the current process
+        </td>
+    </tr>
+    <tr class="20.02">
+        <td>
+            <em>os</em>.setuid(<strong>uid:int</strong>)
+        </td>
+        <td>
+            - sets the current process' user id
+        </td>
+    </tr>
+    <tr class="20.03">
+        <td>
+            <em>os</em>.getpgrp()
+        </td>
+        <td>
+            - returns the user group id of the current process
+        </td>
+    </tr>
+    <tr class="20.04">
+        <td>
+            <em>os</em>.getpid()
+        </td>
+        <td>
+            - returns the current process id
+        </td>
+    </tr>
+    <tr class="20.05">
+        <td>
+            <em>os</em>.getppid()
+        </td>
+        <td>
+            - returns the parent process id
+        </td>
+    </tr>
+    <tr class="20.06">
+        <td>
+            <em>os</em>.getgid()
+        </td>
+        <td>
+            - returns the group id of the current process
+        </td>
+    </tr>
+    <tr class="20.07">
+        <td>
+            <em>os</em>.setgid(<strong>pgid:int</strong>)
+        </td>
+        <td>
+            - sets the current process' group id
+        </td>
+    </tr>
+    <tr class="20.08">
+        <td>
+            <em>os</em>.getpgid(<strong>pid</strong>)
+        </td>
+        <td>
+            - returns the process group id of the passed process' id
+        </td>
+    </tr>
+    <tr class="25.01">
+        <td>
+            <em>os</em>.abort()
+        </td>
+        <td>
+            - sends a <mark>SIGABRT</mark> signal to the current process (aborts the current process)
+        </td>
+    </tr>
+    <tr class="25.02">
+        <td>
+            <em>os</em>.kill(<strong>pid</strong>, <strong class="openable">signal<div>
+                <p> - ex <mark>signal.SIGKILL</mark> - kills the targeted process </p>
+            </div></strong>)
+        </td>
+        <td>
+            - send the specified signal to the targeted process id
+        </td>
+    </tr>
+    <tr class="25.03">
+        <td>
+            <em>os</em>.killpg(<strong>pgid</strong>, <strong class="openable">signal<div>
+                <p> - ex <mark>signal.SIGKILL</mark> - kills the targeted process group</p>
+            </div></strong>)
+        </td>
+        <td>
+            - send the specified signal to the targeted process group id
+        </td>
+    </tr>
+    <tr class="30.01">
+        <td>
+            <em>os</em>.fork()
+        </td>
+        <td>
+            - forks a new child process by using primitives and referenced mutables from the <u>current</u> process (careful using this in loops) <br>
+            - in the parrent process returns the pid of the child process <br>
+            - in the child process returns <mark>0</mark>
+        </td>
+    </tr>
+    <tr class="30.02">
+        <td>
+            <em>os</em>.execl(<strong>execPath:str</strong>, <strong>arg</strong>, <i>...</i>)
+        </td>
+        <td>
+            - starts a new process by replacing the current process (the current process' id is used in the new process) <a href="https://docs.python.org/3/library/os.html?highlight=os#os.execl" target="_blank">[link]</a>
+        </td>
+    </tr>
+    <tr class="30.03">
+        <td>
+            <em>os</em>.system(<strong>cmd:str</strong>)
+        </td>
+        <td>
+            - spawns a shell <mark>sh</mark> (as sub process) and executes the passed command in it <br>
+            - stdIOs are piped to the parents 
+        </td>
+    </tr>
+    <tr class="35.01">
+        <td>
+            <em>os</em>.<strong>fsOperationsMethods()</strong>
+        </td>
+        <td>
+            - the <mark>os</mark> module provides a lot of low-level unix-like file system related functions <a href="https://docs.python.org/3/library/os.html?highlight=os#files-and-directories" target="_blanc">[link]</a>
+        </td>
+    </tr>
+</table>
+    <br>
+    <details class="example" id="notes">
+    <summary> Notes :</summary>
+        <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+    </details>
+<h2 style="color:green;"><u> Useful Links : </u></h2>
+    <p><a href="https://docs.python.org/3/library/os.html?highlight=os#module-os" target="_blank"> os (docs.python.org) </a></p>
+<h2 style="color:green;"><u> Remember This : </u></h2>
+<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+    <p> - the <mark>os</mark> module provides functionalities for 3 important things: </p>
+    <p style="text-indent:30px;"> - environment variable funcionalities </p>
+    <p style="text-indent:30px;"> - file system operations </p>
+    <p style="text-indent:30px;"> - process functionalities (for child processes see the <mark><a href="../subprocess/index.html" target="_blank">subprocess</a></mark>) </p>
+    <p> - from V.3.7 Python uses UTF-8 encoding and ignores locale encoding </p>
+<details class="example">
+<summary> Example : </summary>
+    <p> - <mark>umask()</mark> </p>
+    <pre>
+    os.umask(0O222)                     // -> 18              // new umask -> 222
+                                                              // old umask -> 022  (decimal 18 -> octal 22)
+    </pre>
+    <p> - <mark>execl()</mark> </p>
+    <pre>
+    import os
+    import sys
+    
+    os.execl(sys.executable, sys.executable, './test_2.py')     // replaces the current process by <mark>sys.executable ./test_2.py</mark> (uses this process' id to start the new process)
+    </pre>
+    <p> - <mark>fork()</mark> </p>
+    <pre>
+    import os
+    
+    id = os.fork()                              // forks a new process by using the current state of the current process 
+    
+    if id != 0:
+        print( "Hello from parent process" )    // this code runs in the parent process    
+        print( id )                             // id of the child process
+    elif id == 0:
+        print( "Hello from child process" )     // this code runs in the child process    
+    </pre>
+</details>
+    
+    
+    <br><br>
+</body>
+</html>

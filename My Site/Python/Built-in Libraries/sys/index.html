@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> sys </title> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+    <script src="../../../Assets/scriptPages.js"></script>
+</head>
+<body>
+<h1> sys </h1>
+    <p> Updated ( 2022-06-26 )</p>
+    <p class="sitenav"> <a href="../../../index.html">MySite></a>
+        <a href="../../index.html">Python></a>
+        <a href="../index.html">Built-in Libraries></a> sys
+    </p>
+<table class="table">
+<caption>
+    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+</caption>
+    <tr>
+        <th style="width:30%;"> Method / Property / statement ect... </th>
+        <th> Description </th>
+    </tr>
+    <tr class="05.01">
+        <td> 
+            <em>sys</em>.argv
+        </td>
+        <td>
+            - returns the command line arguments in a list (ex: <mark>sys.argv[0]</mark> is the script name)
+        </td>
+    </tr>
+    <tr class="05.02">
+        <td> 
+            <em>sys</em>.orig_argv
+        </td>
+        <td>
+            - returns the command line arguments in a list including 1st executable (ex: <mark>sys.orig_argv</mark> is the executable name (<mark>python</mark>))
+            <span id="browserSupport" title="Updated: 2022-06-26">
+                <span><i class="fab fa-python"></i> 3.10 </span>
+            </span>
+        </td>
+    </tr>
+    <tr class="10.01">
+        <td>
+            <em>sys</em>.exit(<i class="openable">exitCode:int<div>
+                <p> <mark>0</mark> = normal exit code (any other than <mark>0</mark> considered abnormal exit) </p>
+            </div></i>)
+        </td>
+        <td>
+            - exits the program (raises a <mark>SystemExit</mark> signaling exit to the interpreter)
+        </td>
+    </tr>
+    <tr class="15.01">
+        <td>
+            <em>sys</em>.getrecursionlimit()
+        </td>
+        <td>
+            - returns the call stack size for recursions
+        </td>
+    </tr>
+    <tr class="15.02">
+        <td>
+            <em>sys</em>.setrecursionlimit(<strong>int</strong>)
+        </td>
+        <td>
+            - sets the call stack size for recursions
+        </td>
+    </tr>
+    <tr class="20.01">
+        <td>
+            <em>sys</em>.builtin_module_names
+        </td>
+        <td>
+            - returns module names in a tuple that are compiled into this Python interpreter
+        </td>
+    </tr>
+    <tr class="20.02">
+        <td>
+            <em>sys</em>.stdlib_module_names
+        </td>
+        <td>
+            - returns all <u>standard module</u> names in a frozenset (main packages listed only) (Standard module = modules that we import into our scripts) 
+            <span id="browserSupport" title="Updated: 2022-06-26">
+                <span><i class="fab fa-python"></i> 3.10 </span>
+            </span>
+        </td>
+    </tr>
+    <tr class="20.03">
+        <td>
+            <em>sys</em>.modules
+        </td>
+        <td>
+            - returns all modules loaded by the interpreter in a dictionary (name value pairs) (ex: <mark>sys.modules["time"]</mark> refers to the <mark>time</mark> module)
+        </td>
+    </tr>
+    <tr class="20.04">
+        <td>
+            <em>sys</em>.path
+        </td>
+        <td>
+            - returns a settable list which contains directory paths where python will search for modules <a href="../../Modules/index.html#path" target="_blank">[link]</a>
+        </td>
+    </tr>
+    <tr class="25.01">
+        <td>
+            <em>sys</em>.stdin
+        </td>
+        <td>
+            - returns a process' standard-in as <strong>fileObj</strong> <a href="../../Read& Write Files/index.html" target="_blank">[link]</a>
+        </td>
+    </tr>
+    <tr class="25.02">
+        <td>
+            <em>sys</em>.stdout
+        </td>
+        <td>
+            - returns a process' standard-out as <strong>fileObj</strong> <a href="../../Read& Write Files/index.html" target="_blank">[link]</a>
+        </td>
+    </tr>
+    <tr class="25.03">
+        <td>
+            <em>sys</em>.stderr
+        </td>
+        <td>
+            - returns a process' standard-error as <strong>fileObj</strong> <a href="../../Read& Write Files/index.html" target="_blank">[link]</a>
+        </td>
+    </tr>
+    <tr class="30.01">
+        <td>
+            <em>sys</em>.getsize(<strong>any</strong>)
+        </td>
+        <td>
+            - returns the size (memory consumption) of the passed object (in Python everything is an object)
+        </td>
+    </tr>
+    <tr class="35.01">
+        <td>
+            <em>sys</em>.copyright
+        </td>
+        <td>
+            - returns the Python interpreter copyright informations
+        </td>
+    </tr>
+    <tr class="35.02">
+        <td>
+            <em>sys</em>.implementation
+        </td>
+        <td>
+            - returns the Python interpreter implementation details in a named tuple
+        </td>
+    </tr>
+    <tr class="35.03">
+        <td>
+            <em>sys</em>.version
+        </td>
+        <td>
+            - returns the Python interpreter version info in a string
+        </td>
+    </tr>
+    <tr class="40.01">
+        <td>
+            <em>sys</em>.platform
+        </td>
+        <td>
+            - returns the platform identifier 
+        </td>
+    </tr>
+    <tr class="40.02">
+        <td>
+            <em>sys</em>.byteorder
+        </td>
+        <td>
+            - returns the system byte order <mark>'little'</mark> = little-endiannes (least-significatn byte first), <mark>'big'</mark> = big-endiannes (most-significant bytes first)
+        </td>
+    </tr>
+    <tr class="40.03">
+        <td>
+            <em>sys</em>.getdefaultencoding()
+        </td>
+        <td>
+            - returns the default <u>string</u> encoding used by the interpreter
+        </td>
+    </tr>
+    <tr class="40.04">
+        <td>
+            <em>sys</em>.hash_info
+        </td>
+        <td>
+            - returns the hash implementation details in a named_tuple
+        </td>
+    </tr>
+    <tr class="40.05">
+        <td>
+            <em>sys</em>.thread_info
+        </td>
+        <td>
+            - returns the thread implementation info in a named tuple 
+            <span id="browserSupport" title="Updated: 2022-06-26">
+                <span><i class="fab fa-python"></i> 3.3 </span>
+            </span>
+        </td>
+    </tr>
+    <tr class="45.01">
+        <td>
+            <em>sys</em>.executable
+        </td>
+        <td>
+            - returns the absolute path of the Python executable 
+        </td>
+    </tr>
+</table>
+    <br>
+    <details class="example" id="notes">
+    <summary> Notes :</summary>
+        <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+    </details>
+<h2 style="color:green;"><u> Useful Links : </u></h2>
+    <p><a href="https://docs.python.org/3/library/sys.html?highlight=sys#module-sys" target="_blank"> sys (docs.python.org) </a></p>
+<h2 style="color:green;"><u> Remember This : </u></h2>
+    
+<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+    <p> - the <mark>sys</mark> module has access to variables used by the interpreter </p>
+<details class="example">
+<summary> DEMO </summary>
+    <p> - built-in moudles VS standard modules </p>
+    <pre>
+    import sys
+    
+    sys.builtin_module_names          // -> ('_abc', '_ast', '_codecs', '_collections', ...           // modules at compile time 
+    
+    sys.stdlib_module_names           // -> ('_abc', '_ast', '_codecs', ...                           // standard modules 
+    </pre>
+</details>
+    
+    
+    <br><br>
+</body>
+</html>

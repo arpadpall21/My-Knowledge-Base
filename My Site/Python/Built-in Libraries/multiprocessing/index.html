@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> multiprocessing </title> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+    <script src="../../../Assets/scriptPages.js"></script>
+</head>
+<body>
+<h1> multiprocessing </h1>
+    <p> Updated ( 2022-08-18 / 2022-09-12)</p>
+    <p class="sitenav"> <a href="../../../index.html">MySite></a>
+        <a href="../../index.html">Python></a>
+        <a href="../index.html">Built-in Libraries></a> multiprocessing
+    </p>
+<table class="table">
+    <caption>
+        <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+        <th style="width:30%;"> Method </th>
+        <th> Description </th>
+    </tr>
+    <tr class="05.01">
+        <td>
+            <em>multiprocessing</em>.get_start_method()
+        </td>
+        <td>
+            - returns the start method that processes will be started with
+        </td>
+    </tr>
+    <tr class="05.02">
+        <td>
+            <em>multiprocessing</em>.set_start_method('spawn|fork|forkserver')
+        </td>
+        <td>
+            - sets the subprocess start method <br>
+            - should be called at most once and must be called inside <mark>if __name__ == "__main__"</mark> block 
+            <span id="browserSupport" title="updated : 2022-09-12">
+                <span><i class="fab fa-python"></i> 3.4 </span>
+            </span>
+        </td>
+    </tr>
+    <tr class="05.03">
+        <td>
+            <em>multiprocessing</em>.get_all_start_methods()
+        </td>
+        <td>
+            - retunrs all supported process start methods in a list
+        </td>
+    </tr>
+    <tr class="10.01">
+        <td>
+            <em>multiprocessing</em>.get_context('spawn|fork|forkserver')
+        </td>
+        <td>
+            - creates and returns a <strong>ctx</strong> (process startup context) in which sets the subrocess start method <br>
+            - the returned <strong>ctx</strong> is an isolated context where processes startup with the set method, (has the same API as the <mark>multiprocessing</mark>) <br>
+            - must be called inside <mark>if __name__ == "__main__"</mark> block
+            <span id="browserSupport" title="updated : 2022-09-12">
+                <span><i class="fab fa-python"></i> 3.4 </span>
+            </span>
+        </td>
+    </tr>
+    <tr class="15.01">
+        <td>
+            <em>multiprocessing</em>.active_children()
+        </td>
+        <td>
+            - returns all active (alive) children of the current process in a list (works form child process too)
+        </td>
+    </tr>
+    <tr class="15.02">
+        <td>
+            <em>multiprocessing</em>.current_process()
+        </td>
+        <td>
+            - returns the current process object
+        </td>
+    </tr>
+    <tr class="15.03">
+        <td>
+            <em>multiprocessing</em>.set_executable(<strong>execPath:str</strong>)
+        </td>
+        <td>
+            - sets the executable path for starting child processes (Default: <mark>sys.executable</mark>)
+        </td>
+    </tr>
+    <tr class="20.01">
+        <td colspan="2"> Process </td>
+    </tr>
+    <tr class="20.02">
+        <td>
+            <em>treading</em>.Process(<small class="openable">group=None<div>
+                <p> - not yet implemented argument (v3.10) </p>
+            </div></small>, <small class="openable">target=<i>fn</i><div>
+                <p> - function executed by the process (Default: <mark>None</mark>) </p>
+            </div></small>, <small>name=<i>str</i></small>, <small class="openable">args=<i>iterable</i><div>
+                <p> - arguments passed to the target function (iterable format) </p>
+            </div></small>, <small class="openable">kwargs=<i>dict</i><div>
+                <p> - arguments passed to the target function (dictionary format) </p>
+            </div></small>, <small class="openable">daemon=<i>bol</i><div>
+                <p> - process runs as daemon (separate background process) </p>
+                <p> - the main process won't wait for this process end because it's a daemon (background) process </p>
+            </div></small>)
+        </td>
+        <td> 
+            - creates and returns a <strong>process</strong> object which represents a (child) proces
+            <span id="browserSupport" title="updated : 2022-09-12">
+                <span><i class="fab fa-python"></i> 3.4 <mark>daemon</mark> argument</span>
+            </span>
+        </td>
+    </tr>
+    <tr class="25.01">
+        <td class="25.01">
+            <strong>process</strong>.run()
+        </td>
+        <td>
+            - start the process, blocks untill the process exits
+        </td>
+    </tr>
+    <tr class="25.02">
+        <td class="25.01">
+            <strong>process</strong>.start()
+        </td>
+        <td>
+            - start the process, does not block
+        </td>
+    </tr>
+    <tr class="25.03">
+        <td class="25.01">
+            <strong>process</strong>.join(<small>timeout=<i>float</i></small>)
+        </td>
+        <td>
+            - blocks further call untill process exit or <small>timeout</small> expires
+        </td>
+    </tr>
+    <tr class="30.01">
+        <td>
+            <strong>process</strong>.is_alive()
+        </td>
+        <td>
+            - returns <mark>True</mark> if the process is alive, <mark>False</mark> otherwise
+        </td>
+    </tr>
+    <tr class="30.02">
+        <td>
+            <strong>process</strong>.name
+        </td>
+        <td>
+            - returns the process name (<mark>name</mark> argument value)
+        </td>
+    </tr>
+    <tr class="30.03">
+        <td>
+            <strong>process</strong>.daemon
+        </td>
+        <td>
+            - returns <mark>True</mark> if the process is daemon process, <mark>False</mark> otherwise
+        </td>
+    </tr>
+    <tr class="30.04">
+        <td>
+            <strong>process</strong>.pid
+        </td>
+        <td>
+            - returns the process' is, if the process is not alive returns <mark>None</mark>
+        </td>
+    </tr>
+    <tr class="30.05">
+        <td>
+            <strong>process</strong>.exitcode
+        </td>
+        <td>
+            - returns the process' exit code, if the process is not yet run or still alive returns <mark>None</mark>
+        </td>
+    </tr>
+    <tr class="30.06">
+        <td>
+            <strong>process</strong>.authkey
+        </td>
+        <td>
+            - gets or sets the authkey (<strong>bytes</strong>) of the process (all processes inherit their authkey from the parent, but it's a settable property)
+        </td>
+    </tr>
+    <tr class="35.01">
+        <td>
+            <strong>process</strong>.terminate()
+        </td>
+        <td>
+            - exits the process with <mark>SIGTERM</mark> signal
+        </td>
+    </tr>
+    <tr class="35.02">
+        <td>
+            <strong>process</strong>.kill()
+        </td>
+        <td>
+            - exits the process with <mark>SIGKILL</mark> signal
+            <span id="browserSupport" title="updated : 2022-09-12">
+                <span><i class="fab fa-python"></i> 3.7</span>
+            </span>
+        </td>
+    </tr>
+    <tr class="35.03">
+        <td>
+            <strong>process</strong>.close()
+        </td>
+        <td>
+            - closes the <strong>process</strong> object releasing all resources associated with it, raises a <mark>ValueError</mark> if the process is still running
+            <span id="browserSupport" title="updated : 2022-09-12">
+                <span><i class="fab fa-python"></i> 3.7</span>
+            </span>
+        </td>
+    </tr>
+</table>
+    <br>
+<table class="table">
+    <caption>
+        Process Pool
+        <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+        <th style="width:30%;"> Method </th>
+        <th> Description </th>
+    </tr>
+    <tr class="05.01">
+        <td>
+                <em>multiprocessing</em>.Pool(<small class="openable">processes=<i>int</i><div>
+                    <p> Default: <mark>None</mark> = <mark>os.cpu_count()</mark> </p>
+                </div></small>, <small class="openable">initializer=<i>fn</i><div>
+                    <p> - function that will be executed in each process at initialization </p>
+                </div></small>, <small class="openable">initargs=[<i>arg, ...</i>]<div>
+                    <p> - arguments passed to the initializer function </p>
+                </div></small>, <small class="openable">maxtaskperchild=<i>int</i><div>
+                    <p> - number of task a process worker can complete before it is replaced by a fresh process worker (cool to prevent memory leaks and such) (Default: <mark>None</mark> = never replaced) </p>
+</div></small>)
+        </td>
+        <td>
+                - creates and returns a <strong>processPool</strong> object (subprocesses are crated and ready to be used in the barckground) <br>
+                - suports the context management protocol (poll destroyed when context exited)
+            </td>
+        </td>
+    </tr>
+    <tr class="10.01">
+        <td>
+            <strong>processPool</strong>.apply(<strong>fn</strong>, <small>args=[<i>arg, ...</i>]</small>, <small>kwds=<i>dict</i></small>)
+        </td>
+        <td>
+            - executes the passed function in one of the pool processes, <u>blocks untill task end</u>
+        </td>
+    </tr>
+    <tr class="10.02">
+        <td>
+            <strong>processPool</strong>.apply_async(<strong>fn</strong>, <small>args=[<i>arg, ...</i>]</small>, <small>kwds=<i>dict</i></small>, <small>callback=<i>fn(arg)</i></small>, <small>error_callback=<i>fn(err)</i></small>)
+        </td>
+        <td>
+            - asynchronously executes the passed function in one of the pool process, returns an <strong>asyncResult</strong> object <br>
+            - the result and error handling are returned in the <small>callback</small> and <small>error_callback</small> 
+        </td>
+    </tr>
+    <tr class="15.01">
+        <td>
+            <strong>processPool</strong>.map(func=<strong>fn</strong>, iterable=<strong>iterable</strong>, <small class="openable">chunksize=<i>int</i><div>
+    <p> - specifies how many items from the iterable is submited to each process (Default: <mark>1<//mark>) </p>
+    <p> ex: </p>
+    <p> <mark>map(<strong>fn</strong>, [1, 2, 3, 4], chunksize=1</mark>) -> 1 item is submitted to each process (runs 4 processes -> each process gets 1 item) (Default) </p>
+    <p> <mark>map(<strong>fn</strong>, [1, 2, 3, 4], chunksize=2</mark>) -> 2 items are submitted to each process (runs 2 processes -> each process gets 2 items) </p>
+    <p> <mark>map(<strong>fn</strong>, [1, 2, 3, 4], chunksize=4</mark>) -> 4 items are submitted to each process (runs 1 process -> each process gets 4 items) </p>
+</div></small>)
+        </td>
+        <td>
+            - parallelly runs the functions in pool processes (as many tasks as many arguments are in the iterable (identical with <mark>map()</mark> function <a href="../../Functions/index.html#map" target="_blank">[link]</a>)<br>
+            - blocks untill <u>all</u> task finishes, the result is returned in an list
+        </td>
+    </tr>
+    <tr class="15.02">
+        <td>
+            <strong>processPool</strong>.starmap(func=<strong>fn</strong>, iterable=[<strong>iterable</strong><i>, ...</i>], <small class="openable">chunksize=<i>int</i></small>)
+        </td>
+        <td>
+            - does the same as <mark>map()</mark> but <small>iterable</small> argument takes iterables
+            <span id="browserSupport" title="updated : 2022-09-12">
+                <span><i class="fab fa-python"></i> 3.3 </span>
+            </span>
+        </td>
+    </tr>
+    <tr class="20.01">
+        <td>
+            <strong>processPool</strong>.map_async(func=<strong>fn</strong>, iterable=<strong>iterable</strong>, <small class="openable">chunksize=<i>int</i><div>
+    <p> - specifies how many items from the iterable is submited to each process (Default: <mark>1<//mark>) </p>
+    <p> ex: </p>
+    <p> <mark>map(<strong>fn</strong>, [1, 2, 3, 4], chunksize=1</mark>) -> 1 item is submitted to each process (runs 4 processes -> each process gets 1 item) (Default) </p>
+    <p> <mark>map(<strong>fn</strong>, [1, 2, 3, 4], chunksize=2</mark>) -> 2 items are submitted to each process (runs 2 processes -> each process gets 2 items) </p>
+    <p> <mark>map(<strong>fn</strong>, [1, 2, 3, 4], chunksize=4</mark>) -> 4 items are submitted to each process (runs 1 process -> each process gets 4 items) </p>
+</div></small>, <small>callback=<i>fn(arg)</i></small>, <small>error_callback=<i>fn(err)</i></small>)
+        </td>
+        <td>
+            - asynchronously and parallelly runs the functions in pool processes (as many tasks as many arguments are in the iterable (identical with <mark>map()</mark> function <a href="../../Functions/index.html#map" target="_blank">[link]</a>)<br>
+            - returns an <strong>asyncResult</strong>, results and error handlings are also returned in the <small>callback</small> and <small>error_callback</small> <br>
+            - results are available in the returned <strong>asyncResult</strong> when <u>all tasks ended</u> 
+        </td>
+    </tr>
+    <tr class="20.02">
+        <td>
+            <strong>processPool</strong>.starmap_async(func=<strong>fn</strong>, iterable=[<strong>iterable</strong><i>, ...</i>], <small>chunksize=<i>int</i></small>, <small>callback=<i>fn(arg)</i></small>, <small>error_callback=<i>fn(err)</i></small>)
+        </td>
+        <td>
+            - does the same as <mark>map_async()</mark> but <small>arguments</small> argument takes iterables
+            <span id="browserSupport" title="updated : 2022-09-12">
+                <span><i class="fab fa-python"></i> 3.3 </span>
+            </span>
+        </td>
+    </tr>
+    <tr class="25.01">
+        <td>
+            <strong>processPool</strong>.imap(func=<strong>fn</strong>, iterable=<strong>iterable</strong>, <small class="openable">chunksize=<i>int</i><div>
+                <p> - specifies how many items from the iterable is submited to each process (Default: <mark>1<//mark>) </p>
+                <p> ex: </p>
+                <p> <mark>map(<strong>fn</strong>, [1, 2, 3, 4], chunksize=1</mark>) -> 1 item is submitted to each process (runs 4 processes -> each process gets 1 item) (Default) </p>
+                <p> <mark>map(<strong>fn</strong>, [1, 2, 3, 4], chunksize=2</mark>) -> 2 items are submitted to each process (runs 2 processes -> each process gets 2 items) </p>
+                <p> <mark>map(<strong>fn</strong>, [1, 2, 3, 4], chunksize=4</mark>) -> 4 items are submitted to each process (runs 1 process -> each process gets 4 items) </p>
+</div></small>)
+        </td>
+        <td>
+            - parallelly runs the functions in pool processes (as many tasks as many arguments are in the iterable (identical with <mark>map()</mark> function <a href="../../Functions/index.html#map" target="_blank">[link]</a>)<br>
+            - <u>does not block</u>, returns an <strong>imapResult</strong> object <br>
+            - the returned <strong>imapResult</strong> will block <u>when we start iterating over it</u> (blocks untill all results are returned by the poll) <br>
+            - iteration on <strong>imapResult</strong> starts only when all results are returned <u>(task order maintained)</u><br>
+            - if was called with <mark>imap(<i>...</i> chunksize=1)</mark> then the reurned <strong>imapResult</strong> has a <mark class="openable">.next(<strong>delay:float</strong>)<div>
+                <p> - if not all result are returned before <strong>delay</strong> raises a <mark>TimeoutError</mark> </p>
+                <p> - if all results are returned does nothing </p>
+            </div></mark> method on it 
+        </td>
+    </tr>
+    <tr class="25.02">
+        <td>
+            <strong>processPool</strong>.imap_unordered(func=<strong>fn</strong>, iterable=<strong>iterable</strong>, <small class="openable">chunksize=<i>int</i><div>
+                <p> - specifies how many items from the iterable is submited to each process (Default: <mark>1<//mark>) </p>
+                <p> ex: </p>
+                <p> <mark>map(<strong>fn</strong>, [1, 2, 3, 4], chunksize=1</mark>) -> 1 item is submitted to each process (runs 4 processes -> each process gets 1 item) (Default) </p>
+                <p> <mark>map(<strong>fn</strong>, [1, 2, 3, 4], chunksize=2</mark>) -> 2 items are submitted to each process (runs 2 processes -> each process gets 2 items) </p>
+                <p> <mark>map(<strong>fn</strong>, [1, 2, 3, 4], chunksize=4</mark>) -> 4 items are submitted to each process (runs 1 process -> each process gets 4 items) </p>
+</div></small>)
+        </td>
+        <td>
+            - parallelly runs the functions in pool processes (as many tasks as many arguments are in the iterable (identical with <mark>map()</mark> function <a href="../../Functions/index.html#map" target="_blank">[link]</a>)<br>
+            - <u>does not block</u>, returns an <strong>imapResult</strong> object <br>
+            - the <strong>imapResult</strong> will block <u>when we start iterating over it</u> (blocks untill all results are returned by the poll) <br>
+            - <u>iteration immediately started</u> on <strong>imapResult</strong> -> gets results as soon as they returned to the pool (does not wait for all task to end like <mark>imap()</mark> does) <br>
+            - if was called with <mark>imap_unordered(<i>...</i> chunksize=1)</mark> then the reurned <strong>imapResult</strong> has a <mark class="openable">.next(<strong>delay:float</strong>)<div>
+                <p> - if not all result are returned before <strong>delay</strong> raises a <mark>TimeoutError</mark> </p>
+                <p> - if all results are returned does nothing </p>
+                </div></mark> method on it 
+        </td>
+    </tr>
+    <tr class="30.01">
+        <td>
+            <strong>processPool</strong>.close()
+        </td>
+        <td>
+            - prevents any new task to be submitted to the pool
+        </td>
+    </tr>
+    <tr class="30.02">
+        <td>
+            <strong>processPool</strong>.terminate()
+        </td>
+        <td>
+            - immediately kills all worker processes in the pool (automatically called when the pool is garbage collected)
+        </td>
+    </tr>
+    <tr class="30.03">
+        <td>
+            <strong>processPool</strong>.join()
+        </td>
+        <td>
+            - waits for all worker processes to gracefully exit <br>
+            - must be called after <mark>close()</mark> or <mark>terminate()</mark>
+        </td>
+    </tr>
+    <tr class="35.01">
+        <td colspan="2"> <mark><strong>asyncResult</strong></mark> object </td>
+    </tr>
+    <tr class="35.02">
+        <td>
+            <strong>asyncResult</strong>.get(<strong class="openable">timeout=<i>float</i><div>
+                <p> blocks untill this delay (Default: <mark>None</mark> = blocks untill result) </p>
+</div></strong>)
+        </td>
+        <td>
+            - blocks and returns the result of the task (or blocks untill <small>timeout</small>) <br>
+            - raises a <mark>TimeoutError</mark> if timeout expires
+        </td>
+    </tr>
+    <tr class="35.03">
+        <td>
+            <strong>asyncResult</strong>.wait(<strong class="openable">timeout=<i>float</i><div>
+                <p> blocks untill this delay (Default: <mark>None</mark> = blocks untill result) </p>
+</div></strong>)
+        </td>
+        <td>
+            - blocks untill the result is received or untill <small>timeout</small> (returns <mark>None</mark> not the result)
+        </td>
+    </tr>
+    <tr class="40.01">
+        <td>
+            <strong>asyncResult</strong>.ready()
+        </td>
+        <td>
+            - returns <mark>True</mark> if the result is received, <mark>False</mark> otherwise
+        </td>
+    </tr>
+    <tr class="40.02">
+        <td>
+            <strong>asyncResult</strong>.succsessful()
+        </td>
+        <td>
+            - returns <mark>True</mark> if the result is received, raises a <mark>ValueError</mark> otherwise
+            <span id="browserSupport" title="updated : 2022-09-12">
+                <span><i class="fab fa-python"></i> 3.7 <mark>ValueError</mark> insdead of <mark>AssertionError</mark></span>
+            </span>
+        </td>
+    </tr>
+</table>
+    <br>
+<table class="table">
+    <caption>
+        Communication between processes
+        <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+        <th style="width:30%;"> Method </th>
+        <th> Description </th>
+    </tr>
+    <tr class="05.01">
+        <td colspan="2"> Shared Memory </td>
+    </tr>
+    <tr class="05.02">
+        <td>
+            <em>multiprocessing</em>.Value(<strong class="openable">typeCode<div>
+                <p> - supports the same types as the <mark class="mark">array</mark> module <a href="https://docs.python.org/3/library/array.html#module-array" target="_blanc">[link]</a></p>
+                </div></strong>, <i>initVal</i>, <small class="openable">lock=<i>bol</i><div>
+                <p> - internally creates a lock which makes sure that the data can be modified by only one process (Default: <mark>True</mark>) </p>
+            </div></small> )
+        </td>
+        <td>
+            - creates and returns a <strong>value</strong> object (shared memory)
+        </td>
+    </tr>
+    <tr class="05.03">
+        <td>
+            <strong>value</strong>.value
+        </td>
+        <td>
+            - gets or sets the value of the <strong>value</strong> object, which represents a shared memory between processes
+        </td>
+    </tr>
+    <tr class="10.01">
+        <td>
+            <em>multiprocessing</em>.Array(<strong class="openable">typeCode<div>
+                <p> - supports the same types as the <mark class="mark">array</mark> module <a href="https://docs.python.org/3/library/array.html#module-array" target="_blanc">[link]</a></p>
+                <p> - this defines the type stored in the array </p>
+                </div></strong>, <i>arr|arrSize:int</i>, <small class="openable">lock=<i>bol</i><div>
+                <p> - internally creates a lock which makes sure that the data can be modified by only one process (Default: <mark>True</mark>) </p>
+                </div></small> )
+        </td>
+        <td>
+            - creates and returns an <strong>array</strong> object which represents a shared memory between processes (accessed as a normal iterable ex: <mark>someArray[0]</mark>) 
+        </td>
+    </tr>
+    <tr class="15.01">
+        <td colspan="2"> Manager </td>
+    </tr>
+    <tr class="15.02">
+        <td>
+            <em>multiprocessing</em>.Manager()
+        </td>
+        <td>
+            - creates and returns a <strong>manager</strong> object which holds shared data between processes<br>
+            - in the background creates a manager server process, where the shared data is sotred, then child processes are requesting this shared data<br>
+            - supports the context management protocol (to handle open closing)
+        </td>
+    </tr>
+    <tr class="20.01">
+        <td>
+            <strong>manager</strong>.<strong class="openable">class<div>
+                <p> <mark class="mark">list</mark> <mark class="mark">dict</mark> <mark class="mark">Namespace</mark> <mark class="mark">Lock</mark> <mark class="mark">RLock</mark> <mark class="mark">Semaphore</mark> <mark class="mark">BoundedSemaphore</mark> <mark class="mark">Condition</mark> <mark class="mark">Event</mark> <mark class="mark">Barrier</mark> <mark class="mark">Queue</mark> <mark class="mark">Value</mark> <mark class="mark">Array</mark> </p>
+              </div></strong>
+        </td>
+        <td>
+            - class whic returns a manager object that holds the manager data
+        </td>
+    </tr>
+    <tr class="25.01">
+        <td>
+            <strong>manager</strong>.shutdown()
+        </td>
+        <td>
+            - stops the <strong>manager</strong> (shuts down the manager process) <br>
+            - does not shut down any child processes (but the <strong>manager</strong>'s data is destroyed)
+        </td>
+    </tr>
+    <tr class="25.02">
+        <td>
+            <strong>manager</strong>.address
+        </td>
+        <td>
+            - returns the <strong>manager</strong>'s address
+        </td>
+    </tr>
+    <tr class="25.02">
+        <td>
+            <strong>manager</strong><strong><a href="https://docs.python.org/3/library/multiprocessing.html?highlight=multiprocessing#multiprocessing.Manager" target="_blanc">.prop|method</a></strong>
+        </td>
+        <td>
+            - other properties|methods
+        </td>
+    </tr>
+    <tr class="30.01">
+        <td colspan="2"> Queue </td>
+    </tr>
+    <tr class="30.02">
+        <td>
+            <em>multiprocessing</em>.Queue(<small>maxsize=<i>int</i></small>)
+        </td>
+        <td>
+            - creates and returns a <strong>queue</strong> object, same implementation as <mark><a href="../queue/index.html" target="_blank">queue</a></mark> with a few extra methods <br>
+            <u> - does not have <mark>task_done()</mark> and <mark>join()</mark> methods</u>
+        </td>
+    </tr>
+    <tr class="30.03">
+        <td>
+            <strong>queue</strong>.close()
+        </td>
+        <td>
+            - indicates that no more data will be put in the queue by this process (automatically called when the process exits)
+        </td>
+    </tr>
+    <tr class="30.04">
+        <td>
+            <strong>queue</strong>.join_thread()
+        </td>
+        <td>
+            - blocks this process untill all data is flushed into the queue
+        </td>
+    </tr>
+    <tr class="30.05">
+        <td>
+            <strong>queue</strong>.cancel_join_thread()
+        </td>
+        <td>
+            - allows the process to exit without data flush in the queue (reverts a previous <mark>join_thread()</mark> call)
+        </td>
+    </tr>
+    <tr class="35.01">
+        <td>
+            <em>multiprocessing</em>.SimpleQueue()
+        </td>
+        <td>
+            - creates and returns a <strong>simpleQueue</strong>, simplified version of <mark>multiprocessing.Queue</mark> (has only <mark>put()</mark> <mark>get()</mark>, <mark>empty()</mark>, <mark>close()</mark> methods)
+        </td>
+    </tr>
+    <tr class="40.01">
+        <td>
+            <em>multiprocessing</em>.JoinableQueue(<small>maxsize=<i>int</i></small>)
+        </td>
+        <td>
+            - creates and returns a <strong>joinableQueue</strong> which is an extension of <mark>multiprocessing.Queue</mark> 
+        </td>
+    </tr>
+    <tr class="40.02">
+        <td>
+            <strong>joinableQueue</strong>.task_done()
+        </td>
+        <td>
+            - indicates the end of the current queue task <br>
+            - works with <mark>join()</mark> to indicate when the queue tasks are done, a <mark>join()</mark> call block furhter execution untill this method has been called as many items was put in the queue
+        </td>
+    </tr>
+    <tr class="40.03">
+        <td>
+            <strong>joinableQueue</strong>.join()
+        </td>
+        <td>
+            - block further execution untill <mark>task_done()</mark> is called as many times as many items was put in the queue
+        </td>
+    </tr>
+    <tr class="45.01">
+        <td colspan="2"> Pipe </td>
+    </tr>
+    <tr class="45.02">
+        <td>
+            <em>multiprocessing</em>.Pipe(<i class="openable">duplex:bol<div>
+                <p> - bidirectional pipe (Default: <mark>True</mark>) </p>
+                <p> - <mark>False</mark> -> unidirectional pipe (<strong>conn2</strong> send -> <strong>conn1</strong> receives) </p>
+            </div></i>)
+        </td>
+        <td>
+            - creates and return 2 connection objects <mark>(<strong>conn1</strong>, <strong>conn2</strong>)</mark> which are connected through this pipe
+        </td>
+    </tr>
+    <tr class="50.01">
+        <td>
+            <strong>conn</strong>.send(<strong>data:any</strong>)
+        </td>
+        <td>
+            - sends a data chunk down the pipe (data must be serializable (pickable) up to 32MB)
+        </td>
+    </tr>
+    <tr class="50.02">
+        <td>
+            <strong>conn</strong>.send_bytes(<strong>bytes-like</strong>, <i class="openable">offsetIdx:int<div>
+                <p> - index from where the bytes-like object will be sent (Default: <mark>0</mark>) </p>
+</div></i>, <i class="openable">chunkLen:int<div>
+                <p> - the length of the chunk (ex: <mark><strong>conn</strong>.send_bytes(<strong>someBytes</strong>, 10, 5)</mark> = 5 bytes sent </p>
+            </div></i>)
+        </td>
+        <td>
+            - sends a data chunk down the pipe (data size up to 32MB)
+        </td>
+    </tr>
+    <tr class="55.01">
+        <td>
+            <strong>conn</strong>.recv()
+        </td>
+        <td>
+            - returns the next data chunk from to pipe, <u>if the pipe has no data it will block untill the next data chunk is received</u> <br>
+            - raises a <mark>EOFError</mark> error if the other side of the pipe is destroyed
+        </td>
+    </tr>
+    <tr class="55.02">
+        <td>
+            <strong>conn</strong>.recv_bytes(<i>maxLen:int</i>)
+        </td>
+        <td>
+            - returns the next data chunk from the pipe, <u>if the pipe has no data it will block untill the next data chunk is received</u> <br>
+            - if data chunk is bigger than <i>maxlen</i> then <mark>OSError</mark> is raised and the conneciton is no loger readable<br>
+            - raises a <mark>EOFError</mark> error if the other side of the pipe is destroyed
+        </td>
+    </tr>
+    <tr class="55.03">
+        <td>
+            <strong>conn</strong>.recv_bytes_into(<strong>byte-like</strong>, <i>offsetIdx:int</i>)
+        </td>
+        <td>
+            - recevies the next data chunk from to pipe and writes it into the passed <mark><strong>byte-like</strong></mark>, <u>if the pipe has no data it will block untill the next data chunk is received</u> <br>
+            - raises a <mark>EOFError</mark> error if the other side of the pipe is destroyed
+        </td>
+    </tr>
+    <tr class="60.01">
+        <td>
+            <strong>conn</strong>.poll(<i class="openable">delay:float<div>
+                <p> - <u>if the pipe is empty</u> blocks further execution for the specified time or untill a data is put in the pipe (ex: <mark>1.5</mark> = 1.5 seconds) </p>
+                <p> - if the pipe is not empty block </p>
+                <p> - (Default: <mark>None</mark> =  no delay) </p>
+            </div></i>)
+        </td>
+        <td>
+            - returns <mark>True</mark> if the pipe has any data in it, otherwise returns <mark>False</mark>
+        </td>
+    </tr>
+    <tr class="60.02">
+        <td>
+            <strong>conn</strong>.fileno()
+        </td>
+        <td>
+            - returns the file descriptor or handle used by the connection
+        </td>
+    </tr>
+    <tr class="65.01">
+        <td>
+            <strong>conn</strong>.close()
+        </td>
+        <td>
+            - closes the connection, (automatically called when the conneciton is garbage collected)
+        </td>
+    </tr>
+</table>
+    <br>
+    <details class="example" id="notes">
+    <summary> Notes :</summary>
+        <p> - the <mark class="mark">multiprocessing</mark> supports all kind of data sharing manager process stuff, like server-client architecture, remote control but I haven't delved myself into (I don't find that that useful to know) </p>
+    </details>
+<h2 style="color:green;"><u> Useful Links : </u></h2>
+    <p><a href="https://docs.python.org/3/library/multiprocessing.html?highlight=multiprocessing#module-multiprocessing" target="_blank">multiprocessing (docs.python.org)</a></p>
+<h2 style="color:green;"><u> Remember This : </u></h2>
+    <p> - error raised in one the thread or process won't affect others (parallel programming) </p>
+<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+    <p> - the <mark class="mark">multiprocessing</mark> module is used to speed up cpu intensive tasks, it can spawn child processes then we spread the work between them (has similar API as <mark class="mark">threading</mark>) </p>
+    <p> - <mark class="mark">multiprocessing</mark> supports 3 process startup protocols : </p>
+    <p style="text-indent: 30px;"> - <mark class="mark">fork</mark> </p>
+    <p style="text-indent: 60px;"> - when starts it's identical to the parent process (inherits all parent resources)</p>
+    <p style="text-indent: 60px;"> - forking can be problematic and unsafe </p>
+    <p style="text-indent: 30px;"> - <mark class="mark">forkserver</mark> </p>
+    <p style="text-indent: 60px;"> - a server process is started, then the parent process requests the forkserver to create subprocess</p>
+    <p style="text-indent: 60px;"> - does the same as <mark class="mark">fork</mark>, but its safeer becasue there are no unnecessary resources inhed from the parent process </p>
+    <p style="text-indent: 30px;"> - <mark class="mark">spawn</mark> </p>
+    <p style="text-indent: 60px;"> - the minimum required resources are inherited from the parent process </p>
+    <p style="text-indent: 60px;"> - starts slower than <mark class="mark">fork</mark> or <mark class="mark">forkserver</mark> </p>
+    <p> - it's possible to create process startup contexts, this way multiple isolated process startup protocols can be used within the same parent </p>
+<details class="example">
+<summary> DEMO </summary>
+    <pre>
+    import multiprocessing
+    import time
+    
+    def task(name, delay):
+        print( f"process {name} started" )
+        time.sleep(delay)
+        print( f"process {name} end" )
+    
+    p1 = multiprocessing.Process(target=task, args=['one', 2])
+    p2 = multiprocessing.Process(target=task, args=['one', 3.5])
+    
+    p1.start()
+    p2.start()
+    p1.join()
+    p2.join()
+    </pre>
+    <p> - cpu intensive task distributed between processes </p>
+    <pre>
+    import multiprocessing
+    import time
+    
+    start = time.time()
+    
+    def task(name):
+        for i in range(100000001):              # task takse aprox 2 secs
+            if i == 100000000:
+                print( f'thread {name} end!' )
+    
+    p1 = multiprocessing.Process(target=task, args=[1])
+    p2 = multiprocessing.Process(target=task, args=[2])
+    p3 = multiprocessing.Process(target=task, args=[3])
+    
+    p1.start()
+    p2.start()
+    p3.start()
+    p1.join()
+    p2.join()
+    p3.join()
+    
+    print( time.time() - start )              // -> 2.780562162399292     // task is distributed to processes (this would take more than 6 seconds with <mark>threading</mark>)
+    </pre>
+    <p> - set process startup protocol (method) </p>
+    <pre>
+    import multiprocessing
+    
+    def pc(name):
+        print( f"{name} process started")
+        print( f"{name} process ended")
+    
+    prc1 = multiprocessing.Process(target=pc, args=[1])
+    
+    if __name__ == "__main__":
+        multiprocessing.set_start_method('spawn')
+        print( multiprocessing.get_start_method() )         // -> 'spawn'
+        
+        prc1.start()
+        prc1.join()
+    </pre>
+    <p> - process startup method context </p>
+    <pre>
+    import multiprocessing
+    
+    def pc(name):
+        print( f"{name} process started")
+        print( f"{name} process ended")
+    
+    if __name__ == "__main__":
+        ctx = multiprocessing.get_context('forkserver')   // creating context
+        print( ctx.get_start_method() )                   // -> 'forkserver'
+    
+        prc1 = ctx.Process(target=pc, args=[1])
+    
+        prc1.start()
+    </pre>
+</details>
+<hr>
+<!--------------------------------------------------------------------------------->
+<h2 class="header"> Process Pool </h2>
+    <p> - we can create a pool of processes, where the pool manages its processes (starts them up, distribute task to them, etc...) </p>
+    <p> - processes are started up in the pool, then wait for the poll to get task to execute </p>
+<details class="example">
+<summary> DEMO </summary>
+    <p> - run tasks at pool initialization </p>
+    <pre>
+    import multiprocessing
+    
+    def pr(arg):
+        print( arg )
+    
+    multiprocessing.Pool(processes=4, initializer=pr, initargs=['testArg'])     # 4 processes will run the passed function at pool initialization
+    </pre>
+    <p> - task distrbution to processes </p>
+    <pre>
+    import multiprocessing
+    import time
+    
+    startTime = time.time()
+    
+    def job(delay):
+        time.sleep(delay)
+        return "task done!"
+    
+    with multiprocessing.Pool(4) as pool:
+        mapResult = pool.map(job, [1, 1, 1, 1], chunksize=2)        # 2 processes used iterable's items are submited by 2 
+    
+        print( mapResult )
+    
+        pool.close()
+        pool.join()
+    
+    print( time.time() - startTime )      # 2.01 (each process recevied 2 tasks)
+    </pre>
+    <p> - <mark>apply()</mark> / <mark>apply_async()</mark> </p>
+    <pre>
+    import multiprocessing
+    import time
+    
+// <mark>apply()</mark> --------------------------------------------------------------
+    
+    def pr(a, b, c):
+        print( a, b, c )
+    
+    with multiprocessing.Pool(1) as pool:
+        pool.apply(pr, kwds={"a":"a", "b":"b", "c":"c"})      # 1 process receives the task, block untill task end    
+    
+    
+// <mark>apply_async()</mark> --------------------------------------------------------
+    
+    def job(a1, a2):
+        return a1 + a2
+    
+    def cb(res):
+        print( res )                    // -> 32  |  32       # results are returned in callback  
+    
+    def cb_err(err):
+        print( err )
+    
+    with multiprocessing.Pool(4) as pool:
+        pool.apply_async(job, kwds={"a1":10, "a2":22}, callback=cb, error_callback=cb_err)    # asynchronously passes the task to the proces (does not block)    
+        pool.apply_async(job, kwds={"a1":10, "a2":22}, callback=cb, error_callback=cb_err)    # asynchronously passes the task to the proces (does not block)    
+    
+        pool.close()
+        pool.join()                   # closing the pool 
+    
+    
+// <mark>apply_async()</mark> (asyncResult)-------------------------------------------
+    
+    def job(a1, a2, delay):
+        time.sleep(delay)
+        return a1 + a2
+    
+    with multiprocessing.Pool(4) as pool:
+        asyncRes1 = pool.apply_async(job, kwds={"a1":1, "a2":2, "delay":1})
+    
+        print( asyncRes1.ready() )                // -> False           // result not yet received    
+        print( asyncRes1.get(timeout=5) )         // -> 3               // blocks untill result (or up to 5 seconds)   
+        print( asyncRes1.successful() )           // -> True            // result recevied 
+        
+        pool.close()
+        pool.join()
+    </pre>
+    <p> - <mark>map()</mark> / <mark>map_async()</mark> (<mark>starmap()</mark> / <mark>starmap_async()</mark>) </p>
+    <pre>
+    import multiprocessing
+    import time
+    
+// <mark>map()</mark> ----------------------------------------------------------------
+    
+    def job(arg):
+        time.sleep(arg["delay"])
+        return arg["a1"] + arg["a2"]
+    
+    with multiprocessing.Pool(4) as pool:
+        mapResult = pool.map(func=job, iterable=[           # block untill all tasks finishes
+            {"a1":1, "a2":32, "delay":.5},
+            {"a1":-9, "a2":59, "delay":1.3},
+            {"a1":43, "a2":17, "delay":7.9}
+        ])
+    
+        print( mapResult )                          // -> [33, 50, 60]        // results are returned in a list
+    
+    
+// <mark>stamap()</mark> -------------------------------------------------------------
+    
+    def job(a1, a2, delay):
+        time.sleep(delay)
+        return a1 + a2
+    
+    with multiprocessing.Pool(4) as pool:
+        mapResult = pool.starmap(func=job, iterable=[   # does the same as <mark>map()</mark> but takes iterables as arguments    
+            [1, 32, 5],
+            [-9, 59, 1.3],
+            [43, 17, 7.9]
+        ])
+    
+        print( mapResult )                // -> [33, 50, 60]
+    
+    
+// <mark>map_async()</mark> ----------------------------------------------------------
+    def job(arg):
+        time.sleep(arg["delay"])
+        return arg["a1"] + arg["a2"]
+    
+    with multiprocessing.Pool(4) as pool:
+        mapResult = pool.map_async(func=job, iterable=[           # does not block (asynchronously runs tasks)
+            {"a1":1, "a2":32, "delay":.5},
+            {"a1":-9, "a2":59, "delay":1.3},
+            {"a1":43, "a2":17, "delay":7.9}
+        ])
+    
+        print( mapResult.get(timeout=10) )         // -> [33, 50, 60]     // blocks untill all tasks finishes (or untill timeout)
+    
+        pool.close()
+        pool.join()
+    
+    
+// <mark>starmap_async()</mark> ------------------------------------------------------
+    def job(arg1, arg2, delay):
+        time.sleep(delay)
+        return arg1 + arg2
+    
+    def cb(arg):
+        print( arg )
+    
+    def err_cb(err):
+        print( err )
+    
+    with multiprocessing.Pool(4) as pool:
+        mapResult = pool.starmap_async(func=job, iterable=[       # does the same as <mark>map_async()</mark> but takes iterables as arguments    
+            [1, 32, 5],
+            [9, 59, 1.3],
+            [43, 17, 7.9]
+        ], callback=cb, error_callback=err_cb)
+    
+        pool.close()
+        pool.join()
+    </pre>
+    <p> - <mark>imap()</mark> / <mark>map_unordered()</mark> </p>
+    <pre>
+    import multiprocessing
+    import time
+    
+// <mark>imap()</mark> ---------------------------------------------------------------
+    
+    def sqrt(delay):
+        time.sleep(delay)
+        return f"delay {delay} result"
+    
+    with multiprocessing.Pool(3) as pool:
+        res = pool.imap(func=sqrt, iterable=[4, 1, 3])         # starts tasks in palrallel without blocking
+        
+        print( res )                        # does not block
+        
+        for i in res:                       # interation started => will block untill all results are returned in the list
+            print( i )                      // -> delay 4 result  |  delay 1 result  |  delay 3 result    
+        
+        pool.close()
+        pool.join()
+    
+// <mark>imap()</mark> (<mark>next()</mark> method on result)--------------------------------------   
+    
+    def sqrt(delay):
+        time.sleep(delay)
+        return f"delay {delay} result"
+    
+    with multiprocessing.Pool(3) as pool:
+        res = pool.imap(func=sqrt, iterable=[4, 1, 3])      # starts tasks in palrallel without blocking
+    
+        res.next(2)                           # raises a <mark>TimeoutError</mark> because tasks will take longer than 2 seconds to finish   
+        
+        pool.close()
+        pool.join()
+        
+// <mark>imap_unordered()</mark> -----------------------------------------------------
+    
+    def sqrt(delay):
+        time.sleep(delay)
+        return f"delay {delay} result"
+    
+    with multiprocessing.Pool(4) as pool:
+        res = pool.imap_unordered(func=sqrt, iterable=[4, 1, 3, 2])
+    
+        for i in res:                  # blocs when we start iterating   
+            print( i )                // -> delay 1 result  |  delay 2 result  |  delay 3 result  |  delay 4 result       # results are returned as soon as task finishes
+    </pre>
+</details>
+<hr>
+<!--------------------------------------------------------------------------------->
+<h2 class="header"> Race Condition Control </h2>
+    <p> - <mark class="mark">multiprocessing</mark> has the same race condition control tools as <mark class="mark">threading</mark> does: <mark>Lock</mark>, <mark>RLock</mark>, <mark>Condition</mark>, <mark>Semaphore</mark>, <mark>Event</mark>, <mark>Barrier</mark> <a href="../threading/index.html#raceControl" target="_blank">[link]</a> </p>
+<hr>
+<!--------------------------------------------------------------------------------->
+<h2 class="header"> Communication Between Processes </h2>
+    <p> - processes are not like threads, they need some kind of data communication between them </p>
+    <p> - <mark class="mark">multiprocessing</mark> offers the following solutions : </p>
+    <p style="text-indent: 30px;"> - shared data (memory) between processes <mark>Value</mark> and <mark>Array</mark> (in real life that's not recommended tough) </p>
+    <p style="text-indent: 30px;"> - managers, a server process where shared data is stored </p>
+    <p style="text-indent: 30px;"> - channels, <mark>Queue</mark> or <mark>Pipe</mark> </p>
+<details class="example">
+<summary> DEMO </summary>
+    <p> - communiction with shared data <mark>Value</mark> / <mark>Array</mark> </p>
+    <pre>
+    from multiprocessing import Process, Value, Array
+    
+    class MyClass():
+        def __init__(self):
+            self.x = 'o'
+    
+    obj = MyClass()
+    val = Value('u', 'o')
+    arr = Array('u', ['o', 'o', 'o'])
+    
+    
+    def modifySharedData(o, v, a):
+            print( o.x )                  // -> "o"
+            print( v.value )              // -> "o"
+            print( a[0] )                 // -> "o"
+    
+            o.x = 'N'                     # locally modified
+            v.value = 'N'                 # shared data modified
+            a[1] = 'N'                    # shared data modified
+    
+    p1 = Process(target=modifySharedData, args=[obj, val, arr])       
+    
+    p1.start()
+    p1.join()
+    
+    print( obj.x )                        // -> "o"    
+    print( val.value )                    // -> "N"
+    print( arr[1] )                       // -> "N"
+    </pre>
+    <p> - manager </p>
+    <pre>
+    from multiprocessing import Process, Manager
+    
+    manager = Manager()
+    
+    managerList = manager.list([1])       # manager list
+    orgList = [1]
+    
+    def modify(managerList, orgList):
+        managerList[0] = 11               # manager data modified
+        orgList[0] = 11                   # local data modified only
+    
+    def show(managerList, orgList):
+        print( managerList )              // -> [11]  # manager data modified by the 'modify' process
+        print( orgList )                  // -> [1]   # shows the value stored on the global scope
+    
+    modProcess = Process(target=modify, args=[managerList, orgList])
+    modProcess.start()
+    modProcess.join()
+    
+    showProcess = Process(target=show, args=[managerList, orgList])
+    showProcess.start()
+    showProcess.join()
+    
+    manager.shutdown()                # after this all the manager's data is destroyed!
+    
+    print( managerList )              # object exist but empty 
+    print( orgList )                  // -> [1]
+    </pre>
+    <p> - manager (with context) </p>
+    <pre>
+    from multiprocessing import Process, Manager
+    
+    def pr(data):
+        del data['key1']
+        data['newKey'] = 'newVal'
+    
+    with Manager() as manager:
+        mDict = manager.dict()
+        mDict['key1'] = 'val1'
+    
+        p = Process(target=pr, args=[mDict])
+        p.start()
+        p.join()
+        
+        print( mDict )                // -> {'newKey': 'newVal'}
+    
+    print( mDict )                    # manager object exist but it's empty (manager context exited)
+    </pre>
+    <p> - queue </p>
+    <pre>
+    import multiprocessing
+    
+    q = multiprocessing.Queue()
+    
+    def process(queue):
+        while not queue.empty():          # this is not garanteed (remember the process stack problem in FaceKom)
+            print( queue.get() )          // -> [1, 2, 3]  |  {'key': 'val', 21: 22}  |  "some string"     
+    
+    pr = multiprocessing.Process(target=process, args=(q, ))
+    
+    q.put([1, 2, 3])
+    q.put({"key":"val", 21:22})
+    q.put('some string')
+    
+    pr.start()
+    </pre>
+    <p> - thread joining the queue </p>
+    <pre>
+    import multiprocessing
+    
+    q = multiprocessing.Queue()
+    
+    def pr(q):
+        try:
+            q.put('some item')
+            # do some job here...
+        except Exception:
+            q.cancel()                # in case of error prevents data loss
+            q.join_thread()           # process is blocked untill all data is flushed into the queue   
+    
+    p1 = multiprocessing.Process(target=pr, args=(q, ))
+    
+    p1.start()
+    print( q.get() )
+    </pre>
+    <p> - pool </p>
+    <pre>
+    import multiprocessing
+    
+    c1, c2 = multiprocessing.Pipe()
+    c1.send({"key":"val"})
+    c1.send([1, 2, 3])
+    
+    def task(ch):
+        while ch.poll():
+            print( ch.recv() )            // -> {'key': 'val'}  |  [1, 2, 3]    
+    
+        ch.close()
+    
+    multiprocessing.Process(target=task, args=(c2, )).start()
+    </pre>
+    <p> - pipes creating pipeline </p>
+    <pre>
+    import multiprocessing
+    import time
+    
+    c1, c2 = multiprocessing.Pipe()
+    c3, c4 = multiprocessing.Pipe()
+    
+    def resend(ch_in, ch_out):
+        while ch_in.poll(5):
+            ch_out.send(ch_in.recv())
+    
+    def getPipedData(ch):
+        while ch.poll(5):
+            print( ch.recv() )          // -> "some data"  |  4-5j  |  {1}   
+    
+    multiprocessing.Process(target=resend, args=[c2, c3]).start()
+    multiprocessing.Process(target=getPipedData, args=[c4]).start()
+    
+    time.sleep(2.5)
+    c1.send('some data')
+    c1.send(4-5j)
+    c1.send({1})
+    </pre>
+    <p> - pipe with bytes </p>
+    <pre>
+    import multiprocessing
+    
+    c1, c2 = multiprocessing.Pipe()
+    
+    c1.send_bytes(b"test bytes")
+    c1.send_bytes(b" anoher test bytes")
+    
+    def getPipedData(ch):
+        b = bytearray(28)
+        prevMsgLen = 0
+    
+        while ch.poll():
+            prevMsgLen = ch.recv_bytes_into(b, prevMsgLen)
+    
+        print( b )                // -> bytearray(b'test bytes anoher test bytes')
+    
+    multiprocessing.Process(target=getPipedData, args=[c2]).start()
+    </pre>
+</details>
+    
+    
+    <br><br>
+</body>
+</html>

@@ -174,9 +174,12 @@
     class <strong>ClassId_1</strong>:
         <i>docString:str</i>                                                                  // document string (docstring) is readable by <mark><strong>ClassId_1</strong>.__doc__</mark> (used to document the class)
         
-        <small>def __init__(<i>self, arg, ...</i>):</small>                                                  // initializes instance attributes and methods 
+        def __init__(self<i>, arg, ...</i>):                                                  // initializes instance attributes and methods 
             self                                                                       // references the instance that will be created (always the 1st argument) 
-    
+        
+        def __call__(self<i>, arg, ...</i>):                                                  // makes the instance callable (ex: <mark><strong>obj</strong>()</mark>) 
+        
+        
 <span style="color:darkgray;">// public methods and attributes ------------------------------------------------------</span>
         def <strong>methodId</strong>(self, <i>arg, ...</i>):                                                  // owned by this class and accessible by classes and instances on the prototype chain    
             self                                                                       // references the instance that will be created (always the 1st argument) 
@@ -240,7 +243,7 @@
     obj = A('a', 'b')                                                                  // creates an object 
     obj.__dict__                                                                       // -> {'a': 'a', 'b': 'b'}
     </pre>
-    <p> - setting class attributes on existing class </p>
+    <h4 class="header"> setting class attributes on existing class </h4>
     <pre>
     class TestClass:
         pass
@@ -265,7 +268,7 @@
     
     TestClass.__dict__["newAttr"] = 'new-val'                                          // -! TypeError        // setting class attributes through mappingproxy is not allowed  
     </pre>
-    <p> - method and attribute inheritance </p>
+    <h4 class="header"> method and attribute inheritance </h4>
     <pre>
     class B():
         attr1 = 'val'                                                                  // attributes owned by this class an present in the inheritance chain 
@@ -293,7 +296,7 @@
     obj.__dict__                                                                       // -> {'attr1': 'new-val'}  
     A.attr1                                                                            // -> 'val;            // inheritable data not modified
     </pre>
-    <p> - <mark>@classmethod</mark> / <mark>@staticmethod</mark> </p>
+    <h4 class="header"> <mark>@classmethod</mark> / <mark>@staticmethod</mark> </h4>
     <pre>
     class B:
         @classmethod
@@ -314,7 +317,7 @@
     
      A.clsMethod('x')                                                                  // -> 'x'              // inherited from the super class   
     </pre>
-    <p> - private methods and attributes </p>
+    <h4 class="header"> private methods and attributes </h4>
     <pre>
     class B:
         __privateAttr = 'privAttr-val' 
@@ -343,7 +346,7 @@
     A.__privateAttr                                                                    // -! AttributeError 
     obj.__privateAttr                                                                  // -! AttributeError
     </pre>
-    <p> - <mark>super()</mark> </p>
+    <h4 class="header"> <mark>super()</mark> </h4>
     <pre>
     class C:
         def someMethod(self):                                                          // never reached (there's a <mark>someMethod</mark> method closer to the caller)    
@@ -365,7 +368,7 @@
     
     A.__mro__                                                                          // -> (&lt;class '__main__.A'&gt;, &lt;class '__main__.B'&gt;, &lt;class '__main__.C'&gt;, &lt;class 'object'&gt;)   // inheritance chain order  
     </pre>
-    <p> - <mark>__doc__</mark> / <mark>del</mark> / calling method on the class </p>
+    <h4 class="header"> <mark>__doc__</mark> / <mark>del</mark> / calling method on the class </h4>
     <pre>
     class A:
         'some class description'
@@ -394,6 +397,20 @@
     
     hasattr(A, 'attr')                                                                 // -> False 
     hasattr(A, 'method')                                                               // -> False 
+    </pre>
+    <h4 class="header"> Creating callable instances </h4>
+    <pre>
+    class MyClass:
+        def __init__(self, a, b):
+            self.a = a
+            self.b = b
+    
+        def __call__(self):
+            return 'my object was called!'
+    
+    
+    obj = MyClass(1, 2)
+    obj()                    // -> 'my object was called!"
     </pre>
   </details>
   <!---------------------------------------------------------------------------------------------->

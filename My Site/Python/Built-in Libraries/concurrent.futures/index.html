@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> concurrent.futures (Executor) </title> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+    <script src="../../../Assets/scriptPages.js"></script>
+</head>
+<body>
+<h1> concurrent.futures (Executor) </h1>
+    <p> Updated ( 2022-09-24 )</p>
+    <p class="sitenav"> <a href="../../../index.html">MySite></a>
+        <a href="../../index.html">Python></a>
+        <a href="../index.html">Built-in Libraries></a> concurrent.futures (Executor)
+    </p>
+<table class="table">
+<caption>
+    <mark>ThreadpoolExecutor</mark> &
+    <mark>ProcesspoolExecutor</mark>
+    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+</caption>
+    <tr>
+        <th style="width:30%;"> Method </th>
+        <th> Description </th>
+    </tr>
+    <tr class="05.01">
+        <td>
+            <em>concurrent.futures</em>.ThreadPoolExecutor(<small class="openable">max_workers=<i>int</i><div>
+                <p> - maximum number of threads in the pool (Default: <mark>None</mark>) </p>
+            </div></small>, <small class="openable">initializer=<i>fn</i><div>
+                <p> - function to be called at the start of each thread </p>
+            </div></small>, <small class="openable">initargs=<i>iterable</i><div>
+                <p> - arguments passed to the <small>initializer</small> function </p>
+            </div></small>)
+        </td>
+        <td>
+            - creates and returns a <strong>threadPoolExecutor</strong> (a pool controlling its threads) <br>
+            - only spawns as many threads as needed <br>
+            - supports the context managament protocol 
+            <span id="browserSupport" title="updated : 2022-09-22">
+                <span class="openable"><i class="fab fa-python"></i> more... <div>
+                    <p> v3.6 - default max workers (number of cpus * 5) </p>
+                    <p> v3.7 - <strong>initializer</strong> and <strong>initargs</strong> </p>
+                    <p> v3.8 - default max workers (<mark>min(32, os.cpu_count() + 4)</mark>) </p>
+                </div></span>
+            </span>
+        </td>
+    </tr>
+    <tr class="05.02">
+        <td>
+            <em>concurrent.futures</em>.ProcessPoolExecutor(<small class="openable">max_workers=<i>int</i><div>
+                <p> - maximum number of processes in the pool (Default: number of host machine processes) </p>
+            </div></small>, <small class="openable">mp_context=<i>processCtx</i><div>
+                <p> - processes will start in this passed context (returned by <mark>multiprocessing.get_context()</mark>) </p>
+            </div></small>, <small class="openable">initializer=<i>fn</i><div>
+                <p> - function to be called at the start of each process </p>
+            </div></small>, <small class="openable">initargs=<i>iterable</i><div>
+                <p> - arguments passed to the <small>initializer</small> function </p>
+            </div></small>)
+        </td>
+        <td>
+            - creates and returns a <strong>processPoolExecutor</strong> (a pool controlling its processes) <br>
+            - only spawns as many processes as needed <br>
+            - supports the context managament protocol (shuts down the pool at the end)
+            <span id="browserSupport" title="updated : 2022-09-26">
+                <span><i class="fab fa-python"></i> v3.7 <mark>initializer</mark> / <mark>initargs</mark></span>
+                <span><i class="fab fa-python"></i> v3.7 <mark>mp_context</mark> </span>
+            </span>
+        </td>
+    </tr>
+    <tr class="10.01">
+        <td>
+            <strong>threadPoolExecutor|processPoolExecutor</strong>.submit(<strong>fn</strong>, <i>arg</i>, <i>...</i>)
+        </td>
+        <td>
+            - runs the <strong>fn</strong> in one of the pool's thread|process <br>
+            - returns a <strong>coroFuture</strong> object
+        </td>
+    </tr>
+    <tr class="10.02">
+        <td>
+            <strong>threadPoolExecutor|processPoolExecutor</strong>.map(<strong>fn</strong>, <strong>iterable</strong>, <i>iterableArg2, ...<i>, <small>timeout=<i>float</i></small>, <small class="openable">chunksize=<i>int</i><div>
+            <p> - for <mark>ProcessPoolExecutor</mark> only </p>
+            <p> - specifies how many items from the iterable is submited to each process (Default: <mark>1</mark>)        </p>
+            <p> ex: </p>
+            <p> <mark>map(<strong>fn</strong>, [1, 2, 3, 4], chunksize=1</mark>) -&gt; 1 item is submitted to each        process (runs 4 processes -&gt; each process gets 1 item) (Default) </p>
+            <p> <mark>map(<strong>fn</strong>, [1, 2, 3, 4], chunksize=2</mark>) -&gt; 2 items are submitted to         each process (runs 2 processes -&gt; each process gets 2 items) </p>
+            <p> <mark>map(<strong>fn</strong>, [1, 2, 3, 4], chunksize=4</mark>) -&gt; 4 items are submitted to         each process (runs 1 process -&gt; each process gets 4 items) </p>
+        </div></small>)
+        </td>
+        <td>
+            - executes the <strong>fn</strong> in the pool's threads|processes, as many thread|process as many members are in the <strong>iterable</strong> (similar to <mark>map()</mark> <a href="../../Functions/index.html#map" target="_blank">[link]</a>) <br>
+            - this method does not block, returns a <strong>genObj</strong> <br>
+            - the returned <strong>genObj</strong> blocks untill all threads|processes finished <u>when we start iterating through it</u>
+        </td>
+    </tr>
+    <tr class="15.01">
+        <td>
+            <strong>threadPoolExecutor|processPoolExecutor</strong>.shutdown(<small class="openable">wait=<i>bol</i><div>
+                <p> - <mark>True</mark> - waits all the pool's processes|threads to finish before shutdon (Default) </p>
+                <p> - <mark>False</mark> - immediately shuts down the pool </p>
+            </div></small>, <small class="openable">cancel_futures=<i>bol</i><div>
+                <p> - <mark>False</mark> - pending futures (tasks) will be executed before shutdown (Default) <p>
+                <p> - <mark>True</mark> - not yet running futures (tasks) will be cancelled </p>
+            </div><small>)
+        </td>
+        <td>
+            - closes the pool and frees up all the pool's resources, by Default waits for all the pool's threads|processes to finish 
+        </td>
+    </tr>
+    <tr class="20.01">
+        <td colspan="2"> <mark><strong>coroFuture</strong></mark> </td>
+    </tr>
+    <tr class="20.02">
+        <td>
+            <strong>coroFuture</strong>.result(<small>timeout=<i>float</i></small>)
+        </td>
+        <td>
+            - blocks untill the result of the future is returned (or untill <small>timeout</small>)
+        </td>
+    </tr>
+    <tr class="20.03">
+        <td>
+            <strong>coroFuture</strong>.exception(<small>timeout=<i>float</i></small>)
+        </td>
+        <td>
+            - returns the exception raised by the task, or <mark>None</mark> if no exception was raised (blocks untill the task finished (or untill <small>timeout</small>)
+        </td>
+    </tr>
+    <tr class="25.01">
+        <td>
+            <strong>coroFuture</strong>.cancel()
+        </td>
+        <td>
+            - cancells the <strong>coroFuture</strong> execution <br>
+            - return <mark>True</mark> on successful cancellation <br>
+            - return <mark>False</mark> if the taks is already finished 
+        </td>
+    </tr>
+    <tr class="30.01">
+        <td>
+            <strong>coroFuture</strong>.cancelled()
+        </td>
+        <td>
+            - return <mark>True</mark> if the task is successfully cancelled, <mark>False</mark> otherwise
+        </td>
+    </tr>
+    <tr class="30.02">
+        <td>
+            <strong>coroFuture</strong>.done()
+        </td>
+        <td>
+            - return <mark>True</mark> if the task successfully finished or cancelled, <mark>False</mark> otherwise
+        </td>
+    </tr>
+    <tr class="30.03">
+        <td>
+            <strong>coroFuture</strong>.running()
+        </td>
+        <td>
+            - return <mark>True</mark> if the task is currently running and cannot be cancelled, <mark>False</mark> otherwise
+        </td>
+    </tr>
+    <tr class="35.01">
+        <td>
+            <strong>coroFuture</strong>.add_done_callback(<strong>fn</strong>)
+        </td>
+        <td>
+            - adds a callback which is called when the task finished or cancelled <u>(this method does not block)</u><br>
+            - the <strong>fn</strong> (callback) receives this <strong>coroFuture</strong> as its argument 
+        </td>
+    </tr>
+</table>
+    <br>
+<table class="table">
+<caption>
+    waiting <mark><strong>coroFuture</strong></mark>
+    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+</caption>
+    <tr>
+        <th style="width:30%;"> Method </th>
+        <th> Description </th>
+    </tr>
+    <tr class="05.01">
+        <td>
+            <em>concurrent.futures</em>.wait([<strong>coroFuture</strong><i>, ...</i>], <small>timeout=<i>float</i></small>, <small class="openable">return_when=<i>str</i><div>
+                <p> <mark>ALL_COMPLETED</mark> - return when all futures are finished (Default) </p>
+                <p> <mark>FIRST_COMPLETED</mark> - return the first future is finished </p>
+                <p> <mark>FIRST_EXCEPTION</mark> - return the first future raises an exception </p>
+            </div></small>)
+        </td>
+        <td>
+            - blocks untill all <strong>coroFuture</strong> are finished (or untill <small>timeout</small> by Default) <br>
+            - returns a <strong>namedTuple</strong> with 2 keys (<mark>done</mark> -> a <strong>set</strong> of finished futures) (<mark>not_done</mark> -> a <strong>set</strong> of unfinished futures)
+        </td>
+    </tr>
+    <tr class="10.01">
+        <td>
+            <em>concurrent.futures</em>.as_completed([<strong>coroFuture</strong><i>, ...</i>], <small>timeout=<i>float</i></small>)
+        </td>
+        <td>
+            - returns a <strong>genObj</strong> which yields <strong>coroFutures</strong> as soon as they finished <u>(when we start iterating the <strong>genObj</strong>)</u> (does not block)
+        </td>
+    </tr>
+</table>
+    <br>
+    <details class="example" id="notes">
+    <summary> Notes :</summary>
+        <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+    </details>
+<h2 style="color:green;"><u> Useful Links : </u></h2>
+    <p><a href="https://docs.python.org/3/library/concurrent.futures.html" target="_blank"> TreadPoolExecutor (docs.python.org) </a></p>
+<h2 style="color:green;"><u> Remember This : </u></h2>
+    
+<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+    <p> - the <mark class="mark">concurrent.futures</mark> provides a high level API for asynchronously executing threads <mark>ThredPoolExecutor</mark> or processes <mark>ProcessPoolExecutor</mark> (same API) </p>
+    <p> - the <mark>ThredPoolExecutor</mark> or <mark>ProcessPoolExecutor</mark> start only as many threads|processes as needed (up to <mark>max_workers</mark>) </p>
+<details class="example">
+<summary> DEMO </summary>
+    <p> - <mark>submit()</mark> with <mark>result()</mark> </p>
+    <pre>
+    import concurrent.futures
+    import time
+    def test(a):
+        time.sleep(1)
+        
+        return a ** 2
+    
+    with concurrent.futures.ProcessPoolExecutor(max_workers=1) as executor:
+        f = executor.submit(test, 3)
+        
+        print( f.result(timeout=3))                 // -> 9               // blocks untill result or for <mark>3</mark> seconds   
+        print( f.exception() )                      // -> None
+    </pre>
+    <p> - <mark>submit()</mark> with <mark>add_done_callback()</mark> </p>
+    <pre>
+    import concurrent.futures
+    import time
+    
+    def test(a):
+        time.sleep(1)
+        return a ** 2
+    
+    def cb(coroFuture):
+        print( coroFuture.result() )                    // -> 4  |  4
+    
+    executor = concurrent.futures.ProcessPoolExecutor(max_workers=2)
+    f1 = executor.submit(test, 2)
+    f2 = executor.submit(test, 2)
+    
+    f1.add_done_callback(cb)                            # they don't block each other
+    f2.add_done_callback(cb)
+    
+    print( ' --- end ---' )
+    </pre>
+    <p> - initializer function </p>
+    <pre>
+    import concurrent.futures
+    
+    def test(nr):                                       # will be called at the start of each thread
+        print( f'test {nr} called!')
+    
+    executor = concurrent.futures.ThreadPoolExecutor(max_workers=8, initializer=test, initargs=[1, ])
+    
+    f = executor.submit(test)
+    </pre>
+    <p> - <mark>map()</mark> </p>
+    <pre>
+    import concurrent.futures
+    import time
+    
+    def test(arg):
+        time.sleep(arg["delay"])
+        print( f'thread {arg["name"]} called!')
+        return f'{arg["name"]} OK!'
+    
+    executor = concurrent.futures.ProcessPoolExecutor(max_workers=8)
+    
+    results = executor.map(test, [                      # does not block 
+        {"name":"one", "delay":3},
+        {"name":"two", "delay":2},
+        {"name":"three", "delay":1}
+    ])
+    
+    for result in results:                              # blocks if untill all threads finished
+        print( result )
+    </pre>
+    <p> - <mark>map()</mark> with multiple arguments </p>
+    <pre>
+    import concurrent.futures
+    import time
+    
+    def process(name, delay):                           # expect 2 args
+        time.sleep(delay)
+        return f'process {name} OK'
+    
+    with concurrent.futures.ProcessPoolExecutor(max_workers=4) as executor:
+        results = executor.map(process, ['pr-1', 'pr-2'], [1.2, 2.4])     # 2 iterables (2 args passed)
+    
+        for result in results:
+            print( result )
+    </pre>
+    <p> - <mark>shutdown()</mark> </p>
+    <pre>
+    import concurrent.futures
+    import time
+    
+    def test(arg):
+        time.sleep(arg["delay"])
+        print( f'thread {arg["name"]} called!')
+        return f'{arg["name"]} OK!'
+    
+    executor = concurrent.futures.ProcessPoolExecutor(max_workers=8)
+    
+    results = executor.map(test, [                     # does not block 
+        {"name":"one", "delay":3},
+        {"name":"two", "delay":2},
+        {"name":"three", "delay":1}
+    ])
+    
+    executor.shutdown()                 # will wait untill all the pool's processes are finished
+    </pre>
+    <p> - <mark>concurrent.futures.wait()</mark> </p>
+    <pre>
+    import concurrent.futures
+    import time
+    
+    def proc(name, delay):
+        time.sleep(delay)
+        return f"process {name} end!"
+    
+    p = concurrent.futures.ProcessPoolExecutor(max_workers=4)
+    
+    p1 = p.submit(proc, 'one', 4)
+    p2 = p.submit(proc, 'two', 1)
+    p3 = p.submit(proc, 'three', 2.9)
+    p4 = p.submit(proc, 'four', 1.5)
+    
+    futures = concurrent.futures.wait([p1, p2, p3, p4], timeout=5, return_when="FIRST_COMPLETED")       # block untill the first future is finished
+    
+    print( futures.done )                       # a set containing finished futures
+    print( futures.not_done )                   # a set containing unfinished futures
+    </pre>
+    <p> - <mark>concurrent.futures.as_completed()</mark> </p>
+    <pre>
+    import concurrent.futures
+    import time
+    
+    def proc(name, delay):
+        time.sleep(delay)
+        return f"process {name} end!"
+    
+    p = concurrent.futures.ProcessPoolExecutor(max_workers=4)
+    
+    p1 = p.submit(proc, 'one', 4)
+    p2 = p.submit(proc, 'two', 1)
+    p3 = p.submit(proc, 'three', 2.9)
+    p4 = p.submit(proc, 'four', 1.5)
+    
+    futures = concurrent.futures.as_completed([p1, p2, p3, p4])       # does not block
+    
+    for future in futures:                                            # runs a pass as soon futures finishing
+        print( future.result() )
+    </pre>
+</details>
+    
+    <br><br>
+</body>
+</html>

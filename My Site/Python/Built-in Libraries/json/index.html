@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> json </title> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+    <script src="../../../Assets/scriptPages.js"></script>
+</head>
+<body>
+<h1> json </h1>
+    <p> Updated ( 2022-09-22 )</p>
+    <p class="sitenav"> <a href="../../../index.html">MySite></a>
+        <a href="../../index.html">Python></a>
+        <a href="../index.html">Built-in Libraries></a> json
+    </p>
+<table class="table">
+<caption>
+    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+</caption>
+    <tr>
+        <th style="width:30%;"> Method </th>
+        <th> Description </th>
+    </tr>
+    <tr class="05.01">
+        <td>
+            <em>json</em>.load(<strong>file-like</strong>, <i><a href="https://docs.python.org/3/library/json.html?highlight=json#json.load", target="_blank">args...</a></i>)
+        </td>
+        <td>
+            - parses the passed <strong>file-like</strong> (containing JSON) into Python <strong>dict</strong> and returns it 
+        </td>
+    </tr>
+    <tr class="05.02">
+        <td>
+            <em>json</em>.loads(<strong>json:str|bytes|bytearray</strong>, <i><a href="https://docs.python.org/3/library/json.html?highlight=json#json.loads", target="_blank">args...</a></i>)
+        </td>
+        <td>
+            - parses the passed <strong>json</strong> into Python <strong>dict</strong> and returns it
+        </td>
+    </tr>
+    <tr class="10.01">
+        <td>
+            <em>json</em>.dump(<strong>dict</strong>, <strong>file-like</strong>, <i><a href="https://docs.python.org/3/library/json.html?highlight=json#json.dump", target="_blank">args...</a></i>)
+        </td>
+        <td>
+            - serializes the passed <strong>dict</strong> into JSON and writes it in <strong>file-like</strong>
+        </td>
+    </tr>
+    <tr class="10.02">
+        <td>
+            <em>json</em>.dumps(<strong>dict</strong>, <i><a href="https://docs.python.org/3/library/json.html?highlight=json#json.dumps", target="_blank">args...</a></i>)
+        </td>
+        <td>
+            - serializes the passed <strong>dict</strong> into JSON string and returns it  
+        </td>
+    </tr>
+</table>
+    <br>
+    <details class="example" id="notes">
+    <summary> Notes :</summary>
+        <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+    </details>
+<h2 style="color:green;"><u> Useful Links : </u></h2>
+    <p><a href="https://docs.python.org/3/library/json.html?highlight=json#module-json" target="_blank"> json (docs.python.org) </a></p>
+<h2 style="color:green;"><u> Remember This : </u></h2>
+    
+<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+<p> - the <mark class="mark">json</mark> module allow to parse JSON to Python or serialize Python to JSON data </p>
+<details class="example">
+<summary> DEMO </summary>
+    <pre>
+    import json
+    
+    json.load(open('./test.json', 'r'))                   # reads the 'test.json' JSON file parses its content to Python data and returns it 
+    
+    jsonData = '{"test":"val1", "arr":[1, 2, 3.1]}'
+    json.loads(jsonData)                                  // -> {'test': 'val1', 'arr': [1, 2, 3.1]}     # parses the passed JSON string into Python data and returns it    
+    
+    
+    pythonData = {"test":"val1", "arr":[1, 2, 3.1]}
+    json.dump(pythonData, open('./test2.json', 'w'))      # serializes the passed Python dictionary into JSON and writs it in the 'test2.json' file   
+    
+    json.dumps(pythonData)                                // -> '{"test":"val1", "arr":[1, 2, 3.1]}'     # serializes the passed Python dictionary into JSON string and returns it 
+    </pre>
+</details>
+    
+    
+    <br><br>
+</body>
+</html>

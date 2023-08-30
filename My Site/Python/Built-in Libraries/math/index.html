@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> math </title> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+    <script src="../../../Assets/scriptPages.js"></script>
+</head>
+<body>
+<h1> math </h1>
+    <p> Updated ( 2022-06-12 )</p>
+    <p class="sitenav"> <a href="../../../index.html">MySite></a>
+        <a href="../../index.html">Python></a>
+        <a href="../index.html">Built-in Libraries></a> math
+    </p>
+<table class="table">
+<caption>
+    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+</caption>
+    <tr>
+        <th style="width:30%;"> Method / Property </th>
+        <th> Description </th>
+    </tr>
+    <tr class="03.01">
+        <td>
+            <em>math</em>.pi
+        </td>
+        <td>
+            - returns the PI value <mark>3.141592…</mark>
+        </td>
+    </tr>
+    <tr class="03.02">
+        <td>
+            <em>math</em>.e
+        </td>
+        <td>
+            - returns the Euler's value <mark>2.718281…</mark>
+        </td>
+    </tr>
+    <tr class="03.03">
+        <td>
+            <em>math</em>.inf
+        </td>
+        <td>
+            - returns the positive infinity value (<mark>-math.inf</mark> for negative infinity)
+        </td>
+    </tr>
+    <tr class="03.04">
+        <td>
+            <em>math</em>.nan
+        </td>
+        <td>
+            - returns the Not A Number value
+        </td>
+    </tr>
+    <tr class="05.01">
+        <td>
+            <em>math</em>.ceil(<strong>int|float</strong>)
+        </td>
+        <td>
+            - returns the passed numbers closest highest integer
+        </td>
+    </tr>
+    <tr class="05.02">
+        <td>
+            <em>math</em>.floor(<strong>int|float</strong>)
+        </td>
+        <td>
+            - returns the passed numbers closest lowest integer
+        </td>
+    </tr>
+    <tr class="10.01">
+        <td>
+            <em>math</em>.copysign(<strong>int|float</strong>, <strong>useSign:int|float</strong>)
+        </td>
+        <td>
+            - returns the 1st argument's absolute value but with the 2nd argument's sign
+        </td>
+    </tr>
+    <tr class="10.02">
+        <td>
+            <em>math</em>.fabs(<strong>int|float</strong>)
+        </td>
+        <td>
+            - returns the absolute value of the passed number
+        </td>
+    </tr>
+    <tr class="10.03">
+        <td>
+            <em>math</em>.trunc(<strong>int|float</strong>)
+        </td>
+        </td>
+        <td>
+            - remove the passed numbers fractional part and returns the result
+        </td>
+    </tr>
+    <tr class="15.01">
+        <td>
+            <em>math</em>.gcd(<strong>iterable</strong>, <strong>iterable</strong>)
+        </td>
+        <td>
+            - returns the greatest common divison of the 2 numbers (the highest divisor that both number can be devided without reminder)
+        </td>
+    </tr>
+    <tr class="15.02">
+        <td>
+            <em>math</em>.lcm(<strong>int|float</strong>, ...)
+        </td>
+        <td>
+            - returns the lowest common multiple of the passed numbers (lowest valid multiplication result for all passed members( v3.9)
+        </td>
+    </tr>
+    <tr class="20.01">
+        <td>
+            <em>math</em>.isfinite(<strong>int|float</strong>)
+        </td>
+        <td>
+            - returns <mark>True</mark> if the passed number is a finite number (not Infinity or NaN), <mark>False</mark> otherwise
+        </td>
+    </tr>
+    <tr class="20.02">
+        <td>
+            <em>math</em>.isinf(<strong>int|float</strong>)
+        </td>
+        <td>
+            - returns <mark>True</mark> if the passed number is positive or negative infinity, <mark>False</mark> otherwise
+        </td>
+    </tr>
+    <tr class="20.03">
+        <td>
+            <em>math</em>.isnan(<strong>int|float</strong>)
+        </td>
+        <td>
+            - returns <mark>True</mark> if the passed number is <mark>nan</mark>, <mark>False</mark> otherwise
+        </td>
+    </tr>
+    <tr class="25.01">
+        <td>
+            <em>math</em>.pow(<strong>int|float</strong>, <strong>int|float</strong>)
+        </td>
+        <td>
+            - raises the 1st argument to the power of the 2nd argument and returns the result 
+        </td>
+    </tr>
+    <tr class="25.02">
+        <td>
+            <em>math</em>.sqrt(<strong>int|float</strong>)
+        </td>
+        <td>
+            - returns the squareroot of the passed number
+        </td>
+    </tr>
+    <tr class="25.03">
+        <td>
+            <em>math</em>.isqrt(<strong>int|float</strong>)
+        </td>
+        <td>
+            - return the square root of the passed none negative number (the result is floored to the closest integer)  v3.8
+        </td>
+    </tr>
+    <tr class="25.04">
+        <td>
+            <em>math</em>.remainder(<strong>int|float</strong>, <strong>int|float</strong>)
+        </td>
+        <td>
+            - returns the reminder of the division (as <strong>float</strong>)
+        </td>
+    </tr>
+    <tr class="25.05">
+        <td>
+            <em>math</em>.factorial(<strong>int|float</strong>)
+        </td>
+        <td>
+            - returns the passed number's factorial value 
+        </td>
+    </tr>
+    <tr class="25.06">
+        <td>
+            <em>math</em>.fsum(<strong>iterable</strong>)
+        </td>
+        <td>
+            - returns the sum of the passed iterable members
+        </td>
+    </tr>
+    <tr class="30.01">
+        <td>
+            <em>math</em>.dist(<strong>[int|float, ...]</strong>, <strong>[int|float, ...]</strong>)
+        </td>
+        <td>
+            - returns the euclidean distance between 2 poinst (left and right verctors must have the same length) v3.8
+        </td>
+    </tr>
+    <tr class="35.01">
+        <td>
+            <em>math</em>.cos(<strong>rad:int|float</strong>)
+        </td>
+        <td>
+            - returns the cosine of the passed radian
+        </td>
+    </tr>
+    <tr class="35.02">
+        <td>
+            <em>math</em>.sin(<strong>rad:int|float</strong>)
+        </td>
+        <td>
+            - returns the sine of the passed radian
+        </td>
+    </tr>
+    <tr class="35.03">
+        <td>
+            <em>math</em>.tan(<strong>rad:int|float</strong>)
+        </td>
+        <td>
+            - returns the tangent of the passed radian
+        </td>
+    </tr>
+    <tr class="40.01">
+        <td>
+            <em>math</em>.degrees(<strong>rad:int|float</strong>)
+        </td>
+        <td>
+            - converts angle radians to degrees and returns the result
+        </td>
+    </tr>
+    <tr class="40.02">
+        <td>
+            <em>math</em>.radians(<strong>deg:int|float</strong>)
+        </td>
+        <td>
+            - converts angle degrees to radians and returns the result
+        </td>
+    </tr>
+</table>
+    <br>
+    <details class="example" id="notes">
+    <summary> Notes :</summary>
+        <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+    </details>
+<h2 style="color:green;"><u> Useful Links : </u></h2>
+    <p><a href="https://docs.python.org/3/library/math.html?highlight=math#module-math" target="_blank"> math (docs.python.org) </a></p>
+<h2 style="color:green;"><u> Remember This : </u></h2>
+    
+<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+    <p> - mark the <mark>math</mark> module supports only floating points and integers, for complex number types use the <mark><a href="https://docs.python.org/3/library/cmath.html#module-cmath" target="_blank">cmath</a></mark> module </p>
+<details class="example">
+<summary> DEMO </summary>
+    <p> - <mark>gcd()</mark> (Greatest Common Divisor) </p>
+    <pre>
+    math.gcd(2, 4)        // -> 2
+    math.gcd(4, 18)       // -> 2
+    math.gcd(25, 84)      // -> 1 
+    </pre>
+    <p> - <mark>lcm()</mark> (Lowest Common Multiple) </p>
+    <pre>
+    math.lcm(6, 4)        // -> 12
+    math.lcm(6, 3)        // -> 6
+    </pre>
+    <p> - <mark>reminder()</mark> </p>
+    <pre>
+    math.remainder(10, 3)   // -> 1.0
+    math.remainder(5, 1.33) // -> -0.3200000000000003
+    </pre>
+    <p> - comparing <mark>nan</mark> values </p>
+    <pre>
+    math.nan == math.nan    // -> False     // 2 Not A Number values are not equal 
+    math.nan is math.nan    // -> True      // but Python stores these value on the same memory location  
+    </pre>
+</details>
+    
+    <br><br>
+</body>
+</html>

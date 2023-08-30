@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Error Handling </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Error Handling </h1>
+  <p> Updated: 2022-02-20 </p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html">Python></a> Error Handling
+  </p>
+  <table class="table">
+    <caption>
+      Errors
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Error Classes </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td>
+        BaseException
+      </td>
+      <td>
+        - exception class sits on top of the exception chain, all exception classes inherit from this class<br>
+        - when creating custom Error classes don't inherit from this class, instead inherit from the
+        <mark>Exception</mark> class
+      </td>
+    </tr>
+    <tr class="05.02">
+      <td>
+        Exception
+      </td>
+      <td>
+        - all classes inherit from this class <u>except <mark>SystemExit</mark> / <mark>KeyboardInterrupt</mark> and
+          <mark>GeneratorExit</mark></u> <br>
+        - in the <mark>raise</mark> statement it <span class="openable">contains the raised error class<div>
+            <pre style="white-space:pe-line;">
+    try:
+        1 / 0
+    raise Exception as err:
+        err                       // -> ZeroDivisionError()
+                </pre>
+          </div></span>
+      </td>
+
+    </tr>
+    <tr class="10.01">
+      <td>
+        <a href="https://www.w3schools.com/python/python_ref_exceptions.asp" target="_blank"
+          style="color:lightcoral;">ExceptionClass [link]</a>
+      </td>
+      <td>
+        - exception classes inherited from <mark>BaseException</mark> class (<mark>BaseException</mark> ->
+        <mark>Exception</mark> -> <strong>ExceptionClass</strong>)
+      </td>
+    </tr>
+    <tr class="15.01">
+      <td>
+        RuntimeError
+      </td>
+      <td>
+        - exception that does not belong to any specific exception
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://www.w3schools.com/python/python_ref_exceptions.asp" target="_blank">Python built-in Error Objects
+      (w3schools)</a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - in compile time when something goes wrong Python raises a syntax error (and stops compiling)</p>
+  <p> - in runtime when something goes wrong Python raises a logical error (and stops running)</p>
+  <hr>
+  <!-------------------------------------------------------------------------------------------->
+  <h2 class="header"> The <mark>try...except...finally</mark> Statements </h2>
+  <p> - when Python encounters an exception raise an exception and exist, however we can handle execption raising by
+    using the <mark>try...except</mark> statement </p>
+  <pre class="syntax">
+    try:
+        <strong>codeBlock</strong>                                                                       // execution stops where exception is raised  
+    <small>except <i class="openable">ExceptionClassSyntaxes<div>
+        <p> <mark>except:</mark> - default statement </p>
+        <p> - must be the last <mark>except</mark>, when all the above <mark>except</mark> check fails </p>
+        <hr>
+        <p> <mark>except <strong>ErrorClass</strong> <small>[as <i>var</i>]</small></mark> - (<mark><small>as <i>var</i></small></mark> error instance alias) </p>
+        <p> - if the thrown exception matches <strong>ErrorClass</strong> then the exception is handler by this except code block </p>
+        <hr>
+        <p> <mark>except (<strong>ErrorClass</strong>, <i>...</i>) <small>[as <i>var</i>]</small></mark> </p>
+        <p> - we can except multiple <strong>ErrorClass</strong>es like this </p>
+    </div></i> :</small>                                                    // handles the raised exception, if it does not handle the thrown exception then the excetpion is raised further to the upper try statement    
+        <i>codeBlock</i>
+    <i>...</i>                                                                                 // we can have multiple except statements    
+                                                                                          // the first except where the raised exception matches <i>ExceptionClass</i> handles the exception (and all further except are omitted)
+    <small>else:</small>                                                                               // executes when the try statement does not raises any errors  
+        <i>codeBlock</i>
+    <small>finally:</small>                                                                            // executes in all circumstances (and raises the exeption furhter if it was not handled by any previous <mark>except</mark> statement)    
+        <i>codeBlock</i>                                                                         // <span class="openable">finally clode block special behaviours<div>
+        <p> - if the code block contains any <mark>break</mark> <mark>continue</mark> <mark>return</mark> <u>the exception is not raised further to the upper try statement</u> </p> 
+        <p> - if the <mark>try</mark> statement containers any <mark>break</mark> <mark>continue</mark> <mark>return</mark> <u>finally block is still executed</u> </p> 
+        <p> - if the both <mark>try</mark> and <mark>finally</mark> has <mark>return</mark> statement, <u>the <mark>finally</mark> return value is returned</u> </p> 
+        </div></span>
+    
+<span style="color:darkgray;">// valid statemenet combinations -------------------------------------------------------</span>
+    <mark>try...except</mark>
+    <mark>try...finally</mark>
+    <mark>try...except...finally</mark>
+    <mark>try...except...else</mark>
+    <mark>try...except...else...finally</mark>
+    </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
+    try:
+        1 / 0
+    except Exception as err:                                                            // the <mark>Exception</mark> class will match any error classes  
+        err                                                                             // -> ZeroDivisionError instance 
+    
+    
+// multiple except ---------------------------------------------------------------------
+    try:
+        1 / 0
+    except KeyError as err:                                                             // except block won't execute because the raised error is not a KeyError    
+        err
+    except IndentationError as err:                                                     // except block won't execute because the raised error is not a IndentationError    
+        err
+    except:                                                                             // default except executes    
+        print( 'default error handling' )
+    
+    
+// multiple exception classes in one except statement ----------------------------------
+    try:
+        1 / 0
+    except (IndentationError, ValueError, ZeroDivisionError) as err:                    // we can specify muiltiple possible exception classes  
+        err                                                                             // -> ZeroDivisionError instance 
+    except:
+        print( 'default error handling' )
+    
+    
+// else --------------------------------------------------------------------------------
+    try:
+        x = 'test'                                                                      // has no exception 
+    except:
+        print( 'default error' )
+    else:                                                                               // <mark>else</mark> code block executes (there's no exception is raised)    
+        print( 'else block executed' )
+    
+    
+// finally -----------------------------------------------------------------------------
+    try:
+        1 / 0
+    finally:                                                                            // finally block executes in all circumstances (even after this the program exits)     
+        print( 'finally block executed' )
+    </pre>
+    <pre>
+    class CustomError(Exception):                                                       // creates a custom exception class  
+        def __init__(self, message):
+            self.message = message
+            super().__init__(self.message)
+    
+    try:
+        raise CustomError('custom message')
+    except Exception as err:
+        err                                                                             // -> CustomeError instance 
+    </pre>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------------------------->
+  <h2 class="header"> The <mark>raise</mark> Statement </h2>
+  <pre class="syntax">
+    raise <strong class="openable">exceptionInstance<div>
+        <p> - must be an instance of <mark>BaseException</mark> </p>
+    </div></strong>                                                            // raises the <strong>exceptionInstance</strong> exception 
+    
+    try:
+        <strong>codeRaisesAnError</strong>
+    except <strong>ExceptionClass</strong> as <strong>var</strong>:
+        raise                                                                           // raises the handled exception outside this <mark>try</mark> statement    
+    </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
+    valErr = ValueError('my valError') 
+    
+    try:
+        raise valErr                                                                    // raises a value error 
+    except Exception as err:
+        err                                                                             // -> ValueError instance 
+        raise                                                                           // raises the ValueError instance to the upper <mark>try</mark> statement  
+    except Exception as err:                                                            // not executed because the exception is raised to the upper <mark>try</mark> in the previous <mark>except</mark> statement 
+        err 
+    finally:                                                                            // the <mark>finally</mark> statement will still execute 
+        print( 'finally' )
+    </pre>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------------------------->
+  <h2 class="header"> The <mark>assert</mark> statemenet </h2>
+  <pre class="syntax">
+    assert <strong>exp</strong>                                                                          // if <strong>exp</strong> evaluates truthy does nothing 
+                                                                                        // if <strong>exp</strong> evaluates falsy raises an <mark>AssertionError</mark> (and block further execption)
+    </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
+    assert 1 + 1                                                                       // does nothing 
+    assert 1 - 1                                                                       // raises an <mark>AssertionError</mark> (0 evaluates falsy)
+    </pre>
+  </details>
+  
+  
+  <br><br>
+</body>
+
+</html>

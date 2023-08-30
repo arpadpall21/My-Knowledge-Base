@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> datetime </title> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../Assets/stylesPages.css"> 
+    <script src="../../../Assets/scriptPages.js"></script>
+</head>
+<body>
+<h1> datetime </h1>
+    <p> Updated ( 2022-06-07 )</p>
+    <p class="sitenav"> <a href="../../../index.html">MySite></a>
+        <a href="../../index.html">Python></a>
+        <a href="../index.html">Built-in Libraries></a> datetime
+    </p>
+<table class="table">
+<caption>
+    <mark>datetime</mark> object
+    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+</caption>
+    <tr>
+        <th style="width:30%;"> Method / Property </th>
+        <th> Description </th>
+    </tr>
+    <tr class="05.01">
+        <td> 
+            <em>datetime</em>.datetime(<strong>year</strong>, <strong>month</strong>, <strong>day</strong>, <small>hour=<i>int</i></small>, <small>minute=<i>int</i></small>, <small>second=<i>int</i></small>, <small>microsecond=<i>int</i></small>, <small>tzinfo=<i>tzinfo</i></small>, <small>fold=<i>int</i></small>)
+        </td>
+        <td> 
+            - returns a <strong>datetime</strong> object which contains both date and time (abstract sub class of <mark><strong>datetime</strong>.date</mark>) <br>
+            - immutable, hashable and supports efficient picking (can be converted to bytestream)
+        </td>
+    </tr>
+    <tr class="09.01">
+        <td> 
+            <em>datetime.datetime</em>.today()
+        </td>
+        <td> 
+            - returns a <strong>datetime</strong> object of the current local datetime 
+        </td>
+    </tr>
+    <tr class="09.02">
+        <td> 
+            <em>datetime.datetime</em>.now(<small>tz=<i>tzinfo</i></small>)
+        </td>
+        <td> 
+            - returns a <strong>datetime</strong> object of the current local datetime (we can provide our tzinfo implementation)
+        </td>
+    </tr>
+    <tr class="10.04">
+        <td> 
+            <em>datetime.datetime</em>.fromtimestamp(<strong>timestamp</strong>, <small>tz=<i>tzinfo</i></small>)
+        </td>
+        <td> 
+            - returns a <strong>datetime</strong> object from the passed POSIX timestamp (local time)
+        </td>
+    </tr>
+    <tr class="10.05">
+        <td> 
+            <em>datetime.datetime</em>.utcfromtimestamp(<strong>timestamp</strong>)
+        </td>
+        <td> 
+            - returns a <strong>datetime</strong> object from the passed POSIX timestamp (UTC time)
+        </td>
+    </tr>
+    <tr class="10.06">
+        <td> 
+            <em>datetime.datetime</em>.fromordinal(<strong>ordinal:int</strong>)
+        </td>
+        <td> 
+            - returns a <strong>datetime</strong> object from the Gregorian ordinal date (days counted from January 1st year 0)
+        </td>
+    </tr>
+    <tr class="10.07">
+        <td> 
+            <em>datetime.datetime</em>.fromisoformat(<strong>isoTime:str</strong>)
+        </td>
+        <td> 
+            - returns a <strong>datetime</strong> object from the passed iso style datetime <mark>2000-04-21T20:00:00</mark>
+        </td>
+    </tr>
+    <tr class="10.08">
+        <td> 
+            <em>datetime.datetime</em>.iscalendar(<strong>year:int</strong>, <strong>week:int</strong>, <strong>day:int</strong>)
+        </td>
+        <td> 
+            - returns a <strong>datetime</strong> object from the passed isocalendar format (<mark>1</mark> = Monday)
+        </td>
+    </tr>
+    <tr class="10.09">
+        <td> 
+            <em>datetime.datetime</em>.combine(<strong>date|datetime</strong>, <strong>time</strong>, <small>tzinfo=<i>tzinfo</i></small>)
+        </td>
+        <td> 
+            - combines the passed date and time and returns the result in a new <strong>datetime</strong> object
+        </td>
+    </tr>
+    <tr class="15.01">
+        <td> 
+            <strong>datetime</strong>.min
+        </td>
+        <td> 
+            - returns a datetime object of the minimal representable date 
+        </td>
+    </tr>
+    <tr class="15.02">
+        <td> 
+            <strong>datetime</strong>.max
+        </td>
+        <td> 
+            - returns a datetime object of the maximal representable date
+        </td>
+    </tr>
+    <tr class="15.03">
+        <td> 
+            <strong>datetime</strong>.year
+        </td>
+        <td> 
+            - returns the year of the datetime object
+        </td>
+    </tr>
+    <tr class="15.04">
+        <td> 
+            <strong>datetime</strong>.month
+        </td>
+        <td> 
+            - returns the month of the datetime object
+        </td>
+    </tr>
+    <tr class="15.05">
+        <td> 
+            <strong>datetime</strong>.day
+        </td>
+        <td> 
+            - returns the day of the datetime object
+        </td>
+    </tr>
+    <tr class="15.06">
+        <td> 
+            <strong>datetime</strong>.hour
+        </td>
+        <td> 
+            - returns the hours of the datetime object
+        </td>
+    </tr>
+    <tr class="15.07">
+        <td> 
+            <strong>datetime</strong>.minute
+        </td>
+        <td> 
+            - returns the minutes of the datetime object
+        </td>
+    </tr>
+    <tr class="15.08">
+        <td> 
+            <strong>datetime</strong>.second
+        </td>
+        <td> 
+            - returns the seconds of the datetime object
+        </td>
+    </tr>
+    <tr class="15.09">
+        <td> 
+            <strong>datetime</strong>.microsecond
+        </td>
+        <td> 
+            - returns the microseconds of the datetime object
+        </td>
+    </tr>
+    <tr class="15.10">
+        <td> 
+            <strong>datetime</strong>.tzinfo
+        </td>
+        <td> 
+            - returns the tzinfo value of the datetime object
+        </td>
+    </tr>
+    <tr class="15.11">
+        <td> 
+            <strong>datetime</strong>.fold
+        </td>
+        <td> 
+            - returns the fold of the datetime object
+        </td>
+    </tr>
+    <tr class="17.01">
+        <td>
+            <strong>datetime</strong>.utcoffset()
+        </td>
+        <td>
+            - returns the UTC offest (if object is 'awaire')
+        </td>
+    </tr>
+    <tr class="17.02">
+        <td>
+            <strong>datetime</strong>.dst()
+        </td>
+        <td>
+            - returns the DST (if object is 'awaire')
+        </td>
+    </tr>
+    <tr class="17.03">
+        <td>
+            <strong>datetime</strong>.tzname()
+        </td>
+        <td>
+            - returns the timezone name (if object is 'awaire')
+        </td>
+    </tr>
+    
+    <tr class="20.01">
+        <td> 
+            <strong>datetime</strong>.date()
+        </td>
+        <td> 
+            - returns a <strong>date</strong> object from the datetime
+        </td>
+    </tr>
+    <tr class="20.02">
+        <td> 
+            <strong>datetime</strong>.time()
+        </td>
+        <td> 
+            - returns a <strong>time</strong> object from the datetime
+        </td>
+    </tr>
+    <tr class="25.01">
+        <td> 
+            <strong>datetime</strong>.replace(<small>year=<i>int</i></small>, <small>month=<i>int</i></small>, <small>day=<i>int</i></small>, <small>hour=<i>int</i></small>, <small>minute=<i>int</i></small>, <small>second=<i>int</i></small>, <small>microsecond=<i>int</i></small>, <small>tzinfo=<i>tzinfo</i></small>, <small>fold=<i>int</i></small>)
+        </td>
+        <td> 
+            - returns a new <strong>datetime</strong> object (optionally modifies the specified parameter in the new datetime)
+        </td>
+    </tr>
+    <tr class="30.01">
+        <td> 
+            <strong>datetime</strong>.timetuple()
+        </td>
+        <td> 
+            - returns a <strong>struct_time</strong> object from the datetime object
+        </td>
+    </tr>
+    <tr class="30.02">
+        <td> 
+            <strong>datetime</strong>.toordinal()
+        </td>
+        <td> 
+            - returns the Gregorian ordinal date value (days counted from January 1st year 0) of the datetime object 
+- <strong>datetime</strong>.timestamp()
+        </td>
+    </tr>
+    <tr class="30.03">
+        <td> 
+            <strong>datetime</strong>.timestamp()
+        </td>
+        <td> 
+            - returns the POSIX timestamp value of the datetime object
+        </td>
+    </tr>
+    <tr class="30.04">
+        <td> 
+            <strong>datetime</strong>.weekday()
+        </td>
+        <td> 
+            - returns the weekday of the datetime object (Monday = 0)
+        </td>
+    </tr>
+    <tr class="30.05">
+        <td> 
+            <strong>datetime</strong>.isoweekday()
+        </td>
+        <td> 
+            - returns the isoweekday of the datetime object (Monday = 1)
+        </td>
+    </tr>
+    <tr class="30.06">
+        <td> 
+            <strong>datetime</strong>.isocalendary()
+        </td>
+        <td> 
+            - returns the isocalendar value of the datetime object (tupple with year, week, day)
+        </td>
+    </tr>
+    <tr class="30.07">
+        <td> 
+            <strong>datetime</strong>.isoformat(<small>sep=<i>str</i></small>, <small>timespec=<i>str</i></small>)
+        </td>
+        <td> 
+            - returns an ISO8601 formated string of the dateobject 
+        </td>
+    </tr>
+    <tr class="30.08">
+        <td> 
+            <strong>datetime</strong>.ctime()
+        </td>
+        <td> 
+            - returns a datetime string <mark>Thu Jun  9 08:39:16 2022</mark> of the datetime object
+        </td>
+    </tr>
+    <tr class="35.01">
+        <td> 
+            <strong>datetime</strong>.strptime(<strong>'YYYY-MM-DD<i> HH:MM:SS.MMM</i>'</strong>  <strong><a href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes" target="_blank">format</strong>)
+        </td>
+        <td> 
+            - returns a formated string (according to <strong>format</strong>) of the date object
+        </td>
+    </tr>
+    <tr class="35.02">
+        <td> 
+            <strong>datetime</strong>.__format__.(<strong>'YYYY-MM-DD<i> HH:MM:SS.MMM</i>'</strong>  <strong><a href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes" target="_blank">format</strong>)
+        </td>
+        <td> 
+            - returns a formated string (according to <strong>format</strong>) of the date object
+        </td>
+    </tr>
+</table>
+    <br>
+<table class="table">
+<caption>
+    <mark>date</mark> object
+    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+</caption>
+    <tr>
+        <th style="width:30%;"> Method / Property </th>
+        <th> Description </th>
+    </tr>
+    <tr class="05.01">
+        <td> 
+            <em>datetime</em>.date(<strong>year</strong>, <strong>month</strong>, <strong>day</strong>)
+        </td>
+        <td> 
+            - returns a <strong>date</strong> object which represents a date <br>
+            - immutable, hashable and supports efficien picking (can be converted to bytestream)
+        </td>
+    </tr>
+    <tr class="10.01">
+        <td> 
+            <em>datetime.date</em>.today()
+        </td>
+        <td> 
+            - returns a <strong>date</strong> object of the current <u>local</u> date
+        </td>
+    </tr>
+    <tr class="15.01">
+        <td> 
+            <em>datetime.date</em>.fromtimestamp(secs:int)
+        </td>
+        <td> 
+            - returns a <strong>date</strong> object from the passed POSIX timestamps (secons since epoch)
+        </td>
+    </tr>
+    <tr class="15.02">
+        <td> 
+            <em>datetime.date</em>.fromisoformat(<strong>'YYYY-MM-DD'</strong>)
+        </td>
+        <td> 
+            - returns a <strong>date</strong> object from the passed iso date format
+        </td>
+    </tr>
+    <tr class="15.03">
+        <td> 
+            <em>datetime.date</em>.fromisocalendar(<strong>year:int</strong>, <strong>week:int</strong>, <strong>day:int</strong>)
+        </td>
+        <td> 
+            - returns a <strong>date</strong> object from the passed iso calendar format
+        </td>
+    </tr>
+    <tr class="15.04">
+        <td> 
+            <em>datetime.date</em>.fromordinal(<strong>ordinal:int</strong>)
+        </td>
+        <td> 
+            - returns a <strong>date</strong> object from the proleptic Gregorian ordinal (days counted from January 1st year 0)
+        </td>
+    </tr>
+    <tr class="20.01">
+        <td> 
+            <strong>date</strong>.min
+        </td>
+        <td> 
+            - returns the minimal representable date 
+        </td>
+    </tr>
+    <tr class="20.02">
+        <td> 
+            <strong>date</strong>.max
+        </td>
+        <td> 
+            - returns the maximal representable date 
+        </td>
+    </tr>
+    <tr class="20.03">
+        <td> 
+            <strong>date</strong>.year
+        </td>
+        <td> 
+            - returns the year of the date object (read-only)
+        </td>
+    </tr>
+    <tr class="20.04">
+        <td> 
+            <strong>date</strong>.month
+        </td>
+        <td> 
+            - returns the month of the date object (read-only)
+        </td>
+    </tr>
+    <tr class="20.05">
+        <td> 
+            <strong>date</strong>.day
+        </td>
+        <td> 
+            - returns the day of the date object (read-only)
+        </td>
+    </tr>
+    <tr class="25.01">
+        <td> 
+            <strong>date</strong>.replace(<small>year=<i>int</i></small>, <small>month=<i>int</i></small>,<small>day=<i>int</i></small>)
+        </td>
+        <td> 
+            - returns a <strong>date</strong> object, optionally replaces the specified parameter in the new date object
+        </td>
+    </tr>
+    <tr class="30.01">
+        <td> 
+            <strong>date</strong>.timetuple()
+        </td>
+        <td> 
+            - returns the date value as <strong>struct_time</strong> object
+        </td>
+    </tr>
+    <tr class="30.02">
+        <td> 
+            <strong>date</strong>.toordinal()
+        </td>
+        <td> 
+            - returns the proleptic Gregorian ordinal value of the date (days counted from January 1st year 0)
+        </td>
+    </tr>
+    <tr class="30.03">
+        <td> 
+            <strong>date</strong>.weekday()
+        </td>
+        <td> 
+            - returns the weekday of the object (<mark>0</mark> = monday)
+        </td>
+    </tr>
+    <tr class="30.04">
+        <td> 
+            <strong>date</strong>.isoweekday()
+        </td>
+        <td> 
+            - returns the weekday of the object (<mark>1</mark> = monday)
+        </td>
+    </tr>
+    <tr class="30.05">
+        <td> 
+            <strong>date</strong>.isocalendar()
+        </td>
+        <td> 
+            - returns a tuple with 3 components year, month and day (named tuple from v3.9) (<mark>1</mark> = monday)
+        </td>
+    </tr>
+    <tr class="30.06">
+        <td> 
+            <strong>date</strong>.ctime()
+        </td>
+        <td> 
+            - returns a string date (<mark>Wed Jun  8 00:00:00 2022</mark>) from the date object
+        </td>
+    </tr>
+    <tr class="35.01">
+        <td> 
+            <strong>date</strong>.strftime(<strong>format</strong>)
+        </td>
+        <td> 
+            - returns a date string formated according the <strong>format</strong> argument
+        </td>
+    </tr>
+    <tr class="35.02">
+        <td> 
+            <strong>date</strong>.__format__(<strong>format</strong>)
+        </td>
+        <td> 
+            - returns a date string formated according the <strong>format</strong> argument
+        </td>
+    </tr>
+</table>
+    <br>
+<table class="table">
+<caption>
+    <mark>time</mark> object
+    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+</caption>
+    <tr>
+        <th style="width:30%;"> Method / Property </th>
+        <th> Description </th>
+    </tr>
+    <tr class="05.01">
+        <td> 
+            <em>datetime</em>.time(<small>hour=<i>int</i></small>, <small>minute=<i>int</i></small>, <small>second=<i>int</i></small>, <small>microsecond=<i>int</i></small>, <small>tzinfo=<i>tzinfo</i></small>, <small>fold=<i>int</i></small>)
+        </td>
+        <td> 
+            - represents the local time of the day <br>
+            - immutable, hashable and supports efficient picking (can be converted to bytestream)
+        </td>
+    </tr>
+    <tr class="10.01">
+        <td> 
+            <strong>time</strong>.fromisoformat(<storng>time:str</strong>)
+        </td>
+        <td> 
+            - returns a <strong>time</strong> object form the passed iso formated time string <mark>'20:00:00'</mark>
+        </td>
+    </tr>
+    <tr class="15.01">
+        <td>
+            <strong>time</strong>.min
+        </td>
+        <td>
+            - returns a time object of the minimal time 
+        </td>
+    </tr>
+    <tr class="15.02">
+        <td>
+            <strong>time</strong>.max
+        </td>
+        <td>
+            - returns a time object of the maximal time 
+        </td>
+    </tr>
+    <tr class="15.03">
+        <td>
+            <strong>time</strong>.hour
+        </td>
+        <td>
+            - retunrns the hours of the time object 
+        </td>
+    </tr>
+    <tr class="15.04">
+        <td>
+            <strong>time</strong>.minute
+        </td>
+        <td>
+            - retunrns the minutes of the time object 
+        </td>
+    </tr>
+    <tr class="15.05">
+        <td>
+            <strong>time</strong>.second
+        </td>
+        <td>
+            - retunrns the seconds of the time object 
+        </td>
+    </tr>
+    <tr class="15.06">
+        <td>
+            <strong>time</strong>.microsecond
+        </td>
+        <td>
+            - retunrns the microseconds of the time object 
+        </td>
+    </tr>
+    <tr class="15.07">
+        <td>
+            <strong>time</strong>.tzinfo
+        </td>
+        <td>
+            - retunrns the tzinfo value of the time object 
+        </td>
+    </tr>
+    <tr class="15.08">
+        <td>
+            <strong>time</strong>.fold
+        </td>
+        <td>
+            - retunrns the fold value of the time object 
+        </td>
+    </tr>
+    <tr class="20.01">
+        <td> 
+            <strong>time</strong>.replace(<small>hour=<i>int</i></small>, <small>second=<i>int</i></small>, <small>microsecond=<i>int</i></small>, <small>tzinfo=<i>tzinfo</i></small>, <small>fold=<i>int</i></small>)
+        </td>
+        <td> 
+            - creates and returns a new <strong>time</strong> object (optionally replaces the specified parameter in the new time object)
+        </td>
+    </tr>
+    <tr class="25.01">
+        <td> 
+            <strong>time</strong>.isoformat()
+        </td>
+        <td> 
+            - returns an ISO8601 formated string of the time object value
+        </td>
+    </tr>
+    <tr class="30.01">
+        <td>
+            <strong>time</strong>.strftime(<strong>format</strong>)
+        </td>
+        <td>
+            - returns a time string formated according the <strong>format</strong> argument 
+        </td>
+    </tr>
+    <tr class="30.02">
+        <td>
+            <strong>time</strong>.__format__(<strong>format</strong>)
+        </td>
+        <td>
+            - returns a time string formated according the <strong>format</strong> argument 
+        </td>
+    </tr>
+    <tr class="35.01">
+        <td>
+            <strong>time</strong>.utcoffset()
+        </td>
+        <td>
+            - returns the UTC offest (if object is 'awaire')
+        </td>
+    </tr>
+    <tr class="35.02">
+        <td>
+            <strong>time</strong>.dst()
+        </td>
+        <td>
+            - returns the DST (if object is 'awaire')
+        </td>
+    </tr>
+    <tr class="35.03">
+        <td>
+            <strong>time</strong>.tzname()
+        </td>
+        <td>
+            - returns the timezone name (if object is 'awaire')
+        </td>
+    </tr>
+</table>
+    <br>
+<table class="table">
+<caption>
+    <mark>timedelta</mark> object
+    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+</caption>
+    <tr>
+        <th style="width:30%;"> Method / Property </th>
+        <th> Description </th>
+    </tr>
+    <tr class="05.01">
+        <td> 
+            <em>datetime</em>.timedelta(<small>days=<i>int|float</i></small>, <small>seconds=<i>int|float</i></small>, <small>milliseconds=<i>int|float</i></small>, <small>microseconds=<i>int|float</i></small>, <small>minutes=<i>int|float</i></small>, <small>hours=<i>int|float</i></small>, <small>weeks=<i>int|float</i></small>)
+        </td>
+        <td>
+            - creates a <strong>timedelta</strong> object which represents a time relative to some other time (ex: current time)
+        </td>
+    </tr>
+    <tr class="10.01">
+        <td> 
+            <strong>timedelta</strong>.min
+        </td>
+        <td>
+            - returns the smalles possible timedelta time 
+        </td>
+    </tr>
+    <tr class="10.02">
+        <td> 
+            <strong>timedelta</strong>.max
+        </td>
+        <td>
+            - returns the largest possible timedelta time 
+        </td>
+    </tr>
+    <tr class="10.03">
+        <td> 
+            <strong>timedelta</strong>.days
+        </td>
+        <td>
+            - returns the set days (read only)
+        </td>
+    </tr>
+    <tr class="10.04">
+        <td> 
+            <strong>timedelta</strong>.seconds
+        </td>
+        <td>
+            - returns the set seconds (read only)
+        </td>
+    </tr>
+    <tr class="10.05">
+        <td> 
+            <strong>timedelta</strong>.microseconds
+        </td>
+        <td>
+            - returns the set microseconds (read only)
+        </td>
+    </tr>
+    <tr class="10.06">
+        <td> 
+            <strong>timedelta</strong>.total_seconds()
+        </td>
+        <td>
+            - returns the elapsed time represented in seconds 
+        </td>
+    </tr>
+</table>
+    <br>
+<table class="table">
+<caption>
+    <mark>tzinfo</mark> / <mark>timezone</mark> objects
+    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+</caption>
+    <tr>
+        <th style="width:30%;"> Method / Property </th>
+        <th> Description </th>
+    </tr>
+    <tr class="05.01">
+        <td> 
+            <em>datetime</em>.tzinfo
+        </td>
+        <td>
+            - used to create 'awaire' time objects (<mark>datetime</mark> or <mark>time</mark>) <br>
+            - should not be instantantated directly, it's a base class we should create our own subclass then implement our own timezone info <br>
+            - the subclass should implement the <mark>utcoffset()</mark> / <mark>dst()</mark> / <mark>tzname()</mark> / <mark>fromutc()</mark> methods <br>
+        </td>
+    </tr>
+    <tr class="10.01">
+        <td> 
+            <em>datetime</em>.timezone(<strong>offset:timedelta</strong>, <small>name=<i>tzName:str</i></small>)
+        </td>
+        <td>
+            - abstract sub class of <mark><strong>datetime</strong>.tzinfo</mark> <br>
+            - used to create 'awaire' time objects (<strong>time</strong> and <strong>datetime</strong>) <br>
+            - immutable, hashable and supports efficien picking (can be converted to bytestream)
+        </td>
+    </tr>
+    <tr class="15.01">
+        <td>
+            <strong>timezone</strong>.utcoffest()
+        </td>
+        <td>
+            - returns the UTC offest value 
+        </td>
+    </tr>
+    <tr class="15.02">
+        <td>
+            <strong>timezone</strong>.tzname()
+        </td>
+        <td>
+            - returns the timezone name  
+        </td>
+    </tr>
+    <tr class="15.03">
+        <td>
+            <strong>timezone</strong>.dst()
+        </td>
+        <td>
+            - always <mark>None</mark>
+        </td>
+    </tr>
+</table>
+    <br>
+    <details class="example" id="notes">
+    <summary> Notes :</summary>
+        <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+    </details>
+<h2 style="color:green;"><u> Useful Links : </u></h2>
+    <p><a href="https://docs.python.org/3/library/datetime.html" target="_blank"> datetime (docs.python.org) </a></p>
+<h2 style="color:green;"><u> Remember This : </u></h2>
+<p> - in Python the local time is controlled by the <mark>TZ</mark> system variable, we manually set the <mark>TZ</mark> value which tells python the local timezone (remember using <mark>time.tzset()</mark> to 'activate' the new timezone) </p>
+<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+    <p> - arithmetic and comparison operations are supported betwen datetime objects </p>
+    <p> - datetime object can be 'naive' or 'awaire' </p>
+    <p style="text-indent:20px;"> <b><u>'naive'</u></b> has no timezone informations, <u>assumes to contain the local time</u> </p>
+    <p style="text-indent:20px;"> <b><u>'awaire'</u></b> has timezone informations </p>
+    <p> - to check if the datetime object is awaire or naive call <mark><strong>datetime</strong>.tzinfo</mark>, if the returned value is <mark>None</mark> the datetime object is naive, awaire otherwise </p>
+<h2 class="header"> Creating awaire datetime objects </h2>
+    <p> - we can implement our own tzinfo by creating a subclass of the <mark>tzinfo</mark> class and implement the <mark>utcoffset()</mark> / <mark>dst()</mark> / <mark>tzname()</mark> methods on it </p>
+    <p> - we can also create tzinfo implementation by using the <mark>timezone</mark> class (that's the cheapest way) </p>
+    <p> - then the created tzinfo implementation is passed as argument in <mark>datetime.datetime</mark> or <mark>datetime.time</mark> classes on creation so they are 'awaire' of the implemented timezone </p>
+    <p> - or use the 'easy way' <mark><a href="../zoneinfo/index.html" target="_blank">zoneinfo</a></mark> module (this handles timezone and DST alike) </p>
+<details class="example">
+<summary> Example : </summary>
+    <p> - get local VS get utc </p>
+    <pre>
+    from datetime import datetime, timezone
+    
+    
+    local = datetime.now()
+    utc = datetime.now(tz=timezone.utc)
+    
+    print( local.hour )                   // -> 8
+    print( utc.hour )                     // -> 6
+    </pre>
+    <p> - checking if datetime is 'awaire' or 'naive' </p>
+    <pre>
+    from datetime import datetime, timezone
+    
+    
+    naive = datetime.now()
+    awaire = datetime.now(tz=timezone.utc)
+    
+    print( naive.tzinfo )         # // -> None 
+    print( awaire.tzinfo )        # // -> UTC    (&lt;datetime.timezone&gt; obj)
+    </pre>
+    <p> - <mark>datetime.timedelta()</mark> </p>
+    <pre>
+    import datetime
+    
+    timeNow = datetime.datetime.now()
+    
+    timedelta = datetime.timedelta(
+        days=13,
+        weeks=1,
+        hours=5,
+        minutes=5
+    )
+    
+    print( timedelta )                // -> returns a time object (passed time)
+    print( timeNow + timedelta )      // -> the returned object is the current time added to the passed time (timedelta)
+    </pre>
+    <p> - proleptic Gregorian ordinal <mark>fromordinal()</mark> / <mark>toordinal()</mark> </p>
+    <pre>
+    import datetime
+    
+    date1 = datetime.date.fromordinal(1)
+    print( date1 )                    // -> 0001-01-01  // date object 
+    
+    today = datetime.date.today()
+    print( today.toordinal())         // -> 738314    // 738314 elpased since 1st of January year 0
+    </pre>
+    <p> - creating awaire time object </p>
+    <pre>
+    import datetime
+    import time
+    
+    tz = datetime.timezone( datetime.timedelta(hours=10), name="some tz name")
+    t = datetime.time(20, 51, 00, tzinfo=tz)
+    
+    print( t.utcoffset() )      // -> 10:00:00  // timedelta object 
+    print( t.tzname() )         // -> 'some tz name'
+    </pre>
+</details>
+    
+    
+    <br><br>
+</body>
+</html>

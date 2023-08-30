@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> argparse </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> argparse </h1>
+  <p> Updated ( 2022-09-22 )</p>
+  <p class="sitenav"> <a href="../../../index.html">MySite></a>
+    <a href="../../index.html">Python></a>
+    <a href="../index.html">Built-in Libraries></a> argparse
+  </p>
+  <table class="table">
+    <caption>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Method </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td>
+        <em>argparse</em>.ArgumentParser(<a
+          href="https://docs.python.org/3/library/argparse.html?highlight=argparse#argparse.ArgumentParser"
+          target="_blanc">args...</a>)
+      </td>
+      <td>
+        - creates and returns an <strong>argParser</strong> object which handles cli arguments for us<br>
+        - with <strong>args</strong> we can describe a bunch of things (like description, program name, etc..), these
+        informations will be visible when printing program help <mark>python <strong>program.py</strong> --help</mark>
+      </td>
+    </tr>
+    <tr class="10.01">
+      <td>
+        <strong>argParser</strong>.add_argument(<strong>arg</strong>, <small class="openable">[nargs=<strong>int</strong>|*<div>
+          <p> - <strong>int</strong> -> parses the number of following positional arguments in a list </p>
+          <p> - <mark>*</mark> -> parses all the following positional arguments in a list </p>
+        </div>]</small> <i>...</i> <a
+          href="https://docs.python.org/3/library/argparse.html?highlight=argp#quick-links-for-add-argument"
+          target="_blanc">args</a>)
+      </td>
+      <td>
+        - adds a new argument to the <strong>argParser</strong><br>
+        - ex: <mark>port</mark> = positional argument (requires a value on its place)<br>
+        - ex: <mark>--port</mark> optional argument (if specified must be followed by a value)
+      </td>
+    </tr>
+    <tr class="15.01">
+      <td>
+        <strong>argParser</strong>.parse_args(<i><a
+            href="https://docs.python.org/3/library/argparse.html?highlight=argparse#the-parse-args-method"
+            target="_blanc">args...</a></i>)
+      </td>
+      <td>
+        - parses all arguments set to <strong>argParser</strong> arguments and returns the result in a Namespace object
+        (convert to dict with <mark>nameSpace.__dict__</mark>)
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://docs.python.org/3/library/argparse.html?highlight=argparse#module-argparse" target="_blank">
+      argparse (docs.python.org) </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - the <mark>argparse</mark> module provides a fancy API for data received on <mark>sys.argv</mark> </p>
+  <p> - we can set program and argument description, describe arguments and provide them help messages on CLI </p>
+  <p> - <mark>argparse</mark> supports positional (ex: <mark>some_arg</mark>) and optional (ex: <mark>--port</mark>) arguments </p>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
+    import argparse
+    
+    
+    parser = argparse.ArgumentParser(prog='some program')
+    parser.add_argument('host', help='required base host')
+    parser.add_argument('-p', '--port', type=int, default=3000, help='port number')
+    
+    args = parser.parse_args()
+    
+    # program executed with                   # <mark>python main.py some_host</mark>
+    print( args.host )                        // -> some_host
+    print( args.port )                        // -> 3000
+    
+    # program executed with                   # <mark>python main.py another_host -p 3001</mark>
+    print( args.host )                        // -> another_host
+    print( args.port )                        // -> 3001
+    </pre>
+    <p> - positional arguments </p>
+    <pre>
+    import argparse
+    
+    
+    parser = argparse.ArgumentParser(
+        prog='my program',                    # providing information for cli help (-h)
+        description='my program description'
+    )
+    parser.add_argument(
+        'count',                              # required positional argument
+        help='count',                         # help text displayed on <mark>-h</mark>
+        type=int,                             # parsed datatype that the parser will receive
+        choices=[1, 2, 3, 4, 5]               # allowed input values 
+    )
+    parser.add_argument('input', help='some input text')
+    
+    args = parser.parse_args()                # arguments are parsed here
+    
+    # program executed with:                  # <mark>python main.py 2 test</mark>
+    print( args.count )                       // -> 2 
+    print( args.input )                       // -> 'test'
+    
+    # program executed with:                  # <mark>python main.py 5 abc</mark>
+    print( args.count )                       // -> 5
+    print( args.input )                       // -> 'abc'
+    </pre>
+    <p> - optional arguments </p>
+    <pre>
+    import argparse
+    
+    
+    parser = argparse.ArgumentParser(prog='some program')
+    parser.add_argument(
+        '-p', '--positional_argument',        # optional arguments accept multiple formats
+        required=True,                        # (by default optional argumenst are 'optional' obviously)
+    )
+    parser.add_argument(
+        '-a',
+        default='default value'               # default value allowed for optional arguments
+    )
+    
+    args = parser.parse_args()
+    
+    # program executed with:                  # <mark>python main.py -p test</mark>
+    print( args.positional_argument )         // -> 'test'
+    print( args.a )                           // -> 'default value'
+    </pre>
+  </details>
+  
+  
+  <br><br>
+</body>
+
+</html>

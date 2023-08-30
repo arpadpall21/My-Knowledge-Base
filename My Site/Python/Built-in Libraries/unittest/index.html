@@ -1,0 +1,614 @@
+<html lang="en">
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <title> unittest </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> unittest </h1>
+  <p> Updated ( 2023-03-13 )</p>
+  <p class="sitenav"> <a href="../../../index.html">MySite></a>
+    <a href="../../index.html">Python></a>
+    <a href="../index.html">Built-in Libraries></a> unittest
+  </p>
+  <table class="table">
+    <caption>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> CMD </th>
+      <th> Description </th>
+    </tr>
+    <tr class="0">
+      <td>
+        python -m unittest <strong class='openable'>path<i>.TestClass.test_method</i> <small>[-v]</small><div>
+          <p> ex: </p>
+          <p> <mark>python -m unittest</mark> (runs all test in the current and nested directories) </p>
+          <p> <mark>python -m unittest tests/test_something.py tests2</mark> (runs test files on the specified paths) </p>
+          <p> <mark>pytest -m unittest test_something.py.TestClass.test_one</mark> (runs the <mark>test_one</mark> test case within the <mark>TestClass</mark> in <mark>test_something.py</mark> file) </p>
+        </div></strong> <i>...</i>
+      </td>
+      <td>
+        - start unning test (on the passed directory will lookup all <mark>test</mark> prefixed files) <br>
+        - specific test suite (class) or test case can be provided (<i>.TestClass.test_method</i>) <br>
+        - (<small>-v</small>) verbose output
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://docs.python.org/3/library/unittest.html" target="_blank">unittest (docs.python.org)</a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - in python testing we patch methods, objects <u>in the namespace where they're used (not where they are)</u> </p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - the <mark>unittest</mark> module provides testting features for us, in python unittesting test cases are
+    completely separated from each other</p>
+  <p> - test files must be prefixed with <mark>test_</mark> (ex: <mark>test_request.py</mark>)</p>
+  <p> - the <mark>unittest</mark> concepts: </p>
+  <p style='text-indent:15px;'> - <mark class='mark'>fixture</mark> (preparation needed to run a test suite) </p>
+  <p style='text-indent:15px;'> - <mark class='mark'>test case</mark> (an individual test) </p>
+  <p style='text-indent:15px;'> - <mark class='mark'>test suite</mark> (a collection of tests) </p>
+  <p> - <a href="https://docs.python.org/3/library/unittest.html#unittest.TestCase.debug" target="_blank">here you can
+      find [link]</a> a number of test assertion methods to check test casses </p>
+  <pre class='syntax'>
+    from unittest import TestCase
+    
+    
+    class <strong>TestSuiteName</strong>(TestCase):     # test suite = class extended with <mark>TestCase</mark> 
+        def setUp(self):               # run before each test case
+            <span style='color:darkgrey;'>// some setup logic...</span>
+      
+        def tearDown(self):            # run after each test case
+            <span style='color:darkgrey;'>// some teardown logic...</span>
+    
+        @classmethod  
+        def setUpClass(cls):           # runs before all test cases
+            <span style='color:darkgrey;'>// some setup logic...</span>
+    
+        @classmethod
+        def tearDownClass(cls):        # runs after all test cases
+            <span style='color:darkgrey;'>// some teardown logic...</span>
+    
+        def test_<strong>testCaseName</strong>(self):   # test cases within test class (function prefixed with <mark>test_</mark>)
+            <span style='color:darkgrey;'>// some test case...</span>
+  </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <p> - setup / teardown methods </p>
+    <pre>
+    from unittest import TestCase
+    
+    class Person:
+        def __init__(self, _name, _sex):
+            self._name = _name
+            self._sex = _sex
+    
+        @property
+        def name(self):
+            return self._name
+    
+                                  // -! setting up is basically the fixture here 
+    class TestClass(TestCase):    # test suite = class extended by <mark>TestCase</mark> 
+        def setUp(self):          # the setUp() and tearDwon() will run before/after each test case
+            self.adam = Person('Adam', 'male')
+            print('before each test')
+    
+        def tearDown(self):
+            print('after each test')
+    
+        @classmethod
+        def setUpClass(cls):    # the setUpClass() and tearDownClass() will run before/after the test suite
+            print('before all tests')
+    
+        @classmethod
+        def tearDownClass(cls):
+            print('after all tests')
+    
+        def test_right_name(self):                      # only methods prefixed with <mark>test</mark> will be treated as test case
+            self.assertEqual(self.adam.name, 'Adam')    # checking test case 
+    
+        def test_wrong_name(self):
+            self.assertNotEqual(self.adam.name, 'Adam_')
+    </pre>
+    <p> - making assertions about logs </p>
+    <pre>
+    from unittest import TestCase
+    import logging
+    
+    logger = logging.getLogger(__name__)
+    logger2 = logging.getLogger('some.other.logger')
+    
+    def my_fun():
+        logger.debug('some debug message')
+        logger.info('some info message')
+        logger.warning('some warning message')
+        logger.error('some error message')
+    
+    
+    class MyTestOne(TestCase):
+        def test_one(self):
+            with self.assertLogs(logger, level='WARNING') as logRecord:   # the logger and the assertion level we want to capture assertions   
+                my_fun()
+
+                print( logRecord.output)       // -> ['WARNING:test_demo:WARNING log', 'ERROR:test_demo:ERROR log']      // the list of the captured logs (level logLevel:loggerName:logMessage)
+                print( logRecord.records )     // -> [&lt;LogRecord&gt;, ...]     a list of capture log reccords 
+            
+            self.assertEqual(logRecord.records[1].msg, 'some error message')        # assert log 
+            self.assertEqual(logRecord.records[1].levelname, 'ERROR')
+    
+            assert logRecord.records[0].msg == 'some warning message'
+            assert logRecord.records[0].levelname == 'WARNING'
+    
+            assert logRecord.output[0] == 'WARNING:test_demo:some warning message'
+            assert logRecord.output[1] == 'ERROR:test_demo:some error message'  
+  </pre>
+  </details>
+  <!--------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Mocking </h2>
+  <p> - the <mark>unittest.mock</mark> module provides a lot of really good mocking features, such as MagicMock,
+    patching and specks </p>
+  </pre>
+  <!--------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header" id="mock"> The <mark>MagicMock</mark> / <mark>AsyncMock</mark> objects </h2>
+  <p> - the <mark>MagicMock</mark> object instance allows us to create attribute (in any depth) on demand
+    (JavaScript-like aproach), each attribute part on the object is a MagicMock object itself </p>
+  <p> - we have high control over MagicMock instances, we can set its return or side effect values </p>
+  <p> - MagciMock instances record actions performed on them so we can make test assertions about actions by using
+    <a href="https://docs.python.org/3/library/unittest.mock.html#unittest.mock.Mock.assert_called" target="_blank"> MagicMock assertion methods</a> </p>
+  <p> - the idea is that we patch an object/function what becomes a MagicMock instance, as the test goes on demand the
+    necessary attributes are created on the MagciMock instance </p>
+  <pre class='syntax'>
+    from unittest.mock import MagicMock, AsyncMock
+    
+    
+    MagicMock(return_value=<strong>val</strong>, side_effect=<strong class='openable'>fn<div>
+            <p> - function will be called as side effect (used to raise an Exception) </p>
+          </div></strong>, name=<strong>str</strong>, speck=<strong class='openable'>obj<div>
+            <p> - a speck will be create based on the passed <strong>obj</strong> (on the returned
+              <strong>magicMock</strong> instance olny the originally passed <strong>obj</strong> attributes are
+              available)
+            </p>
+          </div></strong> <strong>**kwargs</strong>, <a
+          href="https://docs.python.org/3/library/unittest.mock.html#the-mock-class" target="_blank">moreArgs...</a>)    // creates and return a <strong>magicMock</strong> instance what creates attirbutes on demand (each attribute is a <strong>magicMock</strong>)
+    
+    AsyncMock(return_value=<strong>val</strong>, side_effect=<strong class='openable'>fn<div>
+            <p> - function will be called as side effect (used to raise an Exception) </p>
+          </div></strong>, name=<strong>str</strong>, speck=<strong class='openable'>obj<div>
+            <p> - a speck will be create based on the passed <strong>obj</strong> (on the returned
+              <strong>magicMock</strong> instance olny the originally passed <strong>obj</strong> attributes are
+              available)
+            </p>
+          </div></strong> <strong>**kwargs</strong>, <a
+          href="https://docs.python.org/3/library/unittest.mock.html#unittest.mock.AsyncMock" target="_blank">moreArgs...</a>)    // <span class="browserSupport" style="color:yellow;"><span><i class="fab fa-python"></i> v3.8 </span></span> creates and returns an awaitable mock 
+                                                                                                 // <mark>asyncmock</mark> library is available for Python v3.7 or below <a href="https://pypi.org/project/asyncmock/" target="_blank">[link]</a>
+  </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <h4 class="header"> magicMock create attributes on demand (each of its attribute is a magicMock itself) </h4>
+    <pre>
+    from unittest import TestCase
+    from unittest.mock import MagicMock
+    
+    
+    # MagicMock allows to create any structured object
+    mock_obj = MagicMock()
+    mock_obj.attr1 = 'some value'
+    mock_obj.method.return_value = 'some return value'
+    mock_obj.nest1.nest2.method = MagicMock(return_value='nested return value')
+    
+    class TestClass(TestCase):
+        def test_mock(self):
+            assert mock_obj.nest1.nest2.method.called == False                      # assertions
+            assert mock_obj.nest1.nest2.method('a', 'b') == 'nested return value'
+            mock_obj.nest1.nest2.method.assert_called_with('a', 'b')
+    
+    
+// -------------------------------------------------------------------
+    my_magic_mock = MagicMock()
+    
+    my_magic_mock.new_attr
+    my_magic_mock.new_attr.nest                   # we can just chain any number of attributes (each attirbute is a magicMock instance)
+    my_magic_mock.new_attr.nest.a.b.c.attr = 11
+    my_magic_mock.new_attr.nest.a.b.c.method.return_value = 12
+    my_magic_mock.new_attr.nest.a.b.c.method.side_effect = lambda : print('side effect called')   # setting side effect
+    
+    print( type(my_magic_mock.new_attr.nest) )                // -> MagciMock (each attribute is just another MagicMock instance)   
+    print( type(my_magic_mock.new_attr.nest.a.b.c.method) )   // -> MagciMock 
+    
+    print( my_magic_mock.new_attr.nest.a.b.c.attr )           // -> 11
+    print( my_magic_mock.new_attr.nest.a.b.c.method() )       // -> 12
+    </pre>
+    <h4 class="header"> mocking real object attributes </h4>
+    <pre>
+    from unittest import TestCase
+    from unittest.mock import MagicMock
+    
+    
+    class Person:
+        def get_name(self):
+            return 'some person name'
+    
+    some_person = Person()
+    some_person.get_name = MagicMock(return_value='mocked return value')    # attribute becomes a MagicMock
+    
+    class TestClass(TestCase):
+        def test_mock(self):
+            assert some_person.get_name() == 'mock return value'
+    </pre>
+    <h4 class="header"> check multiple call argument list <mark>call()</mark> & asserting <mark>ANY</mark> argument </h4>
+    <pre>
+    from unittest import TestCase
+    from unittest.mock import patch, call, ANY
+    
+    
+    def my_func(a, b):
+        pass
+    
+    class MyTestSuite(TestCase):
+        @patch('test_demo.my_func')
+        def test_one(self, mock_my_func):
+            my_func(1, 2)
+            my_func('a', 'b')
+    
+            assert mock_my_func.mock_calls == [call(1, 2), call('a', 'b')]    # assert call list 
+            mock_my_func.assert_any_call(ANY, ANY)                            # ANY can replace any call argument 
+    </pre>
+    <h4 class="header"> Asynchronous mocking <mark>AsyncMock</mark> </h4>
+    <p> - for test async logic install <mark>pytest-asyncio</mark> </p>
+    <pre>
+    import pytest
+    
+    from unittest.mock import AsyncMock
+    
+    
+    @pytest.mark.asyncio
+    async def test_return():
+        async_mock = AsyncMock
+        async_mock.some_method = AsyncMock(return_value='some return value')
+        
+        assert await async_mock.some_method() == 'some return value'
+    
+    
+    @pytest.mark.asyncio
+    async def test_side_effect():
+        async_mock = AsyncMock(side_effect=KeyError)
+    
+        with pytest.raises(KeyError):
+            await async_mock()
+    </pre>
+  </details>
+  <!--------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Patching <mark>patch()</mark> / <mark>patch.object()</mark> / <mark>patch.dict()</mark> </h2>
+  <p> - patching is basically specifying the system part what we want to mock, <u>we patch in namespase where the
+      intended system part is used!</u>
+  <p> - the patched object becomes a MagicMock instance </p>
+  <p> - patching can be done in 3 way: </p>
+  <p style='text-indent: 30px'> - as decorator (in this case the <mark>_test</mark> function gets the patched argument
+    as a MagicMock instance) </p>
+  <p style='text-indent: 30px'> - in contenxt manager (in this case the context receives mocked system part as a
+    MagicMock instance) </p>
+  <p style='text-indent: 30px'> - return a patcher (the <mark>patch()</mark> method returns a patcher object that can
+    be
+    started/stopped to get the intended MagicMock instance (usually used in fixtures)) </p>
+  <pre class='syntax'>
+    patch(<strong>path:str</strong>, <strong>**kwargs</strong>, <a href="https://docs.python.org/3/library/unittest.mock.html#patch" target="
+    _blank">moreArgs...</a>)                  // patches the object/attribute at <strong>path</strong> <u>(where it's used)</u>
+    
+    patch.object(<strong>obj:str</strong>, <strong>attr:str</strong>, <strong>**kwargs</strong>, <a href="https://docs.python.org/3/library/unittest.mock.html#unittest.mock.patch.object" target="
+    _blank">moreArgs...</a>)  // patches the object's attribute (object must be imported first (like in Jest))
+    
+    patch.dict(<strong>path:str</strong>, <strong>dict</strong>, <strong>**kwargs</strong>, <a href="https://docs.python.org/3/library/unittest.mock.html#unittest.mock.patch.object" target="_blank">moreArgs...</a>)       // patches the <strong>dict</strong> at <strong>path</strong> (the 2nd arg <strong>dict</strong> members override the original onces)  
+                                                            // does not create a <strong>magicMock</strong> like <mark>patch()</mark> and <mark>patch.object()</mark> do, instead value modification is specified in the patch directly    
+    
+    
+<span style='color:darkgrey;'>// patching as decorator -----------------------------------------------</span>
+    class <strong>TestSuiteName</strong>(TestCase):
+        @patch(<strong>path_1</strong>)
+        @patch(<strong>path_2</strong>)
+        def <strong>testCaseName</strong>(self, mock_1, mock_2):
+            mock_1                                          // -> <strong>magicMock</strong> of the mocked object on <strong>path_1</strong>   
+            mock_2                                          // -> <strong>magicMock</strong> of the mocked object on <strong>path_2</strong>   
+    
+    
+<span style='color:darkgrey;'>// patching test class -------------------------------------------------</span>
+    @patch(<strong>path_1</strong>)                                          // all test cases will be patched in this class 
+    @patch(<strong>path_2</strong>)
+    class <strong>TestSuiteName2</strong>(TestCase): 
+        def <strong>testCaseName</strong>(self, mock_1, mock_2):             // each test case receives the patched object as <strong>magicMock</strong>
+            mock_1 
+            mock_2 
+
+        def <strong>testCaseName2</strong>(self, mock_1, mock_2):
+            mock_1 
+            mock_2 
+    
+    
+<span style='color:darkgrey;'>// patching in context manager -----------------------------------------</span>
+    class <strong>TestSuiteName2</strong>(TestCase): 
+        def <strong>testCaseName</strong>(self):
+            with patch(<strong>path</strong>) as mock:
+                <span style='color:darkgrey'>// context receives the patched object as <strong>magicMock</strong></span>  
+    
+    
+<span style='color:darkgrey;'>// patching in fixture -------------------------------------------------</span>
+    class <strong>TestSuiteName2</strong>(TestCase): 
+        def setUp(self):
+            self.patcher = patch(<strong>path</strong>)
+            self.patcher.start()                            // patcher must be started for the mock to take effect 
+    
+        def tearDwon(self):
+            self.patcher.stop()                             // after stopping the patcher <mark>path</mark> is not mocked anymore    
+            
+        def <strong>testCaseName</strong>(self):
+            <span style='color:darkgrey;'>// some test case...</span>
+    </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+  <p> - patching as decorator </p>
+  <pre>
+    from unittest import TestCase
+    from unittest.mock import patch
+    
+    
+    def fn_1():
+        return 1
+    
+    def fn_2():
+        return 2
+    
+    class MyTestClass(TestCase):
+        @patch('test_demo.fn_2')
+        @patch('test_demo.fn_1')
+        def test_one(self, mock_fn_1, mock_fn_2):
+            print( fn_1() )         # // -> MagicMock (mocked)
+            print( fn_2() )         # // -> MagicMock (mocked)
+  </pre>
+  <p> - patching test class </p>
+  <pre>
+    from unittest import TestCase
+    from unittest.mock import patch
+    
+    
+    def fn_1():
+        return 1
+    
+    def fn_2():
+        return 2
+    
+    @patch('test_demo.fn_2')
+    @patch('test_demo.fn_1')          # all test cases in this class will receive this decoration
+    class MyTestClass(TestCase):
+        def test_one(self, mock_fn_1, mock_fn_2):
+            print( fn_1() )         # // -> MagicMock (mocked)
+            print( fn_2() )         # // -> MagicMock (mocked)
+  </pre>
+  <p> - patching in contenxt manager </p>
+  <pre>
+    from unittest import TestCase
+    from unittest.mock import patch
+    
+    
+    def fn_1():
+        return 1
+    
+    class MyTestClass(TestCase):
+        def test_one(self):
+            with patch('test_demo.fn_1') as mock_fn1:
+                print( fn_1() )         # // -> MagicMock (mocked)
+  </pre>
+  <p> - patching in fixture </p>
+  <pre>
+    from unittest import TestCase
+    from unittest.mock import patch
+    
+    
+    def fn_1():
+        return 1
+    
+    class MyTestClass(TestCase):
+        def setUp(self):
+            self.mock_fn_1 = patch('test_demo.fn_1')
+            self.mock_fn_1.start()  # starting patching (before this class the original function isn NOT mocked)
+    
+        def tearDwon(self):
+            self.mock_fn_1.stop()   # end mocking (releasing resource)
+            
+        def test_one(self):
+            print( fn_1() )         # // -> MagicMock (mocked)
+  </pre>
+    <p> - patching <u>where the object is used</u> </p>
+    <pre>
+// test_demo.py --------------------------------------------------------
+    from unittest import TestCase
+    from unittest.mock import patch
+    
+    from person_creator import Person
+    
+    adam = Person('Adam', 'Peter')
+    
+    
+    class TestClass(TestCase):
+        @patch('person_creator.NameConcatenator.concat_name')    # patch the method where it's used!
+        def test_right_name(self, mock_get_full_name):
+            mock_get_full_name.return_value = 'mocked value!'
+            
+            print( adam.get_full_name() )     # // -> 'mocked value!'
+            assert adam.get_full_name() == 'mocked value!'
+    
+    
+// person_creator.py ---------------------------------------------------
+    from name_concat import NameConcatenator
+    
+    
+    class Person:
+        species = 'human'
+    
+        def __init__(self, name, surname):
+            self.name = name
+            self.surname = surname
+    
+        def get_full_name(self):
+            return NameConcatenator.concat_name(self.surname, self.name)
+    
+    
+// name_concat.py ------------------------------------------------------
+    class NameConcatenator:
+        @classmethod
+        def concat_name(cls, surname, name):
+            return surname + ' ' + name
+  </pre>
+    <p> - <mark>patch.object()</mark>
+    <pre>
+// test_demo.py ----------------------------------------------------
+    from unittest import TestCase
+    from unittest.mock import patch
+    
+    from person_creator import Person
+    from person_creator import NameConcatenator     # import the object what we want to mock
+    
+    adam = Person('Adam', 'Szegedi')
+    
+    
+    class SomeTest(TestCase):
+        @patch.object(NameConcatenator, 'concat_names')     // -! in this situasion improt first then we mock (like in Jest) 
+        def test_one(self, mock_concat_names):
+            mock_concat_names.return_value = 'mocked value'
+            print( adam.get_full_name() )     // -> 'mocked value'
+            
+    print( adam.get_full_name() )             // -> 'Szegedi Adam'
+    
+    
+// person_creator.py -----------------------------------------------
+    from name_concatenator import NameConcatenator 
+    
+    
+    class Person:
+        def __init__(self, name, surname):
+            self.name = name
+            self.surname = surname
+    
+        def get_full_name(self):
+            return NameConcatenator.concat_names(self.name, self.surname)
+    
+    
+// name_concatenator.py --------------------------------------------
+    class NameConcatenator:
+        @classmethod
+        def concat_names(cls, name, surname):
+            return f'{surname} {name}'    
+  </pre>
+    <p> - <mark>patch.dict()</mark>
+    <pre>
+    from unittest import TestCase
+    from unittest.mock import patch
+    
+    
+    some_dict = {'one': 1, 'two': 2}
+    
+    class MyTestSuite(TestCase):
+        @patch.dict('test_demo.some_dict', {'three': 3})     # this does not mock the dictionary with maticMock, but we can override values instead 
+        def test_one(self):       // -! does not receives the magicMock instance 
+            print( some_dict )    // -> {'one': 1, 'two': 2}
+    
+    print( some_dict )            // -> {'one': 1, 'two': 2, 'three': 3}
+  </pre>
+  </details>
+  <!--------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Specks </h2>
+  <p> - a speck is basically a mocked copy of an original object with the same attributes and calling signatures </p>
+  <p> - on MagicMock objects we can create attributes as we like, specking limits this to the scope of the original
+    object </p>
+  <p> - there are 2 level of speck (1 behaves as the original object) (2 stricter version on which new attirbutes are
+    not allowed) </p>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
+    from unittest.mock import create_autospec
+    
+    
+    class TestClass:
+        attr = 'some val'
+    
+        @classmethod
+        def some_method(cls, x):
+            return x
+    
+    # creates a spec (mimics an original object structure)
+    speck = create_autospec(TestClass)
+    
+    print( speck )                  // -> MagicMock 
+    speck.attr                      # we can perform actions on the spec as on the original 
+    speck.new_attr = 'new val'
+    speck.some_method(1) 
+    
+    # these will raise an error (because the original object doesn't have such attribute or the call signature is not correct)
+    # on a MagicMock this would pass that's the problem what the spec solves!
+    speck.no_attr
+    speck.some_method()
+    
+    
+// stricter speck version ---------------------------------------------------
+    speck = create_autospec(TestClass, spec_set=True)
+    speck.attr                    # we can perform actions on the spec as on the original 
+    speck.some_method(1) 
+    
+    speck.new_attr = 'new val'    # but this version does not allow to create new attributes 
+  </pre>
+    <p> - speck used in <mark>patch()</mark> </p>
+    <pre>
+    from unittest import TestCase
+    from unittest.mock import patch
+    
+    class Original:
+        some_attr = 'some_val'
+    
+        @classmethod
+        def some_fn(cls, a):
+            pass
+    
+    
+    class SomeTest(TestCase):
+        @patch('test_demo.Original')
+        def test_one(self, mock_original):
+            Original.non_existend_attr                # won't throw an error becuase the Original object is a MagicMock instance, so on demand new attirbutes are created 
+            Original.non_existent_method()
+    
+        @patch('test_demo.Original', autospec=True)   # autospec makes sure that the patched object acts as the original 
+        def test_two(self, mock_original):
+            Original.some_attr
+            Original.new_attr = 'new val'
+            Original.some_fn(1)
+    
+            Original.non_existend_attr                # all these will raise an error (as it would with the original object)
+            Original.non_existent_method()
+            Original.some_fn(1, 2)                    # incorrect call signature
+    
+        @patch('test_demo.Original', spec_set=True)   # strict spec (the mocked object is not allowed to have new attributes)
+        def test_three(self, mock_original):
+            Original.some_attr                        # original object's attibute work as expected 
+            Original.some_fn(1)
+    
+            Original.new_attr = 'new val'             # raises an error (on a strict spec we cannot create new attirbute)
+  </pre>
+  </details>
+
+
+  <br><br>
+</body>
+
+</html>

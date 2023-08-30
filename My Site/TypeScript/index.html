@@ -400,21 +400,41 @@
   </details>
   <hr>
   <!------------------------------------------------------------------------------------->
-  <h2 class="headerExtra"> Type Narrowing & Type extraction</h2>
-  <p> - Type Narrowing is a technique which narrows down type possibilityes from a set of types (ex: we narrow down an
+  <h2 class="headerExtra"> Type Narrowing (Type Guarding) & Type Assertion</h2>
+  <p> - <b>Type Narrowing</b> is a technique which narrows down type possibilityes from a set of types (ex: we narrow down an
     <mark>any</mark> type to <mark>string</mark> so we can use string methods on the narrowed value)
   </p>
-  <p> - serveral type narrowing techniques can be used: <mark>typeof</mark> / checking type properties / protitype
+  <p style="text-indent: 30px;"> - to type narrow we use techniques like: <mark>typeof</mark> operator, checking type properties / protitype
     checking / using the TypeScript <mark>as</mark> operator </p>
+  
+  <p> - <b>Type Guard</b> is essentially a function that verifies the type(s) of an argument and returns a boolean accordingly <u>(this technique is especially powerful in Typescript because the <mark>typeof</mark> operator can only check builtin types (but not custom types))</u> </p>
+  <p> - <b>Type Assertion</b> is a technique to identify a value as certain type </p>
   <pre class="syntax">
-    <strong>val</strong> as <strong>tsType</strong>                                     // identifies the <strong>val</strong> as <strong>tsType</strong>     
+    <strong>val</strong> as <strong>tsType</strong>                                     // (type assertion) identifies the <strong>val</strong> type as <strong>tsType</strong>     
     
-    typeof <strong>val</strong>                                        // returns the <strong>tsType</strong> of <strong>val</strong>
+    typeof <strong>val</strong>                                        // returns the <strong>tsType</strong> of <strong>val</strong> <u>(cannot return custom types)</u>
     </pre>
   <details class="example">
     <summary> DEMO </summary>
+    <h4 class="header"> Type Narrowing (Type Guarding) </h4>
     <pre>
-// <mark>typeof</mark> operator --------------------------------------------
+// -------------------------------------------------------------------------
+    type HelloType = 'Hello World'
+    const hello: HelloType = 'Hello World';
+    
+    
+    typeof hello === 'string'                       // -> true
+    typeof hello === HelloType                      // -! this is not working (not Python word here)
+    
+  // we have to be creative with type guards like this
+    function isHelloType(val: any): boolean {
+        return val && typeof val === 'string' && val === 'Hello World';
+    }
+    
+    isHelloType(hello)                              // -> true    
+    
+    
+// -------------------------------------------------------------------------
     type myTypes = string | number | null;
     
     function getCorrectType(a: myTypes): myTypes {
@@ -451,8 +471,9 @@
             return animal.getFlySpeed()         // we can call Bird type methods here
         }
     }
-    
-    
+    </pre>
+    <h4 class="header"> Type Assertion </h4>
+    <pre>
 // <mark>as</mark> operator--------------------------------------------------
     type Fish = {
         swimSpeed : number
@@ -466,14 +487,6 @@
     function getSpeed(animal: Fish | Bird): number {
         return (animal as Fish).getSwimSpeed();     // argument identified as Fish type 
     }
-    
-    
-// type extraction ----------------------------------------------------------
-    type Test = 'abc';
-    type Test2 = typeof x;                      // extracts the type of <mark>x</mark>
-    
-    const x: Test = 'abc';
-    const y: Test2 = 'abc';                     // using extracted type 
     </pre>
   </details>
   <hr>
