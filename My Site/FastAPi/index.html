@@ -79,9 +79,10 @@
       <p> - <mark>StreamingResponse(<strong>genObj</strong> - continous stream, takes an async or normal generator as argument </mark> </p>
       <p> - <mark>RedirectResponse(url=<strong>url:str</strong>)</mark> - redirects the request, take a url argument (default response code: 307 Temporary Redirect) </p>
     <hr>
-    <h4 class="header"> response attributes (all response classes support all the below attributes) ex: <mark>JSONResponse(status_code=200, content={'Hello': 'World'})</mark>) </h4>
+    <h4 class="header"> response parameters (all response classes support these) ex: <mark>JSONResponse(status_code=200, content={'Hello': 'World'})</mark>) </h4>
       <p> - <mark>status_code</mark> - set the HTTP status code for the response as int </p>
       <p> - <mark>content</mark> - holds the content (body) of the response. It can be a string, bytes, dictionary, list depends on the response type </p>
+    <h4 class="header"> response attributes (all response classes support these)  </h4>
       <p> - <mark>headers</mark> - dictionary to set custom HTTP headers for the response </p>
       <p> - <mark>set_cookie(<strong>cookieKey</strong>=<strong>val</strong><i>, ...</i>)</mark> - set cookies in the response </p>
       <p> - <mark>delete_cookie(<strong>cookieKey</strong>=<strong>val</strong><i>, ...</i>)</mark> - used to delete cookies from the client's browser (basically expires the cookies) </p>
@@ -96,7 +97,7 @@
                     response_model=<strong>PydanticModel</strong>,                  // sets and annotates the json response (also sets the OpenAPI documentation)   
                       response_model_exclude_unset=True,             // default values in <strong>pydanticInstance</strong> are excluded in the response    
                     response_class=<strong>ResponseClass</strong>,                  // sets and annotates the response type (also sets the OpenAPI documentation)   
-                    response_code=<strong>int</strong>,                             // sets the response code (default: <mark>200</mark>) (also sets the OpenAPI documentation)
+                    response_code=<strong>int</strong>,                             // sets the default response code (default: <mark>200</mark>) (also sets the OpenAPI documentation)
                     responses=<strong class="openable">dict<div>
                         <p> - key: <strong>status_code:int</strong> - response status code </p>
                         <p> - value: <strong>dict</strong> - dictionary can contain the following items: </p>
@@ -823,9 +824,11 @@
     <strong>app</strong> = FastAPI()
     
     
+    @<strong>app</strong>.middleware('http')
     async def <strong>middlewareFn</strong>(request: Request, call_next):
         request.url.path                                                   // this is how we can filter the requests
-        
+        <span style="color:sandybrown;">await request.body()                                               // -! this will hang the call forever this is a known bug in FastAPI, but there's an ugly workaround <a href="https://stackoverflow.com/questions/69669808/fastapi-custom-middleware-getting-body-of-request-inside" target="_blank">here...</a></span> </p>
+
         <span style="color:darkgray;">// doing some logic before all path functions... </span>
         <strong>response</strong> = await call_next(request)                                // calls path function(s)
         <span style="color:darkgray;">// doing some logic after all path functions but before response... </span>

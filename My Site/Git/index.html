@@ -1704,11 +1704,8 @@
       target="_blanc">globbing rules</a> line by line, <u>but there are some shitty exceptions and differences
       between
       <mark class="mark">.dockerignore</mark> and <mark class="mark">.gitignore</mark> (see below)</u> </p>
-  <p> - if we add already tracked files in <mark class="mark">.gitignore</mark> then changes from now won't be
-    commited
-    to the remote repo</p>
-  <p> - git does not track directories, so if we want an empty directory to be tracked we place a <mark class="mark">
-      file inside it </p>
+  <p> - to untrack already tracked files add them to <mark class="mark">.gitignore</mark> then run <mark>git rm --cached <strong>path:glob</strong></mark> </p>
+  <p> - git does not track (empty) directories (to track an empty directory put <mark>.gitkeep</mark> file in in) </p>
   <pre class="syntax">
 <span style="color:darkgray;">// .gitignore (file) </span>
     # <strong>comment</strong>

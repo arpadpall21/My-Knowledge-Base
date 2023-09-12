@@ -76,39 +76,19 @@
 <hr>
 <h2 class="header"> Functions Arguments </h2>
     <pre class="syntax">
-<span style="color:darkgray;">// number of arguments ----------------------------------------------------------------</span>
-    def someFunc(<strong>arg</strong><i>, ...</i>):
-        <span style="color:darkgray;">// function body... </span>
-    
-    someFunc(<strong>val:any</strong><i>, ...</i>)                                                             // the function must be called with the correct number of arguments <u>otherwise raises a TypeError</u>
+    def someFunc(<strong>arg1</strong><i>, ...,</i> <strong>kwarg1</strong>=<strong>val</strong><i>, ...</i>):                                          // positional and keyword (key/value) arguments are supported (keyword arguments hold default values)
+        <span style="color:darkgray;">#body... </span>                                                                      // positional arguments must be passed before any keyword arguments can be called as keyword arguments as well   
     
     
-<span style="color:darkgray;">// default argument -------------------------------------------------------------------</span>
-    def someFunc(<strong>arg</strong> = <strong>val:any</strong>)                                                        // sets a default value for the argument (used when no such argument is passed)
-        <span style="color:darkgray;">// function body... </span>
+    someFunc(<strong>val</strong><i>, ...</i>)                                                                 // the correct number of positional arguments must be called 
+    someFunc(<i>arg, ...,</i> <strong>key</strong>=<strong>val</strong><i>, ...</i>)                                                   // keyword arguments can be called in any order (positional arguments must be passed before any keyword argument)
+    someFunc(<strong>arg1</strong>=<strong>val</strong><i>, ...</i>)                                                            // positional argumens can be called as keyword arguments as well (call order doesn't matter, but all of them must be called)    
     
     
-<span style="color:darkgray;">// argument call order ----------------------------------------------------------------</span>
-    def someFunc(<strong>arg1</strong>, <strong>arg2</strong>):
-        <span style="color:darkgray;">// function body... </span>
-    
-    someFunc(<strong>val1:any</strong>, <strong>val2:any</strong>)                                                       // passed values are assigned to function arguments in the call order    
-    someFunc(<strong>arg2</strong> = <strong>val:any</strong>, <strong>arg1</strong> = <strong>val:any</strong>)                                           // we can directly call arguments and assign values to each, <u>in this case the call order does not matter</u>    
-    
-    
-<span style="color:darkgray;">// arbitrary arguments <mark>*</mark><strong>args</strong> ----------------------------------------------------------</span>
-    def someFunc(*<strong>args</strong>)                                                                // <mark>*</mark><strong>args</strong> recevies all call values in a tuple 
-        <strong>args</strong>                                                                           // -> (<strong>callVal</strong><i>, ...</i>)      // tuple holding all values that the function was called with 
-    
-    someFunc(<strong>val:any</strong><i>, ...</i>)                                                             // function can be called with arbitrary arguments <u>(raises a TypeError if called with keyword arguments)</u>
-    
-    
-<span style="color:darkgray;">// keyword arguments <mark>**</mark><strong>args</strong> -----------------------------------------------------------</span>
-    def someFunc(**<strong>args</strong>)                                                               // <mark>**</mark><strong>args</strong> recevies all call argument/value pairs in a dictionary    
-        <strong>args</strong>                                                                           // -> {<strong>arg</strong>:<strong>val</strong><i>, ...</i>}      // dictionary holding all argument/values paris that the function was called with 
-        
-        
-    someFunc(<strong>arg</strong> = <strong>val:any</strong><i>, ...</i>)                                                       // function can be called with keyword arguments <u>(raises a TypeError if called with arbitrary arguments)</u>
+<span style="color:darkgray;">// arbitrary arguments <mark>*</mark><strong>args</strong> / <mark>**</mark><strong>kwargs</strong> -----------------------------------------------</span>
+    def someFunc(*args, **kwargs)                                                      // <mark>*args</mark> collects all positional arguments in a <strong>tuple</strong>, <mark>**kwargs</mark> collects all keyword arguments in a <strong>dict</strong>    
+        args                                                                           // -> (<strong>arg</strong><i>, ...</i>)          // tuple holds all positional arguments  
+        kwargs                                                                         // -> {<strong>arg</strong>:<strong>val</strong><i>, ...</i>}      // dictionary holds all keyword arguments
     </pre>
 <details class="example">
 <summary> DEMO </summary>
@@ -117,15 +97,15 @@
     def someFunc(a, b):
         reutn a + b
     
-    someFunc(1, 2)                                                                     // function must be called with the exact number of argumenst   
-    someFunc(1, 2, 3)                                                                  // -! raises a TypeError (function expects only 2 argumenst)
+    someFunc(1, 2)                                                                     // function must be called with the exact number of arguments   
+    someFunc(1, 2, 3)                                                                  // -! raises a TypeError (function expects only 2 arguments)
     
     
 // default arguments ------------------------------------------------------------------
-    def someFunc(a = 1, b = 2):                                                        // default argumenst 
+    def someFunc(a = 1, b = 2):                                                        // default arguments 
         return a + b
     
-    someFunc()                                                                         // -> 3                              // default argumens used 
+    someFunc()                                                                         // -> 3                              // default arguments used 
     someFunc(2)                                                                        // -> 4                              // 1st argument value passed, 2nd argument default value used 
     
     
@@ -134,7 +114,7 @@
         a                                                                              // -> 2
         b                                                                              // -> 4
     
-    someFunc(b = 4, a = 2)                                                             // we can assign values to argumenst, in this case the arugment call order does not matter 
+    someFunc(b = 4, a = 2)                                                             // we can assign values to arguments, in this case the arugment call order does not matter 
     
     
 // arbitrary <mark>*</mark> argument ---------------------------------------------------------------

@@ -445,14 +445,12 @@ SYNTAX :    if (<strong>exp</strong>){                                          
 <h2 style="color:darkblue;"><u> The <mark>switch</mark> conditional statement </u></h2>
     <pre class="syntax">
                                                                                          <span id="browserSupport" style="color:yellow;" title="Updated: 2021-05-24"><span><i class="fab fa-chrome"></i> 1 </span><span><i class="fab fa-firefox"></i> 1 </span><span><i class="fab fa-opera"></i> 4 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span><span><i class="fab fa-safari"></i> 1 </span><span><i class="fab fa-node-js"></i> 0.10 </span></span>
-SYNTAX:     switch (<strong>exp</strong>){                                                              // the returned <strong>exp</strong> result matches one of the below cases    
-                case <strong>expRes</strong> :                                                          // if the <strong>exp</strong> returns <u>this</u> <strong>expRes</strong> the below code is executed  
+SYNTAX:     switch (<strong>arg</strong>){
+                case <strong>val|exp</strong> :                                                         // if <strong>arg</strong> equals <strong>val</strong> the this case block is executed
                     <i>some code...</i> 
-                    <small>break;</small>                                                             // breaks the switch block (no further code is executed in this block)        
-                                                                                           <span style="color:orange;">// -! if the <mark>break</mark> is omitted further cases are evaluated as well, this way we can have multiple valid cases</span>    
+                    <small>break;</small>                                                             // to stop further switch checks
                 <i>...</i>                                                                    // we can have as many <mark>case</mark> statements as we like    
-                
-                default :                                                              // default case is fired at the end (when there are no matching cases usually)   
+                default :                                                              // default case 
                     <i>some code...</i>
             }
     </pre>
