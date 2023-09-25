@@ -28,7 +28,7 @@
     </tr>
     <tr class="05.01">
         <td> 
-            <em>asyncio</em>.run(<strong>coro()</strong><i>, ...</i>)
+            <em>asyncio</em>.run(<strong>coro()</strong><small>, debug=<i>bool</i></small>)
         </td>
         <td> 
             - high level event loop API management funciton (takes care of low level management of the asyncio event loop, finalizing asynchronous generators, and closing the threadpool)<br>
@@ -37,7 +37,7 @@
     </tr>
     <tr class="07.01">
         <td>
-            <em>asyncio</em>.gather(<strong>awaitable</strong><i>, ...</i>, <small>return_exception=<i>bol</i></small>)
+            <em>asyncio</em>.gather(<strong>awaitable</strong><i>, ...</i>, <small>return_exception=<i>bool</i></small>)
         </td>
         <td>
             - coroutine start executing all <strong>awaitable</strong>s concurently and awaits their result<br>
@@ -409,6 +409,12 @@
     <p style="text-indent: 40px;"> - coroutine wrapper which <u>immediately starts running</u> its coroutine in the background when created, the returned task can be awaited for the result later on) </p>
     <p style="text-indent: 20px;"> - <mark class="mark">future</mark> </p>
     <p style="text-indent: 40px;"> - low-level awaitable object </p>
+    <p> - python awaitables can have the following states: </p>
+    <p style="text-indent: 40px;"> - <mark class="mark">Pending</mark> awaiting execution </p>
+    <p style="text-indent: 40px;"> - <mark class="mark">Running</mark> execution started </p>
+    <p style="text-indent: 40px;"> - <mark class="mark">Cancelled</mark> execution cancelled </p>
+    <p style="text-indent: 40px;"> - <mark class="mark">Completed (Done/Resolved)</mark> execution successfully completed </p>
+    <p> - if an exeption is raised in a corutine that starts to raise on the stack (like in normal functions) </p>
     <p> - supported features by <mark>ayncio</mark> module: </p>
     <p style="text-indent: 20px;"> - high level network connection tools <a href="https://docs.python.org/3/library/asyncio-stream.html" target="_blank">[link]</a></p>
     <p style="text-indent: 20px;"> - same race condition control tools as <mark>threading</mark> does <a href="https://docs.python.org/3/library/asyncio-sync.html" target="_blank">[link]</a> <a href="file:///home/apall/Documents/Pall/CodePlus/My%20Site/Python/Built-in%20Modules/threading/index.html#raceControl" target="_blank">[link]</a> </p>
@@ -418,6 +424,8 @@
     async def <strong>fnName</strong>():                 // creates and returns a <strong>coroutine</strong>
         <i>functionBody ...</i>
         await <strong>awaitable</strong>                 // awaits the <strong>coroutine</strong>'s result (only inside async function)    
+        
+        <i>raising exception</i>               // exceptions start raising on the stack (like in normal functions)
     
     
 // looping over async resources ---------------------------------------
@@ -462,7 +470,22 @@
     
     asyncio.run(main())
     </pre>
-    <p> - task </p>
+    <h4 class="header"> Exceptions </h4>
+    <pre>
+    import asyncio
+    
+    
+    async def coro():
+        raise Exception('Some Error')           # exeption is raised on top (unelss handled)
+    
+    
+    async def main():
+        await coro()
+    
+    
+    asyncio.run(main(), debug=True)
+    </pre>
+    <h4 class="header"> task </h4>
     <pre>
     import asyncio
     
@@ -495,7 +518,7 @@
     
     asyncio.run(main())
     </pre>
-    <p> - task name </p>
+    <h4 class="header"> task name </h4>
     <pre>
     import asyncio
     
@@ -514,7 +537,7 @@
     
     asyncio.run(main())
     </pre>
-    <p> - looping over async source </p>
+    <h4 class="header"> looping over async source </h4>
     <pre>
     import asyncio
     
@@ -534,7 +557,7 @@
     
     asyncio.run(main())
     </pre>
-    <p> - shielding task from cancellation <mark>asyncio.sheild()</mark> </p>
+    <h4 class="header"> shielding task from cancellation <mark>asyncio.sheild()</mark> </h4>
     <pre>
     import asyncio
     
@@ -552,7 +575,7 @@
     
     asyncio.run(main())
     </pre>
-    <p> - <mark>wait_for()</mark>
+    <h4 class="header"> <mark>wait_for()</mark> <h4>
     <pre>
     import asyncio
     
@@ -566,7 +589,7 @@
     
     asyncio.run(main())
     </pre>
-    <p> - awaiting multiple tasks <mark>asyncio.wait()</mark> </p>
+    <h4 class="header"> awaiting multiple tasks <mark>asyncio.wait()</mark> </h4>
     <pre>
     import asyncio
     
@@ -585,7 +608,7 @@
     
     asyncio.run(main())
     </pre>
-    <p> - <mark>as_completed()</mark> </p>
+    <h4 class="header"> <mark>as_completed()</mark> </h4>
     <pre>
     import asyncio
     
@@ -604,7 +627,7 @@
     
     asyncio.run(main())
     </pre>
-    <p> - <mark>to_thread()</mark> </p>
+    <h4 class="header"> <mark>to_thread()</mark> </h4>
     <pre>
     import asyncio
     import time
@@ -621,7 +644,7 @@
     
     asyncio.run(main())
     </pre>
-    <p> - <mark>add_done_callback()</mark> </p>
+    <h4 class="header"> <mark>add_done_callback()</mark> </h4>
     <pre>
     import asyncio
     
@@ -642,7 +665,7 @@
     
     asyncio.run(main())
     </pre>
-    <p> - type checking </p>
+    <h4 class="header"> type checking </h4>
     <pre>
     import asyncio
     

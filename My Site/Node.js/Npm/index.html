@@ -336,10 +336,10 @@
 SYNTAX : package.json (file)
     {
         "name": <strong>name:str</strong>,                                                              // package name (can contain any lowercase letters and <mark>-</mark>, <mark>_</mark> characters, spaces are not allowed!)   
-        "version": <strong>"nr.nr.nr"</strong>,                                                          
-        "author": <strong>authorName:str</strong>,                                                       
-        "description": <strong>packageDescription:str</strong>,                                          
-        "license": <strong>license:str</strong>,                                                         
+        "version": <strong>"nr.nr.nr"</strong>, 
+        "author": <strong>authorName:str</strong>, 
+        "description": <strong>packageDescription:str</strong>, 
+        "license": <strong>license:str</strong>, 
         "private": true                                                                // if specified prevents the app/package to be accidentally publishend on npm   
         "main": <strong>entryPointPath:str</strong>,                                                    // <span class="openable">the entry point of the package (when this package is required with bare specifier)<div>
             <p> - when a bare specifier (ex: <mark>import def from 'somePackage'</mark>) requires the current directory name (<mark>somePackage</mark> in this example) this file loads </p>
@@ -366,9 +366,10 @@ SYNTAX : package.json (file)
         </div></span>   <span class="browserSupport" style="color:yellow;" title="Updated : 2021-01-16"><span><i class="fab fa-node-js"></i> 12.07.0 (experimental)</span><span><i class="fab fa-node-js"></i> 14.13.0 (full support) </span> </span>    
         "type": "module"|"commonjs"                                                    // node loads the <mark>*.js</mark> file as ECMAScript or CommonJS module (<mark>"module"</mark> = EC module) (<mark>"commonjs"</mark> = CommonJS module)    
         "scripts" {
-            "start": <strong>command:str</strong>,                                                      // runs the <strong>command:str</strong> on the command line with the <mark>$ > npm start</mark> command   
-            "test": <strong>command:str</strong>,                                                       // runs the <strong>command:str</strong> on the command line with the <mark>$ > npm test</mark> command   
-            <strong>customCommand:str</strong>: <strong>command:str</strong>,                                            // runs the <strong>command:str</strong> on the command line with the <mark>$ > npm <strong>customCommand</strong></mark> command   
+            "start": <strong>command:str</strong>,                                                      // executes <strong>command</strong> with the <mark>npm start</mark> command    
+            "test": <strong>command:str</strong>,                                                       // executes <strong>command</strong> with the <mark>npm test</mark> command    
+            "postinstall": <strong>command:str</strong>                                                 // <strong>command</strong> automatically executed at the end of the <mark>npm install</mark> command 
+            <strong>customCommand:str</strong>: <strong>command:str</strong>,                                            // executes <strong>command</strong> with the <mark>npm run <strong>customCommand</strong></mark> command   
         },
         "dependencies": {<i>production dependencies</i>},                                     // holds the production dependencies (name and version) (dependencies of the filal product)  
         "devDependencies": {<i>developer dependencies</i>},                                   // holds the developement dependencies (name and version) (dependencies used during the developement)   

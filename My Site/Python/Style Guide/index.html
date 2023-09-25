@@ -158,8 +158,8 @@
   </pre>
   <br>
   <pre class='right'>
-  if (this_is_one_thing and                                 // in case of the <mark>if</mark> multiline statement this is accepted     
-      this_is_another_thing):
+  if (this_is_one_thing                                     // in case of the <mark>if</mark> multiline statement this is accepted     
+      and this_is_another_thing):
       # some comment                                        // a comment might help to distinguish the statement from its code block    
         some_var = None
     
@@ -185,8 +185,17 @@
   result = ('this is OK!'                                   // ternary operator can be broken into multiple lines within parentheses
             if condition
             else 'this is wrong!')
+  
+  result = (
+      'this is OK!'
+      if condition
+      else 'this is wrong!')
   </pre>
-
+  <pre class='wrong'>
+  result = ('this is OK!'                                   // indentation should start the same level as the first line of the statement
+      if condition
+      else 'this is wrong!')
+  </pre>
   <hr>
   <!---------------------------------------------------------------------------->
   <h2 class='header'> Blank Lines </h2>

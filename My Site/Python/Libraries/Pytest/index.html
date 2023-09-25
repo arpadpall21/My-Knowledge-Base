@@ -182,21 +182,23 @@
   <!--------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="header"> Fixtures <mark>@pytest.fixture</mark> </h2>
-  <p> - pytes fixtures are functions that are recgnized in test cases as arguments, we can write our own custom fixtures
+  <p> - pytes fixtures are functions that are recognized in test cases as arguments, we can write our own custom fixtures
     but there are a lot of cool builtin fixtures (like: <mark class='mark'>monkeypatch</mark>, <mark
       class='mark'>caplog</mark>, etc...) </p>
   <p> - <a href="https://docs.pytest.org/en/7.2.x/reference/fixtures.html" target="_blank">Pytest builtin Fixture
       Reference </a></p>
   <pre class='syntax'>
-  @pytest.fixture
-  def <strong>fixture_1</strong>():
-      <span style='color:darkgray;'>// setup logic...</span>             // we can simply return some value but it's more common to use some kind of setup/teardown logic in fixtures like this   
-      yield <strong>fixtureResult</strong>
-      <span style='color:darkgray;'>// teardown logic...</span>
-  
-  
-  def test_<strong>testName</strong>(<strong>fixture_1</strong>):     // the fixture is automatically recognized in test cases (as argument)
-      <strong>fixture_1</strong>   <span style='color:darkgray;'>// using the fixture in test case...</span>
+    import pytest
+    
+    @pytest.fixture
+    def <strong>fixture_1</strong>():
+        <span style='color:darkgray;'>// setup logic...</span>             // we can simply return some value but it's more common to use some kind of setup/teardown logic in fixtures like this   
+        yield <strong>fixtureResult</strong>
+        <span style='color:darkgray;'>// teardown logic...</span>
+    
+    
+    def test_<strong>testName</strong>(<strong>fixture_1</strong>):     // the fixture is automatically recognized in test cases (as argument)
+        <strong>fixture_1</strong>   <span style='color:darkgray;'>// using the fixture in test case...</span>
   </pre>
   <details class="example">
     <summary> Example : </summary>

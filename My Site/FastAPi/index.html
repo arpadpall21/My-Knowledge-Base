@@ -817,7 +817,7 @@
   <p> - its a great way to integrate common logics in our app: </p>
   <p style="text-indent:30px;"> - CORS <a href="https://fastapi.tiangolo.com/tutorial/cors/" target="_blank">[link]</a> </p>
   <p style="text-indent:30px;"> - other wsgi apps <a href="https://fastapi.tiangolo.com/advanced/wsgi/" target="_blank">[link]</a> </p>
-  <p style="text-indent:30px;"> - addvance middlewares <a href="https://fastapi.tiangolo.com/advanced/middleware/" target="_blank">[link]</a> </p>
+  <p style="text-indent:30px;"> - advanced middlewares <a href="https://fastapi.tiangolo.com/advanced/middleware/" target="_blank">[link]</a> </p>
   <pre class="syntax">
     from fastapi import FastAPI, Request
     
@@ -981,7 +981,6 @@
     <pre class="syntax">
 <span style="color:darkgray;">// Websocket ----------------------------------------------------------------------</span>
     from fastapi import FastAPI, WebSocket
-    from fastapi.responses import HTMLResponse 
     
     <strong>app</strong> = FastAPI()
     
@@ -993,8 +992,8 @@
         while True:
             <span style="color:darkgray;">// receive --------------------</span>
             <strong>data</strong> = await websocket.receive_text()                          // receiving text message (block futher execution until message received)
-            <strong>data</strong> = await websocket.bytes()                                 // receiving byte message (block futher execution until message received)
-            <strong>data</strong> = await websocket.json()                                  // receiving json message (block futher execution until message received)
+            <strong>data</strong> = await websocket.receive_bytes()                         // receiving byte message (block futher execution until message received)
+            <strong>data</strong> = await websocket.receive_json()                          // receiving json message (block futher execution until message received)
             
             <span style="color:darkgray;">// send -----------------------</span>
             await websocket.send_text(<strong>message:str</strong>)                         // sending message to the client
@@ -1002,13 +1001,11 @@
             await websocket.send_json(<strong>message:dict</strong>)                        // sending message to the client
         
         <span style="color:darkgray;">// closing connection ---------</span>
-        await websocket.close()                                            // waites for the websocket connection to be close
-        websocket.close(<small>code=<i>code:int</i></small>)                                     // closes the websocket connection ()
+        await websocket.close(<small>code=<i><a href="https://github.com/Luka967/websocket-close-codes" target="_blank">wsCode:int</a></i></small>)                             // closes this websocket connection (Default websocket close code <mark>1000</mark>)   
         
         
         websocket.<strong class="openable">attribute<div>
           <p> <mark>scope</mark> The ASGI scope dictionary for the WebSocket connection. It contains metadata about the connection, such as path parameters, query parameters, and headers </p>
-          <p> <mark>close_code</mark> -  The close code for the WebSocket connection, indicating the reason for closure if applicable </p>
           <p> <mark>client</mark> - The client's IP address and port information </p>
         </div></strong>                                               // other websocket attributes 
     </pre>
