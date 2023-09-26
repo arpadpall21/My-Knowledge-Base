@@ -58,9 +58,12 @@
     <strong>pydanticInstance</strong>.<strong>field</strong>                             // fields are accessible as attributes (like with <mark>dataclass</mark>)
     
     
-    <strong>pydanticInstance</strong>.dict(<small class="openable">exclude_unset=True<div>
+    <strong>pydanticInstance</strong>.model_dump(<small class="openable">exclude_unset=True<div>
         <p> - fileds having <mark>None</mark> value won't be reflected in the returned <strong>dict</strong></p>
-    </div></small>)         // returns a <strong>dict</strong> of the pydantic instance data 
+    </div></small>)   // returns a <strong>dict</strong> of the pydantic instance data    
+    <strong>pydanticInstance</strong>.model_dump_json(<small class="openable">exclude_unset=True<div>
+        <p> - fileds having <mark>None</mark> value won't be reflected in the returned <strong>dict</strong></p>
+    </div></small>)   // returns the json serialized data of the pydantic instance   
     <strong>pydanticInstance</strong>.copy(<small class="openable">update=<i>dict</i><div>
         <p> - updates the new copy with the passed key/value pairs <u>there's no validation here, we can modify existing or create new key/value pairs </u></p>
     </div></small>)                // creates and returns a new instance copy (different object)
@@ -100,17 +103,46 @@
     person2 = Person(**person_2_dict)         // -> Person(name='Arpad' age=38 address=Address(city='Budapest', street='Kacsa', number=5))    # spreading dinctionary keys also works
     
     
-// pydantic instance to dict ------------------------------
-    person_2_d = person2.dict()               // -> {'name': 'Arpad', 'age': 38, 'address': {'city': 'Budapest', 'street': 'Kacsa', 'number': 5}}
-
-    person_1_d = person.dict(exclude_unset=True)    // -> {'name': 'Arpad', 'age': 38}     # fields having None value won't be reflected in the dictionary
-    
-    
 // copy pydantic instance ---------------------------------
     person_copy = person.copy()              // -> Person(name='Arpad' age=38 address=None)     # creates a pydantic instance copy   
     print(person is person_copy)             // -> False  # different objects
     
     person_copy_2 = person.copy(update={'new_key': 'new_val'})    // -> Person(name='Arpad' age=38 address=None, new_key='new_val')   // -! update the new copy on copy operation (this doesn't make any type validation)
+  </pre>
+  <h4 class="header"> Convert to dictionary or JSON <mark>model_dump()</mark> / <mark>model_dump_json()</mark></h4>
+  <pre>
+    from datetime import date
+    
+    from pydantic import BaseModel
+    
+    
+    class Child(BaseModel):
+        name: str
+        birth_date: date
+    
+    
+    class Mom(BaseModel):
+        name: str
+        birth_date: date
+        child1: Child
+        child2: Child
+    
+    
+    sally = Mom(
+        name='Sally',
+        birth_date=date(1987, 11, 7),
+        child1={
+            'name': 'Bob',
+            'birth_date': date(2003, 5, 17),
+        },
+        child2={
+            'name': 'Marry',
+            'birth_date': date(2005, 1, 5),
+        },
+    )
+    
+    sally.model_dump()            // -> {'name': 'Sally', 'birth_date': datetime.date(1987, 11, 7), 'child1': {'name': 'Bob', 'birth_date': datetime.date(2003, 5, 17)}, 'child2': {'name': 'Marry', 'birth_date': datetime.date(2005, 1, 5)}}    
+    sally.model_dump_json()       // -> {"name":"Sally","birth_date":"1987-11-07","child1":{"name":"Bob","birth_date":"2003-05-17"},"child2":{"name":"Marry","birth_date":"2005-01-05"}}    
   </pre>
   <h4 class="header"> Using pydantic types and field validation with <mark>Field()</mark> </h4>
   <pre>
