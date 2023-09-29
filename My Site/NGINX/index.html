@@ -192,13 +192,15 @@ stage 2:  low level overview
     - deeper understanding of all what you've taken down in stage 1
     
 stage 3 : 
-    - organize and document down everything 
+    - organize and document down everything
+    
+    
     - nginx is an open software, however nginx plus is a comertial version having extra functionalities
     
     
     
     
-    nginx solves the famous C10K problem (10000 concurent requests at the same time)
+    nginx solves the famous C10K problem (10000 concurent requests)
     
     
     NGINX is a reverse proxy;
@@ -220,10 +222,10 @@ stage 3 :
     - concepts:
     - in config file
       - directive -> key value pair
-      - context -> between {} 
+      - context -> between {}
           - the directive value is overriden in local context
-          
-      
+      - zone -> shared memory
+    
     - consist of a master proces and its workers
       - the master process reads and evaluates configuration, and maintain worker processes
       - worker processes are responsibles to serve the actual content
@@ -243,18 +245,17 @@ stage 3 :
     
     
     
-    - nginx provides the <mark>mime.types</mark> file on install which provieds a full
-    - mime type map is required (document this down)
+    - nginx provides the <mark>mime.types</mark> file on install which provieds a full (mime type map)  <- document this 
     
     
     
     directives:
         listen <strong>port</strong>;             - server listens on this port [link]
-               <strong>address:port</strong>;
-               <strong>domainSocket</strong>;
+              <strong>address:port</strong>;
+              <strong>domainSocket</strong>;
         root <strong>dirPath</strong>;            - (http, server, location) root directory for the REQUEST 
                                                   - nginx servers resources relative to /
-                                                  - further resoures 
+                                                  - further resoures
         alias <strong>dirPath</strong>;           - (location) maps the current location to a specified directory 
                                                   - overrides root directory for the specified location 
                                                   
@@ -288,13 +289,13 @@ stage 3 :
         
         location <i>modifier</i> <strong>uri</strong> {       - (server, location) provides configuratios for the location that matches <strong>uri</strong> (adds this location to all previously normalized URI path) 
                                                   
-        } 
+        }
         
         # modifiers (in precedence order)
         - = <strong>str</strong?            -> exact match 
-        - ^~ <storng>/path:str</strong>     -> preferential match (useful when we want to match a location over regExp modifiers)
-        - ~ <strong>path:regExp</strong>    -> case-sensitive regexp match
-        - ~* <strong>path:regExp</strong>   -> case-insensitive regexp match 
+        - ^~ <storng>/path:str</strong>     -> preferential match (useful when we want to match a location over regEx modifiers)
+        - ~ <strong>path:regEx</strong>    -> case-sensitive regEx match
+        - ~* <strong>path:regEx</strong>   -> case-insensitive regEx match 
         - <storng>/path:str</strong>        -> any request that prefixed with <mark>/path</strong>
         - 
         
@@ -313,7 +314,7 @@ stage 3 :
         }
         
         
-        rewrite <strong>path:regExp</strong> <strong>path:str</strong>        # redirects <strong>path:regExp</strong> to <strong>path:str</strong> but URL stays at <strong>path:regExp</strong
+        rewrite <strong>path:regEx</strong> <strong>path:str</strong>        # redirects <strong>path:regEx</strong> to <strong>path:str</strong> but URL stays at <strong>path:regEx</strong
         
         
         types {                                   - (http, server, location) mime type to file extention type mapping
@@ -334,7 +335,7 @@ stage 3 :
         }
         
         - options 
-          - weight=<strong>int</strong>     (default 1) proprtion relative to other server weights
+          - weight=<strong>int</strong>     (default 1) proportion relative to other server weights
         - if no weight specified the load is distributed in Round-Robin style
         - load balancing methods
             - Round Robin
@@ -342,7 +343,7 @@ stage 3 :
             - ip hash
             - <a href="https://www.javatpoint.com/nginx-http-load-balancing" target="_blanc">more...</a> such as Generic Hash, 
           - max_fails=<strong>int</strong>      - after this many failed attempts nginx marks this server unavailable (and reroutes the trafic to another server)
-          - fail_timeout=<strong>int</strong>s|m      - for this turation is marked the server as unavailable (after expiration nginx routes traffic to this server as well)
+          - fail_timeout=<strong>int</strong>s|m      - for this duration is marked the server as unavailable (after expiration nginx routes traffic to this server as well)
         
         
         - active health check is available for nginx plus only
@@ -367,8 +368,8 @@ stage 3 :
             default <strong>str</strong>;       # fallback value
             <strong class="openable">case<div>
                 <p> - <storng>str</strong> (ex: <mark>/</mark>) </p>
-                <p> - <mark>~<storng>str</strong></mark> - case-sensitive regexp match (ex: <mark>~^/</mark>) </p> 
-                <p> - <mark>~#<storng>str</strong></mark> - case-sensitive regexp match (ex: <mark>~*^/</mark>) </p> 
+                <p> - <mark>~<storng>str</strong></mark> - case-sensitive regEx match (ex: <mark>~^/</mark>) </p> 
+                <p> - <mark>~#<storng>str</strong></mark> - case-sensitive regEx match (ex: <mark>~*^/</mark>) </p> 
             </div></strong>
             <i>...</i>
         }
@@ -392,8 +393,9 @@ stage 3 :
         gzip_types <strong>mimeType</strong> <i>...</i>         # by default only <mark>text/html</strong> mime typed files are compressed, here we can add files to the compression 
         
         
-        
         - SSL termination point
+        
+        
         
         listen <strong>port:int</strong> ssl;       # ssl connection will be estabilished
         
@@ -423,8 +425,17 @@ stage 3 :
         
         
         
+        ------------------- upstream_cache_status -------------------
+        add_header <strong>headerName</strong> <strong>headerValue</strong> [always];     <- adds a header to the response (for 200, 201, 204, 206, 301, 302, 303, 304, 307, 308 response codes only)
+            - always -> for all response codes
+        
+        proxy_cache <strong>zone</strong>|off;       <- (http, server, location) enables|disables caching
+        
+        
         -> THIS IS WHERE I LEFT OF -> https://www.javatpoint.com/nginx-purging-content-from-the-cache
         - delete cache
+        
+        
         
 ---------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------

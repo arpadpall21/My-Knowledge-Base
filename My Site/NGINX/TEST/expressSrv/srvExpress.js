@@ -10,9 +10,8 @@ for (let i = 0; args.length > i; i++) {
   }
 }
 
-let requestCounter = 0;
 app.use('/', (req, res) => {
-  res.send(`Server ${port} says: Hello World!`)
+  res.send(`Server localhost:${port} says: Hello World!`)
   
   requestCounter += 1;
   console.log(requestCounter);
