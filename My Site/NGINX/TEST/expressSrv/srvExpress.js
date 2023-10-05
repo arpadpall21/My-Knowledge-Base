@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 const args = process.argv;
+let requestCounter = 0;
 let port = 3000;
 
 for (let i = 0; args.length > i; i++) {

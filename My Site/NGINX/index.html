@@ -250,7 +250,7 @@ stage 3 :
     
     
     directives:
-        listen <strong>port</strong>;             - server listens on this port [link]
+        listen <strong>port</strong>;             - (server) server listens on this port [link]
               <strong>address:port</strong>;
               <strong>domainSocket</strong>;
         root <strong>dirPath</strong>;            - (http, server, location) root directory for the REQUEST 
@@ -276,6 +276,10 @@ stage 3 :
                                                   - (http, server, location, if in location) serves error page at <strong>filePath</strong> if <strong>httpCode</strong> is thrown (we also can redirect)
                                                   - optionally serves <i>httpCode</i> instead of <strong>httpCode</strong> <i>...</i> http codes
     
+        server_name <strong>hostName:str|reGex|wildcard</strong>;     # (server) specifies the hostname for the current virtual server 
+    
+    
+    
     contexts:
         http {}                                   - (main) global http server related configurations (nests all virtual servers <mark>server</mark> context)
         events {}                                 - (main) connection directives are located here
@@ -300,8 +304,8 @@ stage 3 :
         - 
         
         
-        location <i>modifier</i> <strong>uri</strong> {       # redirects to <stong>path:str</strong>
-            return <strong>httpCode</strong> <stong>path:str</strong>
+        location <i>modifier</i> <strong>uri</strong> {       # (server, location) redirects to <stong>path:str</strong>
+            return <strong>httpCode</strong> <stong>path:str</strong>|<strong>str</strong>
         }
         
         location @<strong>locationName</strong> {       # <strong>locationName</strong> can be used in <mark>try_files</mark>
@@ -374,6 +378,15 @@ stage 3 :
             <i>...</i>
         }
         
+        geo $<strong>var</strong> {         # assigns value to $<strong>var</strong> based on address
+            default <strong>str</strong>;   # fallback value
+        
+            <strong>addess</strong> <strong>val<strong>;
+            <i>...</i>
+        }
+        
+        
+        
         
         
         - virtual hosting
@@ -382,7 +395,7 @@ stage 3 :
         
         server {
             listen <strong>port:int</strong>;
-            server_name <strong>hostName</strong> <i>...</i>;       # a list of hosts to which this virtual server responds 
+            server_name <strong>hostName:wildCard|regEx</strong> <i>...</i>;       # a list of hosts to which this virtual server responds 
         
         }
         
@@ -420,8 +433,9 @@ stage 3 :
         
         
         
-        - caching works but pretty complicated 
+        - caching 
         https://www.javatpoint.com/nginx-content-caching
+        
         
         
         
@@ -429,11 +443,21 @@ stage 3 :
         add_header <strong>headerName</strong> <strong>headerValue</strong> [always];     <- adds a header to the response (for 200, 201, 204, 206, 301, 302, 303, 304, 307, 308 response codes only)
             - always -> for all response codes
         
+        
+        proxy_cache_path <strong>path</strong>        <- sets the cache path (http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path)
+        
         proxy_cache <strong>zone</strong>|off;       <- (http, server, location) enables|disables caching
         
+        proxy_cache_valid <strong>httpVerb</strong>|any <strong>time<strong>    <- (http, server, location) cache valide for specified request 
         
-        -> THIS IS WHERE I LEFT OF -> https://www.javatpoint.com/nginx-purging-content-from-the-cache
-        - delete cache
+        proxy_cache_purge <strong>bool</strong>     <- (http, server, location) enables|disables caching (NGINX Plus only)
+        
+        
+        
+  --- directives ---
+      ip_hash             <- (upstream) request will be sent to the same upstream server 
+        
+        
         
         
         
@@ -447,6 +471,8 @@ WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
     
     logging?
     caching?
+    
+    - delete cache
     
     
     all those header configs like :
