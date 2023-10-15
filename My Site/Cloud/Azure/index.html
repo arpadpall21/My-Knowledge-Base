@@ -39,7 +39,7 @@
     
     
     - azure gives us much more ability to control where we are deploying our resources (however not all regions have ability zones like in AWS)
-    - each region has a region pair which is located at the same geographic area but at least 300 miles away 
+    - each region has a region pair which is located at the same geographic area but at least 300 miles away (resiliency reasons)
     
     
     - a resource can be represented as json template
@@ -54,9 +54,10 @@
         - controls all priviledges
     
     
+    
     -- TODO --
     - speed test        -> calculates the latency from our location to regions (not a service but a separate page found in google)
-        - document it on AWS page
+        - document it on AWS page that we can measure that
     
     - not all services are available in all regions (global services are however)
         - document it  on AWS
@@ -66,6 +67,72 @@
     
     
     
+    
+** services 
+  * Compute Services
+    - VM (Virtual Machine)
+        -  there's a marketplace to get images (but we can get custom images as well)
+    - VM scale sets
+        - group of VMs scalable behind a load blancer
+    - Container Registry
+        - container storage 
+    - Container Instances
+        - container hosting solution
+    - Kubernetes service
+        - Azure kubernetes solution
+    - App service
+        - Web Application Hosting
+        - supports multiple languages and containers
+        - Enterprise grade web app hosting service 
+    - Function App
+        - simple serverless function 
+        - designed for micro/nano services
+    
+  * Networking services (connection to cloud services, protect, monitor)
+    - Vitrual Network
+        - Logical network in Azoure for a group of resources
+        - can contain subnetworks
+        - can reside in a signle region
+    - Network Security Group
+        - filter outbound and inboud trafict on virtual networks
+    - Virtual Network Gateways (VPN Gateway)
+        - Gateway service between Azure virtual networks or a Hybrid connection
+    - Azure load balancer 
+        - balances the load between Azure resources
+        - we can use this tool to balance the trafict between avalability zones
+        - supports internal and external traffic
+    - App Gateway 
+        - load balancer for web (http) trafict 
+    - Content Delivery Network
+        - Azure CDN 
+    
+  * Storages
+    - Storage Account (nest all below 4 types)
+        - Blob Storage
+            - for any unstructured data (files, etc..)
+            - blob storage has containers for grouping blobs
+            - has 3 tiers (quality VS price)
+                - Host      -> for frequently accessing data 
+                - Cool      -> for infequently accessing data 
+                - Archive   -> archive (low availability but low price)
+        - File Storage
+            - like Blob storage but supports SMB (Server Message Block) -> file accessible remotely
+            - has shares for grouping files
+        - Queue Storage
+            - qeue between services
+        - Table Storage
+            - for semi structured data soted in simple tables
+            - this is not a relational database approach just storing data in tables
+            - NoSQL database 
+            - this service is like Dynamo Db -> fast access
+    - Azure Disk Storage
+        - Attachable Disk Storage form VMs 
+        - Storage can be managed or unmanaged 
+            - Managed
+            - Unmanaged -> Each Disk is stored as file in the Blob storage
+    
+    
+        
     ???????????????????????????????????????????????????????
     ???????????????????????????????????????????????????????
     ???????????????????????????????????????????????????????
