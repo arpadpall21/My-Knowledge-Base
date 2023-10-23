@@ -48,7 +48,7 @@
         - a resource group can be on a different location than its resources (only the meta data is stored there)
         - resource groups cannot be nested
         - resources can be moved from group to group
-    - subscription    -> billing unit for an account 
+    - subscription    -> just a logical container for provisionling resources  
     
     - Azure active directory
         - controls all priviledges
@@ -90,21 +90,34 @@
     
   * Networking services (connection to cloud services, protect, monitor)
     - Vitrual Network
-        - Logical network in Azoure for a group of resources
-        - can contain subnetworks
-        - can reside in a signle region
+        - Logical network in Azure for a group of resources
+        - can contain subnetworks (subnetworks cannot contain other subnetworks)
+        - must reside in a signle region
     - Network Security Group
         - filter outbound and inboud trafict on virtual networks
+    - Application Security Group
+        - Groups VMs (applications) in order to easier to manage Network Security Groups
     - Virtual Network Gateways (VPN Gateway)
         - Gateway service between Azure virtual networks or a Hybrid connection
     - Azure load balancer 
         - balances the load between Azure resources
-        - we can use this tool to balance the trafict between avalability zones
+        - we can use this tool to balance the traffic between avalability zones
         - supports internal and external traffic
     - App Gateway 
         - load balancer for web (http) trafict 
     - Content Delivery Network
         - Azure CDN 
+    - Route Table
+        - routes subnet outbound traffict 
+    - Firewall
+        - monitor and control in and outbound traffict
+    - Azure DDoS Protections
+        - protects virtual networks from DDoS (Distributed Denial of Service) attacks
+        - this is a great way to prevent savings on autoscaling solutions (multiple request would scale you auto scaling solutions)
+        - has 2 tiers:
+            - Basic
+            - Standard <- provides monitoring and machine learning features for better protections
+    
     
   * Storages
     - Storage Account (nest all below 4 types)
@@ -132,15 +145,176 @@
             - Unmanaged -> Each Disk is stored as file in the Blob storage
     
     
+  * Database Services
+      - Cosmos DB
+          - like table storage but this service has higth geographic availability -> therefore has lo latency 
+          - supports multiple apis (SQL, MongoDb, Table Storage, Cassandra, Gremlin)
+          - we can use SQL language to query data, but this service does not provide SQL features (joins, foreign keys, transactions)
+    
+      - Azure SQL family
+          - SQL Database (SQL Server with limited capabilities)
+          - Managed Instance (SQL Server with full capabilities)
+          - SQL Data Warehouse (SQL Server for large data)
+          - SQL VM (SQL Server Paas)
+    
+          - MySQL
+          - PostgreSQL
+    
+  * Azure Marketplace
+      - services or group of services you can buy
+      - services created by Microsoft or 3rd party vendors
+    
+    
+  * Azure IoT Services
+      - IoT Hub (service that allow communication between our IoT and Azure)
+          - managed service for bi-directional communication
+          - PaaS
+          - Integrates well with other Azure services
+          - offers SDKs for programming languages
+          - supports multiple communication protocols (HTTPS, AMQP, MQTT)
+      - IoT Central (Application delivery platform for IoT, SaaS -> applications)
+          - Built on top of IoT Hub + other Azure services
+    
+  * Big Data Analytics tools (Ingest -> Transform -> Store -> Server)
+      - Azure Synapse Analytics
+      - Azure HD Inside
+      - Azure Databricks
+    
+  * AI Servcies
+      - Azure Machine Learning Service
+      - Azure Machine Learning Studio
+          - Web based interface that provides access to Machine Learning
+  
+  * Serverless Computing
+      - Function App (listed in Computing Services) -> PaaS
+          - Can be triggered by different events (HTTP request, Timer, Storage events (when file up/down loaded))
+      - Azure Logic Apps
+          - A series of jobs performed based on workflow (sending email, log, etc...)
+          - we can specify all programming flow (linear, conditional, loop)
+          - Provides a graphical interface where we can build our workflow
+          - We design the flow -> Microsoft will handle the underlying services
+          - we don't provide any code here, the flow activites are fully provided by Azure
+      - Event Grid
+          - Routes Azure messages (pub-sub model for Azure events)
+          - Services can be subscribes to specific Azure events 
+          - in Azure all happening is an event (ex: service creation, VM go down) we can react (subscribe) to these event to triggere services
+    
+  * Azure DevOps services
+      - Azure DevOps (provides development services)
+          - Board
+          - Repos
+          - Pipelines (CI/CD)
+          - Artifacts (host & share packages)
+          - Test Plans (for manual testing)
+          - the Marketplace can provide tools here as well (for custom Azure DevOps features)
+      - Azure DevTest Labs
+          - Test place where developers can spin up VMs for testing purposes
+          - we can start and stop these VMs for cost saving purposes
+          - also provides additional features to be installed with your VM (this is cool)
+          - support policies (quotas, size, auto-shutdown)
+          - supports reusable templates
+    
+  * Accessing Azure
+      - Azure Portal (Azure web platform)
+      - PowerShell module 
+      - CLI (az)
+      - Azure CloudShell (ready to go azure terminal acessible through multiple ways (browser, etc...))
+          - this is basically (az cli) or powershell
+    
+  * Azure advizor
+      - give recommendation according to Azure best practices (Cost, Security, Reliability, Performance, Operational Excellence)
+  * Azure Security Centery
+      - continouously scans resources for security and advision stuff (Azure Advizor is buit on top to it)
+      - its functionalities can be exetende by a connected Virtual Machine 
+  
+  
+  * Azure Identity and Access management
+      - Microsoft Active Directory (Entra Id)
+          - manages Authorization adn Authentication not just for Azure but for all sorts of Microsoft Products (Skype, Outlook, Teams, etc...)
+          - we also can use it to provide Authorization and Authentication services for our service
+          - provides groups and all sorts of techniques to access restrictions
+    
+    
+  * Azure Key Vault
+      - centalized store secrets and certificates 
+      - well integrated with other Azure services
+      - SDKs can provide access to these secrets
+      - monitored and logged services
+    
+    
+    - Roles
+        - Roles are a collection of actions to resources 
+        - There are built in roles (Owner, Contributor, etc...), but custom roles can be created
+        - a role must be assigned to a scope (below level will inherit super roles)
+          - hierarchy is working (role affects anything below)
+              - Management Group -> Subscription -> Resource Groups -> Resources
+    - Security Principal (Identity, Azure Object) (Roles can be assigned to security pricipals)
+        - Users
+        - Groups
+        - Service Principal (Application Accounts)
+    
+    
+    - Resource Lock
+        - resources can be locked (blacklist or whitelist certain actions to perform on them)
+        - lock can be created on resource or resource group or subscription level (up to subscription hierarchy level)
+        - lock can be managed only by the Owner and User Access Administrator role
+        
+        
+    - tenant represents an identity (organization, or person)
+    - Entra Id (Active Directory) is one place where users, groups can be managed
+    - a tenant is a single Active Directory instance 
+    - a subscription can be associated witho only one Entra Id (AD) tenant (but one Entra ID instance can have multiple subscriptions)
+        
+        
+    - TAGS
+        - tag consist of key value pair attached to a sepcific resource, resource group or subscription
+        - can be assigned to a resource or a resource group (tags are NOT inherited by default)
+        - tags can be used for automation ect...
+        
+        
+    - Azure Policy
+        - it's basically a limitation or (permission of certain characteristing (ex: location restriciton))
+        - can be assigned to an Azure scope
+        - policies have nothing to do with user permissions
+        - there are builtin or custom policies
+        - multiple policies can be grouped -> called Initiatives
+        - applying new policies will affect current of future resources only (but we can rediate to apply already resources)
+        - policy effect can be applied -> what to do when the policy is violated (block, warning, etc...)
+        
+        
+    - Blueprints
+        - a reusable collection of user roles, resources and policy assignements
+        
+        
+    - Azure Calculator 
+        - to calculate service pricing
+        - Ce can save mony with various tools (like reserved instance)
+        - spot VM -> MS lends you the capacity for good discounts (but can take it back) -> 'spot pricing' the concept name 
+        
+    - Cost Management
+        - with cost manatement you can track and control your spending
+        
+    - SLA (Service Level Agreement)
+        - Microsoft promises uptime and credits you if they cannot fulfil that
+        - formal agreement between Microsoft and customers
+        - for free services there's no SLA!
+        - composite SLA the SLA of all your services together
+        - keep in mind that using multple services will lower SLA because potentially all services must be available at a time
+          - SLA calculation is done by logical ways AND / OR
+        
         
     ???????????????????????????????????????????????????????
     ???????????????????????????????????????????????????????
     ???????????????????????????????????????????????????????
-    - what is databrick?
-    
+    - explain that a scope is just a logical container hierarchy
   
   
   
+    - General hierarch
+      - explaine azure scope structure
+      - account governance
+          - cost management 
+          - ect
   
   
   
