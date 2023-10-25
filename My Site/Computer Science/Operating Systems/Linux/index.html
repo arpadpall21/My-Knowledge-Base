@@ -334,24 +334,24 @@
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
   <p> - Linux is a multiuser system, several users can be logged-in at the same time (users can be logged-in remotely)
   </p>
-  <h2 id="linuxFS"><u> Users and Groups </u></h2>
-  <h2 style="color:darkblue;"><u> Users </u></h2>
+  <h2 class="header"> Users and Groups </h2>
+  <h3 class="header"> Users </u></h3>
   <p> - all users are listend in the <mark>/etc/passwd</mark> file </p>
   <p><u> Standard (normal) User </u></p>
   <p style="text-indent:25px;"> - a standard user is 'guests' who have 'normal' access to the system funcitonalities
     (standard users' UIDs are higher than <mark>1000</mark>) </p>
   <p style="text-indent:25px;"> - the 'root' user is the superuser who have <u>access to everything</u> in the system
   </p>
-  <p style="text-indent:25px;"> - the 'administrator' is basically a standard user who is <u>part of the 'sudo' (system)
-      group</u> so it can use the <mark>sudo</mark> command which gives it root (superuser) privileges in the system
-  </p>
+  <p style="text-indent:25px;"> - any user can have 'administrator' access to the system (having the ability to perform root operations), there are 2 ways to do this: </p>
+  <p style="text-indent:50px;"> - the user is part belongs to the <mark>root</mark> group </p>
+  <p style="text-indent:50px;"> - the user is listed in the <mark>/etc/sudoers</mark> file </p>
   <p><u> System User </u></p>
   <p style="text-indent:25px;"> - system users are special kind of users who have access to more of the system
     funcionalities (system users' UIDs are lower than <mark>1000</mark>) <u>(system users are NOT Administartors)</u>
   </p>
   <p style="text-indent:25px;"> - system users are not shown on the login screen, they are mostly used by applications
     in order to access some funcionalities in the system (we rarely use them for 'normal' use) </p>
-  <h2 style="color:darkblue;"><u> Groups </u></h2>
+  <h3 class="header"> Groups </u></h3>
   <p> - groups is a way to give a group of users a set of permission to the specified item </p>
   <p> - each item (file or directory) belongs to an owner and a group, those users who are members of the item group
     have group permission on the item </p>
@@ -367,22 +367,20 @@
     gives root permission to the user) (system groups' GIDs are lower than <mark>1000</mark>) </p>
   <!-------------------------------------------------------------------------------------------------------------------------------->
   <hr>
-  <h2 class="headerExtra"><u> Hardware Drivers </u></h2>
+  <h2 class="header"> Hardware Drivers </h2>
   <p> - Linux uses open-source hardware drivers, so drivers are automatically detected and installed by Linux Kernel
   </p>
   <p> - Proprietary drivers also can be used and managed through the "Software &amp; Updates" screen (which was done
     automatically when installed Linux) </p>
   <!-------------------------------------------------------------------------------------------------------------------------------->
   <hr>
-  <h2 id="linuxFS"><u> File System </u></h2>
-  <p style="background-color:yellow;"> - Do Not modify (resize) the partition where the Linux and the swaping area is
-    insalled! Linux will fail to boot [TESTED: 2020-04-23 (cost me 1 day and a Linux reinstallation)] </p>
+  <h2 class="header"> File System </h2>
   <p> - Linux uses a logical file system, disks and partitions can be "mounted" logically </p>
   <p> - in Linux everything is a file! files are files, a directories are files, devices are files, etc... <u>hidden
       files are preceded with a dot (ex <mark>.*</mark>)</u> </p>
   <!-------------------------------------------------------------------------------------------------------------------------------->
   <hr>
-  <h2 style="color:darkblue;"><u> Inode </u></h2>
+  <h2 class="header"> Inode </h2>
   <p> - an Inode is a data structure which describes a file (object) on the Linux file system (metadata of the acutal
     file)</p>
   <p> - Linux manages inodes and has a data base of inodes "inode table", inodes are limited and unique on the system
@@ -405,7 +403,7 @@
   </ul>
   <!-------------------------------------------------------------------------------------------------------------------------------->
   <hr>
-  <h2 style="color:darkblue;"><u> umask </u></h2>
+  <h2 class="header"> umask </h2>
   <p> - the umask defines file and directory permissions when created, the Default umask value is <mark>0022</mark>
     <u>(the first value is always <mark>0</mark>)</u> </p>
   <p> - in Linux when creating new items the default permission for files is <mark>0666</mark> and for directories is
@@ -415,10 +413,10 @@
     <mark>0664</mark>) </p>
   <!-------------------------------------------------------------------------------------------------------------------------------->
   <hr>
-  <h2 class="headerExtra"><u> Services (Daemons) </u></h2>
+  <h2 class="header"> Services (Daemons) </h2>
   <p> - services are basically programs running in the background (like Apache) </p>
   <p> - so we can close the terminal regardless the daemon is running or not </p>
-  <h2 style="color:darkblue;" id="cron"><u> Cron </u></h2>
+  <h3 class="header"> Cron </h3>
   <p> - Cron is a daemon tool which schedules commands on Unix-like systems, by default it does interpret commands with
     the Bourne shell (<mark>/bin/sh</mark>) Not with bash (this could lead somme differences)! </p>
   <p> - by default <mark>/bin/sh</mark> doesn't have the <mark>DISPLAY=:0</mark> enviroment variable set, <u>(so if we
