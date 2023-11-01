@@ -35,7 +35,7 @@
       <td colspan="2"> Initializing Git Repositories </td>
     </tr>
     <tr class="02.01">
-      <td> <em>git</em> config <small>[--global]</small> user.name <i>userName</i> </td>
+      <td> git config <small>[--global]</small> user.name <i>userName</i> </td>
       <td> - gets or sets (configures) the user's name for the local Git repository (or globally) (required when
         connecting to the remote repo) </td>
     </tr>
@@ -44,7 +44,7 @@
       <td></td>
     </tr>
     <tr class="02.03">
-      <td> <em>git</em> config <small>[--global]</small> user.email <i>userEmail</i> </td>
+      <td> git config <small>[--global]</small> user.email <i>userEmail</i> </td>
       <td>
         - gets or sets (configures) the user's email for the local Git repository (or globally) (required when
         connecting to the remote repo) <br>
@@ -52,42 +52,33 @@
       </td>
     </tr>
     <tr class="01.02">
-      <td> <em>git</em> init <i>dirPath</i> </td>
+      <td> git init <i>dirPath</i> </td>
       <td> - initializes the current or the specified directory as a Git Repository (places a <mark>.git</mark>
         directory inside) </td>
     </tr>
     <tr class="04.01">
-      <td> <em>git</em> log <small>[--oneline]</small> </td>
-      <td> - list the version history (commits) of the current branch (optionally in short = one line per commit)
+      <td> 
+        git log <small>[options]</small>
+      </td>
+      <td> 
+        - list the version history (commits) of the current branch <br>
+        <small>[options]</small> <br>
+        - (<small>--oneline</small>) one line per commit <br>
+        - (<small>--follow <strong>filePath</strong></small>) tracks the version history of the specified file <br>
+        - (<small>--oneline --all --graph</small>) prints the git treey graphically <br>
+        - (<small>--stat</small>) prints the change status for each commit <br>
       </td>
     </tr>
-    <tr class="04.02">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="04.03">
-      <td> <em>git</em> log <small>[--oneline]</small> --follow <strong>filePath</strong> </td>
-      <td> - tracks the version history of the specified file (optionally in short = one line per commit) </td>
-    </tr>
-    <tr class="04.04">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="04.05">
-      <td> <em>git</em> log --oneline --all --graph </td>
-      <td> - displays the Git Tree of the Git history </td>
-    </tr>
-
     <tr class="05.01">
-      <td> <em>git</em> reflog </td>
+      <td> git reflog </td>
       <td>
         - displays the git command history log
       </td>
     </tr>
     <tr class="03">
       <td>
-        <em>git</em> status <br>
-        <em>git</em> st
+        git status <br>
+        git st
       </td>
       <td>
         - checks the status for the Modified Area (files modified after the last commit) and the Stagin Area
@@ -99,7 +90,7 @@
       <td colspan="2"> Staging Area and Commit Management </td>
     </tr>
     <tr class="20.02">
-      <td> <em>git</em> add <small>[-p] [--]</small> <strong>path</strong> </td>
+      <td> git add <small>[-p] [--]</small> <strong>path</strong> </td>
       <td>
         - add files from the Modified area <u>(or untracked files)</u> to the Staging area (cannot add deleted
         file
@@ -119,19 +110,19 @@
       <td></td>
     </tr>
     <tr class="20.04">
-      <td> <em>git</em> add --all </td>
+      <td> git add --all </td>
       <td>
         - adds <u>all changes</u> from the Modified area to the Staging area
       </td>
     </tr>
     <tr class="27.01">
-      <td> <em>git</em> cherry-pick <strong>commitId</strong> </td>
+      <td> git cherry-pick <strong>commitId</strong> </td>
       <td>
         - pircks the specified <strong>commitId</strong> and put at the top of the current branch
       </td>
     </tr>
     <tr class="24.01">
-      <td> <em>git</em> checkout <small>master</small><strong>|branchName|tagName|commitId</strong> </td>
+      <td> git checkout <small>master</small><strong>|branchName|tagName|commitId</strong> </td>
       <td>
         - navigates to the specified branch or commit point (files at that commit point are on the file system
         now, on
@@ -146,13 +137,13 @@
       <td></td>
     </tr>
     <tr class="24.03">
-      <td> <em>git</em> checkout -b <strong>branchName</strong> </td>
+      <td> git checkout -b <strong>branchName</strong> </td>
       <td>
         - creates a new branch (from the current commit) and navigates to it
       </td>
     </tr>
     <tr class="22.01">
-      <td> <em>git</em> commit <small>[-a] [-m <strong>message</strong>]</small> </td>
+      <td> git commit <small>[-a] [-m <strong>message</strong>]</small> </td>
       <td>
         - (no option) adds a new commit to the Git Tree from the files in the Stagin Area (opens the default
         text editor
@@ -168,7 +159,7 @@
       <td></td>
     </tr>
     <tr class="22.03">
-      <td> <em>git</em> commit --amend <small>[-m <strong>message</strong>]</small> <small>[--no-edit]</small>
+      <td> git commit --amend <small>[-m <strong>message</strong>]</small> <small>[--no-edit]</small>
       </td>
       <td>
         - does not creates a new commit, instead modifies the last commit with the changes from the staging area
@@ -177,8 +168,17 @@
         - (<small>--no-edit</small>) does not modify the most recent commit's message
       </td>
     </tr>
+    <tr class="21.02">
+      <td> 
+        git mv <strong>srcPath</strong> <strong>trgPath</strong>
+      </td>
+      <td>
+        - moves/renames <strong>srcPath</strong> to <strong>trgPath</strong> (directory or file) <br>
+        - <u>must be used when renaming (otherwise git tracks <strong>srcPath</strong> as deleted and <strong>trgPath</strong> as new)
+      </td>
+    </tr>
     <tr class="26.00">
-      <td> <em>git</em> reflog </td>
+      <td> git reflog </td>
       <td>
         - prints the git history log, we can use the <mark>git restet <strong>commitId</strong></mark> to move
         back on
@@ -186,7 +186,7 @@
       </td>
     </tr>
     <tr class="26.1">
-      <td> <em>git</em> reset <small>[--hard]</small> <strong>tagName|commitId</strong> </td>
+      <td> git reset <small>[--hard]</small> <strong>tagName|commitId</strong> </td>
       <td>
         - (no option) removes all commits on the branch <u>aftert the specified
           <strong>tagName|commitId</strong></u>
@@ -201,7 +201,7 @@
       <td></td>
     </tr>
     <tr class="26.3">
-      <td> <em>git</em> reset --hard <strong>remoteVar</strong>/<strong>branch</strong> </td>
+      <td> git reset --hard <strong>remoteVar</strong>/<strong>branch</strong> </td>
       <td>
         - pulls the branch from the remote repository and <u>overwrites</u> the current branch
       </td>
@@ -211,7 +211,7 @@
       <td></td>
     </tr>
     <tr class="26.5">
-      <td> <em>git</em> reset <small>[--hard]</small> <i>path</i> </td>
+      <td> git reset <small>[--hard]</small> <i>path</i> </td>
       <td>
         - empties the Staging Area by putting files back to their previoues place (or only the specified file)
         <br>
@@ -219,35 +219,24 @@
       </td>
     </tr>
     <tr class="25">
-      <td> <em>git</em> revert <strong>tagName|commitId</strong> </td>
+      <td> git revert <strong>tagName|commitId</strong> </td>
       <td>
         - reverts (disables) the specified commit by addin a new 'revert commit' (careful about conflicts) <br>
         - we can reanable a reverted (disabled) commit by reveting the revert commit again
       </td>
     </tr>
     <tr class="21.01">
-      <td> <em>git</em> rm <small>[-r]</small> <strong>path</strong> </td>
+      <td> git rm <small>[options]</small> <strong>path</strong> </td>
       <td>
-        - <u>removes the specified item from the file system</u> and puts the deleted status in the Staging Area
-        <br>
-        - puts the deleted status of already deleted items to the Stagin Area
-      </td>
-    </tr>
-    <tr class="21.02">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="21.03">
-      <td> <em>git</em> rm <small>[-r]</small> --cached <strong>path</strong> </td>
-      <td>
-        - untracks the specified item(s) and puts as deleted status in the Stagin Area (Git won't track this
-        file any
-        more) <br>
-        - (<small>-r</small>) resursively removes files from directories
+        - <u>removes the specified item from the file system</u> and puts the deleted status in the Staging Area <br>
+        - puts the deleted status of already deleted items to the Stagin Area <br>
+        - <small>[options]</small> <br>
+        - (<small>-r</small>) recursive -> all files <strong>path</strong> <br>
+        - (<small>--cached</small>) untracks the specified item(s) and puts as deleted status in the Stagin Area (Git won't track this file any more)
       </td>
     </tr>
     <tr class="23.01">
-      <td> <em>git</em> tag <strong>tagName</strong> <i>commitId</i> </td>
+      <td> git tag <strong>tagName</strong> <i>commitId</i> </td>
       <td> - adds a tag (tag name) to the most recent commit (or to the specified one) </td>
     </tr>
     <tr class="23.02">
@@ -255,7 +244,7 @@
       <td></td>
     </tr>
     <tr class="23.03">
-      <td> <em>git</em> tag -d <strong>tagName</strong> </td>
+      <td> git tag -d <strong>tagName</strong> </td>
       <td>
         - deletes the specified tag (tag name)
       </td>
@@ -265,7 +254,7 @@
     </tr>
     <tr class="33">
       <td>
-        <em>git</em> stash apply <i>stashId</i>
+        git stash apply <i>stashId</i>
       </td>
       <td>
         - copies the most recent (or the specified) stash entry files back to the Modified Area (careful about
@@ -274,7 +263,7 @@
     </tr>
     <tr class="34">
       <td>
-        <em>git</em> stash drop <i>stashId</i>
+        git stash drop <i>stashId</i>
       </td>
       <td>
         - deletes the most recent (or the specified) stash entry
@@ -282,7 +271,7 @@
     </tr>
     <tr class="31">
       <td>
-        <em>git</em> stash list
+        git stash list
       </td>
       <td>
         - returns the stash list
@@ -290,7 +279,7 @@
     </tr>
     <tr class="32">
       <td>
-        <em>git</em> stash pop <i>stashId</i>
+        git stash pop <i>stashId</i>
       </td>
       <td>
         - moves the most recent (or the specified) stash entry files to the Modified Area (careful about
@@ -299,7 +288,7 @@
     </tr>
     <tr class="30.03">
       <td>
-        <em>git</em> stash push <small>[-m <i>stashName</i>]</small> <strong>filePath</strong>
+        git stash push <small>[-m <i>stashName</i>]</small> <strong>filePath</strong>
       </td>
       <td>
         - moves only the specified file (<strong>filePath</strong>) in the stash <br>
@@ -308,7 +297,7 @@
     </tr>
     <tr class="30.02">
       <td>
-        <em>git</em> stash save <small>[-u] [-p]</small> <i>message</i>
+        git stash save <small>[-u] [-p]</small> <i>message</i>
       </td>
       <td>
         - (no option) moves all files from the Modified and the Staging areas to the Stash <u>(the Stash is NOT
@@ -327,7 +316,7 @@
     </tr>
     <tr class="40.02">
       <td>
-        <em>git</em> branch <small>[-a] [-D <strong>branchName</strong>]</small>
+        git branch <small>[-a] [-D <strong>branchName</strong>]</small>
       </td>
       <td>
         - (no options) lists all local branches <br>
@@ -341,7 +330,7 @@
     </tr>
     <tr class="40.04">
       <td>
-        <em>git</em> branch <strong>branchName</strong> <i>commitId|tag</i>
+        git branch <strong>branchName</strong> <i>commitId|tag</i>
       </td>
       <td>
         - creates a new branch from the current commit (or from the specified commit)
@@ -353,7 +342,7 @@
     </tr>
     <tr class="40.06">
       <td>
-        <em>git</em> branch -m <i>oldBranchName</i> <strong>newBranchName</strong>
+        git branch -m <i>oldBranchName</i> <strong>newBranchName</strong>
       </td>
       <td>
         - renames the specified <i>oldBranchName</i> branch (if <i>oldBranchName</i> is omitted the current
@@ -367,7 +356,7 @@
     </tr>
     <tr class="40.08">
       <td>
-        <em>git</em> push -d <strong>remoteVar</strong> <strong>branch</strong>
+        git push -d <strong>remoteVar</strong> <strong>branch</strong>
       </td>
       <td>
         - deletes the specified <strong>branch</strong> from the specified <strong>remoteVar</strong> repo
@@ -375,7 +364,7 @@
     </tr>
     <tr class="41.01">
       <td>
-        <em>git</em> diff <small>[--staged]</small>
+        git diff <small>[--staged]</small>
       </td>
       <td>
         - (no option) prints file differences between the previous Commit and the Modified Area <br>
@@ -388,7 +377,7 @@
     </tr>
     <tr class="41.03">
       <td>
-        <em>git</em> diff <strong>branch|commitId</strong> <strong>branch|commitId</strong>
+        git diff <strong>branch|commitId</strong> <strong>branch|commitId</strong>
       </td>
       <td>
         - displays the differences between the two branches or commits
@@ -396,7 +385,7 @@
     </tr>
     <tr class="42.01">
       <td>
-        <em>git</em> merge <strong>branchName</strong> <small>[-m <strong>message</strong>]</small>
+        git merge <strong>branchName</strong> <small>[-m <strong>message</strong>]</small>
       </td>
       <td>
         - merges the specified branch into the current branch and creates a new 'merge' commit on the current
@@ -415,7 +404,7 @@
     </tr>
     <tr class="42.3">
       <td>
-        <em>git</em> merge --abort
+        git merge --abort
       </td>
       <td>
         - aborts the merge conflict <u>(merge conflits must be either resolved and commited or aborted)</u>
@@ -423,7 +412,7 @@
     </tr>
     <tr class="43.01">
       <td>
-        <em>git</em> rebase <small>[-i]</small> <strong>branch</strong>
+        git rebase <small>[-i]</small> <strong>branch</strong>
       </td>
       <td>
         - <span class="openable">rebases<div>
@@ -448,7 +437,7 @@
     </tr>
     <tr class="43.03">
       <td>
-        <em>git</em> rebase --abort|--continue
+        git rebase --abort|--continue
       </td>
       <td> - aborts or continues the rebase conflict <u>(rebase conflicts must be either resolved and continued or
           aborted)</u>
@@ -461,7 +450,7 @@
     </tr>
     <tr class="50.02">
       <td>
-        <em>git</em> clone <strong>repoUrl</strong>
+        git clone <strong>repoUrl</strong>
       </td>
       <td>
         - clones the remote repository in the current local directory
@@ -469,7 +458,7 @@
     </tr>
     <tr class="60.01">
       <td>
-        <em>git</em> fetch <i>remoteVar</i>
+        git fetch <i>remoteVar</i>
       </td>
       <td>
         - fetches branches and commits from the remote repository <u>without making any changes to the local
@@ -480,7 +469,7 @@
     </tr>
     <tr class="54">
       <td>
-        <em>git</em> pull <i class="openable">URL|remoteVar<div>
+        git pull <i class="openable">URL|remoteVar<div>
             <p> - <mark>origin</mark> if not specified </p>
           </div></i>
       </td>
@@ -493,7 +482,7 @@
     </tr>
     <tr class="52.01">
       <td>
-        <em>git</em> push <strong>URL|remoteVar</strong> <small>[-f]</small> <strong>branch</strong>|--all
+        git push <strong>URL|remoteVar</strong> <small>[-f]</small> <strong>branch</strong>|--all
       </td>
       <td>
         -uploads the specified branch or all branches to the remote repo <u>(If there's a conflict between the
@@ -508,7 +497,7 @@
     </tr>
     <tr class="52.03">
       <td>
-        <em>git</em> push <strong>URL|remoteVar</strong> --delete <strong>branchName</strong>
+        git push <strong>URL|remoteVar</strong> --delete <strong>branchName</strong>
       </td>
       <td>
         - deletes the branch from the remote repository (does not delete the local branch)
@@ -516,7 +505,7 @@
     </tr>
     <tr class="51.01">
       <td>
-        <em>git</em> remote <small>[-v]</small>
+        git remote <small>[-v]</small>
       </td>
       <td>
         - (no option) lists remote repository variables <u>(remote variables are stored in the local repository
@@ -528,7 +517,7 @@
     </tr>
     <tr class="51.02">
       <td>
-        <em>git</em> remote add <strong>remoteVar URL</strong>
+        git remote add <strong>remoteVar URL</strong>
       </td>
       <td>
         - sets a remote variable
@@ -536,14 +525,14 @@
     </tr>
     <tr class="51.04">
       <td>
-        <em>git</em> remote remove <strong>remoteVar</strong>
+        git remote remove <strong>remoteVar</strong>
       </td>
       <td> - deletes the specified remote variable
       </td>
     </tr>
     <tr class="51.03">
       <td>
-        <em>git</em> remote rename <strong>oldVar newVar</strong>
+        git remote rename <strong>oldVar newVar</strong>
       </td>
       <td>
         - renames the specified remote variable

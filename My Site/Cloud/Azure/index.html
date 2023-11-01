@@ -13,80 +13,184 @@
 
 <body>
   <h1> Azure </h1>
-  <p> Updated: ( 2023-10-09 )</p>
-    <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
-        <a href="../index.html">Cloud></a> Azure
-    </p>
+  <p> Updated: ( 2023-10-23 )</p>
+  <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
+    <a href="../index.html">Cloud></a> Azure
+  </p>
   <br>
   <details class="example" id="notes">
     <summary> Notes & Tips :</summary>
-    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+    <p> - we can test latency between our location and different Azure regions with speed test tools (like <a
+        href="https://www.azurespeed.com/Azure/Latency" target="_blank">www.azurespeed.com/Azure/Latency</a>) </p>
   </details>
   <h2 style="color:green;"><u> Useful Links : </u></h2>
 
   <h2 style="color:green;"><u> Remember This : </u></h2>
 
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <h2 class="header"> Azure Global Infrastructure </h2>
+  <p> - <mark class="mark">Region</mark> -> Geographic location where one or multiple data centers reside </p>
+  <p style="text-indent:30px;"> - a region might have only one data center (Azure doesn't work like AWS), at service
+    deployment we can control where (or which availability zones) to deploy our servcies </p>
+  <p style="text-indent:30px;"> - each region have a region pair for resiliency reasons, the pair region is located a
+    the same geographic area at least 300 miles away </p>
+  <p> - <mark class="mark">Availability Zone</mark> -> an individual data center group within a region </p>
+  <p style="text-indent:30px;"> - availability zones are for resiliency resons (redundant service availability),
+    therefore availability zones exist at least in a group of 3 (numbered 1, 2, 3, ...) </p>
+  <p style="text-indent:30px;"> - availability zones have low latency connections between them </p>
+  <hr>
+  <!--------------------------------------------------------------------------------------------->
+  <h2 class="headerExtra"> Governing Azure Services </h2>
+  <h2 class="header"> Azure Hierarchy, Scope and Tags </h2>
+  <p> - <mark class="mark">Azure Hierarchy</mark> -> Logical hierachy for resource management </p>
+  <p style="text-indent:30px;"> - the Azure Hierachy is composed of 4 levels (<mark class="mark">Management Group</mark>
+    -> <mark class="mark">Subscription</mark> -> <mark class="mark">Resource Group</mark> -> <mark
+      class="mark">Resource</mark>) </p>
+  <p style="text-indent:30px;"> - <mark class="mark">Management Group</mark>, <mark class="mark">Subscription</mark> and
+    <mark class="mark">Resource Group</mark> are esentially logical containers providing hierarchical resource
+    management
+  </p>
+  <p style="text-indent:30px;"> - <mark class="mark">Resource</mark> -> is the service itself </p>
+  <p style="text-indent: 60px"> - is represented as a json template </p>
+  <p style="text-indent: 60px"> - must be part of one (but only one) resource group </p>
+  <p style="text-indent: 60px"> - resource groups can contain resources in different regions </p>
+  <p style="text-indent: 60px"> - <u>not all resources are available in all regions</u> (except global services) </p>
+  <p style="text-indent: 60px"> - resources can be tagged (key value pair), but <u>not inherited in the hierarchy</u>
+    (can be used ofr additional resource management, automation, etc...)</p>
+  <p> - <mark class="mark">Scope</mark> -> a hierarchy level with all its sub levels (ex: subsription scope means all
+    its resource groups and all those resource groups' resources) </p>
+  <p style="text-indent:30px;"> - all resources within a scope are affected by the scope's roles and policies </p>
+
+  <p> - <mark class="mark">Tag</mark> -> additional information (key value pair) </p>
+  <p style="text-indent:30px;"> - can be assigned to a resource, resource group or a subscription </p>
+  <p style="text-indent:30px;"> - used for enhanced service management, automation, etc... </p>
+  <p style="text-indent:30px;"> - tags are not inherited in the hierarchy </p>
+  <img height="250" src='./Azure Hyerarchi.jpg' alt="Azure Hiearchy" />
+  <hr>
+  <!--------------------------------------------------------------------------------------------->
+  <h2 class="header"> Tools to Access Azure Services </h2>
+  <p> - <mark class="mark">Azure Portal</mark> -> GUI in the web browser </p>
+  <p> - <mark class="mark">PowerShell</mark> -> a module in PowerShell allow acces to Azure </p>
+  <p> - <mark class="mark">CLI</mark> -> terminal access by using the <mark>az</mark> CLI </p>
+  <p> - <mark class="mark">Cloud Shell</mark> -> PowerShell or <mark>az</mark> CLI use through Azure Portal </p>
+  <p> - <mark class="mark">SDK</mark> -> programmatic access to Azure </p>
+  <hr>
+  <!--------------------------------------------------------------------------------------------->
+  <h2 class="header"> Access Control </h2>
+  <p> - <mark class="mark">Active Directory (Entra ID)</mark> -> Microsoft's identity provider for all sorts of
+    Microsoft products (Azure, Outlook, Skype, Teams, etc...) </p>
+  <p style="text-indent:30px;"> - a <mark class="mark">tenant</mark> is an Active Directory instance in Azure (identity
+    that identifies an organization or a person) </p>
+  <p style="text-indent:30px;"> - a tenant contain uses, groups, app and control their access </p>
+  <p style="text-indent:30px;"> - we also can use it for web app (and probably other service) identification as well
+  </p>
+  <p> - <mark class="mark">Role</mark> -> defines what acctions the assigned identity can do (built-in or custom)</p>
+  <p style="text-indent:30px;"> - in Azure managing access to resources is done by RBAC (Role Based Access Control) </p>
+  <p style="text-indent:30px;"> - a role must be assigned to a security principal and a scope (defines who and where)
+  </p>
+  <p style="text-indent:30px;"> - a Security Principal is basically an identity in Azure what can be: </p>
+  <p style="text-indent: 60px"> - User </p>
+  <p style="text-indent: 60px"> - Group </p>
+  <p style="text-indent: 60px"> - Service Principal -> a registered application (app object representation in Active
+    Directory (Entra ID)) (app what is registered in Active Directory for Authentication) </p>
+  <p style="text-indent: 90px"> - Application Registration -> the app registration in Active Directory </p>
+  <p style="text-indent: 90px"> - Enterprise Applicaton -> basically a list of service principals </p>
+  <p> - <mark class="mark">Policy</mark> -> is some resource limitation (ex: location restriction) (built-in or custom)
+  </p>
+  <p style="text-indent:30px;"> - Can be assigned to a scope </p>
+  <p style="text-indent:30px;"> - Applying a policy to a scope will affect current and future resources only (but we can
+    remeditate to apply newly assigned policies to already existing resources) </p>
+  <p style="text-indent:30px;"> - We can define what action to take when the policy is violated (block, warn, etc...)
+  </p>
+  <p> - <mark class="mark">Initiative</mark> -> a collection of policies </p>
+  <p> - <mark class="mark">Blueprint</mark> -> describes an Azure environment (used to replicate the same environment)
+  </p>
+  <p style="text-indent:30px;"> - describes role assignements, resources and policy assignements </p>
+  <p> - <mark class="mark">Resource Lock</mark> -> prevent actions on the specified scope </p>
+  <p style="text-indent:30px;"> - can be assigned to subscription, resource group or resource scope </p>
+  <p style="text-indent:30px;"> - at the time of writing this there are types of locks, CanNotDelete and ReadOnly </p>
+  <p style="text-indent:30px;"> - locks can be managed by administrators only </p>
+  <hr>
+  <!--------------------------------------------------------------------------------------------->
+  <h2 class="header"> Cost Management </h2>
+  <p> - we should use the right services for our needs in order to save money (ex: a spot VM could be a cheap option for
+    non essential computing) </p>
+  <p> - <mark class="mark">Cost Management</mark> -> resource where consts can be tracked and controled </p>
+  <p> - <mark class="mark">Azure Calculator</mark> -> Azure tool to calculate service pricing </p>
+  <hr>
+  <!--------------------------------------------------------------------------------------------->
+  <h2 class="header"> Service Availability </h2>
+  <p> - Microsoft promises service uptimes (in percent per month), if if fails to do deliver its promise we'll get a
+    refound on that service, this is called SLA (Service Level Agreement) </p>
+  <p> - for each service the SLA is documented (ex: VMs have a 99.99% SLA meaning 4m 22s downtime per month) </p>
+  <p> - the SLA can be calculated when using multiple services (ex if we have 2 required services the SLA formula is <mark class="mark">S1 * S2 / 100</mark>) </p>
+  <p> - there is no SLA for free services </p>
+  <hr>
+  <!--------------------------------------------------------------------------------------------->
+  <h2 class="headerExtra"> Resources </h2>
+  <h3 class="header"> Compute Resources </h3>
+  <p> - <mark class="mark">VM (Virtual Machine)</mark> -> machine in the cloud </p>
+  <p style="text-indent:30px;"> - we can get different performance (there are built-in images but we can customize the performance) </p>
+  <p> - <mark class="mark">VM Scale Set</mark> -> a group of VMs scalable behind a load balancer </p>
+  <p> - Container Resources: </p>
+  <p style="text-indent:30px;"> - <mark class="mark">Container Registry</mark> -> container storage </p>
+  <p style="text-indent:30px;"> - <mark class="mark">Container Instance</mark> -> container hosting solution </p>
+  <p style="text-indent:30px;"> - <mark class="mark">Kubernetes Services</mark> -> kubernetes solution </p>
+  <p> - <mark class="mark">App Service</mark> -> enterprise grade web application hosting solution </p>
+  <p style="text-indent:30px;"> - supports multiple programming languages but also docker container </p>
+  <p> - <mark class="mark">Function App</mark> -> serverless computing </p>
+  <p style="text-indent:30px;"> - can be triggered by different events (HTTP request, Timer, Storage events (when file up/down loaded)) </p>
+  <p> - <mark class="mark">Logic Apps</mark> -> a serices of jobs executed in a workflow </p>
+  <p style="text-indent:30px;"> - Azure Logcal applications are pre-built apps to perform different tasks (email sending, log, etc...) </p>
+  <p style="text-indent:30px;"> - we can make a workflow (with programming features linear, conditional, loop) by using these apps </p>
+  <p style="text-indent:30px;"> - we can piece these apps together in a graphical interface </p>
+  <p> - <mark class="mark">Event Grid</mark> -> message broker where resources can be subscribed to different Azure events </p>
+  <p style="text-indent:30px;"> - in Azure anything hapens that's an event (ex: service creation), resources can subscibe to these events in the Event Grid and perform certain actions when the event is triggered </p>
+  <h3 class="header"> Storage </h3>
+  <p> - <mark class="mark">Storage Account</mark> account for the below 4 storage types </p>
+  <p style="text-indent:30px;"> - <mark class="mark">Blob Storage</mark> -> file storage </p>
+  <p style="text-indent:60px;"> - files are stored in Containers </p>
+  <p style="text-indent:60px;"> - there are 3 availability tiers (speed VS price) </p>
+  <p style="text-indent:90px;"> - Host -> for frequently data access </p>
+  <p style="text-indent:90px;"> - Cool -> for infequently data access </p>
+  <p style="text-indent:90px;"> - Archive -> low availability but low price </p>
+  <p style="text-indent:30px;"> - <mark class="mark">File Storage</mark> -> stores files like the Blob Storage but supprots SMB (Server Message Block) protocol (files are accessible remotely) </p>
+  <p style="text-indent:60px;"> - files are stored in Shares </p>
+  <p style="text-indent:30px;"> - <mark class="mark">Queue Storage</mark> -> queue accessible anywhere in the world via authenticated calls using HTTP(S) </p>
+  <p style="text-indent:60px;"> - a single message size can be up to 64 KB, the queue size is the capacity of the storage account</p>
+  <p style="text-indent:30px;"> - <mark class="mark">Table Storage</mark> -> NoSQL semi structured data storage </p>
+  <p style="text-indent:60px;"> - designed for fast data access and high volumes of data </p>
+  <p style="text-indent:60px;"> - the storage account contains tables </p>
+  <p style="text-indent:90px;"> - tables contain rows (entities) size limit 1MB </p>
+  <p style="text-indent:120px;"> - rows contain properties (up to 255) </p>
+  <p style="text-indent:150px;"> - default row properties are <mark class="mark">PartitionKey</mark>, <mark class="mark">RowKey</mark> and <mark class="mark">Timestamp</mark> (the PartitionKey and RowKey are indexed for fast data access) </p>
+  <p> - <mark class="mark">CosmosDB</mark> works like table storage but offers far better global availability and speed (also mor pricy) </p>
+  <p style="text-indent:30px;"> - accessible by various query languages (SQL, MongoDB, Table Storage, Cassandra, Germlin) </p>
+  <p> - <mark class="mark">Disk Storage</mark> various (HDD, SSD) attachable storage form VMs </p>
+  <p style="text-indent:30px;"> - <mark class="mark">Managed disk</mark> -> the underlying storage is automatically managed, it also has better availability and security than unmanaged disk </p>
+  <p style="text-indent:30px;"> - <mark class="mark">Unmanaged disk</mark> -> we have to managed the underlying storage, more flexible than unmanaged disk </p>
+  <p> - SQL Databases: </p>
+  <p style="text-indent:30px;"> - <mark class="mark">MySQL</mark> </p>
+  <p style="text-indent:30px;"> - <mark class="mark">PostgreSQL</mark> </p>
+  <p style="text-indent:30px;"> - SQL Server services: </p>
+  <p style="text-indent:60px;"> - <mark class="mark">SQL Database</mark> -> limited database management </p>
+  <p style="text-indent:60px;"> - <mark class="mark">SQL Managed Instance</mark> -> we have full SQL Database access from the OS perspective </p>
+  <h3 class="header"> Network </h3>
+  <p style="text-indent:30px;"> - <mark class="mark">Virtual Network</mark> -> logical network for resource isolation </p>
+  <p style="text-indent:60px;"> - can contain subnetworks </p>
+  <p style="text-indent:60px;"> - must reside in a single region </p>
+  <p style="text-indent:30px;"> - <mark class="mark">Network Security Group</mark> -> controls inbound and outbound trafic on a Virtual Network </p>
+  <p style="text-indent:30px;"> - <mark class="mark">Application Security Group</mark> -> controls inbound and outbound trafic on a Virtual Network </p>
   
-  
-  
-  
+
+
+
+
   <!--
-    - cloud core concepts are no covered here (they are documented in AWS)
-    
-    - portal                  -> like aws console
-    - virtual machine         -> EC2
-    
-    
-    - azure gives us much more ability to control where we are deploying our resources (however not all regions have ability zones like in AWS)
-    - each region has a region pair which is located at the same geographic area but at least 300 miles away (resiliency reasons)
-    
-    
-    - a resource can be represented as json template
-    - resource group -> logical group of a collection of resources (the idea here is to separate strategy groups like DEV STAGING PROD) (but also to grant IAM priviledges to users)
-        - a service can and must belong to one resource group only
-        - a resource group can be on a different location than its resources (only the meta data is stored there)
-        - resource groups cannot be nested
-        - resources can be moved from group to group
-    - subscription    -> just a logical container for provisionling resources  
-    
-    - Azure active directory
-        - controls all priviledges
-    
-    
-    
-    -- TODO --
-    - speed test        -> calculates the latency from our location to regions (not a service but a separate page found in google)
-        - document it on AWS page that we can measure that
-    
-    - not all services are available in all regions (global services are however)
-        - document it  on AWS
-    
-    
-    - availability zones are numbered (document to AWS)
-    
     
     
     
 ** services 
-  * Compute Services
-    - VM (Virtual Machine)
-        -  there's a marketplace to get images (but we can get custom images as well)
-    - VM scale sets
-        - group of VMs scalable behind a load blancer
-    - Container Registry
-        - container storage 
-    - Container Instances
-        - container hosting solution
-    - Kubernetes service
-        - Azure kubernetes solution
-    - App service
-        - Web Application Hosting
-        - supports multiple languages and containers
-        - Enterprise grade web app hosting service 
-    - Function App
-        - simple serverless function 
-        - designed for micro/nano services
     
   * Networking services (connection to cloud services, protect, monitor)
     - Vitrual Network
@@ -119,46 +223,6 @@
             - Standard <- provides monitoring and machine learning features for better protections
     
     
-  * Storages
-    - Storage Account (nest all below 4 types)
-        - Blob Storage
-            - for any unstructured data (files, etc..)
-            - blob storage has containers for grouping blobs
-            - has 3 tiers (quality VS price)
-                - Host      -> for frequently accessing data 
-                - Cool      -> for infequently accessing data 
-                - Archive   -> archive (low availability but low price)
-        - File Storage
-            - like Blob storage but supports SMB (Server Message Block) -> file accessible remotely
-            - has shares for grouping files
-        - Queue Storage
-            - qeue between services
-        - Table Storage
-            - for semi structured data soted in simple tables
-            - this is not a relational database approach just storing data in tables
-            - NoSQL database 
-            - this service is like Dynamo Db -> fast access
-    - Azure Disk Storage
-        - Attachable Disk Storage form VMs 
-        - Storage can be managed or unmanaged 
-            - Managed
-            - Unmanaged -> Each Disk is stored as file in the Blob storage
-    
-    
-  * Database Services
-      - Cosmos DB
-          - like table storage but this service has higth geographic availability -> therefore has lo latency 
-          - supports multiple apis (SQL, MongoDb, Table Storage, Cassandra, Gremlin)
-          - we can use SQL language to query data, but this service does not provide SQL features (joins, foreign keys, transactions)
-    
-      - Azure SQL family
-          - SQL Database (SQL Server with limited capabilities)
-          - Managed Instance (SQL Server with full capabilities)
-          - SQL Data Warehouse (SQL Server for large data)
-          - SQL VM (SQL Server Paas)
-    
-          - MySQL
-          - PostgreSQL
     
   * Azure Marketplace
       - services or group of services you can buy
@@ -185,19 +249,6 @@
       - Azure Machine Learning Studio
           - Web based interface that provides access to Machine Learning
   
-  * Serverless Computing
-      - Function App (listed in Computing Services) -> PaaS
-          - Can be triggered by different events (HTTP request, Timer, Storage events (when file up/down loaded))
-      - Azure Logic Apps
-          - A series of jobs performed based on workflow (sending email, log, etc...)
-          - we can specify all programming flow (linear, conditional, loop)
-          - Provides a graphical interface where we can build our workflow
-          - We design the flow -> Microsoft will handle the underlying services
-          - we don't provide any code here, the flow activites are fully provided by Azure
-      - Event Grid
-          - Routes Azure messages (pub-sub model for Azure events)
-          - Services can be subscribes to specific Azure events 
-          - in Azure all happening is an event (ex: service creation, VM go down) we can react (subscribe) to these event to triggere services
     
   * Azure DevOps services
       - Azure DevOps (provides development services)
@@ -214,64 +265,196 @@
           - support policies (quotas, size, auto-shutdown)
           - supports reusable templates
     
-  * Accessing Azure
-      - Azure Portal (Azure web platform)
-      - PowerShell module 
-      - CLI (az)
-      - Azure CloudShell (ready to go azure terminal acessible through multiple ways (browser, etc...))
-          - this is basically (az cli) or powershell
     
+  
+  * Security Services
+  
   * Azure advizor
       - give recommendation according to Azure best practices (Cost, Security, Reliability, Performance, Operational Excellence)
   * Azure Security Centery
       - continouously scans resources for security and advision stuff (Azure Advizor is buit on top to it)
       - its functionalities can be exetende by a connected Virtual Machine 
+
+
   
-  
-  * Azure Identity and Access management
-      - Microsoft Active Directory (Entra Id)
-          - manages Authorization adn Authentication not just for Azure but for all sorts of Microsoft Products (Skype, Outlook, Teams, etc...)
-          - we also can use it to provide Authorization and Authentication services for our service
-          - provides groups and all sorts of techniques to access restrictions
-    
-    
   * Azure Key Vault
       - centalized store secrets and certificates 
       - well integrated with other Azure services
       - SDKs can provide access to these secrets
       - monitored and logged services
     
+    ???????????????????????????????????????????????????????
+    ???????????????????????????????????????????????????????
+    ???????????????????????????????????????????????????????
+  
+  
+  
+  
+  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-----
+  
+  * Database Services
     
+      - Azure SQL family
+          - SQL Database (SQL Server with limited capabilities)
+          - SQL Managed Instance (SQL Server with full capabilities)
+          - SQL Data Warehouse (SQL Server for large data)
+          - SQL VM (SQL Server Paas)
+    
+          - MySQL
+          - PostgreSQL
+    
+
+  
+  
+  
+  
+  
+  * Storages
+    - Storage Account (nest all below 4 types)
+        - Blob Storage
+            - for any unstructured data (files, etc..)
+            - blob storage has containers for grouping blobs
+            - has 3 tiers (quality VS price)
+                - Host      -> for frequently accessing data 
+                - Cool      -> for infequently accessing data 
+                - Archive   -> archive (low availability but low price)
+        - File Storage
+            - like Blob storage but supports SMB (Server Message Block) -> file accessible remotely
+            - has shares for grouping files
+        - Queue Storage
+            - qeue between services
+            
+            
+            -> we have to check this + Azure Service Bus
+            
+        - Table Storage
+            - for semi structured data soted in simple tables
+            - this is not a relational database approach just storing data in tables
+            - NoSQL database 
+            - this service is like Dynamo Db -> fast access
+    - Azure Disk Storage
+        - Attachable Disk Storage form VMs 
+        - Storage can be managed or unmanaged 
+            - Managed
+            - Unmanaged -> Each Disk is stored as file in the Blob storage
+
+  
+  
+  * Serverless Computing
+      - Function App (listed in Computing Services) -> PaaS
+          - Can be triggered by different events (HTTP request, Timer, Storage events (when file up/down loaded))
+      - Azure Logic Apps
+          - A series of jobs performed based on workflow (sending email, log, etc...)
+          - we can specify all programming flow (linear, conditional, loop)
+          - Provides a graphical interface where we can build our workflow
+          - We design the flow -> Microsoft will handle the underlying services
+          - we don't provide any code here, the flow activites are fully provided by Azure
+      - Event Grid
+          - Routes Azure messages (pub-sub model for Azure events)
+          - Services can be subscribes to specific Azure events 
+          - in Azure all happening is an event (ex: service creation, VM go down) we can react (subscribe) to these event to triggere services
+
+  
+  
+  * Compute Services
+    - VM (Virtual Machine)
+        -  there's a marketplace to get images (but we can get custom images as well)
+    - VM scale sets
+        - group of VMs scalable behind a load blancer
+    - Container Registry
+        - container storage 
+    - Container Instances
+        - container hosting solution
+    - Kubernetes service
+        - Azure kubernetes solution
+    - App service
+        - Web Application Hosting
+        - supports multiple languages and containers
+        - Enterprise grade web app hosting service 
+    - Function App
+        - simple serverless function 
+        - designed for micro/nano services
+  
+  
+  
+  
+  
+  
+  
+  
+    - SLA (Service Level Agreement)
+        - Microsoft promises uptime and credits you if they cannot fulfil that
+        - formal agreement between Microsoft and customers
+        - for free services there's no SLA!
+        - composite SLA the SLA of all your services together
+        - keep in mind that using multple services will lower SLA because potentially all services must be available at a time
+          - SLA calculation is done by logical ways AND / OR
+        
+        
+        
+    - Azure Calculator 
+        - to calculate service pricing
+        - Ce can save mony with various tools (like reserved instance)
+        - spot VM -> MS lends you the capacity for good discounts (but can take it back) -> 'spot pricing' the concept name 
+        
+    - Cost Management
+        - with cost manatement you can track and control your spending
+        
+
+
+
+    - Resource Lock
+        - resources can be locked (blacklist or whitelist certain actions to perform on them)
+        - lock can be created on resource or resource group or subscription level (up to subscription hierarchy level)
+        - lock can be managed only by the Owner and User Access Administrator role
+
+
+    - Azure active directory
+        - controls all priviledges
+
+
+  * Azure Identity and Access management
+      - Microsoft Active Directory (Entra Id)
+          - manages Authorization adn Authentication not just for Azure but for all sorts of Microsoft Products (Skype, Outlook, Teams, etc...)
+          - we also can use it to provide Authorization and Authentication services for our service
+          - provides groups and all sorts of techniques to access restrictions
+
+    - tenant represents an identity (organization, or person)
+    - Entra Id (Active Directory) is one place where users, groups can be managed
+    - a tenant is a single Active Directory instance 
+    - a subscription can be associated witho only one Entra Id (AD) tenant (but one Entra ID instance can have multiple subscriptions)
+
+
     - Roles
         - Roles are a collection of actions to resources 
         - There are built in roles (Owner, Contributor, etc...), but custom roles can be created
         - a role must be assigned to a scope (below level will inherit super roles)
           - hierarchy is working (role affects anything below)
               - Management Group -> Subscription -> Resource Groups -> Resources
+        - RBAC (Role Based Access Control)
     - Security Principal (Identity, Azure Object) (Roles can be assigned to security pricipals)
         - Users
         - Groups
-        - Service Principal (Application Accounts)
-    
-    
-    - Resource Lock
-        - resources can be locked (blacklist or whitelist certain actions to perform on them)
-        - lock can be created on resource or resource group or subscription level (up to subscription hierarchy level)
-        - lock can be managed only by the Owner and User Access Administrator role
-        
-        
-    - tenant represents an identity (organization, or person)
-    - Entra Id (Active Directory) is one place where users, groups can be managed
-    - a tenant is a single Active Directory instance 
-    - a subscription can be associated witho only one Entra Id (AD) tenant (but one Entra ID instance can have multiple subscriptions)
-        
-        
-    - TAGS
-        - tag consist of key value pair attached to a sepcific resource, resource group or subscription
-        - can be assigned to a resource or a resource group (tags are NOT inherited by default)
-        - tags can be used for automation ect...
-        
-        
+        - Service Principal (the Application representation within AAD) ->
+          - Enterprise Application is basically a list of service principals
+          - Application Registration -> the registration of the app in ADD
+
+
+
     - Azure Policy
         - it's basically a limitation or (permission of certain characteristing (ex: location restriciton))
         - can be assigned to an Azure scope
@@ -284,47 +467,55 @@
         
     - Blueprints
         - a reusable collection of user roles, resources and policy assignements
-        
-        
-    - Azure Calculator 
-        - to calculate service pricing
-        - Ce can save mony with various tools (like reserved instance)
-        - spot VM -> MS lends you the capacity for good discounts (but can take it back) -> 'spot pricing' the concept name 
-        
-    - Cost Management
-        - with cost manatement you can track and control your spending
-        
-    - SLA (Service Level Agreement)
-        - Microsoft promises uptime and credits you if they cannot fulfil that
-        - formal agreement between Microsoft and customers
-        - for free services there's no SLA!
-        - composite SLA the SLA of all your services together
-        - keep in mind that using multple services will lower SLA because potentially all services must be available at a time
-          - SLA calculation is done by logical ways AND / OR
-        
-        
-    ???????????????????????????????????????????????????????
-    ???????????????????????????????????????????????????????
-    ???????????????????????????????????????????????????????
-    - explain that a scope is just a logical container hierarchy
-  
-  
-  
-    - General hierarch
-      - explaine azure scope structure
-      - account governance
-          - cost management 
-          - ect
-  
-  
-  
-  
-  -->
-  
-  
-  
-  
-  
+
+
+
+    - cloud core concepts are no covered here (they are documented in AWS)
+    
+
+
+    
+    - azure gives us much more ability to control where we are deploying our resources (however not all regions have ability zones like in AWS)
+    - each region has a region pair which is located at the same geographic area but at least 300 miles away (resiliency reasons)
+    
+    
+    
+    - a resource can be represented as json template
+    - resource group -> logical group of a collection of resources (the idea here is to separate strategy groups like DEV STAGING PROD) (but also to grant IAM priviledges to users)
+        - a service can and must belong to one resource group only
+        - a resource group can be on a different location than its resources (only the meta data is stored there)
+        - resource groups cannot be nested
+        - resources can be moved from group to group
+    - subscription    -> just a logical container for provisionling resources  
+
+
+    -- TODO --
+    - speed test        -> calculates the latency from our location to regions (not a service but a separate page found in google)
+        - document it on AWS page that we can measure that
+    
+    - not all services are available in all regions (global services are however)
+        - document it  on AWS
+    
+    
+    - availability zones are numbered (document to AWS)
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
   <br><br>
 </body>
 

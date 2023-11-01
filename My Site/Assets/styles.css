@@ -16,6 +16,26 @@ html{
     outline: 2px solid green;
     outline-offset: 1px;
 }
+mark{
+    background-color:white;
+}
+mark.mark {
+    background-color: lightslategray;
+}
+pre{
+    background-color:#f5f2e7;
+}
+.header {
+    text-decoration: underline;
+    color: darkblue;
+}
+.headerExtra {
+    text-decoration: underline;
+    background-color: orange;
+}
+h1, h2, h3, h4, h5, h6, p {
+    margin: .5em 0;
+}
 
 /*-------------------------------------- responsive control */ 
 @media screen and (max-width:10000px) {

@@ -51,13 +51,13 @@
       <td> (etcetera) system-wide configuration files, these configurations are valid for all users </td>
     </tr>
     <tr>
-      <td class="indent"> /etc/enviroment </td>
+      <td style="text-indent:20px;"> /etc/enviroment </td>
       <td>
         - file contains system-wide environment variables <br>
       </td>
     </tr>
     <tr>
-      <td class="indent"> /etc/group </td>
+      <td style="text-indent:20px;"> /etc/group </td>
       <td>
         - file contains all groups in the system <br>
         - each entry represents a group (<strong>groupName</strong> : <em class="openable">x<div>
@@ -66,14 +66,14 @@
       </td>
     </tr>
     <tr>
-      <td class="indent"> /etc/hosts </td>
+      <td style="text-indent:20px;"> /etc/hosts </td>
       <td>
         - hosts file (local domain to IP address mapping file) <br>
         - (column1 = ip address) (column2 = domain) (column3 = domain alias)
       </td>
     </tr>
     <tr>
-      <td class="indent"> /etc/passwd </td>
+      <td style="text-indent:20px;"> /etc/passwd </td>
       <td>
         - file contains all users in the system <br>
         - each entry represents a user (<strong>userName</strong> : <em class="openable">x<div>
@@ -83,7 +83,7 @@
       </td>
     </tr>
     <tr>
-      <td class="indent"> /etc/sudoers </td>
+      <td style="text-indent:20px;"> /etc/sudoers </td>
       <td>
         - file contains users with administrator priviledges (<mark>sudo</mark> must be installed)
       </td>
@@ -97,7 +97,7 @@
       </td>
     </tr>
     <tr>
-      <td class="indent"> /home/<strong>user</strong>/.bash_aliases </td>
+      <td style="text-indent:20px;"> /home/<strong>user</strong>/.bash_aliases </td>
       <td>
         - (file) we can add <u>permanent command aliases</u> <span class="openable">at the bottom of this file<div>
             <p><mark>alias <strong>aliasCmd</strong>=<strong>cmd</strong></mark> </p>
@@ -117,7 +117,7 @@
       </td>
     </tr>
     <tr>
-      <td class="indent"> /home/<strong>user</strong>/.profile </td>
+      <td style="text-indent:20px;"> /home/<strong>user</strong>/.profile </td>
       <td>
         - (file) we can add <u>permanent user environment varialbes</u> <span class="openable">at the bottom of this
           file<div>
@@ -188,15 +188,15 @@
       <td> (user) user applications (non-essential for system operations) </td>
     </tr>
     <tr>
-      <td class="indent"> /usr/bin </td>
+      <td style="text-indent:20px;"> /usr/bin </td>
       <td> user binaries (non required by the system) </td>
     </tr>
     <tr>
-      <td class="indent"> /usr/share </td>
+      <td style="text-indent:20px;"> /usr/share </td>
       <td> sharable architecture independend files (icons, fonts, docs, etc..) </td>
     </tr>
     <tr>
-      <td class="indent"> /usr/share/doc </td>
+      <td style="text-indent:20px;"> /usr/share/doc </td>
       <td> package documentations, configurations, utilities, etc... </td>
     </tr>
     <tr>
@@ -204,7 +204,7 @@
       <td> (varialbes) variable data files, log files, cache data, waiting tasks, etc... </td>
     </tr>
     <tr>
-      <td style="text-indent: 10px;"> /var/spool/cron/crontabs </td>
+      <td style="text-indent:20px;"> /var/spool/cron/crontabs </td>
       <td> directory contains user crontab files </td>
     </tr>
   </table>
@@ -343,7 +343,7 @@
   <p style="text-indent:25px;"> - the 'root' user is the superuser who have <u>access to everything</u> in the system
   </p>
   <p style="text-indent:25px;"> - any user can have 'administrator' access to the system (having the ability to perform root operations), there are 2 ways to do this: </p>
-  <p style="text-indent:50px;"> - the user is part belongs to the <mark>root</mark> group </p>
+  <p style="text-indent:50px;"> - the user is part of the <mark>root</mark> group </p>
   <p style="text-indent:50px;"> - the user is listed in the <mark>/etc/sudoers</mark> file </p>
   <p><u> System User </u></p>
   <p style="text-indent:25px;"> - system users are special kind of users who have access to more of the system

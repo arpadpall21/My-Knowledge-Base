@@ -55,14 +55,14 @@
   </details>
   <h2 style="color:green;"><u> Useful Links : </u></h2>
   <p><a href="https://docs.pytest.org/en/7.2.x/" target="_blank">docs.pytest.org</a></p>
-  <p><a href="https://docs.pytest.org/en/7.2.x/reference/fixtures.html" target="_blank">Pytest builtin Fixture
+  <p><a href="https://docs.pytest.org/en/7.2.x/reference/fixtures.html" target="_blank">Pytest built-in Fixture
       Reference </a></p>
 
   <h2 style="color:green;"><u> Remember This : </u></h2>
 
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
   <p> - Pytest is a testing framework (requires at least Python v3.7) providing the following testing features over the
-    builtin
+    built-in
     <mark>unittest</mark> module:
   </p>
   <p style='text-indent:30px'> - fully compatible with <mark>unittest</mark> (we can use unittest features with Pytest)
@@ -183,9 +183,9 @@
   <hr>
   <h2 class="header"> Fixtures <mark>@pytest.fixture</mark> </h2>
   <p> - pytes fixtures are functions that are recognized in test cases as arguments, we can write our own custom fixtures
-    but there are a lot of cool builtin fixtures (like: <mark class='mark'>monkeypatch</mark>, <mark
+    but there are a lot of cool built-in fixtures (like: <mark class='mark'>monkeypatch</mark>, <mark
       class='mark'>caplog</mark>, etc...) </p>
-  <p> - <a href="https://docs.pytest.org/en/7.2.x/reference/fixtures.html" target="_blank">Pytest builtin Fixture
+  <p> - <a href="https://docs.pytest.org/en/7.2.x/reference/fixtures.html" target="_blank">Pytest built-in Fixture
       Reference </a></p>
   <pre class='syntax'>
     import pytest
@@ -253,7 +253,7 @@
     def test_x(fix_result):
         assert fix_result == 3
   </pre>
-    <p> - <mark class='mark'>monkeypatch</mark> builtin fixture </p>
+    <p> - <mark class='mark'>monkeypatch</mark> built-in fixture </p>
     <pre>
 // test_demo.py ----------------------------------------------------------------
     import pytest
@@ -294,7 +294,7 @@
         def concat_names(cls, name, surname):
             return f'{surname} {name}'
   </pre>
-    <p> - <mark class='mark'>caplog</mark> builtin fixture </p>
+    <p> - <mark class='mark'>caplog</mark> built-in fixture </p>
     <pre>
     import pytest
     import logging
