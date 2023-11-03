@@ -30,27 +30,27 @@
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
   <h2 class="header"> Azure Global Infrastructure </h2>
   <p> - <mark class="mark">Region</mark> -> Geographic location where one or multiple data centers reside </p>
-  <p style="text-indent:30px;"> - a region might have only one data center (Azure doesn't work like AWS), at service
+  <p class="indent_lv2"> - a region might have only one data center (Azure doesn't work like AWS), at service
     deployment we can control where (or which availability zones) to deploy our servcies </p>
-  <p style="text-indent:30px;"> - each region have a region pair for resiliency reasons, the pair region is located a
+  <p class="indent_lv2"> - each region have a region pair for resiliency reasons, the pair region is located a
     the same geographic area at least 300 miles away </p>
   <p> - <mark class="mark">Availability Zone</mark> -> an individual data center group within a region </p>
-  <p style="text-indent:30px;"> - availability zones are for resiliency resons (redundant service availability),
+  <p class="indent_lv2"> - availability zones are for resiliency resons (redundant service availability),
     therefore availability zones exist at least in a group of 3 (numbered 1, 2, 3, ...) </p>
-  <p style="text-indent:30px;"> - availability zones have low latency connections between them </p>
+  <p class="indent_lv2"> - availability zones have low latency connections between them </p>
   <hr>
   <!--------------------------------------------------------------------------------------------->
   <h2 class="headerExtra"> Governing Azure Services </h2>
   <h2 class="header"> Azure Hierarchy, Scope and Tags </h2>
   <p> - <mark class="mark">Azure Hierarchy</mark> -> Logical hierachy for resource management </p>
-  <p style="text-indent:30px;"> - the Azure Hierachy is composed of 4 levels (<mark class="mark">Management Group</mark>
+  <p class="indent_lv2"> - the Azure Hierachy is composed of 4 levels (<mark class="mark">Management Group</mark>
     -> <mark class="mark">Subscription</mark> -> <mark class="mark">Resource Group</mark> -> <mark
       class="mark">Resource</mark>) </p>
-  <p style="text-indent:30px;"> - <mark class="mark">Management Group</mark>, <mark class="mark">Subscription</mark> and
+  <p class="indent_lv2"> - <mark class="mark">Management Group</mark>, <mark class="mark">Subscription</mark> and
     <mark class="mark">Resource Group</mark> are esentially logical containers providing hierarchical resource
     management
   </p>
-  <p style="text-indent:30px;"> - <mark class="mark">Resource</mark> -> is the service itself </p>
+  <p class="indent_lv2"> - <mark class="mark">Resource</mark> -> is the service itself </p>
   <p style="text-indent: 60px"> - is represented as a json template </p>
   <p style="text-indent: 60px"> - must be part of one (but only one) resource group </p>
   <p style="text-indent: 60px"> - resource groups can contain resources in different regions </p>
@@ -59,12 +59,12 @@
     (can be used ofr additional resource management, automation, etc...)</p>
   <p> - <mark class="mark">Scope</mark> -> a hierarchy level with all its sub levels (ex: subsription scope means all
     its resource groups and all those resource groups' resources) </p>
-  <p style="text-indent:30px;"> - all resources within a scope are affected by the scope's roles and policies </p>
+  <p class="indent_lv2"> - all resources within a scope are affected by the scope's roles and policies </p>
 
   <p> - <mark class="mark">Tag</mark> -> additional information (key value pair) </p>
-  <p style="text-indent:30px;"> - can be assigned to a resource, resource group or a subscription </p>
-  <p style="text-indent:30px;"> - used for enhanced service management, automation, etc... </p>
-  <p style="text-indent:30px;"> - tags are not inherited in the hierarchy </p>
+  <p class="indent_lv2"> - can be assigned to a resource, resource group or a subscription </p>
+  <p class="indent_lv2"> - used for enhanced service management, automation, etc... </p>
+  <p class="indent_lv2"> - tags are not inherited in the hierarchy </p>
   <img height="250" src='./Azure Hyerarchi.jpg' alt="Azure Hiearchy" />
   <hr>
   <!--------------------------------------------------------------------------------------------->
@@ -79,16 +79,16 @@
   <h2 class="header"> Access Control </h2>
   <p> - <mark class="mark">Active Directory (Entra ID)</mark> -> Microsoft's identity provider for all sorts of
     Microsoft products (Azure, Outlook, Skype, Teams, etc...) </p>
-  <p style="text-indent:30px;"> - a <mark class="mark">tenant</mark> is an Active Directory instance in Azure (identity
+  <p class="indent_lv2"> - a <mark class="mark">tenant</mark> is an Active Directory instance in Azure (identity
     that identifies an organization or a person) </p>
-  <p style="text-indent:30px;"> - a tenant contain uses, groups, app and control their access </p>
-  <p style="text-indent:30px;"> - we also can use it for web app (and probably other service) identification as well
+  <p class="indent_lv2"> - a tenant contain uses, groups, app and control their access </p>
+  <p class="indent_lv2"> - we also can use it for web app (and probably other service) identification as well
   </p>
   <p> - <mark class="mark">Role</mark> -> defines what acctions the assigned identity can do (built-in or custom)</p>
-  <p style="text-indent:30px;"> - in Azure managing access to resources is done by RBAC (Role Based Access Control) </p>
-  <p style="text-indent:30px;"> - a role must be assigned to a security principal and a scope (defines who and where)
+  <p class="indent_lv2"> - in Azure managing access to resources is done by RBAC (Role Based Access Control) </p>
+  <p class="indent_lv2"> - a role must be assigned to a security principal and a scope (defines who and where)
   </p>
-  <p style="text-indent:30px;"> - a Security Principal is basically an identity in Azure what can be: </p>
+  <p class="indent_lv2"> - a Security Principal is basically an identity in Azure what can be: </p>
   <p style="text-indent: 60px"> - User </p>
   <p style="text-indent: 60px"> - Group </p>
   <p style="text-indent: 60px"> - Service Principal -> a registered application (app object representation in Active
@@ -97,19 +97,19 @@
   <p style="text-indent: 90px"> - Enterprise Applicaton -> basically a list of service principals </p>
   <p> - <mark class="mark">Policy</mark> -> is some resource limitation (ex: location restriction) (built-in or custom)
   </p>
-  <p style="text-indent:30px;"> - Can be assigned to a scope </p>
-  <p style="text-indent:30px;"> - Applying a policy to a scope will affect current and future resources only (but we can
+  <p class="indent_lv2"> - Can be assigned to a scope </p>
+  <p class="indent_lv2"> - Applying a policy to a scope will affect current and future resources only (but we can
     remeditate to apply newly assigned policies to already existing resources) </p>
-  <p style="text-indent:30px;"> - We can define what action to take when the policy is violated (block, warn, etc...)
+  <p class="indent_lv2"> - We can define what action to take when the policy is violated (block, warn, etc...)
   </p>
   <p> - <mark class="mark">Initiative</mark> -> a collection of policies </p>
   <p> - <mark class="mark">Blueprint</mark> -> describes an Azure environment (used to replicate the same environment)
   </p>
-  <p style="text-indent:30px;"> - describes role assignements, resources and policy assignements </p>
+  <p class="indent_lv2"> - describes role assignements, resources and policy assignements </p>
   <p> - <mark class="mark">Resource Lock</mark> -> prevent actions on the specified scope </p>
-  <p style="text-indent:30px;"> - can be assigned to subscription, resource group or resource scope </p>
-  <p style="text-indent:30px;"> - at the time of writing this there are types of locks, CanNotDelete and ReadOnly </p>
-  <p style="text-indent:30px;"> - locks can be managed by administrators only </p>
+  <p class="indent_lv2"> - can be assigned to subscription, resource group or resource scope </p>
+  <p class="indent_lv2"> - at the time of writing this there are types of locks, CanNotDelete and ReadOnly </p>
+  <p class="indent_lv2"> - locks can be managed by administrators only </p>
   <hr>
   <!--------------------------------------------------------------------------------------------->
   <h2 class="header"> Cost Management </h2>
@@ -128,102 +128,95 @@
   <hr>
   <!--------------------------------------------------------------------------------------------->
   <h2 class="headerExtra"> Resources </h2>
+  <h3 class="header"> Azure DevOps </h3>
+  <p class="indent_lv1"> Azure development tools </p> 
+  <p class="indent_lv2"> - <mark class="mark">Boards</mark> -> Jira style ticketing system </p>
+  <p class="indent_lv2"> - <mark class="mark">Repos</mark> -> Code repositories </p>
+  <p class="indent_lv2"> - <mark class="mark">Pipelines</mark> -> CI/CD pipelines </p>
+  <p class="indent_lv2"> - <mark class="mark">Artifacts</mark> -> hosts & shares software packages </p>
+  <p class="indent_lv2"> - <mark class="mark">Test Plans</mark> -> provides manual testing environments and tools (we can use all sorts of VMs for manual testing) </p>
   <h3 class="header"> Compute Resources </h3>
-  <p> - <mark class="mark">VM (Virtual Machine)</mark> -> machine in the cloud </p>
-  <p style="text-indent:30px;"> - we can get different performance (there are built-in images but we can customize the performance) </p>
-  <p> - <mark class="mark">VM Scale Set</mark> -> a group of VMs scalable behind a load balancer </p>
-  <p> - Container Resources: </p>
-  <p style="text-indent:30px;"> - <mark class="mark">Container Registry</mark> -> container storage </p>
-  <p style="text-indent:30px;"> - <mark class="mark">Container Instance</mark> -> container hosting solution </p>
-  <p style="text-indent:30px;"> - <mark class="mark">Kubernetes Services</mark> -> kubernetes solution </p>
-  <p> - <mark class="mark">App Service</mark> -> enterprise grade web application hosting solution </p>
-  <p style="text-indent:30px;"> - supports multiple programming languages but also docker container </p>
-  <p> - <mark class="mark">Function App</mark> -> serverless computing </p>
-  <p style="text-indent:30px;"> - can be triggered by different events (HTTP request, Timer, Storage events (when file up/down loaded)) </p>
-  <p> - <mark class="mark">Logic Apps</mark> -> a serices of jobs executed in a workflow </p>
-  <p style="text-indent:30px;"> - Azure Logcal applications are pre-built apps to perform different tasks (email sending, log, etc...) </p>
-  <p style="text-indent:30px;"> - we can make a workflow (with programming features linear, conditional, loop) by using these apps </p>
-  <p style="text-indent:30px;"> - we can piece these apps together in a graphical interface </p>
-  <p> - <mark class="mark">Event Grid</mark> -> message broker where resources can be subscribed to different Azure events </p>
-  <p style="text-indent:30px;"> - in Azure anything hapens that's an event (ex: service creation), resources can subscibe to these events in the Event Grid and perform certain actions when the event is triggered </p>
+  <p class="indent_lv1"> <mark class="mark">VM (Virtual Machine)</mark> -> machine in the cloud </p>
+  <p class="indent_lv2"> - we can get different performance (there are built-in images but we can customize the performance) </p>
+  <p class="indent_lv1"> <mark class="mark">VM Scale Set</mark> -> a group of VMs scalable behind a load balancer </p>
+  <p class="indent_lv1"> Container Resources: </p>
+  <p class="indent_lv2"> - <mark class="mark">Container Registry</mark> -> container storage </p>
+  <p class="indent_lv2"> - <mark class="mark">Container Instance</mark> -> container hosting solution </p>
+  <p class="indent_lv2"> - <mark class="mark">Kubernetes Services</mark> -> kubernetes solution </p>
+  <p class="indent_lv1"> <mark class="mark">App Service</mark> -> enterprise grade web application hosting solution </p>
+  <p class="indent_lv2"> - supports multiple programming languages but also docker container </p>
+  <p class="indent_lv1"> <mark class="mark">Function App</mark> -> serverless computing </p>
+  <p class="indent_lv2"> - can be triggered by different events (HTTP request, Timer, Storage events (when file up/down loaded)) </p>
+  <p class="indent_lv1"> <mark class="mark">Logic Apps</mark> -> a serices of jobs executed in a workflow </p>
+  <p class="indent_lv2"> - Azure Logcal applications are pre-built apps to perform different tasks (email sending, log, etc...) </p>
+  <p class="indent_lv2"> - we can make a workflow (with programming features linear, conditional, loop) by using these apps </p>
+  <p class="indent_lv2"> - we can piece these apps together in a graphical interface </p>
+  <p class="indent_lv1"> <mark class="mark">Event Grid</mark> -> message broker where resources can be subscribed to different Azure events </p>
+  <p class="indent_lv2"> - in Azure anything hapens that's an event (ex: service creation), resources can subscibe to these events in the Event Grid and perform certain actions when the event is triggered </p>
   <h3 class="header"> Storage </h3>
-  <p> - <mark class="mark">Storage Account</mark> account for the below 4 storage types </p>
-  <p style="text-indent:30px;"> - <mark class="mark">Blob Storage</mark> -> file storage </p>
+  <p class="indent_lv1"> <mark class="mark">Storage Account</mark> account for the below 4 storage types </p>
+  <p class="indent_lv2"> - <mark class="mark">Blob Storage</mark> -> file storage </p>
   <p style="text-indent:60px;"> - files are stored in Containers </p>
   <p style="text-indent:60px;"> - there are 3 availability tiers (speed VS price) </p>
   <p style="text-indent:90px;"> - Host -> for frequently data access </p>
   <p style="text-indent:90px;"> - Cool -> for infequently data access </p>
   <p style="text-indent:90px;"> - Archive -> low availability but low price </p>
-  <p style="text-indent:30px;"> - <mark class="mark">File Storage</mark> -> stores files like the Blob Storage but supprots SMB (Server Message Block) protocol (files are accessible remotely) </p>
+  <p class="indent_lv2"> - <mark class="mark">File Storage</mark> -> stores files like the Blob Storage but supprots SMB (Server Message Block) protocol (files are accessible remotely) </p>
   <p style="text-indent:60px;"> - files are stored in Shares </p>
-  <p style="text-indent:30px;"> - <mark class="mark">Queue Storage</mark> -> queue accessible anywhere in the world via authenticated calls using HTTP(S) </p>
+  <p class="indent_lv2"> - <mark class="mark">Queue Storage</mark> -> queue accessible anywhere in the world via authenticated calls using HTTP(S) </p>
   <p style="text-indent:60px;"> - a single message size can be up to 64 KB, the queue size is the capacity of the storage account</p>
-  <p style="text-indent:30px;"> - <mark class="mark">Table Storage</mark> -> NoSQL semi structured data storage </p>
+  <p class="indent_lv2"> - <mark class="mark">Table Storage</mark> -> NoSQL semi structured data storage </p>
   <p style="text-indent:60px;"> - designed for fast data access and high volumes of data </p>
   <p style="text-indent:60px;"> - the storage account contains tables </p>
   <p style="text-indent:90px;"> - tables contain rows (entities) size limit 1MB </p>
   <p style="text-indent:120px;"> - rows contain properties (up to 255) </p>
   <p style="text-indent:150px;"> - default row properties are <mark class="mark">PartitionKey</mark>, <mark class="mark">RowKey</mark> and <mark class="mark">Timestamp</mark> (the PartitionKey and RowKey are indexed for fast data access) </p>
-  <p> - <mark class="mark">CosmosDB</mark> works like table storage but offers far better global availability and speed (also mor pricy) </p>
-  <p style="text-indent:30px;"> - accessible by various query languages (SQL, MongoDB, Table Storage, Cassandra, Germlin) </p>
-  <p> - <mark class="mark">Disk Storage</mark> various (HDD, SSD) attachable storage form VMs </p>
-  <p style="text-indent:30px;"> - <mark class="mark">Managed disk</mark> -> the underlying storage is automatically managed, it also has better availability and security than unmanaged disk </p>
-  <p style="text-indent:30px;"> - <mark class="mark">Unmanaged disk</mark> -> we have to managed the underlying storage, more flexible than unmanaged disk </p>
-  <p> - SQL Databases: </p>
-  <p style="text-indent:30px;"> - <mark class="mark">MySQL</mark> </p>
-  <p style="text-indent:30px;"> - <mark class="mark">PostgreSQL</mark> </p>
-  <p style="text-indent:30px;"> - SQL Server services: </p>
+  <p class="indent_lv1"> <mark class="mark">CosmosDB</mark> works like table storage but offers far better global availability and speed (also mor pricy) </p>
+  <p class="indent_lv2"> - accessible by various query languages (SQL, MongoDB, Table Storage, Cassandra, Germlin) </p>
+  <p class="indent_lv1"> <mark class="mark">Disk Storage</mark> various (HDD, SSD) attachable storage form VMs </p>
+  <p class="indent_lv2"> - <mark class="mark">Managed disk</mark> -> the underlying storage is automatically managed, it also has better availability and security than unmanaged disk </p>
+  <p class="indent_lv2"> - <mark class="mark">Unmanaged disk</mark> -> we have to managed the underlying storage, more flexible than unmanaged disk </p>
+  <p class="indent_lv1"> SQL Databases: </p>
+  <p class="indent_lv2"> - <mark class="mark">MySQL</mark> </p>
+  <p class="indent_lv2"> - <mark class="mark">PostgreSQL</mark> </p>
+  <p class="indent_lv2"> - SQL Server services: </p>
   <p style="text-indent:60px;"> - <mark class="mark">SQL Database</mark> -> limited database management </p>
   <p style="text-indent:60px;"> - <mark class="mark">SQL Managed Instance</mark> -> we have full SQL Database access from the OS perspective </p>
+  <h3 class="header"> Big Data Analytics tools (Ingest -> Transform -> Store -> Serve) </h3>
+  <p class="indent_lv1"> <mark class="mark">Azure Synapse Analytics</mark> </p>
+  <p class="indent_lv1"> <mark class="mark">Azure HD Inside</mark> </p>
+  <p class="indent_lv1"> <mark class="mark">Azure Databricks</mark> </p>
   <h3 class="header"> Network </h3>
-  <p style="text-indent:30px;"> - <mark class="mark">Virtual Network</mark> -> logical network for resource isolation </p>
-  <p style="text-indent:60px;"> - can contain subnetworks </p>
-  <p style="text-indent:60px;"> - must reside in a single region </p>
-  <p style="text-indent:30px;"> - <mark class="mark">Network Security Group</mark> -> controls inbound and outbound trafic on a Virtual Network </p>
-  <p style="text-indent:30px;"> - <mark class="mark">Application Security Group</mark> -> controls inbound and outbound trafic on a Virtual Network </p>
+  <p class="indent_lv1"> <mark class="mark">Virtual Network</mark> -> logical network for resource isolation </p>
+  <p class="indent_lv2"> - can contain subnetworks </p>
+  <p class="indent_lv2"> - must reside in a single region </p>
+  <p class="indent_lv2"> - under the same subscription any VM can be used in a virutal network (even VMs in different resource groups) </p>
+  <p class="indent_lv1"> <mark class="mark">Network Security Group (NSG)</mark> -> controls the subnet traffic within the Virtual Network </p>
+  <p class="indent_lv1"> <mark class="mark">Application Security Group (ASG)</mark> -> controls the traffic of a group of servers </p>
+  <p class="indent_lv2"> - we can create a group of servers within a subnet, ASG controls the netwrok traffic of this group </p>
+  <p class="indent_lv1"> <mark class="mark">Virtual Network Gateway (VPN Gateway)</mark> -> allows and controls the communication between the virtual network and on-remises </p>
+  <p class="indent_lv2"> - communication between virtual network -> public internet | private network | other Azure virtual network (even in different region) </p>
+  <p class="indent_lv1"> <mark class="mark">Azure Load Balancer</mark> -> load balances the traffic to multiple VMs or VM Scale Set </p>
+  <p class="indent_lv2"> - public load balancer -> load balances public internet traffic to VMs </p>
+  <p class="indent_lv2"> - private load balancer -> load balances traffic within a virtual network </p>
+  <p class="indent_lv1"> <mark class="mark">Application Gateway</mark> -> load balances web (HTTP) traffic </p>
+  <p class="indent_lv2"> - fine grained load balancing for web applications </p>
+  <p class="indent_lv1"> <mark class="mark">Route Table</mark> -> subnet traffic routing </p>
+  <p class="indent_lv2"> - each subnet has one, it's created with default settings when a subnet is created, but we can overide default settings </p>
+  <p class="indent_lv1"> <mark class="mark">Firewall</mark> -> Azure firewall on virtual network (monitors and controls traffic) </p>
+  <p class="indent_lv1"> <mark class="mark">DDoS protection plans</mark> -> Distributed Denial of Service protection of a virtual network </p>
+  <p class="indent_lv2"> - can protect autoscaling group to generate hight costs, etc.. </p>
+  <p class="indent_lv2"> - 2 tiers: </p>
+  <p style="text-indent:60px;"> - <mark class="mark">Basic</mark> </p>
+  <p style="text-indent:60px;"> - <mark class="mark">Standard</mark> -> provides monitoring and machine learning for better protection </p>
+  <p class="indent_lv1"> <mark class="mark">Azure Front Door (CDN)</mark> -> Azure's CDN service </p>
   
-
-
-
-
+  
+  
   <!--
     
     
-    
 ** services 
-    
-  * Networking services (connection to cloud services, protect, monitor)
-    - Vitrual Network
-        - Logical network in Azure for a group of resources
-        - can contain subnetworks (subnetworks cannot contain other subnetworks)
-        - must reside in a signle region
-    - Network Security Group
-        - filter outbound and inboud trafict on virtual networks
-    - Application Security Group
-        - Groups VMs (applications) in order to easier to manage Network Security Groups
-    - Virtual Network Gateways (VPN Gateway)
-        - Gateway service between Azure virtual networks or a Hybrid connection
-    - Azure load balancer 
-        - balances the load between Azure resources
-        - we can use this tool to balance the traffic between avalability zones
-        - supports internal and external traffic
-    - App Gateway 
-        - load balancer for web (http) trafict 
-    - Content Delivery Network
-        - Azure CDN 
-    - Route Table
-        - routes subnet outbound traffict 
-    - Firewall
-        - monitor and control in and outbound traffict
-    - Azure DDoS Protections
-        - protects virtual networks from DDoS (Distributed Denial of Service) attacks
-        - this is a great way to prevent savings on autoscaling solutions (multiple request would scale you auto scaling solutions)
-        - has 2 tiers:
-            - Basic
-            - Standard <- provides monitoring and machine learning features for better protections
-    
-    
-    
   * Azure Marketplace
       - services or group of services you can buy
       - services created by Microsoft or 3rd party vendors
@@ -239,33 +232,15 @@
       - IoT Central (Application delivery platform for IoT, SaaS -> applications)
           - Built on top of IoT Hub + other Azure services
     
-  * Big Data Analytics tools (Ingest -> Transform -> Store -> Server)
-      - Azure Synapse Analytics
-      - Azure HD Inside
-      - Azure Databricks
     
   * AI Servcies
       - Azure Machine Learning Service
       - Azure Machine Learning Studio
           - Web based interface that provides access to Machine Learning
   
-    
-  * Azure DevOps services
-      - Azure DevOps (provides development services)
-          - Board
-          - Repos
-          - Pipelines (CI/CD)
-          - Artifacts (host & share packages)
-          - Test Plans (for manual testing)
-          - the Marketplace can provide tools here as well (for custom Azure DevOps features)
-      - Azure DevTest Labs
-          - Test place where developers can spin up VMs for testing purposes
-          - we can start and stop these VMs for cost saving purposes
-          - also provides additional features to be installed with your VM (this is cool)
-          - support policies (quotas, size, auto-shutdown)
-          - supports reusable templates
-    
-    
+  
+  
+  
   
   * Security Services
   
@@ -274,9 +249,6 @@
   * Azure Security Centery
       - continouously scans resources for security and advision stuff (Azure Advizor is buit on top to it)
       - its functionalities can be exetende by a connected Virtual Machine 
-
-
-  
   * Azure Key Vault
       - centalized store secrets and certificates 
       - well integrated with other Azure services
@@ -305,6 +277,60 @@
 
 
   <!-----
+    * Big Data Analytics tools (Ingest -> Transform -> Store -> Server)
+      - Azure Synapse Analytics
+      - Azure HD Inside
+      - Azure Databricks
+
+
+
+  * Azure DevOps services
+      - Azure DevOps (provides development services)
+          - Board
+          - Repos
+          - Pipelines (CI/CD)
+          - Artifacts (host & share packages)
+          - Test Plans (for manual testing)
+          - the Marketplace can provide tools here as well (for custom Azure DevOps features)
+      - Azure DevTest Labs
+          - Test place where developers can spin up VMs for testing purposes
+          - we can start and stop these VMs for cost saving purposes
+          - also provides additional features to be installed with your VM (this is cool)
+          - support policies (quotas, size, auto-shutdown)
+          - supports reusable templates
+  
+  
+  * Networking services (connection to cloud services, protect, monitor)
+    - Vitrual Network
+        - Logical network in Azure for a group of resources
+        - can contain subnetworks (subnetworks cannot contain other subnetworks)
+        - must reside in a signle region
+    - Network Security Group
+        - filter outbound and inboud trafict on virtual networks
+    - Application Security Group
+        - Groups VMs (applications) in order to easier to manage Network Security Groups
+    - Virtual Network Gateways (VPN Gateway)
+        - Gateway service between Azure virtual networks or a Hybrid connection
+    - Azure load balancer 
+        - balances the load between Azure resources
+        - we can use this tool to balance the traffic between avalability zones
+        - supports internal and external traffic
+    - App Gateway 
+        - load balancer for web (http) traffict 
+    - Content Delivery Network
+        - Azure CDN 
+    - Route Table
+        - routes subnet outbound traffict 
+    - Firewall
+        - monitor and control in and outbound traffict
+    - Azure DDoS Protections
+        - protects virtual networks from DDoS (Distributed Denial of Service) attacks
+        - this is a great way to prevent savings on autoscaling solutions (multiple request would scale you auto scaling solutions)
+        - has 2 tiers:
+            - Basic
+            - Standard <- provides monitoring and machine learning features for better protections
+  
+  
   
   * Database Services
     

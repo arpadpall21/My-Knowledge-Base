@@ -4,8 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title> Git </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../Assets/stylesPages.css">
   <script src="../Assets/scriptPages.js"></script>
@@ -17,50 +16,47 @@
   <p class="sitenav"> <a href="../index.html">MySite></a> Git </p>
   <table class="table">
     <caption>
-      Git CLI
+      Git client CLI
       <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
     </caption>
     <tr>
       <th style="width:30%;"> Command </th>
       <th> Description </th>
     </tr>
-    <tr class="00.01">
-      <td colspan="2"> install Git </td>
-    </tr>
-    <tr class="00.02">
-      <td> <em>apt install</em> git </td>
-      <td> - installs Git on the system </td>
-    </tr>
     <tr class="01.01">
       <td colspan="2"> Initializing Git Repositories </td>
     </tr>
     <tr class="02.01">
-      <td> git config <small>[--global]</small> user.name <i>userName</i> </td>
-      <td> - gets or sets (configures) the user's name for the local Git repository (or globally) (required when
-        connecting to the remote repo) </td>
-    </tr>
-    <tr class="02.02">
-      <td></td>
-      <td></td>
+      <td>
+        git config <small>[options]</small> user.name <i>userName</i>
+      </td>
+      <td>
+        - gets or sets the user name for the local Git repo <br>
+        <small>[options]</small> <br>
+        - (<small>--global</small>) for global user (used when no local user is set)
+      </td>
     </tr>
     <tr class="02.03">
-      <td> git config <small>[--global]</small> user.email <i>userEmail</i> </td>
+      <td> git config <small>[options]</small> user.email <i>userEmail</i> </td>
       <td>
-        - gets or sets (configures) the user's email for the local Git repository (or globally) (required when
-        connecting to the remote repo) <br>
-        - global Git configurations are used if there's no local configurations set
+        - gets or sets the user email for the local Git repo <br>
+        <small>[options]</small> <br>
+        - (<small>--global</small>) for global user (used when no local user is set)
       </td>
     </tr>
     <tr class="01.02">
-      <td> git init <i>dirPath</i> </td>
-      <td> - initializes the current or the specified directory as a Git Repository (places a <mark>.git</mark>
-        directory inside) </td>
-    </tr>
-    <tr class="04.01">
-      <td> 
-        git log <small>[options]</small>
+      <td>
+        git init <i>dirPath</i>
       </td>
       <td> 
+        - initializes a git repo (creates a <mark>.git</mark> dir)
+      </td>
+    </tr>
+    <tr class="04.01">
+      <td>
+        git log <small>[options]</small>
+      </td>
+      <td>
         - list the version history (commits) of the current branch <br>
         <small>[options]</small> <br>
         - (<small>--oneline</small>) one line per commit <br>
@@ -81,8 +77,7 @@
         git st
       </td>
       <td>
-        - checks the status for the Modified Area (files modified after the last commit) and the Stagin Area
-        <br>
+        - checks the status for the Modified Area (files modified after the last commit) and the Stagin Area <br>
         - also returns the current branch we are on, if the HEAD is detached etc...
       </td>
     </tr>
@@ -90,19 +85,12 @@
       <td colspan="2"> Staging Area and Commit Management </td>
     </tr>
     <tr class="20.02">
-      <td> git add <small>[-p] [--]</small> <strong>path</strong> </td>
+      <td> git add <small>[options]</small> <strong>path</strong> </td>
       <td>
-        - add files from the Modified area <u>(or untracked files)</u> to the Staging area (cannot add deleted
-        file
-        status, use the <mark>rm</mark> command for that) <u>([TESTED: 2020-05-06] adds deleted files to the
-          stagin area
-          too!)</u> <br>
-        - (<small>--</small>) avoid conflicts when files contain <mark>-</mark> (<mark>git add -- *</mark> =
-        will add
-        all files to the staging area without problem) <br>
-        - (<small>-p</small>) display file content differences between the last commit and the Modified Area
-        (uses the
-        <mark>diff</mark> command) <u>(does not add untracked files to the Stagin Area)</u>
+        - add files from the Modified area <u>(or untracked files)</u> to the Staging area (and updates the git history) <br>
+        <small>[options]</small> <br>
+        - (<small>--</small>) avoids conflicts when file names contain <mark>-</mark> (hiphens) (ex: <mark>git add -- *</mark> will add all files to the staging area without problem) <br>
+        - (<small>-p</small>) display file content differences between the last commit and the Modified Area (uses the <mark>diff</mark> command) <u>(does not add untracked files to the Stagin Area)</u>
       </td>
     </tr>
     <tr class="20.03">
@@ -124,12 +112,7 @@
     <tr class="24.01">
       <td> git checkout <small>master</small><strong>|branchName|tagName|commitId</strong> </td>
       <td>
-        - navigates to the specified branch or commit point (files at that commit point are on the file system
-        now, on
-        the Git Tree <u>the <mark>HEAD</mark> indicates where you are</u>) <br>
-        - if you are not on the top of the branch file modifications cannot be commited, only stashed or put in
-        a new
-        branch
+        - navigates to the specified branch or commit point (files at that commit point are on the file system now, on the Git Tree <u>the <mark>HEAD</mark> indicates where you are</u>) <br>
       </td>
     </tr>
     <tr class="24.02">
@@ -143,33 +126,20 @@
       </td>
     </tr>
     <tr class="22.01">
-      <td> git commit <small>[-a] [-m <strong>message</strong>]</small> </td>
-      <td>
-        - (no option) adds a new commit to the Git Tree from the files in the Stagin Area (opens the default
-        text editor
-        to input the commit message) <br>
-        - (<small>-a</small>) also commits files from the Modified Area <u>(Untracked files are not
-          commited)</u> <br>
-        - (<small>-m <strong>message</strong>)</small> adds a commit message directly (without opening the text
-        editor)
-      </td>
-    </tr>
-    <tr class="22.02">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="22.03">
-      <td> git commit --amend <small>[-m <strong>message</strong>]</small> <small>[--no-edit]</small>
+      <td> 
+        git commit <small>[options]</small>
       </td>
       <td>
-        - does not creates a new commit, instead modifies the last commit with the changes from the staging area
-        <br>
-        - (<small>-m <strong>message</strong></small>) modifies the most recent commit's message <br>
-        - (<small>--no-edit</small>) does not modify the most recent commit's message
+        - creates a new commit on the top of the current branch (changes in the Stagin Area are commited)  (opens the default text editor to input the commit message) <br>
+        <small>[options]</small> <br>
+        - (<small>-a</small>) also commits files from the Modified Area <u>(Untracked files are not commited)</u> <br>
+        - (<small>-m <strong>message</strong>)</small> commit message (in this case the default text editor is not opened) <br>
+        - (<small>--amend</small>) modifies the current commit (instead of creating a new) <br>
+        - (<small>--on-edit</small>) does not modify the most recent commit's message
       </td>
     </tr>
     <tr class="21.02">
-      <td> 
+      <td>
         git mv <strong>srcPath</strong> <strong>trgPath</strong>
       </td>
       <td>
@@ -180,20 +150,15 @@
     <tr class="26.00">
       <td> git reflog </td>
       <td>
-        - prints the git history log, we can use the <mark>git restet <strong>commitId</strong></mark> to move
-        back on
-        the git history
+        - prints the git history log
       </td>
     </tr>
     <tr class="26.1">
-      <td> git reset <small>[--hard]</small> <strong>tagName|commitId</strong> </td>
+      <td> git reset <small>[options]</small> <strong>tagName|commitId</strong> </td>
       <td>
-        - (no option) removes all commits on the branch <u>aftert the specified
-          <strong>tagName|commitId</strong></u>
-        <u>(commits are removed and modifications placed back in the Modified Area)</u> <br>
-        - (<small>--hard</small>) completely destroys commits and any file modifications after the specified
-        commit <br>
-        - also can be used to undo changes from the <mark>git reflog</mark> list
+        - removes all commits on the branch <u>aftert the specified <strong>tagName|commitId</strong></u> <u>(commits are removed and modifications placed back in the Modified Area)</u> <br>
+        <small>[options] </small> <br>
+        - (<small>--hard</small>) also destroys file modifications after the specified commit
       </td>
     </tr>
     <tr class="26.2">
@@ -215,50 +180,51 @@
       <td>
         - empties the Staging Area by putting files back to their previoues place (or only the specified file)
         <br>
-        - (<small>--hard</small>) completely destroys files in the Staging Area
+        - (<small>--hard</small>) also destroys file modifications
       </td>
     </tr>
     <tr class="25">
       <td> git revert <strong>tagName|commitId</strong> </td>
       <td>
-        - reverts (disables) the specified commit by addin a new 'revert commit' (careful about conflicts) <br>
-        - we can reanable a reverted (disabled) commit by reveting the revert commit again
+        - reverts (undoes) the current (specified) commit by creating a new 'revert commit' (careful about conflicts)
       </td>
     </tr>
     <tr class="21.01">
       <td> git rm <small>[options]</small> <strong>path</strong> </td>
       <td>
-        - <u>removes the specified item from the file system</u> and puts the deleted status in the Staging Area <br>
-        - puts the deleted status of already deleted items to the Stagin Area <br>
+        - <u>delete <strong>path</strong> from the file system</u> and updates deleted status in the Staging Area <br>
         - <small>[options]</small> <br>
-        - (<small>-r</small>) recursive -> all files <strong>path</strong> <br>
+        - (<small>-r</small>) recursive delete (all files in dir) <br>
         - (<small>--cached</small>) untracks the specified item(s) and puts as deleted status in the Stagin Area (Git won't track this file any more)
       </td>
     </tr>
     <tr class="23.01">
-      <td> git tag <strong>tagName</strong> <i>commitId</i> </td>
-      <td> - adds a tag (tag name) to the most recent commit (or to the specified one) </td>
-    </tr>
-    <tr class="23.02">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="23.03">
-      <td> git tag -d <strong>tagName</strong> </td>
-      <td>
-        - deletes the specified tag (tag name)
-      </td>
-    </tr>
+      <td> git tag <small>[options]</small> <strong>tagName</strong> <i>commitId</i> </td>
+      <td> 
+        - adds a tag to the most recent commit (or the specified commit) <br>
+        <small>[options]</small>
+        - (<small>-d</small>) deletes the specified tag
+    </td>
     <tr class="30.01">
       <td colspan="2"> Stash </td>
+    </tr>
+    <tr class="30.03">
+      <td>
+        git stash <small>[options]</small>
+      </td>
+      <td>
+        - stashes all the current changes <br>
+        <small>[options]</small> <br>
+        - (<small>-m <strong>name</strong></small>) adds a name to the stash entry <br>
+        - (<small>push <strong>path</strong></small>) stashes only the specifed file/directory
+      </td>
     </tr>
     <tr class="33">
       <td>
         git stash apply <i>stashId</i>
       </td>
       <td>
-        - copies the most recent (or the specified) stash entry files back to the Modified Area (careful about
-        conflicts) <u>(stash entry not removed)</u>
+        - copies the most recent (or the specified) stashed changes back to the Modified Area
       </td>
     </tr>
     <tr class="34">
@@ -274,7 +240,7 @@
         git stash list
       </td>
       <td>
-        - returns the stash list
+        - prints the stash list
       </td>
     </tr>
     <tr class="32">
@@ -282,31 +248,7 @@
         git stash pop <i>stashId</i>
       </td>
       <td>
-        - moves the most recent (or the specified) stash entry files to the Modified Area (careful about
-        conflicts)
-      </td>
-    </tr>
-    <tr class="30.03">
-      <td>
-        git stash push <small>[-m <i>stashName</i>]</small> <strong>filePath</strong>
-      </td>
-      <td>
-        - moves only the specified file (<strong>filePath</strong>) in the stash <br>
-        (<small>-m</small> <i>stashName</i>) adds a stash name to this stash
-      </td>
-    </tr>
-    <tr class="30.02">
-      <td>
-        git stash save <small>[-u] [-p]</small> <i>message</i>
-      </td>
-      <td>
-        - (no option) moves all files from the Modified and the Staging areas to the Stash <u>(the Stash is NOT
-          pushed
-          to the remote repo)</u> <br>
-        - (<small>-u</small>) untracked files are moved to the Stash too <br>
-        - (<small>-p</small>) copy files instead of moving them and uses the <mark>diff</mark> command to
-        compare
-        differences between the last commit and the current status
+        - copies the most recent (or the specified) stashed changes back to the Modified Area <u>deletes the stash</u>
       </td>
     </tr>
     <tr class="40.01">
@@ -316,10 +258,11 @@
     </tr>
     <tr class="40.02">
       <td>
-        git branch <small>[-a] [-D <strong>branchName</strong>]</small>
+        git branch <small>[options]</small>
       </td>
       <td>
-        - (no options) lists all local branches <br>
+        - lists all local branches <br>
+        <small>[options]</small> <br>
         - (<small>-a</small>) remote branches are also listed <br>
         - (<small>-D <strong>branchName</strong></small>) deletes the specified local branch
       </td>
@@ -359,28 +302,18 @@
         git push -d <strong>remoteVar</strong> <strong>branch</strong>
       </td>
       <td>
-        - deletes the specified <strong>branch</strong> from the specified <strong>remoteVar</strong> repo
+        - deletes the specified <strong>branch</strong> from remote repo <u>(so careful with this)</u>
       </td>
     </tr>
     <tr class="41.01">
       <td>
-        git diff <small>[--staged]</small>
+        git diff <small>[options]</small>
       </td>
       <td>
-        - (no option) prints file differences between the previous Commit and the Modified Area <br>
-        - (<small>--staged</small>) prints file differences between the previous Commit and the Staging Area
-      </td>
-    </tr>
-    <tr class="41.02">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="41.03">
-      <td>
-        git diff <strong>branch|commitId</strong> <strong>branch|commitId</strong>
-      </td>
-      <td>
-        - displays the differences between the two branches or commits
+        - prints change diffs between the current Commit and the Modified Area and Stagng Area <br>
+        <small>[options]</small> <br>
+        - (<small>--staged</small>) only prints diffs between the previous Commit and the Staging Area <br>
+        - (<strong>branch|commitId</strong> <strong>branch|commitId</strong>) prints the diffs between the specified branches or commits
       </td>
     </tr>
     <tr class="42.01">
@@ -388,14 +321,9 @@
         git merge <strong>branchName</strong> <small>[-m <strong>message</strong>]</small>
       </td>
       <td>
-        - merges the specified branch into the current branch and creates a new 'merge' commit on the current
-        branch (if
-        there is no conflict) <br>
-        - <u>conficts are prompted</u> and written in the actual file(s) and <u>must be resolved</u> before we
-        can make
-        a new 'merge' commit (if there is any conflict) <br>
-        - if the branches are not separated the current commit is alligned with the specified one (moved on the
-        top)
+        - merges the specified branch into the current branch by creating new 'merge' commit on the current branch <br>
+        <small>[options]</small> <br>
+        - (<small>-m <strong>message</strong></small>) adds a message to the new commit
       </td>
     </tr>
     <tr class="42.2">
@@ -404,31 +332,20 @@
     </tr>
     <tr class="42.3">
       <td>
-        git merge --abort
+        git merge --abort|--continue
       </td>
       <td>
-        - aborts the merge conflict <u>(merge conflits must be either resolved and commited or aborted)</u>
+        - (used on merge conflict) aborts or continues the merge process
       </td>
     </tr>
     <tr class="43.01">
       <td>
-        git rebase <small>[-i]</small> <strong>branch</strong>
+        git rebase <small>[options]</small> <strong>branch</strong>
       </td>
       <td>
-        - <span class="openable">rebases<div>
-            <p> 1) the tail where this branch is derived from is taken to the top of the
-              <strong>branch</strong>
-            </p>
-            <p> 2) rebasing -> now git check if there's any conflicts or changes, once the rebase is
-              successfully done
-              git recalculates git commit hashes </p>
-          </div></span> the current branch on top of the specified <strong>branch</strong> <br>
-        - <u>conficts are prompted</u> and written in the actual file(s) and <u>must be resolved</u> before we
-        can
-        finish the rebase (if there is any conflict) <br>
-        - (<small>-i</small>) interactive mode will open a text editor and we can specify how to want to rebase
-        (what
-        commits to include, etc...)
+        - rebases the current branch to <strong>branch</strong> <br>
+        <small>[options]</small> <br>
+        - (<small>-i</small>) (interactive mode) open the default text editor to finegrain the rebase process (commits to pick, exclude, etc...)
       </td>
     </tr>
     <tr class="43.02">
@@ -439,8 +356,8 @@
       <td>
         git rebase --abort|--continue
       </td>
-      <td> - aborts or continues the rebase conflict <u>(rebase conflicts must be either resolved and continued or
-          aborted)</u>
+      <td>
+        - (used on rebase conflict) aborts or continues the rebase process
       </td>
     </tr>
     <tr class="50.01">
@@ -461,10 +378,7 @@
         git fetch <i>remoteVar</i>
       </td>
       <td>
-        - fetches branches and commits from the remote repository <u>without making any changes to the local
-          repos</u>
-        <br>
-        - basically syncs the local tree with the remote tree
+        - fetches changes from the remote repo <u>without making any changes locally</u>
       </td>
     </tr>
     <tr class="54">
@@ -474,45 +388,29 @@
           </div></i>
       </td>
       <td>
-        - pulls all commits and branches from the remote repo and updates the local repo (this is basically
-        <mark>fetch</mark> + <mark>checkout</mark>) <br>
-        - (<mark>git reset --hard <strong>remoteVar/branch</strong></mark> to 'force pull' (to override local branch
-        with the remote one after pull))
+        - pulls changes from the remote repo and updates the local repo (this is basically <mark>fetch</mark> + <mark>checkout</mark>) <br>
+        - (<mark>git reset --hard <strong>remoteVar/branch</strong></mark> to 'force pull' (override the local branch with the remote))
       </td>
     </tr>
     <tr class="52.01">
       <td>
-        git push <strong>URL|remoteVar</strong> <small>[-f]</small> <strong>branch</strong>|--all
+        git push <i>URL|remoteVar</i> <small>[options]</small> 
       </td>
       <td>
-        -uploads the specified branch or all branches to the remote repo <u>(If there's a conflict between the
-          local and
-          remote repo the push is rejected)</u> <br>
-        - (<small>-f</small>) the local branch version history overwirtes the remote branch
-      </td>
-    </tr>
-    <tr class="52.02">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="52.03">
-      <td>
-        git push <strong>URL|remoteVar</strong> --delete <strong>branchName</strong>
-      </td>
-      <td>
-        - deletes the branch from the remote repository (does not delete the local branch)
+        - pushes local changes to the remote repo <br>
+        <small>[options]</small> <br>
+        - (<small>-f</small>) force push (override remote changes) <br>
+        - (<small>--delete <strong>branchName</strong></small>) deletes the remote branch (so careful with that)
       </td>
     </tr>
     <tr class="51.01">
       <td>
-        git remote <small>[-v]</small>
+        git remote <small>[options]</small>
       </td>
       <td>
-        - (no option) lists remote repository variables <u>(remote variables are stored in the local repository
-          namespace)</u> <br>
-        - (<small>-v</small>) variables are printed with their URLs (the <mark>origin</mark> is the default and
-        set when
-        the repo is cloned)
+        - lists remote repository variables <br>
+        <small>[options]</small> <br>
+        - (<small>-v</small>) variables are printed with their URLs (the <mark>origin</mark> is the default and set when the repo is cloned)
       </td>
     </tr>
     <tr class="51.02">
@@ -527,7 +425,8 @@
       <td>
         git remote remove <strong>remoteVar</strong>
       </td>
-      <td> - deletes the specified remote variable
+      <td> 
+        - deletes the specified remote variable
       </td>
     </tr>
     <tr class="51.03">
@@ -1689,8 +1588,7 @@
   <h2 style="color:darkblue;"><u> The <mark>.gitignore</mark> and <mark>.gitkeep</mark> files </u></h2>
   <p> - the <mark class="mark">.gitignore</mark> file is placed in the root your repo, it describes <u>files (git does
       not track directories)</u> which are <u>NOT tracked by Git</u> </p>
-  <p> - file paths are described by using <a href="../../My Site/Bash (Linux Terminal)/index.html#wildcards_globs"
-      target="_blanc">globbing rules</a> line by line, <u>but there are some shitty exceptions and differences
+  <p> - file paths are described by using <a href="../../My Site/Bash (Linux Terminal)/index.html#wildcards_globs" target="_blanc">globbing rules</a> line by line, <u>but there are some shitty exceptions and differences
       between
       <mark class="mark">.dockerignore</mark> and <mark class="mark">.gitignore</mark> (see below)</u> </p>
   <p> - to untrack already tracked files add them to <mark class="mark">.gitignore</mark> then run <mark>git rm --cached <strong>path:glob</strong></mark> </p>

@@ -2,62 +2,79 @@ html{
     background-color:darkgray;
     font-family:arial, sans-serif;
 }
+
 .sitenav{
     background-color: forestgreen;
 }
+
 mark{
     background-color:white;
 }
+
 mark.mark {
     background-color: lightslategray;
 }
+
 pre{
     background-color:#f5f2e7;
 }
+
 .header {
     text-decoration: underline;
     color: darkblue;
 }
+
 .headerExtra {
     text-decoration: underline;
     background-color: orange;
 }
+
 .syntax {
     background-color: #4b4b4b;
     color: white;
 }
+
 *:focus {
     outline: 2px solid green;
     outline-offset: 1px;
 }
-        /* color syntax characters */
+
+/*-----------------------------------------------------------*/
+/*-- color syntax characters --------------------------------*/
 .syntax i:not([class^="fa"]), .formula i, .table i:not([class^="fa"]) {
     color: darkgray;
 }
+
 .syntax prot, .formula prot, .table prot {
     color: #04a200;
-    }
+}
+
 .syntax em, .formula em, .table em {
     color: deepskyblue;
     font-weight: normal;
     font-style: normal;
 }
+
 .syntax strong, .formula strong, .table strong, mark strong{
     color: lightcoral;
     font-weight: normal;
     font-style: italic;
 }
+
 .syntax small, .formula small, .table small {
     font-size: 1em;
     color: violet;
 }
+
 .formula {
     background-color: lightblue;
 }
+
 .example {
     background-color: inherit;
     margin-bottom: 5px;
 }
+
 .example > summary {
     background-color: rgb(193, 255, 201);
     font-size: 1.25em;
@@ -65,114 +82,167 @@ pre{
     text-decoration: underline;
     cursor: pointer;
 }
+
 details{
     background-color: lightgreen;
 }
+
 .important-link:link, .important-link:visited {
     color:yellow;
 }
+
 .important-link:active, .important-link:hover{
     background-color: yellow;
     color: black;
 }
-    /*-- table --*/
+
+/*-----------------------------------------------------------*/
+/*-- table --------------------------------------------------*/
 caption{
     font-weight: 700;
     font-size: 1.4em;
 }
+
 .table{
     border: solid black 1px;
     width: 100%;
     margin: auto;
     border-collapse: collapse;
 }
+
 .table tr:nth-child(odd){
     background-color: lightcyan;
 }
+
 .table tr:nth-child(even){
     background-color: rgb(194, 248, 194);
 }
+
 .table th, .table td{
     text-align: left;
     padding-left: 3px;
     font-size: 1.2em;
-} 
+}
+ 
 .table th{
     background-color: firebrick;
     color: white;
     text-align: center;
 }
+
 .table tr [colspan] {
     background-color: lightseagreen;
     text-align: center;
 }
-    /*-- sub site --*/
+
+/*-----------------------------------------------------------*/
+/*-- idents -------------------------------------------------*/
+.indent_lv1 {
+    text-indent: 30px;
+}
+
+.indent_lv2 {
+    text-indent: 60px;
+}
+
+.indent_lv3 {
+    text-indent: 90px;
+}
+
+.indent_lv4 {
+    text-indent: 120px;
+}
+
+.indent_lv5 {
+    text-indent: 150px;
+}
+
+
+/*-----------------------------------------------------------*/
+/*-- sub site -----------------------------------------------*/
 .subSite {
     margin: 3px;
 }
+
 .subSite > a {
     font-size: 1.4em;
     letter-spacing: 0.1em;
     color: white;
     font-weight: bold;
 }
+
 .subSite > a:hover {
     color: black;
 }
-    /*-- control overflow pre and syntax --*/
+
+/*-----------------------------------------------------------*/
+/*-- control overflow pre and syntax ------------------------*/
 pre, .syntax {
     overflow: auto;
 }
-    /*-- color HTML5 font awesome badge --*/
+
+/*-----------------------------------------------------------*/
+/*-- color HTML5 font awesome badge -------------------------*/
 *[class="fab fa-html5"], *[class="fab fa-css3-alt"], *[class="fab fa-js"] {
     color: inherit;
     text-decoration: underline;
 }
 
-    /*-- browser support grid in table descriptions --*/
+/*-----------------------------------------------------------*/
+/*-- browser support grid in table descriptions -------------*/
 #browserSupport, .browserSupport {
     background-color: inherit;
     color: gray;
 }
+
 #browserSupport > span, .browserSupport > span{
     border: groove 1px gray;
     padding: 0 2px;
 }
+
 h1, h2, h3, h4, h5, h6, p {
     margin: .5em 0;
 }
+
 details.example {
     border-width: 3px;
     border-style: dashed;
     border-color: white;
 }
 
-    /*-- link styling --*/
+/*-----------------------------------------------------------*/
+/*-- link styling -------------------------------------------*/
 pre a:link, pre a:visited {
     color: rgb(79, 133, 212);
 }
+
 a:hover {
     background-color: rgb(166, 223, 62);
 }
+
 a {
     transition: background-color .1s;
 }
-    
-        /*-- command line like pre element style --*/
+
+/*-----------------------------------------------------------*/
+/*-- command line like pre element style --------------------*/
 .cmd, .cli {
     background-color: #202644;
     color: white;
 }
 
-        /*-- openable --*/
+/*-----------------------------------------------------------*/
+/*-- openable -----------------------------------------------*/
 .openable {
     white-space: nowrap;
 }
+
 .openable:hover, .changeListOrder:hover {
     background-color: rgb(166, 223, 62);
     color: black;
     cursor: pointer;
-} 
+}
+
 .openable > div {
     display:none;
     position: relative;
@@ -183,12 +253,13 @@ a {
     padding: 0 5px 0 5px;
     font-style: normal;
     white-space: normal;
-} 
+}
+
 .openable > div > p {
     margin: inherit;
     padding-left: 25px;
     text-indent: -25px;
-}   
+}
 
 .openable::before{
     content:"⇣";
@@ -206,5 +277,3 @@ a {
 .cssAV {
     color:#7f85a3;
 }
-/* ------------------------------------------------------------------------------------------*/
-/* ------------------------------------------------------------------------------------------*/
