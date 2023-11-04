@@ -77,17 +77,13 @@
   <hr>
   <!--------------------------------------------------------------------------------------------->
   <h2 class="header"> Access Control </h2>
-  <p> - <mark class="mark">Active Directory (Entra ID)</mark> -> Microsoft's identity provider for all sorts of
-    Microsoft products (Azure, Outlook, Skype, Teams, etc...) </p>
-  <p class="indent_lv2"> - a <mark class="mark">tenant</mark> is an Active Directory instance in Azure (identity
-    that identifies an organization or a person) </p>
+  <p class="indent_lv1"> <mark class="mark">Active Directory (Entra ID)</mark> -> Microsoft's identity provider for all sorts of Microsoft products (Azure, Outlook, Skype, Teams, etc...) </p>
+  <p class="indent_lv2"> - a <mark class="mark">tenant</mark> is an Active Directory instance in Azure (identity that identifies an organization or a person) </p>
   <p class="indent_lv2"> - a tenant contain uses, groups, app and control their access </p>
-  <p class="indent_lv2"> - we also can use it for web app (and probably other service) identification as well
-  </p>
-  <p> - <mark class="mark">Role</mark> -> defines what acctions the assigned identity can do (built-in or custom)</p>
+  <p class="indent_lv2"> - we also can use it for web app (and probably other service) identification as well </p>
+  <p class="indent_lv1"> <mark class="mark">Role</mark> -> defines what acctions the assigned identity can do (built-in or custom)</p>
   <p class="indent_lv2"> - in Azure managing access to resources is done by RBAC (Role Based Access Control) </p>
-  <p class="indent_lv2"> - a role must be assigned to a security principal and a scope (defines who and where)
-  </p>
+  <p class="indent_lv2"> - a role must be assigned to a security principal and a scope (defines who and where) </p>
   <p class="indent_lv2"> - a Security Principal is basically an identity in Azure what can be: </p>
   <p style="text-indent: 60px"> - User </p>
   <p style="text-indent: 60px"> - Group </p>
@@ -95,18 +91,17 @@
     Directory (Entra ID)) (app what is registered in Active Directory for Authentication) </p>
   <p style="text-indent: 90px"> - Application Registration -> the app registration in Active Directory </p>
   <p style="text-indent: 90px"> - Enterprise Applicaton -> basically a list of service principals </p>
-  <p> - <mark class="mark">Policy</mark> -> is some resource limitation (ex: location restriction) (built-in or custom)
-  </p>
+  <p class="indent_lv1"> <mark class="mark">Policy</mark> -> is some resource limitation (ex: location restriction) (built-in or custom) </p>
   <p class="indent_lv2"> - Can be assigned to a scope </p>
   <p class="indent_lv2"> - Applying a policy to a scope will affect current and future resources only (but we can
     remeditate to apply newly assigned policies to already existing resources) </p>
   <p class="indent_lv2"> - We can define what action to take when the policy is violated (block, warn, etc...)
   </p>
-  <p> - <mark class="mark">Initiative</mark> -> a collection of policies </p>
-  <p> - <mark class="mark">Blueprint</mark> -> describes an Azure environment (used to replicate the same environment)
+  <p class="indent_lv1"> <mark class="mark">Initiative</mark> -> a collection of policies </p>
+  <p class="indent_lv1"> <mark class="mark">Blueprint</mark> -> describes an Azure environment (used to replicate the same environment)
   </p>
   <p class="indent_lv2"> - describes role assignements, resources and policy assignements </p>
-  <p> - <mark class="mark">Resource Lock</mark> -> prevent actions on the specified scope </p>
+  <p class="indent_lv1"> <mark class="mark">Resource Lock</mark> -> prevent actions on the specified scope </p>
   <p class="indent_lv2"> - can be assigned to subscription, resource group or resource scope </p>
   <p class="indent_lv2"> - at the time of writing this there are types of locks, CanNotDelete and ReadOnly </p>
   <p class="indent_lv2"> - locks can be managed by administrators only </p>
@@ -119,7 +114,7 @@
   <p> - <mark class="mark">Azure Calculator</mark> -> Azure tool to calculate service pricing </p>
   <hr>
   <!--------------------------------------------------------------------------------------------->
-  <h2 class="header"> Service Availability </h2>
+  <h2 class="header"> Service Availability (SLA) </h2>
   <p> - Microsoft promises service uptimes (in percent per month), if if fails to do deliver its promise we'll get a
     refound on that service, this is called SLA (Service Level Agreement) </p>
   <p> - for each service the SLA is documented (ex: VMs have a 99.99% SLA meaning 4m 22s downtime per month) </p>
@@ -128,6 +123,14 @@
   <hr>
   <!--------------------------------------------------------------------------------------------->
   <h2 class="headerExtra"> Resources </h2>
+  <h3 class="header"> Advize and Security Services </h3>
+  <p class="indent_lv1"> <mark class="mark">Azure Marketplace</mark> -> marketplace for services or service groups built by Microsoft or 3rd party vendors </p>
+  <p class="indent_lv1"> <mark class="mark">Azure Advizor</mark> -> Gives recommendations according to Azure best practices (Cost, Security, Reliability, Performance, Operational Excellence) </p>
+  <p class="indent_lv1"> <mark class="mark">Azure Security Center</mark> -> Continouously scans resources for security issues (gives feedback in Azure Advizor) </p>
+  <p class="indent_lv2"> - functionalities can be enhanced by adding VMs </p>
+  <p class="indent_lv1"> <mark class="mark">Azure Key Vault</mark> -> Centralized secret storage store </p>
+  <p class="indent_lv2"> - we can use SDK to access these secrets </p>
+  <p class="indent_lv2"> - monitored service </p>
   <h3 class="header"> Azure DevOps </h3>
   <p class="indent_lv1"> Azure development tools </p> 
   <p class="indent_lv2"> - <mark class="mark">Boards</mark> -> Jira style ticketing system </p>
@@ -210,338 +213,16 @@
   <p style="text-indent:60px;"> - <mark class="mark">Basic</mark> </p>
   <p style="text-indent:60px;"> - <mark class="mark">Standard</mark> -> provides monitoring and machine learning for better protection </p>
   <p class="indent_lv1"> <mark class="mark">Azure Front Door (CDN)</mark> -> Azure's CDN service </p>
+  <h3 class="header"> IoT Services </h3>
+  <p class="indent_lv1"> <mark class="mark">IoT Hub</mark> -> allows communication between IoT devices and Azure </p>
+  <p class="indent_lv2"> - PaaS bi-directional communication service (supports HTTPS, AMQP, MQTT protocols) </p>
+  <p class="indent_lv2"> - provides SDKs for different programming languages </p>
+  <p class="indent_lv1"> <mark class="mark">IoT Central</mark> -> PaaS providing application for IoTs (built on top of IoT Hub) </p>
+  <h3 class="header"> AI Services </h3>
+  <p class="indent_lv1"> <mark class="mark">Azure Machine Learning Service</mark> </p>
+  <p class="indent_lv1"> <mark class="mark">Azure Machine Learning Studio</mark> -> Web Based interface that provides access to Machine Learning </p>
   
   
-  
-  <!--
-    
-    
-** services 
-  * Azure Marketplace
-      - services or group of services you can buy
-      - services created by Microsoft or 3rd party vendors
-    
-    
-  * Azure IoT Services
-      - IoT Hub (service that allow communication between our IoT and Azure)
-          - managed service for bi-directional communication
-          - PaaS
-          - Integrates well with other Azure services
-          - offers SDKs for programming languages
-          - supports multiple communication protocols (HTTPS, AMQP, MQTT)
-      - IoT Central (Application delivery platform for IoT, SaaS -> applications)
-          - Built on top of IoT Hub + other Azure services
-    
-    
-  * AI Servcies
-      - Azure Machine Learning Service
-      - Azure Machine Learning Studio
-          - Web based interface that provides access to Machine Learning
-  
-  
-  
-  
-  
-  * Security Services
-  
-  * Azure advizor
-      - give recommendation according to Azure best practices (Cost, Security, Reliability, Performance, Operational Excellence)
-  * Azure Security Centery
-      - continouously scans resources for security and advision stuff (Azure Advizor is buit on top to it)
-      - its functionalities can be exetende by a connected Virtual Machine 
-  * Azure Key Vault
-      - centalized store secrets and certificates 
-      - well integrated with other Azure services
-      - SDKs can provide access to these secrets
-      - monitored and logged services
-    
-    ???????????????????????????????????????????????????????
-    ???????????????????????????????????????????????????????
-    ???????????????????????????????????????????????????????
-  
-  
-  
-  
-  -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-----
-    * Big Data Analytics tools (Ingest -> Transform -> Store -> Server)
-      - Azure Synapse Analytics
-      - Azure HD Inside
-      - Azure Databricks
-
-
-
-  * Azure DevOps services
-      - Azure DevOps (provides development services)
-          - Board
-          - Repos
-          - Pipelines (CI/CD)
-          - Artifacts (host & share packages)
-          - Test Plans (for manual testing)
-          - the Marketplace can provide tools here as well (for custom Azure DevOps features)
-      - Azure DevTest Labs
-          - Test place where developers can spin up VMs for testing purposes
-          - we can start and stop these VMs for cost saving purposes
-          - also provides additional features to be installed with your VM (this is cool)
-          - support policies (quotas, size, auto-shutdown)
-          - supports reusable templates
-  
-  
-  * Networking services (connection to cloud services, protect, monitor)
-    - Vitrual Network
-        - Logical network in Azure for a group of resources
-        - can contain subnetworks (subnetworks cannot contain other subnetworks)
-        - must reside in a signle region
-    - Network Security Group
-        - filter outbound and inboud trafict on virtual networks
-    - Application Security Group
-        - Groups VMs (applications) in order to easier to manage Network Security Groups
-    - Virtual Network Gateways (VPN Gateway)
-        - Gateway service between Azure virtual networks or a Hybrid connection
-    - Azure load balancer 
-        - balances the load between Azure resources
-        - we can use this tool to balance the traffic between avalability zones
-        - supports internal and external traffic
-    - App Gateway 
-        - load balancer for web (http) traffict 
-    - Content Delivery Network
-        - Azure CDN 
-    - Route Table
-        - routes subnet outbound traffict 
-    - Firewall
-        - monitor and control in and outbound traffict
-    - Azure DDoS Protections
-        - protects virtual networks from DDoS (Distributed Denial of Service) attacks
-        - this is a great way to prevent savings on autoscaling solutions (multiple request would scale you auto scaling solutions)
-        - has 2 tiers:
-            - Basic
-            - Standard <- provides monitoring and machine learning features for better protections
-  
-  
-  
-  * Database Services
-    
-      - Azure SQL family
-          - SQL Database (SQL Server with limited capabilities)
-          - SQL Managed Instance (SQL Server with full capabilities)
-          - SQL Data Warehouse (SQL Server for large data)
-          - SQL VM (SQL Server Paas)
-    
-          - MySQL
-          - PostgreSQL
-    
-
-  
-  
-  
-  
-  
-  * Storages
-    - Storage Account (nest all below 4 types)
-        - Blob Storage
-            - for any unstructured data (files, etc..)
-            - blob storage has containers for grouping blobs
-            - has 3 tiers (quality VS price)
-                - Host      -> for frequently accessing data 
-                - Cool      -> for infequently accessing data 
-                - Archive   -> archive (low availability but low price)
-        - File Storage
-            - like Blob storage but supports SMB (Server Message Block) -> file accessible remotely
-            - has shares for grouping files
-        - Queue Storage
-            - qeue between services
-            
-            
-            -> we have to check this + Azure Service Bus
-            
-        - Table Storage
-            - for semi structured data soted in simple tables
-            - this is not a relational database approach just storing data in tables
-            - NoSQL database 
-            - this service is like Dynamo Db -> fast access
-    - Azure Disk Storage
-        - Attachable Disk Storage form VMs 
-        - Storage can be managed or unmanaged 
-            - Managed
-            - Unmanaged -> Each Disk is stored as file in the Blob storage
-
-  
-  
-  * Serverless Computing
-      - Function App (listed in Computing Services) -> PaaS
-          - Can be triggered by different events (HTTP request, Timer, Storage events (when file up/down loaded))
-      - Azure Logic Apps
-          - A series of jobs performed based on workflow (sending email, log, etc...)
-          - we can specify all programming flow (linear, conditional, loop)
-          - Provides a graphical interface where we can build our workflow
-          - We design the flow -> Microsoft will handle the underlying services
-          - we don't provide any code here, the flow activites are fully provided by Azure
-      - Event Grid
-          - Routes Azure messages (pub-sub model for Azure events)
-          - Services can be subscribes to specific Azure events 
-          - in Azure all happening is an event (ex: service creation, VM go down) we can react (subscribe) to these event to triggere services
-
-  
-  
-  * Compute Services
-    - VM (Virtual Machine)
-        -  there's a marketplace to get images (but we can get custom images as well)
-    - VM scale sets
-        - group of VMs scalable behind a load blancer
-    - Container Registry
-        - container storage 
-    - Container Instances
-        - container hosting solution
-    - Kubernetes service
-        - Azure kubernetes solution
-    - App service
-        - Web Application Hosting
-        - supports multiple languages and containers
-        - Enterprise grade web app hosting service 
-    - Function App
-        - simple serverless function 
-        - designed for micro/nano services
-  
-  
-  
-  
-  
-  
-  
-  
-    - SLA (Service Level Agreement)
-        - Microsoft promises uptime and credits you if they cannot fulfil that
-        - formal agreement between Microsoft and customers
-        - for free services there's no SLA!
-        - composite SLA the SLA of all your services together
-        - keep in mind that using multple services will lower SLA because potentially all services must be available at a time
-          - SLA calculation is done by logical ways AND / OR
-        
-        
-        
-    - Azure Calculator 
-        - to calculate service pricing
-        - Ce can save mony with various tools (like reserved instance)
-        - spot VM -> MS lends you the capacity for good discounts (but can take it back) -> 'spot pricing' the concept name 
-        
-    - Cost Management
-        - with cost manatement you can track and control your spending
-        
-
-
-
-    - Resource Lock
-        - resources can be locked (blacklist or whitelist certain actions to perform on them)
-        - lock can be created on resource or resource group or subscription level (up to subscription hierarchy level)
-        - lock can be managed only by the Owner and User Access Administrator role
-
-
-    - Azure active directory
-        - controls all priviledges
-
-
-  * Azure Identity and Access management
-      - Microsoft Active Directory (Entra Id)
-          - manages Authorization adn Authentication not just for Azure but for all sorts of Microsoft Products (Skype, Outlook, Teams, etc...)
-          - we also can use it to provide Authorization and Authentication services for our service
-          - provides groups and all sorts of techniques to access restrictions
-
-    - tenant represents an identity (organization, or person)
-    - Entra Id (Active Directory) is one place where users, groups can be managed
-    - a tenant is a single Active Directory instance 
-    - a subscription can be associated witho only one Entra Id (AD) tenant (but one Entra ID instance can have multiple subscriptions)
-
-
-    - Roles
-        - Roles are a collection of actions to resources 
-        - There are built in roles (Owner, Contributor, etc...), but custom roles can be created
-        - a role must be assigned to a scope (below level will inherit super roles)
-          - hierarchy is working (role affects anything below)
-              - Management Group -> Subscription -> Resource Groups -> Resources
-        - RBAC (Role Based Access Control)
-    - Security Principal (Identity, Azure Object) (Roles can be assigned to security pricipals)
-        - Users
-        - Groups
-        - Service Principal (the Application representation within AAD) ->
-          - Enterprise Application is basically a list of service principals
-          - Application Registration -> the registration of the app in ADD
-
-
-
-    - Azure Policy
-        - it's basically a limitation or (permission of certain characteristing (ex: location restriciton))
-        - can be assigned to an Azure scope
-        - policies have nothing to do with user permissions
-        - there are builtin or custom policies
-        - multiple policies can be grouped -> called Initiatives
-        - applying new policies will affect current of future resources only (but we can rediate to apply already resources)
-        - policy effect can be applied -> what to do when the policy is violated (block, warning, etc...)
-        
-        
-    - Blueprints
-        - a reusable collection of user roles, resources and policy assignements
-
-
-
-    - cloud core concepts are no covered here (they are documented in AWS)
-    
-
-
-    
-    - azure gives us much more ability to control where we are deploying our resources (however not all regions have ability zones like in AWS)
-    - each region has a region pair which is located at the same geographic area but at least 300 miles away (resiliency reasons)
-    
-    
-    
-    - a resource can be represented as json template
-    - resource group -> logical group of a collection of resources (the idea here is to separate strategy groups like DEV STAGING PROD) (but also to grant IAM priviledges to users)
-        - a service can and must belong to one resource group only
-        - a resource group can be on a different location than its resources (only the meta data is stored there)
-        - resource groups cannot be nested
-        - resources can be moved from group to group
-    - subscription    -> just a logical container for provisionling resources  
-
-
-    -- TODO --
-    - speed test        -> calculates the latency from our location to regions (not a service but a separate page found in google)
-        - document it on AWS page that we can measure that
-    
-    - not all services are available in all regions (global services are however)
-        - document it  on AWS
-    
-    
-    - availability zones are numbered (document to AWS)
-
-
-
-
-
-
-
-
-
-
-
-
--->
-
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-
   <br><br>
 </body>
 
