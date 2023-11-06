@@ -20,114 +20,135 @@
   </p>
   <table class="table">
     <caption> IP addresses </caption>
-    <tr>
-      <th style="background-color:firebrick;" colspan="2"> Address </th>
-      <th> Description </th>
-    </tr>
-    <tr>
-      <td colspan="3"> IPv4 </td>
-    </tr>
-    <tr>
-      <td colspan="2" style="background-color:inherit;">
-        <strong>[0-255]</strong>.<strong>[0-255]</strong>.<strong>[0-255]</strong>.<strong>[0-255]</strong> </td>
-      <td> IPv4 address represented by 4 octets </td>
-    </tr>
-    <tr>
-      <td style="width:12%;"> 10.0.0.0 </td>
-      <td style="width:18%;"> 10.255.255.255 </td>
-      <td> (Class A) private IP range (16,777,216 addresses available) </td>
-    </tr>
-    <tr>
-      <td> 172.16.0.0 </td>
-      <td> 172.31.255.255 </td>
-      <td> (Class B) private IP range (1,048,576 addresses available) </td>
-    </tr>
-    <tr>
-      <td> 192.162.0.0 </td>
-      <td> 192.162.255.255 </td>
-      <td> (Class C) private IP range (65,536 addresses available) </td>
-    </tr>
-    <tr>
-      <td> 127.0.0.0 </td>
-      <td> 127.255.255.255 </td>
-      <td>
-        - Loopback IP range (<mark>127.0.0.1</mark> = <mark>localhost</mark>) <br>
-        - network adapter self test (packets never sent through the network)
-      </td>
-    </tr>
-    <tr>
-      <td> 169.254.0.0 </td>
-      <td> 169.254.255.255 </td>
-      <td>
-        - Link-Local IP range = APIPA (Automatic Private IP Addressing) <br>
-        - host randomly self assigns one in case the DHCP is not reachable
-      </td>
-    </tr>
-    <tr>
-      <td colspan="3"> IPv6 </td>
-    </tr>
-    <tr>
-      <td colspan="2" style="background-color:inherit;">
-        <strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>
-      </td>
-      <td> IPv6 represented by 8 blocks of 4 hextets </td>
-    </tr>
-    <tr>
-      <td colspan="2" style="background-color:inherit;">
-        2|3<strong>ggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>ssss</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>
-      </td>
-      <td>
-        - <u>Global Unicast</u> is a public IPv6 address <u>routable on the internet</u> <br>
-        - <mark>2|3</mark> - prefix (3bits) <br>
-        - <strong>g</strong> - global routing (45bits) = globally assigned by IANA (global hierarchical assignement)
-        <br>
-        - <strong>s</strong> - subnet id (16bits) = identifies the subnet, assigned by the Administrator <br>
-        - <strong>i</strong> - interface id (64bits) = individual node addresses on the subnet, assigned by the
-        Administrator
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2" style="background-color:inherit;">
-        fd<strong>gg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>ssss</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>
-      </td>
-      <td>
-        - <u>Unique Local</u> is a private IPv6 address <u>used in private networking (not routable on the internet)</u>
-        <br>
-        - <mark>fd</mark> - prefix (8bits) <br>
-        - <strong>g</strong> - global id (40bits) = assigned by the Administrator <br>
-        - <strong>s</strong> - subnet id (16bits) = identifies the subnet, assigned by the Administrator <br>
-        - <strong>i</strong> - interface id (64bits) = indivudual node addresses on the subnet, assigned by the
-        Administrator
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2" style="background-color:inherit;">
-        fe80:0000:0000:0000:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong><small>%</small><i>id</i>
-      </td>
-      <td>
-        - <u>Link Local</u> used to communicate with neighbouring nodes (IPv6 nodes are automatically assigned by the
-        host with this address) <br>
-        - fe80 - prefix (10bits) <br>
-        - <strong>i</strong> - interface id (64bits) = device id <br>
-        - <small>%</small><i>id</i> - scope id (on windows)
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2" style="background-color:inherit;">
-        ff<strong>fs</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>
-      </td>
-      <td>
-        - <u>Multicast</u> address <br>
-        - ff - prefix (8bits) <br>
-        - <strong>f</strong> - flag (4bits) <br>
-        - <strong>s</strong> - scope (4bits) <br>
-        - <strong>g</strong> - group id (112bits)
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2" style="background-color:inherit;"> 0000:0000:0000:0000:0000:0000:0000:0001 </td>
-      <td> Loopback Address, network adapter self test (packets never sent through the network) </td>
-    </tr>
+    <tbody>
+      <tr>
+        <th style="background-color:firebrick;" colspan="2"> Address </th>
+        <th> Description </th>
+      </tr>
+      <tr>
+        <td colspan="3"> IPv4 </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="background-color:inherit;">
+          <strong>[0-255]</strong>.<strong>[0-255]</strong>.<strong>[0-255]</strong>.<strong>[0-255]</strong>
+        </td>
+        <td> IPv4 address represented by 4 octets </td>
+      </tr>
+      <tr>
+        <td style="width:12%;"> 10.0.0.0 </td>
+        <td style="width:18%;"> 10.255.255.255 </td>
+        <td> (Class A) private IP range (16,777,216 addresses available) </td>
+      </tr>
+      <tr>
+        <td> 172.16.0.0 </td>
+        <td> 172.31.255.255 </td>
+        <td> (Class B) private IP range (1,048,576 addresses available) </td>
+      </tr>
+      <tr>
+        <td> 192.162.0.0 </td>
+        <td> 192.162.255.255 </td>
+        <td> (Class C) private IP range (65,536 addresses available) </td>
+      </tr>
+      <tr>
+        <td> 127.0.0.0 </td>
+        <td> 127.255.255.255 </td>
+        <td>
+          - Loopback IP range (<mark>127.0.0.1</mark> = <mark>localhost</mark>) <br>
+          - network adapter self test (packets never sent through the network)
+        </td>
+      </tr>
+      <tr>
+        <td> 169.254.0.0 </td>
+        <td> 169.254.255.255 </td>
+        <td>
+          - Link-Local IP range = APIPA (Automatic Private IP Addressing) <br>
+          - host randomly self assigns one in case the DHCP is not reachable
+        </td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td> 0.0.0.0 </td>
+        <td>
+          - Non-Routable Meta-Address (means all IP addresses on this machine)
+        </td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td> 255.255.255.255 </td>
+        <td>
+          - broadcast address (sending data to all devices on the network without knowing their IP address)
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3"> IPv6 </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="background-color:inherit;">
+          <strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>
+        </td>
+        <td> IPv6 represented by 8 blocks of 4 hextets </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="background-color:inherit;">
+          2|3<strong>ggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>ssss</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>
+        </td>
+        <td>
+          - <u>Global Unicast</u> is a public IPv6 address <u>routable on the internet</u> <br>
+          - <mark>2|3</mark> - prefix (3bits) <br>
+          - <strong>g</strong> - global routing (45bits) = globally assigned by IANA (global hierarchical assignement)
+          <br>
+          - <strong>s</strong> - subnet id (16bits) = identifies the subnet, assigned by the Administrator <br>
+          - <strong>i</strong> - interface id (64bits) = individual node addresses on the subnet, assigned by the
+          Administrator
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="background-color:inherit;">
+          fd<strong>gg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>ssss</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>
+        </td>
+        <td>
+          - <u>Unique Local</u> is a private IPv6 address <u>used in private networking (not routable on the
+            internet)</u> <br>
+          - <mark>fd</mark> - prefix (8bits) <br>
+          - <strong>g</strong> - global id (40bits) = assigned by the Administrator <br>
+          - <strong>s</strong> - subnet id (16bits) = identifies the subnet, assigned by the Administrator <br>
+          - <strong>i</strong> - interface id (64bits) = indivudual node addresses on the subnet, assigned by the
+          Administrator
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="background-color:inherit;">
+          fe80:0000:0000:0000:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong><small>%</small><i>id</i>
+        </td>
+        <td>
+          - <u>Link Local</u> used to communicate with neighbouring nodes (IPv6 nodes are automatically assigned by the
+          host with this address) <br>
+          - fe80 - prefix (10bits) <br>
+          - <strong>i</strong> - interface id (64bits) = device id <br>
+          - <small>%</small><i>id</i> - scope id (on windows)
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="background-color:inherit;">
+          ff<strong>fs</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>
+        </td>
+        <td>
+          - <u>Multicast Address</u> <br>
+          - ff - prefix (8bits) <br>
+          - <strong>f</strong> - flag (4bits) <br>
+          - <strong>s</strong> - scope (4bits) <br>
+          - <strong>g</strong> - group id (112bits)
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="background-color:inherit;"> ::1 </td>
+        <td> - loopback address, network adapter self test (packets never sent through the network) </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="background-color:inherit;"> :: </td>
+        <td> - means all ip addresses on this machine </td>
+      </tr>
+    </tbody>
   </table>
   <h2 style="color:green;"><u> Notes : </u></h2>
   <details class="example" id="notes">
@@ -271,7 +292,7 @@
         48c7:0004:<em>0</em>:a4d4:<em>0</em>:<em>0</em>:0c00:0001                                                 // 2) block containing consecutive 0's abbreviated to one single 0   
         
         48c7:0004:0000:a4d4:<em>0000:0000</em>:0c00:0001
-        48c7:0004:0000:a4d4<em>::</em>0c00:0001                                                 // 3) two or more blocks containing consecutive 0's are replaced to <mark>::</mark> <u>(abbreviation allowed only once!) (the longer 0 sequence is abbreviated if ther are several!)</u>    
+        48c7:0004:0000:a4d4<em>::</em>0c00:0001                                                 // 3) two or more blocks containing consecutive 0's are replaced to <mark>::</mark> <u>(abbreviation allowed only once!) (the longer 0 sequence is abbreviated if there are several!)</u>    
         
         48c7:<em>0004</em>:<em>0000</em>:a4d4:<em>0000:0000</em>:<em>0c00</em>:<em>0001</em>
         48c7:<em>4</em>:<em>0</em>:a4d4<em>::</em><em>c00</em>:<em>1</em>                                                           // fully abbreviated IPv6  

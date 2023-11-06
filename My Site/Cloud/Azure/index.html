@@ -29,6 +29,7 @@
 
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
   <h2 class="header"> Azure Global Infrastructure </h2>
+  <p> - <mark class="mark">Azure backbone</mark> -> Azure's global network </p>
   <p> - <mark class="mark">Region</mark> -> Geographic location where one or multiple data centers reside </p>
   <p class="indent_lv2"> - a region might have only one data center (Azure doesn't work like AWS), at service
     deployment we can control where (or which availability zones) to deploy our servcies </p>
@@ -79,19 +80,19 @@
   <h2 class="header"> Access Control </h2>
   <p class="indent_lv1"> <mark class="mark">Active Directory (Entra ID)</mark> -> Microsoft's identity provider for all sorts of Microsoft products (Azure, Outlook, Skype, Teams, etc...) </p>
   <p class="indent_lv2"> - a <mark class="mark">tenant</mark> is an Active Directory instance in Azure (identity that identifies an organization or a person) </p>
-  <p class="indent_lv2"> - a tenant contain uses, groups, app and control their access </p>
+  <p class="indent_lv2"> - a tenant contains uses, groups, app and control their access </p>
   <p class="indent_lv2"> - we also can use it for web app (and probably other service) identification as well </p>
   <p class="indent_lv1"> <mark class="mark">Role</mark> -> defines what acctions the assigned identity can do (built-in or custom)</p>
   <p class="indent_lv2"> - in Azure managing access to resources is done by RBAC (Role Based Access Control) </p>
   <p class="indent_lv2"> - a role must be assigned to a security principal and a scope (defines who and where) </p>
   <p class="indent_lv2"> - a Security Principal is basically an identity in Azure what can be: </p>
-  <p style="text-indent: 60px"> - User </p>
-  <p style="text-indent: 60px"> - Group </p>
-  <p style="text-indent: 60px"> - Service Principal -> a registered application (app object representation in Active
+  <p class="indent_lv3"> - User </p>
+  <p class="indent_lv3"> - Group </p>
+  <p class="indent_lv3"> - Service Principal -> a registered application (app object representation in Active
     Directory (Entra ID)) (app what is registered in Active Directory for Authentication) </p>
-  <p style="text-indent: 90px"> - Application Registration -> the app registration in Active Directory </p>
-  <p style="text-indent: 90px"> - Enterprise Applicaton -> basically a list of service principals </p>
-  <p class="indent_lv1"> <mark class="mark">Policy</mark> -> is some resource limitation (ex: location restriction) (built-in or custom) </p>
+  <p class="indent_lv4"> - Application Registration -> the app registration in Active Directory </p>
+  <p class="indent_lv4"> - Enterprise Applicaton -> basically a list of service principals </p>
+  <p class="indent_lv1"> <mark class="mark">Policy</mark> -> a resource limitation (ex: location restriction) (can be built-in or custom) </p>
   <p class="indent_lv2"> - Can be assigned to a scope </p>
   <p class="indent_lv2"> - Applying a policy to a scope will affect current and future resources only (but we can
     remeditate to apply newly assigned policies to already existing resources) </p>
@@ -103,7 +104,7 @@
   <p class="indent_lv2"> - describes role assignements, resources and policy assignements </p>
   <p class="indent_lv1"> <mark class="mark">Resource Lock</mark> -> prevent actions on the specified scope </p>
   <p class="indent_lv2"> - can be assigned to subscription, resource group or resource scope </p>
-  <p class="indent_lv2"> - at the time of writing this there are types of locks, CanNotDelete and ReadOnly </p>
+  <p class="indent_lv2"> - at the time of writing this there are types of locks, <mark class="mark">CanNotDelete</mark> and <mark class="mark">ReadOnly</mark> </p>
   <p class="indent_lv2"> - locks can be managed by administrators only </p>
   <hr>
   <!--------------------------------------------------------------------------------------------->
@@ -221,6 +222,41 @@
   <h3 class="header"> AI Services </h3>
   <p class="indent_lv1"> <mark class="mark">Azure Machine Learning Service</mark> </p>
   <p class="indent_lv1"> <mark class="mark">Azure Machine Learning Studio</mark> -> Web Based interface that provides access to Machine Learning </p>
+  
+  
+  
+<!--
+  Virtual Network
+      - suppoorts IPv4 (1+ subnets are required withn virtual network)
+      - suppoorts IPv6 (0+ subnets are required withn virtual network)
+      - we can resize subnets, but only when theye empty they
+  
+  Public IP (Azure resource)
+      - to create Public IPs for inbound traffic
+      - 2 tiers (SKU):
+          - Basic
+              - dynamic or static
+              - open by default
+              - on AZ support
+          - Standard
+              - Static only
+              - Locked down by default
+              - AZ support 
+  
+  
+  - Azure backbone -> Azure's global network (already documented)
+  
+  -> Vnet peering -> virtual networks can be peered regardless of their geographich location (vnet peering -> local, global peering -> global)
+    -> not peered networks cannot talk to each other (no transitive connection -> meaning if A -> B -> C connection A cannot talk to C), for that we have to create a mesh connection which allows transitive conneciton
+  
+  -> Network Interface 
+    -> configurable network interface (VMs has their default interface, but we can assign a custom interface)
+  
+  
+  
+  - get a bit more into IPv4 IPv6 networking (update your current knowledge)
+    - how the heck IPv6 works in public internet
+-->
   
   
   <br><br>

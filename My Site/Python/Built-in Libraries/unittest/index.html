@@ -305,15 +305,15 @@
     be
     started/stopped to get the intended MagicMock instance (usually used in fixtures)) </p>
   <pre class='syntax'>
+    from unittest.mock import patch
+    
+    
     patch(<strong>path:str</strong>, <strong>**kwargs</strong>, <a href="https://docs.python.org/3/library/unittest.mock.html#patch" target="
     _blank">moreArgs...</a>)                  // patches the object/attribute at <strong>path</strong> <u>(where it's used)</u>
-    
-    patch.object(<strong>obj:str</strong>, <strong>attr:str</strong>, <strong>**kwargs</strong>, <a href="https://docs.python.org/3/library/unittest.mock.html#unittest.mock.patch.object" target="
-    _blank">moreArgs...</a>)  // patches the object's attribute (object must be imported first (like in Jest))
-    
+    patch.object(<strong>obj</strong>, <strong>attr:str</strong>, <strong>**kwargs</strong>, <a href="https://docs.python.org/3/library/unittest.mock.html#unittest.mock.patch.object" target="
+    _blank">moreArgs...</a>)      // patches the object's attribute (object must be imported first (like in Jest))
     patch.dict(<strong>path:str</strong>, <strong>dict</strong>, <strong>**kwargs</strong>, <a href="https://docs.python.org/3/library/unittest.mock.html#unittest.mock.patch.object" target="_blank">moreArgs...</a>)       // patches the <strong>dict</strong> at <strong>path</strong> (the 2nd arg <strong>dict</strong> members override the original onces)  
                                                             // does not create a <strong>magicMock</strong> like <mark>patch()</mark> and <mark>patch.object()</mark> do, instead value modification is specified in the patch directly    
-    
     
 <span style='color:darkgrey;'>// patching as decorator -----------------------------------------------</span>
     class <strong>TestSuiteName</strong>(TestCase):
