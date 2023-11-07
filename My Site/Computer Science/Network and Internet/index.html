@@ -575,6 +575,57 @@
  <span style="color:lightskyblue;"> Hardware side</span>
     </pre>
 
+<!--
+(2023-11-07)
+  - This summary was collected when I started to have a glance on Azure networks, but I've decieded to stop because it's a deep topic and I have to understand networking first before jumping into complex topics like this 
+  
+  
+  Virtual Network
+      - suppoorts IPv4 (1+ subnets are required withn virtual network)
+      - suppoorts IPv6 (0+ subnets are required withn virtual network)
+      - we can resize subnets, but only when theye empty they
+  
+  Public IP (Azure resource)
+      - to create Public IPs for inbound traffic
+      - 2 tiers (SKU):
+          - Basic
+              - dynamic or static
+              - open by default
+              - on AZ support
+          - Standard
+              - Static only
+              - Locked down by default
+              - AZ support 
+  
+  
+  - Azure backbone -> Azure's global network (already documented)
+  
+  -> Vnet peering -> virtual networks can be peered regardless of their geographich location (vnet peering -> local, global peering -> global)
+    -> not peered networks cannot talk to each other (no transitive connection -> meaning if A -> B -> C connection A cannot talk to C), for that we have to create a mesh connection which allows transitive conneciton
+  
+  -> Network Interface 
+    -> configurable network interface (VMs has their default interface, but we can assign a custom interface)
+  
+  
+  -> Express Route -> connection between a local network and Azure cloud 
+  
+  -> SKU (Stock Keeping Unit) a type of unit -> expression used in Azure (refers to a specific version or offering)
+  
+  -> S2S VPN (Site to Site VPN) secure connection between to private network through the internet (secure tunnel)
+  -> P2S VPN (Point to Site) secure connection to an Azure VPN from an individual computer
+  
+  
+  
+  - get a bit more into IPv4 IPv6 networking (update your current knowledge)
+    - how the heck IPv6 works in public internet
+-->
+
+
+
+
+
+
+
   <br><br>
 </body>
 
