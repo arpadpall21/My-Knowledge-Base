@@ -1,53 +1,546 @@
-{
-  "files.autoSave": "onFocusChange",
-  "files.autoSaveDelay": 100,
-  "html.autoClosingTags": false,
-  "workbench.tree.indent": 15,
-  "workbench.tree.renderIndentGuides": "always",
-  "editor.renderWhitespace": "all",
-  "editor.wrappingIndent": "none",
-  "editor.autoIndent": "keep",
-  "editor.detectIndentation": false,
-  "html.format.indentHandlebars": true,
-  "diffEditor.ignoreTrimWhitespace": false,
-  "editor.trimAutoWhitespace": false,
-  "explorer.confirmDelete": false,
-  "explorer.confirmDragAndDrop": false,
-  "editor.quickSuggestionsDelay": 500,
-  "javascript.updateImportsOnFileMove.enabled": "never",
-  "javascript.suggest.autoImports": false,
-  "javascript.suggest.includeCompletionsForImportStatements": false,
-  "files.associations": {
-    "*.html": "html"
-  },
-  "security.workspace.trust.untrustedFiles": "open",
-  "editor.bracketPairColorization.enabled": true,
-  "workbench.editor.wrapTabs": true,
-  "html.autoCreateQuotes": false,
-  "workbench.startupEditor": "none",
-  "python.analysis.autoImportCompletions": false,
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.python",
-    "editor.formatOnType": true,
-    "editor.tabSize": 4
-  },
-  "RainbowBrackets.depreciation-notice": false,
-  "editor.tabSize": 2,
-  "git.openRepositoryInParentFolders": "never",
-  "workbench.colorTheme": "Default Dark+ Experimental",
-  "python.linting.mypyCategorySeverity.note": "Hint",
-  "editor.wordWrapColumn": 120,
-  "window.zoomLevel": 1,
-  "settingsSync.ignoredSettings": [],
-  "settingsSync.keybindingsPerPlatform": false,
-  "extensions.ignoreRecommendations": true,
-  "flake8.severity": {
-    "E": "Warning",
-    "F": "Warning",
-    "W": "Warning"
-  },
-  "python.linting.flake8Args": [
-      "--max-line-length=120"
-  ],
-  "eslint.codeActionsOnSave.rules": null
-}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> NGINX </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../Assets/stylesPages.css">
+  <script src="../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> NGINX </h1>
+  <p> Updated: 2023-07-15 </p>
+  <p class="sitenav"> <a href="../index.html">MySite></a> NGINX
+  <table class="table">
+    <caption>
+      commands
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td>
+        nginx <small>[options]</small>
+      </td>
+      <td>
+        - launches the NGINX daemon <br>
+        <small>[options]</small><br>
+        - (<small>-c <i>filePath</i></small>) launches with config file <i>filePath</i> <br>
+        - (<small>-v</small>) prints the version <br>
+        - (<small>-t</small>) checks the syntax validity of the <u>default config file</u> and prints its location <br>
+        - (<small>-s reload</small>) reloads the currently used configs without interupting nginx <br>
+        <p class="indent-lv1 no-margin">- if reloading fails (like config has syntax error) nginx will keep running with the old configs <u>BUT DOES NOT PRINT ANY ERRORS</u></p>
+        - (<small>-s quit</small>) gracefull stop (wait for all worker processes to finish their current request) <br>
+        - (<small>-s stop</small>) immediatley kills all nginx processes 
+      </td>
+    </tr>
+
+
+
+
+
+
+    <tr class="00.00">
+      <td>
+
+      </td>
+      <td>
+        -
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      contexts & directives
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Context / Directive </th>
+      <th style="width:15%;"> Available in context </th>
+      <th> Description </th>
+    </tr>
+    <tr class="00.00">
+      <td colspan="3">
+        Contexts
+      </td>
+    </tr>
+    <tr class="00.00">
+      <td>
+        type { <strong>mimeType</strong> <strong>fileExtension</strong> <i>...</i>; <i>...</i> }
+      </td>
+      <td>
+        http / server / location
+      </td>
+      <td>
+        - maps file extension(s) to MIME types
+      </td>
+    </tr>
+
+
+
+    <tr colspan="3">
+      <td colspan="3">
+        Directives
+      </td>
+    </tr>
+
+
+
+    <tr class="0">
+      <td>
+
+      </td>
+      <td>
+
+      </td>
+      <td>
+        -
+      </td>
+    </tr>
+    <tr class="0">
+      <td>
+
+      </td>
+      <td>
+
+      </td>
+      <td>
+        -
+      </td>
+    </tr>
+
+
+
+
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://gist.github.com/carlessanagustin/9509d0d31414804da03b" target="_blank">NGINX cheatsheet (GitHub) </a></p>
+  <p><a href="http://nginx.org/en/docs/varindex.html" target="_blank">NGINX Alphabeticaly index of variables (nginx.org)</a></p>
+  <p><a href="http://nginx.org/en/docs/dirindex.html" target="_blank">NGINX Alphabeticaly index of directives (nginx.org)</a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+
+
+
+
+
+
+
+  <!--
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+stage 1: high level overview 
+    - read through 
+    - create notes 
+    - deciede what exactly will you document down 
+    
+stage 2:  low level overview
+    - deeper understanding of all what you've taken down in stage 1
+    
+stage 3 : 
+    - organize and document down everything
+    
+    
+    - nginx is an open software, however nginx plus is a comertial version having extra functionalities
+    
+    
+    
+    
+    nginx solves the famous C10K problem (10000 concurent requests)
+    
+    
+    NGINX is a reverse proxy;
+      - SSL termination point (SSL offloading from backend servers)
+      - static web server or mail server
+      - load balancer
+      - cache
+      - offers securty features (rate limiting, DDOS protection, WAF, etc.)
+      - rewrites and redirects URLs
+      - can be used to distribute trafic between microservices
+      - content compression (gzip, Brotli)
+      - blacklisting 
+      - in nginx plus we can pull in modules with extra functionalities
+      
+      
+    - event driven asynchronous architecture that can handle 10000 concurrent connections
+    - the whole thing is configurable through a nginx.conf file 
+    
+    - concepts:
+    - in config file
+      - directive -> key value pair
+      - context -> between {}
+          - the directive value is overriden in local context
+      - zone -> shared memory space
+    
+    - consist of a master proces and its workers
+      - the master process reads and evaluates configuration, and maintain worker processes
+      - worker processes are responsibles to serve the actual content
+    
+    
+    
+    
+    cmd:
+        nginx [-c <path_to_.conf>]                   - start nginx (optionaly with a custom config)
+        nginx -s stop       - fast shutdown (immediately kills all workers)
+        nginx -s quit       - graceful shutdown (wait for workers to finish their current requests)
+        nginx -s reload     - reloads config file
+        nginx -s reopen     - reopen log files (close current log files and open new onces)         <- TEST THIS
+    
+        nginx -t            - check for default config file syntax errors, also prints location
+    
+    
+    
+    - nginx provides the <mark>mime.types</mark> file on install which provieds a full (mime type map)  <- document this 
+    
+    
+    
+    directives:
+        listen <strong>port</strong>;             - (server) server listens on this port [link]
+              <strong>address:port</strong>;
+              <strong>domainSocket</strong>;
+        root <strong>dirPath</strong>;            - (http, server, location) root directory for the REQUEST 
+                                                  - nginx servers resources relative to /
+                                                  - further resoures
+        alias <strong>dirPath</strong>;           - (location) maps the current location to a specified directory 
+                                                  - overrides root directory for the specified location 
+                                                  
+                                                  
+        include <strong>filePath</strong>;        - includes the specified file (ex: include mime.type or other config file)
+        
+        try_files <strong>filePath|uri</strong> <i>...</i> =<strong>httpCode</strong>    - (server, location) serves the first found file for the request
+                                                            - if file is not found the previous valid file is served
+                                                            - the path to the file is constructed relative to <mark>root</mark> or <mark>alias</mark> directive
+                                                            - 
+    
+        index <strong>file</strong>               - (location, server) default file to serve (default: <mark>index.html</mark>)
+    
+        worker_processes <strong>int</strong>;    - (main) how many worker processes to create (default: 1)
+        worker_connections <strong>int</strong>;  - (events) maximum connection per wroker process (default: 512)
+    
+        error_page <strong>httpCode</strong> <i>...</i> <small>=<i>httpCode</i></small> <strong>filePath|url</strong>
+                                                  - (http, server, location, if in location) serves error page at <strong>filePath</strong> if <strong>httpCode</strong> is thrown (we also can redirect)
+                                                  - optionally serves <i>httpCode</i> instead of <strong>httpCode</strong> <i>...</i> http codes
+    
+        server_name <strong>hostName:str|reGex|wildcard</strong>;     # (server) specifies the hostname for the current virtual server 
+    
+    
+    
+    contexts:
+        http {}                                   - (main) global http server related configurations (nests all virtual servers <mark>server</mark> context)
+        events {}                                 - (main) connection directives are located here
+        
+        server {}                                 - (http) describes a virtual server (nginx routes requests to specific virtual servers)
+        server {
+            return <strong>httpCode</strong> <strong>str</strong>     # serves <strong>str</strong> with <strong>httpCode</strong> <strong>str</strong>
+        }
+        
+        
+        
+        location <i>modifier</i> <strong>uri</strong> {       - (server, location) provides configuratios for the location that matches <strong>uri</strong> (adds this location to all previously normalized URI path) 
+                                                  
+        }
+        
+        # modifiers (in precedence order)
+        - = <strong>str</strong?            -> exact match 
+        - ^~ <storng>/path:str</strong>     -> preferential match (useful when we want to match a location over regEx modifiers)
+        - ~ <strong>path:regEx</strong>    -> case-sensitive regEx match
+        - ~* <strong>path:regEx</strong>   -> case-insensitive regEx match 
+        - <storng>/path:str</strong>        -> any request that prefixed with <mark>/path</strong>
+        - 
+        
+        
+        location <i>modifier</i> <strong>uri</strong> {       # (server, location) redirects to <stong>path:str</strong>
+            return <strong>httpCode</strong> <stong>path:str</strong>|<strong>str</strong>
+        }
+        
+        location @<strong>locationName</strong> {       # <strong>locationName</strong> can be used in <mark>try_files</mark>
+            config....
+        }
+        
+        limit_except <strong>httpMethod</strong> <i>...</i> {     - (location) only the listed http methods allowed in the location
+            <i>configs...</i>
+            deny all;
+        }
+        
+        
+        rewrite <strong>path:regEx</strong> <strong>path:str</strong>        # redirects <strong>path:regEx</strong> to <strong>path:str</strong> but URL stays at <strong>path:regEx</strong
+        
+        
+        types {                                   - (http, server, location) mime type to file extention type mapping
+            <mime.type> <fileExtension>           - ex: text/css   css
+        
+        }
+    
+    
+        upstream {                                # defines a group of servers (for load balancing)
+            least_conn;                           # load balancing (traffic routed to the server having the least active connection)
+            ip_hash;                              # calculates a hash based on the client's IP in order to always route the client to the same backend server 
+        
+        
+            server <strong>url|ip:port</strong> <i>options</i>;
+            <i>...</i>
+            
+            server <strong>url|ip:port</strong> backup;       # backup server (when all goes down)
+        }
+        
+        - options 
+          - weight=<strong>int</strong>     (default 1) proportion relative to other server weights
+        - if no weight specified the load is distributed in Round-Robin style
+        - load balancing methods
+            - Round Robin
+            - Weighted Round Robin
+            - ip hash
+            - <a href="https://www.javatpoint.com/nginx-http-load-balancing" target="_blanc">more...</a> such as Generic Hash, 
+          - max_fails=<strong>int</strong>      - after this many failed attempts nginx marks this server unavailable (and reroutes the trafic to another server)
+          - fail_timeout=<strong>int</strong>s|m      - for this duration is marked the server as unavailable (after expiration nginx routes traffic to this server as well)
+        
+        
+        - active health check is available for nginx plus only
+        
+        
+        
+        if (<strong>cond</strong>) {                        # (server, location) runs the block if <strong>cond</strong> is truthy (no recommended because the condition is evaluated on request therefore it can cost some performance)
+            // code to run if condition is truthy...
+        }
+        
+        
+        - variables (give a few examples of built in variables) -> using variables are discuraged by nginx 
+        - there are built-in variables 
+        - not all variables can be used in all contexts 
+        
+        set $<strong>varName</strong> <strong>val</strong>      # declaring a variable
+        $<strong>varName</strong>                               # using the declared variable 
+        
+        
+        - variable mapper stuff
+        map $<strong>inputVar</strogn> $<strong>outputVar</strogn> {
+            default <strong>str</strong>;       # fallback value
+            <strong class="openable">case<div>
+                <p> - <storng>str</strong> (ex: <mark>/</mark>) </p>
+                <p> - <mark>~<storng>str</strong></mark> - case-sensitive regEx match (ex: <mark>~^/</mark>) </p> 
+                <p> - <mark>~#<storng>str</strong></mark> - case-sensitive regEx match (ex: <mark>~*^/</mark>) </p> 
+            </div></strong>
+            <i>...</i>
+        }
+        
+        geo $<strong>var</strong> {         # assigns value to $<strong>var</strong> based on address
+            default <strong>str</strong>;   # fallback value
+        
+            <strong>addess</strong> <strong>val<strong>;
+            <i>...</i>
+        }
+        
+        
+        
+        
+        
+        - virtual hosting
+          - with the server_name directive we can setup multiple backend virtual servers 
+        
+        
+        server {
+            listen <strong>port:int</strong>;
+            server_name <strong>hostName:wildCard|regEx</strong> <i>...</i>;       # a list of hosts to which this virtual server responds 
+        
+        }
+        
+        
+        
+        - compression
+        gzip on|off;                # enables|disables content encoding (includes Content-Encoding gzip in the response)
+        gzip_types <strong>mimeType</strong> <i>...</i>         # by default only <mark>text/html</strong> mime typed files are compressed, here we can add files to the compression 
+        
+        
+        - SSL termination point
+        
+        
+        
+        listen <strong>port:int</strong> ssl;       # ssl connection will be estabilished
+        
+        ssl_certificate <strong>pathToCert</strong>         # path to cert and cert key files 
+        ssl_certificate_key <strong>pathToCertKey</strong>
+        
+        ssl_protocols <strong>protocol</strong> <i>...</i>      - (http, server) - restricts the ssl connection protocol (Default: <mark>TLSv1 TLSv1.1 TLSv1.2 TLSv1.3</mark>)
+        ssl_ciphers <strong>cipherList<strong>                  - allowed ciphers (Default: <mark>HIGH:!aNULL:!MD5</mark>) (to check included ciphers run <mark>openssl ciphers -V 'HIGH:!aNULL:!MD5'</strong>)
+        
+        
+        
+        
+        
+        - basic authentication (this worked only when webpage server)
+            - for this we have to create a user password file with <mark>htpasswd -c <strong>pathtopasswdFile</strong> <strong>user</strong></mark>
+            (run without -c to add more users)
+            
+        auth_basic <strong>msg</strong>           <- (http, server, location, limit_except
+) this message will be prompted to the user
+        auth_basic_user_file <strong>pathtopasswdFile</strong>      <- path to passwd file (http, server, location, limit_except
+)
+        
+        
+        
+        - caching 
+        https://www.javatpoint.com/nginx-content-caching
+        
+        
+        
+        
+        ------------------- upstream_cache_status -------------------
+        add_header <strong>headerName</strong> <strong>headerValue</strong> [always];     <- adds a header to the response (for 200, 201, 204, 206, 301, 302, 303, 304, 307, 308 response codes only)
+            - always -> for all response codes
+        
+        
+        proxy_cache_path <strong>path</strong>        <- sets the cache path (http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path)
+        
+        proxy_cache <strong>zone</strong>|off;       <- (http, server, location) enables|disables caching
+        
+        proxy_cache_valid <strong>httpVerb</strong>|any <strong>time<strong>    <- (http, server, location) cache valide for specified request 
+        
+        proxy_cache_purge <strong>bool</strong>     <- (http, server, location) enables|disables caching (NGINX Plus only)
+        
+        
+        
+  --- directives ---
+      ip_hash             <- (upstream) request will be sent to the same upstream server 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+?????????????????????????????????????????????????????????????????????????????????????????????
+WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
+?????????????????????????????????????????????????????????????????????????????????????????????
+    nginx -s reopen     - reopen log files (close current log files and open new onces)         <- TEST THIS (does this guy log in the error log???)
+    
+    
+    logging?
+    caching?
+    
+    - delete cache
+    
+    
+    all those header configs like :
+        proxy_ignore_headers
+        set header stuff (or something like this...)
+    
+    
+    - nginx is a daemon 
+        - well on Mac I run it not as daemon <- how the heck?
+        - can I run it as not a daemon?
+        - if used as daemon how to configure custom config/access.log/error.log files ???
+    
+    
+-------- DONE --------
+    - can I use variables?
+        - yep demoed 
+        
+    - how to set up config file location?
+        - with the -c flag
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+-->
+
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+
+
+  <h2 class="headerExtra"><u> Title 1 </u></h2>
+  <h2 class="header"> Title 1.1 </h2>
+  <h3 class="header"> Title 1.1.1 </h3>
+  <h4 class="header"> Title 1.1.1.1 </h4>
+  <p> - stuff to learn <mark>syntax or command (or some tchnical stuff)</mark> bla bla bla </p>
+  <p> - stuff to learn <mark class="mark">highlights like file names and other things</mark> bla bla bla </p>
+  <p style="text-decoration:underline;"> - important information is underlined </p>
+  <p style="color:yellow;"> - very important information is written with yellow colors </p>
+  <p style="background-color:yellow;"> - highly important information has yellow background color </p>
+  <div style="background-color:red;">
+    <p> - red background block means not learned or not tested information! </p>
+    <p> - </p>
+  </div>
+
+  <pre class="syntax">
+SYNTAX :    main syntax
+            <em>literally used </em>
+            <small>literally used optional </small>
+            <prot style="color:#049500;">prototype chain</prot>
+            <strong>required value </strong>
+            <i>optional value </i>
+                - some descriptions will come here (like arguments)
+                - ??? (3 question marks) in syntax means not tested or not learned yet
+                
+            <span class="openable"> this is an openable element<div>
+                <p> - openable elements listed here in paragraphs </p>
+                <p> - </p>
+            </div></span>
+    </pre>
+
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <pre>
+    examples of the current lessons 
+    
+// -----------------------------------------
+
+// -----------------------------------------
+    </pre>
+  </details>
+
+  <pre class="cmd">
+    command line demo 
+    </pre>
+  <pre class="formula">
+    formula code (like conversion meter...)
+    </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> example title </u></h4>
+    <p> - live tests will come here </p>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    copy of the exaple code 
+        </pre>
+    </details>
+  </details>
+  <!---------------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+
+  <h2 class="test" style=""><a href="TEST/index.html"> TEST > </a></h2>
+
+
+  <br><br>
+</body>
+
+</html>

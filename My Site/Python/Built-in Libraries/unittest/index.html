@@ -51,6 +51,7 @@
   <p><a href="https://docs.python.org/3/library/unittest.html" target="_blank">unittest (docs.python.org)</a></p>
   <h2 style="color:green;"><u> Remember This : </u></h2>
   <p> - in python testing we patch methods, objects <u>in the namespace where they're used (not where they are)</u> </p>
+  <p> - there's an exception for the above rule! imports within a function body are patched <u>where they are defined</u> </p>
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
   <p> - the <mark>unittest</mark> module provides testting features for us, in python unittesting test cases are
     completely separated from each other</p>

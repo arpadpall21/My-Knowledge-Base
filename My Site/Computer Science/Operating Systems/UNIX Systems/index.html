@@ -3,9 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title> Linux (Ubuntu) </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <title> UNIX Systems </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../../../Assets/stylesPages.css">
   <script src="../../../Assets/scriptPages.js"></script>
@@ -13,15 +12,15 @@
 </head>
 
 <body>
-  <h1> Linux (Ubuntu) </h1>
+  <h1> UNIX Systems </h1>
   <p> Updated ( 2020-03-10 / 2020-03-30 )</p>
-  <p class="sitenav"> 
+  <p class="sitenav">
     <a href="../../../index.html" title="home">MySite></a>
     <a href="../../index.html" title="home">Computer Science></a>
-    <a href="../index.html" title="Learn WebDesign">Operating Systems></a> Linux
+    <a href="../index.html" title="Learn WebDesign">Operating Systems></a> UNIX Systems
   </p>
   <table class="table">
-    <caption> File System </caption>
+    <caption> File System (Ubuntu Mostly) </caption>
     <tr>
       <th style="width:30%;"> Folder </th>
       <th> Description </th>
@@ -51,13 +50,13 @@
       <td> (etcetera) system-wide configuration files, these configurations are valid for all users </td>
     </tr>
     <tr>
-      <td style="text-indent:20px;"> /etc/enviroment </td>
+      <td class="indent-lv1"> /etc/enviroment </td>
       <td>
         - file contains system-wide environment variables <br>
       </td>
     </tr>
     <tr>
-      <td style="text-indent:20px;"> /etc/group </td>
+      <td class="indent-lv1"> /etc/group </td>
       <td>
         - file contains all groups in the system <br>
         - each entry represents a group (<strong>groupName</strong> : <em class="openable">x<div>
@@ -66,14 +65,20 @@
       </td>
     </tr>
     <tr>
-      <td style="text-indent:20px;"> /etc/hosts </td>
+      <td class="indent-lv1"> /etc/hosts </td>
       <td>
         - hosts file (local domain to IP address mapping file) <br>
         - (column1 = ip address) (column2 = domain) (column3 = domain alias)
       </td>
     </tr>
     <tr>
-      <td style="text-indent:20px;"> /etc/passwd </td>
+      <td class="indent-lv1"> /etc/os-release </td>
+      <td>
+        - operating system informations (like linux distro, version, etc...)
+      </td>
+    </tr>
+    <tr>
+      <td class="indent-lv1"> /etc/passwd </td>
       <td>
         - file contains all users in the system <br>
         - each entry represents a user (<strong>userName</strong> : <em class="openable">x<div>
@@ -83,7 +88,7 @@
       </td>
     </tr>
     <tr>
-      <td style="text-indent:20px;"> /etc/sudoers </td>
+      <td class="indent-lv1"> /etc/sudoers </td>
       <td>
         - file contains users with administrator priviledges (<mark>sudo</mark> must be installed)
       </td>
@@ -97,7 +102,7 @@
       </td>
     </tr>
     <tr>
-      <td style="text-indent:20px;"> /home/<strong>user</strong>/.bash_aliases </td>
+      <td class="indent-lv1"> /home/<strong>user</strong>/.bash_aliases </td>
       <td>
         - (file) we can add <u>permanent command aliases</u> <span class="openable">at the bottom of this file<div>
             <p><mark>alias <strong>aliasCmd</strong>=<strong>cmd</strong></mark> </p>
@@ -117,7 +122,7 @@
       </td>
     </tr>
     <tr>
-      <td style="text-indent:20px;"> /home/<strong>user</strong>/.profile </td>
+      <td class="indent-lv1"> /home/<strong>user</strong>/.profile </td>
       <td>
         - (file) we can add <u>permanent user environment varialbes</u> <span class="openable">at the bottom of this
           file<div>
@@ -188,15 +193,15 @@
       <td> (user) user applications (non-essential for system operations) </td>
     </tr>
     <tr>
-      <td style="text-indent:20px;"> /usr/bin </td>
+      <td class="indent-lv1"> /usr/bin </td>
       <td> user binaries (non required by the system) </td>
     </tr>
     <tr>
-      <td style="text-indent:20px;"> /usr/share </td>
+      <td class="indent-lv1"> /usr/share </td>
       <td> sharable architecture independend files (icons, fonts, docs, etc..) </td>
     </tr>
     <tr>
-      <td style="text-indent:20px;"> /usr/share/doc </td>
+      <td class="indent-lv1"> /usr/share/doc </td>
       <td> package documentations, configurations, utilities, etc... </td>
     </tr>
     <tr>
@@ -204,7 +209,7 @@
       <td> (varialbes) variable data files, log files, cache data, waiting tasks, etc... </td>
     </tr>
     <tr>
-      <td style="text-indent:20px;"> /var/spool/cron/crontabs </td>
+      <td class="indent-lv1"> /var/spool/cron/crontabs </td>
       <td> directory contains user crontab files </td>
     </tr>
   </table>
@@ -346,45 +351,34 @@
   <p style="text-indent:50px;"> - the user is part of the <mark>root</mark> group </p>
   <p style="text-indent:50px;"> - the user is listed in the <mark>/etc/sudoers</mark> file </p>
   <p><u> System User </u></p>
-  <p style="text-indent:25px;"> - system users are special kind of users who have access to more of the system
-    funcionalities (system users' UIDs are lower than <mark>1000</mark>) <u>(system users are NOT Administartors)</u>
+  <p style="text-indent:25px;"> - system users are special kind of users who have access to more of the system funcionalities (system users' UIDs are lower than <mark>1000</mark>) <u>(system users are NOT Administartors)</u>
   </p>
-  <p style="text-indent:25px;"> - system users are not shown on the login screen, they are mostly used by applications
-    in order to access some funcionalities in the system (we rarely use them for 'normal' use) </p>
+  <p style="text-indent:25px;"> - system users are not shown on the login screen, they are mostly used by applications in order to access some funcionalities in the system (we rarely use them for 'normal' use) </p>
   <h3 class="header"> Groups </u></h3>
   <p> - groups is a way to give a group of users a set of permission to the specified item </p>
-  <p> - each item (file or directory) belongs to an owner and a group, those users who are members of the item group
-    have group permission on the item </p>
+  <p> - each item (file or directory) belongs to an owner and a group, those users who are members of the item group have group permission on the item </p>
   <p> - all groups are listend in the <mark>/etc/group</mark> file </p>
   <p><u> Primary Groups </u></p>
-  <p style="text-indent:25px;"> - each user must have <u>one</u> primary group, this group is basically the user's group
-    (primary groups' GIDs are higher than <mark>1000</mark>) </p>
+  <p style="text-indent:25px;"> - each user must have <u>one</u> primary group, this group is basically the user's group (primary groups' GIDs are higher than <mark>1000</mark>) </p>
   <p><u> Secondary Groups </u></p>
-  <p style="text-indent:25px;"> - a user can be member of <u>zero or more</u> (1000) groups, group members have group
-    permission on itmes belonging to that group (secondary groups' GIDs are higher than <mark>1000</mark>) </p>
+  <p style="text-indent:25px;"> - a user can be member of <u>zero or more</u> (1000) groups, group members have group permission on itmes belonging to that group (secondary groups' GIDs are higher than <mark>1000</mark>) </p>
   <p><u> System Groups </u></p>
-  <p style="text-indent:25px;"> - system groups give special system permission to users (ex: the 'sudo' system group
-    gives root permission to the user) (system groups' GIDs are lower than <mark>1000</mark>) </p>
+  <p style="text-indent:25px;"> - system groups give special system permission to users (ex: the 'sudo' system group gives root permission to the user) (system groups' GIDs are lower than <mark>1000</mark>) </p>
   <!-------------------------------------------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="header"> Hardware Drivers </h2>
-  <p> - Linux uses open-source hardware drivers, so drivers are automatically detected and installed by Linux Kernel
-  </p>
-  <p> - Proprietary drivers also can be used and managed through the "Software &amp; Updates" screen (which was done
-    automatically when installed Linux) </p>
+  <p> - Linux uses open-source hardware drivers, so drivers are automatically detected and installed by Linux Kernel </p>
+  <p> - Proprietary drivers also can be used and managed through the "Software &amp; Updates" screen (which was done automatically when installed Linux) </p>
   <!-------------------------------------------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="header"> File System </h2>
   <p> - Linux uses a logical file system, disks and partitions can be "mounted" logically </p>
-  <p> - in Linux everything is a file! files are files, a directories are files, devices are files, etc... <u>hidden
-      files are preceded with a dot (ex <mark>.*</mark>)</u> </p>
+  <p> - in Linux everything is a file! files are files, a directories are files, devices are files, etc... <u>hidden files are preceded with a dot (ex <mark>.*</mark>)</u> </p>
   <!-------------------------------------------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="header"> Inode </h2>
-  <p> - an Inode is a data structure which describes a file (object) on the Linux file system (metadata of the acutal
-    file)</p>
-  <p> - Linux manages inodes and has a data base of inodes "inode table", inodes are limited and unique on the system
-    (can be displayed with the <mark>df -i</mark> command) </p>
+  <p> - an Inode is a data structure which describes a file (object) on the Linux file system (metadata of the acutal file)</p>
+  <p> - Linux manages inodes and has a data base of inodes "inode table", inodes are limited and unique on the system (can be displayed with the <mark>df -i</mark> command) </p>
   <p> - Hard-Links have the same Inode number, so technically they are the same file </p>
   <p> Inode contains </p>
   <ul>
@@ -394,8 +388,7 @@
     <li> User Id = file owner </li>
     <li> Group Id = group owner </li>
     <li> Size = file size </li>
-    <li> Time Stamp = Access time = file last access, <u>Change time = file last change | Modification time = inode last
-        change</u> </li>
+    <li> Time Stamp = Access time = file last access, <u>Change time = file last change | Modification time = inode last change</u> </li>
     <li> Attributes = inmutable, etc... </li>
     <li> link to other files = for directories </li>
     <li> link to the actual underlyind data (link to disk blocks) </li>
@@ -404,28 +397,26 @@
   <!-------------------------------------------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="header"> umask </h2>
-  <p> - the umask defines file and directory permissions when created, the Default umask value is <mark>0022</mark>
-    <u>(the first value is always <mark>0</mark>)</u> </p>
-  <p> - in Linux when creating new items the default permission for files is <mark>0666</mark> and for directories is
-    <mark>0777</mark> </p>
-  <p> - the umask value is <u>subtracted from the item default permission value</u> when we create new items (ex: the
-    file permission is calculated (<mark>0666</mark> - <mark>0002</mark>) so the new file's permission is
-    <mark>0664</mark>) </p>
+  <p> - the umask defines file and directory permissions when created, the Default umask value is <mark>0022</mark> <u>(the first value is always <mark>0</mark>)</u> </p>
+  <p> - in Linux when creating new items the default permission for files is <mark>0666</mark> and for directories is <mark>0777</mark> </p>
+  <p> - the umask value is <u>subtracted from the item default permission value</u> when we create new items (ex: the file permission is calculated (<mark>0666</mark> - <mark>0002</mark>) so the new file's permission is <mark>0664</mark>) </p>
   <!-------------------------------------------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="header"> Services (Daemons) </h2>
-  <p> - services are basically programs running in the background (like Apache) </p>
-  <p> - so we can close the terminal regardless the daemon is running or not </p>
+    <p> - on Linux we call background processes <mark class="mark">daemons</mark>, on MacOS <mark class="mark">services</mark> </p>
+    <p> - background processes are running on the background (like httpd (Apache), mysql, etc..), they differ from foreground processes in the following ways: </p>
+    <p class="indent-lv1"> - they have no parent process (their parent process is the init process (initialization process, the core process that starts the system))</p>
+    <p class="indent-lv1"> - they start with the system </p>
+    <p class="indent-lv1"> - cannot be controled with user commands (for that we have to bring them in the foreground) </p>
+    <p class="indent-lv2"> - on linux we can control daemons with the <mark>service</mark> or <mark>systemctl</mark> commands (<mark>systemctl</mark> is the successor of <mark>service</mark>, it provides more control and starts daemons in parallel) </p>
+    <p class="indent-lv2"> - on MacOS we have the <mark class="mark">Activity Monitor</mark> where services are visible </p>
+  <!-------------------------------------------------------------------------------------------------------------------------------->
+  <hr>
   <h3 class="header"> Cron </h3>
-  <p> - Cron is a daemon tool which schedules commands on Unix-like systems, by default it does interpret commands with
-    the Bourne shell (<mark>/bin/sh</mark>) Not with bash (this could lead somme differences)! </p>
-  <p> - by default <mark>/bin/sh</mark> doesn't have the <mark>DISPLAY=:0</mark> enviroment variable set, <u>(so if we
-      want to lauch graphical applications we must set it first!)</u></p>
-  <p> - user "Cron Jobs" (tasks) are simply stored in a file in the <mark>/var/spool/cron/crontabs</mark> directory
-    (each user has its own crontab file here), there is system-wide crontabs too but I don't test that now [2020-04-13]
-  </p>
-  <p> - use commands to set crontabs (<mark>crontab -e</mark>), it is NOT recommended to modify crontab files directly!
-  </p>
+  <p> - Cron is a daemon tool which schedules commands on Unix-like systems, by default it does interpret commands with the Bourne shell (<mark>/bin/sh</mark>) Not with bash (this could lead somme differences)! </p>
+  <p> - by default <mark>/bin/sh</mark> doesn't have the <mark>DISPLAY=:0</mark> enviroment variable set, <u>(so if we want to lauch graphical applications we must set it first!)</u></p>
+  <p> - user "Cron Jobs" (tasks) are simply stored in a file in the <mark>/var/spool/cron/crontabs</mark> directory (each user has its own crontab file here), there is system-wide crontabs too but I don't test that now [2020-04-13] </p>
+  <p> - use commands to set crontabs (<mark>crontab -e</mark>), it is NOT recommended to modify crontab files directly! </p>
   <pre class="syntax">
 COMMANDS :  crontab <small>[-e] [-l] [-r] [-i]</small>                                                // <u>(option required)</u> users' crontab (crontab = cron table)  
                 <small>-e</small>                                                                        // edit the user's crontab file 

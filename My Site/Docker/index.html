@@ -1,520 +1,534 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Docker </title> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../Assets/stylesPages.css"> 
-    <script src="../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Docker </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../Assets/stylesPages.css">
+  <script src="../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Docker v20.10.7 (ver 4.0.0) </h1>
-    <p> Updated ( 2021-10-27 )</p>
-    <p class="sitenav"> <a href="../index.html">MySite></a> Docker </p>
-    <p class="subSite"><a href="Dockerfile & .dockerignore/index.html"> Building Docker images (<mark>Dockerfile</mark> and <mark>.dockerignore</mark> files) > </a></p>
-    <p class="subSite"><a href="Docker-Compose/index.html"> Docker-Compose > </a></p>
-<table class="table">
-<caption>
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  <h1> Docker v20.10.7 (ver 4.0.0) </h1>
+  <p> Updated ( 2021-10-27 )</p>
+  <p class="sitenav"> <a href="../index.html">MySite></a> Docker </p>
+  <p class="subSite"><a href="Dockerfile & .dockerignore/index.html"> Building Docker images (<mark>Dockerfile</mark> and <mark>.dockerignore</mark> files) > </a></p>
+  <p class="subSite"><a href="Docker-Compose/index.html"> Docker-Compose > </a></p>
+  <table class="table">
+    <caption>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
     <tr>
-        <th style="width:30%;"> Method / Property / statement ect... </th>
-        <th> Description </th>
+      <th style="width:30%;"> Method / Property / statement ect... </th>
+      <th> Description </th>
     </tr>
     <tr class="05.01">
-        <td colspan="2"> 
-            Registries 
-        </td>
+      <td colspan="2">
+        Registries
+      </td>
     </tr>
     <tr class="05.02">
-        <td> 
-            cat ~/.docker/config.json
-        </td>
-        <td> 
-            - file's <mark>auth</mark> object contains all logged in registry servers' credentials   
-        </td>
+      <td>
+        cat ~/.docker/config.json
+      </td>
+      <td>
+        - file's <mark>auth</mark> object contains all logged in registry servers' credentials
+      </td>
     </tr>
     <tr class="07.01">
-        <td> 
-            <em>docker</em> login <i>repoServerUrl</i>
-        </td>
-        <td> 
-            - (without <i>repoServerUrl</i>) logs in to DockerHub <br>
-            - (with <i>repoServerUrl</i>) logs in to the specified docker repo server 
-        </td>
+      <td>
+        docker login <i>repoServerUrl</i>
+      </td>
+      <td>
+        - (without <i>repoServerUrl</i>) logs in to DockerHub <br>
+        - (with <i>repoServerUrl</i>) logs in to the specified docker repo server
+      </td>
     </tr>
     <tr class="07.02">
-        <td> 
-            <em>docker</em> logout <i>repoServerUrl</i>
-        </td>
-        <td> 
-            - (without <i>repoServerUrl</i>) logs out from DockerHub <br>
-            - (with <i>repoServerUrl</i>) logs out from the specified docker repo server 
-        </td>
+      <td>
+        docker logout <i>repoServerUrl</i>
+      </td>
+      <td>
+        - (without <i>repoServerUrl</i>) logs out from DockerHub <br>
+        - (with <i>repoServerUrl</i>) logs out from the specified docker repo server
+      </td>
     </tr>
     <tr class="10.02">
-        <td> 
-            <em>docker</em> pull <small>[-a]</small> <strong>image</strong><i>:tag</i>
-        </td>
-        <td> 
-            - pulls the image from the docker repo server <u class="openable">(the <strong>image</strong> name defines which repo server to pull the image from)<div>
+      <td>
+        docker pull <small>[options]</small> <strong>image</strong><i>:tag</i>
+      </td>
+      <td>
+        - pulls the image from the docker repo server <u class="openable">(the <strong>image</strong> name defines which repo server to pull the image from)<div>
             <h5><u> DockerHub </u></h5>
             <p> <mark>$ docker pull arpadpall21/dev/test:v1</mark> (pulls the <mark>arpadpall21/dev/test:v1</mark> images from DockerHub)
-            <hr>
+              <hr>
             <h5><u> custom docker repo server </u></h5>
             <p> <mark>$ docker pull localhost:5000/dev/test:v1</mark> (pulls the <mark>localhost:5000/dev/test:v1</mark> images from <mark>localhost:5000</mark> local repo server) </p>
             <p> <mark>$ docker pull hub.myreposerver/dev/test:v1</mark> (pulls the <mark>hub.myreposerver/dev/test:v1</mark> images from <mark>hub.myreposerver</mark> remote repo server) </p>
-            </div></u><br>
-            - DockerHub public images can be pulled without being logged in <br>
-            - (<small>-a</small>) all <strong>image</strong> regardless of the tag 
-        </td>
+          </div></u><br>
+        - DockerHub public images can be pulled without being logged in <br>
+        <small>[options]</small><br>
+        - (<small>-a</small>) all <strong>image</strong> regardless of the tag
+      </td>
     </tr>
     <tr class="10.01">
-        <td> 
-            <em>docker</em> push <small>[-a]</small> <strong>image</strong><i>:tag</i>
-        </td>
-        <td> 
-            - pushes up the image in the docker repo server <u class="openable">(the <strong>image</strong> name defines which repo server to push the image)<div>
+      <td>
+        docker push <small>[options]</small> <strong>image</strong><i>:tag</i>
+      </td>
+      <td>
+        - pushes up the image in the docker repo server <u class="openable">(the <strong>image</strong> name defines which repo server to push the image)<div>
             <h5><u> DockerHub </u></h5>
             <p> <mark>$ docker push arpadpall21/dev/test:v1</mark> (pushes the <mark>arpadpall21/dev/test:v1</mark> images to DockerHub)
-            <hr>
+              <hr>
             <h5><u> custom docker repo server </u></h5>
             <p> <mark>$ docker push localhost:5000/dev/test:v1</mark> (pushes the <mark>localhost:5000/dev/test:v1</mark> images to <mark>localhost:5000</mark> local repo server) </p>
             <p> <mark>$ docker push hub.myreposerver/dev/test:v1</mark> (pushes the <mark>push hub.myreposerver/dev/test:v1</mark> images to <mark>hub.myreposerver</mark> remote repo server) </p>
-            </div></u> <br>
-            - (<small>-a</small>) all <strong>image</strong> regardless of the tag 
-        </td>
+          </div></u> <br>
+        <small>[options]</small><br>
+        - (<small>-a</small>) all <strong>image</strong> regardless of the tag
+      </td>
     </tr>
     <tr class="15.01">
-        <td colspan="2"> 
-            Images
-        </td>
+      <td colspan="2">
+        Images
+      </td>
     </tr>
     <tr class="16.10">
-        <td> 
-            <em>docker</em> build <small>[-f <i>customDockerfile</i>]</small> <small>[--build-arg <i>var</i>=<i>val</i>]</small> <small>[-t <i>imgName</i>[:<i>tag</i>]]</small> <strong>DockerfileDirPath</strong>  
-        </td>
-        <td> 
-            - builds a Docker Image (Repo) from the specified <mark>Dockerfile</mark> <br>
-            - (<small>-f <i>customDockerfile</i></small>) specifies a custom Dockerfile name (ex: <mark>-f buildImage.v1</mark> docker will look for the <mark>buildImage.v1</mark> file to build the image) <br>
-            - (<small>--build-arg <i>var</i>=<i>val</i></small>) overrides an existing <mark>ARG</mark> build-time varialbe which are not persisted in the final images <u>(cannot set new <mark>ARG</mark> (outputs a warning))</u> <br>
-            - (<small>-t <i>imgName</i>[:<i>tag</i>]</small>) sets the image name and tag (default: <i>tag</i> = <mark>latest</mark>)   
-        </td>
+      <td>
+        docker build <small>[options]</small> <strong>DockerfileDirPath</strong>
+      </td>
+      <td>
+        - builds a Docker Image (Repo) from the specified <mark>Dockerfile</mark> <br>
+        <small>[options]</small><br>
+        - (<small>-f <i>customDockerfile</i></small>) specifies a custom Dockerfile name (ex: <mark>-f buildImage.v1</mark> docker will look for the <mark>buildImage.v1</mark> file to build the image) <br>
+        - (<small>--build-arg <i>var</i>=<i>val</i></small>) overrides an existing <mark>ARG</mark> build-time varialbe which are not persisted in the final images <u>(cannot set new <mark>ARG</mark> (outputs a warning))</u> <br>
+        - (<small>-t <i>imgName</i>[:<i>tag</i>]</small>) sets the image name and tag (default: <i>tag</i> = <mark>latest</mark>)
+      </td>
     </tr>
     <tr class="17.04">
-        <td> 
-            <em>docker</em> image prune <small>[-a]</small> 
-        </td>
-        <td> 
-            - remove all <span class="openable">dangling images<div>
-                <p> - images that have no relationship to any tagged images (they only consume disk space) </p>
-            </div></span> from the docker daemon <br>
-            - (<small>-a</small>) remove all images without at least once container associated to them 
-        </td>
+      <td>
+        docker image prune <small>[options]</small>
+      </td>
+      <td>
+        - remove all <span class="openable">dangling images<div>
+            <p> - images that have no relationship to any tagged images (they only consume disk space) </p>
+          </div></span> from the docker daemon <br>
+        <small>[options]</small><br>
+        - (<small>-a</small>) remove all images without at least once container associated to them
+      </td>
     </tr>
     <tr class="15.02">
-        <td> 
-            <em>docker</em> images 
-        </td>
-        <td> 
-            - list the available docker images 
-        </td>
+      <td>
+        docker images
+      </td>
+      <td>
+        - list the available docker images
+      </td>
     </tr>
     <tr class="19.01">
-        <td> 
-            <em>docker</em> image history <small>[--no-trunc]</small> <strong>image<i>:tag</i></strong>
-        </td>
-        <td> 
-            - lists the build history of the image (how this <strong>dockerImage</strong> was build by the <mark>Dockerfile</mark>) <br>
-            - (<small>--no-trunc</small>) fully displays informations (does not truncate)
-        </td>
+      <td>
+        docker image history <small>[options]</small> <strong>image<i>:tag</i></strong>
+      </td>
+      <td>
+        - lists the build history of the image (how this <strong>dockerImage</strong> was build by the <mark>Dockerfile</mark>) <br>
+        <small>[options]</small><br>
+        - (<small>--no-trunc</small>) fully displays informations (does not truncate)
+      </td>
     </tr>
     <tr class="17.01">
-        <td> 
-            <em>docker</em> rmi <small>[-f]</small> <strong>image<i>:tag</i> ...</strong>
-        </td>
-        <td> 
-            - removes the specified docker image(s) <br>
-            - (<small>-f</small>) force remove 
-        </td>
+      <td>
+        docker rmi <small>[options]</small> <strong>image<i>:tag</i> ...</strong>
+      </td>
+      <td>
+        - removes the specified docker image(s) <br>
+        <small>[options]</small><br>
+        - (<small>-f</small>) force remove
+      </td>
     </tr>
-        <tr class="17.02"><td></td><td></td></tr>
+    <tr class="17.02">
+      <td></td>
+      <td></td>
+    </tr>
     <tr class="17.03">
-        <td> 
-            <em>docker</em> image rm <strong>image<i>:tag</i> ...</strong>
-        </td>
-        <td> 
-            
-        </td>
+      <td>
+        docker image rm <strong>image<i>:tag</i> ...</strong>
+      </td>
+      <td>
+
+      </td>
     </tr>
     <tr class="21.02">
-        <td> 
-            <em>docker</em> load -i <strong class="openable">filePath.tar<div>
-              <p> - should be imported from a <mark>.tar</mark> (linux archive) file (ex: <mark>/tmp/mynewimage.tar</mark>) </p>
-            </div></strong>
-        </td>
-        <td> 
-            - import a Docker Image in the current Docker host from a <mark>.tar</mark> file 
-        </td>
+      <td>
+        docker load -i <strong class="openable">filePath.tar<div>
+            <p> - should be imported from a <mark>.tar</mark> (linux archive) file (ex: <mark>/tmp/mynewimage.tar</mark>) </p>
+          </div></strong>
+      </td>
+      <td>
+        - import a Docker Image in the current Docker host from a <mark>.tar</mark> file
+      </td>
     </tr>
     <tr class="21.01">
-        <td> 
-            <em>docker</em> save <strong>image</strong><i>:tag</i> -o <strong class="openable">filePath.tar<div>
-              <p> - should be expoorted as a <mark>.tar</mark> (linux archive) file (ex: <mark>/tmp/mynewimage.tar</mark>) </p>
-            </div></strong>
-        </td>
-        <td> 
-            - exports the Docker Image into a <mark>.tar</mark> file 
-        </td>
+      <td>
+        docker save <strong>image</strong><i>:tag</i> -o <strong class="openable">filePath.tar<div>
+            <p> - should be expoorted as a <mark>.tar</mark> (linux archive) file (ex: <mark>/tmp/mynewimage.tar</mark>) </p>
+          </div></strong>
+      </td>
+      <td>
+        - exports the Docker Image into a <mark>.tar</mark> file
+      </td>
     </tr>
     <tr class="20.01">
-        <td> 
-            <em>docker</em> scan <strong>image<i>:tag</i></strong>
-        </td>
-        <td> 
-            - scans the docker image for vulnerabilities (scans with Sync (some company))
-        </td>
+      <td>
+        docker scan <strong>image<i>:tag</i></strong>
+      </td>
+      <td>
+        - scans the docker image for vulnerabilities (scans with Sync (some company))
+      </td>
     </tr>
     <tr class="18.01">
-        <td> 
-            <em>docker</em> tag <strong>image<i>:tag</i></strong> <strong>newImage<i>:tag</i></strong>
-        </td>
-        <td> 
-            - creates a new tag for the same image (image tags are like hard-links, they reference the same image) (images has unique IDs which can be referenced by multiple tags)
-        </td>
+      <td>
+        docker tag <strong>image<i>:tag</i></strong> <strong>newImage<i>:tag</i></strong>
+      </td>
+      <td>
+        - creates a new tag for the same image (image tags are like hard-links, they reference the same image) (images has unique IDs which can be referenced by multiple tags)
+      </td>
     </tr>
     <tr class="25.01">
-        <td colspan="2"> 
-                Containers 
-        </td>
+      <td colspan="2">
+        Containers
+      </td>
     </tr>
     <tr class="29.01">
-        <td> 
-            <em>docker</em> commit <strong>container</strong> <i>image:tag</i>
-        </td>
-        <td> 
-            - commints the <u>current state (current fs)</u> of the container into a new Docker Image  
-        </td>
+      <td>
+        docker commit <strong>container</strong> <i>image:tag</i>
+      </td>
+      <td>
+        - commints the <u>current state (current fs)</u> of the container into a new Docker Image
+      </td>
     </tr>
     <tr class="35.01">
-        <td> 
-            <em>docker</em> exec <small>[-i]</small> <small>[-t]</small> <small>[-e <i>KEY<small>=</small>val</i>]</small> <strong>container</strong> <strong class="openable">cmd|executable<div>
-              <p> Examples: </p>
-              <p> <mark>docker exec -it <strong>contaier</strong> bash</mark> - opens bash inside the container </p>
-              <p> <mark>docker exec -it <strong>contaier</strong> "echo a && echo b"</mark> - won't work because quotes are not allowed directly </p>
-              <p> <mark>docker exec -it <strong>contaier</strong> sh -c "echo a && echo b"</mark> - works because directly after the container there's no qouted command </p>
-            </div></strong> 
-        </td>
-        <td> 
-            - runs a commnad on a running container <br>
-            - (<small>-i</small>) keeps the STDIN open <br>
-            - (<small>-t</small>) allocates a TTY (terminal) <br>
-            - (<small>-e <i>KEY=val</i></small>) specifies an environment variable <u>for this command</u>
-        </td>
+      <td>
+        docker exec <small>[options]</small> <strong>container</strong> <strong class="openable">cmd|executable<div>
+            <p> Examples: </p>
+            <p> <mark>docker exec -it <strong>contaier</strong> bash</mark> - opens bash inside the container </p>
+            <p> <mark>docker exec -it <strong>contaier</strong> "echo a && echo b"</mark> - won't work because quotes are not allowed directly </p>
+            <p> <mark>docker exec -it <strong>contaier</strong> sh -c "echo a && echo b"</mark> - works because directly after the container there's no qouted command </p>
+          </div></strong>
+      </td>
+      <td>
+        - runs a commnad on a running container <br>
+        <small>[options]</small><br>
+        - (<small>-i</small>) keeps the STDIN open <br>
+        - (<small>-t</small>) allocates a TTY (terminal) <br>
+        - (<small>-e <i>KEY=val</i></small>) specifies an environment variable <u>for this command</u>
+      </td>
     </tr>
     <tr class="38.01">
-        <td> 
-            <em>docker</em> inspect <strong>contaier</strong>
-        </td>
-        <td> 
-            - returns informations about the contianer (state, volume, network, etc..) (in JSON Array) 
-        </td>
+      <td>
+        docker inspect <strong>contaier</strong>
+      </td>
+      <td>
+        - returns informations about the contianer (state, volume, network, etc..) (in JSON Array)
+      </td>
     </tr>
     <tr class="30.03">
-        <td> 
-            <em>docker</em> pause <strong>container ...</strong>
-        </td>
-        <td> 
-            -  pauses all processes within the container(s)
-        </td>
+      <td>
+        docker pause <strong>container ...</strong>
+      </td>
+      <td>
+        - pauses all processes within the container(s)
+      </td>
     </tr>
     <tr class="25.02">
-        <td> 
-            <em>docker</em> ps <small>[-a]</small> <small>[-s]</small> <small>[--no-trunc]</small>
-        </td>
-        <td> 
-            - lists running docker containers <br>
-            - (<small>-a</small>) all containers (non running included) <br>
-            - (<small>-s</small>) size included <br>
-            - (<small>--no-trunc</small>) fully displays informations (does not truncate)
-        </td>
+      <td>
+        docker ps <small>[options]</small>
+      </td>
+      <td>
+        - lists running docker containers <br>
+        <small>[options]</small><br>
+        - (<small>-a</small>) all containers (non running containers included) <br>
+        - (<small>-s</small>) size included <br>
+        - (<small>--no-trunc</small>) fully displays informations (does not truncate)
+      </td>
     </tr>
     <tr class="28.01">
-        <td> 
-            <em>docker</em> rename <strong>contaier</strong> <strong>newName</strong>
-        </td>
-        <td> 
-            - renames the specified container 
-        </td>
+      <td>
+        docker rename <strong>contaier</strong> <strong>newName</strong>
+      </td>
+      <td>
+        - renames the specified container
+      </td>
     </tr>
     <tr class="30.05">
-        <td> 
-            <em>docker</em> restart <strong>container ...</strong>
-        </td>
-        <td> 
-            -  restarts the specified container(s)
-        </td>
+      <td>
+        docker restart <strong>container ...</strong>
+      </td>
+      <td>
+        - restarts the specified container(s)
+      </td>
     </tr>
     <tr class="27.01">
-        <td>
-            <em>docker</em> rm <small>[-f]</small> <strong>container</strong>
-        </td>
-        <td> 
-            - deletes the specified Docker Container from the host <br>
-            - (<small>-f</small>) force remove 
-        </td>
+      <td>
+        docker rm <small>[options]</small> <strong>container</strong>
+      </td>
+      <td>
+        - deletes the specified Docker Container from the host <br>
+        <small>[options]</small><br>
+        - (<small>-f</small>) force remove
+      </td>
     </tr>
     <tr class="26.01">
-        <td> 
-            <em>docker</em> run <small>[--name <i>contName</i>]</small> <small>[-d]</small> <small>[-i]</small> <small>[-t]</small> <small>[--rm]</small> <small class="openable">[--entrypoint <i>cmd</i>]<div>
-    <p> - overrides the <mark>ENTRYPOINT</mark> and <mark>CMD</mark> instructions in the Dockerfile </p>
-    <p> - ex: <mark>docker run -d --entrypoint echo <strong>image</strong> test</mark> will start the container with the <mark>echo test</mark> command <u style="color:orangered">(we have to split the commnad)</u></p>
-    </div></small> <small>[--env <i>key</i>=<i>val</i>]</small> <small>[-v <i>vol|outPath</i>:<i>inPath</i>[:ro]]</small> <small>[--tmpfs <i>inPath</i>]</small> <small>[-p <i>[hostIp:]hostPort</i>:<i>contPort</i>[/tcp|udp]]</small> <small>[-P]</small> <small>[<small>--ip <i>ipAddress</i></small>]</small> <small>[--network <i>networkName</i>]</small> <strong>image<i>:tag</i></strong> <i class="openable">cmd<div>
-    <p> - overrides the <mark>CMD</mark> instruction in the Dockerfile </p>
-    <p> - this command is passed in executable form (ex: <mark>docker run -d <strong>image</strong> echo test</mark> will override the CMD instruction as <mark>CMD ['echo', 'test']</mark>) </p>
-    </div></i>
-        </td>
-        <td> 
-            - builds a contaier from the specified Docker image and runs it <br>
-            - (<small>--name <i>contName</i></small>) specifies a name for the container <br>
-            - (<small>-d</small>) runs the container in the background (detached mode) <br>
-            - (<small>-i</small>) keeps the STDIN open <br>
-            - (<small>-t</small>) allocates a TTY (terminal) <br>
-            - (<small>--rm</small>) removes the container when the container exits (also removes anonymus volumes used by the container) <br>
-            - (<small>--env</small> <i>key</i>=<i>val</i>) sets (or overrides an existing <mark>ENV</mark>) environment variable which are persisted inside the container <br>
-            - (<small class="openable">-v <i>vol|outPath</i>:<i>inPath</i>[:ro]<div>
-                <h5><u> Mounting volumes </u></h5>
-                <p> <mark>-v <i>volName</i>:<strong>containerPath</strong></mark> </p>
-                <p> - mounts the specified volume inside the contaier (if volume is not passed an anonymus volume is created) </p>
-                <p> ex: <mark>-v vol1:/home/volStorage</mark> - <mark>vol1</mark> volume is mounted as <mark>/home/volStorage</mark> inside the container </p>
+      <td>
+        docker run <small>[options]</small> <strong>image<i>:tag</i></strong> <i class="openable">cmd<div>
+            <p> - overrides the <mark>CMD</mark> instruction in the Dockerfile </p>
+            <p> - this command is passed in executable form (ex: <mark>docker run -d <strong>image</strong> echo test</mark> will override the CMD instruction as <mark>CMD ['echo', 'test']</mark>) </p>
+          </div></i>
+      </td>
+      <td>
+        - builds a contaier from the specified Docker image and runs it <br>
+        <small>[options]</small><br>
+        - (<small>--name <i>contName</i></small>) specifies a name for the container <br>
+        - (<small>-d</small>) runs the container in the background (detached mode) <br>
+        - (<small>-i</small>) keeps the STDIN open <br>
+        - (<small>-t</small>) allocates a TTY (terminal) <br>
+        - (<small>--rm</small>) removes the container when the container exits (also removes anonymus volumes used by the container) <br>
+        - (<small>--env</small> <i>key</i>=<i>val</i>) sets (or overrides an existing <mark>ENV</mark>) environment variable which are persisted inside the container <br>
+        - (<small class="openable">-v <i>vol|outPath</i>:<i>inPath</i>[:ro]<div>
+            <h5><u> Mounting volumes </u></h5>
+            <p> <mark>-v <i>volName</i>:<strong>containerPath</strong></mark> </p>
+            <p> - mounts the specified volume inside the contaier (if volume is not passed an anonymus volume is created) </p>
+            <p> ex: <mark>-v vol1:/home/volStorage</mark> - <mark>vol1</mark> volume is mounted as <mark>/home/volStorage</mark> inside the container </p>
             <hr>
-                <h5><u> Bind mounts </u></h5>
-                <p> <mark>-v <strong>hostPath</strong>:<strong>containerPath</strong></mark> </p>
-                <p> - mounts the host machine's path directly inside the container </p>
-                <p> ex: <mark>-v /home/someUser:/home/someUser</mark> - path mounted directly inside the container </p>
-            </div></small>) mounts a volume or bind mount inside the container (<mark>:ro</mark> read-only) <br>
-            - (<small class="openable">--tmpfs <i>inPath</i><div>
-                <p> <mark>--tmpfs <strong>containerPath</strong></mark> </p>
-                <p> - mounts a temporary fs inside the contaier (files are written only in memory) </p>
-                <p> ex: <mark>--tmpfs /tempDir</mark> - mount a tmpfs as <mark>/tempDir</mark> inside the container </p>
-            </div></small>) mounts a temporary fs (memory fs) inside the container <br>
-            - (<small>-p <i>[hostIp:]hostPort</i>:<i>contPort</i>[/tcp|udp]</small>) routes the traffic (host <mark><strong>hostIp:hostPort</strong></mark> - <mark><strong>container</strong>:<strong>contPort</strong></mark>) (defaults: <i>hostIp</i> = <mark>0.0.0.0</mark> / <small>tcp|udp</small> = <mark>tcp</mark>) <br>
-            - (<small>-P</small>) routes the <mark>Dockerfile</mark> <mark>EXPOSE</mark> port to the host <mark>0.0.0.0:<strong>randomPort</strong></mark> address <br>
-            - (<small>--ip <i>ipAddress</i></small>) statically assigns the <i>ipAddress</i> to the container on which is the contaier will connect to the network <br>
-            - (<small>--network <i>networkName</i></small>) connects the container to the specified network (<mark>bridge</mark>(default)|<strong>user-defined-bridge</strong>|<mark>host</mark>|<mark>none</mark>) (<mark>--network host</mark> gives full host network access from the container)
-        </td>
+            <h5><u> Bind mounts </u></h5>
+            <p> <mark>-v <strong>hostPath</strong>:<strong>containerPath</strong></mark> </p>
+            <p> - mounts the host machine's path directly inside the container </p>
+            <p> ex: <mark>-v /home/someUser:/home/someUser</mark> - path mounted directly inside the container </p>
+          </div></small>) mounts a volume or bind mount inside the container (<mark>:ro</mark> read-only) <br>
+        - (<small class="openable">--tmpfs <i>inPath</i>
+          <div>
+            <p> <mark>--tmpfs <strong>containerPath</strong></mark> </p>
+            <p> - mounts a temporary fs inside the contaier (files are written only in memory) </p>
+            <p> ex: <mark>--tmpfs /tempDir</mark> - mount a tmpfs as <mark>/tempDir</mark> inside the container </p>
+          </div>
+        </small>) mounts a temporary fs (memory fs) inside the container <br>
+        - (<small>-p <i>[hostIp:]hostPort</i>:<i>contPort</i>[/tcp|udp]</small>) routes the traffic (host <mark><strong>hostIp:hostPort</strong></mark> - <mark><strong>container</strong>:<strong>contPort</strong></mark>) (defaults: <i>hostIp</i> = <mark>0.0.0.0</mark> / <small>tcp|udp</small> = <mark>tcp</mark>) <br>
+        - (<small>-P</small>) routes the <mark>Dockerfile</mark> <mark>EXPOSE</mark> port to the host <mark>0.0.0.0:<strong>randomPort</strong></mark> address <br>
+        - (<small>--ip <i>ipAddress</i></small>) statically assigns the <i>ipAddress</i> to the container on which is the contaier will connect to the network <br>
+        - (<small>--network <i>networkName</i></small>) connects the container to the specified network (<mark>bridge</mark>(default)|<strong>user-defined-bridge</strong>|<mark>host</mark>|<mark>none</mark>) (<mark>--network host</mark> gives full host network access from the container)
+      </td>
     </tr>
     <tr class="30.01">
-        <td> 
-            <em>docker</em> start <strong>container</strong>
-        </td>
-        <td> 
-            -  starts the specified Docker Contianer <u>(cannot start paused containers, use <mark>docker unpause</mark> instead)</u>
-        </td>
+      <td>
+        docker start <strong>container</strong>
+      </td>
+      <td>
+        - starts the specified Docker Contianer <u>(cannot start paused containers, use <mark>docker unpause</mark> instead)</u>
+      </td>
     </tr>
     <tr class="30.02">
-        <td> 
-            <em>docker</em> stop <strong>container</strong> <i>...</i>
-        </td>
-        <td> 
-            - stops the specified Docker Contianer(s) <br>
-            - sends the <mark>SIGTERM</mark> signal to the container's main process, then after a grace period sends <mark>SIGKILL</mark> 
-        </td>
+      <td>
+        docker stop <strong>container</strong> <i>...</i>
+      </td>
+      <td>
+        - stops the specified Docker Contianer(s) <br>
+        - sends the <mark>SIGTERM</mark> signal to the container's main process, then after a grace period sends <mark>SIGKILL</mark>
+      </td>
     </tr>
     <tr class="30.04">
-        <td> 
-            <em>docker</em> unpuase <strong>container</strong> <i>...</i>
-        </td>
-        <td> 
-            - unpauses paused container(s) <u>(<mark>docker start</mark> does not start paused containers)</u>
-        </td>
+      <td>
+        docker unpuase <strong>container</strong> <i>...</i>
+      </td>
+      <td>
+        - unpauses paused container(s) <u>(<mark>docker start</mark> does not start paused containers)</u>
+      </td>
     </tr>
     <tr class="40.01">
-        <td colspan="2">
-            Volumes 
-        </td>
+      <td colspan="2">
+        Volumes
+      </td>
     </tr>
     <tr class="40.02">
-        <td> 
-            <em>docker</em> volume create <i>volName</i>
-        </td>
-        <td> 
-            - (no opttion) creates an anonymus volume <br>
-            - (<i>volName</i>) names the newly created volume 
-        </td>
+      <td>
+        docker volume create <i>volName</i>
+      </td>
+      <td>
+        - (no opttion) creates an anonymus volume <br>
+        - (<i>volName</i>) names the newly created volume
+      </td>
     </tr>
     <tr class="50.01">
-        <td> 
-            <em>docker</em> volume inspect <strong>volName</strong>
-        </td>
-        <td> 
-            - returns detailed informations about the volume (in JSON Array)
-        </td>
+      <td>
+        docker volume inspect <strong>volName</strong>
+      </td>
+      <td>
+        - returns detailed informations about the volume (in JSON Array)
+      </td>
     </tr>
     <tr class="40.03">
-        <td> 
-            <em>docker</em> volume ls 
-        </td>
-        <td> 
-            - lists all docker volumes on the host 
-        </td>
+      <td>
+        docker volume ls
+      </td>
+      <td>
+        - lists all docker volumes on the host
+      </td>
     </tr>
     <tr class="45.02">
-        <td> 
-            <em>docker</em> volume prune 
-        </td>
-        <td> 
-            - removes all volumes that are not used by any container (does not remove volumes that are used by stopped containers)
-        </td>
+      <td>
+        docker volume prune
+      </td>
+      <td>
+        - removes all volumes that are not used by any container (does not remove volumes that are used by stopped containers)
+      </td>
     </tr>
     <tr class="45.01">
-        <td> 
-            <em>docker</em> volume rm <small>[-f]</small> <strong>volName</strong> 
-        </td>
-        <td> 
-             - removes the specified volume <br>
-             - (<small>-f</small>) force remove 
-        </td>
+      <td>
+        docker volume rm <small>[options]</small> <strong>volName</strong>
+      </td>
+      <td>
+        - removes the specified volume <br>
+        <small>[options]</small><br>
+        - (<small>-f</small>) force remove
+      </td>
     </tr>
     <tr class="55.01">
-        <td colspan="2">
-            Networks
-        </td>
+      <td colspan="2">
+        Networks
+      </td>
     </tr>
     <tr class="65.01">
-        <td> 
-            <em>docker</em> network connect <small>[--ip <i>ip</i>]</small> <strong>network</strong> <strong>cont</strong>
-        </td>
-        <td> 
-            - connects the container to the network <br>
-            - (<small>--ip <i>ip</i></small>) assigns an IP address the container uses on the network 
-        </td>
+      <td>
+        docker network connect <small>[options]</small> <strong>network</strong> <strong>cont</strong>
+      </td>
+      <td>
+        - connects the container to the network <br>
+        <small>[options]</small><br>
+        - (<small>--ip <i>ip</i></small>) assigns an IP address the container uses on the network
+      </td>
     </tr>
     <tr class="55.02">
-        <td> 
-            <em>docker</em> network create <small>[-d <i>driver</i>]</small> <small>[--subnet <strong class="openable">CIDR_notation<div>
-                <p> ex: <mark>172.0.0.0/16</mark> </p>
-            </div></strong>]</small> <small>[--gateway <strong>ip</strong>]</small> <small>[--ip-range <strong class="openable">CIDR_notation<div>
-                <p> ex: <mark>172.0.0.0/16</mark> </p>
-            </div></strong>]</small>  <strong>networkName</strong>
-        </td>
-        <td> 
-            - creates a new network <br>
-            - (<small>-d <i>driver</i></small>) specifies a network driver (<mark>bridge</mark> (default) or <mark>overlay</mark>), (with the <mark>-o parent=<strong>parentNetInterface</strong></mark> flag we also can specify <mark>macvlan</mark> or  <mark>ipvlan</mark>) <br>
-            - (<small>--subnet <strong class="openable">CIDR_notation<div>
-                <p> ex: <mark>172.0.0.0/16</mark> </p>
+      <td>
+        docker network create <small>[options]</small> <strong>networkName</strong>
+      </td>
+      <td>
+        - creates a new network <br>
+        <small>[options]</small><br>
+        - (<small>-d <i>driver</i></small>) specifies a network driver (<mark>bridge</mark> (default) or <mark>overlay</mark>), (with the <mark>-o parent=<strong>parentNetInterface</strong></mark> flag we also can specify <mark>macvlan</mark> or <mark>ipvlan</mark>) <br>
+        - (<small>--subnet <strong class="openable">CIDR_notation<div>
+              <p> ex: <mark>172.0.0.0/16</mark> </p>
             </div></strong></small>) specifies the allocated ips for the network <br>
-            - (<small>--gateway <strong>ip</strong></small>) specifies the gateway addresss <br>
-            - (<small>--ip-range <strong class="openable">CIDR_notation<div>
-                <p> ex: <mark>172.0.0.0/16</mark> </p>
+        - (<small>--gateway <strong>ip</strong></small>) specifies the gateway addresss <br>
+        - (<small>--ip-range <strong class="openable">CIDR_notation<div>
+              <p> ex: <mark>172.0.0.0/16</mark> </p>
             </div></strong></small>) ip range where containers will be connected by DHCP <br>
-        </td>
+      </td>
     </tr>
     <tr class="65.02">
-        <td> 
-            <em>docker</em> network disconnect <strong>network</strong> <strong>cont</strong>
-        </td>
-        <td> 
-            - disconnects the container from the network
-        </td>
+      <td>
+        docker network disconnect <strong>network</strong> <strong>cont</strong>
+      </td>
+      <td>
+        - disconnects the container from the network
+      </td>
     </tr>
     <tr class="70.01">
-        <td> 
-            <em>docker</em> network inspect <strong>network</strong> <i>...</i>
-        </td>
-        <td> 
-            - return information about the specified docker network(s) in JSON format <u>(also list connected containers)</u>
-        </td>
+      <td>
+        docker network inspect <strong>network</strong> <i>...</i>
+      </td>
+      <td>
+        - return information about the specified docker network(s) in JSON format <u>(also list connected containers)</u>
+      </td>
     </tr>
     <tr class="55.03">
-        <td> 
-            <em>docker</em> network ls <small>[--no-trunc]</small>
-        </td>
-        <td> 
-            - list all the daemon knows about <br>
-            - (<small>--no-trunc</small>) fully displays informations (does not truncate)
-        </td>
+      <td>
+        docker network ls <small>[options]</small>
+      </td>
+      <td>
+        - list all the daemon knows about <br>
+        <small>[options]</small><br>
+        - (<small>--no-trunc</small>) fully displays informations (does not truncate)
+      </td>
     </tr>
     <tr class="60.02">
-        <td> 
-            <em>docker</em> network prune
-        </td>
-        <td> 
-            - removes all unused networks (empty networks where no containers are connected at all)
-        </td>
+      <td>
+        docker network prune
+      </td>
+      <td>
+        - removes all unused networks (empty networks where no containers are connected at all)
+      </td>
     </tr>
     <tr class="60.01">
-        <td> 
-            <em>docker</em> network rm <strong>network</strong> <i>...</i>
-        </td>
-        <td> 
-            - removes the specified network(s) 
-        </td>
+      <td>
+        docker network rm <strong>network</strong> <i>...</i>
+      </td>
+      <td>
+        - removes the specified network(s)
+      </td>
     </tr>
     <tr class="75.01">
-        <td> 
-            <em>docker</em> port <strong>container</strong>
-        </td>
-        <td> 
-            - returns the routed ports between the container and the host machine (host network)
-        </td>
+      <td>
+        docker port <strong>container</strong>
+      </td>
+      <td>
+        - returns the routed ports between the container and the host machine (host network)
+      </td>
     </tr>
-</table>
-    <br>
-    <details class="example" id="notes">
+  </table>
+  <br>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-        <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="https://docs.docker.com/" target="_blanc">Docker Docs (docs.docker.com)</a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    <p> - after instalation docker runs with <mark>sudo</mark> only, but users in the <mark>docker</mark> group are also allowed to run docker commands </p>
-    <p> - a Docker Container keeps running only if something keeps it alive (like a server or <mark>tail -f /dev/nul</mark>) </p> 
-    <p> - the Docker daemon never uses shell's environment variables (use the <mark>--env</mark> flag or the <mark>ENV</mark> or <mark>ARG</mark> in the <mark class="mark">Dockerfile</mark> for passing values) </p>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - Docker is an tool which runs application in an isolated environment, it has a client-server (daemon) architecture which allows the Docker daemon to be controled even on a remote machine </p>
-    <p> - Docker is not a Virtual Machine (it does not run its own OS), instead it uses the <u>host Operating System kernel</u> but it manages its own file system (AuFS) and network </p>
-    <p> - so each Docker container is running on top of the host system kernel </p>
-    <p style="text-indent:20px;"> - on Linux can run Linux App containers </p>
-    <p style="text-indent:20px;"> - on Windows can run both Linux and Windows App containers (because Windows is shipped with a Linux kernel from Windows 10) </p>
-    <p style="text-indent:20px;"> - on Mac can run Linux App containers (because Docker uses a lightweight VM on MacOs to run Linux) </p>
-<h4 style="color:darkblue;"><u> Docker Image (Repository) </u></h4>
-    <p> - a Docker Image or Repo is basically a 'blueprint' for a Docker Container', it's a package containing the application code, libraries, tools, dependencies and other files needed to make an application</p>
-    <p> - Docker uses Docker images to spin up Docker containers, a Docker images is created by <mark>Dockerfile</mark> </p>
-    <p> - Docker Images or Repos are tagged <mark>image:[tag]</mark> </p>
-<h4 style="color:darkblue;"><u> Docker Container </u></h4>
-    <p> - a Docker Container is a special kind of isolated process running an application, managed by the Docker daemon </p>
-    <p> - each Docker Container has its own OS distribution running on top of the host's kernel, and file system (where we can save changes) </p>
-<h4 style="color:darkblue;"><u> Docker Registries </u></h4>
-    <p> - we don't distribute Docker Containers, we distribute Docker Images (Repos) </p>
-    <p> - we can use the DockerHub but also any custom repo server as distribution platform </p>
-    <p> - we can also save and load Docker images in <mark>*.tar</mark> (linux archive) files (<mark>docker save</mark> & <mark>docker load</mark> commands)</p>
-<img src="architecture.svg" height="350">
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> <mark>save</mark> / <mark>load</mark> TEST </u></h4>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://docs.docker.com/" target="_blanc">Docker Docs (docs.docker.com)</a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - after instalation docker runs with <mark>sudo</mark> only, but users in the <mark>docker</mark> group are also allowed to run docker commands </p>
+  <p> - a Docker Container keeps running only if something keeps it alive (like a server or <mark>tail -f /dev/nul</mark>) </p>
+  <p> - the Docker daemon never uses shell's environment variables (use the <mark>--env</mark> flag or the <mark>ENV</mark> or <mark>ARG</mark> in the <mark class="mark">Dockerfile</mark> for passing values) </p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - Docker is an tool which runs application in an isolated environment, it has a client-server (daemon) architecture which allows the Docker daemon to be controled even on a remote machine </p>
+  <p> - Docker is not a Virtual Machine (it does not run its own OS), instead it uses the <u>host Operating System kernel</u> but it manages its own file system (AuFS) and network </p>
+  <p> - so each Docker container is running on top of the host system kernel </p>
+  <p style="text-indent:20px;"> - on Linux can run Linux App containers </p>
+  <p style="text-indent:20px;"> - on Windows can run both Linux and Windows App containers (because Windows is shipped with a Linux kernel from Windows 10) </p>
+  <p style="text-indent:20px;"> - on Mac can run Linux App containers (because Docker uses a lightweight VM on MacOs to run Linux) </p>
+  <h4 style="color:darkblue;"><u> Docker Image (Repository) </u></h4>
+  <p> - a Docker Image or Repo is basically a 'blueprint' for a Docker Container', it's a package containing the application code, libraries, tools, dependencies and other files needed to make an application</p>
+  <p> - Docker uses Docker images to spin up Docker containers, a Docker images is created by <mark>Dockerfile</mark> </p>
+  <p> - Docker Images or Repos are tagged <mark>image:[tag]</mark> </p>
+  <h4 style="color:darkblue;"><u> Docker Container </u></h4>
+  <p> - a Docker Container is a special kind of isolated process running an application, managed by the Docker daemon </p>
+  <p> - each Docker Container has its own OS distribution running on top of the host's kernel, and file system (where we can save changes) </p>
+  <h4 style="color:darkblue;"><u> Docker Registries </u></h4>
+  <p> - we don't distribute Docker Containers, we distribute Docker Images (Repos) </p>
+  <p> - we can use the DockerHub but also any custom repo server as distribution platform </p>
+  <p> - we can also save and load Docker images in <mark>*.tar</mark> (linux archive) files (<mark>docker save</mark> & <mark>docker load</mark> commands)</p>
+  <img src="architecture.svg" height="350">
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> <mark>save</mark> / <mark>load</mark> TEST </u></h4>
     <pre class="cmd">
     $ docker save testImage:v1 -o testCont.tar                                         // saves the <mark>testImage:v1</mark> image into a <mark>testCont.tar</mark> file    
     
     $ docker load -i testCont.tar                                                      // loads the previously saved container into the current docker hosts    
     </pre>
-</details>
-<hr>
-<!--------------------------------------------------------------------------------------------->
-<h2 class="headerExtra"><u> Using Docker Registries </u></h2>
-    <p> - Docker allows us to use other registries than the DockerHub, we can be logged in into multiple registries at the same time  </p>
-    <p> - we can check our login status in the <mark>~/.docker/config.js</mark> file (<mark>auth</mark> object contains the logged in servers) </p>
-    <p> - the Docker image's name <u>first segment should be the server name (ex: <mark>harbor.techteamer.com/facekom-devel/vuer_oss</mark>)</u>, this is were docker knows where to push/pull images (exept for DockerHub) </p>
-    <p> - we can pull public images from DockerHub without being logged in to DockerHub </p>
-    <pre class="syntax">
+  </details>
+  <hr>
+  <!--------------------------------------------------------------------------------------------->
+  <h2 class="headerExtra"><u> Using Docker Registries </u></h2>
+  <p> - Docker allows us to use other registries than the DockerHub, we can be logged in into multiple registries at the same time </p>
+  <p> - we can check our login status in the <mark>~/.docker/config.js</mark> file (<mark>auth</mark> object contains the logged in servers) </p>
+  <p> - the Docker image's name <u>first segment should be the server name (ex: <mark>harbor.techteamer.com/facekom-devel/vuer_oss</mark>)</u>, this is were docker knows where to push/pull images (exept for DockerHub) </p>
+  <p> - we can pull public images from DockerHub without being logged in to DockerHub </p>
+  <pre class="syntax">
 <span style='color:darkgray'>// docker image -----------------------------------------------------------------------</span>
     <strong>dockerHubRepo</strong>/<strong>repo</strong><small>/</small><i>...<small>:</small>tag</i>                                                         // image pushed/pulled to/from DockerHub (ex: <mark>arpadpall21/test:v1</mark>)     
     
     <strong>repoServerUrl</strong>/<strong>repo</strong><small>/</small><i>...<small>:</small>tag</i>                                                         // image pushed/pulled to/from a custom docker repo registry server (ex: <mark>localhost:5000/test:v1</mark>)     
     </pre>
-<details class="example">
-<summary> DEMO : </summary>
+  <details class="example">
+    <summary> DEMO : </summary>
     <pre class='cmd'>
 // login / logout ---------------------------------------------------------------------
     $ login                                                                            // logging in to DockerHub 
@@ -533,20 +547,20 @@
     $ docker pull arpadpall21/test:v1                                                  // same deal when pulling    
     $ docker pull my.personalrepo.com/test:v1   
     </pre>
-</details>
-<hr>
-<!--------------------------------------------------------------------------------------------->
-<h2 class="headerExtra"><u> Docker file-system </u></h2>
-<img src="types-of-mounts.png" height="220">
-    <p> - each container has its own file system (a union fs = isolated part within the host's fs), files stored in the container live as long as the container exist </p>
-    <p> - we can use different external storages (volumes, mounts and tmpfs) and mount them inside the container (regardless of the mount type the data looks the same inside the container) </p>
-    <p> - externally mounted storages obscures (hides) the cotainer's fs (files stored in the container layer will be kept in background) </p> 
-<h3 class="header"> Volumes </h3>
-    <p> - volumes are storage packages on the host's fs managed by docker, they are kept in an isolated area (Default: <mark>/va/lib/docker/volumes</mark>) </p>
-    <p> - from the host machine we can see and access the volumes' data, just like the container do on the mounted path </p>
-    <p> - multiple containers can use the same volume </p>
-<details class="example">
-<summary> DEMO : </summary>
+  </details>
+  <hr>
+  <!--------------------------------------------------------------------------------------------->
+  <h2 class="headerExtra"><u> Docker file-system </u></h2>
+  <img src="types-of-mounts.png" height="220">
+  <p> - each container has its own file system (a union fs = isolated part within the host's fs), files stored in the container live as long as the container exist </p>
+  <p> - we can use different external storages (volumes, mounts and tmpfs) and mount them inside the container (regardless of the mount type the data looks the same inside the container) </p>
+  <p> - externally mounted storages obscures (hides) the cotainer's fs (files stored in the container layer will be kept in background) </p>
+  <h3 class="header"> Volumes </h3>
+  <p> - volumes are storage packages on the host's fs managed by docker, they are kept in an isolated area (Default: <mark>/va/lib/docker/volumes</mark>) </p>
+  <p> - from the host machine we can see and access the volumes' data, just like the container do on the mounted path </p>
+  <p> - multiple containers can use the same volume </p>
+  <details class="example">
+    <summary> DEMO : </summary>
     <pre class='cmd'>
 // docker volume create ---------------------------------------------------------------
     $ docker volume create vol1                                                        // creates the specified volume 
@@ -589,11 +603,11 @@
     // -------------------------------------------
     $ docker run -d -v :/testDir test:v1                                               // creates an anonymous volume and mounts it as '/testDir' inside the container   
     </pre>
-</details>
-<h3 class="header"> Bind Mounts </h3>
-    <p> - the host's specified directory structure is mounted directly inside the container (the host's data is accessible within the container) </p>
-<details class="example">
-<summary> DEMO : </summary>
+  </details>
+  <h3 class="header"> Bind Mounts </h3>
+  <p> - the host's specified directory structure is mounted directly inside the container (the host's data is accessible within the container) </p>
+  <details class="example">
+    <summary> DEMO : </summary>
     <pre class="cmd">
     $ docker run -d -v /home:/home test:v1                                             // the host's machine '/home' directory is mounted insed the contaier as '/home'   // -! this obscures the container's '/home' directory   
     
@@ -601,31 +615,31 @@
     
     $ docker run -d -v /home:/hostHome test:v1                                         // the host's machine '/home' directory is mounted insed the contaier as '/hostHome' (this way the contaier's /home directory is not obsucred)     
     </pre>
-</details>
+  </details>
 
-<h3 class="header"> Tmpfs (Linux Only) </h3>
-    <p> - temporary file-system mounts are stored only in memoy (data is not written on disk and lost <u>when the container stops</u>) </p>
-<details class="example">
-<summary> DEMO : </summary>
+  <h3 class="header"> Tmpfs (Linux Only) </h3>
+  <p> - temporary file-system mounts are stored only in memoy (data is not written on disk and lost <u>when the container stops</u>) </p>
+  <details class="example">
+    <summary> DEMO : </summary>
     <pre class="cmd">
     $ docker run -d --tmpfs /tempDir test:v1                                           // a tmpfs directory is mounted as '/tempDir' 
                                                                                        // -! data stored in /tempDir inside the container is sotred only in the host's memory and lost when the container stops 
     </pre>
-</details>
-<hr>
-<!--------------------------------------------------------------------------------------------->
-<h2 class="headerExtra"><u> Docker network </u></h2>
-    <p> - docker containers are (sort of) isolated systems, so they need to be connected to some kind of network in order to coummunicate with other nodes on the network </p>
-    <p> - docker offers sereral network solutions (docker network types) </p>
-    <p> - only container connected on the same network can communicate with each other, a container can be connected to multiple networks (just like a normal host) </p>
-<!--------------------------------------------------------------------------------------------->
-<h3 class="header"> host network </h3>
-    <p> - the docker container is directly routed to one of the host machine's ip address and port </p>
-    <p> - we route the traffic <mark><strong>container:port</strong> -> <strong>hostIp:port</strong></mark> (ex: <mark><strong>container</strong>:3000 -> 196.168.0.3:5000</mark>, the traffict is routed from host <mark>196.168.0.3:3000</mark> to <mark><strong>container</strong>:5000</mark>) </p> 
-    <p> - the host network does not conflict with the bridge network, so the container can be connected on the bridge network but also routed to the host machine's specified ip address and port </p>
-    <p> - the docker host network is a way to route the traffic host to container, so it isn't real a network layer <u>therefore it cannot be created</u> </p>
-<details class="example">
-<summary> DEMO : </summary>
+  </details>
+  <hr>
+  <!--------------------------------------------------------------------------------------------->
+  <h2 class="headerExtra"><u> Docker network </u></h2>
+  <p> - docker containers are (sort of) isolated systems, so they need to be connected to some kind of network in order to coummunicate with other nodes on the network </p>
+  <p> - docker offers sereral network solutions (docker network types) </p>
+  <p> - only container connected on the same network can communicate with each other, a container can be connected to multiple networks (just like a normal host) </p>
+  <!--------------------------------------------------------------------------------------------->
+  <h3 class="header"> host network </h3>
+  <p> - the docker container is directly routed to one of the host machine's ip address and port </p>
+  <p> - we route the traffic <mark><strong>container:port</strong> -> <strong>hostIp:port</strong></mark> (ex: <mark><strong>container</strong>:3000 -> 196.168.0.3:5000</mark>, the traffict is routed from host <mark>196.168.0.3:3000</mark> to <mark><strong>container</strong>:5000</mark>) </p>
+  <p> - the host network does not conflict with the bridge network, so the container can be connected on the bridge network but also routed to the host machine's specified ip address and port </p>
+  <p> - the docker host network is a way to route the traffic host to container, so it isn't real a network layer <u>therefore it cannot be created</u> </p>
+  <details class="example">
+    <summary> DEMO : </summary>
     <pre class="cmd">
     $ docker run -d --name testcont -p 80:3000 testimg                                 // testcont container will be routed host 0.0.0.0:80 to container :3000   
     $ docker port testcont
@@ -648,19 +662,19 @@
     $ docker port testcont4                                                            // -! nothing visible here 
       // doesn't return anything 
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------->
-<h3 class="header"> bridge network </h3>
-    <p> - the bridge network is a virtual subnetwork where containers are connected together, it has its own gateway dhcp etc.. (a fully featured network) </p>
-    <p> - the host machine itself is also part of bride networks (gateway usually) <u>therefore bridge networks are also visible in the list of network interfaces</u></p>
-    <p> - there are 2 types of bridge networks: <mark class="mark">default</mark> and <mark class="mark">user-defined</mark> </p>
-    <p style="text-indent:20px"> - the <mark class="mark">default bridge network (<mark>docker0</mark>)</mark> is automatically created and cannot be removed </p>
-    <p style="text-indent:45px"> - newly created containers are connected to it (by default) </p>
-    <p style="text-indent:45px"> - does not support DNS lookup, so containers on this network has to be referred by <mark><strong>ip</strong>:<strong>port</strong></mark> address</p>
-    <p style="text-indent:20px"> - <mark class="mark">user-defined bridge networks</mark> are manually created/removed, containers has to be explicitly connected to it </p>
-    <p style="text-indent:45px"> - supports DNS lookup, so containers on this network can be referred by container name</p>
-<details class="example">
-<summary> DEMO : </summary>
+  </details>
+  <!--------------------------------------------------------------------------------------------->
+  <h3 class="header"> bridge network </h3>
+  <p> - the bridge network is a virtual subnetwork where containers are connected together, it has its own gateway dhcp etc.. (a fully featured network) </p>
+  <p> - the host machine itself is also part of bride networks (gateway usually) <u>therefore bridge networks are also visible in the list of network interfaces</u></p>
+  <p> - there are 2 types of bridge networks: <mark class="mark">default</mark> and <mark class="mark">user-defined</mark> </p>
+  <p style="text-indent:20px"> - the <mark class="mark">default bridge network (<mark>docker0</mark>)</mark> is automatically created and cannot be removed </p>
+  <p style="text-indent:45px"> - newly created containers are connected to it (by default) </p>
+  <p style="text-indent:45px"> - does not support DNS lookup, so containers on this network has to be referred by <mark><strong>ip</strong>:<strong>port</strong></mark> address</p>
+  <p style="text-indent:20px"> - <mark class="mark">user-defined bridge networks</mark> are manually created/removed, containers has to be explicitly connected to it </p>
+  <p style="text-indent:45px"> - supports DNS lookup, so containers on this network can be referred by container name</p>
+  <details class="example">
+    <summary> DEMO : </summary>
     <pre class="cmd">
 // docker network ls / docker network inspect -----------------------------------------
     $ docker network ls                                                                // prints all networks the docker daemon knows about   
@@ -700,7 +714,7 @@
     $ docker port testcont                                                             // returns the coutnainer's all routed ports 
       3000/tcp -> 0.0.0.0:49155                                                        // container:3000 is routed to host 0.0.0.0:49155   
       3000/tcp -> :::49155
-    </pre>    
+    </pre>
     <pre class="cmd">
     $ docker network ls
       NETWORK ID     NAME      DRIVER    SCOPE
@@ -761,23 +775,23 @@
         // ...
         }]
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------->
-<h3 class="header"> none network </h3>
-    <p> - containers connected on the <mark class="mark">none</mark> network are prevented to have any network connections, so they are completely isolated </p> 
-<details class="example">
-<summary> DEMO : </summary>
+  </details>
+  <!--------------------------------------------------------------------------------------------->
+  <h3 class="header"> none network </h3>
+  <p> - containers connected on the <mark class="mark">none</mark> network are prevented to have any network connections, so they are completely isolated </p>
+  <details class="example">
+    <summary> DEMO : </summary>
     <pre class="cmd">
     $ docker run -d --name testcont --network none testimg                             // connects the testcont container to the none network on startup   
     
     $ docker network connect none testcont2                                            // connects the testcont2 container to the none network (possible if the container is not part of any network)    
-    </pre> 
-</details>
-<!--------------------------------------------------------------------------------------------->
-<h3 class="header"> macvlan and ipvlan networks </h3>
-    <p> - connects the container directly on the physical network of the host machine (<mark class="mark">macvlan</mark> the container has its own ip and mac addres VS <mark class="mark">ipvlan</mark> container does not have its own mac address) </p>
-<details class="example">
-<summary> DEMO : </summary>
+    </pre>
+  </details>
+  <!--------------------------------------------------------------------------------------------->
+  <h3 class="header"> macvlan and ipvlan networks </h3>
+  <p> - connects the container directly on the physical network of the host machine (<mark class="mark">macvlan</mark> the container has its own ip and mac addres VS <mark class="mark">ipvlan</mark> container does not have its own mac address) </p>
+  <details class="example">
+    <summary> DEMO : </summary>
     <pre class="cmd">
     // -! the created ipvlan or macvlan interface is not visible on the host machine 
     // !! for some reason the <mark>macvlan</mark> network did not worked when I tested this (some network protection maybe, but it should work the same way as the ipvlan did in the example below)     
@@ -793,13 +807,14 @@
                                                                                          // we can ping it from the pysical network (ex: <mark>ping 192.168.0.100</mark>)
     
     $ docker run -d --name testcont --ip 192.168.0.101 --network myipvlan testimg2       // we can connect multiple containers to the <mark cass="mark">myipvlan</mark> network assigning static ip address to the container (<mark>--ip 192.168.0.101</mark>)
-    </pre> 
-</details>
-<!--------------------------------------------------------------------------------------------->
-<h3 class="header"> overlay network </h3>
-    <p> - communication between docker daemons (NOT TESTED)</p>
-    
-    
-    <br><br>
+    </pre>
+  </details>
+  <!--------------------------------------------------------------------------------------------->
+  <h3 class="header"> overlay network </h3>
+  <p> - communication between docker daemons (NOT TESTED)</p>
+
+
+  <br><br>
 </body>
+
 </html>

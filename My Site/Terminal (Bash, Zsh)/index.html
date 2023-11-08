@@ -69,10 +69,19 @@
     </tr>
     <tr>
       <td>
-        <strong>cmd</strong> ; <strong>cmd</strong> <br>
-        <strong>cmd</strong> && <strong>cmd</strong>
+        <strong>cmd</strong> ; <strong>cmd</strong> <small>[; <i>...</i>]</small><br>
       </td>
-      <td> - separates commands (does not pipe) </td>
+      <td> - runs all commands (regardless of errors) </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>cmd</strong> && <strong>cmd</strong> <small>[&& <i>...</i>]</small>
+      </td>
+      <td> - runs the next command <u>if the previous command doesn't failed</u> (AND logical chaining) </td>
+    </tr>
+    <tr>
+      <td> <strong>cmd</strong> & </td>
+      <td> - runs the command in the background (as background process/daemon) </td>
     </tr>
     <tr>
       <td> <strong>cmd</strong> | <strong>cmd</strong> </td>
@@ -671,15 +680,10 @@
       </td>
     </tr>
     <tr>
-      <td> find <strong>dirPath</strong> <i>dirPath ...</i> <small>[-maxdepth <i>nr</i>] [-name '<i>name</i>'] [-iname
-          '<i>name</i>'] [-type f|d|l] [-inum <i>(+|-)nr</i>] [-empty] [-size <i>(+|-)nr</i>G|M|k] [-user '<i>name</i>']
-          [-group '<i>group</i>'] [<small>-perm <i>NrNrNr</i></small>] [-newer '<i>name</i>'] [-mmin <i>(+|-)nr</i>]
-          [-mtime <i>(+|-)nr</i>] [-amin <i>(+|-)nr</i>] [-atime <i>(+|-)nr</i>] [-cmin <i>(+|-)nr</i>] [-ctime
-          <i>(+|-)nr</i>] [-not] [! <i>criteria</i>] [<i>criteria</i> -or <i>criteria</i>] [-exec <i>cmd</i> {}
-          +]</small> </td>
+      <td> find <strong>dirPath</strong> <i>...</i> <small>[options]</small> </td>
       <td>
-        - find specified items based on the passed criteria <u>(recursively searches the full depth on the passed
-          directory(ies))</u> <br>
+        - find specified items based on the passed criteria <u>(recursively searches the full depth on the passed directory(ies))</u> <br>
+        <small>[options]</small><br>
         - (<small>-maxdepth <i>nr</i></small>) directory depth to search <br>
         - (<small>-name '<i>name</i>'</small>) by item name <br>
         - (<small>-iname '<i>name</i>'</small>) by item name (case-insensitive) <br>

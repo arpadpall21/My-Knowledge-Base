@@ -1,3 +1,31 @@
+/*-----------------------------------------------------------*/
+/*-- bootstraps ---------------------------------------------*/
+.indent-lv1 {
+    text-indent: 30px;
+}
+
+.indent-lv2 {
+    text-indent: 60px;
+}
+
+.indent-lv3 {
+    text-indent: 90px;
+}
+
+.indent-lv4 {
+    text-indent: 120px;
+}
+
+.indent-lv5 {
+    text-indent: 150px;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+/*-----------------------------------------------------------*/
+/*-----------------------------------------------------------*/
 html{
     background-color:darkgray;
     font-family:arial, sans-serif;
@@ -134,29 +162,6 @@ caption{
     background-color: lightseagreen;
     text-align: center;
 }
-
-/*-----------------------------------------------------------*/
-/*-- idents -------------------------------------------------*/
-.indent_lv1 {
-    text-indent: 30px;
-}
-
-.indent_lv2 {
-    text-indent: 60px;
-}
-
-.indent_lv3 {
-    text-indent: 90px;
-}
-
-.indent_lv4 {
-    text-indent: 120px;
-}
-
-.indent_lv5 {
-    text-indent: 150px;
-}
-
 
 /*-----------------------------------------------------------*/
 /*-- sub site -----------------------------------------------*/
