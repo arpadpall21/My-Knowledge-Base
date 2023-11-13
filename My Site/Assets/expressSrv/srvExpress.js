@@ -6,6 +6,4 @@ app.use(
     express.static('../../')
 )
 
-app.listen(1000, ()=>console.log('Express is listening on localhost:1000'));
-
-
+app.listen('localhost', 1000, ()=>console.log('Express is listening on localhost:1000'));

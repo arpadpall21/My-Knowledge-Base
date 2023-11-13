@@ -131,10 +131,10 @@
       <td> - clears the terminal's screen </td>
     </tr>
     <tr>
-      <td> crontab <small>[-e] [-l] [-r] [-i]</small> </td>
+      <td> crontab <small>[options]</small> </td>
       <td>
-        - <u>(option required)</u> users' crontab (crontab = cron table) <a
-          href="../11 Operating Systems/Linux/index.html#cron" target="_blank">Cron [link]</a> <br>
+        - <u>(option required)</u> users' crontab (crontab = cron table) <a href="../11 Operating Systems/Linux/index.html#cron" target="_blank">Cron [link]</a> <br>
+        <small>[options]</small><br>
         - (<small>-e</small>) edit the user's crontab file <br>
         - (<small>-l</small>) print the user's crontab file <br>
         - (<small>-r</small>) removes the user's crontab file from the <mark>/var/spool/cron/crontabs</mark> directory
@@ -155,9 +155,10 @@
       <td> - exits the shell where it is currently running </td>
     </tr>
     <tr>
-      <td> free <small>[-h]</small> </td>
+      <td> free <small>[options]</small> </td>
       <td>
         - returns the memory (RAM) and the swap area status <br>
+        <small>[options]</small><br>
         - (<small>-h</small>) data returned in human readable form (in Gb Mb Kb istead of bytes)
       </td>
     </tr>
@@ -269,11 +270,12 @@
       </td>
     </tr>
     <tr>
-      <td> adduser <small> [--uid <i>uid</i>] [--system] [--no-create-home] [--home <i>dirPath</i>]</small>
+      <td> adduser <small>[options]</small>
         <strong>userName</strong>
       </td>
       <td>
         - (no options) adds the specified user to the system (also creates user home directory and primary group) <br>
+        <small>[options]</small><br>
         - (<small>--uid <i>uid</i></small>) specifies the user id of the user <br>
         - (<small>--system</small>) creates a system user <br>
         - (<small>--no-create-home</small>) does not create home directory for the user <br>
@@ -289,9 +291,10 @@
       <td> - adds the user to the specified group </td>
     </tr>
     <tr>
-      <td> deluser <small>[--remove-all-files] [--remove-home]</small> <strong>userName</strong> </td>
+      <td> deluser <small>[options]</small> <strong>userName</strong> </td>
       <td>
         - (no options) removes the specified user from the system <br>
+        <small>[options]</small><br>
         - (<small>--remove-all-files</small>) removes all files which belongs to the user <br>
         - (<small>--remove-home</small>) remove the home directory of the user
       </td>
@@ -305,18 +308,20 @@
       <td> - removes the user from the specified group </td>
     </tr>
     <tr>
-      <td> groupadd <small>[--gid <i>gid</i>] [--system]</small> <strong>groupName</strong> </td>
+      <td> groupadd <small>[options]</small> <strong>groupName</strong> </td>
       <td>
         - (no options) creates the specified group <br>
+        <small>[options]</small><br>
         - (<small>--gid <i>gid</i></small>) sets the gid of the group <br>
         - (<small>--system</small>) creates a system group
       </td>
     </tr>
     <tr>
-      <td> groupdel <small>[-f]</small> <strong>groupName</strong> </td>
+      <td> groupdel <small>[options]</small> <strong>groupName</strong> </td>
       <td>
         - removes the specified group <br>
-        - (<small>-f</small>) removes the specified group even if it's a primary group
+        <small>[options]</small><br>
+        - (<small>-f</small>) also removes primary group
       </td>
     </tr>
     <tr>
@@ -340,11 +345,11 @@
       <td> - returns UID of the passed user and all its groups along with their GIDs </td>
     </tr>
     <tr>
-      <td> passwd <small>[-d]</small> <i>userName</i> </td>
+      <td> passwd <small>[options]</small> <i>userName</i> </td>
       <td>
-        - (no options) changes the password for the current user or for the specified user <br>
-        - (<small>-d</small>) deletes the specified user's password (deleted password works when login but on terminal
-        the user still needs password [TESTED: 2020-04-11])
+        - changes the password for the current or for the specified user <br>
+        <small>[options]</small><br>
+        - (<small>-d</small>) deletes the specified user's password (deleted password works when login but on terminal the user still needs password [TESTED: 2020-04-11])
       </td>
     </tr>
     <tr>
@@ -356,10 +361,11 @@
       <td> - executes the command as root user </td>
     </tr>
     <tr>
-      <td> usermod <small>[-d <i>dirPath</i>] [-uid <i>uid</i>] [-gid <i>gid</i>]</small> <strong>userName</strong>
+      <td> usermod <small>[options]</small> <strong>userName</strong>
       </td>
       <td>
-        - <u>(option required)</u> modifys the specified user account <br>
+        - modifys the specified user account <br>
+        <small>[options]</small> (at least one is required)<br>
         - (<small>-d <i>dirPath</i></small>) sets the home directory for the user <br>
         - (<small>-uid <i>uid</i></small>) sets the user id of the user <br>
         - (<small>-gid <i>gid</i></small>) sets the primary group of the user
@@ -393,9 +399,10 @@
       <td> - kill the specified process(es) </td>
     </tr>
     <tr>
-      <td> killall <small>[-i] [-s <i>signal</i>] [-v] [-l]</small> <strong>processName</strong> <i>...</i> </td>
+      <td> killall <small>options]</small> <strong>processName</strong> <i>...</i> </td>
       <td>
         - kill the specified process(es) <br>
+        <small>[options]</small><br>
         - (<small>-i</small>) case-insensitive <br>
         - (<small>-s</small> <i>signal</i>) sends the specified signal instead of <mark>SIGTERM</mark> <br>
         - (<small>-v</small>) report if the signal was successfully sent <br>
@@ -403,9 +410,10 @@
       </td>
     </tr>
     <tr>
-      <td> pgrep <small>[-v] [-P <i>ppid</i>] [-l] [-i] [-n] [-o] [-c]</small> <strong>processName</strong> </td>
+      <td> pgrep <small>[options]</small> <strong>processName</strong> </td>
       <td>
-        - returns the pid(s) for the specified process(es) (oldest in first and so on...) <br>
+        - returns the pid(s) for the specified process(es) (oldest first) <br>
+        <small>[options]</small><br>
         - (<small>-v</small>) returns all other processes than the specified one <br>
         - (<small>-P</small> <i>ppid</i>) returns all processes belonging to the specified parent process <br>
         - (<small>-l</small>) process name included <br>
@@ -417,10 +425,10 @@
       </td>
     </tr>
     <tr>
-      <td> ps <small>[-A|-e] [aux] [-eH] [-e --forest] [-C <i>processName</i>] [--pid <i>pid</i>] [-U <i>userName</i>]
-          [-G <i>groupName</i>] [-l] [-f]</small></td>
+      <td> ps <small>[options]</small></td>
       <td>
-        - (no options) returns the processes for the current shell (this terminal's pid) <br>
+        - returns the processes for the current shell (this terminal's pid) <br>
+        <small>[options]</small><br>
         - (<small>-A|-e</small>) returns all processes <br>
         - (<small>aux</small>) returns all processes in an extra detailed list with executable (command) paths <br>
         - (<small>-eH</small>) returns all processes as hierarchy tree <br>
@@ -438,7 +446,7 @@
       <td> - shows running processes <u>in real time</u> </td>
     </tr>
     <tr>
-      <td colspan="2" id="services"> Services (Daemons) </td>
+      <td colspan="2" id="services"> Services (Daemons) (<mark>systemctl</mark> is the successor of <mark>service</mark>) </td>
     </tr>
     <tr>
       <td> service <strong>serviceName</strong> reload </td>
@@ -565,17 +573,19 @@
       </td>
     </tr>
     <tr>
-      <td> env <small>[-0] [-i <i>cmd</i>]</small> </td>
+      <td> env <small>[options]</small> </td>
       <td>
         - (no option) returns all environment varialbes <br>
+        <small>[options]</small><br>
         - (<small>-0</small>) removes the new line character from the end of each key/value pairs <br>
         - (<small>-i <i>cmd</i></small>) runs the command (program) without environment variables
       </td>
     </tr>
     <tr>
-      <td> printenv <small>[-0]</small> </td>
+      <td> printenv <small>[options]</small> </td>
       <td>
-        - (no option) reutns all environment varialbes <br>
+        - reutns all environment varialbes <br>
+        <small>[options]</small><br>
         - (<small>-0</small>) removes the new line character from the end of each key/value pairs
       </td>
     </tr>
@@ -587,9 +597,10 @@
       <td colspan="2" id="file_system"> File System </td>
     </tr>
     <tr>
-      <td> cat <small>[-n] [-E] [-s] [>] [>>]</small> <strong>filePath</strong> <i>...</i> </td>
+      <td> cat <small>[options]</small> <strong>filePath</strong> <i>...</i> </td>
       <td>
-        - (no options) read the specified file(s) content and output the read data <br>
+        - read the specified file(s) content and output the read data <br>
+        <small>[options]</small><br>
         - (<small>-n</small>) number output lines <br>
         - (<small>-E</small>) highlight output line ends <br>
         - (<small>-s</small>) collapses multiple empty lines into a single one <br>
@@ -606,9 +617,10 @@
       <td> - navigates to the specified directory </td>
     </tr>
     <tr>
-      <td> chmod <small>[-R]</small> <strong>NrNrNr path</strong> </td>
+      <td> chmod <small>[options]</small> <strong>NrNrNr path</strong> </td>
       <td>
         - changes the permissions of the specified file or direcotry <br>
+        <small>[options]</small><br>
         - (<strong>NrNrNr</strong>) (<mark>0</mark> = <mark>---</mark>) (<mark>1</mark> = <mark>--x</mark>)
         (<mark>2</mark> = <mark>-w-</mark>) (<mark>3</mark> = <mark>-wx</mark>) (<mark>4</mark> = <mark>r--</mark>)
         (<mark>5</mark> = <mark>r-x</mark>) (<mark>6</mark> = <mark>rw-</mark>) (<mark>7</mark> = <mark>rwx</mark>) <br>
@@ -617,21 +629,23 @@
     </tr>
     </tr>
     <tr>
-      <td> chown <small>[-R]</small> <strong>ownerName</strong><small>:</small><i>groupName</i> <strong>path</strong>
+      <td> chown <small>[options]</small> <strong>ownerName</strong><small>:</small><i>groupName</i> <strong>path</strong>
       </td>
       <td>
         - (<strong>ownerName</strong>) changes the owner of the specified file or directory <br>
+        <small>[options]</small><br>
         - (<small>:</small><i>groupName</i>) changes the group ownership of the file (can be written as <mark>chown
           :newGroup file</mark>) <br>
         - (<small>-R</small>) changes the ownership of the targeted directory and <u>all its descendent items</u>
       </td>
     </tr>
     <tr>
-      <td> cp <small>[-i] [-f] [-p] [-u] [-l] [-s] [-r|-R]</small> <strong>srcPath</strong> <i>scrPath ...</i>
+      <td> cp <small>[options]</small> <strong>srcPath</strong> <i>scrPath ...</i>
         <strong>destPath</strong>
       </td>
       <td>
-        - (no options ) copies (and renames) file(s) <u>(does not prompt!)</u> <u>(cannot copy directories)</u> <br>
+        - copies (and renames) file(s) <u>(cannot copy directories)</u> <br>
+        <small>[options]</small><br>
         - (<small>-i</small>) prompts (warns) before overwriting files at destination <br>
         - (<small>-f</small>) (force) overwrite protected files at destination <br>
         - (<small>-p</small>) preserves the file's stats (ownership, permission bits, times, etc...) <br>
@@ -644,26 +658,21 @@
       </td>
     </tr>
     <tr>
-      <td> df <small>[-h] [-i] [-a]</small> </td>
+      <td> df <small>[options]</small> </td>
       <td>
         - (no options) displays the available space on all <u>mounted</u> file systems <br>
+        <small>[options]</small><br>
         - (<small>-h</small>) list sizes in human readable format (G, M, k) <br>
         - (<small>-i</small>) display inode informations instead of block usage <br>
         - (<small>-a</small>) display all devices (including zero block sizes)
       </td>
     <tr>
       <td>
-        diff <small>[-i] [-s] [-q] [-y] [-r]</small> <strong>file1 file2</strong> <br>
-        colordiff <small>[-i] [-s] [-q] [-y] [-r]</small> <strong>file1 file2</strong>
+        diff | colordiff <small>[options]</small> <strong>file1 file2</strong>
       </td>
       <td>
-        - compares to files <u>line by line</u> and reports the differences between them, suggest modification to
-        <strong>file1</strong> <br>
-        - the colordiff <u>installable command</u> does the same in colors <br>
-        ex: <br>
-        (<mark>4a5,7</mark> = add the below lines to line 5-7) <br>
-        (<mark>5,7d4</mark> = delete line 5-7) <br>
-        (<mark>5,7c5,7</mark> = change line 5-7 with the below content)) <br>
+        - prints the differenc between the files (colordiff is an installable command)<br>
+        <small>[options]</small><br>
         - (<small>-i</small>) case-insensitive check <br>
         - (<small>-s</small>) does report when files are identical <br>
         - (<small>-q</small>) quick report instead of suggesting modifications <br>
@@ -672,17 +681,18 @@
       </td>
     </tr>
     <tr>
-      <td> du <small>[-h] [-s]</small> <i>path ...</i> </td>
+      <td> du <small>[options]</small> <i>path ...</i> </td>
       <td>
-        - returns the <u>estimated</u> space used by the specified file or directory (current directory by default) <br>
+        - returns the <u>estimated</u> space of the current (or specified file or directory) <br>
+        <small>[options]</small><br>
         - (<small>-h</small>) human readable fromat (K, MB, etc..) <br>
         - (<small>-s</small>) returns the one summerized size only
       </td>
     </tr>
     <tr>
-      <td> find <strong>dirPath</strong> <i>...</i> <small>[options]</small> </td>
+      <td> find <strong>dirPath</strong> <i>...</i> -name <strong>fileOrDirname</strong> <small>[options]</small> </td>
       <td>
-        - find specified items based on the passed criteria <u>(recursively searches the full depth on the passed directory(ies))</u> <br>
+        - searches for the specified file or direcotry in <strong>dirPath</strong> <br>
         <small>[options]</small><br>
         - (<small>-maxdepth <i>nr</i></small>) directory depth to search <br>
         - (<small>-name '<i>name</i>'</small>) by item name <br>
@@ -718,10 +728,10 @@
       </td>
     </tr>
     <tr>
-      <td> grep <small>[-i -n -h -o -v]</small> <strong>pattern filePath</strong> <i>...</i> </td>
+      <td> grep <small>[options]</small> <strong>pattern filePath</strong> <i>...</i> </td>
       <td>
-        - searches for a <strong>pattern</strong> in the specified files (or piped data), returns each line where
-        there's a match <br>
+        - searches for a <strong>pattern</strong> in stdin, returns each line where there's a match <br>
+        <small>[options]</small><br>
         - (<small>-i</small>) case-insensitive search <br>
         - (<small>-n</small>) print line numb with output lines <br>
         - (<small>-h</small>) print only the output lines (without the source file path) <br>
@@ -730,17 +740,18 @@
       </td>
     </tr>
     <tr>
-      <td> head <small>[-n <i>nr</i>]</small> <strong>filePath</strong> <i>...</i> </td>
+      <td> head <small>[options]</small> <strong>filePath</strong> <i>...</i> </td>
       <td>
         - returns the first 10 lines of the specified file(s) <br>
+        <small>[options]</small><br>
         - (<small>-n <i>nr</i></small>) specifies the number of lines to display
       </td>
     </tr>
     <tr>
-      <td> ln <small>[-i -f -s]</small> <strong>srcPath destPath</strong> </td>
+      <td> ln <small>[options]</small> <strong>srcPath destPath</strong> </td>
       <td>
-        - creates a hard-link at destination (created link can be named) <u>(directory hard-links are not
-          allowed)</u><br>
+        - creates a hard-link at destination (created link can be named) (remember there are no directory hard-links)<br>
+        <small>[options]</small><br>
         - (<small>-i</small>) prompt before replacing links at destination <br>
         - (<small>-f</small>) replaces existing links at destination <br>
         - (<small>-s</small>) create soft-link (file or directory symbolic-link) instead hard link <u>(you must be in
@@ -748,9 +759,10 @@
       </td>
     </tr>
     <tr>
-      <td> ls <small>[-l] [-a] [-h] [-i] [-r] [-S]</small> <strong>dirPath</strong> </td>
+      <td> ls <small>[options]</small> <strong>dirPath</strong> </td>
       <td>
-        - (no options) list items in the specified directory <br>
+        - list items in the specified directory <br>
+        <small>[options]</small><br>
         - (<small>-l</small>) detailed list (permissions, ownership, size, etc..) <br>
         - (<small>-a</small>) include hidden items <br>
         - (<small>-h</small>) list file sizes in human readable format (G, M, k) <br>
@@ -764,11 +776,12 @@
       <td> - creates a new directory </td>
     </tr>
     <tr>
-      <td> mv <small>[-i] [-f] [-n] [-u]</small> <strong>srcPath</strong> <i>scrPath ...</i> <strong>destPath</strong>
+      <td> 
+        mv <small>[options]</small> <strong>srcPath</strong> <i>scrPath ...</i> <strong>destPath</strong>
       </td>
       <td>
-        - (no options) moves (and renames) file(s) and directory(ies) <u>(does not prompt)</u> <u>(directories are moved
-          with all their items)</u> <br>
+        - moves (and renames) file(s) or directory(ies) <u>(directories are moved with all their items)</u> <br>
+        <small>[options]</small><br>
         - (<small>-i</small>) prompts (warns) before overwriting files at destination <br>
         - (<small>-f</small>) (force) overwrites files at destination <br>
         - (<small>-n</small>) does not overwrite existing file(s) at destination <br>
@@ -778,14 +791,13 @@
     </tr>
     <tr>
       <td> pwd </td>
-      <td> - returns the path of the current working directory </td>
+      <td> - prints the absolute path of the current working directory </td>
     </tr>
     <tr>
-      <td> rm <small>[-i] [-f] [-r|-R]</small> <strong>path</strong> <i>...</i> </td>
+      <td> rm <small>[options]</small> <strong>path</strong> <i>...</i> </td>
       <td>
-        - (no options) removes the specified file(s) <u>(does not prompt!)</u> <u>(cannot remove directories)</u>
-        <u>(does not remove hidden directories with the <mark>*</mark> character, <mark>.*</mark> = removes all hidden
-          items)</u> <br>
+        - removes the specified file(s) <u>(cannot remove directories)</u> <br>
+        <small>[options]</small><br>
         - (<small>-i</small>) prompts (warns) before removing items <br>
         - (<small>-f</small>) (force) removes write protected items <br>
         - (<small>-r|-R</small>) removes the specified directory and all its items
@@ -800,11 +812,11 @@
       <td> - prints the stats of the specified file(s) or directory(ies) </td>
     </tr>
     <tr>
-      <td> tail <small>[-n <i>nr</i>]</small> <small>[-f]</small> <strong>filePath</strong> <i>...</i> </td>
+      <td> tail <small>[options]</small> <strong>filePath</strong> <i>...</i> </td>
       <td>
         - returns the last 10 lines of the specified file(s) <br>
-        - (<small>-f</small>) continuously prints the file's last lines when the file is updated (used to continuously
-        monitor server log files)
+        <small>[options]</small><br>
+        - (<small>-f</small>) watches the file for changes <br>
         - (<small>-n <i>nr</i></small>) specifies the number of lines to display
       </td>
     </tr>
@@ -813,10 +825,10 @@
       <td> - creates empty file(s) </td>
     </tr>
     <tr>
-      <td> tree <small>[-L <i>nr</i>] [-a] [-d] [-f] [-p] [-u] [-g] [-s] [-s] [-inodes]</small> </td>
+      <td> tree <small>[options]</small> </td>
       <td>
-        - <i class="fas fa-download"></i> (no option) displays the structure of the specified directory in a tree-like
-        format <br>
+        - <i class="fas fa-download"></i> (no option) displays the structure of the specified directory in a tree-like format <br>
+        <small>[options]</small><br>
         - (<small>-L <i>nr</i></small>) level depth to display <br>
         - (<small>-a</small>) all items (including hidden onces) <br>
         - (<small>-d</small>) display directories only <br>
@@ -830,10 +842,11 @@
       </td>
     </tr>
     <tr>
-      <td> umask <small>[-S]</small> <i>umaskVal</i> </td>
+      <td> umask <small>[options]</small> <i>umaskVal</i> </td>
       <td>
-        - (no argument) returns the umask value for the <u>user</u> (Default: umask = <mark>0002</mark> | file
+        - returns the umask value for the <u>user</u> (Default: umask = <mark>0002</mark> | file
         permission = <mark>0666</mark> | directory permission = <mark>0777</mark>) <br>
+        <small>[options]</small><br>
         - (<small>-S</small>) the umask value is symbolically printed <br>
         - <i>umaskVal</i> sets the umask value <u>for the current session (umask value resets to <mark>0002</mark>)</u>
       </td>
@@ -1070,12 +1083,15 @@
         <mark>POP3</mark>, <mark>SCP</mark>, <mark>SMTP</mark>, <mark>TELNET</mark>, <mark>LDAP</mark>,
         <mark>FILE</mark>) <br>
         <small>[options]</small> <br>
-        - (<small>--head</small>) makes a HEAD request (only the message header is requested) <br>
+        - (<small>-X <strong>METHOD</strong></small>) sets the request method (ex: <mark>curl -X DELETE <strong>host</strong></mark>) <br>
+        - (<small>-H "<i>httpHeader</i>: <i>value</i>"</small>) add this header to the request <br>
         - (<small>-i</small>) also includes the HTTP header fields in the response <br>
         - (<small>-s</small>) silent download (does not show download status) <br>
         - (<small>-o <i>filePath</i></small>) saves the downloaded data in the specified file <br>
         - (<small>-C</small>) resumes downloading (when download stopped) <br>
-        - (<small>-k</small>) no server certificate validation
+        - (<small>-k</small>) no server certificate validation <br>
+        - (<small>-v</small>) verbose (also prints request & response headers) <br>
+        - (<small>--unix-socket <i>socketPath</i> http://localhost<i>path</i></small>) domain socket request (ex: <mark>curl --unix-socket /var/run/nginx.sock http:///localhost/test</mark>)
       </td>
     </tr>
     <tr>
