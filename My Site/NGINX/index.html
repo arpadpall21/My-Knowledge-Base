@@ -12,7 +12,7 @@
 
 <body>
   <h1> NGINX </h1>
-  <p> Updated: 2023-07-15 </p>
+  <p> Updated: 2023-07-15 / 2023-11-14 </p>
   <p class="sitenav"> <a href="../index.html">MySite></a> NGINX
   <table class="table">
     <caption>
@@ -64,7 +64,7 @@
     </tr>
     <tr class="05.01">
       <td>
-        listen <i>host:</i><strong>port</strong>|<strong>domainSocketPath</strong>;
+        listen <i>host:</i><strong>port</strong>|<strong>domainSocketPath</strong>
       </td>
       <td>
         server
@@ -76,7 +76,7 @@
     </tr>
     <tr class="05.02">
       <td>
-        server_name <strong>hostName:str|regEx|wildcard</strong> <i>...</i>;
+        server_name <strong>hostName:str|regEx|wildcard</strong> <i>...</i>
       </td>
       <td>
         server
@@ -87,7 +87,7 @@
     </tr>
     <tr class="07.01">
       <td>
-        root <strong>dirPath</strong>;
+        root <strong>dirPath</strong>
       </td>
       <td>
         http / server / location / if in location
@@ -99,7 +99,7 @@
     </tr>
     <tr class="07.02">
       <td>
-        alias <strong>dirPath</strong>;
+        alias <strong>dirPath</strong>
       </td>
       <td>
         location
@@ -122,7 +122,7 @@ http {
     </tr>
     <tr class="10.01">
       <td>
-        index <strong>file</strong> <i>...</i>;
+        index <strong>file</strong> <i>...</i>
       </td>
       <td>
         http / server / location
@@ -131,38 +131,133 @@ http {
         - specifies the file lookup (on direcotry request) (Default: <mark>index index.html</mark>)
       </td>
     </tr>
-    <tr class="10.01">
+    <tr class="10.02">
       <td>
-        try_files
+        try_files <strong>filePath</strong> <i>...</i> <i>fallback:=httpCode|@namedLocation</i>
       </td>
       <td>
-
+        server / location
       </td>
       <td>
-        -
+        - tries files on <strong>filePath</strong>, the first found (leftmost) file is served, the fallback can be a http response code or a named location <br>
+        - the path to file is constructed as <mark>root|alias</mark> + <strong>filePath</strong>
       </td>
     </tr>
-    
-    
-    
-    
-    
-    
-    
-    
+    <tr class="10.03">
+      <td>
+        error_page <strong>httpCode</strong> <i>...</i> <small>=<i>responseHttpCode</i></small> <strong>uri</strong>
+      </td>
+      <td>
+        http / server / location / if in location
+      </td>
+      <td>
+        - redirects the traffic to <strong>uri</strong> when NGINX responds with <strong>httpCode</strong> <i>...</i> <br>
+        - if <strong>uri</strong> points to an external link (ex: <mark>http://localhost:3001</mark>) we get a <mark>302</mark> response 
+      </td>
+    </tr>
+    <tr class="10.04">
+      <td>
+        internal;
+      </td>
+      <td>
+        location 
+      </td>
+      <td>
+        - the current location can be reached internally only
+      </td>
+    </tr>
+    <tr class="15.01">
+      <td>
+        add_header <strong>headerKey</strong> <strong>headerVal</strong> <small>[always]</small>
+      </td>
+      <td>
+        http / server / location / if in location
+      </td>
+      <td>
+        - adds a header to the response (only for responses 200, 201, 204, 206, 301, 302, 303, 304, 307, 308) <br>
+        - <small>always</small> for all responses (regardless of the response code)
+      </td>
+    </tr>
+    <tr class="20.01">
+      <td>
+        limit_except <strong>httpMethod</strong> <i>...</i> { }
+      </td>
+      <td>
+        http / server / location / if in location
+      </td>
+      <td>
+        - only allow the listed http method(s), other methods will get a <mark>405</mark> response <br>
+        - in the block we can use <mark>allow</mark> and <mark>deny</mark> to white / black listing
+      </td>
+    </tr>
+    <tr class="25.01">
+      <td>
+        worker_processes <strong>nr</strong>|auto
+      </td>
+      <td>
+        main
+      </td>
+      <td>
+        - controls how many worker processes NGINX uses (Default: <mark>1</mark>)
+      </td>
+    </tr>
+    <tr class="25.02">
+      <td>
+        worker_connections <strong>nr</strong>
+      </td>
+      <td>
+        events
+      </td>
+      <td>
+        - controls how many simultaneous connections are allowed <u>per worker processes</u> (Default: <mark>512</mark>)
+      </td>
+    </tr>
+    <tr class="30.01">
+      <td>
+        access_log <strong>filePath</strong> <i><a href="https://nginx.org/en/docs/http/ngx_http_log_module.html#access_log">other configs</a></i>
+      </td>
+      <td>
+        http / server / location / if in location / limit_except
+      </td>
+      <td>
+        - sets the access log path, format, etc... (creates the file if not exist)
+      </td>
+    </tr>
+    <tr class="30.02">
+      <td>
+        error_log <strong>filePath</strong> <i class="openable">level<div>
+            <p> <mark>debug</mark> </p>
+            <p> <mark>info</mark> </p>
+            <p> <mark>notice</mark> </p>
+            <p> <mark>warn</mark> </p>
+            <p> <mark>error</mark> (Default) </p>
+            <p> <mark>crit</mark> </p>
+            <p> <mark>alert</mark> </p>
+            <p> <mark>emerg</mark> </p>
+        </div></i>
+      </td>
+      <td>
+        main / http / mail / stream / server / location
+      </td>
+      <td>
+        - sets the error log path and level (creates the file if not exist)
+      </td>
+    </tr>
+
+
+
+
     <tr class="00.00">
       <td>
-
+        
       </td>
       <td>
-
+        
       </td>
       <td>
         -
       </td>
     </tr>
-
-
   </table>
   <br>
   <details class="example" id="notes">
@@ -245,7 +340,9 @@ http {
   </details>
   <!-------------------------------------------------------------------------------------------->
   <hr>
-    <h2 class="header"> NGINX Contexts </h2>
+    <h2 class="header"> NGINX Contexts <mark>http</mark> / <mark>server</mark> / <mark>location</mark> / <mark>events</mark> </h2>
+    <p> - a context executes from top to bottom, the <mark>return</mark> statement can break further execution </p>
+    <p> - nested directives override directives that are inherited from the parent context (just like scoping works in 
     <pre class="syntax">
                                           // (top level) used to define core configs (like logs, etc...)
     http {                                // nests all http related configs and virtual servers
@@ -270,6 +367,19 @@ http {
     }
     
     events { }                            // contains global options for connection processing
+    
+    
+<span style="color:gray;">// Context execution & inheritance -----------------------------------</span>
+    <strong>ctx</strong> {
+        set $<strong>someVar</strong> <strong>valA</strong>;
+        
+        <strong>ctx</strong> {
+            set $<strong>someVar</strong> <strong>valB</strong>;            // override parent variable (in the local scope)
+            
+            return <strong>httpCode str</strong>;          // breaks further exectution 
+        }
+    }
+    
     </pre>
   <details class="example">
     <summary> DEMO (can be pseudocode) </summary>
@@ -297,17 +407,17 @@ http {
         server {
             listen 3000;
             
-            location ~ /login {                   # route precedence because both locations have the same precedence level (so declaration order matters here)  
+            location ~ /login {
                 return 200 "Login response";
             }
             
-            location ~ /login {
+            location ~ /login {                   # route never reached because both locations have the same precedence level (so declaration order matters here)  
                 return 200 "Content response";
             }
         }
     }
     
-    events {}
+    events { }
     </pre>
     <pre>
     http {
@@ -389,25 +499,7 @@ http {
         worker_connections 1024;      # maximum number of simultaneous connections
     }
     </pre>
-  </details>
-  <!-------------------------------------------------------------------------------------------->
-  <hr>
-  <h2 class="header"> Context execution & Inheritance </h2>
-    <p> - a context executes from top to bottom, the <mark>return</mark> statement can break further execution </p>
-    <p> - nested directives override directives that are inherited from the parent context (just like scoping works in programming languages) </p>
-    <pre class="syntax">
-    <strong>ctx</strong> {
-        set $<strong>someVar</strong> <strong>valA</strong>;
-        
-        <strong>ctx</strong> {
-            set $<strong>someVar</strong> <strong>valB</strong>;            // override parent variable (in the local scope)
-            
-            return <strong>httpCode str</strong>;          // breaks further exectution 
-        }
-    }
-    </pre>
-  <details class="example">
-    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> directive inheritance </h4>
     <pre>
     http {
         gzip on;
@@ -746,8 +838,8 @@ http {
     events { }
     </pre>
   </details>
-  <h3 class="header"> The <mark>index</mark> / <mark>try_files</mark> / <mark>error_page</mark> directives </h3>
-  <details class="example" open>
+  <h3 class="header"> The <mark>index</mark> / <mark>try_files</mark> / <mark>error_page</mark> / <mark>internal</mark> directives </h3>
+  <details class="example">
     <summary> DEMO (can be pseudocode) </summary>
     <h4 class="header"> <mark>index</mark> directive </h4>
     <pre>
@@ -764,35 +856,161 @@ http {
     </pre>
     <h4 class="header"> <mark>try_files</mark> directive </h4>
     <pre>
-    
-    
-    
-    
+    http {
+        include /etc/nginx/mime.types;
+        
+        server {
+            listen 3000;
+            root /var/www/site;
+            
+            location /main {
+                try_files /main.html /index.html =404;        # files are looked up in <mark>/var/www/site</mark> directory    
+            }
+            
+            location /data {
+                alias /var/www/site/data;
+                try_files /main.html /index.html =404;        # files are looked up in <mark>/var/www/site/data</mark> directory    
+            }
+            
+            location /tests {
+                alias /var/www/site/dir;                      # files are looked up in <mark>/var/www/site/dir</mark> directory    
+                try_files /main.html /index.html @fallback;   # named location is the fallback value 
+            }
+            
+            location @fallback {
+                return 404 "Not Found!";
+            }
+            
+        }
+    }
+
+    events {}
     </pre>
+    <h4 class="header"> <mark>error_page</mark> / <mark>internal</mark> directives </h4>
+    <pre>
+    http {
+        include /etc/nginx/mime.types;
+        
+        server {
+            listen 3000;
+            error_page 404 /errors/not_found.html;
+            error_page 500 502 503 504 =500 /errors/server_error.html;    # response code will be <mark>500</mark>
+            
+            location ^~ /errors {
+                internal;           # no external request allowed
+                alias /var/www/site/errors;
+            }
+        }
+    }
     
+    events {}
+    </pre>
+    <pre>
+    http {
+        server {
+            listen 3000;
+            error_page 404 http://localhost:3005;       # NGINX will respond with a 302 (redirect)
+            
+            location = / {
+                return 200 "OK";
+            }
+        }
+    }
     
+    events {}
+    </pre>
+  </details>
+  <h3 class="header"> The <mark>add_header</mark> / <mark>gzip</mark> / <mark>gzip_types</mark> directives </h3>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> <mark>add_header</mark> directive </h4>
+    <pre>
+    http {
+        server {
+            listen 3000;
+            add_header CustomHeader test;
+            add_header CustomHeader2 test2 always;    # will be added to all responses (regardless of the response code)   
+            
+            location / {
+                return 200 "Hello World!";
+            }
+        }
+    }
+    
+    events {}
+    </pre>
+  </details>
+  <h3 class="header"> The <mark>limit_except</mark> / <mark>allow</mark> / <mark>deny</mark> directives (TODO <mark>allow</mark> and <mark>deny</mark>) </h3>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> <mark>limit_except</mark> directive </h4>
+    <pre>
+    http {
+        server {
+            listen 3000;
+            
+            location / {
+                limit_except GET { }      # only GET (and HEAD) requests are allowed, other requests will get 405 responses
+                
+                return 200 "OK";
+            }
+            
+            location /test {
+            }
+        }
+    }
+    
+    events { }
+    </pre>
+  </details>
+  <h3 class="header"> The <mark>worker_processes</mark> / <mark>worker_connections</mark> directives </h3>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> <mark>worker_processes</mark> / <mark>worker_connections</mark> directives </h4>
+    <pre>
+    worker_processes auto;          # NGINX automatically scales worker processes
+    
+    http {
+        
+        server {
+            listen 3000;
+            
+            location / {
+                return 200 "OK";
+            }
+        }
+    }
+    
+    events {
+        worker_connections 1024;    # number of simultaneous connections <b>per worker process</b>
+    }
+    </pre>
+  </details>
+  <h3 class="header"> The <mark>access_log</mark> / <mark>error_log</mark> directives </h3>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> <mark>worker_processes</mark> / <mark>worker_connections</mark> directive </h4>
+    <pre>
+    http {
+        access_log /var/www/site/log/access.log;
+        error_log /var/www/site/log/error.log info;
+        
+        server {
+            listen 3000;
+            location / {
+                return 200 "Hello World!";
+            }
+        }
+    }
+    
+    events { }
+    </pre>
   </details>
 
 
+
+
 <!--
-    directives:
-        index <strong>file</strong>               - (location, server) default file to serve (default: <mark>index.html</mark>)
-        
-        
-        
-        
-        try_files <strong>filePath|uri</strong> <i>...</i> =<strong>httpCode</strong>    - (server, location) serves the first found file for the request
-                                                            - if file is not found the previous valid file is served
-                                                            - the path to the file is constructed relative to <mark>root</mark> or <mark>alias</mark> directive
-                                                            - path 
-                                                            - give an example for named location as well
-    
-    
-    
-    
-        error_page <strong>httpCode</strong> <i>...</i> <small>=<i>httpCode</i></small> <strong>filePath|url</strong>
-                                                  - (http, server, location, if in location) serves error page at <strong>filePath</strong> if <strong>httpCode</strong> is thrown (we also can redirect)
-                                                  - optionally serves <i>httpCode</i> instead of <strong>httpCode</strong> <i>...</i> http codes
 
 -->
 
@@ -835,64 +1053,26 @@ stage 3 :
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
-    directives:
-        index <strong>file</strong>               - (location, server) default file to serve (default: <mark>index.html</mark>)
-        
-        
-        try_files <strong>filePath|uri</strong> <i>...</i> =<strong>httpCode</strong>    - (server, location) serves the first found file for the request
-                                                            - if file is not found the previous valid file is served
-                                                            - the path to the file is constructed relative to <mark>root</mark> or <mark>alias</mark> directive
-                                                            - 
-    
-        error_page <strong>httpCode</strong> <i>...</i> <small>=<i>httpCode</i></small> <strong>filePath|url</strong>
-                                                  - (http, server, location, if in location) serves error page at <strong>filePath</strong> if <strong>httpCode</strong> is thrown (we also can redirect)
-                                                  - optionally serves <i>httpCode</i> instead of <strong>httpCode</strong> <i>...</i> http codes
-    
-    
-        add_header <strong>headerName</strong> <strong>headerValue</strong> [always];     <- adds a header to the response (for 200, 201, 204, 206, 301, 302, 303, 304, 307, 308 response codes only)
-            - always -> for all response codes
-        limit_except <strong>httpMethod</strong> <i>...</i> {     - (location) only the listed http methods allowed in the location
-            <i>configs...</i>
-            deny all;
-        }
-      
-      
-        worker_processes <strong>int</strong>;    - (main) how many worker processes to create (default: 1)
-        worker_connections <strong>int</strong>;  - (events) maximum connection per wroker process (default: 512)
-    
-    
-    
         - compression
         gzip on|off;                # enables|disables content encoding (includes Content-Encoding gzip in the response)
-        gzip_types <strong>mimeType</strong> <i>...</i>         # by default only <mark>text/html</strong> mime typed files are compressed, here we can add files to the compression 
-    
-    
+        gzip_types <strong>mimeType|any</strong> <i>...</i>         # by default only <mark>text/html</strong> mime typed files are compressed, here we can add files to the compression 
       
       
-      access_log <strong>path</strong>;           <- sets the access log path 
-      error_log <strong>path</strong>;            <- error log path
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+      
+      
+      
+      
+      
+      
+      
+      
         rewrite <strong>path:regEx</strong> <strong>path:str</strong>        # redirects <strong>path:regEx</strong> to <strong>path:str</strong> but URL stays at <strong>path:regEx</strong
         
         
-    
-    
+        
+        
+        
+        
         upstream {                                # defines a group of servers (for load balancing)
             least_conn;                           # load balancing (traffic routed to the server having the least active connection)
             ip_hash;                              # calculates a hash based on the client's IP in order to always route the client to the same backend server 
@@ -985,6 +1165,11 @@ stage 3 :
         
         
         
+        
+        
+        when finished maybe look for more common directives????
+        
+        
 ---------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
 ?????????????????????????????????????????????????????????????????????????????????????????????
@@ -993,11 +1178,9 @@ WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
     nginx -s reopen     - reopen log files (close current log files and open new onces)         <- TEST THIS (does this guy log in the error log???)
     
     
-    logging?
-    caching?
-    
-    - delete cache
-    
+    - these fuckers should white/black list IP ranges but doesn't worked in fuckint WSL (maybe try on mac -> hopefully tomorrow)
+    allow
+    deny
     
     
     
@@ -1040,7 +1223,53 @@ WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
 
 
 <!--
+      access_log <strong>path</strong>;           <- sets the access log path 
+      error_log <strong>path</strong>;            <- error log path
 
+
+
+
+        worker_processes <strong>int</strong>;    - (main) how many worker processes to create (default: 1)
+        worker_connections <strong>int</strong>;  - (events) maximum connection per wroker process (default: 512)
+
+
+
+
+
+
+
+        add_header <strong>headerName</strong> <strong>headerValue</strong> [always];     <- adds a header to the response (for 200, 201, 204, 206, 301, 302, 303, 304, 307, 308 response codes only)
+            - always -> for all response codes
+        
+        limit_except <strong>httpMethod</strong> <i>...</i> {     - (location) only the listed http methods allowed in the location
+            <i>configs...</i>
+            deny all;
+        }
+
+
+
+
+
+
+    directives:
+        index <strong>file</strong>               - (location, server) default file to serve (default: <mark>index.html</mark>)
+        
+        
+        
+        
+        try_files <strong>filePath</strong> <i>...</i> <i>fallback:=httpCode|namedLocation</i>      - (server, location) 
+                                                            - on directory request tries files on <strong>filePath</strog>, the path to the file is constructed as current <mark>root|alias</mark> value + <strong>filePath</strong>
+                                                            - the first found (leftmost) file is served, the fallback can be a http response code or a named location
+                                                            
+                                                            
+                                                            - give an example for named location as well
+    
+    
+    
+    
+        error_page <strong>httpCode</strong> <i>...</i> <small>=<i>httpResponseCode</i></small> <strong>uri</strong>
+                                                  - (http, server, location, if in location) serves error page at the specified location if <strong>httpCode</strong> is thrown (we also can redirect)
+                                                  - optionally serves <i>httpCode</i> instead of <strong>httpCode</strong> <i>...</i> http codes
 
 
 

@@ -16,18 +16,17 @@
   <h1> Terminal (Bash, Zsh) (ver 4.0.0) </h1>
   <p> Updated ( 2020-04-03 )</p>
   <p class="sitenav"> <a href="../index.html">MySite></a> Terminal (Bash, Zsh) </p>
-  <p class="subSite">
-    <a href="#compression">Compression</a> /
-    <a href="#environment_variables">Environment Varialbes</a> /
-    <a href="#file_system">File System</a> /
-    <a href="#general">General</a> /
-    <a href="#general_commands">General Commands</a> /
-    <a href="#networking">Networking</a> /
-    <a href="#package_managers">Package Managers</a> /
-    <a href="#process_management">Process Management</a> /
-    <a href="#services">Services (Daemons)</a> /
-    <a href="#users_and_groups">Users and Group</a>
-  </p>
+  <p class="subSite"><a href="#compression">Compression</a> </p>
+  <p class="subSite"> <a href="#compression">Compression</a> </p>
+  <p class="subSite"> <a href="#environment_variables">Environment Varialbes</a> </p>
+  <p class="subSite"> <a href="#file_system">File System</a> </p>
+  <p class="subSite"> <a href="#general">General</a> </p>
+  <p class="subSite"> <a href="#general_commands">General Commands</a> </p>
+  <p class="subSite"> <a href="#networking">Networking</a> </p>
+  <p class="subSite"> <a href="#package_managers">Package Managers</a> </p>
+  <p class="subSite"> <a href="#process_management">Process Management</a> </p>
+  <p class="subSite"> <a href="#services">Services (Daemons)</a> </p>
+  <p class="subSite"> <a href="#users_and_groups">Users and Group</a> </p>
   <table class="table">
     <caption>
       <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
@@ -78,10 +77,6 @@
         <strong>cmd</strong> && <strong>cmd</strong> <small>[&& <i>...</i>]</small>
       </td>
       <td> - runs the next command <u>if the previous command doesn't failed</u> (AND logical chaining) </td>
-    </tr>
-    <tr>
-      <td> <strong>cmd</strong> & </td>
-      <td> - runs the command in the background (as background process/daemon) </td>
     </tr>
     <tr>
       <td> <strong>cmd</strong> | <strong>cmd</strong> </td>
@@ -447,6 +442,26 @@
     </tr>
     <tr>
       <td colspan="2" id="services"> Services (Daemons) (<mark>systemctl</mark> is the successor of <mark>service</mark>) </td>
+    </tr>
+    <tr>
+      <td> <strong>cmd</strong> & </td>
+      <td> - runs the command in the background (as background process/daemon) </td>
+    </tr>
+    <tr>
+      <td> jobs </td>
+      <td> - list background processes that the user started </td>
+    </tr>
+    <tr>
+      <td> fg %<strong>jobNr</strong> </td>
+      <td> - birings the specified background process (<strong>jbNr</strong>) in the foreground </td>
+    </tr>
+    <tr>
+      <td> bg %<strong>jobNr</strong> </td>
+      <td> - sends the specified process (<strong>jbNr</strong>) in the background </td>
+    </tr>
+    <tr>
+      <td> kill %<strong>jobNr</strong> </td>
+      <td> - stops the specified background process (<strong>jbNr</strong>) </td>
     </tr>
     <tr>
       <td> service <strong>serviceName</strong> reload </td>
