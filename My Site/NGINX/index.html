@@ -1006,6 +1006,47 @@ http {
     events { }
     </pre>
   </details>
+<!----------------------------------------------------------------------------->
+<hr>
+  <h2 class="headerExtra"> Redirect & Rewrite </h3>
+  <p> - redirecting is sending a <mark>3*</mark> response with the <mark>Location</mark> header containing the address to redirect </p>
+  <p> - rewriting is essentially redirecting the traffic but we don't get a <mark>3*</mark> response, instead our path is a chanel between us and the targetted address </p>
+  <pre class="syntax">
+  http {
+      server {
+          location <strong>path</strong> {
+              return 301 <strong>addressToRedirect</strong>;        // sned the redirect response   
+          }
+      }
+  }
+  
+  events { }
+  </pre>
+  <details class="example" open>
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> Redirect </h4>
+    <pre>
+    http {
+        server {
+            listen 3002;
+            
+            location /login {
+                return 200 "You've been redirected to /login";
+            }
+            
+            location /profile {                   # redirect to an internal address 
+                return 301 /base;
+            }
+            
+            location /redirect1 {
+                return 301 http://google.com;     # redirect to an external address
+            }
+        }
+    }
+    
+    events {}
+    </pre>
+  </details>
 
 
 
