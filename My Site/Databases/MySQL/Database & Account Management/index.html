@@ -29,12 +29,14 @@
 <h2 class="headerExtra"> Database Management </h2>
     <pre class="syntax">
     SHOW DATABASES                                                             // displays all databases on the server (only databases are shown for which the current user has some privileges)   
-         
+      \l                                                                         // in PostreSQL
+    
     CREATE DATABASE <strong>dbName</strong>                                                     // creates a new database 
     DROP DATABASE <strong>dbName</strong>                                                       // deletes the specified database   
     
     USE <strong>dbName</strong>                                                                 // selects (as current) the specified database   
     SELECT database()                                                          // returns the the currently selected database (<mark>NULL</mark> if no database selected)    
+      SELECT current_database()                                                  // in PostreSQL   
     </pre>
 <details class="example">
 <summary> DEMO </summary>

@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+`<!DOCTYPE html>
+`<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -16,6 +17,7 @@
   <h1> Terminal (Bash, Zsh) (ver 4.0.0) </h1>
   <p> Updated ( 2020-04-03 )</p>
   <p class="sitenav"> <a href="../index.html">MySite></a> Terminal (Bash, Zsh) </p>
+  <p class="subSite"><a href="#compiling">Compiling Executables</a> </p>
   <p class="subSite"><a href="#compression">Compression</a> </p>
   <p class="subSite"> <a href="#compression">Compression</a> </p>
   <p class="subSite"> <a href="#environment_variables">Environment Varialbes</a> </p>
@@ -445,23 +447,23 @@
     </tr>
     <tr>
       <td> <strong>cmd</strong> & </td>
-      <td> - runs the command in the background (as background process/daemon) </td>
+      <td> - runs the command in the background (as current shell background process/daemon) </td>
     </tr>
     <tr>
       <td> jobs </td>
-      <td> - list background processes that the user started </td>
+      <td> - list current shell background processes </td>
     </tr>
     <tr>
       <td> fg %<strong>jobNr</strong> </td>
-      <td> - birings the specified background process (<strong>jbNr</strong>) in the foreground </td>
+      <td> - birings the specified current shell background process (<strong>jbNr</strong>) in the foreground </td>
     </tr>
     <tr>
       <td> bg %<strong>jobNr</strong> </td>
-      <td> - sends the specified process (<strong>jbNr</strong>) in the background </td>
+      <td> - sends the specified process (<strong>jbNr</strong>) in the background (as background process in the current shell) </td>
     </tr>
     <tr>
       <td> kill %<strong>jobNr</strong> </td>
-      <td> - stops the specified background process (<strong>jbNr</strong>) </td>
+      <td> - stops the specified current shell background process (<strong>jbNr</strong>) </td>
     </tr>
     <tr>
       <td> service <strong>serviceName</strong> reload </td>
@@ -675,7 +677,7 @@
     <tr>
       <td> df <small>[options]</small> </td>
       <td>
-        - (no options) displays the available space on all <u>mounted</u> file systems <br>
+        - displays the available space on all <u>mounted</u> file systems <br>
         <small>[options]</small><br>
         - (<small>-h</small>) list sizes in human readable format (G, M, k) <br>
         - (<small>-i</small>) display inode informations instead of block usage <br>
@@ -1213,6 +1215,38 @@
     <tr>
       <td> traceroute <strong>IP|URL</strong> </td>
       <td> - <i class="fas fa-download"></i> traces the netwrok routes to the specified address </td>
+    </tr>
+    <tr>
+      <td colspan="2" id="compiling"> Compiling Executables </td>
+    </tr>
+    <tr>
+      <td>
+        ./configure <small>[options]</small>
+      </td>
+      <td>
+        - detects machine settings and sets up files for the <mark>make</mark> command (can be in other 'similar' formats like: <mark>configure.bat</mark>) <br>
+        - basically executes a generate shell script that is packages in a Unix-based application <br>
+        <small>[options]</small> <br>
+        - (<small>--help</small>) print the help doc (available argumenst)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        make <small>[options]</small>
+      </td>
+      <td>
+        - executes the Makefile in the current directory -> compiles the package according to the Makefile <br>
+        <small>[options]</small> <br>
+        - (<small>--dry-run</small>) prints the result output with actually compiling
+      </td>
+    </tr>
+    <tr>
+      <td>
+        make install
+      </td>
+      <td>
+        - installs the compiled package in the current directory
+      </td>
     </tr>
   </table>
   <br>

@@ -32,11 +32,21 @@
         <small>[options]</small><br>
         - (<small>-c <i>absoluteFilePath</i></small>) launches with config file <i>absoluteFilePath</i> <br>
         - (<small>-v</small>) prints the version <br>
+        - (<small>-V</small>) prints full NGINX infor (version, compiled modules, etc..) <br>
         - (<small>-t</small>) checks the syntax validity of the <u>default config file</u> and prints its location <br>
         - (<small>-s reload</small>) reloads the currently used configs without interupting nginx <br>
         <p class="indent-lv1 no-margin">- if reloading fails (like config has syntax error) nginx will keep running with the old configs <u>BUT DOES NOT PRINT ANY ERRORS</u></p>
         - (<small>-s quit</small>) gracefull stop (wait for all worker processes to finish their current request) <br>
         - (<small>-s stop</small>) immediatley kills all nginx processes 
+      </td>
+    </tr>
+    <tr class="10.01">
+      <td>
+        htpasswd <small>[options]</small> <strong>pathTo.htpasswd</strong> <strong>user</strong>
+      </td>
+      <td>
+        - adds the <strong>user</strong> to the targeted <mark>.htpasswd</mark> file (the <mark>htpasswd</mark> utility creates user files for basic authentication) <br>
+        - (<small>-c</small>) creates the file
       </td>
     </tr>
   </table>
@@ -186,8 +196,32 @@ http {
         http / server / location / if in location
       </td>
       <td>
-        - only allow the listed http method(s), other methods will get a <mark>405</mark> response <br>
-        - in the block we can use <mark>allow</mark> and <mark>deny</mark> to white / black listing
+        - (context) allows only the wite listed http method(s), other methods will get a <mark>405</mark> response <br>
+        - in the block we can use <mark>allow</mark> and <mark>deny</mark> to white / black addresses
+      </td>
+    </tr>
+    <tr class="20.02">
+      <td>
+        deny <strong>ip</strong>|unix:<strong>domainSocketPath</strong>|all
+      </td>
+      <td>
+        http / server / location / limit_except
+      </td>
+      <td>
+        - blacklist the specified address <br>
+        - <u>restricts file access only! this does not work for <mark>return</mark> statement (WTF) <u>
+      </td>
+    </tr>
+    <tr class="20.03">
+      <td>
+        allows <strong>ip</strong>|unix:<strong>domainSocketPath</strong>|all
+      </td>
+      <td>
+        http / server / location / limit_except
+      </td>
+      <td>
+        - whitelist the specified address <br>
+        - <u>restricts file access only! this does not work for <mark>return</mark> statement (WTF) <u>
       </td>
     </tr>
     <tr class="25.01">
@@ -272,6 +306,8 @@ http {
     <p> - nginx doesn't show the currently used config file (what a carap), to see which config file is used run the <mark>ps aux | grep nginx</mark> command </p>
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
     <p> - NGINX is an open software originally deisgned for high performance web serving (to solve the famous <mark class="mark">C10K</mark> 10000 concurrent request problem), however there is also a paid version with enhanced capabilities <mark class="mark">NGINX Plus</mark></p>
+    <p> - can be installed by package managers (like: <mark>brew</mark>), but we can also download the source code configure compile and install for a fine grained install <a href="https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#compiling-and-installing-from-source
+" target="_blank">[link]</a></p>
     <p> - but NGINX is also: <mark class="mark">static web server or mail server</mark>, <mark class="mark">redirect & rewrite URLs</mark>, 
 <mark class="mark">reverse proxy</mark>, <mark class="mark">load balancer</mark>, <mark class="mark">SSL termination point</mark>, <mark class="mark">distiribute traffic to specific services</mark>, <mark class="mark">handles caching</mark>, <mark class="mark">offers security features (such as authentication, DDOS protection, rate limiting, WAF, blacklisting etc...)</mark> </p>
     <p> - NGINX runs as daemon/service but can be controled from the foreground with the <mark>nginx</mark> command, essentially reads a config file (default: <mark>/etc/nginx/nginx.conf</mark>) </p>
@@ -940,7 +976,7 @@ http {
     events {}
     </pre>
   </details>
-  <h3 class="header"> The <mark>limit_except</mark> / <mark>allow</mark> / <mark>deny</mark> directives (TODO <mark>allow</mark> and <mark>deny</mark>) </h3>
+  <h3 class="header"> The <mark>limit_except</mark> / <mark>allow</mark> / <mark>deny</mark> </h3>
   <details class="example">
     <summary> DEMO (can be pseudocode) </summary>
     <h4 class="header"> <mark>limit_except</mark> directive </h4>
@@ -954,8 +990,43 @@ http {
                 
                 return 200 "OK";
             }
+        }
+    }
+    
+    events { }
+    </pre>
+    <pre>
+    http {
+        server {
+            listen 3000;
             
-            location /test {
+            location / {
+                limit_except GET PUT POST {   # only 127.0.0.1 can acces with GET, PUT, or POST request  
+                    allow 127.0.0.1;
+                    deny all;
+                }
+                
+                return 200 "OK";
+            }
+        }
+    }
+    
+    events { }
+    </pre>
+    <h4 class="header"> <mark>allow</mark> / <mark>deny</mark> directives </h4>
+    <pre>
+    http {
+        server {
+            listen 3000;
+            # allow 127.0.0.1;
+            deny all;
+            
+            location / {
+                root "/Users/DIARPALL/projects/My-Knowledge-Base/My Site";    # blocked access
+            }
+            
+            location /notBlocked {
+                return 200 "Still accessed";          # -! <mark>allow</mark> & <mark>deny</mark> does not work for return statements!
             }
         }
     }
@@ -1009,20 +1080,22 @@ http {
 <!----------------------------------------------------------------------------->
 <hr>
   <h2 class="headerExtra"> Redirect & Rewrite </h3>
-  <p> - redirecting is sending a <mark>3*</mark> response with the <mark>Location</mark> header containing the address to redirect </p>
-  <p> - rewriting is essentially redirecting the traffic but we don't get a <mark>3*</mark> response, instead our path is a chanel between us and the targetted address </p>
+  <p> - redirecting is sending a <mark>3*</mark> response with the <mark>Location</mark> header containing the address where to redirect </p>
+  <p> - rewriting is tunneling the request, the requested URL forwards the request to a 3rd URL without notifying the client </p>
   <pre class="syntax">
   http {
       server {
           location <strong>path</strong> {
-              return 301 <strong>addressToRedirect</strong>;        // sned the redirect response   
+              return 301 <strong>addressToRedirect</strong>;        // sends a redirect (<mark>3**</mark>) response 
           }
+          
+          rewrite <strong>thisURL</strong> <strong>forwardedURL</strong>;            // request is forwarded to <strong>forwardedURL</strong> (the client requests <strong>thisURL</strong> but served the <strong>forwardedURL</strong> content)    
       }
   }
   
   events { }
   </pre>
-  <details class="example" open>
+  <details class="example">
     <summary> DEMO (can be pseudocode) </summary>
     <h4 class="header"> Redirect </h4>
     <pre>
@@ -1046,14 +1119,263 @@ http {
     
     events {}
     </pre>
+    <h4 class="header"> Redirect </h4>
+    <pre>
+    http {
+        server {
+            listen 3000;
+            
+            rewrite /newPath /test;           # /newPath requested but /test served    
+            rewrite /g http://google.com;     # rewriting to an external resource
+            
+            location /test {
+                return 200 "test";
+            }
+        }
+    }
+    
+    events {}
+    </pre>
+  </details>
+<!----------------------------------------------------------------------------->
+<hr>
+  <h2 class="headerExtra"> Load Balancing </h3>
+  <pre class="syntax">
+  http {
+      upstream <strong>upstreamName</strong> {                      // distributes the traffic between the listed servers (Round-Robin fashion by default)    
+          least_conn;                                // traffic routed to the server having the least active connection
+          ip_hash;                                   // the same client is always routed to the same upstream server (calculates a hash based on the client's IP)   
+          <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html" target="_blank">all options...</a>
+          
+          server <strong>url</strong>|unix:<strong>unixSocket</strong> <i class="openable">options<div>
+              <p> - <mark>weight=<strong>int</strong></mark> - weights the server (for weighted load balancing), the highest weighted server gets more request (Default server weight <mark>1</mark>) </p>
+              <p> - <mark>backup</mark> - backup server, traffic redirected here when all upstream servers are down </p>
+              <p> - <mark>max_fails</mark>=<strong>ing</strong> - after <strong>ing</strong> attempts the server is marked as unavailable </p>
+              <p> - <mark>fail_timeout=<strong>time</strong> - for this long the server is marked as unavailable</mark> </p>
+              <p> - <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream" target="_blank">All options</a></p>
+          </div></i>;
+          <i>...</i>
+      }
+      
+      server {
+          location <strong>path</strong> {
+              proxy_pass <strong>url</strong>;                      // forwards (rewrites) the traffic to <strong>url</strong>    
+              
+              proxy_pass http://<strong>upstreamName</strong>;      // forwards the traffic to the upstream 
+          }
+      }
+  }
+  
+  events { }
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> proxy_pass </h4>
+    <pre>
+    http {
+        server {
+            listen 3000;
+           
+            location / {
+                proxy_pass http://google.com;           # traffic passed (forwarded) to <mark>http://google.com</mark>
+            }
+        }
+    }
+    
+    events { }
+    </pre>
+    <h4 class="header"> load balancing </h4>
+    <pre>
+    http {
+        upstream backend {                    # traffict is distributed in Round Robin style
+            server localhost:3001;
+            server localhost:3002;
+            server localhost:3003;
+            server localhost:3004 backup;     # server kicks in when ALL upstream servers are down
+        }
+        
+        server {
+            listen 3000;
+            
+            location /ups {
+                proxy_pass http://backend;
+            }
+        }
+    }
+    
+    events {}
+    </pre>
+    <pre>
+    http {
+        upstream backend {                      # connection distributed based on server weight 
+            server localhost:3001 weight=1;
+            server localhost:3002 weight=5;
+            server localhost:3003 weight=3;
+            server localhost:3004;                  # default weight = 1
+        }
+        
+        server {
+            listen 3000;
+            
+            location / {
+                proxy_pass http://backend;
+            }
+        }
+    }
+    
+    events {}
+    </pre>
+    <pre>
+    http {
+        upstream backend {              # load distributed to the server having the least connection 
+            least_conn;
+            
+            server localhost:3001;      // -! servers have to listen on path /test 
+            server localhost:3002;
+            server localhost:3003;
+            server localhost:3004;
+        }
+        
+        server {
+            listen 3000;
+            
+            location /test {            # load balancer path
+                proxy_pass http://backend;
+            }
+        }
+    }
+    
+    events {}
+    </pre>
+    <h4 class="header"> health check </h4>
+    <pre>
+    http {
+        upstream backend {
+            hearth_check;                                         // -! active health check (NGINX Plus only)
+            
+            server localhost:3001;
+            server localhost:3002 max_fails=3 fail_timeout=1m;    # after 3 failed attempts nginx marks this server as unavailable for 1 minute
+        }
+        
+        server {
+            listen 3000;
+            
+            location / { 
+                proxy_pass http://backend;
+            }
+        }
+    }
+    
+    events {}
+    </pre>
+  </details>
+<!----------------------------------------------------------------------------->
+<hr>
+  <h2 class="headerExtra"> NGINX SSL </h2>
+  <p> - NGINX can be used as SSL termination point </p>
+  <pre class="syntax">
+  http {
+      server {
+          listen <strong>port</strong> ssl;             # ssl connection
+          
+          ssl_certificate <strong>pathToCert</strong>;
+          ssl_certificate_key <strong>pathToCertKey</strong>;
+          ssl_protocols <strong class="openable">protocols<div>
+              <p> Default: <mark>TLSv1 TLSv1.1 TLSv1.2 TLSv1.3</mark> </p>
+          </div></strong>;
+          ssl_ciphers <strong class="openable">ciphers<div>
+              <p> Default: <mark>HIGH:!aNULL:!MD5</mark> </p>
+          </div></strong>;
+      }
+  }
+  
+  events { }
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> SSL connection </h4>
+    <pre>
+    http {
+        server { 
+            listen 443 ssl;
+            
+            ssl_certificate "/Users/DIARPALL/projects/My-Knowledge-Base/My Site/NGINX/test.cer";       # certificate   
+            ssl_certificate_key "/Users/DIARPALL/projects/My-Knowledge-Base/My Site/NGINX/test.pem";   # the cectificate's key   
+            
+            location / {
+                return 200 "Hello World!";
+            }
+        }
+    }
+    
+    events {}
+    </pre>
+    <h4 class="header"> SSL termination point </h4>
+    <pre>
+    http {
+        upstream backend {
+            server localhost:3001;
+            server localhost:3002;
+        }
+    
+        server {                  # the ssl handshake is between the client - NGINX proxy (no ssl connection between NGINX proxy - upstream servers)  
+            listen 3000 ssl;
+            
+            ssl_certificate "/Users/DIARPALL/projects/My-Knowledge-Base/My Site/NGINX/test.cer";
+            ssl_certificate_key "/Users/DIARPALL/projects/My-Knowledge-Base/My Site/NGINX/test.pem";
+            
+            location / {
+                proxy_pass http://backend;
+            }
+        }
+    }
+    
+    events {}
+    </pre>
+  </details>
+<!----------------------------------------------------------------------------->
+<hr>
+  <h2 class="headerExtra"> Authentication <a href="https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/" target="_blank">[link]</a> </h2>
+  <p> - NGINX provides a simple web browser authentication (on non browser requests we get <mark>401</mark>) </p>
+  <p> - we can use the <mark>htpasswd</mark> utility to create the user password file, then we link the file in NGINX config (that simple) </p>
+  <pre class="syntax">
+  http {
+      server {
+          auth_basic <strong>msg</strong>;              # message to prompt in the browser    (available in contexts <mark class="mark">http</mark> <mark class="mark">server</mark> <mark class="mark">location</mark> <mark class="mark">limit_except</mark>)   
+          auth_basic_user_file <strong>path</strong>;   # user password file                  (available in contexts <mark class="mark">http</mark> <mark class="mark">server</mark> <mark class="mark">location</mark> <mark class="mark">limit_except</mark>)    
+          
+          location <strong>path</strong> {
+              auth_basic off;          # disables authentication for this path
+          }
+      }
+  }
+  
+  events { }
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> SSL connection </h4>
+    <pre>
+    http {
+        include /opt/homebrew/etc/nginx/mime.types;
+        
+        server {
+            listen 3000 ssl;
+            root "/Users/apall/Documents/Personal/my_knowledge_code_base/My Site";
+            
+            ssl_certificate "/Users/DIARPALL/projects/My-Knowledge-Base/My Site/NGINX/test.cer";                # Chrome forces you to use ssl (but from NGINX perspective SSL is not required)    
+            ssl_certificate_key "/Users/DIARPALL/projects/My-Knowledge-Base/My Site/NGINX/test.pem";
+            
+            auth_basic "Buddy you have to authenticate to enter!";                                              # message will to prompt to the user (in prompt text box)   
+            auth_basic_user_file "/Users/DIARPALL/projects/My-Knowledge-Base/My Site/NGINX/passwd/.htpasswd";   # auth file location
+        }
+    }
+    
+    events {}
+    </pre>
   </details>
 
 
-
-
-<!--
-
--->
 
 
 
@@ -1101,67 +1423,11 @@ stage 3 :
       
       
       
-      
-      
-      
-      
-      
-      
-        rewrite <strong>path:regEx</strong> <strong>path:str</strong>        # redirects <strong>path:regEx</strong> to <strong>path:str</strong> but URL stays at <strong>path:regEx</strong
         
         
         
         
-        
-        
-        upstream {                                # defines a group of servers (for load balancing)
-            least_conn;                           # load balancing (traffic routed to the server having the least active connection)
-            ip_hash;                              # calculates a hash based on the client's IP in order to always route the client to the same backend server 
-        
-        
-            server <strong>url|ip:port</strong> <i>options</i>;
-            <i>...</i>
-            
-            server <strong>url|ip:port</strong> backup;       # backup server (when all goes down)
-        }
-        
-        - options 
-          - weight=<strong>int</strong>     (default 1) proportion relative to other server weights
-        - if no weight specified the load is distributed in Round-Robin style
-        - load balancing methods
-            - Round Robin
-            - Weighted Round Robin
-            - ip hash
-            - <a href="https://www.javatpoint.com/nginx-http-load-balancing" target="_blanc">more...</a> such as Generic Hash, 
-          - max_fails=<strong>int</strong>      - after this many failed attempts nginx marks this server unavailable (and reroutes the trafic to another server)
-          - fail_timeout=<strong>int</strong>s|m      - for this duration is marked the server as unavailable (after expiration nginx routes traffic to this server as well)
-        
-        
-        - active health check is available for nginx plus only
-        
-        
-        
-        
-        
-        
-        
-        - SSL termination point
-        
-        
-        
-        listen <strong>port:int</strong> ssl;       # ssl connection will be estabilished
-        
-        ssl_certificate <strong>pathToCert</strong>         # path to cert and cert key files 
-        ssl_certificate_key <strong>pathToCertKey</strong>
-        
-        ssl_protocols <strong>protocol</strong> <i>...</i>      - (http, server) - restricts the ssl connection protocol (Default: <mark>TLSv1 TLSv1.1 TLSv1.2 TLSv1.3</mark>)
-        ssl_ciphers <strong>cipherList<strong>                  - allowed ciphers (Default: <mark>HIGH:!aNULL:!MD5</mark>) (to check included ciphers run <mark>openssl ciphers -V 'HIGH:!aNULL:!MD5'</strong>)
-        
-        
-        
-        
-        
-        - basic authentication (this worked only when webpage server)
+        - basic authentication (for web browser requests only)
             - for this we have to create a user password file with <mark>htpasswd -c <strong>pathtopasswdFile</strong> <strong>user</strong></mark>
             (run without -c to add more users)
             
@@ -1169,6 +1435,14 @@ stage 3 :
 ) this message will be prompted to the user
         auth_basic_user_file <strong>pathtopasswdFile</strong>      <- path to passwd file (http, server, location, limit_except
 )
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1188,20 +1462,6 @@ stage 3 :
         proxy_cache_valid <strong>httpVerb</strong>|any <strong>time<strong>    <- (http, server, location) cache valide for specified request 
         
         proxy_cache_purge <strong>bool</strong>     <- (http, server, location) enables|disables caching (NGINX Plus only)
-        
-        
-        
-  --- directives ---
-      ip_hash             <- (upstream) request will be sent to the same upstream server 
-        
-        
-        
-        
-        
-        default access and error log directives are in /var/log/nginx/access.log|error.log
-        
-      
-        
         
         
         
@@ -1264,6 +1524,82 @@ WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
 
 
 <!--
+
+
+
+
+
+
+        - SSL termination point
+        
+        
+        
+        listen <strong>port:int</strong> ssl;       # ssl connection will be estabilished
+        
+        ssl_certificate <strong>pathToCert</strong>         # path to cert and cert key files 
+        ssl_certificate_key <strong>pathToCertKey</strong>
+        
+        ssl_protocols <strong>protocol</strong> <i>...</i>      - (http, server) - restricts the ssl connection protocol (Default: <mark>TLSv1 TLSv1.1 TLSv1.2 TLSv1.3</mark>)
+        ssl_ciphers <strong>cipherList<strong>                  - allowed ciphers (Default: <mark>HIGH:!aNULL:!MD5</mark>) (to check included ciphers run <mark>openssl ciphers -V 'HIGH:!aNULL:!MD5'</strong>)
+        
+        
+        
+
+
+
+
+
+  --- directives ---
+      ip_hash             <- (upstream) request will be sent to the same upstream server 
+        
+        
+        
+        
+        
+        default access and error log directives are in /var/log/nginx/access.log|error.log
+        
+      
+        
+        
+        
+        
+
+
+
+
+        upstream {                                # defines a group of servers (for load balancing)
+            least_conn;                           # load balancing (traffic routed to the server having the least active connection)
+            ip_hash;                              # calculates a hash based on the client's IP in order to always route the client to the same backend server 
+        
+        
+            server <strong>url|ip:port</strong> <i>options</i>;
+            <i>...</i>
+            
+            server <strong>url|ip:port</strong> backup;       # backup server (when all goes down)
+        }
+        
+        - options 
+          - weight=<strong>int</strong>     (default 1) proportion relative to other server weights
+        - if no weight specified the load is distributed in Round-Robin style
+        - load balancing methods
+            - Round Robin
+            - Weighted Round Robin
+            - ip hash
+            - <a href="https://www.javatpoint.com/nginx-http-load-balancing" target="_blanc">more...</a> such as Generic Hash, 
+          - max_fails=<strong>int</strong>      - after this many failed attempts nginx marks this server unavailable (and reroutes the trafic to another server)
+          - fail_timeout=<strong>int</strong>s|m      - for this duration is marked the server as unavailable (after expiration nginx routes traffic to this server as well)
+        
+        
+        - active health check is available for nginx plus only
+        
+        
+
+
+        rewrite <strong>path:regEx</strong> <strong>path:str</strong>        # redirects <strong>path:regEx</strong> to <strong>path:str</strong> but URL stays at <strong>path:regEx</strong
+        
+
+
+
       access_log <strong>path</strong>;           <- sets the access log path 
       error_log <strong>path</strong>;            <- error log path
 
