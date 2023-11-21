@@ -16,6 +16,7 @@ for (let i = 0; i < process.argv.length; i++) {
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
+  console.log(`Server http://${hostname}:${port} responded`)
   res.end(`Hello World\nfrom ${hostname}:${port}`);
 });
 

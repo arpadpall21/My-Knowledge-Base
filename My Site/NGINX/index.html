@@ -188,6 +188,30 @@ http {
         - <small>always</small> for all responses (regardless of the response code)
       </td>
     </tr>
+    <tr class="15.02">
+      <td>
+        gzip
+      </td>
+      <td>
+        http / server / location / if in location
+      </td>
+      <td>
+        - enables / disables gzip compression responses
+      </td>
+    </tr>
+    <tr class="15.03">
+      <td>
+        gzip types <span class="openable"><strong>mimeType</strong> <i>...</i>|*<div>
+            <p> - <mark>*</mark> all mime types </p>
+        </div></span>
+      </td>
+      <td>
+        http / server / location
+      </td>
+      <td>
+        - for the <mark>gzip</mark> directive specifies for which mime types enable the gzip compression (Default: <mark>text/html</mark>) <br>
+      </td>
+    </tr>
     <tr class="20.01">
       <td>
         limit_except <strong>httpMethod</strong> <i>...</i> { }
@@ -214,7 +238,7 @@ http {
     </tr>
     <tr class="20.03">
       <td>
-        allows <strong>ip</strong>|unix:<strong>domainSocketPath</strong>|all
+        allow <strong>ip</strong>|unix:<strong>domainSocketPath</strong>|all
       </td>
       <td>
         http / server / location / limit_except
@@ -275,21 +299,6 @@ http {
       </td>
       <td>
         - sets the error log path and level (creates the file if not exist)
-      </td>
-    </tr>
-
-
-
-
-    <tr class="00.00">
-      <td>
-        
-      </td>
-      <td>
-        
-      </td>
-      <td>
-        -
       </td>
     </tr>
   </table>
@@ -655,6 +664,7 @@ http {
   <!-------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="header"> Variables / <mark>if</mark> statement / <mark>map</mark> statement / <mark>geo</mark> statement </h2>
+  <p> - built-in variables <a href="http://nginx.org/en/docs/varindex.html" target="_blank">[link]</a></p>
   <pre class="syntax">
 <span style="color: darkgray;">// variables (allowed in context <mark class="mark">http</mark> / <mark class="mark">server</mark> / <mark class="mark">location</mark> / <mark class="mark">if</mark>) --------------------------------------</span>
     set $<strong>var</strong> <strong>val</strong>;                         // declares a new varialbe (variable scoping works as in programming languages) (<mark class="mark">location</mark> only)
@@ -975,6 +985,25 @@ http {
     
     events {}
     </pre>
+    <h4 class="header"> <mark>gzip</mark> / <mark>gzip_types</mark> directives </h4>
+    <pre>
+    http {
+        gzip on;          # compresses (includes the header <mark>Content-Encoding gzip</mark>)
+        gzip_types *;     # all files will be gzip compressed
+        
+        server { 
+            listen 3000;
+            root "/Users/DIARPALL/projects/My-Knowledge-Base/My Site";
+            index index.html;
+            
+            location = /hiddenResource {
+                return 200 "Hidden resource response!";
+            }
+        }
+    }
+
+    events {}
+    </pre>
   </details>
   <h3 class="header"> The <mark>limit_except</mark> / <mark>allow</mark> / <mark>deny</mark> </h3>
   <details class="example">
@@ -1157,6 +1186,8 @@ http {
           <i>...</i>
       }
       
+      proxy_set_header <strong>key</strong> <strong>val</strong>;                    // adds this header to the upstream servers (available in contexts <mark class="mark">http</mark> <mark class="mark">server</mark> <mark class="mark">location</mark>)   
+      
       server {
           location <strong>path</strong> {
               proxy_pass <strong>url</strong>;                      // forwards (rewrites) the traffic to <strong>url</strong>    
@@ -1268,6 +1299,26 @@ http {
     
     events {}
     </pre>
+    <h4 class="header"> <mark>proxy_set_header</mark> directive </h4>
+    <pre>
+    http {
+        upstream up {
+            server localhost:3001;
+            server localhost:3002;
+        }
+    
+        server {
+            listen 3000;
+    
+            location / {
+                proxy_set_header ToProxy ToProxyValue;    # header added to upstream servers    
+                proxy_pass http://up;
+            }
+        }
+    }
+    
+    events { }
+    </pre>
   </details>
 <!----------------------------------------------------------------------------->
 <hr>
@@ -1374,544 +1425,88 @@ http {
     events {}
     </pre>
   </details>
-
-
-
-
-
-
-  <!--
----------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------
-stage 1: high level overview 
-    - read through 
-    - create notes 
-    - deciede what exactly will you document down 
-    
-stage 2:  low level overview
-    - deeper understanding of all what you've taken down in stage 1
-    
-stage 3 : 
-    - organize and document down everything
-    
-    
-    
-    
-------------------------------------------------------------------------
-------------------------------------------------------------------------
-------------------------------------------------------------------------
-- main explanaition (if, var, etc... stuff)
-    - include here virtal hosts (servers)
-        - variables and shit
-        - contexts
-    
-    
-- rewrite & redirect 
-    
-- Proxy -> upstream (load balancing) 
-    
-- SSL termination 
-    
-- authentication 
-------------------------------------------------------------------------
-------------------------------------------------------------------------
-------------------------------------------------------------------------
-        - compression
-        gzip on|off;                # enables|disables content encoding (includes Content-Encoding gzip in the response)
-        gzip_types <strong>mimeType|any</strong> <i>...</i>         # by default only <mark>text/html</strong> mime typed files are compressed, here we can add files to the compression 
-      
-      
-      
-      
-        
-        
-        
-        
-        - basic authentication (for web browser requests only)
-            - for this we have to create a user password file with <mark>htpasswd -c <strong>pathtopasswdFile</strong> <strong>user</strong></mark>
-            (run without -c to add more users)
-            
-        auth_basic <strong>msg</strong>           <- (http, server, location, limit_except
-) this message will be prompted to the user
-        auth_basic_user_file <strong>pathtopasswdFile</strong>      <- path to passwd file (http, server, location, limit_except
-)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        - caching 
-        https://www.javatpoint.com/nginx-content-caching
-        
-        
-        
-        
-        ------------------- upstream_cache_status -------------------
-        
-        
-        proxy_cache_path <strong>path</strong>        <- sets the cache path (http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path)
-        
-        proxy_cache <strong>zone</strong>|off;       <- (http, server, location) enables|disables caching
-        
-        proxy_cache_valid <strong>httpVerb</strong>|any <strong>time<strong>    <- (http, server, location) cache valide for specified request 
-        
-        proxy_cache_purge <strong>bool</strong>     <- (http, server, location) enables|disables caching (NGINX Plus only)
-        
-        
-        
-        
-        
-        
-        when finished maybe look for more common directives????
-        
-        
----------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------
-?????????????????????????????????????????????????????????????????????????????????????????????
-WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
-?????????????????????????????????????????????????????????????????????????????????????????????
-    nginx -s reopen     - reopen log files (close current log files and open new onces)         <- TEST THIS (does this guy log in the error log???)
-    
-    
-    - these fuckers should white/black list IP ranges but doesn't worked in fuckint WSL (maybe try on mac -> hopefully tomorrow)
-    allow
-    deny
-    
-    
-    
--------- DONE --------
-    - can I use variables?
-        - yep demoed 
-        
-    - how to set up config file location?
-        - with the -c flag
-    
-    
-    - nginx is a daemon 
-        - well on Mac I run it not as daemon <- how the heck?
-        - can I run it as not a daemon?
-        - if used as daemon how to configure custom config/access.log/error.log files ???
-    
-            -> runs as a daemon/service but we can control it from the foreground 
--->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
-
-
-
-
-
-        - SSL termination point
-        
-        
-        
-        listen <strong>port:int</strong> ssl;       # ssl connection will be estabilished
-        
-        ssl_certificate <strong>pathToCert</strong>         # path to cert and cert key files 
-        ssl_certificate_key <strong>pathToCertKey</strong>
-        
-        ssl_protocols <strong>protocol</strong> <i>...</i>      - (http, server) - restricts the ssl connection protocol (Default: <mark>TLSv1 TLSv1.1 TLSv1.2 TLSv1.3</mark>)
-        ssl_ciphers <strong>cipherList<strong>                  - allowed ciphers (Default: <mark>HIGH:!aNULL:!MD5</mark>) (to check included ciphers run <mark>openssl ciphers -V 'HIGH:!aNULL:!MD5'</strong>)
-        
-        
-        
-
-
-
-
-
-  --- directives ---
-      ip_hash             <- (upstream) request will be sent to the same upstream server 
-        
-        
-        
-        
-        
-        default access and error log directives are in /var/log/nginx/access.log|error.log
-        
-      
-        
-        
-        
-        
-
-
-
-
-        upstream {                                # defines a group of servers (for load balancing)
-            least_conn;                           # load balancing (traffic routed to the server having the least active connection)
-            ip_hash;                              # calculates a hash based on the client's IP in order to always route the client to the same backend server 
-        
-        
-            server <strong>url|ip:port</strong> <i>options</i>;
-            <i>...</i>
-            
-            server <strong>url|ip:port</strong> backup;       # backup server (when all goes down)
-        }
-        
-        - options 
-          - weight=<strong>int</strong>     (default 1) proportion relative to other server weights
-        - if no weight specified the load is distributed in Round-Robin style
-        - load balancing methods
-            - Round Robin
-            - Weighted Round Robin
-            - ip hash
-            - <a href="https://www.javatpoint.com/nginx-http-load-balancing" target="_blanc">more...</a> such as Generic Hash, 
-          - max_fails=<strong>int</strong>      - after this many failed attempts nginx marks this server unavailable (and reroutes the trafic to another server)
-          - fail_timeout=<strong>int</strong>s|m      - for this duration is marked the server as unavailable (after expiration nginx routes traffic to this server as well)
-        
-        
-        - active health check is available for nginx plus only
-        
-        
-
-
-        rewrite <strong>path:regEx</strong> <strong>path:str</strong>        # redirects <strong>path:regEx</strong> to <strong>path:str</strong> but URL stays at <strong>path:regEx</strong
-        
-
-
-
-      access_log <strong>path</strong>;           <- sets the access log path 
-      error_log <strong>path</strong>;            <- error log path
-
-
-
-
-        worker_processes <strong>int</strong>;    - (main) how many worker processes to create (default: 1)
-        worker_connections <strong>int</strong>;  - (events) maximum connection per wroker process (default: 512)
-
-
-
-
-
-
-
-        add_header <strong>headerName</strong> <strong>headerValue</strong> [always];     <- adds a header to the response (for 200, 201, 204, 206, 301, 302, 303, 304, 307, 308 response codes only)
-            - always -> for all response codes
-        
-        limit_except <strong>httpMethod</strong> <i>...</i> {     - (location) only the listed http methods allowed in the location
-            <i>configs...</i>
-            deny all;
-        }
-
-
-
-
-
-
-    directives:
-        index <strong>file</strong>               - (location, server) default file to serve (default: <mark>index.html</mark>)
-        
-        
-        
-        
-        try_files <strong>filePath</strong> <i>...</i> <i>fallback:=httpCode|namedLocation</i>      - (server, location) 
-                                                            - on directory request tries files on <strong>filePath</strog>, the path to the file is constructed as current <mark>root|alias</mark> value + <strong>filePath</strong>
-                                                            - the first found (leftmost) file is served, the fallback can be a http response code or a named location
-                                                            
-                                                            
-                                                            - give an example for named location as well
-    
-    
-    
-    
-        error_page <strong>httpCode</strong> <i>...</i> <small>=<i>httpResponseCode</i></small> <strong>uri</strong>
-                                                  - (http, server, location, if in location) serves error page at the specified location if <strong>httpCode</strong> is thrown (we also can redirect)
-                                                  - optionally serves <i>httpCode</i> instead of <strong>httpCode</strong> <i>...</i> http codes
-
-
-
-        root <strong>dirPath</strong>;            - (http, server, location) root directory for the REQUEST 
-                                                  - nginx servers resources relative to /
-                                                  - further resoures
-        alias <strong>dirPath</strong>;           - (location) maps the current location to a specified directory 
-                                                  - overrides root directory for the specified location 
-                                                  
-                                                  
-
-
-
-
-        listen <strong>port</strong>;             - (server) server listens on this [host]:port or 
-              <strong>address:port</strong>;
-              unix:<strong>domainSocketPath</strong>;      - creates the domain socket
-        
-        https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
-        
-        
-        
-        
-        server_name <strong>hostName:str|reGex|wildcard</strong>;     # (server) specifies the hostname for the current virtual server
-                                                                      # this guy also looks for the "Host" header and directs the trafic to this virtual server 
-        
-        
-        
-        - virtual hosting
-          - with the server_name directive we can setup multiple backend virtual servers
-        
-        
-        server {
-            listen <strong>port:int</strong>;
-            server_name <strong>hostName:wildCard|regEx</strong> <i>...</i>;       # a list of hosts to which this virtual server responds 
-        
-        }
-
-        types {                                   - (http, server, location) mime type to file extention type mapping
-            <mime.type> <fileExtension>           - ex: text/css   css
-        
-        }
-
-
-        include <strong>filePath</strong>;        - includes the specified file (ex: include mime.type or other config file)
-
-
-    contexts:
-        http {}                                   - (main) global http server related configurations (nests all virtual servers <mark>server</mark> context)
-        events {}                                 - (main) connection directives are located here
-        
-        server {}                                 - (http) describes a virtual server (nginx routes requests to specific virtual servers)
-        server {
-            return <strong>httpCode</strong> <strong>str</strong>     # serves <strong>str</strong> with <strong>httpCode</strong> <strong>str</strong>
-        }
-        
-        
-        
-        location <i>modifier</i> <strong>uri</strong> {       - (server, location) provides configuratios for the location that matches <strong>uri</strong> (adds this location to all previously normalized URI path) 
-                                                  
-        }
-        
-        # modifiers (in precedence order)
-        - = <strong>str</strong?            -> exact match 
-        - ^~ <storng>/path:str</strong>     -> preferential match (useful when we want to match a location over regEx modifiers)
-        - ~ <strong>path:regEx</strong>    -> case-sensitive regEx match
-        - ~* <strong>path:regEx</strong>   -> case-insensitive regEx match 
-        - <storng>/path:str</strong>        -> any request that prefixed with <mark>/path</strong>
-        - 
-        
-        
-        location <i>modifier</i> <strong>uri</strong> {       # (server, location) redirects to <stong>path:str</strong>
-            return <strong>httpCode</strong> <stong>path:str</strong>|<strong>str</strong>
-        }
-        
-        location @<strong>locationName</strong> {       # <strong>locationName</strong> can be used in <mark>try_files</mark>
-            config....
-        }
-
-
-
-
-    - nginx provides the <mark>mime.types</mark> file on install which provieds a full (mime type map)  <- document this 
-
-
-        http {}                                   - (main) global http server related configurations (nests all virtual servers <mark>server</mark> context)
-        events {}                                 - (main) connection directives are located here
-        
-        server {}                                 - (http) describes a virtual server (nginx routes requests to specific virtual servers)
-        server {
-            return <strong>httpCode</strong> <strong>str</strong>     # serves <strong>str</strong> with <strong>httpCode</strong> <strong>str</strong>
-        }
-        
-        
-        
-        location <i>modifier</i> <strong>uri</strong> {       - (server, location) provides configuratios for the location that matches <strong>uri</strong> (adds this location to all previously normalized URI path) 
-                                                  
-        }
-        
-        # modifiers (in precedence order)
-        - = <strong>str</strong?            -> exact match 
-        - ^~ <storng>/path:str</strong>     -> preferential match (useful when we want to match a location over regEx modifiers)
-        - ~ <strong>path:regEx</strong>    -> case-sensitive regEx match
-        - ~* <strong>path:regEx</strong>   -> case-insensitive regEx match 
-        - <storng>/path:str</strong>        -> any request that prefixed with <mark>/path</strong>
-        - 
-
-
-
-
-
-        if (<strong>cond</strong>) {                        # (server, location) runs the block if <strong>cond</strong> is truthy (no recommended because the condition is evaluated on request therefore it can cost some performance)
-            // code to run if condition is truthy...
-        }
-        
-        
-        - variables (give a few examples of built in variables) -> using variables are discuraged by nginx 
-        - there are built-in variables 
-        - not all variables can be used in all contexts 
-        
-        set $<strong>varName</strong> <strong>val</strong>      # declaring a variable
-        $<strong>varName</strong>                               # using the declared variable 
-        
-        
-        - variable mapper stuff
-        map $<strong>inputVar</strogn> $<strong>outputVar</strogn> {
-            default <strong>str</strong>;       # fallback value
-            <strong class="openable">case<div>
-                <p> - <storng>str</strong> - exact match </p>
-                <p> - <mark>~<storng>str</strong></mark> - regEx case-sensitive match </p> 
-                <p> - <mark>~*<storng>str</strong></mark> - regEx case-insensitive match </p> 
-            </div></strong>
-            <i>...</i>
-        }
-        
-        geo $<strong>var</strong> {         # assigns value to $<strong>var</strong> based on address
-            default <strong>str</strong>;   # fallback value
-        
-            <strong>addess</strong> <strong>val<strong>;
-            <i>...</i>
-        }
-
-
-
-    - concepts:
-    - in config file
-      - directive -> key value pair
-      - context -> between {}
-          - the directive value is overriden in local context
-      - zone -> shared memory space
-    
-
-    - nginx is an open software, however nginx plus is a comertial version having extra functionalities
-    nginx solves the famous C10K problem (10000 concurent requests)
-    
-    
-    NGINX is a reverse proxy;
-      - SSL termination point (SSL offloading from backend servers)
-      - static web server or mail server
-      - load balancer
-      - cache
-      - offers securty features (rate limiting, DDOS protection, WAF, etc.)
-      - rewrites and redirects URLs
-      - can be used to distribute trafic between microservices
-      - content compression (gzip, Brotli)
-      - blacklisting 
-      - in nginx plus we can pull in modules with extra functionalities
-      
-      
-    - event driven asynchronous architecture that can handle 10000 concurrent connections
-    - the whole thing is configurable through a nginx.conf file 
-
-
-    cmd:
-        nginx [-c <path_to_.conf>]                   - start nginx (optionaly with a custom config)
-        nginx -s stop       - fast shutdown (immediately kills all workers)
-        nginx -s quit       - graceful shutdown (wait for workers to finish their current requests)
-        nginx -s reload     - reloads config file
-        nginx -s reopen     - reopen log files (close current log files and open new onces)         <- TEST THIS
-    
-        nginx -t            - check for default config file syntax errors, also prints location (at the time of writing this there's now way for custom config file syntax check)
-    
-    
-    - consist of a master proces and its workers
-      - the master process reads and evaluates configuration, and maintain worker processes
-      - worker processes are responsibles to serve the actual content
-    
-
-
-
-
--->
-
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-
-
-  <h2 class="headerExtra"><u> Title 1 </u></h2>
-  <h2 class="header"> Title 1.1 </h2>
-  <h3 class="header"> Title 1.1.1 </h3>
-  <h4 class="header"> Title 1.1.1.1 </h4>
-  <p> - stuff to learn <mark>syntax or command (or some tchnical stuff)</mark> bla bla bla </p>
-  <p> - stuff to learn <mark class="mark">highlights like file names and other things</mark> bla bla bla </p>
-  <p style="text-decoration:underline;"> - important information is underlined </p>
-  <p style="color:yellow;"> - very important information is written with yellow colors </p>
-  <p style="background-color:yellow;"> - highly important information has yellow background color </p>
-  <div style="background-color:red;">
-    <p> - red background block means not learned or not tested information! </p>
-    <p> - </p>
-  </div>
-
+<!----------------------------------------------------------------------------->
+<hr>
+  <h2 class="headerExtra"> Caching <a href="https://docs.nginx.com/nginx/admin-guide/content-cache/content-caching/" target="_blank">[link]</a> </h2>
   <pre class="syntax">
-SYNTAX :    main syntax
-            <em>literally used </em>
-            <small>literally used optional </small>
-            <prot style="color:#049500;">prototype chain</prot>
-            <strong>required value </strong>
-            <i>optional value </i>
-                - some descriptions will come here (like arguments)
-                - ??? (3 question marks) in syntax means not tested or not learned yet
-                
-            <span class="openable"> this is an openable element<div>
-                <p> - openable elements listed here in paragraphs </p>
-                <p> - </p>
-            </div></span>
-    </pre>
-
+  http {
+      proxy_cache_path <strong>dirPath</strong> keys_zone=<strong>cacheZone</strong>:<strong>size</strong>  <i><a href="https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path" target="_blank">options...</a></i>;    // specifies the cache directory and the cache zone  
+      proxy_cache <strong>cacheZone</strong>;                                            // responses will be cahced in the current and all descendent scopes (available in contexts <mark class="mark">http</mark> <mark class="mark">server</mark> <mark class="mark">location</mark>)   
+  }
+  
+  events { }
+  </pre>
   <details class="example">
     <summary> DEMO (can be pseudocode) </summary>
     <pre>
-    examples of the current lessons 
+    http {
+        proxy_cache_path '/tmp' keys_zone=mycache:10m;
+        proxy_cache_valid any 2m;     # for any request types (GET, POST, etc..) cache is valid for 2 minutes
+        
+        server {
+            listen 3000;
+            proxy_cache mycache;      # valid for this vhost (for all the server's locations)
+            
+            location /a {
+                proxy_pass http://localhost:3001;
+            }
+          
+            location /b {
+                proxy_pass http://localhost:3002;
+            }
+        }
+        
+        server {                      # no caching for this context (vhost)
+            listen 4000;
+            
+            location /a {
+                proxy_pass http://localhost:4001;
+            }
+        
+            location /b {
+                proxy_pass http://localhost:4002;
+            }
+        }
+    }
     
-// -----------------------------------------
-
-// -----------------------------------------
+    events {}
+    </pre>
+    <pre>
+    http {
+        proxy_cache_path '/tmp' keys_zone=mycache:10m;
+        proxy_cache_valid any 2m;     # for any request types (GET, POST, etc..) cache is valid for 2 minutes
+        proxy_cache mycache;          # valid for both virtual servers (for the current and all child contexts)
+        
+        server {
+            listen 3000;
+            
+            location /a {
+                proxy_pass http://localhost:3001;
+            }
+          
+            location /b {
+                proxy_pass http://localhost:3002;
+            }
+        }
+        
+        server {                      # no caching for this context
+            listen 4000;
+            
+            location /a {
+                proxy_pass http://localhost:4001;
+            }
+        
+            location /b {
+                proxy_pass http://localhost:4002;
+            }
+        }
+    }
+    
+    events {}
     </pre>
   </details>
-
-  <pre class="cmd">
-    command line demo 
-    </pre>
-  <pre class="formula">
-    formula code (like conversion meter...)
-    </pre>
-  <details class="example">
-    <summary> Example : </summary>
-    <h4 style="color:darkblue;"><u> example title </u></h4>
-    <p> - live tests will come here </p>
-    <details>
-      <summary> CODE : </summary>
-      <pre>
-    copy of the exaple code 
-        </pre>
-    </details>
-  </details>
-  <!---------------------------------------------------------------------------------------------------------------------------------->
-  <hr>
-
-  <h2 class="test" style=""><a href="TEST/index.html"> TEST > </a></h2>
-
-
+  
+  
   <br><br>
 </body>
 
