@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> decimal </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> decimal </h1>
+  <p> Updated ( 2023-11-21 ) </p>
+    <p class="sitenav"> <a href="../../../index.html">MySite></a>
+        <a href="../../index.html">Python></a>
+        <a href="../index.html">Built-in Libraries></a> decimal
+    </p>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://docs.python.org/3/library/decimal.html" target="_blank">decimal (docs.python.org)</a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - the <mark>decimal</mark> built-in library handles decimals with fixed point precision, this means it handles decimal representations and arithetic operations with 100% precision (unlike <mark>float</mark> does) </p>
+  <p> - decimals are arbitrary long, they can be used just like any other number types, in arithmetic operations when mixed with other number types the result will be always <mark>decimal</mark> </p>
+  <p> - decimals have the following special values <mark>Infinity</mark>, <mark>-Infinity</mark>, <mark>0</mark>, <mark>-0</mark> and <mark>NaN</mark> (Not a number) </p>
+  <pre>
+  from decimal import Decimal, getcontext
+  
+  ctx = getcontext().prec = 17  
+  
+  0.1 + 0.2 - 0.3                                     // -> 5.551115123125783e-17       // near <mark>0</mark>
+  Decimal('0.1') + Decimal('0.2') - Decimal('0.3')    // -> 0                           // <mark>0</mark> (accurate)
+  
+  Decimal(0.1) + Decimal(0.2) - Decimal(0.3)          // -> 3.1102230246251565E-17      // !! passing floats results in precision loss (because floats cannot represent decimals accurately)    
+  </pre>
+  <pre class="syntax">
+  from decimal import Decimal
+  
+  Decimal(<strong>str|int|float|tuple</strong>)               // creates a new <mark>decimal</mark> (decimal <a href="https://docs.python.org/3/library/decimal.html#decimal-objects" target="_blank">attributes</a>)
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <pre>
+    from decimal import getcontext, Decimal, ROUND_DOWN
+    
+    getcontext().prec = 4
+    
+# creating decimals
+    Decimal(10)                     // -> decimal 10
+    Decimal(3.14)                   // -> decimal 3.14
+    Decimal('3.14')                 // -> decimal 3.14
+    Decimal('NaN')                  // -> decimal NaN
+    Decimal('-Infinity')            // -> decimal -Infinity
+    Decimal((1, (3, 1, 4), -2))     // -> decmilal -3.14       # (sign (0=positive, 1=negative), number, decimal position)
+    
+    
+# using decimals is just like using other number types
+    Decimal(3.14).sqrt()            // -> 1.7720045
+    Decimal(3) / Decimal(2)         // -> 1.5
+    
+    Decimal(2) - 1                  // -> 1     // mixing with other number types 
+    type(Decimal(2) - 1)            // -> <mark>decimal</mark>  // on mixed operations the result is always decimal type 
+    
+    Decimal(3.14) - 1.23            // raises an unsupported operand exception (mixing with other types is not recommended)
+    </pre>
+  </details>
+<h2 class="header"> The decimal context </h2>
+  <p> - decimals can be used in a decimal context, this context can be configured how to handle decimals (within the context), this gives a fine grained control over decimals (like precision) </p>
+  <p> - getting a context is not required (in that case the default context is used) </p>
+  <p> - localcontexts provide a separate namespace for decimals, <u>localcontexts inherit ALL their parents CURRENT state (including flags)</u> </p>
+  <pre class="syntax">
+  from decimal import getcontext, localcontext, Decimal
+  
+  
+  <span style="color:darkgray"># default decimal context used (we don't have to get the context)</span>
+  
+  
+  ctx = getcontext()                <span style="color:darkgray"># getting then setting the decimal context </span>
+  ctx.prec = 17                     <span style="color:darkgray"># from here decimals are handled according to the set <mark>ctx</mark></span>
+  
+  
+  with localcontext() as loc_ctx:   <span style="color:darkgray"># creates a decimal local context (namespace) </span>
+      loc_ctx                       <span style="color:darkgray"># inherits all the parent <mark>ctx</mark> stats (in this case the prec = 17) </span>
+      loc_ctx.prec = 4              <span style="color:darkgray"># setting local decimal context </span>
+  
+  
+  <span style="color:darkgray"># local context exited (we're back to the main context)</span>
+  </pre>
+  <pre class="syntax">
+<span style="color:darkgray">// <a href="https://docs.python.org/3/library/decimal.html#decimal.Context" target="_blank">context attirbutes (settings)</a> -----------------------</span>
+  
+  prec=<strong>int</strong>                   // precision (number of decimals)     Default: <mark>28</mark>
+  rounding=<a href="https://docs.python.org/3/library/decimal.html#decimal.ROUND_CEILING" target="_blanc">roundingRules</a>     // rounding rules                     Default: <mark>ROUND_HALF_EVEN</mark>
+  flags=<strong>list</strong>                 // encountered flags                  Default: <mark>[]</mark>
+  traps=<strong>list</strong>                 // set traps                          Default: <mark>[Overflow, DivisionByZero, InvalidOperation]</mark>
+  Emin=<strong>int</strong>
+  Emax=<strong>int</strong>
+  capitals=<strong>int</strong>
+  clamp=<strong>int</strong>
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> Default context </h4>
+    <pre>
+    from decimal import localcontext, Decimal, FloatOperation
+    
+    # default context (no need to get the context if we're fine with the default decimal context settings)
+    
+    Decimal(3.12) * Decimal(23.233)      // -> 72.48696000000000416104484202
+    </pre>
+    <h4 class="header"> The <mark>localcontext</mark> </h4>
+    <pre>
+    from decimal import getcontext, localcontext, Decimal
+    
+    ctx = getcontext()
+    ctx.prec = 4
+    
+    print(Decimal('3.14') / Decimal('5.1'))         // -> 0.6157
+    
+    with localcontext() as loc_ctx:
+        loc_ctx.prec = 12                           # config local context
+        
+        print(Decimal('3.14') / Decimal('5.1'))     // -> 0.615686274510
+        
+        
+    # back to the main context
+    print(Decimal('3.14') / Decimal('5.1'))         // -> 0.6157
+    </pre>
+    <h4 class="header"> <mark>localcontext</mark> inheritance </h4>
+    <pre>
+    from decimal import getcontext, localcontext, FloatOperation
+    
+    ctx = getcontext()
+    ctx.prec = 4
+    ctx.traps[FloatOperation] = True
+    
+    with localcontext() as loc_ctx:
+        loc_ctx.prec                                // -> 4       # inherits all stats from the parent context 
+        loc_ctx.traps[FloatOperation]               // -> True
+    
+        loc_ctx.prec = 15                           # setting local context
+        loc_ctx.traps[FloatOperation] = False
+    
+        loc_ctx.prec                                // -> 15
+        loc_ctx.traps[FloatOperation]               // -> False
+    
+    # local context exited
+    ctx.prec                                        // -> 4
+    ctx.traps[FloatOperation]                       // -> True
+    </pre>
+  </details>
+<h2 class="header"> Signals (decimal exceptions) <a href="https://docs.python.org/3/library/decimal.html#signals" target="_blank">[link]</a> </h2>
+  <p> - signals are basically decimal exceptions, the decimal context has 2 components taking part in decimal signals: </p>
+  <p class="indent-lv1"> - <mark class="mark">flags</mark> -> in normal decimal operations are collected here (ex: <mark>FloatOperation</mark> collected when floating point used) </p>
+  <p class="indent-lv1"> - <mark class="mark">traps</mark> -> we can set 'traps' for which decimal operations to raise the exception </p>
+  <p> - if/when both <mark class="mark">flags</mark> and <mark class="mark">traps</mark> have the same operation then the operation is raised </p>
+  <pre>
+  from decimal import localcontext, Decimal, FloatOperation
+  
+  with localcontext() as ctx:
+      Decimal(3.14)                           # float used -> <mark>FloatOperation</mark> added to flags, but no error raised because the FloatOperation is not in the traps
+      
+      ctx.flags[FloatOperation]               // -> True
+    
+    
+  with localcontext() as ctx:
+      ctx.traps[FloatOperation] = True        # adding <mark>FloatOperation</mark> to traps
+      
+      Decimal(3.14)                           # raises <mark>FloatOperation</mark> because the <mark>FloatOperation</mark> is trapped
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <pre>
+    from decimal import getcontext, Decimal, DivisionByZero
+    
+    getcontext().traps[DivisionByZero] = False      # disable
+    
+    Decimal('3.12') / Decimal('0')                  # nothing raised 
+    </pre>
+  </details>
+  
+  
+  <br><br>
+</body>
+
+</html>
