@@ -1126,8 +1126,8 @@
     <strong>val:any</strong>, <i>...</i>
     tuple(<strong>iterable</strong>)
     
-    <strong>MyNamedTupleClass</strong> = namedtuple(<strong>MyNamedTupleClass:str</strong>, [<strong>attr_1:str</strong><i>, ...</i>], <small>defaults=[<i>val:any</i><i>, ...</i>]</small>])
-    <strong>namedTuple</strong> = <strong>MyNamedTupleClass</strong>(<strong>attr_1</strong>=<strong>val:any</strong><i>, ...</i>)        // creates a named tuple   
+    <strong>ClassNamedTuple</strong> = namedtuple(<strong>ClassName:str</strong>, [<strong>attr:str</strong><i>, ...</i>], <small>defaults=[<i>val:any</i><i>, ...</i>]</small>])   // creates and returns a named tuple class (<a href="../Built-in Libraries/dataclass/index.html#make_dataclass" target="_blank">same method as <mark>dataclasses.make_dataclass()</mark> syntax</a>)
+    <strong>namedTuple</strong> = <strong>ClassNamedTuple</strong>(<strong>attr</strong>=<strong>val:any</strong><i>, ...</i>)                                          // creates a named tuple   
     
     
     <strong>val:any</strong> <small>not</small> in <strong>tuple|namedTuple</strong>         // returns <mark>True</mark> if <strong>val</strong> is (<small>not</small>) part of <strong>tuple|namedtuple</strong>, otherwise returns <mark>False</mark>    

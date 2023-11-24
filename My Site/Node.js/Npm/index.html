@@ -1,248 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> NPM </title> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> NPM </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> NPM (<u>N</u>ode <u>P</u>ackage <u>M</u>anager) (ver 4.0.0) </h1>
-    <p> Updated ( 2019-06-06 / 2020-01-18 / 2021-01-16 )</p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html">Node.js></a> NPM
-    </p>
-<table class="table">
-<caption> 
-    NPM 
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  <h1> NPM (<u>N</u>ode <u>P</u>ackage <u>M</u>anager) </h1>
+  <p> Updated ( 2019-06-06 / 2020-01-18 / 2021-01-16 / 2023-11-23 )</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html">Node.js></a> NPM
+  </p>
+  <table class="table">
+    <caption>
+      NPM
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
     <tr>
-        <th style="width:30%;"> Comand Line Syntax </th>
-        <th> Description </th>
+      <th style="width:30%;"> Comand Line Syntax </th>
+      <th> Description </th>
     </tr>
     <tr class="06.02">
-        <td> <em>npm</em> bin <small>[-g|--global]</small> </td>
-        <td> - (no argument) prints the directory path  where npm installs local binaries <br>
-             - (<small>-g|--global</small>) global binaries  
-        </td>
+      <td> <em>npm</em> bin <small>[options]</small> </td>
+      <td>
+        - prints the local directory path (where binaries are/will be installed) <br>
+        <small>[options]</small> <br>
+        - (<small>-g|--global</small>) global binary directory path
+      </td>
+    </tr>
+    <tr class="15.02">
+      <td> <em>npm</em> cache clean --force </td>
+      <td> - purges the npm cache </td>
+    </tr>
+    <tr class="15.01">
+      <td> <em>npm</em> cache verify </td>
+      <td> - check the npm cache state </td>
     </tr>
     <tr class="06.03">
-        <td> <em>npm</em> config get prefix </td>
-        <td>  
-            - returns the location where npm installs <u>global</u> binaries and libraries <br>
-            - binaries location is the <mark><strong>returnedDirPath</strong>/bin</mark> <br>
-            - libraries location is the <mark><strong>returnedDirPath</strong>/lib/node_modules</mark> 
-        </td>
+      <td> <em>npm</em> config get prefix </td>
+      <td>
+        - prints the location where npm installs <u>global</u> binaries and libraries
+      </td>
     </tr>
     <tr class="06.04">
-        <td> <em>npm</em> config set prefix <strong>dirPath</strong> </td>
-        <td> - sets the directory where npm will install <u>global</u> binaries and libraries <br>
-            - binaries location will be the <mark><strong>returnedDirPath</strong>/bin</mark> <br>
-            - libraries location will be the <mark><strong>returnedDirPath</strong>/lib/node_modules</mark> 
+      <td> <em>npm</em> config set prefix <strong>dirPath</strong> </td>
+      <td> - sets the directory where npm will install <u>global</u> binaries and libraries
     </tr>
     <tr class="05.02">
-        <td> <em>npm</em> help <i>[command]</i> </td>
-        <td> - prints the NPM help log <br>
-             - (<i>command</i>) redirects to a help page of the specified
-        </td>
+      <td> <em>npm</em> help <i>cmd</i> </td>
+      <td> 
+        - help log in general or for <i>cmd</i>
+      </td>
     </tr>
     <tr class="09.01">
-        <td> <em>npm</em> prune <small>[--production]</small> </td>
-        <td> - (no argument) removes 'extraneous' packages (packages not registered in the <mark>package.json</mark> file) <br>
-             - (<small>--production</small>) removes packages listed in the <mark>devDependencies</mark> object in the <mark>package.json</mark> file <u>(does not update the <mark>package.json</mark> file)</u> </td>
+      <td> <em>npm</em> prune </td>
+      <td> 
+        - removes 'extraneous' packages (packages not registered in the <mark>package.json</mark> file) </td>
     </tr>
     <tr class="07.01">
-        <td> <em>npm</em> install <i>[package<small>@</small>version ...]</i> <small>[--production]</small> <small>[-g|--global]</small> <small>[-P|--save-prod] [-D|--save-dev] [-O|--save-optional] [--no-save]</small> </td>
-        <td> - (no argument) automatically installs packages (and their dependencies) listend in the <mark>dependencies</mark> <mark>devDependencies</mark> <mark>optionalDependencies</mark> objects in the <mark>package.json</mark> file <br>
-             - (<i>package<small>@</small>version ...</i>) installs the specified package(s) locally <br>
-             - (<small>--production</small>) automatically installs packages (and their dependencies) listend in the <mark>dependencies</mark> object in the <mark>package.json</mark> file <br>
-             - (<small>-g|--global</small>) installs globally <br>
-             - (<small>-P|--save-prod</small>) installs the specified package(s) and registers them in the <mark>dependencies</mark> object in the <mark>package.json</mark> file <br>
-             - (<small>-D|--save-dev</small>) installs the specified package(s) and registers them in the <mark>devDependencies</mark> object in the <mark>package.json</mark> file <br>
-             - (<small>-O|--save-optional</small>) installs the specified package(s) and registers them in the <mark>optionalDependencies</mark> object in the <mark>package.json</mark> file <br>
-             - (<small>--no-save</small>) does not update the <mark>package.json</mark> file (after NPM v5.0.0 the <mark>package.json</mark> file automatically updated) <br>
-             - aliases <mark>i</mark> | <mark>add</mark>
-        </td>
+      <td> <em>npm</em> install | i | add <small>[options]</small></td>
+      <td> - installs all packages listend in the <mark>package.json</mark> (install the locked environment if there's <mark>package-lock.json</mark>, if there's no <mark>package-lock.json</mark> then creates one -> locks the environment) <br>
+        <small>[options]</small> <br>
+        - (<i>package<small>@</small>version ...</i>) installs the specified package(s) <br>
+        - (<small>-g|--global</small>) global install <br>
+        - (<small>--production|-P|--save-prod</small>) production packages only (packages listed in <mark>dependencies</mark> in <mark>package.json</mark>) <br>
+        - (<small>-D|--save-dev</small>) dev packages only (packages listed in <mark>devDependencies</mark> in <mark>package.json</mark>) <br>
+        - (<small>-O|--save-optional</small>) optional packages only (packages listed in <mark>optionalDependencies</mark> in <mark>package.json</mark>) <br>
+        - (<small>--no-save</small>) does not update the <mark>package.json</mark> file (after v5 the <mark>package.json</mark> is automatically updated)
+      </td>
     </tr>
     <tr class="12.01">
-        <td> <em>npm</em> init <small>[-y|--yes]</small> </td>
-        <td> - (no argument) walks you through to create a <mark>package.json</mark> file <br>
-             - (<small>-y|--yes</small>) creates a <mark>package.json</mark> file with default settings
-        </td>
+      <td> <em>npm</em> init <small>[options]</small> </td>
+      <td> 
+        - initializes the local npm package by walking you through to create a <mark>package.json</mark> file <br>
+        <small>[options]</small> <br>
+        - (<small>-y|--yes</small>) creates a <mark>package.json</mark> file with default settings
+      </td>
     </tr>
     <tr class="11.01">
-        <td> <em>npm</em> list <i>[package ...]</i> <small>[-g|--global] [--depth <i>nr</i>] [--dev]</small> </td>
-        <td> - (no argument) prints locally installed packages (libraries) (an their dependencies) in a tree structure <br>
-             - (<i>package ...</i>) prints the specified package(s) if it is insalled <br>
-             - (<small>-g|--global</small>) globall packages (libraries) <br>
-             - (<small>--dev</small>) only list packages listed in the <mark>devDependencies</mark> object in the <mark>package.json</mark> file <br>
-             - (<small>--depth <i>nr</i></small>) specifies the tree structure depth to print <br>
-             - aliases <mark>list</mark> | (<mark>ll</mark> | <mark>la</mark> shows extendend informations)
-        </td>
+      <td> 
+        <em>npm</em> list | ll | la <small>[options]</small>
+      </td>
+      <td> 
+        - prints locally installed packages (an their dependencies) in a tree structure <br>
+        <small>[options]</small> <br>
+        - (<i>package ...</i>) prints the specified package(s) <br>
+        - (<small>-g|--global</small>) globall packages <br>
+        - (<small>--dev</small>) dev packages only (listed in <mark>devDependencies</mark> in <mark>package.json</mark>) <br>
+        - (<small>--depth <i>nr</i></small>) print depth
+      </td>
     </tr>
     <tr class="06.01">
-        <td> <em>npm</em> root <small>[-g|--global]</small> </td>
-        <td> 
-            - (no argument) prints the directory path where npm installs local packages (libraries) <br>
-            - (<small>-g|--global</small>) global libraries  
-        </td>
+      <td> <em>npm</em> root <small>[options]</small> </td>
+      <td>
+        - prints the directory path where local packages (libraries) are/will be installed <br>
+        <small>[options]</small> <br>
+        - (<small>-g|--global</small>) global libraries
+      </td>
     </tr>
     <tr class="13.03">
-        <td> <em>npm</em> run <i>[customCommand]</i> </td>
-        <td> - (no argument) lists available scripts in the <mark>package.json</mark> file <br>
-             - (<i>customCommand</i>)  executes the <mark>scripts.<strong>customCommand</strong></mark> value in the <mark>package.json</mark> file <br>
-             - alias <mark>run-script</mark> 
-        </td>
+      <td> <em>npm</em> run | run-script <strong>cmd</strong> </td>
+      <td> 
+        - runs the <mark>scripts.<strong>cmd</strong></mark> in <mark>package.json</mark> 
+      </td>
     </tr>
     <tr class="13.02">
-        <td> <em>npm</em> start </td>
-        <td> - executes the <mark>scripts.start</mark> value in the <mark>package.json</mark> file </td>
+      <td> <em>npm</em> start </td>
+      <td> - executes the <mark>scripts.start</mark> in <mark>package.json</mark> </td>
     </tr>
     <tr class="13.01">
-        <td> <em>npm</em> test </td>
-        <td> - executes the <mark>scripts.test</mark> value in the <mark>package.json</mark> file </td>
+      <td> <em>npm</em> test </td>
+      <td> - executes the <mark>scripts.test</mark> in <mark>package.json</mark> </td>
     </tr>
     <tr class="08.01">
-        <td> <em>npm</em> uninstall <strong>package</strong> <i>...</i> <small>[-g|--global] [--no-save]</small> </td>
-        <td> - uninstalls the specified package(s) <u>and all its (their) dependencies</u> <br>
-             - (<small>-g|--global</small>) uninstalls globally the specified package(s) <br>
-             - (<small>--no-save</small>) does not update the <mark>package.json</mark> file (after NPM v5.0.0 the <mark>package.json</mark> file automatically updated) <br>
-             - aliases <mark>remove</mark> | <mark>r</mark> | <mark>rm</mark> | <mark>un</mark> | <mark>unlink</mark>
-        </td>
+      <td> <em>npm</em> uninstall | remove | r | rm | un | unlink <strong>package</strong> <i>...</i> <small>[options]</small> </td>
+      <td> 
+        - uninstalls the specified package(s) <u>and all its (their) dependencies</u> <br>
+        <small>[options]</small> <br>
+        - (<small>-g|--global</small>) global specified package(s) <br>
+        - (<small>--no-save</small>) does not update the <mark>package.json</mark> file (after NPM v5 the <mark>package.json</mark> is automatically updated)
+      </td>
     </tr>
     <tr class="10.01">
-        <td> <em>npm</em> update <i>[package ...]</i> <small>[--depth <i>nr</i>]</small> <small>[--no-save] [-g|--global] [-D]</small> </td>
-        <td> - (no argument) updates (installs missing) packages listend in the <mark>dependencies</mark> object in the <mark>package.json</mark> file <br>
-             - (<i>package ...</i>) updates specified package(s) listend in the <mark>dependencies</mark> object in the <mark>package.json</mark> file <br>
-             - (<small>--depth</small> <i>nr</i>) dependency depth level to update (after NPM v2.6.1 only top level packages are updated) <br>
-             - (<small>--no-save</small>) does not update the <mark>package.json</mark> file (after NPM v5.0.0 the <mark>package.json</mark> file automatically updated) <br>
-             - (<small>-g|--global</small>) globally update all or the specified packages <br>
-             - (<small>-D</small>) only updates all or specified packages listed in the <mark>devDependencies</mark> object in the <mark>package.json</mark> file <br>
-             - aliases <mark>up</mark> | <mark>upgrade</mark>
-        </td>
+      <td> <em>npm</em> update | up | upgrade <small>[options]</small> </td>
+      <td> 
+        - updates (installs missing) prod packages (<mark>dependencies</mark> in <mark>package.json</mark>) <br>
+        <small>[options]</small> <br>
+        - (<i>package ...</i>) specified package only <br>
+        - (<small>--depth</small> <i>nr</i>) dependency depth level to update (after v2.6.1 only tge top level packages are updated) <br>
+        - (<small>--no-save</small>) does not update the <mark>package.json</mark> file (after v5 the <mark>package.json</mark> is automatically updated) <br>
+        - (<small>-g|--global</small>) global packages <br>
+        - (<small>-D</small>) dev dependencies only (<mark>devDependencies</mark> in <mark>package.json</mark>) <br>
+      </td>
     </tr>
     <tr class="05.01">
-        <td> <em>npm</em> --version | -v </td>
-        <td> - prints the NPM version </td>
+      <td> <em>npm</em> --version | -v </td>
+      <td> - prints the NPM version </td>
     </tr>
     <tr class="50.01">
-        <td colspan="2"> NPX (Node Package Runner) (<mark>N</mark>ode <mark>P</mark>ackage E<mark>x</mark>ecute) </td>
+      <td colspan="2"> NPX (Node Package Runner) (<mark>N</mark>ode <mark>P</mark>ackage E<mark>x</mark>ecute) </td>
     </tr>
     <tr class="50.02">
-        <td> <em>npx</em> <strong>command</strong><small>@<i>version</i></small> </td>
-        <td> - 1) checks the specified command if it's available globally (if available runs it as a normal global command) <br>
-             - 2) if it's not a global command checks if it's insalled locally (in <mark>./node_modules/.bin</mark>) (if the package is locally found runs the module) <br>
-             - 3) if the command is not available globally and locally, temporarily installs the package (latest version) and runs it (one time run only = package not installed!)        
-            <span id="browserSupport" title="updated : 2020-01-23">
-                <span><i class="fab fa-node-js"></i> NPX 5.2.0/<a href="https://www.npmjs.com/package/npx" target="_blank">insall as package</a></span>
-            </span>
-        </td>
+      <td> <em>npx</em> <strong>command</strong><small>@<i>version</i></small> </td>
+      <td> - 1) checks the specified command if it's available globally (if available runs it as a normal global command) <br>
+        - 2) if it's not a global command checks if it's insalled locally (in <mark>./node_modules/.bin</mark>) (if the package is locally found runs the module) <br>
+        - 3) if the command is not available globally and locally, temporarily installs the package (latest version) and runs it (one time run only = package not installed!)
+        <span id="browserSupport" title="updated : 2020-01-23">
+          <span><i class="fab fa-node-js"></i> NPX 5.2.0/<a href="https://www.npmjs.com/package/npx" target="_blank">insall as package</a></span>
+        </span>
+      </td>
     </tr>
-</table>
-    <br>
-<table class="table">
-<caption> 
-    NPM Semantic Versioning 
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      NPM Semantic Versioning
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
     <tr>
-        <th width="30%"> Version </th>
-        <th> Description </th>
+      <th width="30%"> Version </th>
+      <th> Description </th>
     </tr>
     <tr class="05.01">
-        <td> 
-            x <br>
-            * <br> 
-            latest 
-        </td>
-        <td> - latest stable version </td>
+      <td>
+        x <br>
+        * <br>
+        latest
+      </td>
+      <td> - latest stable version </td>
     </tr>
     <tr class="06.01">
-        <td> 
-            ^<strong>nr</strong>.<strong>nr</strong>.<strong>nr</strong> <br> 
-            <strong>nr</strong>.x <br> 
-            <strong>nr</strong> 
-        </td>
-        <td> 
-            - the specified version with the latest minor version and patches 
-        </td>
+      <td>
+        ^<strong>nr</strong>.<strong>nr</strong>.<strong>nr</strong> <br>
+        <strong>nr</strong>.x <br>
+        <strong>nr</strong>
+      </td>
+      <td>
+        - the specified version with the latest minor version and patches
+      </td>
     </tr>
     <tr class="07.01">
-        <td> 
-            ~<strong>nr</strong>.<strong>nr</strong>.<strong>nr</strong> <br> 
-            <strong>nr</strong>.<strong>nr</strong>.x <br>
-            <strong>nr</strong>.<strong>nr</strong>  
-        </td>
-        <td> 
-            - the specified main and minor version with the latest patch 
-        </td>
+      <td>
+        ~<strong>nr</strong>.<strong>nr</strong>.<strong>nr</strong> <br>
+        <strong>nr</strong>.<strong>nr</strong>.x <br>
+        <strong>nr</strong>.<strong>nr</strong>
+      </td>
+      <td>
+        - the specified main and minor version with the latest patch
+      </td>
     </tr>
     <tr class="08.01">
-        <td> 
-            =<strong>version</strong> <br>
-            <strong>nr</strong>.<strong>nr</strong>.<strong>nr</strong> 
-        </td>
-        <td> 
-            - the exact specified version 
-        </td>
+      <td>
+        =<strong>version</strong> <br>
+        <strong>nr</strong>.<strong>nr</strong>.<strong>nr</strong>
+      </td>
+      <td>
+        - the exact specified version
+      </td>
     </tr>
     <tr class="09.01">
-        <td> ><strong>version</strong> </td>
-        <td> - higher than the specified version numbers </td>
+      <td> ><strong>version</strong> </td>
+      <td> - higher than the specified version numbers </td>
     </tr>
     <tr class="09.02">
-        <td> >=<strong>version</strong> </td>
-        <td> - higher or equal than the specified version numbers </td>
+      <td> >=<strong>version</strong> </td>
+      <td> - higher or equal than the specified version numbers </td>
     </tr>
     <tr class="09.03">
-        <td> &lt;<strong>version</strong> </td>
-        <td> - lower than the specified version numbers </td>
+      <td> &lt;<strong>version</strong> </td>
+      <td> - lower than the specified version numbers </td>
     </tr>
     <tr class="09.04">
-        <td> &lt;=<strong>version</strong> </td>
-        <td> - lower or equal than the specified version numbers </td>
+      <td> &lt;=<strong>version</strong> </td>
+      <td> - lower or equal than the specified version numbers </td>
     </tr>
     <tr class="10.01">
-        <td> <strong>version</strong> - <strong>version</strong> </td>
-        <td> - latest version between the specified range (ex: <mark>2.1 - 2.6</mark>) </td>
+      <td> <strong>version</strong> - <strong>version</strong> </td>
+      <td> - latest version between the specified range (ex: <mark>2.1 - 2.6</mark>) </td>
     </tr>
     <tr class="10.02">
-        <td> <strong>versionSet</strong> || <strong>versionSet</strong> </td>
-        <td> - combine sets (like the <mark>and</mark> logical operator (ex: <mark>&lt;2.1 || &gt;2.6</mark>)) </td>
+      <td> <strong>versionSet</strong> || <strong>versionSet</strong> </td>
+      <td> - combine sets (like the <mark>and</mark> logical operator (ex: <mark>&lt;2.1 || &gt;2.6</mark>)) </td>
     </tr>
-</table>
-    <br>
-    <details class="example" id="notes">
+  </table>
+  <br>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-        <h3 style="color:darkblue;"><u> Problem with NPM globally istalled packages (libraries) and binaries </u></h3>
-        <p> - the problem was caused by the file system access permissions (the user has no privileges to access some path) </p>
-        <p> - the solution is to reconfigure the location where npm installs global binaryes and libraries </p>
-        <h4><u> Step 1) configure the new path where npm installs libraries and binaries </u></h4>
-        <p> - create a new <mark>~/.npm-global</mark> directory </p> 
-        <p> - configure npm to install libraries and binaries into the new directory with the <mark>npm config set prefix ~/.npm-global</mark> command  </p>
-        <p> - after this npm will install binaries into <mark>~/.npm-global/bin</mark> and libraries into <mark>~./npm-global/lib/node_modules</mark> </p>
-        <h4><u> Step 2) configure system variables so the new locations are found by the system </u></h4>
-        <p> - add the following 2 lines at the bottom of the <mark>~/.profile</mark> file (this file runs at system start and registers the following 2 system variables so they will be permanent system variables) </p>
-        <p> - <mark>export PATH=~/.npm-global/bin:$PATH</mark> (adds the new path to the <mark>PATH</mark> system variable, so binaries installed in <mark>~/.npm-global/bin</mark> folder are found by the system) </p>
-        <p> - <mark>export NODE_PATH=~/.npm-global/lib/node_modules</mark> (this is where Node.js looks for globally installed packages) </p>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="https://docs.npmjs.com/cli-documentation/" target="_blank">NPM CLI Documentation</a></p>
-    <p><a href="https://docs.npmjs.com/misc/config#shorthands-and-other-cli-niceties" target="_blank">NPM Shorthand Commands</a></p>
-    <p><a href="https://www.npmjs.com/package/npx" target="_blank"> NPX (from npmjs.com) </a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    <p> - "extraneous" package = installed package which is not listed in the <mark>package.json</mark> file </p>
-    <p> - NPX is a great way to try older package version or even older node.js versions </p>
-    <p> - from NPM v5.0.0 the <mark>package.json</mark> and <mark>package-lock.json</mark> files are automatically updated </p>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - NPM (<b>N</b>ode <b>P</b>ackage <b>M</b>anager) is the built in package manager of Node.js, it can download, uninstal and update Node modules <u>and other applications as well</u></p> 
-    <p> - NPM has a large comunity which offers a wide range of packages for Node.js, but we can use other package managers if we want to </p>
-    <p> - NPM installs global binaries (executables) in <mark>C:\Users\userName\AppData\Roaming\npm</mark> and local ones in <mark>.\node_modules\.bin</mark> (global binaries are available from the CLI)</p>
-<details class="example">
-<summary> DEMO </summary>
+    <h3 style="color:darkblue;"><u> Problem with NPM globally istalled packages (libraries) and binaries </u></h3>
+    <p> - the problem was caused by the file system access permissions (the user has no privileges to access some path) </p>
+    <p> - the solution is to reconfigure the location where npm installs global binaryes and libraries </p>
+    <h4><u> Step 1) configure the new path where npm installs libraries and binaries </u></h4>
+    <p> - create a new <mark>~/.npm-global</mark> directory </p>
+    <p> - configure npm to install libraries and binaries into the new directory with the <mark>npm config set prefix ~/.npm-global</mark> command </p>
+    <p> - after this npm will install binaries into <mark>~/.npm-global/bin</mark> and libraries into <mark>~./npm-global/lib/node_modules</mark> </p>
+    <h4><u> Step 2) configure system variables so the new locations are found by the system </u></h4>
+    <p> - add the following 2 lines at the bottom of the <mark>~/.profile</mark> file (this file runs at system start and registers the following 2 system variables so they will be permanent system variables) </p>
+    <p> - <mark>export PATH=~/.npm-global/bin:$PATH</mark> (adds the new path to the <mark>PATH</mark> system variable, so binaries installed in <mark>~/.npm-global/bin</mark> folder are found by the system) </p>
+    <p> - <mark>export NODE_PATH=~/.npm-global/lib/node_modules</mark> (this is where Node.js looks for globally installed packages) </p>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://docs.npmjs.com/cli-documentation/" target="_blank">NPM CLI Documentation</a></p>
+  <p><a href="https://docs.npmjs.com/misc/config#shorthands-and-other-cli-niceties" target="_blank">NPM Shorthand Commands</a></p>
+  <p><a href="https://www.npmjs.com/package/npx" target="_blank"> NPX (from npmjs.com) </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - "extraneous" package = installed package which is not listed in the <mark>package.json</mark> file </p>
+  <p> - NPX is a great way to try older package version or even older node.js versions </p>
+  <p> - from NPM v5.0.0 the <mark>package.json</mark> and <mark>package-lock.json</mark> files are automatically updated </p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - NPM (<b>N</b>ode <b>P</b>ackage <b>M</b>anager) is the built in package manager of Node.js, it can download, uninstal and update Node modules <u>and other applications as well</u></p>
+  <p> - NPM has a large comunity which offers a wide range of packages for Node.js, but we can use other package managers if we want to </p>
+  <p> - NPM caches downloaded packages, so at first it always tries to install packages from the local cache (on the system there's one npm cache)</p>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre class="cmd">
 // --version | -v  --------------------------------------------------------------------    
     $ > npm --version                                                                  // current NPM version returned 
@@ -295,21 +309,21 @@
     $ > npm start                                                                      // runs the 'sripts.start' value from the 'package.json' file
     $ > npm run myScript                                                               // runs the 'sripts.myScript' value from the 'package.json' file (custom script)   
     $ > npm run                                                                        // lists the available scripts in the 'package.json' file   
-    </pre> 
-</details>
-<!------------------------------------------------------------------------------------------------------>
-<hr>
-<h2 class="headerExtra"><u> NPX (Node Package Runner) </u></h2>
-    <p> - NPX (<b>N</b>ode <b>P</b>ackage E<b>x</b>ecute | Node Package Runner) is a command line tool comes with NPM after version 5.2.0, it allows us to <u>run packages what are not globally installed</u></p>
-    <p style="display:inline-block; vertical-align:top; margin:0"> - NPX can 
-        <ul style="display:inline-block; margin:0; padding-left:25px;"> 
-            <li> run locally installed pacakges on the command line </li>
-            <li> run not insalled packages (temporarily installs the package -> runs it on the command line -> package not available anymore) <u>(great to try an older package version without installing it)</u> </li>
-            <li> run codes from a Remote GitHub Branch [NOT TESTED: 2020-01-23] </li>
-        </ul> 
-    </p>
-<details class="example">
-<summary> DEMO </summary>
+    </pre>
+  </details>
+  <!------------------------------------------------------------------------------------------------------>
+  <hr>
+  <h2 class="headerExtra"><u> NPX (Node Package Runner) </u></h2>
+  <p> - NPX (<b>N</b>ode <b>P</b>ackage E<b>x</b>ecute | Node Package Runner) is a command line tool comes with NPM after version 5.2.0, it allows us to <u>run packages what are not globally installed</u></p>
+  <p style="display:inline-block; vertical-align:top; margin:0"> - NPX can
+  <ul style="display:inline-block; margin:0; padding-left:25px;">
+    <li> run locally installed pacakges on the command line </li>
+    <li> run not insalled packages (temporarily installs the package -> runs it on the command line -> package not available anymore) <u>(great to try an older package version without installing it)</u> </li>
+    <li> run codes from a Remote GitHub Branch [NOT TESTED: 2020-01-23] </li>
+  </ul>
+  </p>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre class="cmd">
 // sass command available globally (installed globally) -------------------------------
     $ > sass                                                                           // runs sass   
@@ -325,22 +339,22 @@
     $ > sass                                                                           // -! throws an error "command not available", sass is not insalled !   
     $ > npx sass@1.0.0                                                                 // installs and runs (temporarily) the specified sass version   
     </pre>
-</details>
-<!------------------------------------------------------------------------------------------------------>
-<hr>
-<h2 class="headerExtra"><u> The <mark>package.json</mark> / <mark>package-lock.json</mark> / <mark>npm-shrinkwrap</mark> files </u></h2>
-    <p> - the <mark>package.json</mark> file is a sort of config file of the current package, it keeps track all sorts of package informations (configurations) and dependencies </p>
-    <p> - the <mark>package-lock.json</mark> file is automatically generated by NPM, it describes the current exact package dependency tree, so when the package is installed next time Node will install the same exact depenceny versions, the 'package-lock.json' file <u>cannot be published!</u> </p>
-    <p> - the <mark>npm-shrinkwrap.json</mark> file is basically the same as the 'package-lock.json' file but it <u>can be published</u>, if both the 'npm-shrinkwrap.json' and 'package-lock.json' is present the 'package-lock.json' file is ignored! </p>
-    <pre class="syntax">
-SYNTAX : package.json (file)
+  </details>
+  <!------------------------------------------------------------------------------------------------------>
+  <hr>
+  <h2 class="headerExtra"><u> The <mark>package.json</mark> / <mark>package-lock.json</mark> / <mark>npm-shrinkwrap</mark> files </u></h2>
+  <p> - the <mark>package.json</mark> file is a sort of config file of the current package, it keeps track all sorts of package informations (configurations) and dependencies </p>
+  <p> - the <mark>package-lock.json</mark> file is automatically generated by NPM, it describes the current exact package dependency tree, so when the package is installed next time Node will install the same exact depenceny versions, the 'package-lock.json' file <u>cannot be published!</u> </p>
+  <p> - the <mark>npm-shrinkwrap.json</mark> file is basically the same as the 'package-lock.json' file but it <u>can be published</u>, if both the 'npm-shrinkwrap.json' and 'package-lock.json' is present the 'package-lock.json' file is ignored! </p>
+  <pre class="syntax">
+<small style="color:darkgray;">// <mark>package.json</mark> (file) --------------------------------------</small>
     {
-        "name": <strong>name:str</strong>,                                                              // package name (can contain any lowercase letters and <mark>-</mark>, <mark>_</mark> characters, spaces are not allowed!)   
+        "name": <strong>name:str</strong>,                                      // package name (can contain any lowercase letters and <mark>-</mark>, <mark>_</mark> characters, spaces are not allowed!)   
         "version": <strong>"nr.nr.nr"</strong>, 
         "author": <strong>authorName:str</strong>, 
         "description": <strong>packageDescription:str</strong>, 
         "license": <strong>license:str</strong>, 
-        "private": true                                                                // if specified prevents the app/package to be accidentally publishend on npm   
+        "private": true                                        // if specified prevents the app/package to be accidentally publishend on npm   
         "main": <strong>entryPointPath:str</strong>,                                                    // <span class="openable">the entry point of the package (when this package is required with bare specifier)<div>
             <p> - when a bare specifier (ex: <mark>import def from 'somePackage'</mark>) requires the current directory name (<mark>somePackage</mark> in this example) this file loads </p>
         </div></span>
@@ -360,30 +374,38 @@ SYNTAX : package.json (file)
             <p> require: <strong>filePath</strong> - file loaded when required with <mark>require()</mark> </p>
             <p> node: <strong>filePath</strong> - for any Node environment (both ECMAScript and CommonJS module) (should come after <mark>"import"</mark> and <mark>"require"</mark>) </p>
             <p> default: <strong>filePath</strong> - fallback that always matches (should be the last) </p>
-        </div></strong>                                                          // <span class="openable">encapsulated and mapped entry points (takes precedence over <mark>"main"</mark> if supported)<div>
+        </div></strong>                                  // <span class="openable">encapsulated and mapped entry points (takes precedence over <mark>"main"</mark> if supported)<div>
             <p> - encapsulate entry points in the package so only the listed paths can be accessed within the package <u>when using bare specifies </u> </p>
             <p> - we also can map entry points this way (ex: <mark>"./dev":"./features/someFeature.mjs"</mark> if we required <mark>thisPackage/dev</mark> the <mark>thisPackage/features/someFeature.mjs</mark> file loads) </p>
         </div></span>   <span class="browserSupport" style="color:yellow;" title="Updated : 2021-01-16"><span><i class="fab fa-node-js"></i> 12.07.0 (experimental)</span><span><i class="fab fa-node-js"></i> 14.13.0 (full support) </span> </span>    
-        "type": "module"|"commonjs"                                                    // node loads the <mark>*.js</mark> file as ECMAScript or CommonJS module (<mark>"module"</mark> = EC module) (<mark>"commonjs"</mark> = CommonJS module)    
+        "type": "module"|"commonjs"                            // node loads the <mark>*.js</mark> file as ECMAScript or CommonJS module (<mark>"module"</mark> = EC module) (<mark>"commonjs"</mark> = CommonJS module)    
         "scripts" {
-            "start": <strong>command:str</strong>,                                                      // executes <strong>command</strong> with the <mark>npm start</mark> command    
-            "test": <strong>command:str</strong>,                                                       // executes <strong>command</strong> with the <mark>npm test</mark> command    
-            "postinstall": <strong>command:str</strong>                                                 // <strong>command</strong> automatically executed at the end of the <mark>npm install</mark> command 
-            <strong>customCommand:str</strong>: <strong>command:str</strong>,                                            // executes <strong>command</strong> with the <mark>npm run <strong>customCommand</strong></mark> command   
+            "start": <strong>command:str</strong>,                              // executes <strong>command</strong> with the <mark>npm start</mark> command    
+            "test": <strong>command:str</strong>,                               // executes <strong>command</strong> with the <mark>npm test</mark> command    
+            "postinstall": <strong>command:str</strong>                         // <strong>command</strong> automatically executed at the end of the <mark>npm install</mark> command 
+            <strong>customCommand:str</strong>: <strong>command:str</strong>,                    // executes <strong>command</strong> with the <mark>npm run <strong>customCommand</strong></mark> command   
         },
-        "dependencies": {<i>production dependencies</i>},                                     // holds the production dependencies (name and version) (dependencies of the filal product)  
-        "devDependencies": {<i>developer dependencies</i>},                                   // holds the developement dependencies (name and version) (dependencies used during the developement)   
-        "optionalDependencies": {<i>optional dependencies</i>},                               // holds the optional dependencies (name and version)     
+        "dependencies": {<i>production dependencies</i>},             // holds the production dependencies (name and version) (dependencies of the filal product)  
+        "devDependencies": {<i>developer dependencies</i>},           // holds the developement dependencies (name and version) (dependencies used during the developement)   
+        "optionalDependencies": {<i>optional dependencies</i>},       // holds the optional dependencies (name and version)     
         <a href="https://flaviocopes.com/package-json/" target="_blank">other ...</a>                      
     }
+    
+    
+<small style="color:darkgray;">// package names --------------------------------------------</small>
+    <strong>package</strong>                                                    // on the npm registry packages without socpe are always public
+    
+    @<strong>scope</strong>/<strong>package</strong>                                             // (scoped/namespaced package) the <mark>@<strong>scope</strong></mark> descirbes the package owner (supported from v.2)
+                                                               // only the owner can modify this package
+                                                               // can be hosted privately on npm (npm paid service)
     </pre>
-<!------------------------------------------------------------------------------------------------------>
-<hr>
-<h2 class="headerExtra"><u> NPM Semantic Versioning </u></h2>
-    <p> - NPM very well defines package (module) versions </p>
-    <img src="NPM Versions.jpg" height="150">
-<details class="example">    
-<summary> DEMO </summary>
+  <!------------------------------------------------------------------------------------------------------>
+  <hr>
+  <h2 class="headerExtra"><u> NPM Semantic Versioning </u></h2>
+  <p> - NPM very well defines package (module) versions </p>
+  <img src="NPM Versions.jpg" height="150">
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     *      |  x      |  latest                                                         // [latest].[latest].[latest]    // latest version 
     4      |  4.x    |  ^4.2.1                                                         // 4.[latest].[latest]           // version 4 with the latest minor version and patch   
@@ -398,8 +420,9 @@ SYNTAX : package.json (file)
     4.2.1 - 5.2                                                                        // from 4.2.1 to 5.2.9           // the latest version between the specified range   
     >4.2.1 || &lt;5.2.9                                                                   // combines version semantics    // this example does the same as the above version semantic  
     </pre>
-</details>
-    
-    <br><br>
+  </details>
+
+  <br><br>
 </body>
+
 </html>
