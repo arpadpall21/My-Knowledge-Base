@@ -1,465 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Get Set Buffers as Numerical Values </title> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../../Assets/stylesPages.css"> 
-    <script src="../../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Get Set Buffers as Numerical Values </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Get Set Buffers as Numerical Values (ver 3.2) </h1>
-    <p> Updated ( 2019-11-11 )</p>
-    <p class="sitenav"> <a href="../../../index.html">MySite></a>
-        <a href="../../index.html">Node.js></a>   
-        <a href="../index.html">Buffer and String Decoder></a> Get Set Buffers as Numerical Values
-    </p>
-<table class="table">
+  <h1> Get Set Buffers as Numerical Values </h1>
+  <p> Updated ( 2019-10-18 / 2023-11-25 ) </p>
+  <p class="sitenav"> <a href="../../../index.html">MySite></a>
+    <a href="../../index.html">Node.js></a>
+    <a href="../index.html">Buffer></a> Get Set Buffers as Numerical Values
+  </p>
+  <table class="table">
+    <caption>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
     <tr>
-        <th style="width:30%;"> Method </th>
-        <th> Description </th>
+      <th style="width:30%;"> Method </th>
+      <th> Description </th>
     </tr>
     <tr>
-        <td colspan="2"> endianness format swapping </td>
+      <td colspan="2"> endianness format swapping </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.swap16() </td>
-        <td> interprets the buffer as array of 16bit values and swaps the endianness format in place (buffer size must be multiple of 2)
-            <span id="browserSupport" title="updated : 2019-11-13">
-                <span><i class="fab fa-node-js"></i> 5.10.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.swap16() </td>
+      <td> - interprets the buffer as array of 16bit values and swaps the endianness format in place (buffer size must be multiple of 2)
+        <span id="browserSupport" title="updated : 2019-11-13">
+          <span><i class="fab fa-node-js"></i> 5.10.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.swap32() </td>
-        <td> interprets the buffer as array of 32bit values and swaps the endianness format in place (buffer size must be multiple of 4)
-            <span id="browserSupport" title="updated : 2019-11-13">
-                <span><i class="fab fa-node-js"></i> 5.10.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.swap32() </td>
+      <td> - interprets the buffer as array of 32bit values and swaps the endianness format in place (buffer size must be multiple of 4)
+        <span id="browserSupport" title="updated : 2019-11-13">
+          <span><i class="fab fa-node-js"></i> 5.10.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.swap64() </td>
-        <td> interprets the buffer as array of 64bit values and swaps the endianness format in place (buffer size must be multiple of 8)
-            <span id="browserSupport" title="updated : 2019-11-13">
-                <span><i class="fab fa-node-js"></i> 6.3.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.swap64() </td>
+      <td> -interprets the buffer as array of 64bit values and swaps the endianness format in place (buffer size must be multiple of 8)
+        <span id="browserSupport" title="updated : 2019-11-13">
+          <span><i class="fab fa-node-js"></i> 6.3.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td colspan="2"> 8 / 16 / 24 / 32 / 40 / 48bit </td>
+      <td colspan="2"> 8 / 16 / 24 / 32 / 40 / 48bit </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readIntBE(<strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>) </td>
-        <td> gets 8, 16, 24, 32, 40 or 48bits of binary data from the specified position and interprets it as 8, 16, 24, 32, 40 or 48bits Signed Integer Big Endianness value
-            <span id="browserSupport" title="updated : 2019-11-13">
-                <span><i class="fab fa-node-js"></i> 0.11.15 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readIntBE(<strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>) </td>
+      <td> - gets 8, 16, 24, 32, 40 or 48bits of binary data from the specified position and interprets it as 8, 16, 24, 32, 40 or 48bits Signed Integer Big Endianness value
+        <span id="browserSupport" title="updated : 2019-11-13">
+          <span><i class="fab fa-node-js"></i> 0.11.15 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeIntBE(<strong>int:nr</strong>, <strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>) </td>
-        <td> - sets 8, 16, 24, 32, 40 or 48bits of binary data at the specified position as a 8, 16, 24, 32, 40 or 48bits Signed Integer Big Endianness value <br>
-             - <span style="color:orangered;">(no range error thrown at 48bit upper range excess [Bug version 13.1.0 / TESTED: 2019-11-13])</span>
-            <span id="browserSupport" title="updated : 2019-11-13">
-                <span><i class="fab fa-node-js"></i> 0.11.15 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeIntBE(<strong>int:nr</strong>, <strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>) </td>
+      <td> - sets 8, 16, 24, 32, 40 or 48bits of binary data at the specified position as a 8, 16, 24, 32, 40 or 48bits Signed Integer Big Endianness value <br>
+        - <span style="color:orangered;">(no range error thrown at 48bit upper range excess [Bug version 13.1.0 / TESTED: 2019-11-13])</span>
+        <span id="browserSupport" title="updated : 2019-11-13">
+          <span><i class="fab fa-node-js"></i> 0.11.15 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readIntLE(<strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>) </td>
-        <td> gets 8, 16, 24, 32, 40 or 48bits of binary data from the specified position and interprets it as 8, 16, 24, 32, 40 or 48bits Signed Integer Little Endianness value
-            <span id="browserSupport" title="updated : 2019-11-13">
-                <span><i class="fab fa-node-js"></i> 0.11.15 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readIntLE(<strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>) </td>
+      <td> - gets 8, 16, 24, 32, 40 or 48bits of binary data from the specified position and interprets it as 8, 16, 24, 32, 40 or 48bits Signed Integer Little Endianness value
+        <span id="browserSupport" title="updated : 2019-11-13">
+          <span><i class="fab fa-node-js"></i> 0.11.15 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeIntLE(<strong>int:nr</strong>, <strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>) </td>
-        <td> sets 8, 16, 24, 32, 40 or 48bits of binary data at the specified position as a 8, 16, 24, 32, 40 or 48bits Signed Integer Little Endianness value
-            <span id="browserSupport" title="updated : 2019-11-13">
-                <span><i class="fab fa-node-js"></i> 0.11.15 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeIntLE(<strong>int:nr</strong>, <strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>) </td>
+      <td> - sets 8, 16, 24, 32, 40 or 48bits of binary data at the specified position as a 8, 16, 24, 32, 40 or 48bits Signed Integer Little Endianness value
+        <span id="browserSupport" title="updated : 2019-11-13">
+          <span><i class="fab fa-node-js"></i> 0.11.15 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readUIntBE(<strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>) </td>
-        <td> gets 8, 16, 24, 32, 40 or 48bits of binary data from the specified position and interprets it as 8, 16, 24, 32, 40 or 48bits Unsigned Integer Big Endianness value
-            <span id="browserSupport" title="updated : 2019-11-13">
-                <span><i class="fab fa-node-js"></i> 0.11.15 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readUIntBE(<strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>) </td>
+      <td> - gets 8, 16, 24, 32, 40 or 48bits of binary data from the specified position and interprets it as 8, 16, 24, 32, 40 or 48bits Unsigned Integer Big Endianness value
+        <span id="browserSupport" title="updated : 2019-11-13">
+          <span><i class="fab fa-node-js"></i> 0.11.15 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeUIntBE(<strong>uint:nr</strong>, <strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>) </td>
-        <td> sets 8, 16, 24, 32, 40 or 48bits of binary data at the specified position as a 8, 16, 24, 32, 40 or 48bits Unsigned Integer Big Endianness value
-            <span id="browserSupport" title="updated : 2019-11-13">
-                <span><i class="fab fa-node-js"></i> 0.5.5 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeUIntBE(<strong>uint:nr</strong>, <strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>) </td>
+      <td> - sets 8, 16, 24, 32, 40 or 48bits of binary data at the specified position as a 8, 16, 24, 32, 40 or 48bits Unsigned Integer Big Endianness value
+        <span id="browserSupport" title="updated : 2019-11-13">
+          <span><i class="fab fa-node-js"></i> 0.5.5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readUIntLE(<strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>) </td>
-        <td> gets 8, 16, 24, 32, 40 or 48bits of binary data from the specified position and interprets it as 8, 16, 24, 32, 40 or 48bits Unsigned Integer Little Endianness value
-            <span id="browserSupport" title="updated : 2019-11-13">
-                <span><i class="fab fa-node-js"></i> 0.11.15 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readUIntLE(<strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>) </td>
+      <td> - gets 8, 16, 24, 32, 40 or 48bits of binary data from the specified position and interprets it as 8, 16, 24, 32, 40 or 48bits Unsigned Integer Little Endianness value
+        <span id="browserSupport" title="updated : 2019-11-13">
+          <span><i class="fab fa-node-js"></i> 0.11.15 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeUIntLE(<strong>uint:nr</strong>, <strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>) </td>
-        <td> sets 8, 16, 24, 32, 40 or 48bits of binary data at the specified position as a 8, 16, 24, 32, 40 or 48bits Unsigned Integer Little Endianness value
-            <span id="browserSupport" title="updated : 2019-11-13">
-                <span><i class="fab fa-node-js"></i> 0.5.5 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeUIntLE(<strong>uint:nr</strong>, <strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>) </td>
+      <td> - sets 8, 16, 24, 32, 40 or 48bits of binary data at the specified position as a 8, 16, 24, 32, 40 or 48bits Unsigned Integer Little Endianness value
+        <span id="browserSupport" title="updated : 2019-11-13">
+          <span><i class="fab fa-node-js"></i> 0.5.5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td colspan="2"> 8bit </td>
+      <td colspan="2"> 8bit </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readInt8(<i>byteOffset:index</i>) </td>
-        <td> gets 8 bits of binray data from the specified position and interprets it as 8bit Signed Integer value (<mark>-128</mark> to <mark>127</mark>)  
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readInt8(<i>byteOffset:index</i>) </td>
+      <td> - gets 8 bits of binray data from the specified position and interprets it as 8bit Signed Integer value (<mark>-128</mark> to <mark>127</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeInt8(<strong>int:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 8 bits of binary data at the specified position as an 8bit Signed Integer value (<mark>-128</mark> to <mark>127</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeInt8(<strong>int:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 8 bits of binary data at the specified position as an 8bit Signed Integer value (<mark>-128</mark> to <mark>127</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readUInt8(<i>byteOffset:index</i>) </td>
-        <td> gets 8 bits of binray data from the specified position and interprets it as 8bit Unigned Integer value (<mark>0</mark> to <mark>255</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readUInt8(<i>byteOffset:index</i>) </td>
+      <td> - gets 8 bits of binray data from the specified position and interprets it as 8bit Unigned Integer value (<mark>0</mark> to <mark>255</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeUInt8(<strong>uint:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 8 bits of binary data at the specified position as an 8bit Unigned Integer value (<mark>0</mark> to <mark>255</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeUInt8(<strong>uint:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 8 bits of binary data at the specified position as an 8bit Unigned Integer value (<mark>0</mark> to <mark>255</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td colspan="2"> 16bit </td>
+      <td colspan="2"> 16bit </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readInt16BE(<i>byteOffset:index</i>) </td>
-        <td> gets 16bits of binary data from the specified position and interprets it as 16bit Signed Integer Big Endianness value (<mark>-32768</mark> to <mark>32767</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readInt16BE(<i>byteOffset:index</i>) </td>
+      <td> - gets 16bits of binary data from the specified position and interprets it as 16bit Signed Integer Big Endianness value (<mark>-32768</mark> to <mark>32767</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeInt16BE(<strong>int:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 16bits of binary data at the specified position as a 16bits Signed Integer Big Endianness value (<mark>-32768</mark> to <mark>32767</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeInt16BE(<strong>int:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 16bits of binary data at the specified position as a 16bits Signed Integer Big Endianness value (<mark>-32768</mark> to <mark>32767</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readInt16LE(<i>byteOffset:index</i>) </td>
-        <td> gets 16bits of binary data from the specified position and interprets it as 16bit Signed Integer Little Endianness value (<mark>-32768</mark> to <mark>32767</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readInt16LE(<i>byteOffset:index</i>) </td>
+      <td> - gets 16bits of binary data from the specified position and interprets it as 16bit Signed Integer Little Endianness value (<mark>-32768</mark> to <mark>32767</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeInt16LE(<strong>int:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 16bits of binary data at the specified position as a 16bits Signed Integer Little Endianness value (<mark>-32768</mark> to <mark>32767</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeInt16LE(<strong>int:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 16bits of binary data at the specified position as a 16bits Signed Integer Little Endianness value (<mark>-32768</mark> to <mark>32767</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readUInt16BE(<i>byteOffset:index</i>) </td>
-        <td> gets 16bits of binary data from the specified position and interprets it as 16bit Unsigned Integer Big Endianness value (<mark>0</mark> to <mark>65535</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.5 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readUInt16BE(<i>byteOffset:index</i>) </td>
+      <td> - gets 16bits of binary data from the specified position and interprets it as 16bit Unsigned Integer Big Endianness value (<mark>0</mark> to <mark>65535</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeUInt16BE(<strong>uint:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 16bits of binary data at the specified position as a 16bits Unsigned Integer Big Endianness value (<mark>0</mark> to <mark>65535</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.5 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeUInt16BE(<strong>uint:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 16bits of binary data at the specified position as a 16bits Unsigned Integer Big Endianness value (<mark>0</mark> to <mark>65535</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readUInt16LE(<i>byteOffset:index</i>) </td>
-        <td> gets 16bits of binary data from the specified position and interprets it as 16bit Unsigned Integer Little Endianness value (<mark>0</mark> to <mark>65535</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.5 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readUInt16LE(<i>byteOffset:index</i>) </td>
+      <td> - gets 16bits of binary data from the specified position and interprets it as 16bit Unsigned Integer Little Endianness value (<mark>0</mark> to <mark>65535</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeUInt16LE(<strong>uint:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 16bits of binary data at the specified position as a 16bits Unsigned Integer Little Endianness value (<mark>0</mark> to <mark>65535</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.5 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeUInt16LE(<strong>uint:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 16bits of binary data at the specified position as a 16bits Unsigned Integer Little Endianness value (<mark>0</mark> to <mark>65535</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td colspan="2"> 32bit </td>
+      <td colspan="2"> 32bit </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readInt32BE(<i>byteOffset:index</i>) </td>
-        <td> gets 32bits of binary data from the specified position and interprets it as 32bit Signed Integer Big Endianness value (<mark>-2147483648</mark> to <mark>2147483647</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.5 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readInt32BE(<i>byteOffset:index</i>) </td>
+      <td> - gets 32bits of binary data from the specified position and interprets it as 32bit Signed Integer Big Endianness value (<mark>-2147483648</mark> to <mark>2147483647</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeInt32BE(<strong>int:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 32bits of binary data at the specified position as a 32bits Signed Integer Big Endianness value (<mark>-2147483648</mark> to <mark>2147483647</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.5 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeInt32BE(<strong>int:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 32bits of binary data at the specified position as a 32bits Signed Integer Big Endianness value (<mark>-2147483648</mark> to <mark>2147483647</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readInt32LE(<i>byteOffset:index</i>) </td>
-        <td> gets 32bits of binary data from the specified position and interprets it as 32bit Signed Integer Little Endianness value (<mark>-2147483648</mark> to <mark>2147483647</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.5 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readInt32LE(<i>byteOffset:index</i>) </td>
+      <td> - gets 32bits of binary data from the specified position and interprets it as 32bit Signed Integer Little Endianness value (<mark>-2147483648</mark> to <mark>2147483647</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeInt32LE(<strong>int:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 32bits of binary data at the specified position as a 32bits Signed Integer Little Endianness value (<mark>-2147483648</mark> to <mark>2147483647</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.5 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeInt32LE(<strong>int:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 32bits of binary data at the specified position as a 32bits Signed Integer Little Endianness value (<mark>-2147483648</mark> to <mark>2147483647</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readUInt32BE(<i>byteOffset:index</i>) </td>
-        <td> gets 32bits of binary data from the specified position and interprets it as 32bit Unsigned Integer Big Endianness value (<mark>0</mark> to <mark>4294967295</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.5 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readUInt32BE(<i>byteOffset:index</i>) </td>
+      <td> - gets 32bits of binary data from the specified position and interprets it as 32bit Unsigned Integer Big Endianness value (<mark>0</mark> to <mark>4294967295</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeUInt32BE(<strong>uint:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 32bits of binary data at the specified position as a 32bits Unsigned Integer Big Endianness value (<mark>0</mark> to <mark>4294967295</mark>) 
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.5 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeUInt32BE(<strong>uint:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 32bits of binary data at the specified position as a 32bits Unsigned Integer Big Endianness value (<mark>0</mark> to <mark>4294967295</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readUInt32LE(<i>byteOffset:index</i>) </td>
-        <td> gets 32bits of binary data from the specified position and interprets it as 32bit Unsigned Integer Little Endianness value (<mark>0</mark> to <mark>4294967295</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.5 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readUInt32LE(<i>byteOffset:index</i>) </td>
+      <td> - gets 32bits of binary data from the specified position and interprets it as 32bit Unsigned Integer Little Endianness value (<mark>0</mark> to <mark>4294967295</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeUInt32LE(<strong>uint:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 32bits of binary data at the specified position as a 32bits Unsigned Integer Little Endianness value (<mark>0</mark> to <mark>4294967295</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.5.5 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeUInt32LE(<strong>uint:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 32bits of binary data at the specified position as a 32bits Unsigned Integer Little Endianness value (<mark>0</mark> to <mark>4294967295</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.5.5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readFloatBE(<i>byteOffset:index</i>) </td>
-        <td> gets 32bits of binary data from the specified position and interprets it as 32bit Floating Point Big Endianness value (<mark>1.2*10**-38</mark> to <mark>3.4*10**38</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.11.15 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readFloatBE(<i>byteOffset:index</i>) </td>
+      <td> - gets 32bits of binary data from the specified position and interprets it as 32bit Floating Point Big Endianness value (<mark>1.2*10**-38</mark> to <mark>3.4*10**38</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.11.15 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeFloatBE(<strong>float:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 32bits of binary data at the specified position as a 32bits Floating Point Big Endianness value (<mark>1.2*10**-38</mark> to <mark>3.4*10**38</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.11.15 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeFloatBE(<strong>float:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 32bits of binary data at the specified position as a 32bits Floating Point Big Endianness value (<mark>1.2*10**-38</mark> to <mark>3.4*10**38</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.11.15 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readFloatLE(<i>byteOffset:index</i>) </td>
-        <td> gets 32bits of binary data from the specified position and interprets it as 32bit Floating Point Little Endianness value (<mark>1.2*10**-38</mark> to <mark>3.4*10**38</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.11.15 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readFloatLE(<i>byteOffset:index</i>) </td>
+      <td> - gets 32bits of binary data from the specified position and interprets it as 32bit Floating Point Little Endianness value (<mark>1.2*10**-38</mark> to <mark>3.4*10**38</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.11.15 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeFloatLE(<strong>float:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 32bits of binary data at the specified position as a 32bits Floating Point Little Endianness value (<mark>1.2*10**-38</mark> to <mark>3.4*10**38</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.11.15 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeFloatLE(<strong>float:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 32bits of binary data at the specified position as a 32bits Floating Point Little Endianness value (<mark>1.2*10**-38</mark> to <mark>3.4*10**38</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.11.15 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td colspan="2"> 64bit </td>
+      <td colspan="2"> 64bit </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readBigInt64BE(<i>byteOffset:index</i>) </td>
-        <td> gets 64bits of binary data from the specified position and interprets it as 64bit Signed BigInteger Big Endianness value (<mark>-9223372036854775808n</mark> to <mark>9223372036854775807n</mark>)    
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 12.0.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readBigInt64BE(<i>byteOffset:index</i>) </td>
+      <td> - gets 64bits of binary data from the specified position and interprets it as 64bit Signed BigInteger Big Endianness value (<mark>-9223372036854775808n</mark> to <mark>9223372036854775807n</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 12.0.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeBigInt64BE(<strong>int:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 64bits of binary data at the specified position as a 64bits Signed BigInteger Big Endianness value (<mark>-9223372036854775808n</mark> to <mark>9223372036854775807n</mark>)    
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 12.0.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeBigInt64BE(<strong>int:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 64bits of binary data at the specified position as a 64bits Signed BigInteger Big Endianness value (<mark>-9223372036854775808n</mark> to <mark>9223372036854775807n</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 12.0.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readBigInt64LE(<i>byteOffset:index</i>) </td>
-        <td> gets 64bits of binary data from the specified position and interprets it as 64bit Signed BigInteger Little Endianness value (<mark>-9223372036854775808n</mark> to <mark>9223372036854775807n</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 12.0.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readBigInt64LE(<i>byteOffset:index</i>) </td>
+      <td> - gets 64bits of binary data from the specified position and interprets it as 64bit Signed BigInteger Little Endianness value (<mark>-9223372036854775808n</mark> to <mark>9223372036854775807n</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 12.0.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeBigInt64LE(<strong>int:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 64bits of binary data at the specified position as a 64bits Signed BigInteger Little Endianness value (<mark>-9223372036854775808n</mark> to <mark>9223372036854775807n</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 12.0.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeBigInt64LE(<strong>int:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 64bits of binary data at the specified position as a 64bits Signed BigInteger Little Endianness value (<mark>-9223372036854775808n</mark> to <mark>9223372036854775807n</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 12.0.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readBigUInt64BE(<i>byteOffset:index</i>) </td>
-        <td> gets 64bits of binary data from the specified position and interprets it as 64bit Unsigned BigInteger Big Endianness value (<mark>0</mark> to <mark>18446744073709551615n</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 12.0.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readBigUInt64BE(<i>byteOffset:index</i>) </td>
+      <td> - gets 64bits of binary data from the specified position and interprets it as 64bit Unsigned BigInteger Big Endianness value (<mark>0</mark> to <mark>18446744073709551615n</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 12.0.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeBigUInt64BE(<strong>uint:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 64bits of binary data at the specified position as a 64bits Unsigned BigInteger Big Endianness value (<mark>0</mark> to <mark>18446744073709551615n</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 12.0.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeBigUInt64BE(<strong>uint:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 64bits of binary data at the specified position as a 64bits Unsigned BigInteger Big Endianness value (<mark>0</mark> to <mark>18446744073709551615n</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 12.0.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readBigUInt64LE(<i>byteOffset:index</i>) </td>
-        <td> gets 64bits of binary data from the specified position and interprets it as 64bit Unsigned BigInteger Little Endianness value (<mark>0</mark> to <mark>18446744073709551615n</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 12.0.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readBigUInt64LE(<i>byteOffset:index</i>) </td>
+      <td> - gets 64bits of binary data from the specified position and interprets it as 64bit Unsigned BigInteger Little Endianness value (<mark>0</mark> to <mark>18446744073709551615n</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 12.0.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeBigUInt64LE(<strong>uint:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 64bits of binary data at the specified position as a 64bits Unsigned BigInteger Little Endianness value (<mark>0</mark> to <mark>18446744073709551615n</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 12.0.0 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeBigUInt64LE(<strong>uint:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 64bits of binary data at the specified position as a 64bits Unsigned BigInteger Little Endianness value (<mark>0</mark> to <mark>18446744073709551615n</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 12.0.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readDoubleBE(<i>byteOffset:index</i>) </td>
-        <td> gets 64bits of binary data from the specified position and interprets it as 64bit Floating Point Big Endianness value (<mark>5*10**-324</mark> to <mark>1.8*10**308</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.11.15 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readDoubleBE(<i>byteOffset:index</i>) </td>
+      <td> - gets 64bits of binary data from the specified position and interprets it as 64bit Floating Point Big Endianness value (<mark>5*10**-324</mark> to <mark>1.8*10**308</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.11.15 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeDoubleBE(<strong>float:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 64bits of binary data at the specified position as a 64bits Floating Point Big Endianness value (<mark>5*10**-324</mark> to <mark>1.8*10**308</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.11.15 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeDoubleBE(<strong>float:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 64bits of binary data at the specified position as a 64bits Floating Point Big Endianness value (<mark>5*10**-324</mark> to <mark>1.8*10**308</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.11.15 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.readDoubleLE(<i>byteOffset:index</i>) </td>
-        <td> gets 64bits of binary data from the specified position and interprets it as 64bit Floating Point Little Endianness value (<mark>5*10**-324</mark> to <mark>1.8*10**308</mark>)
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.11.15 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.readDoubleLE(<i>byteOffset:index</i>) </td>
+      <td> - gets 64bits of binary data from the specified position and interprets it as 64bit Floating Point Little Endianness value (<mark>5*10**-324</mark> to <mark>1.8*10**308</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.11.15 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>buf</strong>.writeDoubleLE(<strong>float:nr</strong>, <i>byteOffset:index</i>) </td>
-        <td> sets 64bits of binary data at the specified position as a 64bits Floating Point Little Endianness value (<mark>5*10**-324</mark> to <mark>1.8*10**308</mark>) 
-            <span id="browserSupport" title="updated : 2019-11-11">
-                <span><i class="fab fa-node-js"></i> 0.11.15 </span>
-            </span>
-        </td>
+      <td> <strong>buf</strong>.writeDoubleLE(<strong>float:nr</strong>, <i>byteOffset:index</i>) </td>
+      <td> - sets 64bits of binary data at the specified position as a 64bits Floating Point Little Endianness value (<mark>5*10**-324</mark> to <mark>1.8*10**308</mark>)
+        <span id="browserSupport" title="updated : 2019-11-11">
+          <span><i class="fab fa-node-js"></i> 0.11.15 </span>
+        </span>
+      </td>
     </tr>
-</table>
-<h2 style="color:green;"><u> Notes : </u></h2>
-    <details class="example" id="notes">
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-        <p> - the <mark>writeUIntBE()</mark> method does not throw a range error if we pass a higher than allowed 48bit unsigned integer value (BUG reported on GitHub : 2019-11-12) </p>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
+    <p> - the <mark>writeUIntBE()</mark> method does not throw a range error if we pass a higher than allowed 48bit unsigned integer value (BUG reported on GitHub : 2019-11-12) </p>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <h2 class="header"><u> Endianness format swapping <mark>swap16()</mark> / <mark>swap32()</mark> / <mark>swap64()</mark> methods </u></h2>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre>
+// swap16() ---------------------------------------------------------------------------
+    var buf = Buffer.from([0x00, 0x11, 0x22, 0x33]);
     
-<h2 style="color:green;"><u> Remember This : </u></h2>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - the following methods get or set the buffer's data as numerical values </p>
-<h2 style="color:darkblue;"><u> 8 / 16 / 24 / 32 / 40 / 48 bit <mark>readIntBE()</mark> / <mark>readIntLE()</mark> / <mark>readUIntBE()</mark> / <mark>readUIntLE()</mark> / <mark>writeIntBE()</mark> / <mark>writeIntLE()</mark> / <mark>writeUIntBE()</mark> / <mark>writeUIntLE()</mark> methods </u></h2>
-    <pre class="syntax">
-SYNTAX :    <strong>buf</strong>.readIntBE(<strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>)                        // gets 8, 16, 24, 32, 40 or 48bits of binary data from the specified position and interprets it as 8, 16, 24, 32, 40 or 48bits Signed Integer Big Endianness value    
-            <strong>buf</strong>.writeIntBE(<strong>int:nr</strong>, <strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>)               // sets 8, 16, 24, 32, 40 or 48bits of binary data at the specified position as a 8, 16, 24, 32, 40 or 48bits Signed Integer Big Endianness value    
-                                                                                          <span style="color:orange;">(no range error thrown at 48bit upper range excess [Bug version 13.1.0 / TESTED: 2019-11-13])</span>
+    buf.swap16();                                                                      // swaps every 2 bytes in place 
+    buf;                                                                               // -> &lt;Buffer 11 00 33 22&gt;
+    
+// swap32() ---------------------------------------------------------------------------
+    var buf = Buffer.from([0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77]);
+    
+    buf.swap32();                                                                      // swaps every 4 bytes in place 
+    buf;                                                                               // -> &lt;Buffer 33 22 11 00 77 66 55 44&gt;
+    
+// swap64() ---------------------------------------------------------------------------
+    var buf = Buffer.from([0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, 0x99, 0xaa, 0xbb, 0xcc, 0xdd, 0xee, 0xff]);
             
-            <strong>buf</strong>.readIntLE(<strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>)                        // gets 8, 16, 24, 32, 40 or 48bits of binary data from the specified position and interprets it as 8, 16, 24, 32, 40 or 48bits Signed Integer Little Endianness value    
-            <strong>buf</strong>.writeIntLE(<strong>int:nr</strong>, <strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>)               // sets 8, 16, 24, 32, 40 or 48bits of binary data at the specified position as a 8, 16, 24, 32, 40 or 48bits Signed Integer Little Endianness value    
-            
-            <strong>buf</strong>.readUIntBE(<strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>)                       // gets 8, 16, 24, 32, 40 or 48bits of binary data from the specified position and interprets it as 8, 16, 24, 32, 40 or 48bits Unsigned Integer Big Endianness value    
-            <strong>buf</strong>.writeUIntBE(<strong>uint:nr</strong>, <strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>)             // sets 8, 16, 24, 32, 40 or 48bits of binary data at the specified position as a 8, 16, 24, 32, 40 or 48bits Unsigned Integer Big Endianness value    
-            
-            <strong>buf</strong>.readUIntLE(<strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>)                       // gets 8, 16, 24, 32, 40 or 48bits of binary data from the specified position and interprets it as 8, 16, 24, 32, 40 or 48bits Unsigned Integer Little Endianness value    
-            <strong>buf</strong>.writeUIntLE(<strong>uint:nr</strong>, <strong>byteOffset:index</strong>, <strong>byteLength:nr(1-6)</strong>)             // sets 8, 16, 24, 32, 40 or 48bits of binary data at the specified position as a 8, 16, 24, 32, 40 or 48bits Unsigned Integer Little Endianness value    
-            
-<span style="color:darkgrey;">// valid bit ranges -------------------------------------------------------------------</span>
-            8bit Signed Integer range     (<mark>-128</mark> to <mark>127</mark>)
-            8bit Unsigned Integer range   (<mark>0</mark> to <mark>255</mark>)
-            
-            16bit Signed Integer range     (<mark>-32768</mark> to <mark>32767</mark>)
-            16bit Unsigned Integer range   (<mark>0</mark> to <mark>65535</mark>)
-            
-            24bit Signed Integer range     (<mark>-8388608</mark> to <mark>8388607</mark>)
-            24bit Unsigned Integer range   (<mark>0</mark> to <mark>16777215</mark>)
-            
-            32bit Signed Integer range     (<mark>-2147483648</mark> to <mark>2147483647</mark>)
-            32bit Unsigned Integer range   (<mark>0</mark> to <mark>4294967295</mark>)
-            
-            40bit Signed Integer range     (<mark>-549755813888</mark> to <mark>549755813887</mark>)
-            40bit Unsigned Integer range   (<mark>0</mark> to <mark>1099511627775</mark>)
-            
-            48bit Signed Integer range     (<mark>-140737488355328</mark> to <mark>140737488355327</mark>)
-            48bit Unsigned Integer range   (<mark>0</mark> to <mark>281474976710655</mark>)
+    buf.swap64();                                                                      // swaps every 8 bytes in place 
+    buf;                                                                               // -> &lt;Buffer 77 66 55 44 33 22 11 00 ff ee dd cc bb aa 99 88&gt;
     </pre>
+    <h4 class="header"><u> Endianness swapping TEST </u></h4>
+    <pre style="margin-bottom:1px;">
+    var buf = Buffer.from([0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, 0x99, 0xaa, 0xbb, 0xcc, 0xdd, 0xee, 0xff]);
+        console.log( buf );                             // -> &lt;Buffer 00 11 22 33 44 55 66 77 88 99 aa bb cc dd ee ff&gt;
+        
+console.log('// swap16() -----------------------------------------------------------------------------------------' );
+    buf.swap16();                                       // buffer interpreted as 16bit values and swaps its endianness format   
+        console.log( buf );                             // -> &lt;Buffer 11 00 33 22 55 44 77 66 99 88 bb aa dd cc ff ee&gt;
+    buf.swap16();
+    
+console.log('// swap32() -----------------------------------------------------------------------------------------' );
+    buf.swap32();                                       // buffer interpreted as 32bit values and swaps its endianness format 
+        console.log( buf );                             // -> &lt;Buffer 33 22 11 00 77 66 55 44 bb aa 99 88 ff ee dd cc&gt;
+    buf.swap32();
+    
+console.log('// swap64() -----------------------------------------------------------------------------------------' );
+    buf.swap64();                                       // buffer interpreted as 64bit values and swaps its endianness format  
+        console.log( buf );                             // -> &lt;Buffer 77 66 55 44 33 22 11 00 ff ee dd cc bb aa 99 88&gt;
+    buf.swap64();
+    
+console.log('// unvalid buffer -----------------------------------------------------------------------------------' );
+    var buf2 = Buffer.from([0x00, 0xff, 0x00, 0xff, 0x00, 0xff, 0x00, 0xff, 0x00,]);
+        
+    try {
+        buf2.swap64()
+    } catch(err) {                                      // error is thrown because of the buffer size 
+        console.log( err );
+    }
+    </pre>
+    <pre class="cmd" style="margin-top:1px;">
+    PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\buffer and string decoder\Get Set Buffers as Numerical Values\06 Endianness swap TEST> node main      
+        &lt;Buffer 00 11 22 33 44 55 66 77 88 99 aa bb cc dd ee ff&gt;
+        // swap16() -----------------------------------------------------------------------------------------
+        &lt;Buffer 11 00 33 22 55 44 77 66 99 88 bb aa dd cc ff ee&gt;
+        // swap32() -----------------------------------------------------------------------------------------
+        &lt;Buffer 33 22 11 00 77 66 55 44 bb aa 99 88 ff ee dd cc&gt;
+        // swap64() -----------------------------------------------------------------------------------------
+        &lt;Buffer 77 66 55 44 33 22 11 00 ff ee dd cc bb aa 99 88&gt;
+        // unvalid buffer -----------------------------------------------------------------------------------
+        RangeError [ERR_INVALID_BUFFER_SIZE]: Buffer size must be a multiple of 64-bits
+            at Buffer.swap64 (buffer.js:1123:11)
+            at Object.&lt;anonymous&gt; (D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\buffer and string decoder\Get Set Buffers as Numerical Values\06 Endianness swap TEST\main.js:23:14)
+            at Module._compile (internal/modules/cjs/loader.js:1063:30)
+            at Object.Module._extensions..js (internal/modules/cjs/loader.js:1103:10)
+            at Module.load (internal/modules/cjs/loader.js:914:32)
+            at Function.Module._load (internal/modules/cjs/loader.js:822:14)
+            at Function.Module.runMain (internal/modules/cjs/loader.js:1143:12)
+            at internal/main/run_main_module.js:16:11 {
+        code: 'ERR_INVALID_BUFFER_SIZE'
+        }
+    PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\buffer and string decoder\Get Set Buffers as Numerical Values\06 Endianness swap TEST>     
+    </pre>
+  </details>
+  <h2 class="header"><u> 8 / 16 / 24 / 32 / 40 / 48 bit <mark>readIntBE()</mark> / <mark>readIntLE()</mark> / <mark>readUIntBE()</mark> / <mark>readUIntLE()</mark> / <mark>writeIntBE()</mark> / <mark>writeIntLE()</mark> / <mark>writeUIntBE()</mark> / <mark>writeUIntLE()</mark> methods </u></h2>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     var buf = Buffer.from([0x64, 0xd6, 0x91, 0xc9, 0x00, 0xff, 0x9b, 0x11]);
     
@@ -487,9 +535,7 @@ SYNTAX :    <strong>buf</strong>.readIntBE(<strong>byteOffset:index</strong>, <s
     buf.writeIntLE(-140737488355328, 0, 6);                                            // writes the 1, 2, 3, 4, 5, 6 bytes as Signed Integer Little Endianness value
         buf.readIntLE(0, 6);                                                           // -> -140737488355328
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> 8 to 48bit TEST</u></h4>
+    <h4 class="header"><u> 8 to 48bit TEST</u></h4>
     <pre style="margin-bottom:1px;">
 var buf = Buffer.from([0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x7f, 0x7f, 0x7f, 0x7f, 0x7f]);
     
@@ -621,7 +667,7 @@ console.log('// write ----------------------------------------------------------
         &lt;Buffer ff ff ff ff ff ff&gt;
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\buffer and string decoder\Get Set Buffers as Numerical Values\03 8 to 48bit TEST>     
     </pre>
-<h4 style="color:darkblue;"><u> Unsigned Integer Range TEST</u></h4>
+    <h4 class="header"><u> Unsigned Integer Range TEST</u></h4>
     <pre style="margin-bottom:1px;">
     var buf = Buffer.alloc(6);
     
@@ -677,17 +723,12 @@ console.log('// 48bit range TEST -----------------------------------------------
         &lt;Buffer 80 00 00 00 00 00&gt;
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\buffer and string decoder\Get Set Buffers as Numerical Values\05 Signed Integer Range TEST>     
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> 8bit <mark>readInt8()</mark> / <mark>readUInt8()</mark> / <mark>writeInt8()</mark> / <mark>writeUInt8()</mark> methods </u></h2>
-    <pre class="syntax">
-SYNTAX :    <strong>buf</strong>.readInt8(<i>byteOffset:index</i>)                                             // gets 8 bits of binray data from the specified position and interprets it as 8bit Signed Integer value (<mark>-128</mark> to <mark>127</mark>)   
-            <strong>buf</strong>.writeInt8(<strong>int:nr</strong>, <i>byteOffset:index</i>)                                    // sets 8 bits of binary data at the specified position as an 8bit Signed Integer value (<mark>-128</mark> to <mark>127</mark>)
-            
-            <strong>buf</strong>.readUInt8(<i>byteOffset:index</i>)                                            // gets 8 bits of binray data from the specified position and interprets it as 8bit Unigned Integer value (<mark>0</mark> to <mark>255</mark>)   
-            <strong>buf</strong>.writeUInt8(<strong>uint:nr</strong>, <i>byteOffset:index</i>)                                  // sets 8 bits of binary data at the specified position as an 8bit Unigned Integer value (<mark>0</mark> to <mark>255</mark>)
-    </pre>
+  </details>
+  <!--------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"><u> 8bit <mark>readInt8()</mark> / <mark>readUInt8()</mark> / <mark>writeInt8()</mark> / <mark>writeUInt8()</mark> methods </u></h2>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     var buf = Buffer.from([0x64, 0xd6, 0x91, 0xc9]);
         
@@ -703,9 +744,7 @@ SYNTAX :    <strong>buf</strong>.readInt8(<i>byteOffset:index</i>)              
     buf.writeUInt8(211, 2);                                                            // writes the 4th byte as 8bit Unsigned Integer Value 
     buf.readUInt8(2);                                                                  // -> 211            // reading the above written byte  
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> <mark>readInt8()</mark> / <mark>readUInt8()</mark> / <mark>writeInt8()</mark> / <mark>writeUInt8()</mark> TEST </u></h4>
+    <h4 class="header"><u> <mark>readInt8()</mark> / <mark>readUInt8()</mark> / <mark>writeInt8()</mark> / <mark>writeUInt8()</mark> TEST </u></h4>
     <pre style="margin-bottom:1px;">
     var buf = Buffer.from('abcd');
         console.log( buf );                                     // original buffer 
@@ -735,23 +774,12 @@ console.log( '// writeInt8() / writeUInt8() ------------------------------------
         &lt;Buffer 90 62 63 de&gt;
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\buffer and string decoder\Get Set Buffers as Numerical Values\readInt8() readUint8() writeInt8() writeUint8() TEST>    
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> 16bit <mark>readInt16BE()</mark> / <mark>readInt16LE()</mark> / <mark>readUInt16BE()</mark> / <mark>readUInt16LE()</mark> / <mark>writeInt16BE()</mark> / <mark>writeInt16LE()</mark> / <mark>writeUInt16BE()</mark> / <mark>writeUInt16LE()</mark> methods </u></h2>
-    <pre class="syntax">
-SYNTAX :    <strong>buf</strong>.readInt16BE(<i>byteOffset:index</i>)                                          // gets 16bits of binary data from the specified position and interprets it as 16bit Signed Integer Big Endianness value (<mark>-32768</mark> to <mark>32767</mark>)    
-            <strong>buf</strong>.writeInt16BE(<strong>int:nr</strong>, <i>byteOffset:index</i>)                                 // sets 16bits of binary data at the specified position as a 16bits Signed Integer Big Endianness value (<mark>-32768</mark> to <mark>32767</mark>)    
-            
-            <strong>buf</strong>.readInt16LE(<i>byteOffset:index</i>)                                          // gets 16bits of binary data from the specified position and interprets it as 16bit Signed Integer Little Endianness value (<mark>-32768</mark> to <mark>32767</mark>)
-            <strong>buf</strong>.writeInt16LE(<strong>int:nr</strong>, <i>byteOffset:index</i>)                                 // sets 16bits of binary data at the specified position as a 16bits Signed Integer Little Endianness value (<mark>-32768</mark> to <mark>32767</mark>)    
-    
-            <strong>buf</strong>.readUInt16BE(<i>byteOffset:index</i>)                                         // gets 16bits of binary data from the specified position and interprets it as 16bit Unsigned Integer Big Endianness value (<mark>0</mark> to <mark>65535</mark>)   
-            <strong>buf</strong>.writeUInt16BE(<strong>uint:nr</strong>, <i>byteOffset:index</i>)                               // sets 16bits of binary data at the specified position as a 16bits Unsigned Integer Big Endianness value (<mark>0</mark> to <mark>65535</mark>)   
-    
-            <strong>buf</strong>.readUInt16LE(<i>byteOffset:index</i>)                                         // gets 16bits of binary data from the specified position and interprets it as 16bit Unsigned Integer Little Endianness value (<mark>0</mark> to <mark>65535</mark>)   
-            <strong>buf</strong>.writeUInt16LE(<strong>uint:nr</strong>, <i>byteOffset:index</i>)                               // sets 16bits of binary data at the specified position as a 16bits Unsigned Integer Little Endianness value (<mark>0</mark> to <mark>65535</mark>)   
-    </pre>
+  </details>
+  <!--------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"><u> 16bit <mark>readInt16BE()</mark> / <mark>readInt16LE()</mark> / <mark>readUInt16BE()</mark> / <mark>readUInt16LE()</mark> / <mark>writeInt16BE()</mark> / <mark>writeInt16LE()</mark> / <mark>writeUInt16BE()</mark> / <mark>writeUInt16LE()</mark> methods </u></h2>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
 var buf = Buffer.from([0x64, 0xd6, 0x91, 0xc9]);
     
@@ -775,9 +803,7 @@ var buf = Buffer.from([0x64, 0xd6, 0x91, 0xc9]);
     buf.writeUInt16LE(14578, 2);                                                       // writes the 3rd and 4th byte as 16bit Unsigned Integer Little Endianness value   
         buf.readUInt16LE(2);                                                           // -> 14578
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> 16bit TEST </u></h4>
+    <h4 class="header"><u> 16bit TEST </u></h4>
     <pre style="margin-bottom:1px;">
 var buf = Buffer.from('abcdefgh');
     console.log( buf );
@@ -819,29 +845,12 @@ console.log( '// writeInt16BE() / writeInt16LE() / writeUInt16LE() / writeUInt16
         &lt;Buffer 92 30 30 92 ea 60 60 ea&gt;
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\buffer and string decoder\Get Set Buffers as Numerical Values\01 16bit TEST>    
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> 32bit <mark>readInt32BE()</mark> / <mark>readInt32LE()</mark> / <mark>readUInt32BE()</mark> / <mark>readUInt32LE()</mark> / <mark>readFloatBE()</mark> / <mark>readFloatLE()</mark> / <mark>writeInt32BE()</mark> / <mark>writeInt32LE()</mark> / <mark>writeUInt32BE()</mark> / <mark>writeUInt32LE()</mark> / <mark>writeFloatBE()</mark> / <mark>writeFloatLE()</mark> methods </u></h2>
-    <pre class="syntax">
-SYNTAX :    <strong>buf</strong>.readInt32BE(<i>byteOffset:index</i>)                                          // gets 32bits of binary data from the specified position and interprets it as 32bit Signed Integer Big Endianness value (<mark>-2147483648</mark> to <mark>2147483647</mark>)    
-            <strong>buf</strong>.writeInt32BE(<strong>int:nr</strong>, <i>byteOffset:index</i>)                                 // sets 32bits of binary data at the specified position as a 32bits Signed Integer Big Endianness value (<mark>-2147483648</mark> to <mark>2147483647</mark>)    
-            
-            <strong>buf</strong>.readInt32LE(<i>byteOffset:index</i>)                                          // gets 32bits of binary data from the specified position and interprets it as 32bit Signed Integer Little Endianness value (<mark>-2147483648</mark> to <mark>2147483647</mark>)    
-            <strong>buf</strong>.writeInt32LE(<strong>int:nr</strong>, <i>byteOffset:index</i>)                                 // sets 32bits of binary data at the specified position as a 32bits Signed Integer Little Endianness value (<mark>-2147483648</mark> to <mark>2147483647</mark>)    
-            
-            <strong>buf</strong>.readUInt32BE(<i>byteOffset:index</i>)                                         // gets 32bits of binary data from the specified position and interprets it as 32bit Unsigned Integer Big Endianness value (<mark>0</mark> to <mark>4294967295</mark>)    
-            <strong>buf</strong>.writeUInt32BE(<strong>uint:nr</strong>, <i>byteOffset:index</i>)                               // sets 32bits of binary data at the specified position as a 32bits Unsigned Integer Big Endianness value (<mark>0</mark> to <mark>4294967295</mark>)    
-            
-            <strong>buf</strong>.readUInt32LE(<i>byteOffset:index</i>)                                         // gets 32bits of binary data from the specified position and interprets it as 32bit Unsigned Integer Little Endianness value (<mark>0</mark> to <mark>4294967295</mark>)    
-            <strong>buf</strong>.writeUInt32LE(<strong>uint:nr</strong>, <i>byteOffset:index</i>)                               // sets 32bits of binary data at the specified position as a 32bits Unsigned Integer Little Endianness value (<mark>0</mark> to <mark>4294967295</mark>)    
-            
-            <strong>buf</strong>.readFloatBE(<i>byteOffset:index</i>)                                          // gets 32bits of binary data from the specified position and interprets it as 32bit Floating Point Big Endianness value (<mark>1.2*10**-38</mark> to <mark>3.4*10**38</mark>)    
-            <strong>buf</strong>.writeFloatBE(<strong>float:nr</strong>, <i>byteOffset:index</i>)                               // sets 32bits of binary data at the specified position as a 32bits Floating Point Big Endianness value (<mark>1.2*10**-38</mark> to <mark>3.4*10**38</mark>)    
-            
-            <strong>buf</strong>.readFloatLE(<i>byteOffset:index</i>)                                          // gets 32bits of binary data from the specified position and interprets it as 32bit Floating Point Little Endianness value (<mark>1.2*10**-38</mark> to <mark>3.4*10**38</mark>)    
-            <strong>buf</strong>.writeFloatLE(<strong>float:nr</strong>, <i>byteOffset:index</i>)                               // sets 32bits of binary data at the specified position as a 32bits Floating Point Little Endianness value (<mark>1.2*10**-38</mark> to <mark>3.4*10**38</mark>)    
-    </pre>
+  </details>
+  <!--------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"><u> 32bit <mark>readInt32BE()</mark> / <mark>readInt32LE()</mark> / <mark>readUInt32BE()</mark> / <mark>readUInt32LE()</mark> / <mark>readFloatBE()</mark> / <mark>readFloatLE()</mark> / <mark>writeInt32BE()</mark> / <mark>writeInt32LE()</mark> / <mark>writeUInt32BE()</mark> / <mark>writeUInt32LE()</mark> / <mark>writeFloatBE()</mark> / <mark>writeFloatLE()</mark> methods </u></h2>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     var buf = Buffer.from([0x64, 0xd6, 0x91, 0xc9, 0x00, 0xff]);
     
@@ -874,9 +883,7 @@ SYNTAX :    <strong>buf</strong>.readInt32BE(<i>byteOffset:index</i>)           
     buf.writeFloatLE(22.0041, 1);                                                      // writes the 2, 3, 4, 5 bytes as 32bit Floating Point Little Endianness value 
         buf.readFloatLE(1);                                                            // -> 22.004100799560547
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> 32bit TEST </u></h4>
+    <h4 class="header"><u> 32bit TEST </u></h4>
     <pre style="margin-bottom:1px;">
 var buf = Buffer.from('abcdefghijklmnopqrstuvwx');
     console.log( buf );
@@ -930,29 +937,12 @@ console.log( '// writeInt32BE() / writeInt32LE() / writeUInt32BE() / writeUInt32
         &lt;Buffer 88 ca 6c 00 00 6c ca 88 c6 ae a1 55 55 a1 ae c6 44 9b a4 a4 a4 a4 9b 44&gt;
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\buffer and string decoder\Get Set Buffers as Numerical Values\02 32bit TEST>    
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> 64bit <mark>readBigInt64BE()</mark> / <mark>readBigInt64LE()</mark> / <mark>readBigUInt64BE()</mark> / <mark>readBigUInt64LE()</mark> / <mark>readDoubleBE()</mark> / <mark>readDoubleLE()</mark> / <mark>writeBigInt64BE()</mark> / <mark>writeBigInt64LE()</mark> / <mark>writeBigUInt64BE()</mark> / <mark>writeBigUInt64LE()</mark> / <mark>writeDoubleBE()</mark> / <mark>writeDoubleLE()</mark> methods </u></h2>
-    <pre class="syntax">
-SYNTAX :    <strong>buf</strong>.readBigInt64BE(<i>byteOffset:index</i>)                                       // gets 64bits of binary data from the specified position and interprets it as 64bit Signed BigInteger Big Endianness value (<mark>-9223372036854775808n</mark> to <mark>9223372036854775807n</mark>)    
-            <strong>buf</strong>.writeBigInt64BE(<strong>int:nr</strong>, <i>byteOffset:index</i>)                              // sets 64bits of binary data at the specified position as a 64bits Signed BigInteger Big Endianness value (<mark>-9223372036854775808n</mark> to <mark>9223372036854775807n</mark>)    
-            
-            <strong>buf</strong>.readBigInt64LE(<i>byteOffset:index</i>)                                       // gets 64bits of binary data from the specified position and interprets it as 64bit Signed BigInteger Little Endianness value (<mark>-9223372036854775808n</mark> to <mark>9223372036854775807n</mark>)    
-            <strong>buf</strong>.writeBigInt64LE(<strong>int:nr</strong>, <i>byteOffset:index</i>)                              // sets 64bits of binary data at the specified position as a 64bits Signed BigInteger Little Endianness value (<mark>-9223372036854775808n</mark> to <mark>9223372036854775807n</mark>)    
-            
-            <strong>buf</strong>.readBigUInt64BE(<i>byteOffset:index</i>)                                      //  gets 64bits of binary data from the specified position and interprets it as 64bit Unsigned BigInteger Big Endianness value (<mark>0</mark> to <mark>18446744073709551615n</mark>)    
-            <strong>buf</strong>.writeBigUInt64BE(<strong>uint:nr</strong>, <i>byteOffset:index</i>)                            // sets 64bits of binary data at the specified position as a 64bits Unsigned BigInteger Big Endianness value (<mark>0</mark> to <mark>18446744073709551615n</mark>)    
-            
-            <strong>buf</strong>.readBigUInt64LE(<i>byteOffset:index</i>)                                      // gets 64bits of binary data from the specified position and interprets it as 64bit Unsigned BigInteger Little Endianness value (<mark>0</mark> to <mark>18446744073709551615n</mark>)    
-            <strong>buf</strong>.writeBigUInt64LE(<strong>uint:nr</strong>, <i>byteOffset:index</i>)                            // sets 64bits of binary data at the specified position as a 64bits Unsigned BigInteger Little Endianness value (<mark>0</mark> to <mark>18446744073709551615n</mark>)    
-            
-            <strong>buf</strong>.readDoubleBE(<i>byteOffset:index</i>)                                         // gets 64bits of binary data from the specified position and interprets it as 64bit Floating Point Big Endianness value (<mark>5*10**-324</mark> to <mark>1.8*10**308</mark>)    
-            <strong>buf</strong>.writeDoubleBE(<strong>float:nr</strong>, <i>byteOffset:index</i>)                              // sets 64bits of binary data at the specified position as a 64bits Floating Point Big Endianness value (<mark>5*10**-324</mark> to <mark>1.8*10**308</mark>)    
-            
-            <strong>buf</strong>.readDoubleLE(<i>byteOffset:index</i>)                                         // gets 64bits of binary data from the specified position and interprets it as 64bit Floating Point Little Endianness value (<mark>5*10**-324</mark> to <mark>1.8*10**308</mark>)    
-            <strong>buf</strong>.writeDoubleLE(<strong>float:nr</strong>, <i>byteOffset:index</i>)                              // sets 64bits of binary data at the specified position as a 64bits Floating Point Little Endianness value (<mark>5*10**-324</mark> to <mark>1.8*10**308</mark>)    
-    </pre>
+  </details>
+  <!--------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"><u> 64bit <mark>readBigInt64BE()</mark> / <mark>readBigInt64LE()</mark> / <mark>readBigUInt64BE()</mark> / <mark>readBigUInt64LE()</mark> / <mark>readDoubleBE()</mark> / <mark>readDoubleLE()</mark> / <mark>writeBigInt64BE()</mark> / <mark>writeBigInt64LE()</mark> / <mark>writeBigUInt64BE()</mark> / <mark>writeBigUInt64LE()</mark> / <mark>writeDoubleBE()</mark> / <mark>writeDoubleLE()</mark> methods </u></h2>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     var buf = Buffer.from([0x64, 0xd6, 0x91, 0xc9, 0x00, 0xff, 0x9b, 0x11]);
     
@@ -985,9 +975,7 @@ SYNTAX :    <strong>buf</strong>.readBigInt64BE(<i>byteOffset:index</i>)        
     buf.writeDoubleLE(88888.88888, 0);                                                 // writes the 1, 2, 3, 4, 5, 6, 7, 8 bytes as 64 bit Floating Point Little Endianness value   
         buf.readDoubleLE(0);                                                           // -> 88888.88888
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> 64bit TEST </u></h4>
+    <h4 class="header"><u> 64bit TEST </u></h4>
     <pre style="margin-bottom:1px;">
 var buf = Buffer.from('abcdefghijklmnopqrstuvwxabcdefghijklmnopqrstuvwx');
     console.log( buf );
@@ -1041,92 +1029,10 @@ console.log( '// wtiredBigInt64BE() / wtiredBigInt64LE() / wtiredBigUInt64BE() /
         &lt;Buffer 80 00 00 00 00 00 00 00 4a 99 f4 d5 50 d0 9c c0 ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 40 8d a7 eb 85 1e b8 52 c9 76 be 9f 1a c7 7b 40&gt;
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\buffer and string decoder\Get Set Buffers as Numerical Values\04 64bit TEST>      
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> Endianness format swapping <mark>swap16()</mark> / <mark>swap32()</mark> / <mark>swap64()</mark> methods </u></h2>
-    <pre class="syntax">
-SYNTAX :    <strong>buf</strong>.swap16()                                                               // interprets the buffer as array of 16bit values and swaps the endianness format in place (buffer size must be multiple of 2)    
-            <strong>buf</strong>.swap32()                                                               // interprets the buffer as array of 32bit values and swaps the endianness format in place (buffer size must be multiple of 4)    
-            <strong>buf</strong>.swap64()                                                               // interprets the buffer as array of 64bit values and swaps the endianness format in place (buffer size must be multiple of 8)    
-    </pre>
-    <pre>
-// swap16() ---------------------------------------------------------------------------
-    var buf = Buffer.from([0x00, 0x11, 0x22, 0x33]);
-    
-    buf.swap16();                                                                      // swaps every 2 bytes in place 
-    buf;                                                                               // -> &lt;Buffer 11 00 33 22&gt;
-    
-// swap32() ---------------------------------------------------------------------------
-    var buf = Buffer.from([0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77]);
-    
-    buf.swap32();                                                                      // swaps every 4 bytes in place 
-    buf;                                                                               // -> &lt;Buffer 33 22 11 00 77 66 55 44&gt;
-    
-// swap64() ---------------------------------------------------------------------------
-    var buf = Buffer.from([0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, 0x99, 0xaa, 0xbb, 0xcc, 0xdd, 0xee, 0xff]);
-            
-    buf.swap64();                                                                      // swaps every 8 bytes in place 
-    buf;                                                                               // -> &lt;Buffer 77 66 55 44 33 22 11 00 ff ee dd cc bb aa 99 88&gt;
-    </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> Endianness swapping TEST </u></h4>
-    <pre style="margin-bottom:1px;">
-    var buf = Buffer.from([0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, 0x99, 0xaa, 0xbb, 0xcc, 0xdd, 0xee, 0xff]);
-        console.log( buf );                             // -> &lt;Buffer 00 11 22 33 44 55 66 77 88 99 aa bb cc dd ee ff&gt;
-        
-console.log('// swap16() -----------------------------------------------------------------------------------------' );
-    buf.swap16();                                       // buffer interpreted as 16bit values and swaps its endianness format   
-        console.log( buf );                             // -> &lt;Buffer 11 00 33 22 55 44 77 66 99 88 bb aa dd cc ff ee&gt;
-    buf.swap16();
-    
-console.log('// swap32() -----------------------------------------------------------------------------------------' );
-    buf.swap32();                                       // buffer interpreted as 32bit values and swaps its endianness format 
-        console.log( buf );                             // -> &lt;Buffer 33 22 11 00 77 66 55 44 bb aa 99 88 ff ee dd cc&gt;
-    buf.swap32();
-    
-console.log('// swap64() -----------------------------------------------------------------------------------------' );
-    buf.swap64();                                       // buffer interpreted as 64bit values and swaps its endianness format  
-        console.log( buf );                             // -> &lt;Buffer 77 66 55 44 33 22 11 00 ff ee dd cc bb aa 99 88&gt;
-    buf.swap64();
-    
-console.log('// unvalid buffer -----------------------------------------------------------------------------------' );
-    var buf2 = Buffer.from([0x00, 0xff, 0x00, 0xff, 0x00, 0xff, 0x00, 0xff, 0x00,]);
-        
-    try {
-        buf2.swap64()
-    } catch(err) {                                      // error is thrown because of the buffer size 
-        console.log( err );
-    }
-    </pre>
-    <pre class="cmd" style="margin-top:1px;">
-    PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\buffer and string decoder\Get Set Buffers as Numerical Values\06 Endianness swap TEST> node main      
-        &lt;Buffer 00 11 22 33 44 55 66 77 88 99 aa bb cc dd ee ff&gt;
-        // swap16() -----------------------------------------------------------------------------------------
-        &lt;Buffer 11 00 33 22 55 44 77 66 99 88 bb aa dd cc ff ee&gt;
-        // swap32() -----------------------------------------------------------------------------------------
-        &lt;Buffer 33 22 11 00 77 66 55 44 bb aa 99 88 ff ee dd cc&gt;
-        // swap64() -----------------------------------------------------------------------------------------
-        &lt;Buffer 77 66 55 44 33 22 11 00 ff ee dd cc bb aa 99 88&gt;
-        // unvalid buffer -----------------------------------------------------------------------------------
-        RangeError [ERR_INVALID_BUFFER_SIZE]: Buffer size must be a multiple of 64-bits
-            at Buffer.swap64 (buffer.js:1123:11)
-            at Object.<anonymous> (D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\buffer and string decoder\Get Set Buffers as Numerical Values\06 Endianness swap TEST\main.js:23:14)
-            at Module._compile (internal/modules/cjs/loader.js:1063:30)
-            at Object.Module._extensions..js (internal/modules/cjs/loader.js:1103:10)
-            at Module.load (internal/modules/cjs/loader.js:914:32)
-            at Function.Module._load (internal/modules/cjs/loader.js:822:14)
-            at Function.Module.runMain (internal/modules/cjs/loader.js:1143:12)
-            at internal/main/run_main_module.js:16:11 {
-        code: 'ERR_INVALID_BUFFER_SIZE'
-        }
-    PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\buffer and string decoder\Get Set Buffers as Numerical Values\06 Endianness swap TEST>     
-    </pre>
-</details>
-    
-    
-    
-    <br><br>
+  </details>
+
+
+  <br><br>
 </body>
+
 </html>

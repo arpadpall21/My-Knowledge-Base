@@ -50,13 +50,13 @@
       <td> (etcetera) system-wide configuration files, these configurations are valid for all users </td>
     </tr>
     <tr>
-      <td class="indent-lv1"> /etc/enviroment </td>
+      <td class="indent-lv1"> /enviroment </td>
       <td>
         - file contains system-wide environment variables <br>
       </td>
     </tr>
     <tr>
-      <td class="indent-lv1"> /etc/group </td>
+      <td class="indent-lv1"> /group </td>
       <td>
         - file contains all groups in the system <br>
         - each entry represents a group (<strong>groupName</strong> : <em class="openable">x<div>
@@ -65,20 +65,20 @@
       </td>
     </tr>
     <tr>
-      <td class="indent-lv1"> /etc/hosts </td>
+      <td class="indent-lv1"> /hosts </td>
       <td>
-        - hosts file (local domain to IP address mapping file) <br>
+        - local DNS mapping (local domain to IP address mapping) <br>
         - (column1 = ip address) (column2 = domain) (column3 = domain alias)
       </td>
     </tr>
     <tr>
-      <td class="indent-lv1"> /etc/os-release </td>
+      <td class="indent-lv1"> /os-release </td>
       <td>
         - operating system informations (like linux distro, version, etc...)
       </td>
     </tr>
     <tr>
-      <td class="indent-lv1"> /etc/passwd </td>
+      <td class="indent-lv1"> /passwd </td>
       <td>
         - file contains all users in the system <br>
         - each entry represents a user (<strong>userName</strong> : <em class="openable">x<div>
@@ -88,7 +88,13 @@
       </td>
     </tr>
     <tr>
-      <td class="indent-lv1"> /etc/sudoers </td>
+      <td class="indent-lv1"> /resolv.conf </td>
+      <td>
+        - contains DNS resolution addresses (host requests these addresses for DNS resolution)
+      </td>
+    </tr>
+    <tr>
+      <td class="indent-lv1"> /sudoers </td>
       <td>
         - file contains users with administrator priviledges (<mark>sudo</mark> must be installed)
       </td>
@@ -371,35 +377,18 @@
   <p> - Proprietary drivers also can be used and managed through the "Software &amp; Updates" screen (which was done automatically when installed Linux) </p>
   <!-------------------------------------------------------------------------------------------------------------------------------->
   <hr>
-  <h2 class="header"> File System </h2>
+  <h2 class="header"> Files </h2>
   <p> - Linux uses a logical file system, disks and partitions can be "mounted" logically </p>
-  <p> - in Linux everything is a file! files are files, a directories are files, devices are files, etc... <u>hidden files are preceded with a dot (ex <mark>.*</mark>)</u> </p>
-  <!-------------------------------------------------------------------------------------------------------------------------------->
-  <hr>
-  <h2 class="header"> Inode </h2>
-  <p> - an Inode is a data structure which describes a file (object) on the Linux file system (metadata of the acutal file)</p>
-  <p> - Linux manages inodes and has a data base of inodes "inode table", inodes are limited and unique on the system (can be displayed with the <mark>df -i</mark> command) </p>
-  <p> - Hard-Links have the same Inode number, so technically they are the same file </p>
-  <p> Inode contains </p>
-  <ul>
-    <li> File Type = file, directory, device, pipe, etc... </li>
-    <li> Permission = read, write, execute </li>
-    <li> Link Count = Number of Hard-Links relative to this Inode </li>
-    <li> User Id = file owner </li>
-    <li> Group Id = group owner </li>
-    <li> Size = file size </li>
-    <li> Time Stamp = Access time = file last access, <u>Change time = file last change | Modification time = inode last change</u> </li>
-    <li> Attributes = inmutable, etc... </li>
-    <li> link to other files = for directories </li>
-    <li> link to the actual underlyind data (link to disk blocks) </li>
-    <li><u> does not contain the fine name</u> = this makes possible to create hard-links </li>
-  </ul>
-  <!-------------------------------------------------------------------------------------------------------------------------------->
-  <hr>
-  <h2 class="header"> umask </h2>
-  <p> - the umask defines file and directory permissions when created, the Default umask value is <mark>0022</mark> <u>(the first value is always <mark>0</mark>)</u> </p>
-  <p> - in Linux when creating new items the default permission for files is <mark>0666</mark> and for directories is <mark>0777</mark> </p>
-  <p> - the umask value is <u>subtracted from the item default permission value</u> when we create new items (ex: the file permission is calculated (<mark>0666</mark> - <mark>0002</mark>) so the new file's permission is <mark>0664</mark>) </p>
+  <p> - in Unix systems everything's a file! (files are files, directories are files, devices are files, sockets are files, etc..) </p>
+    <p class="indent-lv1"> - <mark class="mark">file descriptor</mark></p>
+      <p class="indent-lv2"> - unique index assigned to an open file, this allows the process to read & write the file </p>
+      <p class="indent-lv2"> - file descriptors are assigned by the OS to processes, processes typically have a <mark>1024</mark> - <mark>65536</mark> file descriptor table size (limit how many files the process can simultaneously open) (can be checked with the <mark>ulimit -n</mark> command) </p>
+    <p class="indent-lv1"> - <mark class="mark">inode</mark> </p>
+      <p class="indent-lv2"> - metadata of the file (each file has one to descirbe the file's type, owner, group id, etc...) </p>
+    <p class="indent-lv1"> - <mark class="mark">umask</mark> </p>
+      <p class="indent-lv2"> - for each file there's a default file access level set when file is created (<mark>666</mark> for files, <mark>777</mark> for directories) </p>
+      <p class="indent-lv2"> - the umask is a constant that is subtracted form the file's default access level when the file is created (ex: file access calculation <mark>666</mark> - <mark>022</mark> = <mark>644</mark>) </p>
+  
   <!-------------------------------------------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="header"> Services (Daemons) </h2>

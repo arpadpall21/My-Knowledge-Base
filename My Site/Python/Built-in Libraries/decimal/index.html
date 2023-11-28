@@ -32,19 +32,19 @@
   <p> - decimals are arbitrary long, they can be used just like any other number types, in arithmetic operations when mixed with other number types the result will be always <mark>decimal</mark> </p>
   <p> - decimals have the following special values <mark>Infinity</mark>, <mark>-Infinity</mark>, <mark>0</mark>, <mark>-0</mark> and <mark>NaN</mark> (Not a number) </p>
   <pre>
-  from decimal import Decimal, getcontext
+    from decimal import Decimal, getcontext
+    
+    ctx = getcontext().prec = 17  
+    
+    0.1 + 0.2 - 0.3                                     // -> 5.551115123125783e-17       // near <mark>0</mark>
+    Decimal('0.1') + Decimal('0.2') - Decimal('0.3')    // -> 0                           // <mark>0</mark> (accurate)
   
-  ctx = getcontext().prec = 17  
-  
-  0.1 + 0.2 - 0.3                                     // -> 5.551115123125783e-17       // near <mark>0</mark>
-  Decimal('0.1') + Decimal('0.2') - Decimal('0.3')    // -> 0                           // <mark>0</mark> (accurate)
-  
-  Decimal(0.1) + Decimal(0.2) - Decimal(0.3)          // -> 3.1102230246251565E-17      // !! passing floats results in precision loss (because floats cannot represent decimals accurately)    
+    Decimal(0.1) + Decimal(0.2) - Decimal(0.3)          // -> 3.1102230246251565E-17      // !! passing floats results in precision loss (because floats cannot represent decimals accurately)    
   </pre>
   <pre class="syntax">
-  from decimal import Decimal
+    from decimal import Decimal
   
-  Decimal(<strong>str|int|float|tuple</strong>)               // creates a new <mark>decimal</mark> (decimal <a href="https://docs.python.org/3/library/decimal.html#decimal-objects" target="_blank">attributes</a>)
+    Decimal(<strong>str|int|float|tuple</strong>)               // creates a new <mark>decimal</mark> (decimal <a href="https://docs.python.org/3/library/decimal.html#decimal-objects" target="_blank">attributes</a>)
   </pre>
   <details class="example">
     <summary> DEMO (can be pseudocode) </summary>
@@ -77,34 +77,33 @@
   <p> - getting a context is not required (in that case the default context is used) </p>
   <p> - localcontexts provide a separate namespace for decimals, <u>localcontexts inherit ALL their parents CURRENT state (including flags)</u> </p>
   <pre class="syntax">
-  from decimal import getcontext, localcontext, Decimal
+    from decimal import getcontext, localcontext, Decimal
   
   
-  <span style="color:darkgray"># default decimal context used (we don't have to get the context)</span>
+    <span style="color:darkgray"># default decimal context used (we don't have to get the context)</span>
   
   
-  ctx = getcontext()                <span style="color:darkgray"># getting then setting the decimal context </span>
-  ctx.prec = 17                     <span style="color:darkgray"># from here decimals are handled according to the set <mark>ctx</mark></span>
+    ctx = getcontext()                <span style="color:darkgray"># getting then setting the decimal context </span>
+    ctx.prec = 17                     <span style="color:darkgray"># from here decimals are handled according to the set <mark>ctx</mark></span>
   
   
-  with localcontext() as loc_ctx:   <span style="color:darkgray"># creates a decimal local context (namespace) </span>
-      loc_ctx                       <span style="color:darkgray"># inherits all the parent <mark>ctx</mark> stats (in this case the prec = 17) </span>
-      loc_ctx.prec = 4              <span style="color:darkgray"># setting local decimal context </span>
+    with localcontext() as loc_ctx:   <span style="color:darkgray"># creates a decimal local context (namespace) </span>
+        loc_ctx                       <span style="color:darkgray"># inherits all the parent <mark>ctx</mark> stats (in this case the prec = 17) </span>
+        loc_ctx.prec = 4              <span style="color:darkgray"># setting local decimal context </span>
   
   
-  <span style="color:darkgray"># local context exited (we're back to the main context)</span>
+    <span style="color:darkgray"># local context exited (we're back to the main context)</span>
   </pre>
   <pre class="syntax">
 <span style="color:darkgray">// <a href="https://docs.python.org/3/library/decimal.html#decimal.Context" target="_blank">context attirbutes (settings)</a> -----------------------</span>
-  
-  prec=<strong>int</strong>                   // precision (number of decimals)     Default: <mark>28</mark>
-  rounding=<a href="https://docs.python.org/3/library/decimal.html#decimal.ROUND_CEILING" target="_blanc">roundingRules</a>     // rounding rules                     Default: <mark>ROUND_HALF_EVEN</mark>
-  flags=<strong>list</strong>                 // encountered flags                  Default: <mark>[]</mark>
-  traps=<strong>list</strong>                 // set traps                          Default: <mark>[Overflow, DivisionByZero, InvalidOperation]</mark>
-  Emin=<strong>int</strong>
-  Emax=<strong>int</strong>
-  capitals=<strong>int</strong>
-  clamp=<strong>int</strong>
+    prec=<strong>int</strong>                   // precision (number of decimals)     Default: <mark>28</mark>
+    rounding=<a href="https://docs.python.org/3/library/decimal.html#decimal.ROUND_CEILING" target="_blanc">roundingRules</a>     // rounding rules                     Default: <mark>ROUND_HALF_EVEN</mark>
+    flags=<strong>list</strong>                 // encountered flags                  Default: <mark>[]</mark>
+    traps=<strong>list</strong>                 // set traps                          Default: <mark>[Overflow, DivisionByZero, InvalidOperation]</mark>
+    Emin=<strong>int</strong>
+    Emax=<strong>int</strong>
+    capitals=<strong>int</strong>
+    clamp=<strong>int</strong>
   </pre>
   <details class="example">
     <summary> DEMO (can be pseudocode) </summary>
@@ -163,18 +162,18 @@
   <p class="indent-lv1"> - <mark class="mark">traps</mark> -> we can set 'traps' for which decimal operations to raise the exception </p>
   <p> - if/when both <mark class="mark">flags</mark> and <mark class="mark">traps</mark> have the same operation then the operation is raised </p>
   <pre>
-  from decimal import localcontext, Decimal, FloatOperation
-  
-  with localcontext() as ctx:
-      Decimal(3.14)                           # float used -> <mark>FloatOperation</mark> added to flags, but no error raised because the FloatOperation is not in the traps
-      
-      ctx.flags[FloatOperation]               // -> True
+    from decimal import localcontext, Decimal, FloatOperation
     
-    
-  with localcontext() as ctx:
-      ctx.traps[FloatOperation] = True        # adding <mark>FloatOperation</mark> to traps
+    with localcontext() as ctx:
+        Decimal(3.14)                           # float used -> <mark>FloatOperation</mark> added to flags, but no error raised because the FloatOperation is not in the traps
+        
+        ctx.flags[FloatOperation]               // -> True
       
-      Decimal(3.14)                           # raises <mark>FloatOperation</mark> because the <mark>FloatOperation</mark> is trapped
+      
+    with localcontext() as ctx:
+        ctx.traps[FloatOperation] = True        # adding <mark>FloatOperation</mark> to traps
+        
+        Decimal(3.14)                           # raises <mark>FloatOperation</mark> because the <mark>FloatOperation</mark> is trapped
   </pre>
   <details class="example">
     <summary> DEMO (can be pseudocode) </summary>

@@ -1,11 +1,10 @@
-<!DOCTYPE html>
 <html lang="en">
+<!DOCTYPE html>
 
 <head>
   <meta charset="utf-8">
   <title> Key Shortcuts </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../../Assets/stylesPages.css">
   <script src="../../Assets/scriptPages.js"></script>
@@ -23,33 +22,27 @@
       <th> Description </th>
     </tr>
     <tr>
-      <td colspan="2"> Visual Studio Code (with my key binds) </td>
+      <td colspan="2"> VS Code (with my key binds) </td>
     </tr>
     <tr>
-      <td> ctrl + tab </td>
-      <td> - next editor tab (configured) </td>
+      <td colspan="2" style="background-color: rgb(190, 133, 27);"> dev features </td>
     </tr>
     <tr>
-      <td> ctrl + shift + tab </td>
-      <td> - previous editor tab (configured) </td>
+      <td> alt + up|down </td>
+      <td> - move current line up|down </td>
     </tr>
     <tr>
-      <td> alt + (up|downArrow) </td>
-      <td> - move line up|down" </td>
-    </tr>
-    <tr>
-      <td> shift + alt + (up|downArrow) </td>
-      <td> - copy line up|down (configured) </td>
+      <td> shift + alt + up|down </td>
+      <td> - copy line up|down (custom) </td>
     </tr>
     <tr>
       <td> ctrl + d </td>
       <td>
-        - select current workd <br>
-        - select matching word previously selected (we can select a word then select all the same words)
+        - select current word (then select same words that is previously selected)
       </td>
     </tr>
     <tr>
-      <td> alt + (click) </td>
+      <td> alt + click </td>
       <td> - add to current selection </td>
     </tr>
     <tr>
@@ -69,6 +62,53 @@
       <td> - comment|uncomment line </td>
     </tr>
     <tr>
+      <td> shift + up | down | left | right </td>
+      <td> - square style selection with keys <u>(custom)</u> </td>
+    </tr>
+    <tr>
+      <td>
+        ctrl + shift + left | right
+      </td>
+      <td>
+        - jump back|forward
+      </td>
+    </tr>
+    <tr>
+      <td>
+        ctrl + shift + down
+      </td>
+      <td>
+        - go to references of the currently selected variable (custom)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        ctrl + shift + up
+      </td>
+      <td>
+        - go ot definition of the currently selected variable (custom)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        cmd + [ | ]
+      </td>
+      <td>
+        - push the current line left|right
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" style="background-color: rgb(190, 133, 27);"> IDE navigation </td>
+    </tr>
+    <tr>
+      <td> ctrl + tab </td>
+      <td> - next editor tab (custom) </td>
+    </tr>
+    <tr>
+      <td> ctrl + shift + tab </td>
+      <td> - previous editor tab (custom) </td>
+    </tr>
+    <tr>
       <td> ctrl + alt + K </td>
       <td> - add|remove bookmark <u>(Bookmarks plugin)</u> </td>
     </tr>
@@ -79,14 +119,6 @@
     <tr>
       <td> ctrl + alt + j </td>
       <td> - jump on previous bookmark <u>(Bookmarks plugin)</u> </td>
-    </tr>
-    <tr>
-      <td> ctrl + F4 </td>
-      <td> - closes the current tab <u>(configured)</u> </td>
-    </tr>
-    <tr>
-      <td> shift + (up|down|left|rightAArrow) </td>
-      <td> - square style selection with keys <u>(configured)</u> </td>
     </tr>
     <tr>
       <td> ctrl + ` </td>
@@ -101,46 +133,39 @@
       <td> - focus Explorer tab </td>
     </tr>
     <tr>
-      <td> ctrl + a </td>
-      <td> - select all </td>
-    </tr>
-    <tr>
-      <td> alt + <strong>nr</strong> </td>
-      <td> - switches to the <strong>nr</strong> tab (0 = last tab) </td>
-    </tr>
-    <tr>
-      <td> alt + (left|rightArrow) </td>
-      <td> - word jump left|right</td>
-    </tr>
-    <tr>
-      <td> ctrl + p </td>
+      <td>
+        ctrl + p <br>
+        cmd + p (Mac)
+      </td>
       <td> - search for files and directories </td>
     </tr>
     <tr>
-      <td> ctrl + shift + u </td>
-      <td> - search word in project </td>
-    </tr>
-    <tr>
-      <td> ctrl + (up|down) </td>
       <td>
-        - scroll up|down
+        cmd + f (Mac)
       </td>
+      <td> - search in current file </td>
     </tr>
     <tr>
       <td>
-        ctrl + alt + -<br>
-        ctrl + shift + -
+        ctrl + shift + u <br>
+        shift + cmd + f (Mac)
+      </td>
+      <td> - search in all project files </td>
+    </tr>
+    <tr>
+      <td>
+        ctrl + b
       </td>
       <td>
-        - jump back|forward
+        - hide|show left side tool bar (custom)
       </td>
     </tr>
     <tr>
       <td>
-        ctrl + shift + i
+        cmd + shift + z
       </td>
       <td>
-        - auto format code style
+        - toggle zen mode (custom)
       </td>
     </tr>
     <tr>
@@ -183,7 +208,7 @@
       <td> switches to the (nr) tab (ctrl + 9 = last tab) </td>
     </tr>
     <tr>
-      <td> alt + left|rigthArrow </td>
+      <td> alt + left | rigth </td>
       <td> navigate back|forwar in browser history </td>
     </tr>
     <tr>
@@ -284,6 +309,37 @@
     </tr>
     <tr>
       <td> super + h </td>
+      <td> - minimize current window </td>
+    </tr>
+    <tr>
+      <td colspan="2"> Mac </td>
+    </tr>
+    <tr>
+      <td> fn + F11 </td>
+      <td> - show desktop (toggle -> back) </td>
+    </tr>
+    <tr>
+      <td> cmd + shift + 3 </td>
+      <td> - take screenshot of the current screen </td>
+    </tr>
+    <tr>
+      <td> cmd + shift + 4 </td>
+      <td> - open screenshot cutter (the selected part will be saved) </td>
+    </tr>
+    <tr>
+      <td> cmd + shift + 5 </td>
+      <td> - opens a panel for all screenshot screen recording options </td>
+    </tr>
+    <tr>
+      <td> cmd + option + esc </td>
+      <td> - force quit (opens a list of currenly running programs from which we can select the program to kill) </td>
+    </tr>
+    <tr>
+      <td> ctrl + cmd + space </td>
+      <td> - open emoji picker </td>
+    </tr>
+    <tr>
+      <td> ctrl + m </td>
       <td> - minimize current window </td>
     </tr>
     <tr>

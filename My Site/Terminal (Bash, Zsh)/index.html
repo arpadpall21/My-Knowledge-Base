@@ -169,6 +169,18 @@
       <td> - sets the host name (system name) </td>
     </tr>
     <tr>
+      <td>
+        lsof <small>[options]</small>
+      </td>
+      <td>
+        - list open files on the system <br>
+        <small>[options]</small> <br>
+        - (<small>-i tcp|udp:<i>port</i></small>) network access files only (with filtering options) <br>
+        - (<small>-n</small>) prints IPs instead of hostnames <br>
+        - (<small>-P</small>) prints ports
+      </td>
+    </tr>
+    <tr>
       <td> man <strong>cmd</strong> </td>
       <td> - displays 'manual pages' for the passed command in 'less' view </td>
     </tr>
@@ -228,6 +240,14 @@
       <td> - suspends (hybernates) the system </td>
     </tr>
     <tr>
+      <td> type <strong>alias</strong> </td>
+      <td> - prints the original commands behind <strong>alias</strong> </td>
+    </tr>
+    <tr>
+      <td> ulimit -n </td>
+      <td> - prints the shell's file descriptor limit </td>
+    </tr>
+    <tr>
       <td> uname -r </td>
       <td> - prints the Linux kernel version </td>
     </tr>
@@ -239,10 +259,6 @@
     <tr>
       <td> whereis <strong>cmd</strong> </td>
       <td> - locates the binaries and the manual files of the command </td>
-    </tr>
-    <tr>
-      <td> type <strong>alias</strong> </td>
-      <td> - prints the original commands behind <strong>alias</strong> </td>
     </tr>
     <tr>
       <td colspan="2" id="users_and_groups"> Users and Groups </td>
@@ -1129,10 +1145,10 @@
       </td>
     </tr>
     <tr>
-      <td> ifconfig <small>[options]</small> <i>netwAdapter</i> </td>
+      <td> ifconfig <small>[options]</small> <i>netAdapter</i> </td>
       <td>
-        - <i class="fas fa-download"></i> returns details about all <u>active</u> network interfaces on the host (or the
-        specified one <i>netwAdapter</i>) <br>
+        - <i class="fas fa-download"></i> returns details about all <u>active</u> network interfaces on the host (or the specified one <i>netAdapter</i>) <br>
+        - run <mark>ifconfig | awk '/inet /{print $2}'</mark> to get the host IP on MacOs <br>
         <small>[options]</small> <br>
         - (<small>-a</small>) returns all network devices (including inactive ones)
       </td>

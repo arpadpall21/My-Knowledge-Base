@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Blob & File </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Blob & File </h1>
+  <p> Updated ( 2023-11-26 ) </p>
+  <p class="sitenav"> <a href="../../../index.html">MySite></a>
+    <a href="../../index.html">Node.js></a>
+    <a href="../index.html">Buffer></a> Blob & File
+  </p>
+  <table class="table">
+    <caption>
+      Blob
+      <span id="browserSupport" title="updated : 2023-11-28">
+        <span><i class="fab fa-node-js"></i> 15.7.0 </span>
+        <span><i class="fab fa-node-js"></i> 14.18.0 </span>
+      </span>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Method / Property </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td>
+        new Blob(<strong>str[] |ArrayBuffer[] |TypedArray[] |DataView[] |Blob[]</strong>, <a href="https://nodejs.org/dist/latest-v21.x/docs/api/buffer.html#new-bufferblobsources-options" href="_blank">options</a>)
+      </td>
+      <td>
+        - creates a new blob from the series of passed data (immutable raw data safely can be shared between workers)
+      </td>
+    </tr>
+    <tr class="10.01">
+      <td>
+        <strong>blob</strong>.size
+      </td>
+      <td>
+        - return the blob size in bytes
+      </td>
+    </tr>
+    <tr class="10.02">
+      <td>
+        <strong>blob</strong>.type
+      </td>
+      <td>
+        - return the blob type (mime type)
+      </td>
+    </tr>
+    <tr class="15.01">
+      <td>
+        <strong>blob</strong>.text()
+      </td>
+      <td>
+        - returns a <strong>promise</strong> which resolves to the blob's text content
+      </td>
+    </tr>
+    <tr class="15.02">
+      <td>
+        <strong>blob</strong>.stream()
+      </td>
+      <td>
+        - returns a <strong>readableWebStream</strong>
+      </td>
+    </tr>
+    <tr class="20.01">
+      <td>
+        <strong>blob</strong>.arrayBuffer()
+      </td>
+      <td>
+        - returns a <strong>promise</strong> which resolves to the blob's underlying <strong>ArrayBuffer</strong>
+      </td>
+    </tr>
+    <tr class="25.01">
+      <td>
+        <strong>blob</strong>.slice(<i>st:idx(inc), end:idx(exc), type:str</i>) 
+      </td>
+      <td>
+        - creates a new <strong>blob</strong> from the sliced area 
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      File
+      <span id="browserSupport" title="updated : 2023-11-28">
+        <span><i class="fab fa-node-js"></i> 19.2.0 </span>
+        <span><i class="fab fa-node-js"></i> 18.13.0 </span>
+      </span>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Method / Property </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td>
+        new File(<strong>str[] |ArrayBuffer[] |TypedArray[] |DataView[] |Blob[] |File[]</strong>, <strong>name:str</strong>, <a href="<strong>str[] |ArrayBuffer[] |TypedArray[] |DataView[] |Blob[]</strong>" target="_blank">options</a>)
+      </td>
+      <td>
+        - creates and returns a new <strong>file</strong>
+      </td>
+    </tr>
+    <tr class="10.01">
+      <td>
+        <strong>file</strong>.name
+      </td>
+      <td>
+        - returns the file name
+      </td>
+    </tr>
+    <tr class="10.02">
+      <td>
+        <strong>file</strong>.type
+      </td>
+      <td>
+        - returns the file time (mime type)
+      </td>
+    </tr>
+  </table>
+  <br>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+    <p> - the <mark>writeUIntBE()</mark> method does not throw a range error if we pass a higher than allowed 48bit unsigned integer value (BUG reported on GitHub : 2019-11-12) </p>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://nodejs.org/dist/latest-v21.x/docs/api/buffer.html#class-blob" target="_blank">Blobs (nodejs.org)</a>
+  <p><a href="https://nodejs.org/dist/latest-v21.x/docs/api/buffer.html#class-file" target="_blank">File (nodejs.org)</a>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - the <mark>Blob</mark> holds immutable raw data that can be safely shared accross multiple worker threads (not extension of <mark>Buffer</mark>) </p>
+  <p> - the <mark>File</mark> is a <mark>Blob</mark> extension that provides information about a file </p>
+  <h2 class="header"> Blob </h2>
+  <h3 class="header"> The <mark>size</mark> / <mark>type</mark> / <mark>text()</mark> / <mark>stream()</mark> / <mark>arrayBuffer()</mark> / <mark>slice()</mark> properties and methods </h3>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre>
+    const { Blob, File } = require('node:buffer');
+    const buffer = require('node:buffer');
+    const { blob: blobConsumer } = require('node:stream/consumers');
+    
+    const myBlob = new buffer.Blob(
+      ['Some blob content', ' another blob content'],
+      { type: 'application/text' }
+    )
+    
+// size / type -----------------------------------------------------
+    myBlob.size;                       // -> 37
+    myBlob.type;                       // -> 'plain/text'
+    
+    
+// text() / stream() -----------------------------------------------
+    const promiseTxt = myBlob.text();
+    const blobReadableWebStream = myBlob.stream();
+    
+    promiseTxt
+      .then(data => console.log(data))      // -> 'Some blob content another blob content'
+      .catch(err => console.log(err))
+    
+    blobConsumer(blobReadableWebStream)
+      .then(data => console.log(data))      // -> Blob object
+      .catch(err => console.error(err))
+    
+    
+// arrayBuffer() ---------------------------------------------------
+    myBlob.arrayBuffer()
+      .then(data => console.log(data))      // -> &lt;ArrayBuffer&gt;
+      .catch(err => console.error(err))
+    
+    
+// slice() ---------------------------------------------------------
+    const slicedBlob = myBlob.slice(5, 17, 'plain/text');
+    
+    slicedBlob.type;                        // -> 'plain/text'
+    slicedBlob.text()
+      .then(data => console.log(data))      // -> 'blob content'
+      .catch(err => console.log(err))
+    </pre>
+  </details>
+  <!------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> File </h2>
+  <h3 class="header"> The <mark>name</mark> / <mark>type</mark> properties and methods </h3>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre>
+    const { File } = require('node:buffer');
+    
+    
+    const myFile = new File(
+      ['Some ', 'file ', 'content.'],
+      'My File',
+      { 
+        type: 'text/plain',
+        lastModified: Date.now(),
+      }
+    )
+    
+    myFile.name;               // -> 'My File'
+    myFile.type;               // -> 'text/plain'
+    </pre>
+  </details>
+  
+  
+  <br><br>
+</body>
+
+</html>
