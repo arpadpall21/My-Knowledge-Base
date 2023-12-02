@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Demo </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> UDP datagram </h1>
+  <p> Updated ( 2023-11-25 (node v21.2.0) )</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html">Node.js></a> UDP datagram
+  </p>
+  <table class="table">
+    <caption>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Method / Property </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td>
+        <em>dgram</em>.createSocket(<a href="https://nodejs.org/api/dgram.html#dgramcreatesocketoptions-callback" , target="_blank">options</a>, <i class="openable">fn(msg:buf)<div>
+            <p> - triggered when the socket receives a message </p>
+          </div></i>)
+      </td>
+      <td>
+        - create and returns a <strong>dgramSocket</strong>
+        <span class="browserSupport" title="updated : 2023-12-02">
+          <span><i class="fab fa-node-js"></i> 15.8.0 AbortSignal support </span>
+          <span><i class="fab fa-node-js"></i> 11.4.0 <mark>ipv6Only</mark> option </span>
+          <span><i class="fab fa-node-js"></i> 8.7.0 <mark>recvBufferSize</mark> and <mark>sendBufferSize</mark> options </span>
+          <span><i class="fab fa-node-js"></i> 8.6.0 <mark>lookup</mark> option </span>
+        </span>
+      </td>
+    </tr>
+    <tr class="05.02">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="05.03">
+      <td>
+        <em>dgram</em>.createSocket('udp4|udp6' <i class="openable">fn(msg:buf)<div>
+            <p> - triggered when the socket receives a message </p>
+          </div></i>)
+      </td>
+      <td>
+      </td>
+    </tr>
+    <tr class="05.04">
+      <td>
+        <strong>dgramSocket</strong>.bind(<i>port:number, address:str</i>, <i class="openable">fn(err)<div>
+            <p> - triggered on connection </p>
+          </div></i>)
+      </td>
+      <td>
+        - starts the <strong>dgramSocket</strong> to listen for dgram messages on the specified host:port (Default: port = randomly assigned by OS / address = <mark>0.0.0.0</mark>)
+      </td>
+    </tr>
+    <tr class="05.05">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="05.06">
+      <td>
+        <strong>dgramSocket</strong>.bind({ port: <strong>int</strong>, address: <strong>str</strong> <a href="https://nodejs.org/api/dgram.html#socketbindoptions-callback" target="_blank">other...</a>} <i>cb()</i>)
+      </td>
+      <td>
+      </td>
+    </tr>
+    <tr class="05.07">
+      <td>
+        <strong>dgramSocket</strong>.close(<i>fn()</i>)
+      </td>
+      <td>
+        - closes the socket
+      </td>
+    </tr>
+    <tr class="10.01">
+      <td>
+        <strong>dgramSocket</strong>.connect(<strong>port:nr</strong>, <i>address:str, fn()</i>)
+      </td>
+      <td>
+        - connects the <strong>dgramSocket</strong> to the specified address:port <br>
+        - <strong>dgramSocket</strong> can only send/receive message to/from the connected pair (until <mark>disconnect()</mark> called) <br>
+        - <strong>dgramSocket</strong> emits an error if the remote pair is not listening for the sent message <br>
+        - <strong>dgramSocket</strong> does not emit any errors if on connection the remote is not available
+      </td>
+    </tr>
+    <tr class="10.02">
+      <td>
+        <strong>dgramSocket</strong>.disconnect()
+      </td>
+      <td>
+        - synchronously disconnects the connected socket pair (previously connected with <mark>connect()</mark>)
+      </td>
+    </tr>
+    <tr class="15.01">
+      <td>
+        <strong>dgramSocket</strong>.send(<strong>msg:str|buf|arr|TypedArray|DataView</strong>, <i>msgOffset:nr, msgLenByte:nr, port:nr, address:str, fn(err)</i>)
+      </td>
+      <td>
+        - sends a message <u>(single datagram)</u> to the targeted address:port (if the socket is connected to a pair the address:port should not be used) <br>
+        - default (port randomly assigned by os) (address <mark>0.0.0.0</mark>)
+      </td>
+    </tr>
+    <tr class="20.01">
+      <td>
+        <strong>dgramSocket</strong>.address()
+      </td>
+      <td>
+        - returns address informations of <strong>dgramSocket</strong> in an object
+      </td>
+    </tr>
+    <tr class="20.02">
+      <td>
+        <strong>dgramSocket</strong>.remoteAddress()
+      </td>
+      <td>
+        - returns the connected remote address informations of <strong>dgramSocket</strong> in an object <br>
+        - throws an error if <strong>dgramSocket</strong> is not connected to the remote pair
+      </td>
+    </tr>
+    <tr class="25.01">
+      <td>
+        <strong>dgramSocket</strong>.getRecvBufferSize()
+      </td>
+      <td>
+        - gets the <mark>SO_RCVBUF</mark> size (OS level socket receive buffer size) in bytes
+      </td>
+    </tr>
+    <tr class="25.02">
+      <td>
+        <strong>dgramSocket</strong>.getSendBufferSize()
+      </td>
+      <td>
+        - gets the <mark>SO_SNDBUF</mark> size (OS level socket send buffer size) in bytes
+      </td>
+    </tr>
+    <tr class="25.03">
+      <td>
+        <strong>dgramSocket</strong>.setRecvBufferSize(<strong>byte:nr</strong>)
+      </td>
+      <td>
+        - sets the <mark>SO_RCVBUF</mark> size (OS level socket receive buffer size) in bytes
+      </td>
+    </tr>
+    <tr class="25.04">
+      <td>
+        <strong>dgramSocket</strong>.setSendBufferSize(<strong>byte:nr</strong>)
+      </td>
+      <td>
+        - sets the <mark>SO_SNDBUF</mark> size (OS level socket send buffer size) in bytes
+      </td>
+    </tr>
+    <tr class="30.01">
+      <td>
+        <strong>dgramSocket</strong>.getSendQueueSize()
+      </td>
+      <td>
+        - returns the number of bytes queued for sending
+      </td>
+    </tr>
+    <tr class="30.02">
+      <td>
+        <strong>dgramSocket</strong>.getSendQueueCount()
+      </td>
+      <td>
+        - returns the number send requests currently waiting in the queue 
+      </td>
+    </tr>
+    <tr class="35.01">
+      <td>
+        <strong>dgramSocket</strong>.unref()
+      </td>
+      <td>
+        - removes the <strong>dgramSocket</strong> from the event loop so it doesn't prevent the node process to exit
+      </td>
+    </tr>
+    <tr class="35.02">
+      <td>
+        <strong>dgramSocket</strong>.ref()
+      </td>
+      <td>
+        - adds back the <strong>dgramSocket</strong> to the event loop so it prevents the node process from exitint (undoes <mark><strong>dgramSocket</strong>.unref()</mark>)
+      </td>
+    </tr>
+    <tr class="60.01">
+      <td colspan="2"> Events </td>
+    </tr>
+    <tr class="60.02">
+      <td>
+        <strong>dgramSocket.listener</strong>('message', <strong>fn(msg, <i><a href="https://nodejs.org/api/dgram.html#event-message" target="_blank">remoteInfo</a></i>)</strong>)
+      </td>
+      <td>
+        - emitted when the <strong>dgramSocket</strong> receives a new message
+        <span class="browserSupport" title="updated : 2023-12-02">
+          <span><i class="fab fa-node-js"></i> 18.4.0 remoteInfo <mark>family</mark> </span>
+        </span>
+      </td>
+    </tr>
+    <tr class="60.03">
+      <td>
+        <strong>dgramSocket.listener</strong>('listening', <strong>fn()</strong>)
+      </td>
+      <td>
+        - emitted when the <strong>dgramSocket</strong> starts listening for incoming traffic or when sends message for the first time
+      </td>
+    </tr>
+    <tr class="65.01">
+      <td>
+        <strong>dgramSocket.listener</strong>('connect', <strong>fn()</strong>)
+      </td>
+      <td>
+        - emitted when the <mark><strong>dgramSocket</strong>.connect()</mark> was successfully called (associates the socket to a remote address)
+        <span class="browserSupport" title="updated : 2023-12-02">
+          <span><i class="fab fa-node-js"></i> 12.0.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr class="70.01">
+      <td>
+        <strong>dgramSocket.listener</strong>('close', <strong>fn()</strong>)
+      </td>
+      <td>
+        - emitted after the <strong>dgramSocket</strong> is close (after <mark><strong>dgramSocket</strong>.close()</mark> call)
+      </td>
+    </tr>
+    <tr class="75.01">
+      <td>
+        <strong>dgramSocket.listener</strong>('error', <strong>fn(err)</strong>)
+      </td>
+      <td>
+        - emitted on <strong>dgramSocket</strong> error
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+    <p> Listed methods require network knowledge (the plan is to return here when learning networking stuffs) (recorded: 2023-12-02) </p>
+    <p> - <mark>socket.setTTL(ttl)</mark> </p>
+    <p> - <mark>socket.addMembership(multicastAddress[, multicastInterface])</mark> </p>
+    <p> - <mark>socket.dropMembership(multicastAddress[, multicastInterface])</mark> </p>
+    <p> - <mark>socket.addSourceSpecificMembership(sourceAddress, groupAddress[, multicastInterface])</mark> </p>
+    <p> - <mark>socket.dropSourceSpecificMembership(sourceAddress, groupAddress[, multicastInterface])</mark> </p>
+    <p> - <mark>socket.setMulticastInterface(multicastInterface)</mark> </p>
+    <p> - <mark>socket.setMulticastLoopback(flag)</mark> </p>
+    <p> - <mark>socket.setMulticastTTL(ttl)</mark> </p>
+    <p> - <mark>socket.setBroadcast(flag)</mark> </p>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - the <mark>udp</mark> built-in lib allows us to use UDP sockets directly </p>
+  <!-------------------------------------------------------------------------->
+  <hr>
+  <h3 class="header"> The <mark>createSocket()</mark> / <mark>bind()</mark> / <mark>close()</mark> methods </h3>
+  <p> - binding the socket in order to start listening for incoming traffic </p>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre>
+    const dgram = require('node:dgram');
+    
+    const server = dgram.createSocket('udp4');
+    const host = 'localhost';
+    const port = 49153;
+    
+    server.bind(port, host, () => {           // udp socket is bound to address:port (to get incoming traffic)
+      console.log(`server is bound to ${host}:${port}`);
+    });
+    
+    server.on('message', (msg, remoteInfo) => {
+      console.log(msg.toString());
+    });
+    
+    server.close(() => {
+      console.log('UDP server socket closed!');
+    })
+    </pre>
+  </details>
+  <!-------------------------------------------------------------------------->
+  <hr>
+  <h3 class="header"> The <mark>connect()</mark> / <mark>disconnect()</mark> methods </h3>
+  <p> - UDP is a connectionless protocol, however we can connect a socket to an address:port, <u>the connected socket can only send/receive message to the connected address</u> </p>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre>
+    const dgram = require('node:dgram');
+    
+    const client = dgram.createSocket('udp4');
+    const host = 'localhost';
+    const port = 49152;
+    const remoteHost = 'localhost';
+    const remotePort = 49153;
+    
+    client.connect(remotePort, remoteHost, () => {    // socket can only send/receive message to/from the connected pair
+      console.log('client connected!');
+    });
+    
+    client.on('message', (msg, remoteInfo) => {
+      console.log('client recevied a message');
+      console.log(msg.toString());
+    });
+    
+    client.on('connect', () => {
+      console.log('client connected!');
+    });
+    
+    client.disconnect();                              // socket can receive messages from any network address 
+    </pre>
+  </details>
+  <!-------------------------------------------------------------------------->
+  <hr>
+  <h3 class="header"> The <mark>send()</mark> method </h3>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre>
+    const dgram = require('dgram');
+    
+    const client = dgram.createSocket('udp4');
+    
+    client.connect(49153, 'localhost', () => {
+      client.send('Hello server localhost:49153');              // client socket connected (message sent to the connected pair)
+      client.send('Hello server!', 50000, 'localhost');         // -! sends to the connected addres (not to <mark>localhost:50000</mark>)
+    });
+    </pre>
+  </details>
+  <!-------------------------------------------------------------------------->
+  <hr>
+  <h3 class="header"> The <mark>address()</mark> / <mark>remoteAddress()</mark> methods </h3>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre>
+    const dgram = require('dgram');
+    
+    const client = dgram.createSocket('udp4');
+    const host = 'localhost';
+    const port = 49152;
+    const remoteHost = 'localhost';
+    const remotePort = 49153;
+    
+    client.bind(port, host, () => {
+      console.log('client is bound');
+      console.log(client.address());          // -> { address: '127.0.0.1', family: 'IPv4', port: 49152 }
+    });
+    
+    client.connect(remotePort, remoteHost, () => {
+      console.log('client connected to remote');
+      console.log(client.remoteAddress());    // -> { address: '127.0.0.1', family: 'IPv4', port: 49153 }
+    });
+    </pre>
+  </details>
+  <!-------------------------------------------------------------------------->
+  <hr>
+  <h3 class="header"> The <mark>getRecvBufferSize()</mark> / <mark>getSendBufferSize()</mark> / <mark>setRecvBufferSize()</mark> / <mark>setSendBufferSize()</mark> methods </h3>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre>
+    const dgram = require('node:dgram');
+    
+    const server = dgram.createSocket('udp4');
+    const host = 'localhost';
+    const port = 49153;
+    
+    server.bind(port, host, () => {
+      console.log(`server is bound to ${host}:${port}`);
+      
+      console.log(server.getRecvBufferSize());        // -> 786896
+      console.log(server.getSendBufferSize());        // -> 9216
+      
+      // set
+      server.setRecvBufferSize(1000000);
+      server.setSendBufferSize(10000);
+      
+      console.log(server.getRecvBufferSize());        // -> 1000000
+      console.log(server.getSendBufferSize());        // -> 10000
+    });
+    </pre>
+  </details>
+  <!-------------------------------------------------------------------------->
+  <hr>
+  <h3 class="header"> The <mark>getSendQueueSize()</mark> / <mark>getSendQueueCount()</mark> methods </h3>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre>
+    const dgram = require('dgram');
+    var crypto = require("crypto");
+    const client = dgram.createSocket('udp4');
+    
+    client.send('Hello Server!', 49153, 'localhost', err => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+    });
+    
+    console.log(client.getSendQueueSize());         // -> 0
+    console.log(client.getSendQueueCount());        // -> 0
+    </pre>
+  </details>
+  <!-------------------------------------------------------------------------->
+  <hr>
+  <h3 class="header"> The <mark>ref()</mark> / <mark>unref()</mark> methods </h3>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre>
+    const dgram = require('node:dgram');
+    
+    const server = dgram.createSocket('udp4');
+    const host = 'localhost';
+    const port = 49153;
+    
+    server.bind(port, host, () => {
+      console.log(`server is bound to ${host}:${port}`);
+    });
+    
+    server.unref();         // removes the socket from the event loop
+    server.ref();           // adds the socket (back) to the event loop
+    </pre>
+  </details>
+  <!-------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Events </h2>
+  <h3 class="header"> The <mark>error</mark> / <mark>message</mark> / <mark>listening</mark> / <mark>connect</mark> / <mark>close</mark> events </h3>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre>
+// client ---------------------------------------------------------------
+    const dgram = require('dgram');
+    
+    const client = dgram.createSocket('udp4');
+    const host = 'localhost';
+    const port = 49152;
+    const remoteHost = 'localhost';
+    const remotePort = 49153;
+    
+    
+    client.bind(port, host);
+    client.connect(remotePort, remoteHost);
+    
+    client.on('connect', () => {
+      console.log('Client connected to server');
+    
+      client.send('Hello server!');
+    })
+    
+    client.on('error', err => {
+      console.error(err);
+    });
+    
+    setTimeout(() => {
+      client.send('server please close connection');
+    }, 30000);
+    </pre>
+    <pre>
+// server ---------------------------------------------------------------
+    const dgram = require('node:dgram');
+    
+    const server = dgram.createSocket('udp4');
+    const host = 'localhost';
+    const port = 49153;
+    
+    
+    server.bind(port, host, () => {
+      console.log(`server is bound to ${host}:${port}`);
+    });
+    
+    server.on('listening', () => {
+      console.log('UDP server listening...');
+    });
+    
+    server.on('message', (msg, remoteInfo) => {
+      console.log(msg);                 // -> &lt;Buffer&gt;
+      console.log(remoteInfo);          // -> { address: '127.0.0.1', family: 'IPv4', port: 49152, size: 13 }
+      
+      if (msg.toString().includes('server please close connection')) {
+        server.close();
+      }
+    });
+    
+    server.on('error', err => {
+      console.error(err);
+    });
+    
+    server.on('close', () => {
+      console.log('server socket closed!');
+    });
+    </pre>
+  </details>
+
+
+  <br><br>
+</body>
+
+</html>

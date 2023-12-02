@@ -59,6 +59,60 @@
   <img src="TCP vs UDP.jpg" alt="TCP vs UDP" height="250">
 
 
+
+
+<!--
+- UDP (User Datagram Procotol) (datagram is the network packed)
+    - connectionless protocol between two pairs
+    - the server listens on and address and port - client sends the message (done) 
+    - no connection estabilishment needed
+    - client does not get response (fast but we have to handle the situation)
+    - used where speed matters over quality (videochat, gaming, etc...) (DNS, DHCP, QUIC protocol)
+    - well yes tls works on UDP as well, we handle encryption in the presentation layer
+    - TCP gets messy in real time transfer because it resends the lost packets (so we might have a situation where packet orders are messed up) 
+    - services using UDP tipically handle smart logics in upper OSI layers (resend, acknowledge, encryption, etc...)
+
+
+
+      - the UDP packets are referenced as datagrams
+      - in UDP we don't estabilish conneciton, we simply start sending packest to the target
+      - in UDP there's no package resend, check
+
+
+
+--- update TCP/UDP 
+    what is an ip broadcast address
+      - in a network the first ip is the network id, the last IP is the broadcast IP (these addresses cannot be used on the host)
+      - addresses between the host and broadcast ips are called host addresses 
+      - network id is used to route the network (routers used this usually)
+      - the broadcast address is used by 
+          - routing technologies in order to map the topology of the network (sends out ads) (so the data can be routed to the required place)
+          - Address Resolution Protocol, maps physical addresses to logical addresses 
+          - DHCP 
+
+
+      - when requesting the broadcast address all connected devices reply???
+      
+      - TCP estabilishes a connection between 2 hosts (3 way handshake)
+      - UDP is connectionless (no need to estabilish a connection, so fast but unreliable)
+
+
+
+----------------------------------------------------------------
+TEST
+----------------------------------------------------------------
+  - so in the UDP sense there's no client or server just pairs (the one who start the connection is the client I guess)
+      -> Yes exactly! connectionness means sending message through the network whatever (we don't get feedback) the other pair does the same
+  
+  - datagrams are not fully filled VS TCP packets are fully filled?
+  - 
+  
+
+
+-->
+
+
+
   <br><br>
 </body>
 
