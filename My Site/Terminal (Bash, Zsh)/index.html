@@ -1004,115 +1004,177 @@
       <td colspan="2" id="package_managers"> Package Managers </td>
     </tr>
     <tr>
-      <td colspan="2" style="background-color:tan;"> apt (Advanced Packaging Tool) package manager keeps track installed
-        dependencies </td>
+      <td colspan="2" style="background-color:burlywood;">
+        APT (Advanced Packaging Tool)
+      </td>
     </tr>
     <tr>
-      <td> apt install <strong>package</strong> </td>
+      <td> <em>apt</em> install <strong>package</strong> </td>
       <td> - installs the specified package </td>
     </tr>
     <tr>
-      <td> apt update </td>
+      <td> <em>apt</em> update </td>
       <td> - updates packages on the system (does not upgrades them, only check for available newer versions) </td>
     </tr>
     <tr>
-      <td> apt upgrade </td>
+      <td> <em>apt</em> upgrade </td>
       <td> - upgrades dependencies on the system </td>
     </tr>
     <tr>
-      <td> apt remove <strong>package</strong> </td>
+      <td> <em>apt</em> remove <strong>package</strong> </td>
       <td> - removes (uninstalls) the specified package (does not remove package dependencies and configurations) </td>
     </tr>
     <tr>
-      <td> apt purge <strong>package</strong> </td>
+      <td> <em>apt</em> purge <strong>package</strong> </td>
       <td> - removes (uninstalls) the specified package and its configurations (does not remove package dependencies)
       </td>
     </tr>
     <tr>
-      <td> apt autoremove </td>
+      <td> <em>apt</em> autoremove </td>
       <td> - automatically remove <u>all unused</u> dependencies </td>
     </tr>
     <tr>
-      <td> apt list <small>[--installed] [package]</small> </td>
+      <td> <em>apt</em> list <small>[options]</small> </td>
       <td>
-        - (no arguments) list all packages on the system (including non installed onces) <br>
+        - list all packages on the system (including non installed onces) <br>
+        <small>[options]</small> <br>
         - (<small>--installed</small>) lists installed packages only <br>
-        - (<small>package</small>) lists the specified package
+        - (<i>package</i>) lists the specified package
       </td>
     </tr>
     <tr>
-      <td> apt search <strong>package</strong> </td>
+      <td> <em>apt</em> search <strong>package</strong> </td>
       <td> - searches for the specified package </td>
     </tr>
     <tr>
-      <td> apt policy <strong>package</strong> </td>
+      <td> <em>apt</em> policy <strong>package</strong> </td>
       <td> - pinrts the status of the package (installed status, available version, soruce) </td>
     </tr>
     <tr>
-      <td> apt show <strong>package</strong> </td>
+      <td> <em>apt</em> show <strong>package</strong> </td>
       <td> - prints informations about the specified package </td>
     </tr>
     <tr>
-      <td colspan="2" style="background-color:tan;"> dpkg = package installer (part of apt) </td>
+      <td colspan="2" style="background-color:burlywood;">
+        dpkg <br>
+        package installer (part of apt) 
+      </td>
     </tr>
     <tr>
-      <td> dpkg -i <strong>packagePath</strong> </td>
+      <td> <em>dpkg</em> -i <strong>packagePath</strong> </td>
       <td> - installs the specified pacakge from the local drive </td>
     </tr>
     <tr>
-      <td> dpkg -r <strong>package</strong> </td>
+      <td> <em>dpkg</em> -r <strong>package</strong> </td>
       <td> - removes the specified package (same as <mark>apt remove</mark>) </td>
     </tr>
     <tr>
-      <td> dpkg -P <strong>package</strong> </td>
+      <td> <em>dpkg</em> -P <strong>package</strong> </td>
       <td> - removes the specified package and its configurations (same as <mark>apt purge</mark>) </td>
     </tr>
     <tr>
-      <td> dpkg -l <small>[package]</small> </td>
-      <td> -prints all packages on the system or the specified one </td>
+      <td> <em>dpkg</em> -l <i>package</i> </td>
+      <td> - prints all packages on the system (or the specified one) </td>
     </tr>
     <tr>
-      <td colspan="2" style="background-color:tan;"> snap = snap package manager (keeps the latest 3 versions) (CLI for
-        Ubuntu App Store) </td>
+      <td colspan="2" style="background-color:burlywood;"> 
+        snap <br>
+        CLI for Ubuntu App Store (keeps the latest 3 versions)
+      </td>
     </tr>
     <tr>
-      <td> snap install <strong>package</strong> </td>
+      <td> <em>snap</em> install <strong>package</strong> </td>
       <td> - installs the specified snap (package) </td>
     </tr>
     <tr>
-      <td> snap refresh <small>[--list]</small> </td>
+      <td> <em>snap</em> refresh <small>[options]</small> </td>
       <td>
-        - (no argument) upgrades all snaps (packages) <br>
+        - upgrades all snaps (packages) <br>
+        <small>[options]</small> <br>
         - (<small>--list</small>) list upgradable packages
       </td>
     </tr>
     <tr>
-      <td> snap revert <strong>package</strong> </td>
+      <td> <em>snap</em> revert <strong>package</strong> </td>
       <td> - downgrades the specified snap (package) to the previous <u>installed version</u> </td>
     </tr>
     <tr>
-      <td> snap disable <strong>package</strong> </td>
+      <td> <em>snap</em> disable <strong>package</strong> </td>
       <td> - disables the specified snap (package) </td>
     </tr>
     <tr>
-      <td> snap enable <strong>package</strong> </td>
+      <td> <em>snap</em> enable <strong>package</strong> </td>
       <td> - enables the specified snap (package) </td>
     </tr>
     <tr>
-      <td> snap remove <strong>package</strong> </td>
+      <td> <em>snap</em> remove <strong>package</strong> </td>
       <td> - removes the specified snap (package) (and its dependencies) </td>
     </tr>
     <tr>
-      <td> snap list <small>[--all] [package] </td>
+      <td> <em>snap</em> list <small>[options]</small> </td>
       <td>
-        - (no argument) lists all enabled packages <br>
+        - lists all enabled packages <br>
+        <small>[options]</small> <br>
         - (<small>--all</small>) lists all packages including disabled onces <br>
-        - (<small>package</small>) lists the specified snap (package)
+        - (<i>package</i>) lists the specified snap (package)
       </td>
     </tr>
     <tr>
-      <td> snap find <small>[package]</small> </td>
+      <td> <em>snap</em> find <i>package</i> </td>
       <td> - lists some available snaps (packages) or searches for a specified one </td>
+    </tr>
+    <tr>
+      <td colspan="2" style="background-color:burlywood;">
+        brew <br>
+        package manager used on MacOS <a href="https://fig.io/manual/brew" target="_blank">[link]</a>
+      </td>
+    </tr>
+    <tr>
+      <td> <em>brew</em> --version </td>
+      <td> - prints package manager version </td>
+    </tr>
+    <tr>
+      <td> <em>brew</em> install <strong>package:formulee|cask<small>[@<i>ver</i>]</small></strong> </td>
+      <td> - installs the specified package </td>
+    </tr>
+    <tr>
+      <td> <em>brew</em> search <strong>package:formulee|cask<small>[@<i>ver</i>]</small></strong> </td>
+      <td> - searches the specified package (list several matches including installed onces) </td>
+    </tr>
+    <tr>
+      <td> <em>brew</em> uninstall | remove | rm <strong>package:formulee|cask<small>[@<i>ver</i>]</small></strong> </td>
+      <td> - uninstalls the specified package </td>
+    </tr>
+    <tr>
+      <td> <em>brew</em> update </td>
+      <td> - updates homebrew itself to the lastest version </td>
+    </tr>
+    <tr>
+      <td> <em>brew</em> outdated </td>
+      <td> - lists outdated packages that can be upgraded </td>
+    </tr>
+    <tr>
+      <td> <em>brew</em> upgrade </td>
+      <td> - upgrades all installed packages to the latest version </td>
+    </tr>
+    <tr>
+      <td> <em>brew</em> ls | list </td>
+      <td> - prints installed formulees (packages) and casks (GUI app) </td>
+    </tr>
+    <tr>
+      <td> <em>brew</em> cleanup </td>
+      <td> - removes outdated packages </td>
+    </tr>
+    <tr>
+      <td> <em>brew</em> services <small>[options]</small> </td>
+      <td> 
+        - prints services (background processes) controlled by brew (uses MacOS <mark>launchctl</mark> underneath <a href="https://ss64.com/osx/launchctl.html" target="_blank">[link]</a>) <br>
+        <small>[options]</small> <br>
+        - (<small>start <i>service</i></small>) starts the specified service and registers it to lauch at login (boot) <br>
+        - (<small>run <i>service</i></small>) starts the specified service without registers it to lauch <br>
+        - (<small>stop <i>service</i></small>) stops the specified service and unregisters it from the lauch at login (boot) <br>
+        - (<small>restart <i>service</i></small>) stops and starts the specified service and registers it to lauch at login (boot)
+      </td>
     </tr>
     <tr>
       <td colspan="2" id="networking"> Networking </td>

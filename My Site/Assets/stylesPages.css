@@ -31,7 +31,7 @@ html{
     font-family:arial, sans-serif;
 }
 
-.sitenav{
+#sitenav, .sitenav{
     background-color: forestgreen;
 }
 

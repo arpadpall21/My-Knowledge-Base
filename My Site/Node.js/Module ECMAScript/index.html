@@ -96,15 +96,16 @@
     <tr class="01.03">
       <td>
         import <strong class="openable">specifier:str<div>
-            <p><b><u>Relative Specifier</u></b></p>
-            <p> - <mark>./main.js</mark> - relative path from the current location <u>(file extensions are required)</u>
-            <p><b><u>Absolute Specifier</u></b></p>
-            <p> - <mark>/home/dev/main.js</mark> - absolute path <u>in ECMAscript modules we can also pass file protocol
-                path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
-            <p><b><u>Bare Specifier</u></b></p>
-            <p> - <mark>main</mark> | <mark>mymodule/main</mark> - (no prefixed path given) - refers as package entry
-              point to the nearest <mark>node_modules</mark> directory <u>(file extensions are required in some
-                cases)</u> </p>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
           </div></strong>
       </td>
       <td>
@@ -117,16 +118,17 @@
     </tr>
     <tr class="01.05">
       <td>
-        import * as <strong>name</strong> from <strong class="openable">specifier:str<div>
-            <p><b><u>Relative Specifier</u></b></p>
-            <p> - <mark>./main.js</mark> - relative path from the current location <u>(file extensions are required)</u>
-            <p><b><u>Absolute Specifier</u></b></p>
-            <p> - <mark>/home/dev/main.js</mark> - absolute path <u>in ECMAscript modules we can also pass file protocol
-                path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
-            <p><b><u>Bare Specifier</u></b></p>
-            <p> - <mark>main</mark> | <mark>mymodule/main</mark> - (no prefixed path given) - refers as package entry
-              point to the nearest <mark>node_modules</mark> directory <u>(file extensions are required in some
-                cases)</u> </p>
+        import * as <strong class="openable">specifier:str<div>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
           </div></strong>
       </td>
       <td>
@@ -140,17 +142,17 @@
     </tr>
     <tr class="01.07">
       <td>
-        import {<strong>name</strong> <small>[as <i>newName</i>]</small>, <i>...</i>} from <strong
-          class="openable">specifier:str<div>
-            <p><b><u>Relative Specifier</u></b></p>
-            <p> - <mark>./main.js</mark> - relative path from the current location <u>(file extensions are required)</u>
-            <p><b><u>Absolute Specifier</u></b></p>
-            <p> - <mark>/home/dev/main.js</mark> - absolute path <u>in ECMAscript modules we can also pass file protocol
-                path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
-            <p><b><u>Bare Specifier</u></b></p>
-            <p> - <mark>main</mark> | <mark>mymodule/main</mark> - (no prefixed path given) - refers as package entry
-              point to the nearest <mark>node_modules</mark> directory <u>(file extensions are required in some
-                cases)</u> </p>
+        import {<strong>name</strong> <small>[as <i>newName</i>]</small>, <i>...</i>} from <strong class="openable">specifier:str<div>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
           </div></strong>
       </td>
       <td>
@@ -164,17 +166,17 @@
     </tr>
     <tr class="01.09">
       <td>
-        import <strong>defaultName</strong><small>[, {<i>name, ...</i>}]</small> from <strong
-          class="openable">specifier:str<div>
-            <p><b><u>Relative Specifier</u></b></p>
-            <p> - <mark>./main.js</mark> - relative path from the current location <u>(file extensions are required)</u>
-            <p><b><u>Absolute Specifier</u></b></p>
-            <p> - <mark>/home/dev/main.js</mark> - absolute path <u>in ECMAscript modules we can also pass file protocol
-                path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
-            <p><b><u>Bare Specifier</u></b></p>
-            <p> - <mark>main</mark> | <mark>mymodule/main</mark> - (no prefixed path given) - refers as package entry
-              point to the nearest <mark>node_modules</mark> directory <u>(file extensions are required in some
-                cases)</u> </p>
+        import <strong>defaultName</strong><small>[, {<i>name, ...</i>}]</small> from <strong class="openable">specifier:str<div>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
           </div></strong>
       </td>
       <td>
@@ -188,15 +190,16 @@
     <tr class="01.11">
       <td>
         import(<strong class="openable">specifier:str<div>
-            <p><b><u>Relative Specifier</u></b></p>
-            <p> - <mark>./main.js</mark> - relative path from the current location <u>(file extensions are required)</u>
-            <p><b><u>Absolute Specifier</u></b></p>
-            <p> - <mark>/home/dev/main.js</mark> - absolute path <u>in ECMAscript modules we can also pass file protocol
-                path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
-            <p><b><u>Bare Specifier</u></b></p>
-            <p> - <mark>main</mark> | <mark>mymodule/main</mark> - (no prefixed path given) - refers as package entry
-              point to the nearest <mark>node_modules</mark> directory <u>(file extensions are required in some
-                cases)</u> </p>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
           </div></strong>)
       </td>
       <td>
@@ -337,15 +340,16 @@
     <tr class="02.20">
       <td>
         export * from <strong class="openable">specifier:str<div>
-            <p><b><u>Relative Specifier</u></b></p>
-            <p> - <mark>./main.js</mark> - relative path from the current location <u>(file extensions are required)</u>
-            <p><b><u>Absolute Specifier</u></b></p>
-            <p> - <mark>/home/dev/main.js</mark> - absolute path <u>in ECMAscript modules we can also pass file protocol
-                path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
-            <p><b><u>Bare Specifier</u></b></p>
-            <p> - <mark>main</mark> | <mark>mymodule/main</mark> - (no prefixed path given) - refers as package entry
-              point to the nearest <mark>node_modules</mark> directory <u>(file extensions are required in some
-                cases)</u> </p>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
           </div></strong>
       </td>
       <td>
@@ -358,16 +362,17 @@
     </tr>
     <tr class="02.22">
       <td>
-        export * as <strong>name</strong> from <strong class="openable">specifier:str<div>
-            <p><b><u>Relative Specifier</u></b></p>
-            <p> - <mark>./main.js</mark> - relative path from the current location <u>(file extensions are required)</u>
-            <p><b><u>Absolute Specifier</u></b></p>
-            <p> - <mark>/home/dev/main.js</mark> - absolute path <u>in ECMAscript modules we can also pass file protocol
-                path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
-            <p><b><u>Bare Specifier</u></b></p>
-            <p> - <mark>main</mark> | <mark>mymodule/main</mark> - (no prefixed path given) - refers as package entry
-              point to the nearest <mark>node_modules</mark> directory <u>(file extensions are required in some
-                cases)</u> </p>
+        export * as <strong class="openable">specifier:str<div>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
           </div></strong>
       </td>
       <td>
@@ -381,17 +386,17 @@
     </tr>
     <tr class="02.24">
       <td>
-        export {<strong>name</strong> <small>[as <i>newName</i>]</small>, <i>...</i>} from <strong
-          class="openable">specifier:str<div>
-            <p><b><u>Relative Specifier</u></b></p>
-            <p> - <mark>./main.js</mark> - relative path from the current location <u>(file extensions are required)</u>
-            <p><b><u>Absolute Specifier</u></b></p>
-            <p> - <mark>/home/dev/main.js</mark> - absolute path <u>in ECMAscript modules we can also pass file protocol
-                path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
-            <p><b><u>Bare Specifier</u></b></p>
-            <p> - <mark>main</mark> | <mark>mymodule/main</mark> - (no prefixed path given) - refers as package entry
-              point to the nearest <mark>node_modules</mark> directory <u>(file extensions are required in some
-                cases)</u> </p>
+        export {<strong>name</strong> <small>[as <i>newName</i>]</small>, <i>...</i>} from <strong class="openable">specifier:str<div>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
           </div></strong>
       </td>
       <td>
@@ -405,15 +410,16 @@
     <tr class="02.26">
       <td>
         export { default } from <strong class="openable">specifier:str<div>
-            <p><b><u>Relative Specifier</u></b></p>
-            <p> - <mark>./main.js</mark> - relative path from the current location <u>(file extensions are required)</u>
-            <p><b><u>Absolute Specifier</u></b></p>
-            <p> - <mark>/home/dev/main.js</mark> - absolute path <u>in ECMAscript modules we can also pass file protocol
-                path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
-            <p><b><u>Bare Specifier</u></b></p>
-            <p> - <mark>main</mark> | <mark>mymodule/main</mark> - (no prefixed path given) - refers as package entry
-              point to the nearest <mark>node_modules</mark> directory <u>(file extensions are required in some
-                cases)</u> </p>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
           </div></strong>
       </td>
       <td>
