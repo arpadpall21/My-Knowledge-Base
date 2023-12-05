@@ -55,7 +55,7 @@
     <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
   </details>
   <h2 style="color:green;"><u> Useful Links : </u></h2>
-
+  <p><a href="https://www.rabbitmq.com/" target="_blank">rabbitmq (rabbitmq.com)</a></p>
   <h2 style="color:green;"><u> Remember This : </u></h2>
 
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
@@ -81,7 +81,23 @@ stage 3 :
 ---------------------------------------------------------------------------------------------
     - RabbitMQ is a message broker
     
+- Concepts 
     - message broker -> intermediary software that facilitates communication between multiple applications or systems by receiving, routing, and transmitting messages between them
+    - producer -> something publishing message to the message broker 
+    - consumer -> something subscribing to messages and recevies these messages
+    - exchange -> routing component that defines how messages are routed between producers and consumers 4 types:
+        - direct exchange -> messages delivered to queues based on routing keys (same roue key same queue)
+        - topic exchange -> key patter match
+        - fanout exchange -> messages are delivered to all queues bound the exchange 
+        - header exchange -> ???
+    message routing key -> describes the routing path
+        -  If there are no queues or exchanges that match the message routing key, the message is discarded.
+    message acknowledgement
+        - the consumer acknowledges the message processing so RabbitMQ is notified to delete the message (be default this feature is turned on)
+        - the consumer has 30 mins to acknowledge the message (by default)
+    
+    
+    
     
     - RabbitMQ uses AMPQ as default messaging protocol (Advanced Message Queuing Protocol)
         - asynchronous binary protocol
@@ -89,18 +105,62 @@ stage 3 :
     - we are testing this with v3.12.10
     
     
+    - on uinx systemx runs as daemon/service, but in most stuations is used in a container 
     
     
+    - rabbitmq main port 5672 (5672 TLS)
+    - console pannel reachable by default on localhost:15672 (credential username: guest / password: guest)
+        - from v3 15672
+        - pre v3 55672
+    
+    - every consumer or producer opens a single tcp connection to the messagemq broker (multiple channels are used in the same tcp connection)
+    
+    - AMPQ is basically a two way prc protoclo (where both pair can call function with arguments in the remote)
+    
+    - clients (with appropriate access) can create queues 
+        - clients listed in ACL (access control list)
+    
+    - Work Queues
+      - consumers receive messages from the queue in round-robin fashion (by default)
+          - the default message distribution can be changed however (RabbitMQ sends the next message to the least busy worker)
+    
+    - Pub/Sub
+      - we use the fanout exchange (the publisher declares the exchange)
+    
+    - when the consumer acknowledges -> the message is removed from the queue
+        - if does not acknowledges the message goes back to the queue
+        - on auto acknowledge the message is atuomatically removed
     
     
-CMD -----------------------------------------
-    sudo rabbitmqctl list_queues                        // list rabitMQ queues
+    - RabbitMQ looses all queues and message when stops or craches
+        - we can mark queues and messaged as 'durable' so theye are presistent on system crach or stop (however there's a small window when the message can be lost still)
+        - channels are idempotent so we cannot redeclare a non durable channel to a durable one! (when redeclaring the channel both the producer and the consumer must create the durable channel) (an error is raised if we try to redeclare a non durable queue as durable)
+    
+    
+CLI CMD -------------------------------------------
+    rabbitmq                                                                    // cli to control rabbitmq
+    rabbitmqctl list_queues                                                     // list rabitMQ queues
+    sudo rabbitmqctl list_queues name messages_ready messages_unacknowledged    // list queues, number of messages in queues and unacknowledged messages
+    
     
     
 ?????????????????????????????????????????????????????????????????????????????????????????????
 WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
 ?????????????????????????????????????????????????????????????????????????????????????????????
+    - who can create queues?
+        - producers and consumers with appropriate credentials ()
+    - who creates exchanges?
     
+    
+    - what is the memory limit 
+      - single queue
+      - all rabbitmq
+    
+    
+    - how many messages can be stored in a single queue and for how long?
+    
+    
+    - what about authentication?
     
 -->
 

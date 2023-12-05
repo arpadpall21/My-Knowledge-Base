@@ -198,7 +198,7 @@
             <strong>datetime</strong>.utcoffset()
         </td>
         <td>
-            - returns the UTC offest (if object is 'awaire')
+            - returns the UTC offest (if object is 'aware')
         </td>
     </tr>
     <tr class="17.02">
@@ -206,7 +206,7 @@
             <strong>datetime</strong>.dst()
         </td>
         <td>
-            - returns the DST (if object is 'awaire')
+            - returns the DST (if object is 'aware')
         </td>
     </tr>
     <tr class="17.03">
@@ -214,7 +214,7 @@
             <strong>datetime</strong>.tzname()
         </td>
         <td>
-            - returns the timezone name (if object is 'awaire')
+            - returns the timezone name (if object is 'aware')
         </td>
     </tr>
     
@@ -624,7 +624,7 @@
             <strong>time</strong>.utcoffset()
         </td>
         <td>
-            - returns the UTC offest (if object is 'awaire')
+            - returns the UTC offest (if object is 'aware')
         </td>
     </tr>
     <tr class="35.02">
@@ -632,7 +632,7 @@
             <strong>time</strong>.dst()
         </td>
         <td>
-            - returns the DST (if object is 'awaire')
+            - returns the DST (if object is 'aware')
         </td>
     </tr>
     <tr class="35.03">
@@ -640,7 +640,7 @@
             <strong>time</strong>.tzname()
         </td>
         <td>
-            - returns the timezone name (if object is 'awaire')
+            - returns the timezone name (if object is 'aware')
         </td>
     </tr>
 </table>
@@ -726,7 +726,7 @@
             <em>datetime</em>.tzinfo
         </td>
         <td>
-            - used to create 'awaire' time objects (<mark>datetime</mark> or <mark>time</mark>) <br>
+            - used to create 'aware' time objects (<mark>datetime</mark> or <mark>time</mark>) <br>
             - should not be instantantated directly, it's a base class we should create our own subclass then implement our own timezone info <br>
             - the subclass should implement the <mark>utcoffset()</mark> / <mark>dst()</mark> / <mark>tzname()</mark> / <mark>fromutc()</mark> methods <br>
         </td>
@@ -737,7 +737,7 @@
         </td>
         <td>
             - abstract sub class of <mark><strong>datetime</strong>.tzinfo</mark> <br>
-            - used to create 'awaire' time objects (<strong>time</strong> and <strong>datetime</strong>) <br>
+            - used to create 'aware' time objects (<strong>time</strong> and <strong>datetime</strong>) <br>
             - immutable, hashable and supports efficien picking (can be converted to bytestream)
         </td>
     </tr>
@@ -777,14 +777,14 @@
 <p> - in Python the local time is controlled by the <mark>TZ</mark> system variable, we manually set the <mark>TZ</mark> value which tells python the local timezone (remember using <mark>time.tzset()</mark> to 'activate' the new timezone) </p>
 <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
     <p> - arithmetic and comparison operations are supported betwen datetime objects </p>
-    <p> - datetime object can be 'naive' or 'awaire' </p>
+    <p> - datetime object can be 'naive' or 'aware' </p>
     <p style="text-indent:20px;"> <b><u>'naive'</u></b> has no timezone informations, <u>assumes to contain the local time</u> </p>
-    <p style="text-indent:20px;"> <b><u>'awaire'</u></b> has timezone informations </p>
-    <p> - to check if the datetime object is awaire or naive call <mark><strong>datetime</strong>.tzinfo</mark>, if the returned value is <mark>None</mark> the datetime object is naive, awaire otherwise </p>
-<h2 class="header"> Creating awaire datetime objects </h2>
+    <p style="text-indent:20px;"> <b><u>'aware'</u></b> has timezone informations </p>
+    <p> - to check if the datetime object is aware or naive call <mark><strong>datetime</strong>.tzinfo</mark>, if the returned value is <mark>None</mark> the datetime object is naive, aware otherwise </p>
+<h2 class="header"> Creating aware datetime objects </h2>
     <p> - we can implement our own tzinfo by creating a subclass of the <mark>tzinfo</mark> class and implement the <mark>utcoffset()</mark> / <mark>dst()</mark> / <mark>tzname()</mark> methods on it </p>
     <p> - we can also create tzinfo implementation by using the <mark>timezone</mark> class (that's the cheapest way) </p>
-    <p> - then the created tzinfo implementation is passed as argument in <mark>datetime.datetime</mark> or <mark>datetime.time</mark> classes on creation so they are 'awaire' of the implemented timezone </p>
+    <p> - then the created tzinfo implementation is passed as argument in <mark>datetime.datetime</mark> or <mark>datetime.time</mark> classes on creation so they are 'aware' of the implemented timezone </p>
     <p> - or use the 'easy way' <mark><a href="../zoneinfo/index.html" target="_blank">zoneinfo</a></mark> module (this handles timezone and DST alike) </p>
 <details class="example">
 <summary> Example : </summary>
@@ -799,16 +799,16 @@
     print( local.hour )                   // -> 8
     print( utc.hour )                     // -> 6
     </pre>
-    <p> - checking if datetime is 'awaire' or 'naive' </p>
+    <p> - checking if datetime is 'aware' or 'naive' </p>
     <pre>
     from datetime import datetime, timezone
     
     
     naive = datetime.now()
-    awaire = datetime.now(tz=timezone.utc)
+    aware = datetime.now(tz=timezone.utc)
     
     print( naive.tzinfo )         # // -> None 
-    print( awaire.tzinfo )        # // -> UTC    (&lt;datetime.timezone&gt; obj)
+    print( aware.tzinfo )        # // -> UTC    (&lt;datetime.timezone&gt; obj)
     </pre>
     <p> - <mark>datetime.timedelta()</mark> </p>
     <pre>
@@ -836,7 +836,7 @@
     today = datetime.date.today()
     print( today.toordinal())         // -> 738314    // 738314 elpased since 1st of January year 0
     </pre>
-    <p> - creating awaire time object </p>
+    <p> - creating aware time object </p>
     <pre>
     import datetime
     import time

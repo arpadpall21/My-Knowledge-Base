@@ -254,7 +254,7 @@
         </td>
         <td>
             - creates and returns a <strong>reentralLock</strong> <br>
-            - thread awaire, the thread that locks it only that thread can unlock it again <br>
+            - thread aware, the thread that locks it only that thread can unlock it again <br>
             - can be unlocked multiple times within the same thread (must be locked as many times as it was unlocked in order to release the lock) <br>
             - supports the context management protocol (<strong>simpleLock</strong> <mark>acquire()</mark> when entering | <mark>release()</mark> when exiting the context) <br>
             - <u> automatically released when the thread is killed </u>
@@ -592,7 +592,7 @@
     <p> - <mark class="mark">threading</mark> offers the following race condition control tools (<mark class="mark">multiprocessing</mark> use these same tools) : </p>
     <p style="text-indent: 30px;"> - <mark>Lock</mark> (simple lock) </p>
     <p style="text-indent: 60px;"> - can be locked or unlocked, the idea is that several threads use the same lock but only one of them unlock it, other threads wait until the lock unlocks again (ex: connecting to DB with this lock approach makes shure that there's only one query at a time) </p>
-    <p style="text-indent:30px;"> - <mark>RLock</mark> (reentral lock, thread awaire lock) </p>
+    <p style="text-indent:30px;"> - <mark>RLock</mark> (reentral lock, thread aware lock) </p>
     <p style="text-indent:60px;"> - thread aware, meaning knows which thread acquired (locked) it and <u>only the acquiring thread can unlock it again</u> </p>
     <p style="text-indent:60px;"> - within the same thread can be acquired (unlocked) several times (must be released (locked) as many times as it was arquired (locked) to release the lock) </p>
     <p style="text-indent:30px;"> - <mark>Condition</mark> </p>

@@ -59,7 +59,7 @@
     
 <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
     <p> - the <mark>zoneinfo</mark> module is a concrete implementation to support IANA timezone database (<a href="https://www.python.org/dev/peps/pep-0615" target="_blank">PEP 615</a>) </p>
-    <p> - we use <mark>zoneinfo</mark> instances to create 'awaire' datetime objects (pass the as <mark>tzinfo</mark>) </p>
+    <p> - we use <mark>zoneinfo</mark> instances to create 'aware' datetime objects (pass the as <mark>tzinfo</mark>) </p>
     <p> - this module does not provide direct zone data, instead 'asks' the system timezone database for it (if not available falls back to <mark>tzdata</mark> package) </p>
     <p> - we can manually configure the desired timezone by passing the <mark>TZPATH</mark> system variable (for the desired timezone) (looked at compile time) </p>
 <details class="example">
@@ -70,7 +70,7 @@
     
     tz = zoneinfo.ZoneInfo("Europe/Budapest")
     
-    dt = datetime.datetime(2022, 6, 12, 12, 9, tzinfo=tz)     // awaire datetime object created 
+    dt = datetime.datetime(2022, 6, 12, 12, 9, tzinfo=tz)     // aware datetime object created 
     
     print( dt.utcoffset() )     // -> 2:00:00     // timedelta object
     print( dt.dst() )           // -> 1:00:00     // timedelta object

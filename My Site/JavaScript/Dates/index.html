@@ -1,755 +1,759 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> JS Dates </title>    
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> JS Dates </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> JavaScript Dates (ver 4.0.0) </h1>
-    <p> Updated ( 2017-08-20 / 2017-08-28 / 2017-09-04 / 2018-06-07 / 2019-04-25 / 2020-10-22)</p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html">JavaScript></a> Dates 
-    </p>
-<table class="table">
-<caption> 
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  <h1> JavaScript Dates (ver 4.0.0) </h1>
+  <p> Updated ( 2017-08-20 / 2017-08-28 / 2017-09-04 / 2018-06-07 / 2019-04-25 / 2020-10-22)</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html">JavaScript></a> Dates
+  </p>
+  <table class="table">
+    <caption>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
     <tr>
-        <th style="width:30%;"> Method / Property </th>
-        <th> Description </th>
+      <th style="width:30%;"> Method / Property </th>
+      <th> Description </th>
     </tr>
     <tr class="05.01">
-        <td> Date() </td>
-        <td> 
-            - returns a local date <u>string</u> (not a date object) 
-        </td>
+      <td> Date() </td>
+      <td>
+        - returns a local date <u>string</u> (not a date object)
+      </td>
     </tr>
     <tr class="05.02">
-        <td> 
-            new Date(<i class="openable">time<div>
-                <p> <mark>new Date(<strong>nr:ms</strong>)</mark> - milliseconds since Zero Time (1970 1st of January 00:00 UTC) <u>(negative values are allowed)</u> </p>
-                <p> <mark>new Date(<strong>YYYY</strong>, <strong>MM</strong>, <i>DD</i>, <i>HH</i>, <i>MM</i>, <i>SS</i>, <i>MMM</i>)</mark> - date and time numbers  <u>(months are indexed <mark>0</mark> = January)</u></p>
-                <p> <mark>new Date('<strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</i>:<i>SS</i><small>[Z][+|-<i>HH</i>:<i>MM</i>]</small>')</mark> - ISO 8601 datetime string </mark>
-                
-                <p> <mark>new Date(<strong>dateTime:str</strong>)</mark> - datetime string (ex: <mark>Thu Oct 22 2020 10:52:02 GMT+0300 (Eastern European Summer Time)</mark> /     ) </p>
-            </div></i>) 
-        </td>
-        <td> 
-            - returns a <u>date object</u> (current datetime if no argument passed) <br>
-            - the passed time is assumed to be local (unles UTC or timezone adjustment specified)
-            <span id="browserSupport" title="Updated: 2021-06-01">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
-            </span>
-        </td>
+      <td>
+        new Date(<i class="openable">time<div>
+            <p> <mark>new Date(<strong>nr:ms</strong>)</mark> - milliseconds since Zero Time (1970 1st of January 00:00 UTC) <u>(negative values are allowed)</u> </p>
+            <p> <mark>new Date(<strong>YYYY</strong>, <strong>MM</strong>, <i>DD</i>, <i>HH</i>, <i>MM</i>, <i>SS</i>, <i>MMM</i>)</mark> - date and time numbers <u>(months are indexed <mark>0</mark> = January)</u></p>
+            <p> <mark>new Date('<strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</i>:<i>SS</i><small>[Z][+|-<i>HH</i>:<i>MM</i>]</small>')</mark> - ISO 8601 datetime string </mark>
+
+            <p> <mark>new Date(<strong>dateTime:str</strong>)</mark> - datetime string (ex: <mark>Thu Oct 22 2020 10:52:02 GMT+0300 (Eastern European Summer Time)</mark> / ) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns a <u>date object</u> (current datetime if no argument passed) <br>
+        - the passed time is assumed to be local (unles UTC or timezone adjustment specified)
+        <span id="browserSupport" title="Updated: 2021-06-01">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+          <span><i class="fab fa-node-js"></i> 0.10.0 </span>
+        </span>
+      </td>
     </tr>
     <tr class="40.01">
-        <td> <em>Date</em>.now() </td>
-        <td> 
-            - returns the current UTC time in milliseconds (elapsed since 1970 1st of January midnight UTC)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 5 </span>
-                <span><i class="fab fa-firefox"></i> 3 </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10.5 </span>
-                <span><i class="fab fa-safari"></i> 9 </span>
-                <span><i class="fab fa-node-js"></i> 4 </span>
-            </span>
-        </td>
+      <td> <em>Date</em>.now() </td>
+      <td>
+        - returns the current UTC time in milliseconds (elapsed since 1970 1st of January midnight UTC)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 5 </span>
+          <span><i class="fab fa-firefox"></i> 3 </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10.5 </span>
+          <span><i class="fab fa-safari"></i> 9 </span>
+          <span><i class="fab fa-node-js"></i> 4 </span>
+        </span>
+      </td>
     </tr>
     <tr class="40.02">
-        <td> <em>Date</em>.parse(<strong>dateTime:str</strong>) </td>
-        <td> 
-            - returns the passed datestring (ISO 8601 recommended) in milliseconds (UTC time elapsed since 1970 1st of January midnight UTC)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <em>Date</em>.parse(<strong>dateTime:str</strong>) </td>
+      <td>
+        - returns the passed datestring (ISO 8601 recommended) in milliseconds (UTC time elapsed since 1970 1st of January midnight UTC)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="40.03">
-        <td> <em>Date</em>.UTC(<strong>yyyy:nr</strong>, <strong>mm:nr</strong>, <i>dd:nr</i>, <i>hh:nr</i>, <i>ss:nr</i>, <i>mm:nr</i>, <i>mm:nr</i>) </td>
-        <td> 
-            - returns the <u>passed UTC time</u> in milliseconds (elapsed since 1970 1st of January midnight UTC) <u>(months are 0 indexed <mark>0</mark> = January)</u>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <em>Date</em>.UTC(<strong>yyyy:nr</strong>, <strong>mm:nr</strong>, <i>dd:nr</i>, <i>hh:nr</i>, <i>ss:nr</i>, <i>mm:nr</i>, <i>mm:nr</i>) </td>
+      <td>
+        - returns the <u>passed UTC time</u> in milliseconds (elapsed since 1970 1st of January midnight UTC) <u>(months are 0 indexed <mark>0</mark> = January)</u>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="10.04">
-        <td> <strong>date</strong>.getDate() </td>
-        <td> 
-            - returns the day of the month as a number 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.getDate() </td>
+      <td>
+        - returns the day of the month as a number
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="10.05">
-        <td> <strong>date</strong>.getDay() </td>
-        <td> 
-            - returns the day of the week as a number <u>(<mark>0</mark> = Sunday / <mark>1</mark> = Monday)</u>    
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.getDay() </td>
+      <td>
+        - returns the day of the week as a number <u>(<mark>0</mark> = Sunday / <mark>1</mark> = Monday)</u>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="10.01">
-        <td> <strong>date</strong>.getFullYear() </td>
-        <td> 
-            - returns the year as a number 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.getFullYear() </td>
+      <td>
+        - returns the year as a number
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="10.06">
-        <td> <strong>date</strong>.getHours() </td>
-        <td> 
-            - returns the hours as a number 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.getHours() </td>
+      <td>
+        - returns the hours as a number
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="10.09">
-        <td> <strong>date</strong>.getMilliseconds() </td>
-        <td> 
-            - returns the milliseconds as a number 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.getMilliseconds() </td>
+      <td>
+        - returns the milliseconds as a number
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="10.07">
-        <td> <strong>date</strong>.getMinutes() </td>
-        <td> 
-            - returns the minutes as a number 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.getMinutes() </td>
+      <td>
+        - returns the minutes as a number
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="10.03">
-        <td> <strong>date</strong>.getMonth() </td>
-        <td> 
-            - returns the month as a number <u>(<mark>0</mark> = Jaunary / <mark>11</mark> = December)</u>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.getMonth() </td>
+      <td>
+        - returns the month as a number <u>(<mark>0</mark> = Jaunary / <mark>11</mark> = December)</u>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="10.08">
-        <td> <strong>date</strong>.getSeconds() </td>
-        <td> 
-            - returns the seconds as a number 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.getSeconds() </td>
+      <td>
+        - returns the seconds as a number
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="20.01">
-        <td> <strong>date</strong>.getTime() </td>
-        <td> 
-            - returns the datetime value in milliseconds <u>(UTC time counted form 1970 1st of January 00:00)</u>   
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.getTime() </td>
+      <td>
+        - returns the datetime value in milliseconds <u>(UTC time counted form 1970 1st of January 00:00)</u>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="20.02">
-        <td> <strong>date</strong>.getTimezoneOffset() </td>
-        <td> 
-            - returns the time difference in minutes between the local and UTC time (relative to local time)   
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5 </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.getTimezoneOffset() </td>
+      <td>
+        - returns the time difference in minutes between the local and UTC time (relative to local time)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5 </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     <tr class="15.03">
-        <td> <strong>date</strong>.getUTCDate() </td>
-        <td> 
-            - returns the UTC day of the month as a number 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.getUTCDate() </td>
+      <td>
+        - returns the UTC day of the month as a number
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="15.04">
-        <td> <strong>date</strong>.getUTCDay() </td>
-        <td> 
-            - returns the UTC day of the week as a number <u>(<mark>0</mark> = Sunday / <mark>1</mark> = Monday)</u>    
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.getUTCDay() </td>
+      <td>
+        - returns the UTC day of the week as a number <u>(<mark>0</mark> = Sunday / <mark>1</mark> = Monday)</u>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     </tr>
     <tr class="15.01">
-        <td> <strong>date</strong>.getUTCFullYear() </td>
-        <td> 
-            - returns the UTC year as a number 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.getUTCFullYear() </td>
+      <td>
+        - returns the UTC year as a number
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="15.05">
-        <td> <strong>date</strong>.getUTCHours() </td>
-        <td> 
-            - returns the UTC hours as a number 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.getUTCHours() </td>
+      <td>
+        - returns the UTC hours as a number
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="15.08">
-        <td> <strong>date</strong>.getUTCMilliseconds() </td>
-        <td> 
-            - returns the UTC milliseconds as a number 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>        
-        </td>
+      <td> <strong>date</strong>.getUTCMilliseconds() </td>
+      <td>
+        - returns the UTC milliseconds as a number
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="15.06">
-        <td> <strong>date</strong>.getUTCMinutes() </td>
-        <td> 
-            - returns the UTC minutes as a number 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>        
-        </td>
+      <td> <strong>date</strong>.getUTCMinutes() </td>
+      <td>
+        - returns the UTC minutes as a number
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="15.02">
-        <td> <strong>date</strong>.getUTCMonth() </td>
-        <td> 
-            - returns the UTC month as a number <u>(<mark>0</mark> = Jaunary / <mark>11</mark> = December)</u>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.getUTCMonth() </td>
+      <td>
+        - returns the UTC month as a number <u>(<mark>0</mark> = Jaunary / <mark>11</mark> = December)</u>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="15.07">
-        <td> <strong>date</strong>.getUTCSeconds() </td>
-        <td> 
-            - returns the UTC seconds as a number 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.getUTCSeconds() </td>
+      <td>
+        - returns the UTC seconds as a number
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="10.02">
-        <td> <strong>date</strong>.getYear() </td>
-        <td> 
-            - <u>[DEPRECATED (2000 year problem)]</u> use the <mark>.getFullYear()</mark> method instead!</u>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.getYear() </td>
+      <td>
+        - <u>[DEPRECATED (2000 year problem)]</u> use the <mark>.getFullYear()</mark> method instead!</u>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="25.04">
-        <td> <strong>date</strong>.setDate(<strong>dd:nr</strong>) </td>
-        <td> 
-            - sets the day of the month of the date object
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
-    </tr>    
+      <td> <strong>date</strong>.setDate(<strong>dd:nr</strong>) </td>
+      <td>
+        - sets the day of the month of the date object
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
+    </tr>
     <tr class="25.01">
-        <td> <strong>date</strong>.setFullYear(<strong>yyyy:nr</strong>, <i>mm:nr</i>, <i>dd:nr</i>) </td>
-        <td> - sets the year <span class="openable">(optionally month and day (day of month))<div>
-                <p> - months are 0 indexed (<mark>0</mark> = January) </p>
-            </div></span> of the date object
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.setFullYear(<strong>yyyy:nr</strong>, <i>mm:nr</i>, <i>dd:nr</i>) </td>
+      <td> - sets the year <span class="openable">(optionally month and day (day of month))<div>
+            <p> - months are 0 indexed (<mark>0</mark> = January) </p>
+          </div></span> of the date object
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="25.05">
-        <td> <strong>date</strong>.setHours(<strong>hh:nr</strong>, <i>mm:nr</i>, <i>ss:nr</i>, <i>mm:nr</i>) </td>	
-        <td> - sets the hours (optionally minutes, seconds and  milliseconds) of the date object 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.setHours(<strong>hh:nr</strong>, <i>mm:nr</i>, <i>ss:nr</i>, <i>mm:nr</i>) </td>
+      <td> - sets the hours (optionally minutes, seconds and milliseconds) of the date object
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="25.08">
-        <td> <strong>date</strong>.setMilliseconds(<strong>mm:nr</strong>) </td>
-        <td> - sets the milliseconds of the date object
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.setMilliseconds(<strong>mm:nr</strong>) </td>
+      <td> - sets the milliseconds of the date object
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="25.06">
-        <td> <strong>date</strong>.setMinutes(<strong>mm:nr</strong>, <i>ss:nr</i>, <i>mm:nr</i>) </td>
-        <td> - sets the minutes (optionally seconds and milliseconds) of the date
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.setMinutes(<strong>mm:nr</strong>, <i>ss:nr</i>, <i>mm:nr</i>) </td>
+      <td> - sets the minutes (optionally seconds and milliseconds) of the date
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="25.03">
-        <td> <strong>date</strong>.setMonth(<strong>mm:nr</strong>, <i>dd:nr</i>) </td>
-        <td> 
-            - sets the <span class="openable">month<div>
-                <p> - months are 0 indexed (<mark>0</mark> = January) </p>
-            </div></span> (and day (day of the month)) of the date object
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.setMonth(<strong>mm:nr</strong>, <i>dd:nr</i>) </td>
+      <td>
+        - sets the <span class="openable">month<div>
+            <p> - months are 0 indexed (<mark>0</mark> = January) </p>
+          </div></span> (and day (day of the month)) of the date object
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="25.07">
-        <td> <strong>date</strong>.setSeconds(<strong>ss:nr</strong>, <i>mm:nr</i>) </td>	
-        <td> - sets the seconds (optionally milliseconds) of the date object
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.setSeconds(<strong>ss:nr</strong>, <i>mm:nr</i>) </td>
+      <td> - sets the seconds (optionally milliseconds) of the date object
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
-    <tr class="35.01">    
-        <td> <strong>date</strong>.setTime(<strong>miliseconds:nr</strong>) </td>	
-        <td> 
-            - sets the <u>UTC datetime</u> of the date object 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+    <tr class="35.01">
+      <td> <strong>date</strong>.setTime(<strong>miliseconds:nr</strong>) </td>
+      <td>
+        - sets the <u>UTC datetime</u> of the date object
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
-    <tr class="30.03">    
-        <td> <strong>date</strong>.setUTCDate(<strong>dd:nr</strong>) </td>	
-        <td> 
-            - sets the UTC day of the month of the date object
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+    <tr class="30.03">
+      <td> <strong>date</strong>.setUTCDate(<strong>dd:nr</strong>) </td>
+      <td>
+        - sets the UTC day of the month of the date object
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
-    <tr class="30.01">    
-        <td> <strong>date</strong>.setUTCFullYear(<strong>yyyy:nr</strong>, <i>mm:nr</i>, <i>dd:nr</i>) </td>	
-        <td> - sets the UTC year <span class="openable">(optionally month and day (day of month))<div>
-                <p> - months are 0 indexed (<mark>0</mark> = January) </p>
-            </div></span> of the date object
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+    <tr class="30.01">
+      <td> <strong>date</strong>.setUTCFullYear(<strong>yyyy:nr</strong>, <i>mm:nr</i>, <i>dd:nr</i>) </td>
+      <td> - sets the UTC year <span class="openable">(optionally month and day (day of month))<div>
+            <p> - months are 0 indexed (<mark>0</mark> = January) </p>
+          </div></span> of the date object
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
-    <tr class="30.04">    
-        <td> <strong>date</strong>.setUTCHours(<strong>hh:nr</strong>, <i>mm:nr</i>, <i>ss:nr</i>, <i>mm:nr</i>) </td>
-        <td> - sets the UTC hours (optionally minutes, seconds and  milliseconds) of the date object 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+    <tr class="30.04">
+      <td> <strong>date</strong>.setUTCHours(<strong>hh:nr</strong>, <i>mm:nr</i>, <i>ss:nr</i>, <i>mm:nr</i>) </td>
+      <td> - sets the UTC hours (optionally minutes, seconds and milliseconds) of the date object
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
-    <tr class="30.07">    
-        <td> <strong>date</strong>.setUTCMilliseconds(<strong>mm:nr</strong>) </td>
-        <td> - sets the UTC milliseconds of the date object
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+    <tr class="30.07">
+      <td> <strong>date</strong>.setUTCMilliseconds(<strong>mm:nr</strong>) </td>
+      <td> - sets the UTC milliseconds of the date object
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
-    <tr class="30.05">    
-        <td> <strong>date</strong>.setUTCMinutes(<strong>mm:nr</strong>, <i>ss:nr</i>, <i>mm:nr</i>) </td>
-        <td> - sets the UTC minutes (optionally seconds and milliseconds) of the date object
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+    <tr class="30.05">
+      <td> <strong>date</strong>.setUTCMinutes(<strong>mm:nr</strong>, <i>ss:nr</i>, <i>mm:nr</i>) </td>
+      <td> - sets the UTC minutes (optionally seconds and milliseconds) of the date object
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
-    <tr class="30.02">    
-        <td> <strong>date</strong>.setUTCMonth(<strong>mm:nr</strong>, <i>dd:nr</i>) </td>
-        <td> - sets the UTC <span class="openable">month<div>
-                <p> - months are 0 indexed (<mark>0</mark> = January) </p>
-            </div></span> (and day (day of the month)) of the date object
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+    <tr class="30.02">
+      <td> <strong>date</strong>.setUTCMonth(<strong>mm:nr</strong>, <i>dd:nr</i>) </td>
+      <td> - sets the UTC <span class="openable">month<div>
+            <p> - months are 0 indexed (<mark>0</mark> = January) </p>
+          </div></span> (and day (day of the month)) of the date object
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
-    <tr class="30.06">    
-        <td> <strong>date</strong>.setUTCSeconds(<strong>ss:nr</strong>, <i>mm:nr</i>) </td>
-        <td> - sets the UTC seconds (optionally milliseconds) of the date
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+    <tr class="30.06">
+      <td> <strong>date</strong>.setUTCSeconds(<strong>ss:nr</strong>, <i>mm:nr</i>) </td>
+      <td> - sets the UTC seconds (optionally milliseconds) of the date
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="25.02">
-        <td> <strong>date</strong>.setYear(<strong>yyyy:nr</strong>, <i>mm:nr</i>, <i>dd:nr</i>) </td>
-        <td> 
-            - <u>[DEPRECATED (2000 year problem)]</u> use the <mark>.setFullYear()</mark> method instead!</u> 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.setYear(<strong>yyyy:nr</strong>, <i>mm:nr</i>, <i>dd:nr</i>) </td>
+      <td>
+        - <u>[DEPRECATED (2000 year problem)]</u> use the <mark>.setFullYear()</mark> method instead!</u>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="55.02">
-        <td> <strong>date</strong>.toDateString() </td>
-        <td> - returns the date portion in a string (local time)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.toDateString() </td>
+      <td> - returns the date portion in a string (local time)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="50.03">
-        <td> <strong>date</strong>.toGMTString() </td>
-        <td> - <u>[DEPRECATED]</u>    returns the GMT datetime in a string 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.toGMTString() </td>
+      <td> - <u>[DEPRECATED]</u> returns the GMT datetime in a string
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="55.03">
-        <td> <strong>date</strong>.toISOString() </td>
-        <td> - returns the datetime ISO 8601 format
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.toISOString() </td>
+      <td> - returns the datetime ISO 8601 format
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="55.04">
-        <td> <strong>date</strong>.toJSON() </td>
-        <td> - returns the datetime in a date JSON string format (in ISO 8601 format)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.toJSON() </td>
+      <td> - returns the datetime in a date JSON string format (in ISO 8601 format)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="60.02">
-        <td> <strong>date</strong>.toLocaleDateString(<i>options</i>) </td>
-        <td> 
-            - returns the (local) date in a string which formated according to the user's computer settings (format can be changed manually <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString" target="_blank"><i>options</i> [link]</a>)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.toLocaleDateString(<i>options</i>) </td>
+      <td>
+        - returns the (local) date in a string which formated according to the user's computer settings (format can be changed manually <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString" target="_blank"><i>options</i> [link]</a>)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="60.01">
-        <td> <strong>date</strong>.toLocaleString(<i>options</i>) </td>
-        <td> 
-            - returns the (local) date and time in a string which formated according to the user's computer settings (format can be changed manually <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString" target="_blank"><i>options</i> [link]</a>)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.toLocaleString(<i>options</i>) </td>
+      <td>
+        - returns the (local) date and time in a string which formated according to the user's computer settings (format can be changed manually <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString" target="_blank"><i>options</i> [link]</a>)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="60.03">
-        <td> <strong>date</strong>.toLocaleTimeString(<i>options</i>) </td>
-        <td> 
-            - returns the (local) time in a string which formated according to the user's computer settings (format can be changed manually <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString" target="_blank"><i>options</i> [link]</a>)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.toLocaleTimeString(<i>options</i>) </td>
+      <td>
+        - returns the (local) time in a string which formated according to the user's computer settings (format can be changed manually <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString" target="_blank"><i>options</i> [link]</a>)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="50.01">
-        <td> <strong>date</strong>.toString() </td>
-        <td> - returns the local datetime in a string
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.toString() </td>
+      <td> - returns the local datetime in a string
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="55.01">
-        <td> <strong>date</strong>.toTimeString() </td>
-        <td> 
-            - returns the time portion in a string (local time) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.toTimeString() </td>
+      <td>
+        - returns the time portion in a string (local time)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="50.02">
-        <td> <strong>date</strong>.toUTCString() </td>
-        <td> - returns the UTC datetime in a string
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.toUTCString() </td>
+      <td> - returns the UTC datetime in a string
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="45.01">
-        <td> <strong>date</strong>.valueOf() </td>
-        <td> 
-            - returns the primitive value of the date object (a number which is the milliseconds elapsed since 1970 1st of January midnight UTC)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-        </td>
+      <td> <strong>date</strong>.valueOf() </td>
+      <td>
+        - returns the primitive value of the date object (a number which is the milliseconds elapsed since 1970 1st of January midnight UTC)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
     </tr>
-</table> 
-<h2 style="color:green;"><u> Notes : </u></h2>
-    <details class="example" id="notes">
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="https://www.w3schools.com/jsref/jsref_obj_date.asp" target="_blank">W3School JavaScript Date Methods Reference</a></p>
-    <p><a href="https://www.w3schools.com/js/js_dates.asp" target="_blank"> W3Schools JavaScript Dates </a></p>
-    <p><a href="https://www.w3schools.com/js/js_date_formats.asp" target="_blank"> W3Schools JavaScript Date Formats </a></p>
-    <p><a href="https://www.w3schools.com/js/js_date_methods.asp" target="_blank"> W3Schools JavaScript Date Methods </a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-<h2 style="color:darkblue;"><u> ISO 8601 date standard </u></h2>
-    <p> - the <u><b>ISO 8601 date standard</b></u> is a Universal Date Standard format, follows a strict standard, exemple: <mark>(2017-08-22T12:24:40Z)</mark> </p>
-    </span></p>
-    <pre class="syntax">
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://www.w3schools.com/jsref/jsref_obj_date.asp" target="_blank">W3School JavaScript Date Methods Reference</a></p>
+  <p><a href="https://www.w3schools.com/js/js_dates.asp" target="_blank"> W3Schools JavaScript Dates </a></p>
+  <p><a href="https://www.w3schools.com/js/js_date_formats.asp" target="_blank"> W3Schools JavaScript Date Formats </a></p>
+  <p><a href="https://www.w3schools.com/js/js_date_methods.asp" target="_blank"> W3Schools JavaScript Date Methods </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+    <p> - JavaScript Date object tracks time in UTC internally, but typically accepts input and produces output in the local time of the computer it's running on. It has very few facilities for working with time in other time zones </p>
+    <p> - the internal representation of a Date object is a single number 'timestamp', it represents UTC milliseconds elapsed since <mark>1970-01-01 00:00:00 UTC</mark> (without regard to leap seconds) </p>
+  <h2 style="color:darkblue;"><u> ISO 8601 date standard </u></h2>
+  <p> - the <u><b>ISO 8601 date standard</b></u> is a Universal Date Standard format, follows a strict standard, exemple: <mark>(2017-08-22T12:24:40Z)</mark> </p>
+  </span></p>
+  <pre class="syntax">
 SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</i>:<i>SS</i>                          
             <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</i>:<i>SS</i><em>Z</em>                                                       // UTC time (<em>Z</em> stands for "zero meridian")
             <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</i>:<i>SS</i>+|-<i>HH</i>:<i>MM</i>                                                // UTC time with adjusted time-zone 
     </pre>
-<details class="example">
-<summary> DEMO </summary>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     1998                                                                               // the year is required only!
     1998-06                    
@@ -758,27 +762,27 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
     1998-06-02T23:20:06Z                                                               // UTC time 
     1998-06-02T23:20:06+02:00                                                          // time with adjusted time zone (relative to UTC)
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> ISO VS <span style="background-color:white;">ISO UTC</span> </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> ISO VS <span style="background-color:white;">ISO UTC</span> </u></h4>
     <p> Time entered in both cases = "date 2005-06-20 Time 23:52:42" </p>
     <p id="ISO-date"></p>
-<script>
-    var x = new Date("2005-06-20T23:52:42");
-    var y = new Date("2005-06-20T23:52:42Z");
-    var a = new Date("2005-06-20T23:52:42+02:00");
-    var b = new Date("2005-06-20T23:52:42-02:00");
-    
-    document.getElementById('ISO-date').innerHTML = 
+    <script>
+      var x = new Date("2005-06-20T23:52:42");
+      var y = new Date("2005-06-20T23:52:42Z");
+      var a = new Date("2005-06-20T23:52:42+02:00");
+      var b = new Date("2005-06-20T23:52:42-02:00");
+
+      document.getElementById('ISO-date').innerHTML =
         x + " = ISO normal format " + "<br>" +
         y + " = ISO UTC format " + "<br>" +
         a + " = ISO UTC + 02:00" + " = Added +02:00 but browser substracts time (because this is relative to UTC!)".fontcolor('yellow') + "<br>" +
         b + " = ISO UTC - 02:00" + " = Subtracted -02:00 but browser adds time (because this is relative to UTC!)".fontcolor('yellow');
-</script>
+    </script>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p id="ISO-date"&gt;&lt;/p&gt;
 &lt;script&gt;
     var x = new Date("2005-06-20T23:52:42");
@@ -794,18 +798,18 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
 &lt;/script&gt;
     </pre>
     </details>
-<!----------------------------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> other date formats </u></h4>
+    <!----------------------------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> other date formats </u></h4>
     <p id="other-date"></p>
-<script>
-    document.getElementById('other-date').innerHTML =
+    <script>
+      document.getElementById('other-date').innerHTML =
         new Date("04/21/1985") + " = short date" + "<br>" +
         new Date("21 April 1985") + " = long date (with letters)" + "<br>" +
         new Date("Sun Apr 21 1985 21:15:03 GMT+0100 (US Time)") + " = full JavaScript format (day name and names in paranthesis are ignored)";
-</script>
+    </script>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p id="other-date"&gt;&lt;/p&gt;
 &lt;script&gt;
     document.getElementById('other-date').innerHTML =
@@ -815,14 +819,14 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
 &lt;/script&gt;
     </pre>
     </details>
-</details>
-<!----------------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> The <mark>new Date()</mark> / <mark>Date()</mark> constructor </u></h2>
-    <p> - in JavaScript countes the time in milliseconds from <u style="background-color:yellow;">January 1st, 1970, 00:00:00 UTC (called "Zero Time")</u> </p>
-    <p> - the <mark>Date()</mark> constructor creates a date object, <u>but the displayed date and time depends on the interface</u> (ex: the Browser displayes the local time)</p>
-<details class="example">
-<summary> DEMO </summary>
+  </details>
+  <!----------------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>new Date()</mark> / <mark>Date()</mark> constructor </u></h2>
+  <p> - in JavaScript countes the time in milliseconds from <u style="background-color:yellow;">January 1st, 1970, 00:00:00 UTC (called "Zero Time")</u> </p>
+  <p> - the <mark>Date()</mark> constructor creates a date object, <u>but the displayed date and time depends on the interface</u> (ex: the Browser displayes the local time)</p>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     new Date(1403256444443);                                                           // -> "Fri Jun 20 2014 12:27:24 GMT+0300 (heure d’été d’Europe de l’Est)"    // milliseconds (zero-time = counterd from January 1st, 1970, 00:00:00 UTC)   
     new Date(2014, 05, 20, 12, 27, 24);                                                // -> "Fri Jun 20 2014 12:27:24 GMT+0300 (heure d’été d’Europe de l’Est)"    // numbers          // -! 5 means June (months are indexed 0 = January)   
@@ -831,28 +835,28 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
     
     new Date("2014-06-20T12:27:24Z");                                                  // -> "Fri Jun 20 2014 15:27:24 GMT+0300 (heure d’été d’Europe de l’Est)"    // UTC time specified so converted back local time    
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> TEST </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> TEST </u></h4>
     <p id="date"></p>
-<script>
-    var a = Date();
-    var b = new Date();
-    var c = new Date('April 21, 1985 21:21:21');            // initiated form dateString
-    var d = new Date(1903256444443);                        // initiated from millisecons counted form 1970 January 1st 00:00:00 (Zero Time)
-    var e = new Date(1985, 03, 21, 21, 21, 21, 457);        // initiated form numbers (JS conts months from 0)
-    
-    document.getElementById('date').innerHTML =
+    <script>
+      var a = Date();
+      var b = new Date();
+      var c = new Date('April 21, 1985 21:21:21');            // initiated form dateString
+      var d = new Date(1903256444443);                        // initiated from millisecons counted form 1970 January 1st 00:00:00 (Zero Time)
+      var e = new Date(1985, 03, 21, 21, 21, 21, 457);        // initiated form numbers (JS conts months from 0)
+
+      document.getElementById('date').innerHTML =
         a + " = " + typeof a + " (Current Time) " + "<br>" +
         b + " = " + typeof b + " (Current Time)" + "<br>" +
         c + " = " + typeof c + " (Initiated Time)" + "<br>" +
         d + " = " + typeof d + " (Initiated Time)" + "<br>" +
         e + " = " + typeof e + " (Initiated Time)";
-</script>
+    </script>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p id="date"&gt;&lt;/p&gt;
 &lt;script&gt;
     var a = Date();
@@ -870,13 +874,13 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
 &lt;/script&gt;
     </pre>
     </details>
-</details>
-<!-----------------------------------------------------------------------------------------------------------------------------------> 
-<hr>
-<h2 style="color:darkblue;"><u> Getter Methods <mark>getDate()</mark> / <mark>getDay()</mark> / <mark>getFullYear()</mark> / <mark>getHours()</mark> / <mark>getMilliseconds()</mark> / <mark>getMinutes()</mark> / <mark>getMonth()</mark> / <mark>getSeconds()</mark> / <mark>getTime()</mark>
-    / <mark>getUTCDate()</mark> / <mark>getUTCDay()</mark> / <mark>getUTCFullYear()</mark> / <mark>getUTCHours()</mark> / <mark>getUTCMilliseconds()</mark> / <mark>getUTCMinutes()</mark> / <mark>getUTCMonth()</mark> / <mark>getUTCSeconds()</mark> / <mark>getTimezoneOffset()</mark></u></h2>
-<details class="example">
-<summary> DEMO </summary>
+  </details>
+  <!----------------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> Getter Methods <mark>getDate()</mark> / <mark>getDay()</mark> / <mark>getFullYear()</mark> / <mark>getHours()</mark> / <mark>getMilliseconds()</mark> / <mark>getMinutes()</mark> / <mark>getMonth()</mark> / <mark>getSeconds()</mark> / <mark>getTime()</mark>
+      / <mark>getUTCDate()</mark> / <mark>getUTCDay()</mark> / <mark>getUTCFullYear()</mark> / <mark>getUTCHours()</mark> / <mark>getUTCMilliseconds()</mark> / <mark>getUTCMinutes()</mark> / <mark>getUTCMonth()</mark> / <mark>getUTCSeconds()</mark> / <mark>getTimezoneOffset()</mark></u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     var myTimeNow = new Date();                                                        // this the locale time right now 
     myTimeNow;                                                                         // -> "Thu Apr 25 2019 18:02:30 GMT+0300 (heure d’été d’Europe de l’Est)"
@@ -904,35 +908,35 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
     myTimeNow.getTime();                                                               // -> 1556204550000  // millisecond value of the date object (UTC time since Zero Time)   
     myTimeNow.getTimezoneOffset();                                                     // -> -180           // time difference between the local and UTC time (relative to local time) (removing 180 minutes from the local time we are getting the UTC time)     
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> Get Time </u></h4>
-    <p id="date-1" ></p>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> Get Time </u></h4>
+    <p id="date-1"></p>
     <p id="date-2" style="background-color:gray;"></p>
-<script>
-    var dt = new Date("1985-04-21T20:35:42.547");
-    var dt_now = new Date();
-    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var months = ["January", "February", "March", "April", "May", "June", "Jully", "August", "September", "October", "November", "December"];
-    
-    document.getElementById('date-1').innerHTML = 
+    <script>
+      var dt = new Date("1985-04-21T20:35:42.547");
+      var dt_now = new Date();
+      var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      var months = ["January", "February", "March", "April", "May", "June", "Jully", "August", "September", "October", "November", "December"];
+
+      document.getElementById('date-1').innerHTML =
         "The date is = " + dt + "<br>" +
         ".getDate() = ".fontcolor('white') + dt.getDate() + "<br>" +
-            ".getDay() = ".fontcolor('white') + dt.getDay() + 
-            " / (0-6, 0=Sunday, 1=Monday etc.) or this metod combined with an array with the days of the week = ".fontcolor('red') + 
+        ".getDay() = ".fontcolor('white') + dt.getDay() +
+        " / (0-6, 0=Sunday, 1=Monday etc.) or this metod combined with an array with the days of the week = ".fontcolor('red') +
         days[dt.getDay()] + "<br>" +
         ".getFullYear() = ".fontcolor('white') + dt.getFullYear() + "<br>" +
         ".getHours() = ".fontcolor('white') + dt.getHours() + "<br>" +
         ".getMilliseconds() = ".fontcolor('white') + dt.getMilliseconds() + "<br>" +
         ".getMinutes() = ".fontcolor('white') + dt.getMinutes() + "<br>" +
-            ".getMonth() = ".fontcolor('white') + dt.getMonth() +
-            " / (0-11, JS counts months form 0, 0=January 1=February etc.) this method can be combined with an array containing the month names = ".fontcolor('red') +
+        ".getMonth() = ".fontcolor('white') + dt.getMonth() +
+        " / (0-11, JS counts months form 0, 0=January 1=February etc.) this method can be combined with an array containing the month names = ".fontcolor('red') +
         months[dt.getMonth()] + "<br>" +
         ".getSeconds() = ".fontcolor('white') + dt.getSeconds() + "<br>" +
         ".getTime() = ".fontcolor('white') + dt.getTime() + " (returns the Time in Milliseconds form 1970 1st of January)";
 
-    document.getElementById('date-2').innerHTML =
+      document.getElementById('date-2').innerHTML =
         "The date is Today! = " + dt_now + "<br>" +
         ".getDate() = ".fontcolor('white') + dt_now.getDate() + "<br>" +
         ".getDay() = ".fontcolor('white') + dt_now.getDay() + " / " + days[dt_now.getDay()] + "<br>" +
@@ -943,10 +947,10 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
         ".getMonth() = ".fontcolor('white') + dt_now.getMonth() + " / " + months[dt_now.getMonth()] + "<br>" +
         ".getSeconds() = ".fontcolor('white') + dt_now.getSeconds() + "<br>" +
         ".getTime() = ".fontcolor('white') + dt_now.getTime();
-</script>
+    </script>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p id="date-1"&gt;&lt;/p&gt;
     &lt;p id="date-2" style="background-color:gray;"&gt;&lt;/p&gt;
 &lt;script&gt;
@@ -985,28 +989,28 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
 &lt;/script&gt;
     </pre>
     </details>
-<!-----------------------------------------------------------------------------------------------------------------------------------> 
-<h4 style="color:darkblue;"><u> Get UTC Time </u></h4>
+    <!----------------------------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> Get UTC Time </u></h4>
     <p id="utc-date"></p>
-<script>
-    var x = new Date("2014-09-19T06:25:32.666");
-    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var months = ["January", "February", "March", "April", "May", "June", "Jully", "August", "September", "October", "November", "December"];
-    
-    document.getElementById('utc-date').innerHTML =
-    "The set Date is = " + x + "<br>" +
-    ".getUTCDate() = ".fontcolor('white') + x.getUTCDate() + "<br>" +
-    ".getUTCDay() = ".fontcolor('white') + x.getUTCDay() + " / " + days[x.getDay()] + "<br>" +
-    ".getUTCFullYear() = ".fontcolor('white') + x.getUTCFullYear() + "<br>" +
-    ".getUTCHours() = ".fontcolor('white') + x.getUTCHours() + "<br>" +
-    ".getUTCMilliseconds() = ".fontcolor('white') + x.getUTCMilliseconds() + "<br>" +
-    ".getUTCMinutes() = ".fontcolor('white') + x.getUTCMinutes() + "<br>" +
-    ".getUTCMonth() = ".fontcolor('white') + x.getUTCMonth() + " / " + months[x.getMonth()] + "<br>" +
-    ".getUTCSeconds() = ".fontcolor('white') + x.getUTCSeconds();
-</script>
+    <script>
+      var x = new Date("2014-09-19T06:25:32.666");
+      var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      var months = ["January", "February", "March", "April", "May", "June", "Jully", "August", "September", "October", "November", "December"];
+
+      document.getElementById('utc-date').innerHTML =
+        "The set Date is = " + x + "<br>" +
+        ".getUTCDate() = ".fontcolor('white') + x.getUTCDate() + "<br>" +
+        ".getUTCDay() = ".fontcolor('white') + x.getUTCDay() + " / " + days[x.getDay()] + "<br>" +
+        ".getUTCFullYear() = ".fontcolor('white') + x.getUTCFullYear() + "<br>" +
+        ".getUTCHours() = ".fontcolor('white') + x.getUTCHours() + "<br>" +
+        ".getUTCMilliseconds() = ".fontcolor('white') + x.getUTCMilliseconds() + "<br>" +
+        ".getUTCMinutes() = ".fontcolor('white') + x.getUTCMinutes() + "<br>" +
+        ".getUTCMonth() = ".fontcolor('white') + x.getUTCMonth() + " / " + months[x.getMonth()] + "<br>" +
+        ".getUTCSeconds() = ".fontcolor('white') + x.getUTCSeconds();
+    </script>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p id="utc-date"&gt;&lt;/p&gt;
 &lt;script&gt;
     var x = new Date("2014-09-19T06:25:32.666");
@@ -1026,21 +1030,21 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
 &lt;/script&gt;
     </pre>
     </details>
-<!-----------------------------------------------------------------------------------------------------------------------------------> 
-<h4 style="color:darkblue;"><u> TimeZone Difference </u></h4>
+    <!----------------------------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> TimeZone Difference </u></h4>
     <p> Try to change local time you'll see the difference! </p>
     <p id="zone"></p>
-<script>
-    var a = new Date();
-    var b = new Date('2018-01-01T01:30:00');
-    
-    document.getElementById('zone').innerHTML = 
+    <script>
+      var a = new Date();
+      var b = new Date('2018-01-01T01:30:00');
+
+      document.getElementById('zone').innerHTML =
         "The time now is = " + a + " // " + "The timezone difference is = ".fontcolor('green') + a.getTimezoneOffset() + " minutes" + "<br>" +
         "The time is = " + b + " // " + "The timezone difference is = ".fontcolor('green') + b.getTimezoneOffset() + " minutes";
-</script>
+    </script>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p id="zone"&gt;&lt;/p&gt;
 &lt;scriptv
     var a = new Date();
@@ -1052,21 +1056,21 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
 &lt;/script&gt;
     </pre>
     </details>
-<!-----------------------------------------------------------------------------------------------------------------------------------> 
-<h4 style="color:darkblue;"><u> Simple Practice </u></h4>
+    <!----------------------------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> Simple Practice </u></h4>
     <p id="s_practice"></p>
-<script>
-    var x = new Date();
-    var heure = x.getHours();
-    var minutes = x.getMinutes();
-    var ma = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
-    var time = ma[x.getDay()] + " " + heure + ":" + minutes;
-    
-    document.getElementById('s_practice').innerHTML = "Aujourd'hui on est le " + time;
-</script>
+    <script>
+      var x = new Date();
+      var heure = x.getHours();
+      var minutes = x.getMinutes();
+      var ma = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+      var time = ma[x.getDay()] + " " + heure + ":" + minutes;
+
+      document.getElementById('s_practice').innerHTML = "Aujourd'hui on est le " + time;
+    </script>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p id="s_practice"&gt;&lt;/p&gt;
 &lt;script&gt;
     var x = new Date();
@@ -1079,13 +1083,13 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
 &lt;/script&gt;
     </pre>
     </details>
-</details>
-<!----------------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> Setter Methods <mark>setDate()</mark> / <mark>setFullYear()</mark> / <mark>setHours()</mark> / <mark>setMilliseconds()</mark> / <mark>setMinutes()</mark> / <mark>setMonth()</mark> / <mark>setSeconds()</mark> / <mark>setTime()</mark>   
-    <mark>setUTCDate()</mark> / <mark>setUTCFullYear()</mark> / <mark>setUTCHours()</mark> / <mark>setUTCMilliseconds()</mark> / <mark>setUTCMinutes()</mark> / <mark>setUTCMonth()</mark> / <mark>setUTCSeconds()</mark> </u></h2>
-<details class="example">
-<summary> DEMO </summary>
+  </details>
+  <!----------------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> Setter Methods <mark>setDate()</mark> / <mark>setFullYear()</mark> / <mark>setHours()</mark> / <mark>setMilliseconds()</mark> / <mark>setMinutes()</mark> / <mark>setMonth()</mark> / <mark>setSeconds()</mark> / <mark>setTime()</mark>
+      <mark>setUTCDate()</mark> / <mark>setUTCFullYear()</mark> / <mark>setUTCHours()</mark> / <mark>setUTCMilliseconds()</mark> / <mark>setUTCMinutes()</mark> / <mark>setUTCMonth()</mark> / <mark>setUTCSeconds()</mark> </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     var myTimeNow = new Date();
     myTimeNow;                                                                         // -> "Thu Apr 25 2019 18:02:30 GMT+0300 (heure d’été d’Europe de l’Est)"
@@ -1117,29 +1121,29 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
     myTimeNow.setHours(-24),                  myTimeNow;                               // -> "Wed Apr 24 2019 00:02:30 GMT+0300 (heure d’été d’Europe de l’Est)"    // 0 hour of the previous day   
     myTimeNow.setHours(80),                   myTimeNow;                               // -> "Sun Apr 28 2019 08:02:30 GMT+0300 (heure d’été d’Europe de l’Est)"    // 3 days an 8 hours ahead    
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> Set Time / Set UTC Time</u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> Set Time / Set UTC Time</u></h4>
     <p id="set-time"></p>
-<script>
-    var x = new Date();
-    var xa = new Date();    xa.setDate(8);                      // Set methods update their parent object!
-    var xb = new Date();    xb.setFullYear(1999); 
-    var xb1 = new Date();   xb1.setFullYear(2001, 03);
-    var xb2 = new Date();   xb2.setFullYear(2010, 05, 19);
-    var xc = new Date();    xc.setHours(22);
-    var xc1 = new Date();   xc1.setHours(15, 34);
-    var xc2 = new Date();   xc2.setHours(03, 22, 01);
-    var xd = new Date();    xd.setMilliseconds(999);
-    var xe = new Date();    xe.setMinutes(10);
-    var xe1 = new Date();   xe1.setMinutes(30, 30);
-    var xf = new Date();    xf.setMonth(0);
-    var xf1 = new Date();   xf1.setMonth(6, 23);
-    var xg = new Date();    xg.setSeconds(15);
-    var xh = new Date();    xh.setTime(-2332403882588);
+    <script>
+      var x = new Date();
+      var xa = new Date(); xa.setDate(8);                      // Set methods update their parent object!
+      var xb = new Date(); xb.setFullYear(1999);
+      var xb1 = new Date(); xb1.setFullYear(2001, 03);
+      var xb2 = new Date(); xb2.setFullYear(2010, 05, 19);
+      var xc = new Date(); xc.setHours(22);
+      var xc1 = new Date(); xc1.setHours(15, 34);
+      var xc2 = new Date(); xc2.setHours(03, 22, 01);
+      var xd = new Date(); xd.setMilliseconds(999);
+      var xe = new Date(); xe.setMinutes(10);
+      var xe1 = new Date(); xe1.setMinutes(30, 30);
+      var xf = new Date(); xf.setMonth(0);
+      var xf1 = new Date(); xf1.setMonth(6, 23);
+      var xg = new Date(); xg.setSeconds(15);
+      var xh = new Date(); xh.setTime(-2332403882588);
 
-    document.getElementById('set-time').innerHTML = "Today's date is = " + x + "<br>" +
+      document.getElementById('set-time').innerHTML = "Today's date is = " + x + "<br>" +
         ".setDate() method ".fontcolor('yellow') + " / Date set to \"8\" = ".fontcolor('white') + xa + "<br>" +
         ".setFullYear() method ".fontcolor('yellow') + " / Year set to \"1999\" = ".fontcolor('white') + xb + "<br>" +
         ".setFullYear() method ".fontcolor('yellow') + " / Year set to \"2001\" and month to \"april\" = ".fontcolor('white') + xb1 + "<br>" +
@@ -1154,10 +1158,10 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
         ".setMonth() method ".fontcolor('yellow') + " / Month set to \"July\" and day to \"23\" = ".fontcolor('white') + xf1 + "<br>" +
         ".setSeconds() method ".fontcolor('yellow') + " / Seconds set to \"15\" = ".fontcolor('white') + xg + "<br>" +
         ".setTime() method ".fontcolor('yellow') + " / \"2332403882588\" milliseconds subtracted form 1st of January 1970 = ".fontcolor('white') + xh;
-</script>
+    </script>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p id="set-time"&gt;&lt;/p&gt;
 &lt;script&gt;
     var x = new Date();
@@ -1194,18 +1198,18 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
 &lt;/script&gt;
     </pre>
     </details>
-<!----------------------------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> TEST-2 </u></h4>
+    <!----------------------------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> TEST-2 </u></h4>
     <p id="set-time-utc"></p>
-<script>
-    var x = new Date();
-    x.setUTCHours(10); x.setUTCDate(10);
-    
-    document.getElementById('set-time-utc').innerHTML = "Today's time is modified to 10th day and 10 hours UTC (The Result is Displayed in UTC) = ".fontcolor('yellow') + x;
-</script>
+    <script>
+      var x = new Date();
+      x.setUTCHours(10); x.setUTCDate(10);
+
+      document.getElementById('set-time-utc').innerHTML = "Today's time is modified to 10th day and 10 hours UTC (The Result is Displayed in UTC) = ".fontcolor('yellow') + x;
+    </script>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p id="set-time-utc"&gt;&lt;/p&gt;
 &lt;script&gt;
     var x = new Date();
@@ -1215,22 +1219,22 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
 &lt;/script&gt;
     </pre>
     </details>
-<!----------------------------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> Setting time to -48 hours earlier and 15 days later! </u></h4>
+    <!----------------------------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> Setting time to -48 hours earlier and 15 days later! </u></h4>
     <p id="minus48hours"></p>
     <p id="addDays"></p>
-<script>
-    var hr = new Date();
-    hr.setHours(hr.getHours() - 48);
-    var x = new Date();
-    x.setDate(x.getDate() + 15);
-    
-    document.getElementById('minus48hours').innerHTML = "Time 48 hours earlier = " + hr;
-    document.getElementById('addDays').innerHTML = "Time 15 days later = " + x;
-</script>
+    <script>
+      var hr = new Date();
+      hr.setHours(hr.getHours() - 48);
+      var x = new Date();
+      x.setDate(x.getDate() + 15);
+
+      document.getElementById('minus48hours').innerHTML = "Time 48 hours earlier = " + hr;
+      document.getElementById('addDays').innerHTML = "Time 15 days later = " + x;
+    </script>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p id="minus48hours"&gt;&lt;/p&gt;
     &lt;p id="addDays"&gt;&lt;/p&gt;
 &lt;script&gt;
@@ -1244,18 +1248,18 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
 &lt;/script&gt;
     </pre>
     </details>
-<!----------------------------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> Display last day of previous month </u></h4>
+    <!----------------------------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> Display last day of previous month </u></h4>
     <p id="last-day"></p>
-<script>
-    var x = new Date();
-    x.setMonth(x.getMonth(), 0);            // the "0" displays the last day of previous month
-    
-    document.getElementById('last-day').innerHTML = "Last day of previous month displayed = " + x;
-</script>
+    <script>
+      var x = new Date();
+      x.setMonth(x.getMonth(), 0);            // the "0" displays the last day of previous month
+
+      document.getElementById('last-day').innerHTML = "Last day of previous month displayed = " + x;
+    </script>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p id="last-day"&gt;&lt;/p&gt;
 &lt;script&gt;
     var x = new Date();
@@ -1265,25 +1269,25 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
 &lt;/script&gt;
     </pre>
     </details>
-<!----------------------------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> set UTC time TEST </u></h4>
+    <!----------------------------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> set UTC time TEST </u></h4>
     <p style="background-color:yellow;"> - the returned date string of the date object is always displayed in <u>LOCALE</u> time! this can trick you CAREFUL!</p>
     <p id="outputTime"></p>
-<script>
-    var dateTest = new Date("2019-04-21T12:00");
-    
-    var printTime = dateTest + " <- Original Time".fontcolor("green") + "<br>";
-    document.getElementById("outputTime").innerHTML = printTime;
-    
-    dateTest.setUTCHours(13);                                                   // set a UTC time 
-    printTime += dateTest + " <- UTC hours updated to 13 (UTC time is updated but the displayed time is always local!)".fontcolor("red");
-    
-    document.getElementById("outputTime").innerHTML = printTime;
-</script>
+    <script>
+      var dateTest = new Date("2019-04-21T12:00");
 
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+      var printTime = dateTest + " <- Original Time".fontcolor("green") + "<br>";
+      document.getElementById("outputTime").innerHTML = printTime;
+
+      dateTest.setUTCHours(13);                                                   // set a UTC time 
+      printTime += dateTest + " <- UTC hours updated to 13 (UTC time is updated but the displayed time is always local!)".fontcolor("red");
+
+      document.getElementById("outputTime").innerHTML = printTime;
+    </script>
+
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p id="outputTime"&gt;&lt;/p&gt;
 &lt;script&gt;
     var dateTest = new Date("2019-04-21T12:00");
@@ -1297,19 +1301,19 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
     document.getElementById("outputTime").innerHTML = printTime;
 &lt;/script&gt;
         </pre>
-        </details>
-<!----------------------------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>getTime()</mark> / <mark>setTime()</mark> get/set local time TEST </u></h4>
+    </details>
+    <!----------------------------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>getTime()</mark> / <mark>setTime()</mark> get/set local time TEST </u></h4>
     <p> - the <mark>getTime()</mark> and <mark>setTime()</mark> methods are get/set the <u>UTC</u> time of the Date object </p>
-<script>
-    var testTime = new Date(0);                     // zero time set 
-    
-    testTime.setTime(0);                            // this sets the time in UTC 
-    var get_theTime = testTime.getTime();           // -> 0              // get the UTC time (not the local time)
-</script>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <script>
+      var testTime = new Date(0);                     // zero time set 
+
+      testTime.setTime(0);                            // this sets the time in UTC 
+      var get_theTime = testTime.getTime();           // -> 0              // get the UTC time (not the local time)
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 &lt;script&gt;
     var testTime = new Date(0);                     // zero time set 
     
@@ -1317,13 +1321,13 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
     var get_theTime = testTime.getTime();           // -> 0              // get the UTC time (not the local time)
 &lt;/script&gt;
         </pre>
-        </details>
-</details>
-<!----------------------------------------------------------------------------------------------------------------------------------->   
-<hr>
-<h2 style="color:darkblue;"><u> The <mark>now()</mark> / <mark>parse()</mark> / <mark>UTC()</mark> / <mark>valueOf()</mark> / <mark>toString()</mark> / <mark>toUTCString()</mark> / <mark>toTimeString()</mark> / <mark>toDateString()</mark> / <mark>toISOString()</mark> / <mark>toJSON()</mark> / <mark>toLocaleDateString()</mark> / <mark>toLocaleTimeString()</mark> / <mark>toLocaleString()</mark> methods </u></h2>
-<details class="example">
-<summary> DEMO </summary>
+    </details>
+  </details>
+  <!----------------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>now()</mark> / <mark>parse()</mark> / <mark>UTC()</mark> / <mark>valueOf()</mark> / <mark>toString()</mark> / <mark>toUTCString()</mark> / <mark>toTimeString()</mark> / <mark>toDateString()</mark> / <mark>toISOString()</mark> / <mark>toJSON()</mark> / <mark>toLocaleDateString()</mark> / <mark>toLocaleTimeString()</mark> / <mark>toLocaleString()</mark> methods </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     var myTime = new Date();  
      
@@ -1354,26 +1358,26 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
     new Date().toLocaleDateString();                                                   // -> "6/4/2018"                 // the returned datetime format is set according to the user's computer setting      
     new Date().toLocaleTimeString();                                                   // -> "8:01:49 PM"               // the returned datetime format is set according to the user's computer setting          
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> TEST </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> TEST </u></h4>
     <p id="date-input" style="line-height:1.4em;"></p>
-<script>
-    var x = Date.now();
-    var xa = x.valueOf();
-    var y = Date.parse('2001-10-17T04:58:23.738');                  
-    var z = Date.UTC(2001, 09, 17, 04, 58, 23, 738);           // Does Not Accept ISO time
-    
-    document.getElementById('date-input').innerHTML = 
+    <script>
+      var x = Date.now();
+      var xa = x.valueOf();
+      var y = Date.parse('2001-10-17T04:58:23.738');
+      var z = Date.UTC(2001, 09, 17, 04, 58, 23, 738);           // Does Not Accept ISO time
+
+      document.getElementById('date-input').innerHTML =
         "Date.now() = ".fontcolor('white') + x + "<br>" +
         "x.valueOf() = ".fontcolor('white') + xa + "<br>" +
         "Date.parse('2001-10-17T04:58:23.738') = ".fontcolor('white') + y + "<br>" +
         "Date.UTC(2001, 09, 17, 04, 58, 23, 738) = ".fontcolor('white') + z;
-</script>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
         &lt;p id="date-input" style="line-height:1.4em;"&gt;&lt;/p&gt;
     &lt;script&gt;
         var x = Date.now();
@@ -1388,21 +1392,21 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
             "Date.UTC(2001, 09, 17, 04, 58, 23, 738) = ".fontcolor('white') + z;
     &lt;/script&gt;
         </pre>
-        </details>
-<!----------------------------------------------------------------------------------------------------------------------------------->   
-<h4 style="color:darkblue;"><u> Countdown timer between now and the 16th of December 2017 </u></h4>
+    </details>
+    <!----------------------------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> Countdown timer between now and the 16th of December 2017 </u></h4>
     <p> Time difference in day between the 16th of December 2017 and now is <span id="finale" style="background-color:red; font-weight:bold; color:white; font-size:1.3em;"></span></p>
-<script>
-    var a = Date.parse('2017-12-16T09:00');
-    var b = Date.now();
-    var x = (a - b) / 86400000;
-    var y = x.toFixed(0);
+    <script>
+      var a = Date.parse('2017-12-16T09:00');
+      var b = Date.now();
+      var x = (a - b) / 86400000;
+      var y = x.toFixed(0);
 
-    document.getElementById('finale').innerHTML = y;
-</script>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+      document.getElementById('finale').innerHTML = y;
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
         &lt;p&gt; Time difference in day between the 16th of December 2017 and now is &lt;span id="finale" style="background-color:red; font-weight:bold; color:white; font-size:1.3em;"&gt;&lt;/span&gt;&lt;/p&gt;
         &lt;script>
             var a = Date.parse('2017-12-16T09:00');
@@ -1413,15 +1417,15 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
             document.getElementById('finale').innerHTML = y;
         &lt;/script&gt;
         </pre>
-        </details>
-<h4><u> TEST 1 </u></h4>
+    </details>
+    <h4><u> TEST 1 </u></h4>
     <p id="toString" style="line-height:1.4em;"></p>
-<script>
-    var x = new Date("2004-09-21T06:30:53");
-    var a = x.toString();
-    var b = x.toJSON();
-    
-    document.getElementById('toString').innerHTML = "The Time is = " + x + "<br>" +
+    <script>
+      var x = new Date("2004-09-21T06:30:53");
+      var a = x.toString();
+      var b = x.toJSON();
+
+      document.getElementById('toString').innerHTML = "The Time is = " + x + "<br>" +
         ".toString() = ".fontcolor('white') + a + " = " + typeof a + "<br>" +
         ".toUTCString() = ".fontcolor('white') + x.toUTCString() + "<br>" +
         ".toTimeString() = ".fontcolor('white') + x.toTimeString() + "<br>" +
@@ -1431,10 +1435,10 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
         ".toLocaleDateString() = ".fontcolor('white') + x.toLocaleDateString() + "<br>" +
         ".toLocaleTimeString() = ".fontcolor('white') + x.toLocaleTimeString() + "<br>" +
         ".toLocaleString() = ".fontcolor('white') + x.toLocaleString();
-</script>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
         &lt;p id="toString" style="line-height:1.4em;"&gt;&lt;/p&gt;
     &lt;script&gt;
         var x = new Date("2004-09-21T06:30:53");
@@ -1453,13 +1457,14 @@ SYNTAX :    <strong>YYYY</strong>-<i>MM</i>-<i>DD</i><em>T</em><i>HH</i>:<i>MM</
             ".toLocaleString() = ".fontcolor('white') + x.toLocaleString();
     &lt;/script&gt;
         </pre>
-        </details>
-        
-        
-        
-</details>    
-    
-    
-    <br><br>
+    </details>
+
+
+
+  </details>
+
+
+  <br><br>
 </body>
+
 </html>
