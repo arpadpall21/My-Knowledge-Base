@@ -59,7 +59,7 @@
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
   <p> - RabbitMQ is an advanced message broker that offerst several messaging patterns to solve different messaging problems </p>
   <p> - RabbitMQ runs as a daemon/service on unix systems, but most comonly used in a Docker container </p>
-  <p> - the service console can be accessed by a web app (<mark>15672</mark> port) or on the command line (through the <mark>rabbitmqctl</mark> command) </p>
+  <p> - the web app service console can be accessed on <mark>localhost:15672</mark> (default: <mark>guest</mark> user & password) or on the command line (through the <mark>rabbitmqctl</mark> command) </p>
   <p> - programming languages use libraries to work with RabbitMQ (Python uses <mark>pika</mark>, JavaScript uses <mark>amqplib</mark>) </p> 
   <p> - any authorized connected pair can create queues or exchanges in the RabbitMQ service <u>(creating queues or exchanges is idempotent, however trying to recreate the same item with different parameters will fail)</u> </p>
   <p> - by default from a queue messages are published in Round-Robbin fashion, this can be changed to distribute messages to the next free consumer (for efficient load distribution) </p>
@@ -135,6 +135,14 @@
     channel.start_consuming()
     </pre>
   </details>
+  <!---------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> RabbitMQ server </h2>
+  <p> - by default the RabbitMQ server runs on <mark class="mark">localhost</mark> and clients can access if only from <mark class="mark">localhost</mark> (can be configured for remote access) </p>
+  <p> - RabbitMQ supports virtual hosts for separate configurations (default vHost <mark>/</mark>) </p>
+  <p> - by default the memory usage is up 40% of the RAM </p>
+  <p> - by default the disk space usage is not limited (stops using disk if less than 50MB left) </p>
+  <p> - advanced settings can be configured by the config file <a href="https://www.rabbitmq.com/configure.html" target="_blank">[link]</a> or by the <mark>rabbitmqctl</mark> CLI </p>
   <!---------------------------------------------------------------------------------->
   <hr>
   <h2 class="headerExtra"> Messaging Patterns </h2>
@@ -914,105 +922,6 @@
     });
     </pre>
   </details>
-  <!--
----------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------
-    - weather broadcast demo maybe???
-        - clients that are interested in some topics???
-    
-    
-    
-    
-    - confgurations (check how much do you need to know about this)
-        - what about authentication?
-        - how many messages can be stored in a single queue and for how long?
-    
-    
-    
-?????????????????????????????????????????????????????????????????????????????????????????????
-WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
-?????????????????????????????????????????????????????????????????????????????????????????????
-    - what is the memory limit          -> physical hardware limit (limited by configs)
-      - single queue
-      - all rabbitmq
-    
-    
-    
--->
-
-
-
-
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-
-
-  <h2 class="headerExtra"><u> Title 1 </u></h2>
-  <h2 class="header"> Title 1.1 </h2>
-  <h3 class="header"> Title 1.1.1 </h3>
-  <h4 class="header"> Title 1.1.1.1 </h4>
-  <p> - stuff to learn <mark>syntax or command (or some tchnical stuff)</mark> bla bla bla </p>
-  <p> - stuff to learn <mark class="mark">highlights like file names and other things</mark> bla bla bla </p>
-  <p style="text-decoration:underline;"> - important information is underlined </p>
-  <p style="color:yellow;"> - very important information is written with yellow colors </p>
-  <p style="background-color:yellow;"> - highly important information has yellow background color </p>
-  <div style="background-color:red;">
-    <p> - red background block means not learned or not tested information! </p>
-    <p> - </p>
-  </div>
-
-  <pre class="syntax">
-SYNTAX :    main syntax
-            <em>literally used </em>
-            <small>literally used optional </small>
-            <prot style="color:#049500;">prototype chain</prot>
-            <strong>required value </strong>
-            <i>optional value </i>
-                - some descriptions will come here (like arguments)
-                - ??? (3 question marks) in syntax means not tested or not learned yet
-                
-            <span class="openable"> this is an openable element<div>
-                <p> - openable elements listed here in paragraphs </p>
-                <p> - </p>
-            </div></span>
-    </pre>
-
-  <details class="example">
-    <summary> DEMO (can be pseudocode) </summary>
-    <pre>
-    examples of the current lessons 
-    
-// -----------------------------------------
-
-// -----------------------------------------
-    </pre>
-  </details>
-
-  <pre class="cmd">
-    command line demo 
-    </pre>
-  <pre class="formula">
-    formula code (like conversion meter...)
-    </pre>
-  <details class="example">
-    <summary> Example : </summary>
-    <h4 style="color:darkblue;"><u> example title </u></h4>
-    <p> - live tests will come here </p>
-    <details>
-      <summary> CODE : </summary>
-      <pre>
-    copy of the exaple code 
-        </pre>
-    </details>
-  </details>
-  <!---------------------------------------------------------------------------------------------------------------------------------->
-  <hr>
-
-  <h2 class="test" style=""><a href="TEST/index.html"> TEST > </a></h2>
 
 
   <br><br>

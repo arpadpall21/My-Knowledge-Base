@@ -175,7 +175,7 @@
       <td>
         - list open files on the system <br>
         <small>[options]</small> <br>
-        - (<small>-i tcp|udp:<i>port</i></small>) network access files only (with filtering options) <br>
+        - (<small>-i tcp|udp:<i>port</i></small>) network access file descriptors only (with filtering options) <br>
         - (<small>-n</small>) prints IPs instead of hostnames <br>
         - (<small>-P</small>) prints ports
       </td>
@@ -776,8 +776,9 @@
         <small>[options]</small><br>
         - (<small>-i</small>) case-insensitive search <br>
         - (<small>-n</small>) print line numb with output lines <br>
-        - (<small>-h</small>) print only the output lines (without the source file path) <br>
-        - (<small>-o</small>) print only the matched part of the matched line <br>
+        - (<small>-B <i>int</i></small>) print nr of lines before the match <br>
+        - (<small>-A <i>int</i></small>) print nr of lines after the match <br>
+        
         - (<small>-v</small>) print everything other than the matched result
       </td>
     </tr>
