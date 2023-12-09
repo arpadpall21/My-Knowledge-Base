@@ -4,8 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title> Azure </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../../Assets/stylesPages.css">
   <script src="../../Assets/scriptPages.js"></script>
@@ -20,8 +19,7 @@
   <br>
   <details class="example" id="notes">
     <summary> Notes & Tips :</summary>
-    <p> - we can test latency between our location and different Azure regions with speed test tools (like <a
-        href="https://www.azurespeed.com/Azure/Latency" target="_blank">www.azurespeed.com/Azure/Latency</a>) </p>
+    <p> - we can test latency between our location and different Azure regions with speed test tools (like <a href="https://www.azurespeed.com/Azure/Latency" target="_blank">www.azurespeed.com/Azure/Latency</a>) </p>
   </details>
   <h2 style="color:green;"><u> Useful Links : </u></h2>
 
@@ -45,8 +43,7 @@
   <h2 class="header"> Azure Hierarchy, Scope and Tags </h2>
   <p> - <mark class="mark">Azure Hierarchy</mark> -> Logical hierachy for resource management </p>
   <p class="indent-lv2"> - the Azure Hierachy is composed of 4 levels (<mark class="mark">Management Group</mark>
-    -> <mark class="mark">Subscription</mark> -> <mark class="mark">Resource Group</mark> -> <mark
-      class="mark">Resource</mark>) </p>
+    -> <mark class="mark">Subscription</mark> -> <mark class="mark">Resource Group</mark> -> <mark class="mark">Resource</mark>) </p>
   <p class="indent-lv2"> - <mark class="mark">Management Group</mark>, <mark class="mark">Subscription</mark> and
     <mark class="mark">Resource Group</mark> are esentially logical containers providing hierarchical resource
     management
@@ -133,10 +130,62 @@
   <p class="indent-lv2"> - we can use SDK to access these secrets </p>
   <p class="indent-lv2"> - monitored service </p>
   <h3 class="header"> Azure DevOps </h3>
-  <p class="indent-lv1"> Azure development tools </p> 
+  <p class="indent-lv1"> Azure development tools </p>
   <p class="indent-lv2"> - <mark class="mark">Boards</mark> -> Jira style ticketing system </p>
   <p class="indent-lv2"> - <mark class="mark">Repos</mark> -> Code repositories </p>
   <p class="indent-lv2"> - <mark class="mark">Pipelines</mark> -> CI/CD pipelines </p>
+
+
+  <!--
+  - the azure-pipelines.yml file describes the pipeline 
+  
+  - pipeline features
+      https://learn.microsoft.com/en-us/azure/devops/pipelines/get-started/pipelines-get-started?view=azure-devops#feature-availability
+  
+  - yaml file summary
+      https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/?view=azure-pipelines
+  
+  
+  
+  trigger                       # describes what triggers the pipeline
+    - ...
+  
+  pool:
+    vmImage: 'ubuntu-latest'    # microsoft agent 
+  
+  
+  steps:                        # building step(s)
+    - task: task
+  
+  
+  
+-------------------
+-----  TEST  ------
+-------------------
+  - Agent
+      - is the platform to execute a job 
+  - Template
+      - pipeline scirpt that can be imported and used in the main script 
+  
+  - when creating the pipeline the output can be chosen (like the Azure container registry)
+  
+  
+  - a pipeline is made up of stages
+  - a pipeline can deploy the one or more environments
+  - a stage has jobs (no need to declare if there's on one job)
+    - a job run on one agent (a job can be agentless)
+  - a job contains steps
+  - a step can be a task or script
+    - task -> pre-packages script
+    - script -> executed script in bash or PowerShell
+  
+  
+  
+  -->
+
+
+
+
   <p class="indent-lv2"> - <mark class="mark">Artifacts</mark> -> hosts & shares software packages </p>
   <p class="indent-lv2"> - <mark class="mark">Test Plans</mark> -> provides manual testing environments and tools (we can use all sorts of VMs for manual testing) </p>
   <h3 class="header"> Compute Resources </h3>
@@ -222,8 +271,8 @@
   <h3 class="header"> AI Services </h3>
   <p class="indent-lv1"> <mark class="mark">Azure Machine Learning Service</mark> </p>
   <p class="indent-lv1"> <mark class="mark">Azure Machine Learning Studio</mark> -> Web Based interface that provides access to Machine Learning </p>
-  
-  
+
+
   <br><br>
 </body>
 

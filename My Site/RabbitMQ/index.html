@@ -4,22 +4,16 @@
 <head>
   <meta charset="utf-8">
   <title> RabbitMQ </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../Assets/stylesPages.css">
   <script src="../Assets/scriptPages.js"></script>
 </head>
 
 <body>
-  <h1> RabbitMQ </h1>
+  <h1> RabbitMQ (v3.12.10) </h1>
   <p> Updated ( 2023-12-03 ) </p>
   <p id="sitenav"> <a href="../index.html">MySite></a> RabbitMQ </p>
-
-
-  <p class="subSite"><a href=""> SubSite > </a></p>
-
-
   <table class="table">
     <caption>
       <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
@@ -28,26 +22,30 @@
       <th style="width:30%;"> Method / Property / statement ect... </th>
       <th> Description </th>
     </tr>
-    <tr class="0">
+    <tr class="05.01">
       <td>
-        demo prop
+        rabbitmqctl list_queues name messages_ready messages_unacknowledged
       </td>
       <td>
-        - demo description
-        <span class="browserSupport" title="updated : yyyy-mm-dd">
-          <span><i class="fab fa-chrome"></i> 0/0 -webkit- </span>
-          <span><i class="fab fa-firefox"></i> </span>
-          <span><i class="fab fa-opera"></i> </span>
-          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> </span>
-          <span><i class="fab fa-safari"></i> </span>
-          <span><i class="fab fa-node-js"></i> </span>
-        </span>
+        - list queues, number of messages in queues and unacknowledged messages
       </td>
     </tr>
-
-
-
-
+    <tr class="05.02">
+      <td>
+        rabbitmqctl list_exchanges
+      </td>
+      <td>
+        - list exchanges
+      </td>
+    </tr>
+    <tr class="05.03">
+      <td>
+        rabbitmqctl list_bindings
+      </td>
+      <td>
+        - list bindings
+      </td>
+    </tr>
   </table>
   <br>
   <details class="example" id="notes">
@@ -57,112 +55,892 @@
   <h2 style="color:green;"><u> Useful Links : </u></h2>
   <p><a href="https://www.rabbitmq.com/" target="_blank">rabbitmq (rabbitmq.com)</a></p>
   <h2 style="color:green;"><u> Remember This : </u></h2>
-
+  <p> - messages published to the exchange (not to the queue) are lost if no queue is bound to the exchange </p>
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - RabbitMQ is an advanced message broker that offerst several messaging patterns to solve different messaging problems </p>
+  <p> - RabbitMQ runs as a daemon/service on unix systems, but most comonly used in a Docker container </p>
+  <p> - the service console can be accessed by a web app (<mark>15672</mark> port) or on the command line (through the <mark>rabbitmqctl</mark> command) </p>
+  <p> - programming languages use libraries to work with RabbitMQ (Python uses <mark>pika</mark>, JavaScript uses <mark>amqplib</mark>) </p> 
+  <p> - any authorized connected pair can create queues or exchanges in the RabbitMQ service <u>(creating queues or exchanges is idempotent, however trying to recreate the same item with different parameters will fail)</u> </p>
+  <p> - by default from a queue messages are published in Round-Robbin fashion, this can be changed to distribute messages to the next free consumer (for efficient load distribution) </p>
+  <p> - Supported protocols: </p>
+  <p class="indent-lv1"> - AMQP (Advanced Message Queuing Protocol) asynchronous binary messaging protocol <b><u>(Default: most used)</u></b>
+  <p class="indent-lv1"> - STOMP (Streaming Text Oriented Messaging Protocol) </p>
+  <p class="indent-lv1"> - MQTT (Message Queuing Telemetry Transport) </p>
+  <p class="indent-lv1"> - HTTP </p>
+  <p class="indent-lv1"> - WebSocket </p>
+  <p> - RabbitMQ server ports: </p>
+  <p class="indent-lv1"> - <mark>5672</mark> main AMQP port / <mark>5671</mark> TLS-encrypted AMQP (if enabled) </p>
+  <p class="indent-lv1"> - <mark>15672</mark> console port after v3 / <mark>55672</mark> console port pre v3 </p>
+  <img src="./RabbitMQ.png" width="450" alt="RabbitMQ">
+  <p> - Concepts: </p>
+  <p class="indent-lv1"> - <mark class="mark">producer</mark>: something publishing messages to the message broker </p>
+  <p class="indent-lv1"> - <mark class="mark">consumer</mark>: something subscribing receive messages from the broker </p>
+  <p class="indent-lv1"> - <mark class="mark">message routing key</mark>: the producer sends it along with the message address the message </p>
+  <p class="indent-lv1"> - <mark class="mark">binding key</mark>: used to route messages from exchange to queues </p>
+  <p class="indent-lv2"> - depending the routing pattern, several binding keys can be bount to a single queue or vice versa a single binding key can be bound to several queues </p>
+  <p class="indent-lv1"> - <mark class="mark">exchange</mark>: core routing component that binds incomming messages to queues (there are built-in exchantes but we can create them as we like), there are 4 types: </p>
+  <p class="indent-lv2"> - <mark class="mark">direct exchange</mark>: directly delivers messages to the targeted queues </p>
+  <p class="indent-lv3"> - the producer send a message routing key with each message to address the message </p>
+  <p class="indent-lv3"> - in the RabbitMQ server binding keys are used to route messages between the exchange and queues </p>
+  <p class="indent-lv3"> - RabbitMQ also has a separate default exchange which is basically a default exchange (with no name) </p>
+  <p class="indent-lv2"> - <mark class="mark">fanout exchange</mark>: delivers messages to all bound queues (broadcasting) </p>
+  <p class="indent-lv3"> - the producer's message routing key is not used (ignored) </p>
+  <p class="indent-lv2"> - <mark class="mark">topic exchange</mark>: uses a dot separated routing key pattern (<mark>&lt;topic&gt;.&lt;topic&gt;....</mark>) </p>
+  <p class="indent-lv3"> - the producer send topic routing keys along messages </p>
+  <p class="indent-lv3"> - queues are bound to the exchange with regex style topic keys (<mark>*</mark> substitutes one topic) (<mark>#</mark> substitutes zero or more topics) </p>
+  <p class="indent-lv2"> - <mark class="mark">headers exchange</mark>: uses message headers to address the message </p>
+  <p class="indent-lv3"> - the producer sends headers (key/value headers) along with the message to address the message </p>
+  <p class="indent-lv3"> - queues are bound to the exchange with message headers (where the producer's all headers match the message is delivered to that queue) </p>
+  <p class="indent-lv1"> - <mark class="mark">message acknowledgement</mark>: the consumer acknowledges (confirms) message reception </p>
+  <p class="indent-lv2"> - RabitMQ server discards the message once the consumer acknowledged the reception (the consumer has 30 mins to acknowledge by default) </p>
+  <p class="indent-lv2"> - by default auto acknowledge is turned on, however the consumer acknowledges <u>before the callback its callback</u></p>
+  <p class="indent-lv1"> - <mark class="mark">durability</mark>: messages can be marked durable, so they are not lost on system crach (not 100% garanteed) </p>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> Marking the Queue and the message durable </h4>
+    <pre>
+// producer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    import pika
+    
+    
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.queue_declare(queue='task_queue', durable=True)         # durable queue
+    
+    message = 'Hello World!'
+    for i in range(10):
+        channel.basic_publish(exchange='', routing_key='task_queue', body=message,
+                              properties=pika.BasicProperties(delivery_mode=pika.spec.PERSISTENT_DELIVERY_MODE))    # durable message
+    
+    connection.close()
+    
+    
+// consumer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    import pika
+    
+    
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.queue_declare(queue='task_queue', durable=True)     # durable queue
+    
+    
+    def callback(ch, method, properties, body):
+        body.decode()
+    
+    
+    channel.basic_consume(queue='task_queue', on_message_callback=callback)
+    channel.start_consuming()
+    </pre>
+  </details>
+  <!---------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Messaging Patterns </h2>
+  <h2 class="header"> Simple Queue Pattern </h2>
+  <img src="./simple-queue.png" height="80" alt="RabbitMQ">
+  <p> - producer sends messages to the consumer through a single queue </p>
+  <p class="indent-lv1"> - uses direct exchange </p>
+  <p class="indent-lv1"> - the producer publishes messages with a message routing key to a queue </p>
+  <p class="indent-lv1"> - the consumer subscribes to that queue </p>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> Python </h4>
+    <pre>
+// producer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    import pika
+    
+    
+    connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+    channel = connection.channel()                      # create channel
+    channel.queue_declare(queue='test_queue')           # declaring queue
+    
+    message = 'Hello World!'
+    for i in range(10):
+        channel.basic_publish(exchange='', routing_key='test_queue', body=message)  # publishing messages to default exchange (direct exchange)
+                                                                                    # the routing key describes the queue where to publish the message
+    connection.close()
+    
+    
+// consumer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    import pika
+    
+    
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.queue_declare(queue='test_queue')
+    
+    
+    def callback(ch, method, properties, body):
+        body.decode()               // -> 'Hello World!' 
+    
+    
+    channel.basic_consume(queue='test_queue', on_message_callback=callback, auto_ack=True)
+    channel.start_consuming()       # start consuming
+    </pre>
+    <h4 class="header"> JavaScript </h4>
+    <pre>
+// producer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    const amqp = require('amqplib/callback_api');
+    
+    amqp.connect('amqp://localhost', (err, connection) => {
+      if (err) {
+        throw err;
+      }
+    
+      connection.createChannel((err, channel) => {
+        if (err) {
+          throw err;
+        }
+    
+        const queue = 'test_queue';
+        const msg = 'Hello world';
+        
+        channel.assertQueue(queue, { durable: false });      // creating queue
+    
+        for (let i = 0; i < 10; i++) {
+          channel.sendToQueue(queue, Buffer.from(msg));
+        }
+      });
+    });
+    
+    
+// consumer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    const amqp = require('amqplib/callback_api');
+    
+    amqp.connect('amqp://localhost', (err, connection) => {
+      if (err) {
+        throw err;
+      }
+    
+      connection.createChannel((err, channel) => {
+        if (err) {
+          throw err;
+        }
+    
+        const queue = 'test_queue';
+        channel.assertQueue(queue, { durable: false });
+    
+        channel.consume(queue, msg => {
+          msg;                            // -> { fields: {...}, properties, {...}, content}
+          msg.content.toString();         // -> 'Hello world'
+        }, { noAck: true });
+      });
+    });
+    </pre>
+  </details>
+  <!---------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Work Queue (Task Queue) Pattern </h2>
+  <img src="./work-queue.png" height="100" alt="RabbitMQ">
+  <p> - consumers (workers) are subscirbed to the same queue where messages are distributed between them (same approach as simple messaging, but several consumers are subscribed to the same queue) </p>
+  <p> - for efficient load balancing it's recommended to configure the RabbitMQ server to publish messages to the next free worker (not the default round-robin fashion way) </p>
+  <p class="indent-lv1"> - uses direct exchange </p>
+  <p class="indent-lv1"> - the producer publishes messages with a message routing key to a queue </p>
+  <p class="indent-lv1"> - several consumers are subscribed to that queue </p>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> Python </h4>
+    <pre>
+// producer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    import pika
+    
+    
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.queue_declare(queue='task_queue')
+    
+    message = 'Hello World!'
+    for i in range(10):
+        channel.basic_publish(exchange='', routing_key='task_queue', body=message)
+    
+    connection.close()
+    
+    
+// consumer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+# several of these consumers are running
+    import pika
+    import time
+    
+    
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.queue_declare(queue='task_queue')
+    
+    
+    def callback(ch, method, properties, body):
+        print( body.decode() )
+    
+        time.sleep(4)                                       # simulate processing time
+        ch.basic_ack(delivery_tag=method.delivery_tag)      # acknowledging message processing at the end of the task
+    
+    
+    channel.basic_qos(prefetch_count=1)                     # distribute messages to the next free consumer
+    channel.basic_consume(queue='task_queue', on_message_callback=callback)
+    channel.start_consuming()
+    </pre>
+    <h4 class="header"> JavaScript </h4>
+    <pre>
+// producer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    const amqp = require('amqplib/callback_api');
+    
+    amqp.connect('amqp://localhost', (err, connection) => {
+      if (err) {
+        throw err;
+      }
+    
+      connection.createChannel((err, channel) => {
+        if (err) {
+          throw err;
+        }
+    
+        const queue = 'task_queue';
+        const msg = 'Hello world';
+        
+        channel.assertQueue(queue, { durable: false });
+    
+        for (let i = 0; i < 10; i++) {
+          channel.sendToQueue(queue, Buffer.from(msg));
+        }
+      });
+    });
+    
+    
+// consumer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    // several of these consumers are running
+    const amqp = require('amqplib/callback_api');
+    
+    amqp.connect('amqp://localhost', (err, connection) => {
+      if (err) {
+        throw err;
+      }
+    
+      connection.createChannel((err, channel) => {
+        if (err) {
+          throw err;
+        }
+    
+        const queue = 'task_queue';
+        
+        channel.assertQueue(queue, { durable: false });
+        channel.prefetch(1);                    // message published to the next free worker
+    
+        channel.consume(queue, msg => {
+          console.log(msg);                     // -> { fields: {...}, properties, {...}, content}
+          console.log(msg.content.toString());  // -> 'Hello world'
+    
+          setTimeout(() => {                    // simulates message processing
+            channel.ack(msg);
+          }, 4000);
+        }, { noAck: false });
+      });
+    });
+    </pre>
+  </details>
+  <!---------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Publish/Subscribe Pattern </h2>
+  <img src="./pub-sub.png" height="170" alt="RabbitMQ">
+  <p> - published messages are broadcasted to all subscribes </p>
+  <p class="indent-lv1"> - uses fanout exchange </p>
+  <p class="indent-lv1"> - the producer publishes messages to a fanout exchange (no message routing key used) </p>
+  <p class="indent-lv1"> - each consumer has its own temporary queue that is bound to the fanout exchange </p>
+  <p> - the producer publishes messages to the exchange (not in any queue), so if there's no subscriber then the published messages are lost! </p>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> Python </h4>
+    <pre>
+// producer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    import pika
+    
+    
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.exchange_declare(exchange='broadcast', exchange_type='fanout')      # using fanout exchange
+    
+    message = 'boradcast this message'
+    channel.basic_publish(exchange='broadcast', routing_key='', body=message)   # publishing message to the exchange
+    connection.close()
+    
+    
+// consumer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    # several of these consumers are running
+    import pika
+    
+    
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.exchange_declare(exchange='broadcast', exchange_type='fanout')  # using fanout exchange
+    
+    queue = channel.queue_declare(queue='', exclusive=True)                 # generates a random queue that is auto deleted when all messages are consumed from it
+    queue_name = queue.method.queue
+    channel.queue_bind(exchange='broadcast', queue=queue_name)              # binding this queue to the fanout exchange
+    
+    
+    def callback(ch, method, properties, body):
+        print(body.decode())
+    
+    
+    channel.basic_consume(queue=queue_name, on_message_callback=callback, auto_ack=True)
+    channel.start_consuming()
+    </pre>
+    <h4 class="header"> JavaScript </h4>
+    <pre>
+// producer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    const amqp = require('amqplib/callback_api');
+    
+    amqp.connect('amqp://localhost', (err, connection) => {
+      if (err) {
+        throw err;
+      }
+    
+      connection.createChannel((err, channel) => {
+        if (err) {
+          throw err;
+        }
+    
+        const msg = 'Broadcast message';
+        const exchange_name = 'broadcast';
+        
+        channel.assertExchange(exchange_name, 'fanout', { durable: false });    // creating fanout exchange
+        channel.publish(exchange_name, '', Buffer.from(msg));                   // publish message to the exchange
+      });
+    });
+    
+    
+// consumer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    // several of these consumers are running
+    const amqp = require('amqplib/callback_api');
+    
+    amqp.connect('amqp://localhost', (err, connection) => {
+      if (err) {
+        throw err;
+      }
+    
+      connection.createChannel((err, channel) => {
+        if (err) {
+          throw err;
+        }
+    
+        const exchange_name = 'broadcast';
+        channel.assertExchange(exchange_name, 'fanout', { durable: false });    // using fanout exchange
+        channel.assertQueue('', { exclusive: true }, (err, q) => {              // creating temporary queue
+          if (err) {
+            throw err;
+          }
+    
+          channel.bindQueue(q.queue, exchange_name, '');                        // binds the queue to the exchange
+          channel.consume(q.queue, msg => {
+            console.log(msg.content.toString());                                // -> 'Broadcast message'
+    
+          }, { noAck: true });
+        });
+      });
+    });
+    </pre>
+  </details>
+  <!---------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Routing Pattern </h2>
+  <img src="./routing.png" height="180" alt="RabbitMQ">
+  <p> - consumers pick messages to consume based on the message routing key </p>
+  <p class="indent-lv1"> - uses direct exchange </p>
+  <p class="indent-lv1"> - the producer publishes messages to a direct exchange with different message routing keys (like <mark>A</mark>, <mark>B</mark>, <mark>C</mark>) </p>
+  <p class="indent-lv1"> - each consumer has its own temporary queue, this queue is bound to the exchange with the desired message routing keys (like <mark>A</mark>, <mark>C</mark>) </p>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> Python </h4>
+    <pre>
+// producer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    import pika
+    
+    
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.exchange_declare(exchange='counter', exchange_type='direct')
+    
+    for route_key in ['one', 'two', 'three']:
+        channel.basic_publish(exchange='counter',                                       # publishing messages with different routing keys
+                              routing_key=route_key,
+                              body=f'Message with routing key: {route_key}')
+    connection.close()
+    
+    
+// consumer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    import pika
+    
+    
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.exchange_declare(exchange='counter', exchange_type='direct')
+    
+    queue = channel.queue_declare(queue='', exclusive=True)                             # generates a random queue that is auto deleted when all messages are consumed from it
+    queue_name = queue.method.queue
+    
+    for bind_key in ['one', 'three']:                                                   # binding the consumer queue to the desired messages
+        channel.queue_bind(exchange='counter', queue=queue_name, routing_key=bind_key)  # consumer consumes messages only with key 'one' and 'three'
+    
+    
+    def callback(ch, method, properties, body):
+        print(body.decode())
+    
+    
+    channel.basic_consume(queue=queue_name, on_message_callback=callback, auto_ack=True)
+    channel.start_consuming()
+    </pre>
+    <h4 class="header"> JavaScript </h4>
+    <pre>
+// producer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    const amqp = require('amqplib/callback_api');
+    
+    amqp.connect('amqp://localhost', (err, connection) => {
+      if (err) {
+        throw err;
+      }
+    
+      connection.createChannel((err, channel) => {
+        if (err) {
+          throw err;
+        }
+    
+        const route_keys = ['one', 'two', 'three'];
+        const exchange_name = 'counter';
+    
+        channel.assertExchange(exchange_name, 'direct', { durable: false });    // create exchange 
+    
+        for (let route_key of route_keys) {                                     // publishing messages to the exchange with different routing keys
+          channel.publish(
+            exchange_name,
+            route_key,
+            Buffer.from(`Message with routing key: ${route_key}`)
+          );
+        }
+      });
+    });
+    
+    
+// consumer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    const amqp = require('amqplib/callback_api');
+    
+    amqp.connect('amqp://localhost', (err, connection) => {
+      if (err) {
+        throw err;
+      }
+    
+      connection.createChannel((err, channel) => {
+        if (err) {
+          throw err;
+        }
+    
+        const exchange_name = 'counter';
+        const bind_keys = ['one', 'three'];
+    
+        channel.assertExchange(exchange_name, 'direct', { durable: false });    // creating exchange
+        channel.assertQueue('', { exclusive: true }, (err, q) => {              // creating temporary queue
+          if (err) {
+            throw err;
+          }
+    
+          for (let bind_key of bind_keys) {
+            channel.bindQueue(q.queue, exchange_name, bind_key);                // binding the queue to specific messages
+          }
+    
+          channel.consume(q.queue, msg => {
+            console.log(msg.content.toString());                                // -> messages...
+          }, { noAck: true });
+        });
+      });
+    });
+    </pre>
+  </details>
+  <!---------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Topics Pattern </h2>
+  <img src="./topics.png" height="180" alt="RabbitMQ">
+  <p> - consumers pick messages to consume based on topic routing key or headers (same approach as routing, but offers a more faine grained selection) </p>
+  <p class="indent-lv1"> - with topic exchange (most common) </p>
+  <p class="indent-lv2"> - the producer publishes messages to the topic exchange with topic routing keys (like <mark>a.b.c</mark>, <mark>x.y.z</mark>) </p>
+  <p class="indent-lv2"> - each consumer has its own temporary queue, this queue is bound to the topic exchange with topic key patterns </p>
+  <p class="indent-lv3"> - <mark>*</mark> replaces one topic (ex: <mark>*.*.z</mark> matches any topic that the last topic is <mark>z</mark>) </p>
+  <p class="indent-lv3"> - <mark>#</mark> replaces zore or more topics (ex: <mark>a.#</mark> -> matches any topic that starts with <mark>a</mark>) </p>
+  <p class="indent-lv1"> - with headers exchange </p>
+  <p class="indent-lv2"> - the producer publishes messages to the headers exchange with message headers (like <mark>{'a': '1', 'b': '2'}</mark>, <mark>{'x': '8', 'y': '9'}</mark>) </p>
+  <p class="indent-lv2"> - each consumer has its own temporary queue, this queue is bound to the headers exchange with headers to consumer </p>
+  <p class="indent-lv3"> - ex: published message with header <mark>{'a': '1', 'b': '2'}</mark> can be consumed with the following headers <mark>{'a': '1', 'b': '2'}</mark>, <mark>{'a': '1'}</mark>, <mark>{'b': '2'}</mark></p>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> Python (topic exchange) </h4>
+    <pre>
+// producer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    import pika
+    
+    
+    exchange_name = 'semver'
+    exchange_type = 'topic'
+    topic_keys = ['1.1.1', '2.1.21', '4.0.3']
+    
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.exchange_declare(exchange=exchange_name, exchange_type=exchange_type)   # creating topic exchange
+    
+    for topic in topic_keys:                                                        # publishing messages to the exchange
+        channel.basic_publish(exchange=exchange_name,
+                              routing_key=topic,
+                              body=f'Message version: {topic}')
+    
+    connection.close()
+    
+    
+// consumer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    import pika
+    
+    
+    topics_to_subscribe = ['1.#', '*.*.3']
+    exchange_name = 'semver'
+    exchange_type = 'topic'
+    
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.exchange_declare(exchange=exchange_name, exchange_type=exchange_type)
+    
+    queue = channel.queue_declare('', exclusive=True)
+    queue_name = queue.method.queue
+    
+    for ver in topics_to_subscribe:                                                 # bind topic message keys to the queue
+        channel.queue_bind(exchange=exchange_name, queue=queue_name, routing_key=ver)
+    
+    
+    def callback(ch, method, properties, body):
+        print( body.decode() )
+    
+    
+    channel.basic_consume(queue=queue_name, on_message_callback=callback, auto_ack=True)
+    channel.start_consuming()
+    </pre>
+    <h4 class="header"> JavaScript (topic exchange) </h4>
+    <pre>
+// producer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    const amqp = require('amqplib/callback_api');
+    
+    const topicKeys = ['1.1.1', '2.1.21', '4.0.3'];
+    const exchangeName = 'semver';
+    const exchangeType = 'topic';
+    
+    amqp.connect('amqp://localhost', (err, connection) => {
+      if (err) {
+        throw err;
+      }
+    
+      connection.createChannel((err, channel) => {
+        if (err) {
+          throw err;
+        }
+    
+        channel.assertExchange(exchangeName, exchangeType, { durable: false });   // create exchange 
+    
+        for (let topicKey of topicKeys) {                                         // publishing messages to the exchange with different routing keys
+          channel.publish(
+            exchangeName,
+            topicKey,
+            Buffer.from(`Message with routing key: ${topicKey}`)
+          );
+        }
+      });
+    });
+    
+    
+// consumer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    const amqp = require('amqplib/callback_api');
+    
+    const topisToSubscribe = ['1.#', '*.*.3'];
+    const exchangeName = 'semver';
+    const exchangeType = 'topic';
+    
+    amqp.connect('amqp://localhost', (err, connection) => {
+      if (err) {
+        throw err;
+      }
+    
+      connection.createChannel((err, channel) => {
+        if (err) {
+          throw err;
+        }
+    
+        channel.assertExchange(exchangeName, exchangeType, { durable: false });   // creating exchange
+        channel.assertQueue('', { exclusive: true }, (err, q) => {                // creating temporary queue
+          if (err) {
+            throw err;
+          }
+    
+          for (let topic of topisToSubscribe) {
+            channel.bindQueue(q.queue, exchangeName, topic);                      // binding the queue to specific messages
+          }
+    
+          channel.consume(q.queue, msg => {
+            console.log(msg.content.toString());                                  // -> 'Message with routing key 1.1.1'  |  'Message with routing key 4.0.3'
+          }, { noAck: true });
+        });
+      });
+    });
+    </pre>
+    <h4 class="header"> Python (headers exchange) </h4>
+    <pre>
+// producer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    exchange_name = 'semver'
+    exchange_type = 'headers'
+    headers = [
+        {'major': '1', 'minor': '1', 'patch': '1'},
+        {'major': '2', 'minor': '1', 'patch': '21'},
+        {'major': '4', 'minor': '0', 'patch': '3'},
+    ]
+    
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.exchange_declare(exchange=exchange_name, exchange_type=exchange_type)   # creating headers exchange
+    
+    for header in headers:
+        channel.basic_publish(exchange=exchange_name,
+                              routing_key='',
+                              properties=pika.BasicProperties(headers=header),      # publishing headers to the exchange
+                              body=f'Message with headers: {header}')
+    
+    connection.close()
+    
+    
+// consumer ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    import pika
+    
+    
+    headers_to_consume = [
+        {'major': '1'},
+        {'patch': '3'},
+    ]
+    exchange_name = 'semver'
+    exchange_type = 'headers'
+    
+    
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.exchange_declare(exchange=exchange_name, exchange_type=exchange_type)
+    
+    queue = channel.queue_declare('', exclusive=True)
+    queue_name = queue.method.queue
+    
+    for header in headers_to_consume:                 # bind headers to the queue
+        channel.queue_bind(exchange=exchange_name,
+                           queue=queue_name,
+                           arguments=header)
+    
+    
+    def callback(ch, method, properties, body):
+        print( body.decode() )                        // -> "Message with headers: {'major': '1', 'minor': '1', 'patch': '1'}"  |  "Message with headers: {'major': '4', 'minor': '0',    'patch': '3'}"
+    
+    
+    channel.basic_consume(queue=queue_name, on_message_callback=callback, auto_ack=True)
+    channel.start_consuming()
+    </pre>
+  </details>
+  <!---------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> RPC Pattern </h2>
+  <img src="./rpc.png" height="180" alt="RabbitMQ">
+  <p> - request/response pattern <u>(this pattern blocks the client until the server responds, but we could use serveral server to balance the load)</u> </p>
+  <p class="indent-lv1"> - uses direct exchange </p>
+  <p class="indent-lv1"> - the client publishes its request <u>along with its temporary queue and correlation id</u> to the rpc queue (correlation id is used to identify the client) </p>
+  <p class="indent-lv1"> - the server consumes the request from the rpc queue and responds on the client's temporary queue with the correlation id </p>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> Python </h4>
+    <pre>
+// client ------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    import pika
+    import uuid
+    
+    rpc_queue_name = 'rpc_queue'
+    
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.queue_declare(queue=rpc_queue_name)                 # queue on which the server waits for requests
+    
+    queue = channel.queue_declare(queue='', exclusive=True)     # client temp queue 
+    queue_name = queue.method.queue
+    
+    
+    def on_response(ch, method, props, body):
+        print(f'correlation id: {props.correlation_id}')
+        print(f'response: {body.decode()}')
+    
+    
+    request_body = '2'
+    channel.basic_consume(queue=queue_name, on_message_callback=on_response, auto_ack=True)
+    channel.basic_publish(exchange='',
+                          routing_key=rpc_queue_name,           # publishing request to the rpc queue
+                          properties=pika.BasicProperties(reply_to=queue_name,                  # server will respond on this queue
+                                                          correlation_id=str(uuid.uuid4())),    # correlation id sent along the request
+                          body=request_body)
+    
+    connection.process_data_events(time_limit=10)               # seconds the client wait for the response (after unblocks)
+    
+    
+// server ------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    import pika
+    import time
+    
+    
+    rpc_queue_name = 'rpc_queue'
+    
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.queue_declare(queue='rpc_queue')
+    
+    
+    def on_request(ch, method, props, body):
+        time.sleep(2)                                   # processing simulation
+        response = int(body) * 2
 
-
-
-
-
+        ch.basic_publish(exchange='',
+                        routing_key=props.reply_to,     # responding to the client's queue
+                        properties=pika.BasicProperties(correlation_id=props.correlation_id),      # sending back the correlation id
+                        body=str(response))
+        ch.basic_ack(delivery_tag=method.delivery_tag)  # acknowledging 
+    
+    
+    channel.basic_consume(queue='rpc_queue', on_message_callback=on_request)
+    channel.start_consuming()
+    </pre>
+    <h4 class="header"> JavaScript </h4>
+    <pre>
+// client ------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    const amqp = require('amqplib/callback_api');
+    
+    const rpc_queue_name = 'rpc_queue';
+    const req_body = '2';
+    
+    amqp.connect('amqp://localhost', function(err, connection) {
+      if (err) {
+        throw err;
+      }
+      
+      connection.createChannel(function(err, channel) {
+        if (err) {
+          throw err;
+        }
+        
+        channel.assertQueue(rpc_queue_name, { durable: false });      // rpc server queue
+        channel.assertQueue('', { exclusive: true }, (err, q) => {    // temp queue
+          if (err) {
+            throw err;
+          }
+          
+          const correlationId = Math.random().toString() + Math.random().toString() + Math.random().toString();   // correlation id
+          
+          channel.consume(q.queue, msg => {                           // response consumed on the temp queue
+            console.log(msg.properties.correlationId);
+            console.log(msg.content.toString());
+          }, { noAck: true });
+          
+          channel.sendToQueue(                                        // sending request to the rpc queue
+            rpc_queue_name,
+            Buffer.from(req_body),
+            {                                                         // server will respond on this queue
+              correlationId: correlationId,
+              replyTo: q.queue,
+            }
+          );
+        });
+      });
+    });
+    
+    
+// server ------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+    const amqp = require('amqplib/callback_api');
+    
+    const rpc_queue_name = 'rpc_queue';
+    
+    amqp.connect('amqp://localhost', function(err, connection) {
+      if (err) {
+        throw err;
+      }
+      
+      connection.createChannel((err, channel) => {
+        if (err) {
+          throw err;
+        }
+        
+        channel.assertQueue(rpc_queue_name, { durable: false });
+        channel.prefetch(1);                                        // several instances can be spinned up as workers
+        
+        channel.consume(rpc_queue_name, msg => {                    // server consumes message from the rpc queue
+          const response = parseInt(msg.content.toString()) * 2;
+    
+          channel.sendToQueue(                                      // responsd to the client's queue
+            msg.properties.replyTo,
+            Buffer.from(response.toString()),
+            {
+              correlationId: msg.properties.correlationId,
+            }
+          );
+          
+          channel.ack(msg);
+        });
+      });
+    });
+    </pre>
+  </details>
   <!--
 ---------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
-stage 1: high level overview 
-    - read through 
-    - create notes 
-    - deciede what exactly will you document down 
-    
-stage 2:  low level overview
-    - deeper understanding of all what you've taken down in stage 1
-    
-stage 3 : 
-    - organize and document down everything 
----------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------
-    - RabbitMQ is a message broker
-    
-- Concepts 
-    - message broker -> intermediary software that facilitates communication between multiple applications or systems by receiving, routing, and transmitting messages between them
-    - producer -> something publishing message to the message broker 
-    - consumer -> something subscribing to messages and recevies these messages
-    - exchange -> routing component that defines how messages are routed between producers and consumers 4 types:
-        - direct exchange -> messages delivered to queues based on routing keys (same roue key same queue)
-        - topic exchange -> key patter match
-        - fanout exchange -> messages are delivered to all queues bound the exchange 
-        - header exchange -> ???
-    message routing key -> describes the routing path
-        -  If there are no queues or exchanges that match the message routing key, the message is discarded.
-    message acknowledgement
-        - the consumer acknowledges the message processing so RabbitMQ is notified to delete the message (be default this feature is turned on)
-        - the consumer has 30 mins to acknowledge the message (by default)
+    - weather broadcast demo maybe???
+        - clients that are interested in some topics???
     
     
     
     
-    - RabbitMQ uses AMPQ as default messaging protocol (Advanced Message Queuing Protocol)
-        - asynchronous binary protocol
-    
-    - we are testing this with v3.12.10
-    
-    
-    - on uinx systemx runs as daemon/service, but in most stuations is used in a container 
-    
-    
-    - rabbitmq main port 5672 (5672 TLS)
-    - console pannel reachable by default on localhost:15672 (credential username: guest / password: guest)
-        - from v3 15672
-        - pre v3 55672
-    
-    - every consumer or producer opens a single tcp connection to the messagemq broker (multiple channels are used in the same tcp connection)
-    
-    - AMPQ is basically a two way prc protoclo (where both pair can call function with arguments in the remote)
-    
-    - clients (with appropriate access) can create queues 
-        - clients listed in ACL (access control list)
-    
-    - Work Queues
-      - consumers receive messages from the queue in round-robin fashion (by default)
-          - the default message distribution can be changed however (RabbitMQ sends the next message to the least busy worker)
-    
-    - Pub/Sub
-      - we use the fanout exchange (the publisher declares the exchange)
-    
-    - when the consumer acknowledges -> the message is removed from the queue
-        - if does not acknowledges the message goes back to the queue
-        - on auto acknowledge the message is atuomatically removed
-    
-    
-    - RabbitMQ looses all queues and message when stops or craches
-        - we can mark queues and messaged as 'durable' so theye are presistent on system crach or stop (however there's a small window when the message can be lost still)
-        - channels are idempotent so we cannot redeclare a non durable channel to a durable one! (when redeclaring the channel both the producer and the consumer must create the durable channel) (an error is raised if we try to redeclare a non durable queue as durable)
-    
-    
-CLI CMD -------------------------------------------
-    rabbitmq                                                                    // cli to control rabbitmq
-    rabbitmqctl list_queues                                                     // list rabitMQ queues
-    sudo rabbitmqctl list_queues name messages_ready messages_unacknowledged    // list queues, number of messages in queues and unacknowledged messages
+    - confgurations (check how much do you need to know about this)
+        - what about authentication?
+        - how many messages can be stored in a single queue and for how long?
     
     
     
 ?????????????????????????????????????????????????????????????????????????????????????????????
 WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
 ?????????????????????????????????????????????????????????????????????????????????????????????
-    - who can create queues?
-        - producers and consumers with appropriate credentials ()
-    - who creates exchanges?
-    
-    
-    - what is the memory limit 
+    - what is the memory limit          -> physical hardware limit (limited by configs)
       - single queue
       - all rabbitmq
     
     
-    - how many messages can be stored in a single queue and for how long?
-    
-    
-    - what about authentication?
     
 -->
+
+
 
 
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
