@@ -62,7 +62,7 @@
   <p> - the web app service console can be accessed on <mark>localhost:15672</mark> (default: <mark>guest</mark> user & password) or on the command line (through the <mark>rabbitmqctl</mark> command) </p>
   <p> - programming languages use libraries to work with RabbitMQ (Python uses <mark>pika</mark>, JavaScript uses <mark>amqplib</mark>) </p> 
   <p> - any authorized connected pair can create queues or exchanges in the RabbitMQ service <u>(creating queues or exchanges is idempotent, however trying to recreate the same item with different parameters will fail)</u> </p>
-  <p> - by default from a queue messages are published in Round-Robbin fashion, this can be changed to distribute messages to the next free consumer (for efficient load distribution) </p>
+  <p> - by default from a queue, messages are published in Round-Robbin fashion, this can be changed to distribute messages to the next free consumer (for efficient load distribution) </p>
   <p> - Supported protocols: </p>
   <p class="indent-lv1"> - AMQP (Advanced Message Queuing Protocol) asynchronous binary messaging protocol <b><u>(Default: most used)</u></b>
   <p class="indent-lv1"> - STOMP (Streaming Text Oriented Messaging Protocol) </p>
