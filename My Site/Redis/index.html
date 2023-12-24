@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Redis </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../Assets/stylesPages.css">
+  <script src="../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Redis </h1>
+  <p> Updated ( 2023-12-11 ) </p>
+  <p class="sitenav">
+    <a href="../index.html" title="home">MySite></a> Redis
+  </p>
+
+  
+  <p class="subSite"><a href="./operations/index.html">string, list, set, sortedSet, hash operations > </a></p>
+  
+  
+  <table class="table">
+    <caption>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td> 
+        redis-cli
+      </td>
+      <td>
+        - starts redis client cli
+      </td>
+    </tr>
+    <tr class="05.02">
+      <td> 
+        QUIT
+      </td>
+      <td>
+        - exit redis client cli
+      </td>
+    </tr>
+    <tr class="10.01">
+      <td> 
+        PING
+      </td>
+      <td>
+        - pings the redis server
+      </td>
+    </tr>
+    <tr class="10.02">
+      <td> 
+        ECHO <reqval>str</reqval>
+      </td>
+      <td>
+        - prints out <reqval>str</reqval>
+      </td>
+    </tr>
+    <tr class="10.03">
+      <td> 
+        INFO
+      </td>
+      <td>
+        - returns general informations (memory usage, connected clients, versions, etc...)
+      </td>
+    </tr>
+    <tr class="15.01">
+      <td> 
+        SELECT <reqval>db:idx</reqval>
+      </td>
+      <td>
+        - selects the database with the specified index
+      </td>
+    </tr>
+    <tr class="20.01">
+      <td> 
+        EXISTS <reqval>key</reqval>
+      </td>
+      <td>
+        - returns <mark>1</mark> if <reqval>key</reqval> exists, otherwise <mark>0</mark>
+      </td>
+    </tr>
+    <tr class="20.02">
+      <td>
+        RENAME <reqval>key</reqval> <reqval>newKey</reqval>
+      </td>
+      <td>
+        - renames the key <reqval>key</reqval> to <reqval>newKey</reqval>
+      </td>
+    </tr>
+    <tr class="20.03">
+      <td>
+        KEYS <reqval>pattern</reqval>
+      </td>
+      <td>
+        - returns all keys that matches <reqval>pattern</reqval> (wildcard matching) (ex: <mark>KEYS *</mark> returns all keys)
+      </td>
+    </tr>
+    <tr class="22.01">
+      <td> 
+        FLUSHALL
+      </td>
+      <td>
+        - purges everything from the database 
+      </td>
+    </tr>
+    <tr class="25.01">
+      <td>
+        TTL <reqval>key</reqval>
+      </td>
+      <td>
+          - returns <reqval>key</reqval>'s ttl (data expiration in seconds)
+    <tr class="25.02">
+      <td>
+        EXPIRE <reqval>key</reqval> <reqval>sec</reqval>
+      </td>
+      <td>
+          - sets the ttl of the <reqval>key</reqval> (data deleted after <reqval>sec</reqval>)
+    <tr class="25.03">
+      <td>
+        PERSIST <reqval>key</reqval>
+      </td>
+      <td>
+          - removes the <reqval>key</reqval>'s ttl (so it never expires) <br>
+          - returns <mark>1</mark> on successful persist, otherwise <mark>0</mark> (when the key has no ttl)
+      </td>
+    </tr>
+    <tr class="30.01">
+      <td>
+        CONFIG SET <reqval>configParam</reqval> <reqval>arg:str</reqval>
+      </td>
+      <td>
+        - sets a new configuration parameter on runtime (without restarting the redis server) <br>
+        - (ex: <mark>CONFIG SET save '2000 21'</mark> -> persist data on disk every 2000 seconds if 21 keys are changed)
+      </td>
+    </tr>
+    <tr class="30.01">
+      <td>
+        CONFIG REWRITE
+      </td>
+      <td>
+        - rewrites the config file with the current server configs <br>
+        - (ex: runtime configs set with <mark>CONFIG SET</mark> will be persisted in the config file)
+      </td>
+    </tr>
+    <tr class="64.01">
+      <td>
+        <a href="https://redis.io/commands/" target="_blank">all commands [link]</a>
+      </td>
+      <td>
+        - all commands
+      </td>
+    </tr>
+    <tr class="65.01">
+      <td colspan="2"> 
+        Transaction <br>
+        - commands are executed sequentially / all or none the data is persisted
+      </td>
+    </tr>
+    <tr class="65.02">
+      <td>
+        MULTI
+      </td>
+      <td>
+        - open transaction
+      </td>
+    </tr>
+    <tr class="65.03">
+      <td>
+        EXEC
+      </td>
+      <td>
+        - executes transaction
+      </td>
+    </tr>
+    <tr class="65.04">
+      <td>
+        DISCARD
+      </td>
+      <td>
+        - cancel transaction
+      </td>
+    </tr>
+    <tr class="70.01">
+      <td colspan="2">
+        Pub/Sub <a href="https://redis.io/commands/?group=pubsub" target="_blank">[link]</a>
+        </td>
+    </tr>
+    <tr class="70.02">
+      <td>
+        PUBLISH <reqval>channel</reqval> <reqval>val</reqval>
+      </td>
+      <td>
+        - publishes <reqval>val</reqval> to the channel <br>
+        - returns the number of subscribes that received the message
+      </td>
+    </tr>
+    <tr class="70.03">
+      <td>
+        SUBSCRIBE <reqval>channel</reqval> <optval>...</optval>
+      </td>
+      <td>
+        - client subscribes to <reqval>channel</reqval>(s)
+      </td>
+    </tr>
+    <tr class="70.04">
+      <td>
+        PSUBSCRIBE <reqval>channel:patternGlob</reqval> <optval>...</optval>
+      </td>
+      <td>
+        - client subscribes to <reqval>channel</reqval>(s) (glob-style matching)
+      </td>
+    </tr>
+    <tr class="70.05">
+      <td>
+        UNSUBSCRIBE <reqval>channel</reqval> <optval>...</optval>
+      </td>
+      <td>
+        - client unsubscribes from <reqval>channel</reqval>(s)
+      </td>
+    </tr>
+    <tr class="75.01">
+      <td>
+        PUBSUB CHANNELS
+      </td>
+      <td>
+        - list the currently active channels
+      </td>
+    </tr>
+    <tr class="75.02">
+      <td>
+        PUBSUB NUMSUB <reqval>channel</reqval> <optval>...</optval>
+      </td>
+      <td>
+        - returns the number of subscribed clients to the <reqval>channel</reqval>(s)
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <p> - <a href="https://redis.io/docs/manual/patterns/distributed-locks/" target="_blank">[link]</a> lock for systems where multiple clients are accessing the same Redis server </p>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://redis.io/" target="_blank">redis.io (redis.io)</a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - in general libraries follow redis-cli command semantics </p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - Redis (stands for <b>R</b>emote <b>Di</b>ctionary <b>S</b>erver) is an in-memory NoSQL database that provides very fast data throughput </p>
+  <p> - Redis can be used as: </p>
+  <p class="indent-lv1"> - cache / in-memory state server </p>
+  <p class="indent-lv1"> - NoSQL database (data persisted on disk) </p>
+  <p class="indent-lv1"> - message broker (pub/sub model) </p>
+  <p> - runs as a daemon/service (but works really well in Docker image), uses its own RESP binary protocol (<b>Re</b>dis <b>S</b>erialization <b>P</b>rotocol) </p>
+  <p> - the Redis server can be accessed via redis-cli, programing language SDKs or RedisInsight (default access: <mark>localhost:6379</mark>) </p>
+  <p> - databases (key namespaces) are indexed (by default <mark>0-15</mark>) </p>
+  <p> - by default there's no memory limitation (Redis can eat up all the system memory that can lead to process crash), therefore it's recommended to configure the memory usage (such as <mark>maxmemory</mark> and <mark>maxmemory-policy</mark>) through the config file </p>
+  <p class="indent-lv1"> -  ex: memory usage on a 64 bit system: 1 million keys uses ~ 160 MB of memory
+  <p> - the Redis server config file contains well documented directives </p>
+  <p> - Supported data types: </p>
+  <p class="indent-lv1"> - <mark class="mark">string</mark>: (can be interpreted as numerical values as well) </p>
+  <p class="indent-lv1"> - <mark class="mark">list</mark>: ordered string sequence </p>
+  <p class="indent-lv1"> - <mark class="mark">hash</mark>: 1 level key/value structure (values canot be keys) </p>
+  <p class="indent-lv1"> - <mark class="mark">set</mark>: contains <u>unique</u> unordered strings </p>
+  <p class="indent-lv1"> - <mark class="mark">sorted set</mark>: contains <u>unique</u> ordered strings </p>
+  <p class="indent-lv2"> - each item has an associated float (score) that defines the item's order (score range <mark>9007199254740992</mark> - <mark>-9007199254740992</mark>) </p>
+  <p class="indent-lv1"> - <mark class="mark">json</mark>: json structure (requires Redis stack) </p>
+  <p class="indent-lv1"> - also supports more complex data types: bitmaps, hyperlogs, geospacial indexes, etc... (we can even implement our on data type through modules) </p>
+<!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Persisting data on disk </h2>
+  <p> - for most use cases RDB is good enogh, however if we want close to no data loss AOF is the way to go </p>
+  <h3 class="header"> <mark class="mark">RDB</mark> (Redis Data Base) (on by default) </h3>
+  <p class="indent-lv1"> - in periods the data is persisted in a file asynchronously (by default <mark>dump.rdb</mark>) (this technique is called snapshotting) </p>
+  <p class="indent-lv1"> - default setup in v7.2.3 (3600 seconds (an hour) if 1 key change / 300 seconds (5 minutes) if 100 key changes / 60 seconds if 10000 key changes) </p>
+  <p class="indent-lv1"> - a background process perform this operation, so the main I/O is little to not affected at all </p>
+  <p class="indent-lv1"> - great for creating backups and for disaster recovery, works better than AOF for large datasets </p>
+  <h3 class="header"> <mark class="mark">AOF</mark> (Append Only File) (off by default) </h3>
+  <p class="indent-lv1"> - write data is logged (append log) so the data is recoverable from the log history </p>
+  <p class="indent-lv1"> - this technique is great because we can recover the data from the log history even in case of a full db flush </p>
+  <p class="indent-lv1"> - by default the log is written in every 1 second (but there are other options) </p>
+  <p class="indent-lv1"> - rewrite is a technique to shrink the log size (ex: incerementing a value 100 times we shrink 100 logs to 1) (configurable) </p>
+  <p class="indent-lv1"> - AOF takes more space than RDB </p>
+<!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Security <a href="https://redis.io/docs/management/security/acl/" target="_blank">[link]</a> </h2>
+  <p> - Redis is designed to be accessed by trusted clients (from v3.2.0 by default the Redis server is accessible from the loopback only) </p>
+  <p> - from v6.0.0 ACL (Access Control List) can be configured (client authentication through the <mark>redis.conf</mark> file) </p>
+<!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Redis tools </h2>
+  <h3 class="header"> Replication </h3>
+  <p> - Master slaves (replications) architecture where slaves try to be the exact same copy as the master </p>
+  <p> - The master is responsible to all writes, slaves are responsible to reads (awesome for building read heavy systems) </p>
+  <p> - this technique with Redis Setinel is great for building a fault tolerant system </p>
+  <p> - in case of connection distupt once the connection is back replicas will launch the replication protocol <u>(for this reason it's highly recommended to setup master data persistance, if the master crashes without data persistance replicas will copy the whiped replication of the master) </u></p>
+  <h3 class="header"> Redis Sentinel </h3>
+  <p> - it's recommended to run at least 3 processes to have a robust system (ex: 3 processes must agree to start a failover) </p>
+  <p> Features: </p>
+  <p class="indent-lv1"> - Monitoring </p>
+  <p class="indent-lv1"> - Notification (trough API) </p>
+  <p class="indent-lv1"> - Automatic failover (in Master/Replications architecture can promote a Replica to be the new Master) </p>
+  <p class="indent-lv1"> - Configuration provider (clients require configs like the Master address (for Automatic failover)) </p>
+  <h3 class="header"> Redis Cluster (v.3.0.0) </h3>
+  <p> - a technique for horizontal scaling, several redis nodes (Master/Slaves) hold part of the data (sharding) </p>
+  <p> - we assign a hash slot range of <mark>0 -16383</mark> accros cluster nodes (ex: Node A <mark>0 - 5500</mark>, Node B <mark>5501 - 11000</mark>, Node C <mark>11001 - 16383</mark>) </p>
+  <p> - key hashes are calucalted (CRC16 of the key modulo 16384) and stored in a cluster slot (this is how auto distribution works) </p>
+  <p> - each node has 2 communication ports: </p>
+  <p class="indent-lv1"> - client (data) port (default: <mark>6379</mark>) </p>
+  <p class="indent-lv1"> - cluster bus port (by default we add 10000 to the data port: <mark>16379</mark>) </p>
+
+
+  <br><br>
+</body>
+
+</html>

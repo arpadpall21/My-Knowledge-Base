@@ -77,21 +77,28 @@ pre{
     color: #04a200;
 }
 
-.syntax em, .formula em, .table em {
+.syntax em,  .formula em,  .table em,  mark em,
+.syntax lit, .formula lit, .table lit, mark lit {
     color: deepskyblue;
     font-weight: normal;
     font-style: normal;
 }
 
-.syntax strong, .formula strong, .table strong, mark strong{
+.syntax small, .formula small, .table small, mark small,
+.syntax opt,   .formula opt,   .table opt,   mark opt {
+    font-size: 1em;
+    color: violet;
+}
+
+.syntax strong, .formula strong, .table strong, mark strong,
+.syntax reqval, .formula reqval, .table reqval, mark reqval {
     color: lightcoral;
     font-weight: normal;
     font-style: italic;
 }
 
-.syntax small, .formula small, .table small {
-    font-size: 1em;
-    color: violet;
+.syntax optval, .formula optval, .table optval, mark optval {
+    color: darkgray;
 }
 
 .formula {

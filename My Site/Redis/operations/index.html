@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Redis </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Redis </h1>
+  <p> Updated ( 2023-12-11 ) </p>
+  <p class="sitenav">
+    <a href="../../index.html" title="home">MySite></a>
+    <a href="../index.html" title="home">Redis></a> operations
+  </p>
+  <table class="table">
+    <caption>
+      String operations <a href="https://redis.io/commands/?group=string" target="_blank">[link]</a>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td>
+        GET <reqval>keyStr</reqval>
+      </td>
+      <td>
+        - gets the value of <reqval>keyStr</reqval>
+      </td>
+    </tr>
+    <tr class="05.02">
+      <td>
+        SET <reqval>keyStr</reqval> <reqval>val<reqval> <small>[options]</small>
+      </td>
+      <td>
+        - set <reqval>val</reqval> associated with key <reqval>keyStr</reqval> <br>
+        <small>[options]</small> <br>
+        (<small>EX <optval>sec</optval></small>) sets the ttl (expiration value) in seconds
+      </td>
+    </tr>
+    <tr class="05.03">
+      <td>
+        SETEX <reqval>keyStr</reqval> <reqval>sec</reqval> <reqval>val<reqval>
+      </td>
+      <td>
+        - set <reqval>val</reqval> associated with key <reqval>keyStr</reqval> with <reqval>sec</reqval> ttl
+      </td>
+    </tr>
+    <tr class="05.04">
+      <td>
+        SETNX <reqval>strKey</reqval> <reqval>val</reqval>
+      </td>
+      <td>
+        - set <reqval>val</reqval> associated with key <reqval>keyStr</reqval> <u>if <reqval>strKey</reqval> doesn't exist</u> <br>
+        - returns <mark>1</mark> on successful operation, otherwise <mark>0</mark>
+      </td>
+    </tr>
+    <tr class="05.05">
+      <td>
+        APPEND <reqval>keyStr</reqval> <reqval>val<reqval>
+      </td>
+      <td>
+        - appends <reqval>val</reqval> to the string previously stored with <reqval>key</reqval> (creates new if doesn't exist)
+      </td>
+    </tr>
+    <tr class="10.01">
+      <td>
+        MGET <reqval>keyStr</reqval> <small>[<optval>keyStr ...</optval>]</small>
+      </td>
+      <td>
+        - gets multiple strings
+      </td>
+    </tr>
+    <tr class="10.02">
+      <td>
+        MSET <reqval>keyStr</reqval> <reqval>val<reqval> <small>[<optval>keyStr val ...</optval>]</small>
+      </td>
+      <td>
+        - sets multiple strings
+      </td>
+    </tr>
+    <tr class="15.01">
+      <td>
+        GETRANGE <reqval>strKey</reqval> <reqval>st(inc):idx</reqval> <reqval>end(inc):idx</reqval>
+      </td>
+      <td>
+        - returns a substring of the range specified by the indexes
+      </td>
+    </tr>
+    <tr class="15.02">
+      <td>
+        SETRANGE <reqval>strKey</reqval> <reqval>offset(inc):idx</reqval> <reqval>val</reqval>
+      </td>
+      <td>
+        - overwrites the <reqval>strKey</reqval> value from <reqval>offset</reqval> with <reqval>val</reqval>
+      </td>
+    </tr>
+    <tr class="20.01">
+      <td>
+        INCR <reqval>keyStr</reqval>
+      </td>
+      <td>
+        - increments the value of <reqval>keyStr</reqval> by <mark>1</mark> <u>(if the stored value can be interpreted as number)</u>
+      </td>
+    </tr>
+    <tr class="20.02">
+      <td>
+        INCRBY <reqval>keyStr</reqval> <reqval>int</reqval>
+      </td>
+      <td>
+        - increments the value of <reqval>keyStr</reqval> by <mark><reqval>int</reqval></mark> <u>(if the stored value can be interpreted as number)</u>
+      </td>
+    </tr>
+    <tr class="20.03">
+      <td>
+        INCRBYFLOAL <reqval>keyStr</reqval> <reqval>float</reqval>
+      </td>
+      <td>
+        - increments the value of <reqval>keyStr</reqval> by <mark><reqval>float</reqval></mark> <u>(if the stored value can be interpreted as number)</u>
+      </td>
+    </tr>
+    <tr class="20.04">
+      <td>
+        DECR <reqval>keyStr</reqval>
+      </td>
+      <td>
+        - decrements the value of <reqval>keyStr</reqval> by <mark>1</mark> <u>(if the stored value can be interpreted as number)</u>
+      </td>
+    </tr>
+    <tr class="20.05">
+      <td>
+        INCRBY <reqval>keyStr</reqval> <reqval>int</reqval>
+      </td>
+      <td>
+        - decrements the value of <reqval>keyStr</reqval> by <mark><reqval>int</reqval></mark> <u>(if the stored value can be interpreted as number)</u>
+      </td>
+    </tr>
+    <tr class="25.01">
+      <td>
+        STRLEN <reqval>strKey</reqval>
+      </td>
+      <td>
+        - returns the byte length of the stored string
+      </td>
+    </tr>
+    <tr class="30.01">
+      <td>
+        DEL <reqval>strKey</reqval>
+      </td>
+      <td>
+        - deletes the specified <reqval>strKey</reqval> with its value <br>
+        - returns <mark>1</mark> on successful deletion, otherwise <mark>0</mark>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      List operations <a href="https://redis.io/commands/?group=list" target="_blank">[link]</a>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td>
+        LPUSH <reqval>listKey</reqval> <reqval>val</reqval> <optval>...</optval>
+      </td>
+      <td>
+        - pushes elements on the left to the list (creates a new list if not exist) <br>
+        - returns the number of stored elements
+      </td>
+    </tr>
+    <tr class="05.02">
+      <td>
+        RPUSH <reqval>listKey</reqval> <reqval>val</reqval> <optval>...</optval>
+      </td>
+      <td>
+        - pushes elements on the right to the list (creates a new list if not exist) <br>
+        - returns the number of stored elements
+      </td>
+    </tr>
+    <tr class="05.03">
+      <td>
+        LINSERT <reqval>listKey</reqval> BEFORE|AFTER <reqval>lsitMember</reqval> <reqval>newVal</reqval>
+      </td>
+      <td>
+        - inserts <reqval>val</reqval> in the list BEFORE|AFTER <reqval>listMember</reqval>
+      </td>
+    </tr>
+    <tr class="10.01">
+      <td>
+        LPOP <reqval>listKey</reqval>
+      </td>
+      <td>
+        - removes and returns the first element in the list
+      </td>
+    </tr>
+    <tr class="10.02">
+      <td>
+        RPOP <reqval>listKey</reqval>
+      </td>
+      <td>
+        - removes and returns the last element in the list
+      </td>
+    </tr>
+    <tr class="15.01">
+      <td>
+        LINDEX <reqval>listKey</reqval> <reqval>idx</reqval>
+      </td>
+      <td>
+        - returns the element at <reqval>idx</reqval>
+    <tr class="15.02">
+      <td>
+        LPOS <reqval>listKey</reqval> <reqval>val</reqval>
+      </td>
+      <td>
+        - returns the <reqval>val</reqval>'s index in the list <br>
+        - returns <mark>NIL</mark> if no element found
+      </td>
+    </tr>
+    <tr class="20.01">
+      <td>
+        LLEN <reqval>listKey</reqval>
+      </td>
+      <td>
+        - returns the list length (if the list doesn't exist returns <mark>0</mark>)
+      </td>
+    </tr>
+    <tr class="20.02">
+      <td>
+        LRANGE <reqval>listKey</reqval> <reqval>st(inc):idx</reqval> <reqval>end(inc):idx</reqval>
+      </td>
+      <td>
+        - returns elements in range <reqval>st(inc)</reqval> - <reqval>end(inc)</reqval> (ex: <mark>LRANGE 0 -1</mark> returns all elements)
+      </td>
+    </tr>
+    <tr class="25.01">
+      <td>
+        LREM <reqval>listKey</reqval> <reqval>count</reqval> <reqval>val<reqval>
+      </td>
+      <td>
+        - removes <reqval>val</reqval> <reqval>count</reqval> times from the list (does not leaves any holes) <br>
+        - returns the number of elements removed from the list
+      </td>
+    </tr>
+    <tr class="25.02">
+      <td>
+        LTRIM <reqval>listKey</reqval> <reqval>st(inc):idx</reqval> <reqval>end(inc):idx</reqval>
+      </td>
+      <td>
+        - removes all elements that are out of the set range
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      Set operations <a href="https://redis.io/commands/?group=set" target="_blank">[link]</a>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td>
+        SADD <reqval>setKey</reqval> <reqval>val</reqval> <optval>...</optval>
+      </td>
+      <td>
+        - adds <reqval>val</reqval> to the set (creates new if doesn't exist)
+      </td>
+    </tr>
+    <tr class="05.02">
+      <td>
+        SISMEMBER <reqval>setKey</reqval> <reqval>val</reqval>
+      </td>
+      <td>
+        - returns <mark>1</mark> if <reqval>val</reqval> is part of the set, <mark>0</mark> otherwise
+      </td>
+    </tr>
+    <tr class="10.01">
+      <td>
+        SMEMBERS <reqval>setKey</reqval>
+      </td>
+      <td>
+        - returns all members of the set
+      </td>
+    </tr>
+    <tr class="10.02">
+      <td>
+        SCARD <reqval>setKey</reqval>
+      </td>
+      <td>
+        - returns the number of elements in the set
+      </td>
+    </tr>
+    <tr class="15.02">
+      <td>
+        SMOVE <reqval>srcSetKey</reqval><reqval>trgSetKey</reqval> <reqval>val</reqval>
+      </td>
+      <td>
+        - moves <reqval>val</reqval> from <reqval>srcSetKey</reqval> to <reqval>trgSetKey</reqval> <br>
+        - creates <reqval>trgSetKey</reqval> if not exist <br>
+        - returns <mark>1</mark> on successful operation, otherwise <mark>0</mark>
+      </td>
+    </tr>
+    <tr class="20.01">
+      <td>
+        SDIFF <reqval>setKey</reqval> <optval>setKey ...</optval>
+      </td>
+      <td>
+        - returns memebers that are only present in the leftmost set
+      </td>
+    </tr>
+    <tr class="20.02">
+      <td>
+        SINTER <reqval>setKey</reqval> <optval>setKey ...</optval>
+      </td>
+      <td>
+        - returns memebers that are present in all sets
+      </td>
+    </tr>
+    <tr class="20.03">
+      <td>
+        SRANDMEMBER <reqval>setKey</reqval> <optval>count</optval>
+      </td>
+      <td>
+        - returns one (or <optval>count</optval>) random member(s) from the set
+      </td>
+    </tr>
+    <tr class="25.01">
+      <td>
+        SREM <reqval>setKey</reqval> <reqval>val</reqval>
+      </td>
+      <td>
+        - removes <reqval>val</reqval> from <reqval>setKey</reqval> <br>
+        - returns <mark>1</mark> on successful removal, otherwise <mark>0</mark>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      SortedSet operations <a href="https://redis.io/commands/?group=sorted-set" target="_blank">[link]</a>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td>
+        ZADD <reqval>sortedSetKey</reqval> <reqval>score</reqval> <reqval>val</reqval> <optval>score val ...</optval>
+      </td>
+      <td>
+        - creates a new sorted set and adds the specified value(s) with its score to it <br>
+        - returns <mark>1</mark> on successful operation, otherwise <mark>0</mark> 
+      </td>
+    </tr>
+    <tr class="10.01">
+      <td>
+        ZPOPMAX <reqval>sortedSetKey</reqval> <small>[options]</small>
+      </td>
+      <td>
+        - removes and returns the element with the highest score (or <optval>count</optval> elements) <br>
+        <small>[options]</small> <br>
+        - (<optval>count</optval>) number of elements to pop
+      </td>
+    </tr>
+    <tr class="10.02">
+      <td>
+        ZPOPMIN <reqval>sortedSetKey</reqval> <small>[options]</small>
+      </td>
+      <td>
+        - removes and returns the element with the lowest score (or <optval>count</optval> elements) <br>
+        <small>[options]</small> <br>
+        - (<optval>count</optval>) number of elements to pop
+      </td>
+    </tr>
+    <tr class="15.01">
+      <td>
+        ZSCORE <reqval>sortedSetKey</reqval> <reqval>val</reqval>
+      </td>
+      <td>
+        - returns the <reqval>val</reqval>'s score
+      </td>
+    </tr>
+    <tr class="15.02">
+      <td>
+        ZRANGEBYSCORE <reqval>sortedSetKey</reqval> <reqval>stRank(inc)</reqval> <reqval>endRank(inc)</reqval> <small>[options]</small>
+      </td>
+      <td>
+        - returns elements that are scored between the specified range <br>
+        <small>[options]</small> <br>
+        - (<small>WITHSCORES</small>) include scores
+      </td>
+    </tr>
+    <tr class="15.03">
+      <td>
+        ZCOUNT <reqval>sortedSetKey</reqval> <reqval>stRank(inc)</reqval> <reqval>endRank(inc)</reqval>
+      </td>
+      <td>
+        - returns the number of elements that are scored between the specified range
+      </td>
+    </tr>
+    <tr class="15.04">
+      <td>
+        ZINCRBY <reqval>sortedSetKey</reqval> <reqval>int|float</reqval> <reqval>val</reqval>
+      </td>
+      <td>
+        - increments the score of <reqval>val</reqval> by <reqval>int|float</reqval> <br>
+        - adds <reqval>val</reqval> with <reqval>int|float</reqval> if member not exist
+      </td>
+    </tr>
+    <tr class="20.01">
+      <td>
+        ZRANK <reqval>sortedSetKey</reqval> <reqval>val</reqval>
+      </td>
+      <td>
+        - returns the <reqval>val</reqval>'s index
+      </td>
+    </tr>
+    <tr class="20.02">
+      <td>
+        ZRANGE <reqval>sortedSetKey</reqval> <reqval>st(inc):idx</reqval> <reqval>end(inc):idx</reqval> <small>[options]</small>
+      </td>
+      <td>
+        - returns all elements in the specified index range (ex: <mark>ZRANGE 0 -1</mark> returns all elements) <br>
+        <small>[options]</small> <br>
+        - (<small>WITHSCORES</small>) include member scores
+      </td>
+    </tr>
+    <tr class="20.03">
+      <td>
+        ZCARD <reqval>sortedSetKey</reqval>
+      </td>
+      <td>
+        - returns the number of elements in the sortedSet
+      </td>
+    </tr>
+    <tr class="25.01">
+      <td>
+        ZRANDMEMBER <reqval>sortedSetKey</reqval> <small>[options]</reqval>
+      </td>
+      <td>
+        - returns a random member from the sortedSet <br>
+        <small>[options]</small> <br>
+        - (<optval>count</optval>) number of random elements to return <br>
+        - (<small>WITHSCORES</small>) include scores
+      </td>
+    </tr>
+    <tr class="30.01">
+      <td>
+        ZREM <reqval>sortedSetKey</reqval> <reqval>val</reqval>
+      </td>
+      <td>
+        - removes <reqval>val</reqval> from the sortedStet <br>
+        - returns <mark>1</mark> on successful deletion, otherwise <mark>0</mark>
+      </td>
+    </tr>
+    <tr class="30.02">
+      <td>
+        ZREMRANGEBYRANK <reqval>sortedSetKey</reqval> <reqval>st(inc):idx</reqval> <reqval>end(inc):idx</reqval>
+      </td>
+      <td>
+        - removes elements between the specified index range <br>
+        - returns the number of elements removed
+      </td>
+    </tr>
+    <tr class="30.03">
+      <td>
+        ZREMRANGEBYSCORE <reqval>sortedSetKey</reqval> <reqval>st(inc):score</reqval> <reqval>end(inc):score</reqval>
+      </td>
+      <td>
+        - removes elements between the specified score range <br>
+        - returns the number of elements removed 
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      Hash operations <a href="https://redis.io/commands/?group=hash" target="_blank">[link]</a>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td>
+        HGET <reqval>hashKey</reqval> <reqval>key</reqval>
+      </td>
+      <td>
+        - returns the hash value stored with <reqval>key</reqval>
+      </td>
+    </tr>
+    <tr class="05.02">
+      <td>
+        HSET <reqval>hashKey</reqval> <reqval>key</reqval> <reqval>val</reqval> <optval>key val ...</optval>
+      </td>
+      <td>
+        - sets a new hash with <reqval>key</reqval> <reqval>val</reqval> pair(s)
+      </td>
+    </tr>
+    <tr class="05.03">
+      <td>
+        HSETNX <reqval>hashKey</reqval> <reqval>key</reqval> <reqval>val</reqval>
+      </td>
+      <td>
+        - sets a new hash with <reqval>key</reqval> <reqval>val</reqval> pair <br>
+        - does not override existing key/value pairs <br>
+        - returns <mark>1</mark> on successful operation, otherwise <mark>0</mark>
+      </td>
+    </tr>
+    <tr class="10.01">
+      <td>
+        HMGET <reqval>hashKey</reqval> <reqval>key</reqval> <optval>key ...</optval>
+      </td>
+      <td>
+        - returns the hash value stored with <reqval>key</reqval>(s)
+      </td>
+    </tr>
+    <tr class="10.02">
+      <td>
+        HMSET <reqval>hashKey</reqval> <reqval>key</reqval> <reqval>val</reqval> <optval>key val ...</optval>
+      </td>
+      <td>
+        - sets a new hash with <reqval>key</reqval> <reqval>val</reqval> pair(s)
+      </td>
+    </tr>
+    <tr class="15.01">
+      <td>
+        HGETALL <reqval>hashKey</reqval>
+      </td>
+      <td>
+        - returns all key/value pairs stored by <reqval>hashKey</reqval>
+      </td>
+    </tr>
+    <tr class="15.02">
+      <td>
+        HKEYS <reqval>hashKey</reqval>
+      </td>
+      <td>
+        - returns all the hash keys
+      </td>
+    </tr>
+    <tr class="15.03">
+      <td>
+        HVALS <reqval>hashKey</reqval>
+      </td>
+      <td>
+        - returns all the hash values
+      </td>
+    </tr>
+    <tr class="20.01">
+      <td>
+        HEXISTS <reqval>hashKey</reqval> <reqval>key</reqval>
+      </td>
+      <td>
+        - returns <mark>1</mark> if <reqval>key</reqval> exists in <reqval>hashKey</reqval>, otherwise <mark>0</mark>
+      </td>
+    </tr>
+    <tr class="25.01">
+      <td>
+        HRANDFIELD <reqval>hashKey</reqval> <opt>[options]</opt>
+      </td>
+      <td>
+        - returns a random hash key <br>
+        <opt>[options]</opt> <br>
+        - (<optval>count</optval>) number of random elements to return <br>
+        - (<opt>WITHVALUES</opt>) also return values
+      </td>
+    </tr>
+    <tr class="30.01">
+      <td>
+        HLEN <reqval>hashKey</reqval>
+      </td>
+      <td>
+        - returns the number of key/value pairs stored by the hash
+      </td>
+    </tr>
+    <tr class="30.02">
+      <td>
+        HSTRLEN <reqval>hashKey</reqval> <reqval>val</reqval>
+      </td>
+      <td>
+        - returns the byte length of <reqval>val</reqval>
+      </td>
+    </tr>
+    <tr class="35.01">
+      <td>
+        HDEL <reqval>hashKey</reqval> <reqval>key</reqval>
+      </td>
+      <td>
+        - deletes the hash <reqval>key</reqval> <br>
+        - returns <mark>1</mark> on successful removal, otherwise <mark>0</mark>
+      </td>
+    </tr>
+  </table>
+
+
+  <br><br>
+</body>
+
+</html>
