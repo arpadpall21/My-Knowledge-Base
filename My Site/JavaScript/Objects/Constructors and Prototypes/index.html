@@ -25,7 +25,7 @@
     </tr>
 <tr class="01.01">
 <td> 
-            <strong>obj|val</strong>.constructor 
+            <reqval>obj|val</reqval>.constructor 
 </td>
 <td> 
             - returns an object or value's Constructor (class) <u>(getter only)</u> 
@@ -56,7 +56,7 @@
         </td>
     </tr>
     <tr class="01.02">
-        <td> <strong>Constructor</strong>.prototype </td>
+        <td> <reqval>Constructor</reqval>.prototype </td>
         <td> - gets or set the Constructor's inheritable methods and properties
             <span id="browserSupport" title="Updated : 2019-10-28">
                 <span><i class="fab fa-chrome"></i> yes </span>
@@ -72,7 +72,7 @@
         <td colspan="2"> get set Prototype </td>
     </tr>
     <tr class="04">
-        <td> <strong>obj</strong>.__proto__ </td>
+        <td> <reqval>obj</reqval>.__proto__ </td>
         <td> 
             - <b><u>[Not Standard]</u></b> gets or sets an object's prototype <br>
             - if the returned prototype is a constructor, then it is returned with its <mark>prototype</mark> property (ex: <mark>Object.prototype</mark>)
@@ -87,7 +87,7 @@
         </td>
     </tr>
     <tr class="03.02">
-        <td> <em>Object</em>.getPrototypeOf(<strong>obj</strong>) </td>
+        <td> <em>Object</em>.getPrototypeOf(<reqval>obj</reqval>) </td>
         <td> 
             - returns the passed object's direct prototype <br>
             - if the returned prototype is a constructor, then it is returned with its <mark>prototype</mark> property (ex: <mark>Object.prototype</mark>)
@@ -102,9 +102,9 @@
         </td>
     </tr>
     <tr class="03.03">
-        <td> <em>Object</em>.setPrototypeOf(<strong>trgObj</strong>, <strong>protObj</strong><strong>|class</strong><em>.prototype</em>) </td>
+        <td> <em>Object</em>.setPrototypeOf(<reqval>trgObj</reqval>, <reqval>protObj</reqval><reqval>|class</reqval><em>.prototype</em>) </td>
         <td> 
-            - sets the <strong>protObj</strong> as prototype to the <strong>trgObj</strong>, returns <strong>trgObj</strong>
+            - sets the <reqval>protObj</reqval> as prototype to the <reqval>trgObj</reqval>, returns <reqval>trgObj</reqval>
             <span id="browserSupport" title="Updated : 2019-10-28">
                 <span><i class="fab fa-chrome"></i> 34 </span>
                 <span><i class="fab fa-firefox"></i> 31 </span>
@@ -119,7 +119,7 @@
         <td colspan="2"> check Prototype </td>
     </tr>
     <tr class="06.02" id="inst_">
-        <td> <strong>obj|val</strong> instanceof <strong>Const</strong> </td>
+        <td> <reqval>obj|val</reqval> instanceof <reqval>Const</reqval> </td>
         <td> - returns <mark>true</mark> if the object or value is an instance of the passed Constructor (any constructor on the prototype chain), otherwise returns <mark>false</mark>  
             <span id="browserSupport" title="updated:2020-10-17">
                 <span><i class="fab fa-chrome"></i> 1 </span>
@@ -132,7 +132,7 @@
         </td>
     </tr>
     <tr class="06.03">
-        <td> <strong>obj|Const</strong><em>.prototype</em>.isPrototypeOf(<strong>obj|Const</strong><em>.prototype</em>) </td>
+        <td> <reqval>obj|Const</reqval><em>.prototype</em>.isPrototypeOf(<reqval>obj|Const</reqval><em>.prototype</em>) </td>
         <td> - returns <mark>true</mark> if the Object or Constructor<mark>.prototype</mark> (on the left) is the prototype (appears anywhere on the prototype chain) of the object Constructor (argument), otherwise returns <mark>false</mark>
             <span id="browserSupport" title="updated:2020-10-17">
                 <span><i class="fab fa-chrome"></i> 1 </span>
@@ -166,8 +166,8 @@
     
         Object()                    VS                  { }
         String()                    VS                  " "
-        Number()                    VS                  <strong>nr</strong>
-        Boolean()                   VS                  <strong>bool</strong>
+        Number()                    VS                  <reqval>nr</reqval>
+        Boolean()                   VS                  <reqval>bool</reqval>
         Array()                     VS                  [ ]
         RegExp()                    VS                  / /
         Function()                  VS                  function() {}
@@ -196,7 +196,7 @@
     <p> - Constructor function is a function that creates new object prototypes (blueprints) for new "object types" <u>(Constructors have their first letter written in uppercase)</u></p>
     <p> 
     <pre class="syntax">
-SYNTAX :    function <strong>Const</strong> (<i>arg1, arg2, ...</i>) {                                         // creates and returns a Constructor function 
+SYNTAX :    function <reqval>Const</reqval> (<i>arg1, arg2, ...</i>) {                                         // creates and returns a Constructor function 
                 this.<i>prop1</i> = <i>arg1</i>
                 this.<i>prop2</i> = <i>arg2</i>
                 <i>...</i>
@@ -204,11 +204,11 @@ SYNTAX :    function <strong>Const</strong> (<i>arg1, arg2, ...</i>) {          
             }
             
             
-            <strong>Const</strong>.prototype                                                            // gets the Constructor's inheritable methods and properties (getter only)   
-            <strong>Const</strong>.prototype<strong>.id</strong> = <strong>val|fn</strong>                                                // adds a property or method to the Constructor (which is inherited through the prototype chain)    
+            <reqval>Const</reqval>.prototype                                                            // gets the Constructor's inheritable methods and properties (getter only)   
+            <reqval>Const</reqval>.prototype<reqval>.id</reqval> = <reqval>val|fn</reqval>                                                // adds a property or method to the Constructor (which is inherited through the prototype chain)    
             
             
-            new <strong>Const</strong>(<i>arg, ...</i>)                                                        // create and returns an object instance 
+            new <reqval>Const</reqval>(<i>arg, ...</i>)                                                        // create and returns an object instance 
     </pre>
 <details class="example">
 <summary> DEMO </summary> 
@@ -309,91 +309,80 @@ SYNTAX :    function <strong>Const</strong> (<i>arg1, arg2, ...</i>) {          
     <p> - the code inside the class runs in <u>strict mode</u>, class declarations are not hoisted (like Constructor Functions) </p>
     <p> - private fields and methods are enforced by JavaScript itself </p>
     <pre class="syntax">
-    class <strong>ClassId_1</strong> {                                                                  // class declaration (we can use class expressions as well ( let <i>ClassId</i> = class {} )
-        <small>constructor(<i>arg1, ...</i>) {</small>                                                       // initializes instance properties and methods, (if omitted the default (super) constructor is called)      
-            this;                                                                        // references the instance that will be created 
+    class <reqval>Class1</reqval> {                        // class declaration (we can use class expressions as well ( let <i>ClassId</i> = class {} )
+        <small>constructor(<i>arg1, ...</i>) {</small>          // initializes the instance properties and methods  
+            this                          // -> <reqval>instance</reqval>
         <small>}</small>
                 
 <span style="color:darkgray">// public methods and fields ----------------------------------------------------------</span>
-        <strong>methodId</strong>() {                                                                   // available on the prototype chain (all instances including sub instances inherit it) (present on <mark><strong>ClassId_1</strong>.prototype</mark>)
-            this;                                                                        // references the instance that will be created 
+        <reqval>method</reqval>() {                        // available on the prototype chain (all instances including sub instances inherit it) (present on <mark><reqval>Class1</reqval>.prototype</mark>)
+            this                          // -> <reqval>instance</reqval>
         }
             
-                                                                                        <span id="browserSupport" style="color:yellow;" title="Updated: 2022-03-12"> <span><i class="fab fa-chrome"></i> 72 </span><span><i class="fab fa-firefox"></i> 69 </span><span><i class="fab fa-opera"></i> 60 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span><span><i class="fab fa-safari"></i> 14.1 </span><span><i class="fab fa-node-js"></i> 12.0.0 </span></span>    
-        <strong>propId</strong> <i>= val</i>                                                                   // will be owned by instances <u>(including sub instances)</u>, but not present on the prorotype chain (not present on <mark><strong>ClassId_1</strong>.prototype</mark>) (writable, enumerable, configurable)    
-        get|set <strong>propId</strong>(<i>val</i>) {                                                          // can be declared as getter or setter property  
-            this;                                                                        // references the instance that will be created    
+                                            <span id="browserSupport" style="color:yellow;" title="Updated: 2022-03-12"> <span><i class="fab fa-chrome"></i> 72 </span><span><i class="fab fa-firefox"></i> 69 </span><span><i class="fab fa-opera"></i> 60 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span><span><i class="fab fa-safari"></i> 14.1 </span><span><i class="fab fa-node-js"></i> 12.0.0 </span></span>    
+        <reqval>propId</reqval> <i>= val</i>                      // will be owned by instances <u>(including sub instances)</u>, but not present on the prorotype chain (not present on <mark><reqval>Class1</reqval>.prototype</mark>) (writable, enumerable, configurable)    
+        get|set <reqval>propId</reqval>(<i>val</i>) {             // can be declared as getter or setter property  
+            this;                         // -> <reqval>instance</reqval>
         }
     
-    <span style="color:darkgray">// static -------------------------------------------------------------------------</span>
-        static <strong>methodId</strong>() {                                                            // available on this class <u>and on all subclasses</u>
-            this;                                                                        // references this class (<mark><strong>ClassId_1</strong></mark>) 
+    <span style="color:darkgray">// static ---------------------------------</span>
+        static <reqval>methodId</reqval>() {               // available on this class <u>and on all subclasses</u>
+            this                          // -> <reqval>Class1</reqval>
         };
             
-                                                                                        <span id="browserSupport" style="color:yellow;" title="Updated: 2022-03-12"> <span><i class="fab fa-chrome"></i> 72 </span><span><i class="fab fa-firefox"></i> 69 </span><span><i class="fab fa-opera"></i> 60 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span><span><i class="fab fa-safari"></i> 14.1 </span><span><i class="fab fa-node-js"></i> 12.0.0 </span></span>                
-        static <strong>propId</strong> <i>= val</i>                                                            // available on this class <u>and on all subclasses</u> (writable, enumerable, configurable) 
-        static get|set <strong>propId</strong>(<i>val</i>) {                                                   // can be declared as getter or setter static property  
-            this;                                                                        // references this class (<mark><strong>ClassId_1</strong></mark>) 
+                                            <span id="browserSupport" style="color:yellow;" title="Updated: 2022-03-12"> <span><i class="fab fa-chrome"></i> 72 </span><span><i class="fab fa-firefox"></i> 69 </span><span><i class="fab fa-opera"></i> 60 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span><span><i class="fab fa-safari"></i> 14.1 </span><span><i class="fab fa-node-js"></i> 12.0.0 </span></span>                
+        static <reqval>propId</reqval> <i>= val</i>               // available on this class <u>and on all subclasses</u> (writable, enumerable, configurable) 
+        static get|set <reqval>propId</reqval>(<i>val</i>) {      // can be declared as getter or setter static property  
+            this                          // -> <reqval>Class1</reqval>   
         };
-                                                                                          
-                                                                                        <span id="browserSupport" style="color:yellow;" title="Updated: 2022-03-15"> <span><i class="fab fa-chrome"></i> 94 </span><span><i class="fab fa-firefox"></i> 93 </span><span><i class="fab fa-opera"></i> 80 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 94 </span><span><i class="fab fa-safari"></i> NO </span><span><i class="fab fa-node-js"></i> 16.11.0 </span></span>                
-        static {                                                                       // static initialization block (multiple allowed) (used to perform some logic when initializing static properties)   
-            this;                                                                        // references this class (<mark><strong>ClassId_1</strong></mark>)     
+        
+                                            <span id="browserSupport" style="color:yellow;" title="Updated: 2022-03-15"> <span><i class="fab fa-chrome"></i> 94 </span><span><i class="fab fa-firefox"></i> 93 </span><span><i class="fab fa-opera"></i> 80 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 94 </span><span><i class="fab fa-safari"></i> NO </span><span><i class="fab fa-node-js"></i> 16.11.0 </span></span>                
+        static {                          // static initialization block (multiple allowed) (used to perform some logic when initializing static properties)   
+            this                          // -> <reqval>Class1</reqval>    
         }; 
         
 <span style="color:darkgray">// private methods and fields ---------------------------------------------------------</span> 
-                                                                                        <span id="browserSupport" style="color:yellow;" title="Updated: 2022-03-15"> <span><i class="fab fa-chrome"></i> 84 </span><span><i class="fab fa-firefox"></i> 90 </span><span><i class="fab fa-opera"></i> 70 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 84 </span><span><i class="fab fa-safari"></i> 15 </span><span><i class="fab fa-node-js"></i> 14.6.0 </span></span>                
-        #<strong>methodId</strong>() {                                                                  // only available inside this class (<mark><strong>ClassId_1</strong></mark>), accessible as <mark>this.#<strong>methodId</strong>()</mark> where <mark>this</mark> references the instance that will be created    
-            this;                                                                        // references an object which prototype is <mark><strong>ClassId_1</strong>.prototype</mark> (the same <mark>this</mark> is shared between private function bodies)   
+                                            <span id="browserSupport" style="color:yellow;" title="Updated: 2022-03-15"> <span><i class="fab fa-chrome"></i> 84 </span><span><i class="fab fa-firefox"></i> 90 </span><span><i class="fab fa-opera"></i> 70 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 84 </span><span><i class="fab fa-safari"></i> 15 </span><span><i class="fab fa-node-js"></i> 14.6.0 </span></span>                
+        #<reqval>methodId</reqval>() {                     // only available inside this class (<mark><reqval>Class1</reqval></mark>), accessible as <mark>this.#<reqval>methodId</reqval>()</mark> where <mark>this</mark> references the instance that will be created    
+            this                          // -> <reqval>instance</reqval>
         };
         
-                                                                                        <span id="browserSupport" style="color:yellow;" title="Updated: 2022-03-15"> <span><i class="fab fa-chrome"></i> 74 </span><span><i class="fab fa-firefox"></i> 90 </span><span><i class="fab fa-opera"></i> 62 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span><span><i class="fab fa-safari"></i> 14.1 </span><span><i class="fab fa-node-js"></i> 12.0.0 </span></span>                
-        #<strong>propId</strong> <i>= val</i>                                                                  // only available inside this class (<mark><strong>ClassId_1</strong></mark>), accessible as <mark>this.#<strong>propId</strong></mark> where <mark>this</mark> references the instance that will be created     
-        get|set #<strong>propId</strong>(<i>val</i>) {                                                            can be declared as getter or setter property   
-            this;                                                                        // references an object which prototype is <mark><strong>ClassId_1</strong>.prototype</mark> (the same <mark>this</mark> is shared between private function bodies)   
-        };
-        
-    <span style="color:darkgray">// static -------------------------------------------------------------------------</span>
-                                                                                        <span id="browserSupport" style="color:yellow;" title="Updated: 2022-03-15"> <span><i class="fab fa-chrome"></i> 84 </span><span><i class="fab fa-firefox"></i> 90 </span><span><i class="fab fa-opera"></i> 70 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 84 </span><span><i class="fab fa-safari"></i> 15 </span><span><i class="fab fa-node-js"></i> 14.6.0 </span></span>                
-        static #<strong>methodId</strong>() {                                                           // only available inside this class (<mark><strong>ClassId_1</strong></mark>), accessible as <mark>this.#<strong>methodId</strong>()</mark> where <mark>this</mark> references this class (<mark><strong>ClassId_1</strong></mark>)    
-            this;                                                                        // references this class (<mark><strong>ClassId_1</strong></mark>) 
-        };
-            
-                                                                                        <span id="browserSupport" style="color:yellow;" title="Updated: 2022-03-12"> <span><i class="fab fa-chrome"></i> 72 </span><span><i class="fab fa-firefox"></i> 69 </span><span><i class="fab fa-opera"></i> 60 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span><span><i class="fab fa-safari"></i> 14.1 </span><span><i class="fab fa-node-js"></i> 12.0.0 </span></span>                
-        static #<strong>propId</strong> <i>= val</i>                                                           // only available inside this class (<mark><strong>ClassId_1</strong></mark>), accessible as <mark>this.#<strong>propId</strong></mark> where <mark>this</mark> references this class (<mark><strong>ClassId_1</strong></mark>)    
-        static get|set #<strong>propId</strong>(<i>val</i>) {                                                  // can be declared as getter or setter static property  
-            this;                                                                        // references this class (<mark><strong>ClassId_1</strong></mark>) 
+                                            <span id="browserSupport" style="color:yellow;" title="Updated: 2022-03-15"> <span><i class="fab fa-chrome"></i> 74 </span><span><i class="fab fa-firefox"></i> 90 </span><span><i class="fab fa-opera"></i> 62 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span><span><i class="fab fa-safari"></i> 14.1 </span><span><i class="fab fa-node-js"></i> 12.0.0 </span></span>                
+        #<reqval>propId</reqval> <i>= val</i>                     // only available inside this class (<mark><reqval>Class1</reqval></mark>), accessible as <mark>this.#<reqval>propId</reqval></mark> where <mark>this</mark> references the instance that will be created     
+        get|set #<reqval>propId</reqval>(<i>val</i>) {                                                            can be declared as getter or setter property   
+            this;                         // -> <reqval>instance</reqval>
         };
         
         
 <span style="color:darkgray">// ------------------------------------------------------------------------------------</span>
 <span style="color:darkgray">// sub-class --------------------------------------------------------------------------</span>
-    class <strong>ClassId_2</strong> extends <strong>ClassId_1</strong> {                                                // creates a subclass (<strong>ClassId_1</strong> prototype of <strong>ClassId_2</strong>)   
+    class <reqval>Class2</reqval> extends <reqval>Class1</reqval> {         // creates a subclass (<reqval>Class1</reqval> prototype of <reqval>Class2</reqval>)   
         <small>constructor(<i>arg, ...</i>) {</small>                                                 
-            super(<i>arg, ...</i>)                                                            <span style="color:orange;">// required <u>as first method</u> inside the subclasse's <mark>constructor</mark> statement (if present)</span>, it basically references the superclasse's <mark>constructor</mark> statement here    
+            super(<i>arg, ...</i>)               <span style="color:orange;">// required <b>only</b> if this class is extended with a parent class (references the superclasse's <mark>constructor</mark>)</span> 
         <small>}</small> 
         
-        <strong>fn(){</strong>  
-            super<strong>.prop|method</strong>                                                          // references the super-class property|method (the first upper class where the <strong>prop|method</strong> is found), available where <mark>this</mark> references the instance that will be created 
-        <strong>}</strong>  
+        <reqval>fn(){</reqval>  
+            super<reqval>.prop|method</reqval>             // references the first found super-class <reqval>prop|method</reqval>  
+        <reqval>}</reqval>  
     }
     </pre>  
-<details class="example"> 
+<details class="example">
 <summary> DEMO </summary> 
     <pre>
     let myObj = new MyClass(1, 2);                                                     // -! this throws a ReferenceError (because classes are NOT hoisted like Constructor Functions) 
     
     class MyClass {                                                                    // the code inside the class block runs in "strict-mode"
-        constructor(a, b) {                                                            // this initializes the object instance (assigns properties with values)   
-            this.a = a;                                                                // the this keyword refers to the object instance 
+        constructor(a, b) {                                                            // this initializes the object instance (assigns properties with values)  
+            this.a = a;                                                                // the <mark>this</mark> keyword refers to the object instance 
             this.b = b;
         }
-        publicMethod(){ return 'public method returned value'; }                       // Public Instance Method (object instances are NOT initialized with it, present in the prototype chain)    
-    }                                                                                      // the this keyword refers to this class (MyClass)
+        
+        publicMethod(){ return 'public method returned value'; }                       // object instances only inherit these methos from the prototype chain)  
+    } 
     
     class SubClass extends MyClass{                                                    // sub-class created as 'MyClass' class as its prototype 
         constructor(a, b, c){                                                          // NOT required in subclass (if omitted the super-class constructor statement is inherited as it is)   
-            super(a, b);                                                               // -! super must be the first statement inside the constructor statement in the sub-class    
+            super(a, b);                                                               // -! must be called before <mark>this</mark>   
             this.c = c;                                                                // the object instance is initiated first by the superclass constructor then by the remaining properties   
         }
         getSuperClassMethod(){ return super.publicMethod() }                           // the super keyword refers to the super-class prototype (MyClass.prototype)
