@@ -12,143 +12,173 @@
 </head>
 
 <body>
-  <h1> IP and MAC Addresses (ver 3.3.1) </h1>
-  <p> Updated ( 2020-02-27)</p>
+  <h1> IP and MAC Addresses  </h1>
+  <p> Updated ( 2020-02-27 / 2023-12-27 )</p>
   <p class="sitenav"> <a href="../../../index.html" title="home">MySite></a>
     <a href="../../index.html" title="Learn WebDesign">Computer Science></a>
     <a href="../index.html" title="Learn WebDesign">Network and Internet></a> IP and MAC Addresses
   </p>
   <table class="table">
-    <caption> IP addresses </caption>
-    <tbody>
-      <tr>
-        <th style="background-color:firebrick;" colspan="2"> Address </th>
-        <th> Description </th>
-      </tr>
-      <tr>
-        <td colspan="3"> IPv4 </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="background-color:inherit;">
-          <strong>[0-255]</strong>.<strong>[0-255]</strong>.<strong>[0-255]</strong>.<strong>[0-255]</strong>
-        </td>
-        <td> IPv4 address represented by 4 octets </td>
-      </tr>
-      <tr>
-        <td style="width:12%;"> 10.0.0.0 </td>
-        <td style="width:18%;"> 10.255.255.255 </td>
-        <td> (Class A) private IP range (16,777,216 addresses available) </td>
-      </tr>
-      <tr>
-        <td> 172.16.0.0 </td>
-        <td> 172.31.255.255 </td>
-        <td> (Class B) private IP range (1,048,576 addresses available) </td>
-      </tr>
-      <tr>
-        <td> 192.162.0.0 </td>
-        <td> 192.162.255.255 </td>
-        <td> (Class C) private IP range (65,536 addresses available) </td>
-      </tr>
-      <tr>
-        <td> 127.0.0.0 </td>
-        <td> 127.255.255.255 </td>
-        <td>
-          - Loopback IP range (<mark>127.0.0.1</mark> = <mark>localhost</mark>) <br>
-          - network adapter self test (packets never sent through the network)
-        </td>
-      </tr>
-      <tr>
-        <td> 169.254.0.0 </td>
-        <td> 169.254.255.255 </td>
-        <td>
-          - Link-Local IP range = APIPA (Automatic Private IP Addressing) <br>
-          - host randomly self assigns one in case the DHCP is not reachable
-        </td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td> 0.0.0.0 </td>
-        <td>
-          - Non-Routable Meta-Address (means all IP addresses on this machine)
-        </td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td> 255.255.255.255 </td>
-        <td>
-          - broadcast address (sending data to all devices on the network without knowing their IP address)
-        </td>
-      </tr>
-      <tr>
-        <td colspan="3"> IPv6 </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="background-color:inherit;">
-          <strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>
-        </td>
-        <td> IPv6 represented by 8 blocks of 4 hextets </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="background-color:inherit;">
-          2|3<strong>ggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>ssss</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>
-        </td>
-        <td>
-          - <u>Global Unicast</u> is a public IPv6 address <u>routable on the internet</u> <br>
-          - <mark>2|3</mark> - prefix (3bits) <br>
-          - <strong>g</strong> - global routing (45bits) = globally assigned by IANA (global hierarchical assignement)
-          <br>
-          - <strong>s</strong> - subnet id (16bits) = identifies the subnet, assigned by the Administrator <br>
-          - <strong>i</strong> - interface id (64bits) = individual node addresses on the subnet, assigned by the
-          Administrator
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="background-color:inherit;">
-          fd<strong>gg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>ssss</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>
-        </td>
-        <td>
-          - <u>Unique Local</u> is a private IPv6 address <u>used in private networking (not routable on the
-            internet)</u> <br>
-          - <mark>fd</mark> - prefix (8bits) <br>
-          - <strong>g</strong> - global id (40bits) = assigned by the Administrator <br>
-          - <strong>s</strong> - subnet id (16bits) = identifies the subnet, assigned by the Administrator <br>
-          - <strong>i</strong> - interface id (64bits) = indivudual node addresses on the subnet, assigned by the
-          Administrator
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="background-color:inherit;">
-          fe80:0000:0000:0000:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong><small>%</small><i>id</i>
-        </td>
-        <td>
-          - <u>Link Local</u> used to communicate with neighbouring nodes (IPv6 nodes are automatically assigned by the
-          host with this address) <br>
-          - fe80 - prefix (10bits) <br>
-          - <strong>i</strong> - interface id (64bits) = device id <br>
-          - <small>%</small><i>id</i> - scope id (on windows)
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="background-color:inherit;">
-          ff<strong>fs</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>
-        </td>
-        <td>
-          - <u>Multicast Address</u> <br>
-          - ff - prefix (8bits) <br>
-          - <strong>f</strong> - flag (4bits) <br>
-          - <strong>s</strong> - scope (4bits) <br>
-          - <strong>g</strong> - group id (112bits)
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="background-color:inherit;"> ::1 </td>
-        <td> - loopback address, network adapter self test (packets never sent through the network) </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="background-color:inherit;"> :: </td>
-        <td> - means all ip addresses on this machine </td>
-      </tr>
-    </tbody>
+    <caption> 
+      IPv4 
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th class="width: 30%;"> Address </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td>
+        <strong>[0-255]</strong>.<strong>[0-255]</strong>.<strong>[0-255]</strong>.<strong>[0-255]</strong>
+      </td>
+      <td> - IPv4 address represented by 4 octets </td>
+    </tr>
+    <tr class="10.01">
+      <td> 10.0.0.0/8 </td>
+      <td> - (Class A) private IP range (16,777,216 addresses available) </td>
+    </tr>
+    <tr class="10.02">
+      <td> 172.16.0.0/12 </td>
+      <td> - (Class B) private IP range (1,048,576 addresses available) </td>
+    </tr>
+    <tr class="10.03">
+      <td> 192.168.0.0/16 </td>
+      <td> - (Class C) private IP range (65,536 addresses available) </td>
+    </tr>
+    <tr class="10.04">
+      <td> 224.0.0.0 to 239.255.255.255 </td>
+      <td> 
+        - (Class D) Multicasting address range <br>
+        - IANA defined that a multicast address must start with <mark>1110</mark> bits <br>
+        - (244 = <mark>111000000</mark> bit, 239 = <mark>11101111</mark> bits) that's the reason for the funny address range
+      </td>
+    </tr>
+    <tr class="15.01">
+      <td> 127.0.0.0/8 </td>
+      <td>
+        - Loopback IP range (large range but we only use <mark>127.0.0.1</mark> = <mark>localhost</mark>) <br>
+        - network adapter self test (packets never sent through the network)
+      </td>
+    </tr>
+    <tr class="20.01">
+      <td> 169.254.0.0/16 </td>
+      <td>
+        - Link-Local IP range = APIPA (Automatic Private IP Addressing) <br>
+        - the host self assigns it (in case there's no DHCP)
+      </td>
+    </tr>
+    <tr class="22.01">
+      <td> <reqval>firstIpAddress</reqval> </td>
+      <td>
+        - the first IP address is the network identifier (mostly used to calculate the available IPs on the network) <br>
+        - ex: in a subnetwork <mark>192.168.0.0/16</mark> the IP <mark>192.168.0.0</mark> is the network id
+      </td>
+    </tr>
+    <tr class="22.02">
+      <td> <reqval>lastIpAddress</reqval> </td>
+      <td>
+        - the last IP address is the (local) broadcast address <br>
+        - ex: in a subnetwork <mark>192.168.0.0/16</mark> the IP <mark>192.168.0.255</mark> is the broadcast address <br>
+        - broadcasting messages will be sent to all addresses on the network (UDP protocol)
+      </td>
+    </tr>
+    <tr class="25.01">
+      <td> 0.0.0.0 </td>
+      <td>
+        - alias for the current host address
+      </td>
+    </tr>
+    <tr class="25.02">
+      <td> 255.255.255.255 </td>
+      <td>
+        - alias for the network broadcast address
+        
+      </td>
+    </tr>
+  </table>
+    <br>
+  <table class="table">
+    <caption> 
+      IPv6
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th class="width: 30%;"> Address </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td>
+        <strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>
+      </td>
+      <td> IPv6 represented by 8 blocks of 4 hextets </td>
+    </tr>
+    <tr class="10.01">
+      <td>
+        (2|3)<strong>ggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>ssss</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>
+      </td>
+      <td>
+        - <u>Global Unicast</u> is a public IPv6 address <u>routable on the internet</u> <br>
+        - <mark>2|3</mark> - prefix (3bits) <br>
+        - <strong>g</strong> - global routing (45bits) = globally assigned by IANA (global hierarchical assignement)
+        <br>
+        - <strong>s</strong> - subnet id (16bits) = identifies the subnet, assigned by the Administrator <br>
+        - <strong>i</strong> - interface id (64bits) = individual node addresses on the subnet, assigned by the
+        Administrator
+      </td>
+    </tr>
+    <tr class="10.02">
+      <td>
+        ff<strong>fs</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>
+      </td>
+      <td>
+        - <u>Multicast Address</u> <br>
+        - ff - prefix (8bits) <br>
+        - <strong>f</strong> - flag (4bits) <br>
+        - <strong>s</strong> - scope (4bits) <br>
+        - <strong>g</strong> - group id (112bits)
+      </td>
+    </tr>
+    
+    <tr class="20.01">
+      <td>
+        fe80:0000:0000:0000:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong><small>%</small><i>id</i>
+      </td>
+      <td>
+        - Link-Local IP range = APIPA (Automatic Private IP Addressing) <br>
+        - the host self assigns it (in case no DHCP) <br>
+        - fe80 - prefix (10bits) <br>
+        - <strong>i</strong> - interface id (64bits) = device id <br>
+        - <small>%</small><i>id</i> - scope id (on windows)
+      </td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    <tr class="25.01">
+      <td>
+        (fc|fd)00:<strong>gggg</strong>:<strong>gggg</strong>:<strong>ssss</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>
+      </td>
+      <td>
+        - <u>Unique Local</u> is a private IPv6 address, used in private networking <mark class="mark">like IPv4 Class A|B|C</mark> (not routable on the internet) <br>
+        - <mark>fd00|fc00</mark> - prefix (8bits) <br>
+        - <strong>g</strong> - global id (40bits) = assigned by the Administrator <br>
+        - <strong>s</strong> - subnet id (16bits) = identifies the subnet, assigned by the Administrator <br>
+        - <strong>i</strong> - interface id (64bits) = indivudual node addresses on the subnet, assigned by the
+        Administrator
+      </td>
+    </tr>
+    
+    <tr class="35.01">
+      <td> ::1 </td>
+      <td> - loopback address, network adapter self test (packets never sent through the network) </td>
+    </tr>
+    <tr class="35.02">
+      <td> :: </td>
+      <td> - means all ip addresses on this machine </td>
+    </tr>
   </table>
   <h2 style="color:green;"><u> Notes : </u></h2>
   <details class="example" id="notes">
@@ -160,83 +190,26 @@
   <h2 style="color:green;"><u> Remember This : </u></h2>
 
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-  <p> - an IP address (Internet Protocol) is a digital adderss on the network <u>dynamically assigned</u> to the device
-    (required for TCP/IP network protocols) </p>
-  <p> - the authority what decides global (public) IP address distribution is called IANA (Internet Assigned Numbers
-    Authority) </p>
-  <p> - a MAC address (Media Access Control) is a physical address <u>staticaly assigned</u> (unchangeable) to a network
-    hardware </p>
-  <!------------------------------------------------------------------------------------------------------------------------------------------>
-  <hr>
-  <h2 style="color:darkblue;"><u> IP Address Types </u></h2>
-  <p> - the IP address type defines how the data is routed to the destination </p>
-  <table class="table">
-    <tr>
-      <th style="width:20%;"> IP Type </th>
-      <th> Description </th>
-      <th style="width:20%;"> IPv4 </th>
-      <th style="width:20%;"> IPv6 </th>
-    </tr>
-    <tr>
-      <td> Unicast </td>
-      <td> data sent to one specified destination </td>
-      <td style="color:green;"> YES </td>
-      <td style="color:green;"> YES </td>
-    </tr>
-    <tr>
-      <td> Anycast </td>
-      <td> data is sent to the closest destination only (multiple destinations are specified) </td>
-      <td style="color:orangered;"> NO </td>
-      <td style="color:green;"> YES </td>
-    </tr>
-    <tr>
-      <td> Multicast </td>
-      <td> data is sent to multiple specified destinataions </td>
-      <td style="color:green;"> YES </td>
-      <td style="color:green;"> YES </td>
-    </tr>
-    <tr>
-      <td> Broadcast </td>
-      <td> data is sent to all nodes on the network </td>
-      <td style="color:green;"> YES </td>
-      <td style="color:orangered;"> NO </td>
-    </tr>
-  </table>
-  <br>
-  <img src="IP types.jpg" alt="IP types" height="100">
-  <!------------------------------------------------------------------------------------------------------------------------------------------>
+  <p> - <mark class="mark">MAC (Media Access Control) address</mark>: </p>
+  <p class="indent-lv1"> - physical address of a network interface (statically assigned -> unchangable) </p>
+  <p class="indent-lv1"> - used on OSI Layer 2 packet delivery (hop-to-hop) </p>
+  <p> - <mark class="mark">IP (Internet Protocol) address</mark>: </p>
+  <p class="indent-lv1"> - digital address of a network interface (dynamically assigned) </p>
+  <p class="indent-lv1"> - IANA (Internet Assigned Numbers Authority) is the authority that decides IP address range distribution (ex: 172.16.0.0/12 is a class B private IP range) </p>
+  <p class="indent-lv1"> - used on OSI Layer 3 packet delivery (end-to-end) </p>
+<!----------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="headerExtra"><u> IPv4 </u></h2>
-  <p> - an IPv4 is made of 32bits divided into 4 blocks, each block is composed of 4bits (each block is represented by
-    <u>one octet</u> (0-255)) </p>
+  <p> - an IPv4 is made of 32bits divided into 4 blocks, each block is composed of 4bits (each block is represented by <u>one octet</u> (0-255) </p>
   <pre class="syntax">
         <strong>[0-255]</strong>.<strong>[0-255]</strong>.<strong>[0-255]</strong>.<strong>[0-255]</strong>                                                // IPv4 address represented by 4 octets     
     </pre>
-  <!------------------------------------------------------------------------------------------------------------------------------------------>
+<!----------------------------------------------------------------------------------------------->
   <hr>
-  <h2 style="color:darkblue;"><u> IPv4 subneting </u></h2>
-  <p> - IANA defined special IP addresses what can be used for private networks, <u>private IP addresses are not
-      routable on the internet</u> (canot be used on the internet = routers prevent using them) </p>
-  <table class="table">
-    <tr>
-      <th style="width:30%;"> Subnet IP range </th>
-      <th> Description </th>
-    </tr>
-    <tr>
-      <td> 10.0.0.0 - 10.255.255.255 </td>
-      <td> Class A (16,777,216 addresses available) </td>
-    </tr>
-    <tr>
-      <td> 172.16.0.0 - 172.31.255.255 </td>
-      <td> Class B (1,048,576 addresses available) </td>
-    </tr>
-    <tr>
-      <td> 192.162.0.0 - 192.162.255.255 </td>
-      <td> Class C (65,536 addresses available) </td>
-    </tr>
-  </table>
-
-  <!------------------------------------------------------------------------------------------------------------------------------------------>
+  <h2 style="color:darkblue;"><u> Subnet </u></h2>
+  <p> - IANA defined special IP addresses what can be used for private networks, <u>private IP addresses are not routable on the internet</u> </p>
+  <p> - There are 3 IPv4 subnet classes (Class A <mark class="mark">10.0.0.0/8</mark> / Class B <mark class="mark">172.16.0.0/12</mark> / Class C <mark class="mark">192.168.0.0/16</mark>) </p>
+<!----------------------------------------------------------------------------------------------->
   <hr>
   <h3 style="color:darkblue;"><u> IPv4 Subnet Mask </u></h3>
   <p> - the subnet mask basically divides the IP addres into 2 parts, expressed in bits <u>counted from left</u> </p>
@@ -272,7 +245,20 @@
     <p> - if we sent data to an address <mark>192.123.1.104</mark> the sender device will know that the destination is
       not in our LAN because the target's subnet mask does not correspon with the sender device </p>
   </details>
-  <!------------------------------------------------------------------------------------------------------------------------------------------>
+<!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> Broadcasting </u></h2>
+  <p> - the network's last IP is used for broadcasting, sending (requesting) <u>UDP</u> packets to the broadcast address will be forwarded to all addresses on the network </p>
+  <p> Broadcasting types: </p>
+  <p class="indent-lv1"> <mark class="mark">Local Broadcast</mark> - broadcasting messages on the current network </p>
+  <p class="indent-lv1"> <mark class="mark">Directed Broadcast</mark> - broadcasting messages on a foreign network </p>
+<!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> Multicasting </u></h2>
+  <p> - multicasting is basically a pub/sub pattern on a IPv4 network (clients can subscribe to different channels) </p>
+  <p> - the IGMP (Internet Group Management Protocol) is used to enable multicasting, it's configured on OSI layer 2 and 3 (we configure the switch (enable IGMP Snooping)) </p>
+  <p> - TTL (Time To Live) in broadcasting determines how many hops the message is allowed to travel </p>
+<!----------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="headerExtra"><u> IPv6 </u></h2>
   <p> - an IPv6 is made of 128bits divided into 8 blocks, each block is composed of 16bits (each block is represented by
@@ -297,47 +283,18 @@
         48c7:<em>0004</em>:<em>0000</em>:a4d4:<em>0000:0000</em>:<em>0c00</em>:<em>0001</em>
         48c7:<em>4</em>:<em>0</em>:a4d4<em>::</em><em>c00</em>:<em>1</em>                                                           // fully abbreviated IPv6  
     </pre>
-  <!------------------------------------------------------------------------------------------------------------------------------------------>
-  <hr>
-  <h2 style="color:darkblue;"><u> IPv6 address types </u></h2>
   <p> - IPv6 is hierarchically designed, multiple addresses are put into one large IPv6 (hierarchically), so IPv6 have
     no subnet mask (not in sence IPv4 has) </p>
   <p> - IPv6 address types define what the address is used for, we can easily identify IPv6 types from their prefixes
     (first bits) </p>
-  <pre class="syntax">
-        2|3<strong>ggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>ssss</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>                                      // <u>Global Unicast</u> is a public IPv6 address <u>routable on the internet</u> 
-                                                                                          <mark>2|3</mark> - prefix (3bits) 
-                                                                                          <strong>g</strong> - global routing (45bits) = globally assigned by IANA (global hierarchical assignement)
-                                                                                          <strong>s</strong> - subnet id (16bits) = identifies the subnet, assigned by the Administrator   
-                                                                                          <strong>i</strong> - interface id (64bits) = indivudual node addresses on the subnet, assigned by the Administrator  
-                                                                                          
-        fd<strong>gg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>ssss</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>                                        // <u>Unique Local</u> is a private IPv6 address <u>used in private networking (not routable on the internet)</u>
-                                                                                          <mark>fd</mark> - prefix (8bits)   
-                                                                                          <strong>g</strong> - global id (40bits) = assigned by the Administrator 
-                                                                                          <strong>s</strong> - subnet id (16bits) = identifies the subnet, assigned by the Administrator   
-                                                                                          <strong>i</strong> - interface id (64bits) = indivudual node addresses on the subnet, assigned by the Administrator  
-                                                                                          
-        fe80:0000:0000:0000:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong><small>%</small><i>id</i>                                     // <u>Link Local</u> used to communicate with neighbouring nodes (IPv6 nodes are automatically assigned by the host with this address)    
-                                                                                          fe80 - prefix (10bits) 
-                                                                                          <strong>i</strong> - interface id (64bits) = device id 
-                                                                                          %<i>id</i> - scope id (on windows)
-        
-        ff<strong>fs</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>                                        // <u>Multicast</u> address 
-                                                                                          ff - prefix (8bits)
-                                                                                          <strong>f</strong> - flag (4bits)
-                                                                                          <strong>s</strong> - scope (4bits)
-                                                                                          <strong>g</strong> - group id (112bits)  
-                                                                                            
-        0000:0000:0000:0000:0000:0000:0000:0001                                        // <u>Loopback</u> address, network adapter self test (packets never sent through the network)
-    </pre>
-  <!------------------------------------------------------------------------------------------------------------------------------------------>
+<!----------------------------------------------------------------------------------------------->
   <hr>
   <h3 style="color:darkblue;"><u> IPv6 Transition Technologies </u></h3>
-  <p> - <snap style="background-color:lightslategray;">ISATAP</snap> (Intra-site Automatic Tunnel Addressing Protocol)
+  <p> - <mark class="mark">ISATAP</mark> (Intra-site Automatic Tunnel Addressing Protocol)
     router allows an IPv6 network to communicate with an IPv4 network (and vice versa) <u>private networks only</u> </p>
-  <p> - <snap style="background-color:lightslategray;">6to4</snap> allows the IPv6 traffic through an IPv4 network
+  <p> - <mark class="mark">6to4</mark> allows the IPv6 traffic through an IPv4 network
     (cannot tunnel IPv4 traffic through IPv6 network) </p>
-  <p> - <snap style="background-color:lightslategray;">Teredo</snap> from an IPv4 network we connect to a Teredo
+  <p> - <mark class="mark">Teredo</mark> from an IPv4 network we connect to a Teredo
     Server/Relay which transform the traffic to IPv6 </p>
 
 

@@ -182,57 +182,18 @@
   <!------------------------------------------------------------------------------------------------------------------------>
   <hr>
   <h2 style="color:darkblue;"><u> DNS Zones </u></h2>
-  <p> - a domain or group of domains is called a DNS Zone (was f@cking confusing but simple as f@ck) </p>
+  <p> - a domain or group of domains is called a DNS Zone </p>
   <img src="DNS Zones.jpg" alt="DNS Zones" height="300">
-  <!------------------------------------------------------------------------------------------------------------------------>
-  <hr>
-  <h2 style="color:darkblue;"><u> Web Host </u></h2>
-  <p> - the Web Host is the physical server where your site is hosted from </p>
   <!------------------------------------------------------------------------------------------------------------------------>
   <hr>
   <h2 style="color:darkblue;"><u> DNS Records </u></h2>
   <p> - a DNS record is an entry that gives the DNS Zone instructions how to handle any given request </p>
-  <pre class="syntax">
-DNS Reccord :   TTL (Time To Live)                                                     // defines how long (seconds usually) the DNS record should be cached by the requested host (<span class="openable">fully explained<div>
-        <p> - when a machine requests the DNS a domain name resolution the record's TTL tells the requested machine for how long it should keep the DNS record cached </p> 
-        <p> - let's say the <mark>www.someSite.com</mark> domain has a 1440 TTL (expressed in seconds which is 1 day) </p>
-        <p> - in this case the requested machine caches the <mark>www.someSite.com</mark> for one day, so it won't make any new DNS request for this domain name for one day </p>
-        <p> - once the record's TTL is expired the machine will make a new DNS request for this domain name again</p>
-    </div></span>)
-                                                                                          
-                A reccords                                                             // (Host IPv4) specifies domains or <u>subdomains</u> pointing to the set server(s)   
-                AAAA records                                                           // (Host IPv6) specifies domains or <u>subdomains</u> pointing to the set server(s)   
-                                                                                          blank or <mark>@</mark> = base/naked domain | <mark>*</mark> = all unspecified subdomain
-                        
-                CName records                                                          // (Canonical name) points to a domain or subdomain to another hostname    
-                            
-                MX reccords                                                            // (Mail Exchanger) specifies which email server(s) to use when a mail is sent to the specified domain 
-                                                                                          server priority can be set, the lower value has higher prioritiy (ex: <mark>0</mark> = highest priority)  
-                                                                                          
-                NS records                                                             // (authoritative Name Server) authoritative DNS server(s) where these DNS records are stored   
-                
-                TXT reccords                                                           // (Text string) simple text records associated with the domain 
-                
-                PTR records                                                            // ((domain name) Pointer) resolves an IP address to a fully-qualified domain name (does the oposite as A records) [NOT TESTED: 2020-02-25]    
-                
-                SRV records                                                            // (Service location) points service servers (like MX records but for other services) [NOT TESTED: 2020-02-25]   
-                
-                SOA records                                                            // (Start Of Authority) record appears at the beginning of the DNS zone 
-                                                                                          contains the Authoritative Name Server, contant details for the domain Administrator and the domain serial number   
-                
-                CAA records                                                            // (Certification Authority Authorization) specifies which Certificate Authorities are allowed to issue certificates for a domain 
-                                                                                          if nothing is specified all Authorities are allowed to issue certificats 
-                
-                NAPTR                                                                  // (Name Autority Pointer) used in internet telephony for mapping servers to users 
-    </pre>
   <!------------------------------------------------------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="headerExtra"><u> DHCP Server (Dynamic Host Configuration Protocol) </u></h2>
-  <p> - dynamically assigns IP addresses to new devices connecting to the network </p>
-  <p> - it does this by issuing 'leases' to the connecting devices, once the lease is expired (or before expiration) the
-    connected device reuquests a new lease in order to get a new (or keep the) connection to the network </p>
-  <p> - a DHCP server has limited range of IP addresses to assign (100 for a simple soho router), that's why leases are
-    important (2 hours expiration for a simple soho router) </p>
+  <p> - dynamically assigns host config requirements (host IP, subnet mask, Gateway IP, DNS IP) to a new devices so it can connect to the network </p>
+  <p> - it does this by issuing 'leases' to the connecting devices, once the lease is expired (or before expiration) the connected device reuquests a new lease in order to get a new (or keep the) connection to the network </p>
+  <p> - a DHCP server has limited range of IP addresses to assign (100 for a simple soho router), that's why leases are important (2 hours expiration for a simple soho router) </p>
   <img src="DHCP Server.jpg" alt="DHCP Server" height="300">
   <!------------------------------------------------------------------------------------------------------------------------------------------->
   <hr>

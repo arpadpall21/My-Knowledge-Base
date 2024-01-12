@@ -191,6 +191,14 @@
         - adds back the <strong>dgramSocket</strong> to the event loop so it prevents the node process from exitint (undoes <mark><strong>dgramSocket</strong>.unref()</mark>)
       </td>
     </tr>
+    <tr class="40.01">
+      <td>
+        <strong>dgramSocket</strong>.setBroadcast(<strong>bool</strong>)
+      </td>
+      <td>
+        - enables/disables the <mark>SO_BROADCAST</mark> on the socket (enables broadcasting)
+      </td>
+    </tr>
     <tr class="60.01">
       <td colspan="2"> Events </td>
     </tr>
@@ -253,7 +261,6 @@
     <p> - <mark>socket.setMulticastInterface(multicastInterface)</mark> </p>
     <p> - <mark>socket.setMulticastLoopback(flag)</mark> </p>
     <p> - <mark>socket.setMulticastTTL(ttl)</mark> </p>
-    <p> - <mark>socket.setBroadcast(flag)</mark> </p>
   </details>
   <h2 style="color:green;"><u> Useful Links : </u></h2>
 
@@ -425,6 +432,28 @@
     
     server.unref();         // removes the socket from the event loop
     server.ref();           // adds the socket (back) to the event loop
+    </pre>
+  </details>
+  <!-------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Broadcasting <mark>setBroadcast()</mark></h2>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre>
+    const dgram = require('node:dgram');
+    
+    const client = dgram.createSocket('udp4');
+    const host = '255.255.255.255';
+    const port = 3000;
+    
+    
+    client.bind(host, () => {         // port not need to be specified
+      client.setBroadcast(true);
+      
+      client.send('Hello World!', port, host, err => {
+        if (err) console.error(err);
+      });
+    });
     </pre>
   </details>
   <!-------------------------------------------------------------------------->

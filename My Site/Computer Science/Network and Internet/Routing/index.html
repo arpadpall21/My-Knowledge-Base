@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Routing Traffic on the Network </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Routing Traffic on the Network </h1>
+  <p> Updated ( 2020-02-20 / 2024-01-11 )</p>
+  <p class="sitenav"> <a href="../../../index.html" title="home">MySite></a>
+    <a href="../../index.html" title="Learn WebDesign">Computer Science></a>
+    <a href="../index.html" title="Learn WebDesign">Network and Internet></a> Routing Traffic on the Network
+  </p>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - if network packets have nowhere to go they will be dropped by the device </p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - in general when we are talking about NAT (Network Address Translation) we are talking about PAT (Port Address Translation) </p>
+  <!------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Routing / MAC / ARP tables </h2>
+  <h3 class="header"> Routing Table </h3>
+  <p> - private address to public address mapping (implements NAT/PAT) </p>
+  <h3 class="header"> MAC Table (Media Access Control) </h3>
+  <p> - (on a switch) switch port to MAC addresses mapping (dynamically updated with ARP requests) </p>
+  <h3 class="header"> ARP Table (Address Resolution Protocol) </h3>
+  <p> - MAC address to IP address mapping (OSI Layer 2 to Layer 3 mapping) </p>
+  <p> - through ARP requests host discover each other on the network (OSI Layer 2 hop-to-hop transmission) (the ARP table is dynamically updated) </p>
+  <!------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra" id="rout"><u> NAT / PAT  </u></h2>
+  <p> <b>NAT</b> (<b>N</b>etwork <b>A</b>ddress <b>T</b>ranslation): translates private <mark class="mark">IP</mark>s into Public <mark class="mark">IP</mark>s <u>(all ports are forwarded)</u> </p>
+  <p> <b>PAT</b> (<b>P</b>ort <b>A</b>ddress <b>T</b>ranslation): translates private <mark class="mark">IP:port</mark>s into Public <mark class="mark">IP:port</mark>s (translating IP and port) <u>(no port forwarding, only the translated ports are forwarded)</u> </p>
+  <p> - the idea is to use a single public IPv4 and distribute the traffic into multiple private IPs (enlarges the IPv4 space)</p>
+  <h3 class="header"> Static NAT/PAT </h3>
+  <p> - We statically configure the translation table </p>
+  <p> - Bidirectional -> traffic initialization works from both sides (because the translation rule is statically set) </p>
+  <img src="Static PAT.png" alt="Static PAT" height="200">
+  <h3 class="header"> Dynamic NAT/PAT </h3>
+  <p> - We set a pool of connection in both sides (private, public) and the router automatically routes connections </p>
+  <p> - Unidirectional -> the private host initiate the connection (at the end of the transmission the connection is removed from the translation table, so private host are not reachable from the public network) </p>
+  <img src="Dynamic PAT.png" alt="Dynamic PAT" height="300">
+  <h3 class="header"> NAT/PAT Policy </h3>
+  <p> - we basicaly configure certain translation conditions </p>
+  <img src="NAT Policy.png" alt="NAT Policy" height="300">
+  <!------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Routers </h2>
+  <p> - Internet is basically a bunch or routers connectect togehter (in hierarchy), there are 3 ways routers can be connected: </p>
+  <p class="indent-lv1"> <mark class="mark">Direct Connection</mark>: NIC directly connected (automatically discovers the connected other router) </p>
+  <p class="indent-lv1"> <mark class="mark">Static Routing</mark>: Administrator statically configure routes </p>
+  <p class="indent-lv1"> <mark class="mark">Dynamic Routing</mark>: Routers dynamically create routes between each other (try to chose the most optimal route) </p>
+  <h3 class="header"> Route Summarization </h3>
+  <p> - it's a technique to create one route summary that represent multiple network/subnets (also called route aggregation) </p>
+  <p> - it's very usefuel technique because routers are placed in hierarchy on the internet </p>
+  
+    
+  <!--
+    Router can be connected to a network
+        - Directly connected    - NIC directly connected to a network (automatically discovered when the cable is pluged in the router)
+        - Static routing        - we can manually configure routes 
+        - Dynamic routing       - routers automatically (dynamically) discover routes 
+            - this is updated in real time (and tries to chose the faster route (if multiple))
+        - routers also have ARP tables (need to map IPs to MACs)
+        - Routers are deployed in hierarchy
+        - Route Summarization -> creating one route summary that represent a group on networks
+            - if there are several summerized routs packets are forwarded to the most specific one 
+        - Default Route       -> 0.0.0.0/0  (all traffic is forwarded here)
+        - Routing traffic on the internet is made of a bunch of router (structured in hierarchy)
+  
+  -->
+  
+  
+  <!------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> TCP and UDP (transport protocols OSI layer 4) </h2>
+  <p> <mark class="mark">TCP</mark> (Transmission Control Protocol): </p>
+  <p class="indent-lv1"> - connection oriented (point-to-point), estabilishes a connection between pairs (the sender send some message then the receiver acknowledges the received message) </p>
+  <p class="indent-lv1"> - reliable because the receiver acknowledges the received messages <u>in the correct order</u>, but slower than UDP (becasue of the acknowledge messages) </p> 
+  <p class="indent-lv1"> - has flow control -> monitors the bandwidth in order to adjust the optimal transmission speed in order to not to lose packets on the wire </p>
+  
+  <p> <mark class="mark">UDP</mark> (User Datagram Protocol): </p>
+  <p class="indent-lv1"> - not connection oriented, the sender sends some message to a destination and then don't care (Fire and Forget) </p>
+  <p class="indent-lv1"> - faster than TCP but unreliable because the sent messages can be lost without any error feedback (has no receiver acknowledgement) </p> 
+  <p class="indent-lv1"> - has no flow control -> uses the full bandwith to send datagrams </p>
+  <img src="TCP vs UDP.jpg" alt="TCP vs UDP" height="250">
+
+
+  <br><br>
+</body>
+
+</html>

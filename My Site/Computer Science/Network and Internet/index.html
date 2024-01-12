@@ -19,10 +19,10 @@
   </p>
   <p class="subSite"><a href="IP and Mac Addresses/index.html"> IP and MAC Addresses (IPv4 and IPv6) &gt; </a></p>
   <p class="subSite"><a href="IP Ports and Sockets/index.html"> IP Ports and Sockets &gt; </a></p>
+  <p class="subSite"><a href="Routing/index.html"> Routing Traffic on the Network &gt; </a></p>
   <p class="subSite"><a href="Servers/index.html"> Servers &gt; </a></p>
-  <p class="subSite"><a href="Networks/index.html"> Networks &gt; </a></p>
   <p class="subSite"><a href="Web Browsers/index.html"> Web Browsers &gt; </a></p>
-  <p class="subSite"><a href="CORS/index.html"> CORS Protocol (Cross Origin Resource Sharing) &gt; </a></p>
+  <p class="subSite" style="background-color: orange;"><a href="CORS/index.html"> CORS Protocol (Cross Origin Resource Sharing) &gt; </a></p>
   <table class="table">
     <caption> OSI model </caption>
     <tbody>
@@ -44,444 +44,27 @@
       </tr>
       <tr>
         <td> 5 - Session </td>
-        <td> - open/closes and manages a communication session (link) with another device on the network (IP, ect..) </td>
+        <td> - open/closes and manages a communication session (ex: in HTTP we use cookies) </td>
       </tr>
       <tr>
         <td> 4 - Transport </td>
-        <td> - manages the actual data transport (TCP, UDP, ect...) </td>
+        <td> - (service-to-service) delivery (TCP ports, UDP Ports (protocols have their own ports) </td>
       </tr>
       <tr>
         <td> 3 - Network </td>
-        <td> - path determination (data routing, logical addressing, ect...) </td>
+        <td> - (end-to-end) data routing on the network (logical addressing, IP address) </td>
       </tr>
       <tr>
         <td> 2 - Data Link </td>
-        <td> - transfering data between <u>adjacent</u> network nodes (Physical addressing, MAC, LLC, ect...) </td>
+        <td> 
+          - (hop-to-hop) transfering data between <u>adjacent</u> network nodes (physical addressing, MAC address) <br>
+          - a hop is considered devices which perform routing (a switch, hub, bridge, repeater or firewall is not considered as a hop)
+        </td>
       </tr>
       <tr>
         <td> 1 - Hardware </td>
         <td> - hardware itself (Network adapter, cable, ect...) </td>
       </tr>
-  </table>
-  <br>
-  <table class="table">
-    <caption> IP addresses </caption>
-    <tbody>
-      <tr>
-        <th style="background-color:firebrick;" colspan="2"> Address </th>
-        <th> Description </th>
-      </tr>
-      <tr>
-        <td colspan="3"> IPv4 </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="background-color:inherit;">
-          <strong>[0-255]</strong>.<strong>[0-255]</strong>.<strong>[0-255]</strong>.<strong>[0-255]</strong>
-        </td>
-        <td> IPv4 address represented by 4 octets </td>
-      </tr>
-      <tr>
-        <td style="width:12%;"> 10.0.0.0 </td>
-        <td style="width:18%;"> 10.255.255.255 </td>
-        <td> (Class A) private IP range (16,777,216 addresses available) </td>
-      </tr>
-      <tr>
-        <td> 172.16.0.0 </td>
-        <td> 172.31.255.255 </td>
-        <td> (Class B) private IP range (1,048,576 addresses available) </td>
-      </tr>
-      <tr>
-        <td> 192.162.0.0 </td>
-        <td> 192.162.255.255 </td>
-        <td> (Class C) private IP range (65,536 addresses available) </td>
-      </tr>
-      <tr>
-        <td> 127.0.0.0 </td>
-        <td> 127.255.255.255 </td>
-        <td>
-          - Loopback IP range (<mark>127.0.0.1</mark> = <mark>localhost</mark>) <br>
-          - network adapter self test (packets never sent through the network)
-        </td>
-      </tr>
-      <tr>
-        <td> 169.254.0.0 </td>
-        <td> 169.254.255.255 </td>
-        <td>
-          - Link-Local IP range = APIPA (Automatic Private IP Addressing) <br>
-          - host randomly self assigns one in case the DHCP is not reachable
-        </td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td> 0.0.0.0 </td>
-        <td>
-          - Non-Routable Meta-Address (means all IP addresses on this machine)
-        </td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td> 255.255.255.255 </td>
-        <td>
-          - broadcast address (sending data to all devices on the network without knowing their IP address)
-        </td>
-      </tr>
-      <tr>
-        <td colspan="3"> IPv6 </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="background-color:inherit;">
-          <strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>
-        </td>
-        <td> IPv6 represented by 8 blocks of 4 hextets </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="background-color:inherit;">
-          2|3<strong>ggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>ssss</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>
-        </td>
-        <td>
-          - <u>Global Unicast</u> is a public IPv6 address <u>routable on the internet</u> <br>
-          - <mark>2|3</mark> - prefix (3bits) <br>
-          - <strong>g</strong> - global routing (45bits) = globally assigned by IANA (global hierarchical assignement)
-          <br>
-          - <strong>s</strong> - subnet id (16bits) = identifies the subnet, assigned by the Administrator <br>
-          - <strong>i</strong> - interface id (64bits) = individual node addresses on the subnet, assigned by the
-          Administrator
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="background-color:inherit;">
-          fd<strong>gg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>ssss</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>
-        </td>
-        <td>
-          - <u>Unique Local</u> is a private IPv6 address <u>used in private networking (not routable on the
-            internet)</u> <br>
-          - <mark>fd</mark> - prefix (8bits) <br>
-          - <strong>g</strong> - global id (40bits) = assigned by the Administrator <br>
-          - <strong>s</strong> - subnet id (16bits) = identifies the subnet, assigned by the Administrator <br>
-          - <strong>i</strong> - interface id (64bits) = indivudual node addresses on the subnet, assigned by the
-          Administrator
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="background-color:inherit;">
-          fe80:0000:0000:0000:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong><small>%</small><i>id</i>
-        </td>
-        <td>
-          - <u>Link Local</u> used to communicate with neighbouring nodes (IPv6 nodes are automatically assigned by the
-          host with this address) <br>
-          - fe80 - prefix (10bits) <br>
-          - <strong>i</strong> - interface id (64bits) = device id <br>
-          - <small>%</small><i>id</i> - scope id (on windows)
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="background-color:inherit;">
-          ff<strong>fs</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>:<strong>gggg</strong>
-        </td>
-        <td>
-          - <u>Multicast Address</u> <br>
-          - ff - prefix (8bits) <br>
-          - <strong>f</strong> - flag (4bits) <br>
-          - <strong>s</strong> - scope (4bits) <br>
-          - <strong>g</strong> - group id (112bits)
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="background-color:inherit;"> ::1 </td>
-        <td> - loopback address, network adapter self test (packets never sent through the network) </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="background-color:inherit;"> :: </td>
-        <td> - means all ip addresses on this machine </td>
-      </tr>
-    </tbody>
-  </table>
-  <br>
-  <table class="table">
-    <caption> IP Ports </caption>
-    <tr>
-      <th colspan="2" style="background-color:firebrick;"> Port </th>
-      <th> Description </th>
-      <th> </th>
-    </tr>
-    <tr>
-      <td> <strong>IPv4_address</strong>:<strong>portId</strong> </td>
-      <td> </td>
-      <td style="background-color:inherit; text-align:left;"> IPv4 port </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> [<strong>IPv6_address</strong>]:<strong>portId</strong> </td>
-      <td> </td>
-      <td style="background-color:inherit; text-align:left;"> IPv6 port </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td colspan="4"> Port Types </td>
-    </tr>
-    <tr>
-      <td style="width:15%;"> 0 </td>
-      <td style="width:15%;"> 1023 </td>
-      <td style="background-color:inherit; text-align:left;" colspan="2">
-        - <u>Well-Known Ports</u> (or System Ports) are registered ports for priviledged services <br>
-        - assigned by IETF (Internet Engineering Task Force)
-      </td>
-    </tr>
-    <tr>
-      <td> 1024 </td>
-      <td> 49151 </td>
-      <td style="background-color:inherit; text-align:left;" colspan="2">
-        - <u>Registered Ports</u> (or User Ports) are registered for specific user services and can be requested to
-        register <br>
-        - assigned by IANA (Internet Assigned Numbers Authority)
-      </td>
-    </tr>
-    <tr>
-      <td> 49152 </td>
-      <td> 65535 </td>
-      <td style="background-color:inherit; text-align:left;" colspan="2">
-        - <u>Dynamic Ports</u> (or Private Ports) are free to use <br>
-        - applications use these ports for temporary connections
-      </td>
-    </tr>
-    <tr>
-      <td colspan="4"> Well-Known Ports </td>
-    </tr>
-    <tr>
-      <td> 20 </td>
-      <td> TCP </td>
-      <td style="width:10%;"> FTP </td>
-      <td> (File Transfer Protocol) Data Transfer </td>
-    </tr>
-    <tr>
-      <td> 21 </td>
-      <td> TCP </td>
-      <td> FTP </td>
-      <td> (File Transfer Protocol) Command Control </td>
-    </tr>
-    <tr>
-      <td> 22 </td>
-      <td> TCP / UDP </td>
-      <td> SSH </td>
-      <td> (Secure Shell) = Sercure Logins, Port Forwarding, Secure File Transfer </td>
-    </tr>
-    <tr>
-      <td> 23 </td>
-      <td> TCP / UDP </td>
-      <td> Telnet </td>
-      <td> Remote Login, Unencrypted text messages </td>
-    </tr>
-    <tr>
-      <td> 25 </td>
-      <td> TCP / UDP </td>
-      <td> SMTP </td>
-      <td> (Simple Mail Transport Protocol) = Email routing (between mail servers) </td>
-    </tr>
-    <tr>
-      <td> 53 </td>
-      <td> TCP / UDP </td>
-      <td> DNS </td>
-      <td> (Domain Name System/Service) </td>
-    </tr>
-    <tr>
-      <td> 67 </td>
-      <td> UDP </td>
-      <td> DHCP </td>
-      <td> (Dynamic Host Configuration Procotol) Server </td>
-    </tr>
-    <tr>
-      <td> 68 </td>
-      <td> UDP </td>
-      <td> DHCP </td>
-      <td> (Dynamic Host Configuration Procotol) Client </td>
-    </tr>
-    <tr>
-      <td> 69 </td>
-      <td> UDP </td>
-      <td> TFTP </td>
-      <td> (Trivial File Transfer Protocol) = Simpler version of FTP (port 20 / 21) </td>
-    </tr>
-    <tr>
-      <td> 80 </td>
-      <td> TCP </td>
-      <td> HTTP </td>
-      <td> (Hyper Text Transfer Protocol) </td>
-    </tr>
-    <tr>
-      <td> 110 </td>
-      <td> TCP </td>
-      <td> POP3 </td>
-      <td> (Post Office Protocol version3) = Email retrieving </td>
-    </tr>
-    <tr>
-      <td> 123 </td>
-      <td> UDP </td>
-      <td> NTP </td>
-      <td> (Network Time Protocol) = Time synchronization </td>
-    </tr>
-    <tr>
-      <td> 139 </td>
-      <td> TCP </td>
-      <td> SMB </td>
-      <td> (Service Message Block) run on top NetBIOS </td>
-    </tr>
-    <tr>
-      <td> 143 </td>
-      <td> TCP </td>
-      <td> IMAP4 </td>
-      <td> (Internet Message Access Protocol 4) = Email Retrieving (newer version than POP3) </td>
-    </tr>
-    <tr>
-      <td> 161 / 162 </td>
-      <td> TCP / UDP </td>
-      <td> SNMP </td>
-      <td> (Simple Network Management Protocol) = Gathers Network Infromations </td>
-    </tr>
-    <tr>
-      <td> 194 </td>
-      <td> TCP </td>
-      <td> IRC </td>
-      <td> (Internet Relay Chat) </td>
-    </tr>
-    <tr>
-      <td> 389 </td>
-      <td> TCP / UDP </td>
-      <td> LDAP </td>
-      <td> (Lightweight Directory Access Protocol) = Used by Domain Controllers (like Active Directory) </td>
-    </tr>
-    <tr>
-      <td> 443 </td>
-      <td> TCP </td>
-      <td> HTTPS </td>
-      <td> (Hyper Text Transfer Protocol Sercure) </td>
-    </tr>
-    <tr>
-      <td> 445 </td>
-      <td> TCP </td>
-      <td> SMB </td>
-      <td> (Service Message Block) = Shared access to files, printers and serial ports </td>
-    </tr>
-    <tr>
-      <td> 465 </td>
-      <td> TCP </td>
-      <td> SMTPS </td>
-      <td> (Simple Mail Transfer Protocol Secure) = Secure Version on SMTP (port 25) </td>
-    </tr>
-    <tr>
-      <td> 554 </td>
-      <td> UDP </td>
-      <td> RTSP </td>
-      <td> (Real Time Streaming Protocol) </td>
-    </tr>
-    <tr>
-      <td> 631 </td>
-      <td> TCP / UDP </td>
-      <td> IPP </td>
-      <td> (Internet Printing Protocol) = Client to Printer connection </td>
-    </tr>
-    <tr>
-      <td> 993 </td>
-      <td> TCP </td>
-      <td> IMAPS </td>
-      <td> (Internet Message Access Protocol Secure) = Secure Version of IMAP4 (port 143) </td>
-    </tr>
-    <tr>
-      <td> 995 </td>
-      <td> TCP </td>
-      <td> POPS </td>
-      <td> (Post Office Protocol Secure) = Sercure Version of POP3 (port 110) </td>
-    </tr>
-    <tr>
-      <td> 8080 </td>
-      <td> TCP / UDP </td>
-      <td> </td>
-      <td> Proxy or Caching (Service) </td>
-    </tr>
-  </table>
-  <br>
-  <table class="table">
-    <caption> DNS Reccords </caption>
-    <tr>
-      <th style="width:30%;"> Record </th>
-      <th> Description </th>
-    </tr>
-    <tr>
-      <td> TTL (Time To Live) </td>
-      <td> defines how long (seconds usually) the DNS record should be cached by the requested host (<span
-          class="openable">fully explained<div>
-            <p> - when a machine requests the DNS a domain name resolution the record's TTL tells the requested machine
-              for how long it should keep the DNS record cached </p>
-            <p> - let's say the <mark>www.someSite.com</mark> domain has a 1440 TTL (expressed in seconds which is 1
-              day) </p>
-            <p> - in this case the requested machine caches the <mark>www.someSite.com</mark> for one day, so it won't
-              make any new DNS request for this domain name for one day </p>
-            <p> - once the record's TTL is expired the machine will make a new DNS request for this domain name again
-            </p>
-          </div></span>)
-      </td>
-    </tr>
-    <tr>
-      <td> A reccords </td>
-      <td>
-        - (Host IPv4) specifies domains or <u>subdomains</u> pointing to the set server(s) <br>
-        - blank or <mark>@</mark> = base/naked domain | <mark>*</mark> = all unspecified subdomain
-      </td>
-    </tr>
-    <tr>
-      <td> AAAA records </td>
-      <td>
-        - (Host IPv6) specifies domains or <u>subdomains</u> pointing to the set server(s) <br>
-        - blank or <mark>@</mark> = base/naked domain | <mark>*</mark> = all unspecified subdomain
-      </td>
-    </tr>
-    <tr>
-      <td> CName records </td>
-      <td> (Canonical name) points to a domain or subdomain to another hostname </td>
-    </tr>
-    <tr>
-      <td> MX reccords </td>
-      <td>
-        - (Mail Exchanger) specifies which email server(s) to use when a mail is sent to the specified domain <br>
-        - server priority can be set, the lower value has higher prioritiy (ex: <mark>0</mark> = highest priority)
-      </td>
-    </tr>
-    <tr>
-      <td> NS records </td>
-      <td> (authoritative Name Server) authoritative DNS server(s) where these DNS records are stored </td>
-    </tr>
-    <tr>
-      <td> TXT reccords </td>
-      <td> (Text string) simple text records associated with the domain </td>
-    </tr>
-    <tr>
-      <td> PTR records </td>
-      <td> ((domain name) Pointer) resolves an IP address to a fully-qualified domain name (does the oposite as A
-        records) [NOT TESTED: 2020-02-25] </td>
-    </tr>
-    <tr>
-      <td> SRV records </td>
-      <td> (Service) points service servers (like MX records but for other services) [NOT TESTED: 2020-02-25] </td>
-    </tr>
-    <tr>
-      <td> SOA records </td>
-      <td>
-        - (Start Of Authority) record appears at the beginning of the DNS zone <br>
-        - contains the Authoritative Name Server, contact details for the domain Administrator and the domain serial
-        number
-      </td>
-    </tr>
-    <tr>
-      <td> CAA records </td>
-      <td>
-        - (Certification Authority Authorization) specifies which Certificate Authorities are allowed to issue
-        certificates for a domain <br>
-        - if nothing is specified all Authorities are allowed to issue certificats
-      </td>
-    </tr>
-    <tr>
-      <td> NAPTR </td>
-      <td> (Name Autority Pointer) used in internet telephony for mapping servers to users </td>
-    </tr>
   </table>
   <br>
   <table class="table">
@@ -511,29 +94,6 @@
     </tr>
   </table>
   <br>
-  <table class="table">
-    <caption> SSL Certificate Types </caption>
-    <tr>
-      <th style="width:30%;"> SSL Certificate Type </th>
-      <th> Description </th>
-    </tr>
-    <tr>
-      <td> Self-Signed Certificate </td>
-      <td> certificate is not issued by any Certificate Authorities </td>
-    </tr>
-    <tr>
-      <td> DV (Domain Validation) </td>
-      <td> SSL Certificate's owner identity checked on a basic level by the CA </td>
-    </tr>
-    <tr>
-      <td> OV (Organisation Validation) </td>
-      <td> SSL Certificate's owner identity checked on an average level by the CA </td>
-    </tr>
-    <tr>
-      <td> EV (Extended Validation) </td>
-      <td> SSL Certificate's owner identity checked on a high level by the CA <u>(green address bar)</u> </td>
-    </tr>
-  </table>
   <h2 style="color:green;"><u> Notes : </u></h2>
   <details class="example" id="notes">
     <summary> Notes : (empty)</summary>
@@ -544,36 +104,55 @@
   <p><a href="https://dnschecker.org/all-dns-records-of-domain.php" target="_blank">check domain records
       (dnschecker.org)</a></p>
   <h2 style="color:green;"><u> Remember This : </u></h2>
-  <p> - changing internet DNS records takes time because the changes must be copied to all DNS servers around the word
-  </p>
-  <p> - web sites without SSL Certificates are not well ranked by google </p>
-  <p> - <mark>\r\n\r\n</mark> (double new line characters) signify the end of a HTTP request|response header, so a
-    minimum HTTP request|response contains the request|response line plus 2 new line characters (ex: <mark>'HTTP/1.1 OK
-      200\r\n\r\n'</mark>) </p>
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-  <h2 class="headerExtra"><u> The OSI model (Open System Interconnection) </u></h2>
-  <p> - the OSI model is a conceptual model which characterizes and standardizes how telecommunication systems should
-    work </p>
-  <p> - defines 7 conceptual layers, these layers do not refer to a specific structure or technology but rather they
-    describe a function at the specified level </p>
-  <p> - the layer order defines the steps how the user sends or receives data through the network, on top (Application
-    layer) is the user side and on the bottom (Hardware layer) is the hardware side </p>
-  <pre class="syntax"> <span style="color:lightskyblue;"> User side </span>             
-            7) Application layer                                                       // Interface on which the user interacts, network application used by the user (Web Browser, Outlook, Skype, ect..)  
-            
-            6) Presentation layer                                                      // Data translator (SSL, data translation, compression, encryption/decryption, ect...)   
-            
-            5) Session layer                                                           // Open/Closes and manages a communication session (link) with another device on the network (IP, ect..)
-            
-            4) Transport layer                                                         // Manages the actual data transport (TCP, UDP, ect...)
-            
-            3) Network layer                                                           // Path determination (data routing, logical addressing, ect...)
-            
-            2) Data Link layer                                                         // Transfering data between <u>adjacent</u> network nodes (Physical addressing, MAC, LLC, ect...)
-            
-            1) Physical layer                                                          // Hardware itself (Network adapter, cable, ect...)
- <span style="color:lightskyblue;"> Hardware side</span>
-    </pre>
+  <p> Network Concepts: <a href="../../Dictionary/Concepts/index.html#network" target="_blank">[link]</a> </p>
+  <h2 class="header"><u> The OSI model (Open System Interconnection) </u></h2>
+  <p> - the OSI model is a conceptual model which characterizes and standardizes how telecommunication systems should work </p>
+  <p> - defines 7 conceptual layers, these layers do not refer to a specific structure or technology but rather they describe a function at the specified level </p>
+  <p> - the layer order defines the steps how the user sends or receives data through the network, on top (Application layer) is the user side and on the bottom (Hardware layer) is the hardware side </p>
+<!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> Transmission Types </u></h2>
+  <table class="table">
+    <tr>
+      <th style="width:20%;"> IP Type </th>
+      <th> Description </th>
+      <th style="width:8%;"> IPv4 </th>
+      <th style="width:8%;"> IPv6 </th>
+    </tr>
+    <tr>
+      <td> Unicast </td>
+      <td> - data sent to one specified destination </td>
+      <td style="color:green;"> YES </td>
+      <td style="color:green;"> YES </td>
+    </tr>
+    <tr>
+      <td> Anycast </td>
+      <td> - data is sent to the closest destination only (multiple destinations are specified) </td>
+      <td style="color:orangered;"> NO </td>
+      <td style="color:green;"> YES </td>
+    </tr>
+    <tr>
+      <td> Multicast </td>
+      <td> - data is sent to multiple specified destinataions </td>
+      <td style="color:green;"> YES </td>
+      <td style="color:green;"> YES </td>
+    </tr>
+    <tr>
+      <td> Broadcast </td>
+      <td> - data is sent to all nodes on the network </td>
+      <td style="color:green;"> YES </td>
+      <td style="color:orangered;"> NO </td>
+    </tr>
+  </table>
+  <br>
+  <img src="IP types.jpg" alt="IP types" height="100">
+<!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> Internet </u></h2>
+  <p> - the internet is basically a buch or router that routes the traffic between private networks (routers are in hierarchy)  </p>
+  <p> - a host need 4 thing in order to communicate on the internet (<mark class="mark">IP address</mark>, <mark class="mark">Subnet Mask</mark>, <mark class="mark">Gateway IP address</mark> and <mark class="mark">DNS Server IP address</mark>) </p>
+  <img src="Internet.png" alt="Internet" height="250">
 
 <!--
 (2023-11-07)
@@ -611,6 +190,7 @@
   
   -> SKU (Stock Keeping Unit) a type of unit -> expression used in Azure (refers to a specific version or offering)
   
+  
   -> S2S VPN (Site to Site VPN) secure connection between to private network through the internet (secure tunnel)
   -> P2S VPN (Point to Site) secure connection to an Azure VPN from an individual computer
   
@@ -622,7 +202,28 @@
 
 
 
+<!--
 
+
+
+??????????????????????????????????????????????????????????????????????????
+??????????????????????????????????????????????????????????????????????????
+??????????????????????????????????????????????????????????????????????????
+    - dig in http connection keep-alive (how long the connection is active stuf....)
+    - dig around sockets (domain socket, websocket)
+    
+    - check Node UDP Notes for left over methods (address join stuff like this)
+        - well this is used with multicasting but I don't feel I need to dig in this now 
+        
+    - get a bit around IPv6
+        - what exactly is the multicast IPv6 
+    
+    - get familiar with routing table
+    
+    - explain route summarization (this is very important in networking)
+        - https://www.youtube.com/watch?v=zmxLg4jV0ts&list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi&index=11
+
+-->
 
 
 
