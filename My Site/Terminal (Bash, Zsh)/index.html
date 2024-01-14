@@ -1,12 +1,10 @@
-`<!DOCTYPE html>
-`<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <title> Terminal (Bash, Zsh) </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="stylesheet" href="../Assets/stylesPages.css">
@@ -45,7 +43,7 @@
       <td> - stops the current running command </td>
     </tr>
     <tr>
-      <td> 
+      <td>
         Ctrl + L<br>
         Cmd + K (on Mac)
       </td>
@@ -233,11 +231,11 @@
     </tr>
     <tr>
       <td> source <strong>filePath</strong> </td>
-      <td> - reads and executes the file (ex: <mark>source ~/.bashrc<mark>) </td> 
+      <td> - reads and executes the file (ex: <mark>source ~/.bashrc<mark>) </td>
     </tr>
     <tr>
       <td> ssh-add <small>[options]</small> </td>
-      <td>  
+      <td>
         <small>[options]</small> <br>
         - (<small>-l</small>) lists registered ssh keys by the ssh agent <br>
         - (<i>sshKeyPath</i>) adds the specified ssh key to the ssh agent <br>
@@ -778,7 +776,7 @@
         - (<small>-n</small>) print line numb with output lines <br>
         - (<small>-B <i>int</i></small>) print nr of lines before the match <br>
         - (<small>-A <i>int</i></small>) print nr of lines after the match <br>
-        
+
         - (<small>-v</small>) print everything other than the matched result
       </td>
     </tr>
@@ -819,7 +817,7 @@
       <td> - creates a new directory </td>
     </tr>
     <tr>
-      <td> 
+      <td>
         mv <small>[options]</small> <strong>srcPath</strong> <i>scrPath ...</i> <strong>destPath</strong>
       </td>
       <td>
@@ -1058,7 +1056,7 @@
     <tr>
       <td colspan="2" style="background-color:burlywood;">
         dpkg <br>
-        package installer (part of apt) 
+        package installer (part of apt)
       </td>
     </tr>
     <tr>
@@ -1078,7 +1076,7 @@
       <td> - prints all packages on the system (or the specified one) </td>
     </tr>
     <tr>
-      <td colspan="2" style="background-color:burlywood;"> 
+      <td colspan="2" style="background-color:burlywood;">
         snap <br>
         CLI for Ubuntu App Store (keeps the latest 3 versions)
       </td>
@@ -1172,7 +1170,7 @@
     </tr>
     <tr>
       <td> <em>brew</em> services <small>[options]</small> </td>
-      <td> 
+      <td>
         - prints services (background processes) controlled by brew (uses MacOS <mark>launchctl</mark> underneath <a href="https://ss64.com/osx/launchctl.html" target="_blank">[link]</a>) <br>
         <small>[options]</small> <br>
         - (<small>start <i>service</i></small>) starts the specified service and registers it to lauch at login (boot) <br>
@@ -1418,7 +1416,8 @@
 
   <h2 style="color:green;"><u> Remember This : </u></h2>
   <p> - wildcard characters (globs) cannot be used in quotes (ex: <mark>"ab*"</mark>) but they can be concatenated (ex:
-    <mark>*"ab"</mark> | <mark>"a"*"b"</mark> | <mark>"ab"*</mark>) </p>
+    <mark>*"ab"</mark> | <mark>"a"*"b"</mark> | <mark>"ab"*</mark>)
+  </p>
   <p> - to change the user and or group id simply modify the user|group id in the <mark>/etc/passwd</mark> and <mark>/etc/group</mark> files </p>
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
   <p> - in terminal the <mark>$</mark> represents the current user, the <mark>#</mark> represents the root user </p>
