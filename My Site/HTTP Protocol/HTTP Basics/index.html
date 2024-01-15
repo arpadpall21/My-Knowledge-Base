@@ -4,8 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title> HTTP Basics </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../../Assets/stylesPages.css">
   <script src="../../Assets/scriptPages.js"></script>
@@ -48,13 +47,14 @@
     <tr class="03">
       <td>
         <b><u>No Multiplexing :</u></b><br>
-        - multiple requests are sent in sequential order (they block each other) <br>
-        - this uses multiple connections which enhances complexity
+        - requests are sent sequentially (they block each other) <br>
+        - we use a keep-alive connection (<mark>Connection: Keep-Alive</mark>) to reduce this overhead (to send several requests through one open connection and avoid opening new ones all the time)
       </td>
       <td>
         <b><u>Multiplexing :</u></b><br>
         - multiple requests are sent at the same time (streaming) (sends/receives requests in parallel) <br>
-        - this uses one connection and streams all requests through at the same time
+        - this uses one connection and streams all requests through at the same time <br>
+        - the connection is kept-alive by the protocol
       </td>
     </tr>
     <tr class="04">

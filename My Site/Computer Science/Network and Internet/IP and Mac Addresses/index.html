@@ -4,23 +4,22 @@
 <head>
   <meta charset="utf-8">
   <title> IP and MAC Addresses </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../../../Assets/stylesPages.css">
   <script src="../../../Assets/scriptPages.js"></script>
 </head>
 
 <body>
-  <h1> IP and MAC Addresses  </h1>
+  <h1> IP and MAC Addresses </h1>
   <p> Updated ( 2020-02-27 / 2023-12-27 )</p>
   <p class="sitenav"> <a href="../../../index.html" title="home">MySite></a>
     <a href="../../index.html" title="Learn WebDesign">Computer Science></a>
     <a href="../index.html" title="Learn WebDesign">Network and Internet></a> IP and MAC Addresses
   </p>
   <table class="table">
-    <caption> 
-      IPv4 
+    <caption>
+      IPv4
       <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
     </caption>
     <tr>
@@ -47,7 +46,7 @@
     </tr>
     <tr class="10.04">
       <td> 224.0.0.0 to 239.255.255.255 </td>
-      <td> 
+      <td>
         - (Class D) Multicasting address range <br>
         - IANA defined that a multicast address must start with <mark>1110</mark> bits <br>
         - (244 = <mark>111000000</mark> bit, 239 = <mark>11101111</mark> bits) that's the reason for the funny address range
@@ -68,14 +67,18 @@
       </td>
     </tr>
     <tr class="22.01">
-      <td> <reqval>firstIpAddress</reqval> </td>
+      <td>
+        <reqval>firstIpAddress</reqval>
+      </td>
       <td>
         - the first IP address is the network identifier (mostly used to calculate the available IPs on the network) <br>
         - ex: in a subnetwork <mark>192.168.0.0/16</mark> the IP <mark>192.168.0.0</mark> is the network id
       </td>
     </tr>
     <tr class="22.02">
-      <td> <reqval>lastIpAddress</reqval> </td>
+      <td>
+        <reqval>lastIpAddress</reqval>
+      </td>
       <td>
         - the last IP address is the (local) broadcast address <br>
         - ex: in a subnetwork <mark>192.168.0.0/16</mark> the IP <mark>192.168.0.255</mark> is the broadcast address <br>
@@ -92,13 +95,13 @@
       <td> 255.255.255.255 </td>
       <td>
         - alias for the network broadcast address
-        
+
       </td>
     </tr>
   </table>
-    <br>
+  <br>
   <table class="table">
-    <caption> 
+    <caption>
       IPv6
       <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
     </caption>
@@ -138,7 +141,7 @@
         - <strong>g</strong> - group id (112bits)
       </td>
     </tr>
-    
+
     <tr class="20.01">
       <td>
         fe80:0000:0000:0000:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong><small>%</small><i>id</i>
@@ -151,12 +154,6 @@
         - <small>%</small><i>id</i> - scope id (on windows)
       </td>
     </tr>
-    
-    
-    
-    
-    
-    
     <tr class="25.01">
       <td>
         (fc|fd)00:<strong>gggg</strong>:<strong>gggg</strong>:<strong>ssss</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>:<strong>iiii</strong>
@@ -170,14 +167,14 @@
         Administrator
       </td>
     </tr>
-    
+
     <tr class="35.01">
       <td> ::1 </td>
       <td> - loopback address, network adapter self test (packets never sent through the network) </td>
     </tr>
     <tr class="35.02">
       <td> :: </td>
-      <td> - means all ip addresses on this machine </td>
+      <td> - alias for the current host address </td>
     </tr>
   </table>
   <h2 style="color:green;"><u> Notes : </u></h2>
@@ -197,19 +194,19 @@
   <p class="indent-lv1"> - digital address of a network interface (dynamically assigned) </p>
   <p class="indent-lv1"> - IANA (Internet Assigned Numbers Authority) is the authority that decides IP address range distribution (ex: 172.16.0.0/12 is a class B private IP range) </p>
   <p class="indent-lv1"> - used on OSI Layer 3 packet delivery (end-to-end) </p>
-<!----------------------------------------------------------------------------------------------->
+  <!----------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="headerExtra"><u> IPv4 </u></h2>
   <p> - an IPv4 is made of 32bits divided into 4 blocks, each block is composed of 4bits (each block is represented by <u>one octet</u> (0-255) </p>
   <pre class="syntax">
         <strong>[0-255]</strong>.<strong>[0-255]</strong>.<strong>[0-255]</strong>.<strong>[0-255]</strong>                                                // IPv4 address represented by 4 octets     
     </pre>
-<!----------------------------------------------------------------------------------------------->
+  <!----------------------------------------------------------------------------------------------->
   <hr>
   <h2 style="color:darkblue;"><u> Subnet </u></h2>
   <p> - IANA defined special IP addresses what can be used for private networks, <u>private IP addresses are not routable on the internet</u> </p>
   <p> - There are 3 IPv4 subnet classes (Class A <mark class="mark">10.0.0.0/8</mark> / Class B <mark class="mark">172.16.0.0/12</mark> / Class C <mark class="mark">192.168.0.0/16</mark>) </p>
-<!----------------------------------------------------------------------------------------------->
+  <!----------------------------------------------------------------------------------------------->
   <hr>
   <h3 style="color:darkblue;"><u> IPv4 Subnet Mask </u></h3>
   <p> - the subnet mask basically divides the IP addres into 2 parts, expressed in bits <u>counted from left</u> </p>
@@ -245,28 +242,27 @@
     <p> - if we sent data to an address <mark>192.123.1.104</mark> the sender device will know that the destination is
       not in our LAN because the target's subnet mask does not correspon with the sender device </p>
   </details>
-<!----------------------------------------------------------------------------------------------->
+  <!----------------------------------------------------------------------------------------------->
   <hr>
   <h2 style="color:darkblue;"><u> Broadcasting </u></h2>
   <p> - the network's last IP is used for broadcasting, sending (requesting) <u>UDP</u> packets to the broadcast address will be forwarded to all addresses on the network </p>
   <p> Broadcasting types: </p>
   <p class="indent-lv1"> <mark class="mark">Local Broadcast</mark> - broadcasting messages on the current network </p>
   <p class="indent-lv1"> <mark class="mark">Directed Broadcast</mark> - broadcasting messages on a foreign network </p>
-<!----------------------------------------------------------------------------------------------->
+  <!----------------------------------------------------------------------------------------------->
   <hr>
   <h2 style="color:darkblue;"><u> Multicasting </u></h2>
   <p> - multicasting is basically a pub/sub pattern on a IPv4 network (clients can subscribe to different channels) </p>
   <p> - the IGMP (Internet Group Management Protocol) is used to enable multicasting, it's configured on OSI layer 2 and 3 (we configure the switch (enable IGMP Snooping)) </p>
   <p> - TTL (Time To Live) in broadcasting determines how many hops the message is allowed to travel </p>
-<!----------------------------------------------------------------------------------------------->
+  <!----------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="headerExtra"><u> IPv6 </u></h2>
   <p> - an IPv6 is made of 128bits divided into 8 blocks, each block is composed of 16bits (each block is represented by
-    <u>4 hextets</u> (0-f)) </p>
+    <u>4 hextets</u> (0-f))
+  </p>
   <p> - IPv6 is a different network, so we cannot send data to an IPv4 network from an IPv6 network <u>(without
-      transition technolgies like <span style="background-color:lightslategray;">6to4</span>, <span
-        style="background-color:lightslategray;">ISATAP</span>, <span
-        style="background-color:lightslategray;">Teredo</span>)</u>
+      transition technolgies like <span style="background-color:lightslategray;">6to4</span>, <span style="background-color:lightslategray;">ISATAP</span>, <span style="background-color:lightslategray;">Teredo</span>)</u>
   <pre class="syntax">
         <strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>:<strong>4x[0-f]</strong>                // IPv6 represented by 8 blocks of 4 hextets  
         
@@ -287,7 +283,7 @@
     no subnet mask (not in sence IPv4 has) </p>
   <p> - IPv6 address types define what the address is used for, we can easily identify IPv6 types from their prefixes
     (first bits) </p>
-<!----------------------------------------------------------------------------------------------->
+  <!----------------------------------------------------------------------------------------------->
   <hr>
   <h3 style="color:darkblue;"><u> IPv6 Transition Technologies </u></h3>
   <p> - <mark class="mark">ISATAP</mark> (Intra-site Automatic Tunnel Addressing Protocol)

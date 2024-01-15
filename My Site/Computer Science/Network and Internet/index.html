@@ -11,13 +11,13 @@
 
 <body>
   <h1> Network and Internet (ver 3.3.1) </h1>
-  <p> Updated ( 2018-09-01 / 2019-03-11 / 2020-02-20) </p>
+  <p> Updated ( 2018-09-01 / 2019-03-11 / 2020-02-20 / 2024-01-14) </p>
   <p class="sitenav">
     <a href="../../index.html" title="home">MySite></a>
     <a href="../index.html" title="home">Computer Science></a> Network and Internet
   </p>
   <p class="subSite"><a href="IP and Mac Addresses/index.html"> IP and MAC Addresses (IPv4 and IPv6) &gt; </a></p>
-  <p class="subSite"><a href="IP Ports and Sockets/index.html"> IP Ports and Sockets &gt; </a></p>
+  <p class="subSite"><a href="IP Ports/index.html"> IP Ports &gt; </a></p>
   <p class="subSite"><a href="Routing/index.html"> Routing Traffic on the Network &gt; </a></p>
   <p class="subSite"><a href="Servers/index.html"> Servers &gt; </a></p>
   <p class="subSite"><a href="Web Browsers/index.html"> Web Browsers &gt; </a></p>
@@ -155,6 +155,10 @@
 
 
   <!--
+  - IPv6 doesn't use NAT!
+  - in IPv6 each device has a unique global IP address
+
+
 
 -->
 
@@ -215,17 +219,32 @@
 ??????????????????????????????????????????????????????????????????????????
 ??????????????????????????????????????????????????????????????????????????
 ??????????????????????????????????????????????????????????????????????????
+OK
     - dig in http connection keep-alive (how long the connection is active stuf....)
-    - dig around sockets (domain socket, websocket)
+      - the reasone for HTTP keep-alive connection is to use the same connection for multiple data transfers (to avoid open new connections which requires resources (mostly time))
     
+    
+OK
+    - dig around sockets (domain socket, websocket)
+        - well from an overview a domain socket works the same way as websocket but a file is used instead of IP:port
+        - supports datagram (SOCK_DGRAM) and stream (SOCK_STREAM) socket types
+        - a domain sockert is faster then network socket
+    
+    
+OK
     - check Node UDP Notes for left over methods (address join stuff like this)
         - well this is used with multicasting but I don't feel I need to dig in this now 
+        
         
     - get a bit around IPv6
         - what exactly is the multicast IPv6 
     
+    
+OK
     - get familiar with routing table
     
+    
+OK
     - explain route summarization (this is very important in networking)
         - https://www.youtube.com/watch?v=zmxLg4jV0ts&list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi&index=11
 

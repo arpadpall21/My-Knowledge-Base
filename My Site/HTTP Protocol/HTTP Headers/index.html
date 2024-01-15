@@ -4,8 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title> HTTP Header Fields </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../../Assets/stylesPages.css">
   <script src="../../Assets/scriptPages.js"></script>
@@ -50,8 +49,7 @@ SYNTAX:     req             = Request Header Fields
     </pre>
   <table class="table">
     <caption>
-      HTTP Headers <span style="color:orangered;" title="cannot be modified programatically">(Forbidden)</span> <span
-        style="color:green;" title="can be modified programatically">(Modifiable)</span>
+      HTTP Headers <span style="color:orangered;" title="cannot be modified programatically">(Forbidden)</span> <span style="color:green;" title="can be modified programatically">(Modifiable)</span>
       <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
     </caption>
     <tr>
@@ -584,8 +582,8 @@ SYNTAX:     req             = Request Header Fields
           </div></span>
       </td>
       <td>
-        - determines if the connection stays open after the current network transaction is finished <u>(prohibited in
-          HTTP/2)</u>
+        - determines if the connection stays open after the current network transaction is finished <br>
+        - not applicable for HTTP/2 (HTTP/2 automatically keeps the connection alive for better performance)
         <span class="browserSupport" title="updated : 2020-07-18">
           <span><i class="fab fa-chrome"></i> yes </span>
           <span><i class="fab fa-firefox"></i> yes </span>
@@ -606,8 +604,8 @@ SYNTAX:     req             = Request Header Fields
         </span>
       </td>
       <td>
-        - determines how a keep-alive connection should stay open (only when <mark>Connection:keep-alive</mark>)
-        <u>(prohibited in HTTP/2)</u>
+        - determines how a keep-alive connection should stay open (only when <mark>Connection:keep-alive</mark>) <br>
+        - not applicable for HTTP/2 (HTTP/2 automatically keeps the connection alive for better performance)
         <span class="browserSupport" title="updated : 2020-07-18">
           <span><i class="fab fa-chrome"></i> yes </span>
           <span><i class="fab fa-firefox"></i> yes </span>
@@ -712,8 +710,7 @@ SYNTAX:     req             = Request Header Fields
       <td>
         Accept-Language: <span class="openable"><strong>lang</strong><i>, ...</i>
           <div>
-            <p> <mark>lang</mark> - describes the language (ex: <mark>de-CH</mark>) <a
-                href="https://www.techonthenet.com/js/language_tags.php" target="_blank">some BCP47 language tags</a>
+            <p> <mark>lang</mark> - describes the language (ex: <mark>de-CH</mark>) <a href="https://www.techonthenet.com/js/language_tags.php" target="_blank">some BCP47 language tags</a>
             </p>
             <p> <mark>*</mark> - any language </p>
             <p> <mark><strong>lang</strong>;q=<strong>nr</strong></mark> the q-factor (quality value) defines the
@@ -1218,8 +1215,7 @@ SYNTAX:     req             = Request Header Fields
       <td>
         Content-Language: <span class="openable"><strong>lang</strong><i>, ...</i>
           <div>
-            <p> <mark>lang</mark> - describes the language (ex: <mark>de-CH</mark>) <a
-                href="https://www.techonthenet.com/js/language_tags.php" target="    _blank">some BCP47 language
+            <p> <mark>lang</mark> - describes the language (ex: <mark>de-CH</mark>) <a href="https://www.techonthenet.com/js/language_tags.php" target="    _blank">some BCP47 language
                 tags</a></p>
           </div>
         </span>
@@ -1293,8 +1289,7 @@ SYNTAX:     req             = Request Header Fields
     <tr class="60.02">
       <td> <span style="color:green;">req</span> </td>
       <td>
-        Forwarded: <span
-          class="openable">by=<strong>id</strong>;for=<strong>id</strong>;host=<strong>host</strong>;proto=http|https
+        Forwarded: <span class="openable">by=<strong>id</strong>;for=<strong>id</strong>;host=<strong>host</strong>;proto=http|https
           <div>
             <p> <mark>by=<strong>id</strong></mark> - where the request came in to the proxy server (IP |
               <mark>unknown</mark>)
@@ -2093,11 +2088,9 @@ SYNTAX:     req             = Request Header Fields
     <p> Sec-Fetch-Dest </p>
   </details>
   <h2 style="color:green;"><u> Useful Links : </u></h2>
-  <p><a
-      href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#:~:text=HTTP%20headers%20let%20the%20client,before%20the%20value%20is%20ignored."
-      target="_blank">HTTP headers (developer.mozilla.org) </a></p>
+  <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#:~:text=HTTP%20headers%20let%20the%20client,before%20the%20value%20is%20ignored." target="_blank">HTTP headers (developer.mozilla.org) </a></p>
   <h2 style="color:green;"><u> Remember This : </u></h2>
-    <p> - prefixing non standard headers with <mark>X-</mark> is a convention among developers (but not officially recommended) (ex: <mark>X-Forwarded-For</mark>) </p>
+  <p> - prefixing non standard headers with <mark>X-</mark> is a convention among developers (but not officially recommended) (ex: <mark>X-Forwarded-For</mark>) </p>
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
   <h2 style="color:darkblue;"><u> Authentication <mark>Authorization</mark> / <mark>Proxy-Authorization</mark> /
       <mark>WWW-Authenticate</mark> / <mark>Proxy-Authenticate</mark> </u></h2>

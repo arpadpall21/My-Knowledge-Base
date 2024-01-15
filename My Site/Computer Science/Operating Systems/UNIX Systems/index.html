@@ -380,25 +380,25 @@
   <h2 class="header"> Files </h2>
   <p> - Linux uses a logical file system, disks and partitions can be "mounted" logically </p>
   <p> - in Unix systems everything's a file! (files are files, directories are files, devices are files, sockets are files, etc..) </p>
-    <p class="indent-lv1"> - <mark class="mark">file descriptor</mark></p>
-      <p class="indent-lv2"> - unique index assigned to an open file, this allows the process to read & write the file </p>
-      <p class="indent-lv2"> - file descriptors are assigned by the OS to processes, processes typically have a <mark>1024</mark> - <mark>65536</mark> file descriptor table size (limit how many files the process can simultaneously open) (can be checked with the <mark>ulimit -n</mark> command) </p>
-    <p class="indent-lv1"> - <mark class="mark">inode</mark> </p>
-      <p class="indent-lv2"> - metadata of the file (each file has one to descirbe the file's type, owner, group id, etc...) </p>
-    <p class="indent-lv1"> - <mark class="mark">umask</mark> </p>
-      <p class="indent-lv2"> - for each file there's a default file access level set when file is created (<mark>666</mark> for files, <mark>777</mark> for directories) </p>
-      <p class="indent-lv2"> - the umask is a constant that is subtracted form the file's default access level when the file is created (ex: file access calculation <mark>666</mark> - <mark>022</mark> = <mark>644</mark>) </p>
-  
+  <p class="indent-lv1"> - <mark class="mark">file descriptor</mark></p>
+  <p class="indent-lv2"> - unique index assigned to an open file, this allows the process to read & write the file </p>
+  <p class="indent-lv2"> - file descriptors are assigned by the OS to processes, processes typically have a <mark>1024</mark> - <mark>65536</mark> file descriptor table size (limit how many files the process can simultaneously open) (can be checked with the <mark>ulimit -n</mark> command) </p>
+  <p class="indent-lv1"> - <mark class="mark">inode</mark> </p>
+  <p class="indent-lv2"> - metadata of the file (each file has one to descirbe the file's type, owner, group id, etc...) </p>
+  <p class="indent-lv1"> - <mark class="mark">umask</mark> </p>
+  <p class="indent-lv2"> - for each file there's a default file access level set when file is created (<mark>666</mark> for files, <mark>777</mark> for directories) </p>
+  <p class="indent-lv2"> - the umask is a constant that is subtracted form the file's default access level when the file is created (ex: file access calculation <mark>666</mark> - <mark>022</mark> = <mark>644</mark>) </p>
+
   <!-------------------------------------------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="header"> Services (Daemons) </h2>
-    <p> - on Linux we call background processes <mark class="mark">daemons</mark>, on MacOS <mark class="mark">services</mark> </p>
-    <p> - background processes are running on the background (like httpd (Apache), mysql, etc..), they differ from foreground processes in the following ways: </p>
-    <p class="indent-lv1"> - they have no parent process (their parent process is the init process (initialization process, the core process that starts the system))</p>
-    <p class="indent-lv1"> - they start with the system </p>
-    <p class="indent-lv1"> - cannot be controled with user commands (for that we have to bring them in the foreground) </p>
-    <p class="indent-lv2"> - on linux we can control daemons with the <mark>service</mark> or <mark>systemctl</mark> commands (<mark>systemctl</mark> is the successor of <mark>service</mark>, it provides more control and starts daemons in parallel) </p>
-    <p class="indent-lv2"> - on MacOS we have the <mark class="mark">Activity Monitor</mark> where services are visible </p>
+  <p> - on Linux we call background processes <mark class="mark">daemons</mark>, on MacOS <mark class="mark">services</mark> </p>
+  <p> - background processes are running on the background (like httpd (Apache), mysql, etc..), they differ from foreground processes in the following ways: </p>
+  <p class="indent-lv1"> - they have no parent process (their parent process is the init process (initialization process, the core process that starts the system))</p>
+  <p class="indent-lv1"> - they start with the system </p>
+  <p class="indent-lv1"> - cannot be controled with user commands (for that we have to bring them in the foreground) </p>
+  <p class="indent-lv2"> - on linux we can control daemons with the <mark>service</mark> or <mark>systemctl</mark> commands (<mark>systemctl</mark> is the successor of <mark>service</mark>, it provides more control and starts daemons in parallel) </p>
+  <p class="indent-lv2"> - on MacOS we have the <mark class="mark">Activity Monitor</mark> where services are visible </p>
   <!-------------------------------------------------------------------------------------------------------------------------------->
   <hr>
   <h3 class="header"> Cron </h3>
@@ -502,6 +502,13 @@ COMMANDS :  crontab <small>[-e] [-l] [-r] [-i]</small>                          
     @hourly nautilus                                                                   // does open the file manager every hour (at the beginning of every hour)   
     </pre>
   </details>
+  <!-------------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> UNIX Domain Socket </h2>
+  <p> - A UNIX Domain Socket is used in IPC (Inter Process Communication), it works the same way as a network socket but a file (the socket) is used instead of the network adapter </p>
+  <p> - supports datagram (SOCK_DGRAM) and stream (SOCK_STREAM) and faster than network sockets (no network overhead) </p>
+
+
 
   <br><br>
 </body>

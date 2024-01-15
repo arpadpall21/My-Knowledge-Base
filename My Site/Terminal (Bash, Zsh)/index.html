@@ -1239,6 +1239,7 @@
       <td> netstat <small>[options]</small> </td>
       <td>
         - returns <u>active</u> TCP, UDP and UNIX connections <u>(options can be combined)</u> <br>
+        - run <mark>netstat -anvp tcp | awk 'NR&lt;3 || /LISTEN/'</mark> to get all the host's listening TCP connections (MacOSifconfig | awk '/inet /{print $2}') <br>
         <small>[options]</small> <br>
         - (<small>-p</small>) process name and PID is returned which uses the connection <br>
         - (<small>-n</small>) IP address returned instead of the domain (PTR reccord) <br>

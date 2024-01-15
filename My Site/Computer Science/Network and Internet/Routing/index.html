@@ -29,12 +29,12 @@
   <p> - in general when we are talking about NAT (Network Address Translation) we are talking about PAT (Port Address Translation) </p>
   <!------------------------------------------------------------------------------------------------------------------------->
   <hr>
-  <h2 class="headerExtra"> Routing / MAC / ARP tables </h2>
+  <h2 class="headerExtra"> Routing / MAC / (ARP / NDP) tables </h2>
   <h3 class="header"> Routing Table </h3>
   <p> - private address to public address mapping (implements NAT/PAT) </p>
   <h3 class="header"> MAC Table (Media Access Control) </h3>
   <p> - (on a switch) switch port to MAC addresses mapping (dynamically updated with ARP requests) </p>
-  <h3 class="header"> ARP Table (Address Resolution Protocol) </h3>
+  <h3 class="header"> ARP Table (Address Resolution Protocol IPv4) / NDP (Network Discovery Protocol IPv6) </h3>
   <p> - MAC address to IP address mapping (OSI Layer 2 to Layer 3 mapping) </p>
   <p> - through ARP requests host discover each other on the network (OSI Layer 2 hop-to-hop transmission) (the ARP table is dynamically updated) </p>
   <!------------------------------------------------------------------------------------------------------------------------->
@@ -54,6 +54,10 @@
   <h3 class="header"> NAT/PAT Policy </h3>
   <p> - we basicaly configure certain translation conditions </p>
   <img src="NAT Policy.png" alt="NAT Policy" height="300">
+  <h3 class="header"> Twice NAT </h3>
+  <p> - with normal NAT we only stranslate the source address, Twice NAT also translates the destination address (we use this technique to redirect traffic) </p>
+  <p> - Twice NAT is also Policy NAT because we are translating based on some kind of condition </p>
+  <img src="Twice NAT.png" alt="Twice NAT" height="250">
   <!------------------------------------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="headerExtra"> Routers </h2>

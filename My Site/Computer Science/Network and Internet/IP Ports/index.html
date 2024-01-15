@@ -3,20 +3,19 @@
 
 <head>
   <meta charset="utf-8">
-  <title> IP Ports and Sockets </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <title> IP Ports </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../../../Assets/stylesPages.css">
   <script src="../../../Assets/scriptPages.js"></script>
 </head>
 
 <body>
-  <h1> IP Ports and Sockets </h1>
+  <h1> IP Ports </h1>
   <p> Updated ( 2020-03-02 / 2023-12-27 )</p>
   <p class="sitenav"> <a href="../../../index.html" title="home">MySite></a>
     <a href="../../index.html" title="Learn WebDesign">Computer Science></a>
-    <a href="../index.html" title="Learn WebDesign">Network and Internet></a> IP Ports and Sockets
+    <a href="../index.html" title="Learn WebDesign">Network and Internet></a> IP Ports
   </p>
   <table class="table">
     <caption> IP Ports </caption>
@@ -52,8 +51,7 @@
       <td> 1024 </td>
       <td> 49151 </td>
       <td style="background-color:inherit; text-align:left;" colspan="2">
-        - <u>Registered Ports</u> (or User Ports) are registered for specific user services and can be requested to
-        register <br>
+        - <u>Registered Ports</u> (or User Ports) are registered for specific user services and can be requested to register <br>
         - assigned by IANA (Internet Assigned Numbers Authority)
       </td>
     </tr>
@@ -72,151 +70,139 @@
       <td> 20 </td>
       <td> TCP </td>
       <td style="width:10%;"> FTP </td>
-      <td> (File Transfer Protocol) Data Transfer </td>
+      <td> - (File Transfer Protocol) Data Transfer (historically used FTP Data Port) </td>
     </tr>
     <tr>
       <td> 21 </td>
       <td> TCP </td>
       <td> FTP </td>
-      <td> (File Transfer Protocol) Command Control </td>
+      <td>
+        - (File Transfer Protocol) File transfer (Command Control port) <br>
+        - Historically there were 2 ports used, this one to login (control port), then another for the actual data transfer (<mark>20</mark> by default) <u>(the modern FTP used this port only)</u>
+      </td>
     </tr>
     <tr>
       <td> 22 </td>
       <td> TCP / UDP </td>
       <td> SSH </td>
-      <td> (Secure Shell) = Sercure Logins, Port Forwarding, Secure File Transfer </td>
+      <td> - (Secure Shell) Asyncemtic encrypted login and control of a remote shell </td>
     </tr>
     <tr>
       <td> 23 </td>
       <td> TCP / UDP </td>
       <td> Telnet </td>
-      <td> Remote Login, Unencrypted text messages </td>
+      <td> - Plain text transmission (unencrypted) </td>
     </tr>
     <tr>
-      <td> 25 </td>
+      <td> 25 / 587 / 2525 / 465 (secure) </td>
       <td> TCP / UDP </td>
       <td> SMTP </td>
-      <td> (Simple Mail Transport Protocol) = Email routing (between mail servers) </td>
+      <td> - (Simple Mail Transport Protocol) Email transmission protocol </td>
     </tr>
     <tr>
       <td> 53 </td>
       <td> TCP / UDP </td>
       <td> DNS </td>
-      <td> (Domain Name System/Service) </td>
+      <td> - (Domain Name System/Service) </td>
     </tr>
     <tr>
       <td> 67 </td>
       <td> UDP </td>
       <td> DHCP </td>
-      <td> (Dynamic Host Configuration Procotol) Server </td>
+      <td> - (Dynamic Host Configuration Procotol) Server </td>
     </tr>
     <tr>
       <td> 68 </td>
       <td> UDP </td>
       <td> DHCP </td>
-      <td> (Dynamic Host Configuration Procotol) Client </td>
+      <td> - (Dynamic Host Configuration Procotol) Client </td>
     </tr>
     <tr>
       <td> 69 </td>
       <td> UDP </td>
       <td> TFTP </td>
-      <td> (Trivial File Transfer Protocol) = Simpler version of FTP (port 20 / 21) </td>
+      <td> - (Trivial File Transfer Protocol) Simpler version of FTP (port 20 / 21) </td>
     </tr>
     <tr>
       <td> 80 </td>
       <td> TCP </td>
       <td> HTTP </td>
-      <td> (Hyper Text Transfer Protocol) </td>
+      <td> - (Hyper Text Transfer Protocol) </td>
     </tr>
     <tr>
-      <td> 110 </td>
+      <td>
+        110 (unencrypted) <br>
+        995 (encrypted)
+      </td>
       <td> TCP </td>
       <td> POP3 </td>
-      <td> (Post Office Protocol version3) = Email retrieving </td>
+      <td> - (Post Office Protocol version3) Email protocol </td>
     </tr>
     <tr>
       <td> 123 </td>
       <td> UDP </td>
       <td> NTP </td>
-      <td> (Network Time Protocol) = Time synchronization </td>
+      <td> - (Network Time Protocol) Time synchronization </td>
     </tr>
     <tr>
       <td> 139 </td>
       <td> TCP </td>
       <td> SMB </td>
-      <td> (Service Message Block) run on top NetBIOS </td>
-    </tr>
-    <tr>
-      <td> 143 </td>
-      <td> TCP </td>
-      <td> IMAP4 </td>
-      <td> (Internet Message Access Protocol 4) = Email Retrieving (newer version than POP3) </td>
+      <td> - (Service Message Block) run on top NetBIOS </td>
     </tr>
     <tr>
       <td> 161 / 162 </td>
       <td> TCP / UDP </td>
       <td> SNMP </td>
-      <td> (Simple Network Management Protocol) = Gathers Network Infromations </td>
+      <td> - (Simple Network Management Protocol) = Gathers Network Infromations </td>
     </tr>
     <tr>
       <td> 194 </td>
       <td> TCP </td>
       <td> IRC </td>
-      <td> (Internet Relay Chat) </td>
+      <td> - (Internet Relay Chat) </td>
     </tr>
     <tr>
       <td> 389 </td>
       <td> TCP / UDP </td>
       <td> LDAP </td>
-      <td> (Lightweight Directory Access Protocol) = Used by Domain Controllers (like Active Directory) </td>
+      <td> - (Lightweight Directory Access Protocol) Authentication and directory access cotnrol protoclo (Used by Domain Controllers (like Active Directory)) </td>
     </tr>
     <tr>
       <td> 443 </td>
       <td> TCP </td>
       <td> HTTPS </td>
-      <td> (Hyper Text Transfer Protocol Sercure) </td>
+      <td> - (Hyper Text Transfer Protocol Sercure) </td>
     </tr>
     <tr>
       <td> 445 </td>
       <td> TCP </td>
       <td> SMB </td>
-      <td> (Service Message Block) = Shared access to files, printers and serial ports </td>
-    </tr>
-    <tr>
-      <td> 465 </td>
-      <td> TCP </td>
-      <td> SMTPS </td>
-      <td> (Simple Mail Transfer Protocol Secure) = Secure Version on SMTP (port 25) </td>
+      <td> - (Service Message Block) Shared access to files, printers and serial ports (mainly used by Windows) </td>
     </tr>
     <tr>
       <td> 554 </td>
       <td> UDP </td>
       <td> RTSP </td>
-      <td> (Real Time Streaming Protocol) </td>
+      <td> - (Real Time Streaming Protocol) </td>
     </tr>
     <tr>
       <td> 631 </td>
       <td> TCP / UDP </td>
       <td> IPP </td>
-      <td> (Internet Printing Protocol) = Client to Printer connection </td>
+      <td> - (Internet Printing Protocol) = Client to Printer connection </td>
     </tr>
     <tr>
       <td> 993 </td>
       <td> TCP </td>
       <td> IMAPS </td>
-      <td> (Internet Message Access Protocol Secure) = Secure Version of IMAP4 (port 143) </td>
-    </tr>
-    <tr>
-      <td> 995 </td>
-      <td> TCP </td>
-      <td> POPS </td>
-      <td> (Post Office Protocol Secure) = Sercure Version of POP3 (port 110) </td>
+      <td> (Internet Message Access Protocol Secure) Mail transmission</td>
     </tr>
     <tr>
       <td> 8080 </td>
       <td> TCP / UDP </td>
       <td> </td>
-      <td> Proxy or Caching (Service) </td>
+      <td> Secondary Web Service </td>
     </tr>
   </table>
   <h2 style="color:green;"><u> Notes : </u></h2>
