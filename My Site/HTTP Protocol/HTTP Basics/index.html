@@ -48,13 +48,12 @@
       <td>
         <b><u>No Multiplexing :</u></b><br>
         - requests are sent sequentially (they block each other) <br>
-        - we use a keep-alive connection (<mark>Connection: Keep-Alive</mark>) to reduce this overhead (to send several requests through one open connection and avoid opening new ones all the time)
+        - we manually keep-alive the connection (<mark>Connection: Keep-Alive</mark>) to reduce this overhead (to send several requests through one open connection and avoid opening new ones all the time)
       </td>
       <td>
         <b><u>Multiplexing :</u></b><br>
         - multiple requests are sent at the same time (streaming) (sends/receives requests in parallel) <br>
-        - this uses one connection and streams all requests through at the same time <br>
-        - the connection is kept-alive by the protocol
+        - the connection is kept-alive by the protocol for an extended period
       </td>
     </tr>
     <tr class="04">

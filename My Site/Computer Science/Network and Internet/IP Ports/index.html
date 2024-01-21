@@ -18,7 +18,45 @@
     <a href="../index.html" title="Learn WebDesign">Network and Internet></a> IP Ports
   </p>
   <table class="table">
-    <caption> IP Ports </caption>
+    <caption>
+      Port Types
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th colspan="2" style="background-color:firebrick;"> Port Range </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td style="width:15%;"> 0 </td>
+      <td style="width:15%;"> 1023 </td>
+      <td>
+        - <u>Well-Known Ports</u> (or System Ports) are registered ports for priviledged services <br>
+        - assigned by IETF (Internet Engineering Task Force) </td>
+    </tr>
+    <tr>
+      <td> 1024 </td>
+      <td> 49151 </td>
+      <td>
+        - <u>Registered Ports</u> (or User Ports) are registered for specific user services and can be requested to
+        register <br>
+        - assigned by IANA (Internet Assigned Numbers Authority)
+      </td>
+    </tr>
+    <tr>
+      <td> 49152 </td>
+      <td> 65535 </td>
+      <td>
+        - <u>Dynamic Ports</u> (or Private Ports) are free to use <br>
+        - applications use these ports for temporary connections
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      IP Ports
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
     <tr>
       <th colspan="2" style="background-color:firebrick;"> Port </th>
       <th> Description </th>
@@ -216,10 +254,8 @@
 
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
   <h2 class="headerExtra"><u> IP Ports </u></h2>
-  <p> - the IP address identifies a device on the network, the IP port identifies the service|application within the
-    system (host) </p>
-  <p> - an IP Port is a 16bit service identifier placed at the end of IP addresses (ports work the same way for both
-    IPv4 and IPv6)</p>
+  <p> - the IP address identifies a device on the network, the IP port identifies the service|application within the system (host) </p>
+  <p> - an IP Port is a 16bit service identifier placed at the end of IP addresses (ports work the same way for both IPv4 and IPv6)</p>
   <p> - IP Ports allow network traffic to multiple applications within the system </p>
   <pre class="syntax">
         <strong>IPv4_address</strong>:<strong>portId</strong>                                                            // IPv4 port 
@@ -233,42 +269,8 @@
     </pre>
   <!--------------------------------------------------------------------------------------------------------------------->
   <hr>
-  <h2 style="color:darkblue;"><u> Port Types </u></h2>
-  <table class="table">
-    <tr>
-      <th colspan="2" style="background-color:firebrick;"> Port Range </th>
-      <th> Description </th>
-    </tr>
-    <tr>
-      <td style="width:15%;"> 0 </td>
-      <td style="width:15%;"> 1023 </td>
-      <td>
-        - <u>Well-Known Ports</u> (or System Ports) are registered ports for priviledged services <br>
-        - assigned by IETF (Internet Engineering Task Force) </td>
-    </tr>
-    <tr>
-      <td> 1024 </td>
-      <td> 49151 </td>
-      <td>
-        - <u>Registered Ports</u> (or User Ports) are registered for specific user services and can be requested to
-        register <br>
-        - assigned by IANA (Internet Assigned Numbers Authority)
-      </td>
-    </tr>
-    <tr>
-      <td> 49152 </td>
-      <td> 65535 </td>
-      <td>
-        - <u>Dynamic Ports</u> (or Private Ports) are free to use <br>
-        - applications use these ports for temporary connections
-      </td>
-    </tr>
-  </table>
-  <!--------------------------------------------------------------------------------------------------------------------->
-  <hr>
   <h2 class="headerExtra"><u> Sockets </u></h2>
-  <p> - Socket = (IP Address + Port), identifies a device on the network and one service|application within that device
-  </p>
+  <p> - A Sockert is basically a communication endpoint (IP Address + Port), identifies a device on the network and one service|application within that device </p>
   <img src="socket.jpg" alt="socket" height="400">
 
   <br><br>
