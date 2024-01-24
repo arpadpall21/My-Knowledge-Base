@@ -1,76 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Hooks </title> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Hooks </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Hooks (ver 4.0.0) </h1>
-    <p> Updated ( 2022-05-01 / 2022-11-21 )</p>
-    <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
-        <a href="../index.html" title="Learn WebDesign">React></a> Hooks 
-    </p>
-    <br>
-    <details class="example" id="notes">
+  <h1> Hooks </h1>
+  <p> Updated ( 2022-05-01 / 2022-11-21 / 2024-01-22 )</p>
+  <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
+    <a href="../index.html" title="Learn WebDesign">React></a> Hooks
+  </p>
+  <br>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-        <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="https://reactjs.org/docs/hooks-reference.html" target="_blank">React Hook Reference </a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - React hooks are supported from <b>v16.8</b>, the level up function components, allow to use state and other awesome features inside function components </p>
-    <p> - Hook rules: </p>
-    <p style="text-indent:25px;"> - can be used only insed components (or custom hooks)</p>
-    <p style="text-indent:25px;"> - cannot be nested in other statements (ex: if, for etc..)</p>
-    <p> - we can create our own hook, simply create a function where we use built-in hooks </p>
-<details class="example">
-<summary> Example : </summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://react.dev/reference/react/hooks" target="_blank">React Hook Reference </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - hooks are supported from React version <b>16.8</b> </p>
+  <p> - Hook rules: </p>
+  <p style="text-indent:25px;"> - only call a hook directly from the component (or from a custom hooks) <u>(ex: never call a hook from an <mark>if</mark> or <mark>loop</mark> statement or from a custom JavaScript function)</u> </p>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Custom Hooks </h2>
+  <p> - we can create our own hook, simply create a function where we use built-in hooks (must be prefixed with <mark>use</mark> (ex: <mark>use<strong>MyHook</strong></mark>)) </p>
+  <pre class="syntax">
+    function use<strong>MyHook</strong>() { }
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     import React, { useState, useEffect } from 'react';
+    import useFetchData from './fetchHook';
     
-    function FriendStatus(props) {
-        const [isOnline, setIsOnline] = useState(null);
-        useEffect(() => {
-            function handleStatusChange(status) {
-                setIsOnline(status.isOnline);
-            }
-            ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
-            return () => {
-                ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
-            };
-        });
-
-        if (isOnline === null) {
-            return 'Loading...';
+    function SomeComponent(props) {
+        const { data, isLoading, errorMessage } = useData('someUrl')       // fetch hook rerenders the component on every loading state change
+    }
+    
+    
+// fetchHook.js ------------------------------------------------------------------
+    import { useState } from 'react';
+    
+    export default function useFetchData(url) {
+      const [data, setData] = useState();                                 // these states become the compoent's state for the component that uses this hook (this is how the original component rerenders on these state change)
+      const [isLoading, setIsLoading] = useState(true);
+      const [errorMessage, setErrorMessage] = useState('');
+      
+      useEffect(() => {
+        try {
+            setIsLoading(true);
+            setErrorMessage('');
+            setSensorData(undefined);
+            const result = await fetch(url);
+            setData(result);
+        } catch (err) {
+            setErrorMessage(err);
+        } finally {
+            setIsLoading(false);
         }
-        
-        return isOnline ? 'Online' : 'Offline';
-    }    
+      }, []);
+      
+      return { data, isLoading, errorMessage };
+    }
     </pre>
-</details>
-<!----------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="header"> The <mark>useState()</mark> / <mark>useReducer()</mark> hooks</h2>
-    <p> - <mark>useState()</mark> creates an individual state hook </p>
-    <p> - <mark>useReducer()</mark> creates an individual state hook, changes its predefined state based on a dispatched action (sophisticated version of <mark>useState()</mark> hook) </p>
-    <pre class="syntax">
+  </details>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> The <mark>useState()</mark> / <mark>useReducer()</mark> hooks</h2>
+  <p> - <mark>useState()</mark> creates an individual state (multiple state can be used in a component) </p>
+  <p> - <mark>useReducer()</mark> creates an individual state, changes its predefined state based on a dispatched action (different use of state) </p>
+  <pre class="syntax">
     import React from 'react'
     
 <span style="color:darkgray;">// <mark>useState()</mark> -------------------------------------------------------------------------</span>
     function <strong>Component</strong> () {
-        const [<strong>stateVar</strong>, <strong>stateUpdateFn</strong>] = React.useState(<strong class="openable">defStateVal:any|fn<div>
-        <p> - if function passed, it will be called only once when the component mounts for the first time (and never again) </p>
-        </div></strong>)          // we can use multiple states a component  
+        const [<strong>stateVar</strong>, <strong>stateUpdateFn</strong>] = React.useState(<optval class="openable">val|fn<div>
+        <p> - <reqval>val</reqval> - default state value </p>
+        <p> - <reqval>fn</reqval> - called only once when the component mounts for the first time (and never again), the returned value will be the default state </p>
+        </div></optval>) 
         
         <strong>stateVar</strong>                                                                       // value of the current state 
         <strong>stateUpdateFn</strong>(<strong class="openable">exp|fn<div>
-            <p> - if function passed its argument will be the previous state and the returned value will be the new state </p>
+            <p> - <reqval>exp</reqval> - expression result will be the new state </p>
+            <p> - <reqval>fn(previousState)</reqval> - the returned value will be the new state </p>
         </div></strong>)                                                         // updates the state of its hook (the <strong>exp|fn</strong> result will be the new value of the hook state) (rerenders the component = changes the state)
     }                                                                                     
     
@@ -81,16 +102,17 @@
     }
     
     function <strong>Component</strong> () {
-        const [<strong>stateVar</strong>, <strong>dispatchFn</strong>] = React.useReducer(<strong>reducerFn</strong>, <strong class="openable">defStateVal:any|fn<div>
-        <p> - if function passed, it will be called only once when the component mounts for the first time (and never again) </p>
-        </div></strong>)            
+        const [<strong>stateVar</strong>, <strong>dispatchFn</strong>] = React.useReducer(<strong>reducerFn</strong>, <optval class="openable">val|fn<div>
+        <p> - <reqval>val</reqval> - default state value </p>
+        <p> - <reqval>fn</reqval> - called only once when the component mounts for the first time (and never again), the returned value will be the default state </p>
+        </div></optval>)
         
         <strong>stateVar</strong>                                                                       // value of the current state 
         <strong>dispatchFn</strong>(<strong>action</strong>)                                                             // dispatches the <strong>action</strong> to the <strong>reducerFn</strong> (dispatch specified <strong>action:str</strong> to change the state to the predefined value)
     }                                                                                     
     </pre>
-<details class="example">
-<summary> Example : </summary>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     import React, { useState } from 'react';
     
@@ -145,29 +167,30 @@
     
     export default TestComponent
     </pre>
-</details>
-<!----------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="header"> The <mark>useEffect()</mark> / <mark>useLayoutEffect()</mark> hooks</h2>
-    <p> - <mark>useEffect()</mark> - runs a function when the component is fully rendered </p>
-    <p> - <mark>useLayoutEffect()</mark> - runs a function when the component is rendered (but before React paints the DOM) <u>(never use it to update the component state)</u> </p>
-    <pre class="syntax">
+  </details>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> The <mark>useEffect()</mark> / <mark>useLayoutEffect()</mark> hooks</h2>
+  <p> - these hooks replace the old class component render function steps -> <mark>componentDidMount()</mark> -> <mark>componentDidUpdate()</mark> -> <mark>componentWillUnmount()</mark> </p>
+  <p> - <mark>useEffect()</mark> - runs its function when the component is fully rendered </p>
+  <p> - <mark>useLayoutEffect()</mark> - runs its function during component render (before React paints the DOM) <u>(can affect performance, never use it to update the component state)</u> </p>
+  <pre class="syntax">
     import React from 'react'
     
     function <strong>Component</strong> () {
         React.useEffect(<strong class="openable">fn<div>
             <p> - we can return a 'cleanup' function what React calls when the component unmounts </p>
-        </div></strong>, <small class="openable">[state|prop, ...]<div>
-            <p> - only runs its function only when the passed state or prop changes <u>(always runs for the 1st time)</u> </p>
-            <p> - if an empty Array passed ([]) function executed only when the component mounts for the fist time and the cleanup function only when the component unmounts </p>
-        </div></small>)
+        </div></strong>, <opt class="openable">[<optval>val, ...</optval>]<div>
+            <p> - only runs its function when any <optval>val</optval> changes <u>(always runs for the 1st time)</u> </p>
+            <p> - <mark>[]</mark> (empty Array) -> runs its function only when the component mounts for the 1st time </p>
+        </div></opt>)
         
-        React.useLayoutEffect(<strong class="openable">fn<div>
+        React.useLayoutEffect(<reqval class="openable">fn<div>
             <p> - we can return a 'cleanup' function what React calls when the component unmounts </p>
-        </div></strong>, <small class="openable">[state|prop, ...]<div>
-            <p> - only runs its function only when the passed state or prop changes <u>(always runs for the 1st time)</u> </p>
-            <p> - if an empty Array passed ([]) function executed only when the component mounts for the fist time and the cleanup function only when the component unmounts </p>
-        </div></small>)                                 // does the same as <mark>useEffect()</mark> just the timing changes 
+        </div></reqval>, <opt class="openable">[<optval>val, ...</optval>]<div>
+            <p> - only runs its function when any <optval>val</optval> changes <u>(always runs for the 1st time)</u> </p>
+            <p> - <mark>[]</mark> (empty Array) -> runs its function only when the component mounts for the 1st time </p>
+        </div></opt>)                                 // does the same as <mark>useEffect()</mark> just the timing changes 
     } 
     
     
@@ -176,8 +199,8 @@
     <mark>useEffect</mark>                  <em>|| React business logic   ->   React paints the new DOM   ->   <mark>useEffect</mark></em>
     <mark>useLayoutEffect</mark>            <em>|| React business logic   ->   <mark>useLayoutEffect</mark>            ->   React paints the new DOM</em>
     </pre>
-<details class="example">
-<summary> Example : </summary>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     import React, { useState, useEffect, useLayoutEffect } from 'react';
     
@@ -213,62 +236,125 @@
     }
     
     export default TestComponent    </pre>
-</details>
-<!----------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="header"> The <mark>useMemo()</mark> / <mark>useCallback()</mark> hooks</h2>
-    <p> - memoized values or callbacks won't be recomputed when the component rerenders </p>
-    <pre class="syntax">
+  </details>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> The <mark>useMemo()</mark> / <mark>useCallback()</mark> hooks</h2>
+  <p> - these hooks are used to optimize performance </p>
+  <p> - <mark>useMemo</mark> - returns a value computed by its function (the ide is to recompute the value only when needed) </p>
+  <p> - <mark>useCallback</mark> - returns a callback (the idea is that the callback is recomputed only when needed (ex: used when the callback has some variables in it) </p>
+  <pre class="syntax">
     import React from 'react'
     
     function <strong>Component</strong> () {
-        const <strong>memoVar</strong> = React.useMemo(<strong>fn(arg, ...)</strong>, <small class="openable">[state|prop, ...]<div>
-            <p> - only runs its function when the passed state or prop changes <u>(always runs for the 1st time)</u> </p>
-            <p> - if empty Array passed <mark>[]</mark> runs the function only when the component mounts for the first time </p>
-        </div></small>)                // the returned value of <strong>fn</strong> is memoized (<mark>React.useMemo(<strong>fn</strong>, [])</mark> = <strong>fn</strong> will be called only when the component renders for the fist time)    
+        const <strong>memoVar</strong> = React.useMemo(<strong>fn</strong>, <opt class="openable">[<optval>val, ...</optval>]<div>
+            <p> - only runs its function when any <optval>val</optval> changes <u>(always runs for the 1st time)</u> </p>
+            <p> - <mark>[]</mark> (empty Array) -> runs its function only when the component mounts for the 1st time </p>
+        </div></opt>) 
         
-        const <strong>fn</strong> = React.useCallback(<strong>fn(arg, ...)</strong>, <small class="openable">[state|prop, ...]<div>
-            <p> - returns the passed function only when state or prop changes <u>(always runs for the 1st time)</u> </p>
-            <p> - if empty Array passed <mark>[]</mark> runs the function only when the component mounts for the first time </p>
-        </div></small>)                 // returns <strong>fn</strong> (<mark>React.useCallback(<strong>cb</strong>, [])</mark> = <strong>cb</strong> memoized only when the component renders for the fist time)    
+        const <strong>fn</strong> = React.useCallback(<strong>fn</strong>, <opt class="openable">[<optval>val, ...</optval>]<div>
+            <p> - only runs its function when any <optval>val</optval> changes <u>(always runs for the 1st time)</u> </p>
+            <p> - <mark>[]</mark> (empty Array) -> runs its function only when the component mounts for the 1st time </p>
+        </div></opt>)  
     } 
     </pre>
-<details class="example">
-<summary> Example : </summary>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
-    import React, { useState, useMemo, useCallback } from 'react';
-    
-    function doSomething(){
-        console.log( 'doSomething called!' )
-        return 2
-    }
+    import React, { useMemo, useCallback } from 'react';
     
     function TestComponent () {
-        let [counter, updateCounter] = useState(() => 1)
-        setTimeout(() => updateCounter( counter + 1), 1000)                            // component rerenders every 1 seconds
+        const random = Math.random();
         
-        const memo = useMemo(() => {
-            console.log( 'called only when the component is rendered for the first time' )
-            return 1
-        }, [])                                                                         // -! <mark>[]</mark> = run <mark>useMemo</mark> callback only when the component is rendered for the first time   
-      
-        const memoCb = useCallback(doSomething, [])
-        }, [])                                                                         // -! <mark>[]</mark> = run <mark>useCallback</mark> callback only when the component is rendered for the first time    
+        const randomMemoized = useMemo(() => random, [])              // random given for the first time will be memoized
         
-        return (
-          &lt;div&gt; test component {memo} and {memoCb()}  &lt;/div&gt;
-        )
+        const memoizedCallback = useCallback(() => random, [])        // the returned callback always returns the random given for the first time
+    }
+    </pre>
+  </details>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> The <mark>useRef()</mark> hook</h2>
+  <p> 1) - creates and returns an object that can be used as internal store (updating it <u>will not rerender the component</u> = state that not rerender the component when mutated) </p>
+  <p> 2) - references a DOM object </p>
+  <pre class="syntax">
+    import { useRef, useEffect } from 'react';
+    
+<span style="color: darkgray;">// store data in ref object --------------------------------------------------- </span>
+    function <strong>Component</strong>() {
+        const <reqval>refVal</reqval> = useRef(<optval>val</optval>);  // creates and returns a <mark>{ current: <optval>val</optval> }</mark> object
+        
+        <reqval>refVal</reqval>;                      // -> { current: <optval>val</optval> }     // object will keep the data between rerenders
+        <reqval>refVal</reqval>.current = <reqval>val</reqval>         // mutating the ref object will not rerender the component
     }
     
-    export default TestComponent
+    
+<span style="color: darkgray;">// referencing DOM element ---------------------------------------------------- </span>
+    function <strong>Component</strong>() {
+        const <reqval>refVal</reqval> = useRef(null);
+        
+        useEffect(() => {
+            <reqval>refVal</reqval>.current            // references the DOM object (paragraph)
+        }, []);
+        
+        return &lt;p ref={<reqval>refVal</reqval>}&gt; &lt;/p&gt;
+    }
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h3 class="header"> using <mark>useRef</mark> to store values between rerenders </h3>
+    <pre>
+    import { useRef, useEffect } from 'react';
+    
+    function TestComponent() {
+      const refVal = useRef('init val');      // keep set values between rerenders
+    
+      useEffect(() => {
+        refVal.current = 'new val';           // mutating ref object will not tirgger the component rerender
+        refVal.customProp = 'custom val';
+      }, [])
+    
+      return (
+        <p> some paragraph </p>
+      )
+    }
+    
+    export default TestComponent;
     </pre>
-</details>
-<!----------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="headerExtra"> Referencing child components and calling function inside them <mark>useRef()</mark> / <mark>useImperativeHandle()</mark> / <mark>forwardRef()</mark> </h2>
-    <p> - <mark>useRef()</mark> references a child component (or DOM element) </p>
-    <p> - with <mark>useImperativeHandle()</mark> and <mark>forwardRef()</mark> we can call functions in the child component from the parent </p>
-    <pre class="syntax">
+    <h3 class="header"> using <mark>useRef</mark> to reference a DOM element </h3>
+    <pre>
+    import { useRef, useEffect } from 'react';
+    
+    function TestComponent() {
+      const refVal = useRef(null);
+    
+      useEffect(() => {
+        console.log(refVal.current)       // -> paragraph DOM element
+      }, [])
+    
+      return (
+        &lt;p ref={refVal}&gt; some paragraph &lt;/p&gt;
+      )
+    }
+    </pre>
+  </details>
+  <!--
+    - useRef(<optval>val</optval>)
+        - returns an object { current: <optval>val</optval> }
+        - modifying this object will NOT rerender the component (this can be used well to store stuff in it!!!)
+        - the returned object sotres values between rerenders (this makes them a perfect state that does not trigger rerender)
+  
+  
+  - modifying several time the component state will not triggere that many rerenders (instead once the function executed all state are modified then one rerender will be triggered)
+-->
+
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+  <h2 class="headerExtra"> Referencing child components and calling function inside them <mark>useRef()</mark> / <mark>useImperativeHandle()</mark> / <mark>forwardRef()</mark> </h2>
+  <p> - <mark>useRef()</mark> references a child component (or DOM element) </p>
+  <p> - with <mark>useImperativeHandle()</mark> and <mark>forwardRef()</mark> we can call functions in the child component from the parent </p>
+  <pre class="syntax">
     import React from 'react'
     import <strong>ChildComponent</strong> from './ChildComponent'
     
@@ -296,8 +382,8 @@
     
     export default <strong>ChildComponent</strong>
     </pre>
-<details class="example">
-<summary> Example : </summary>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     import React, { useRef, useLayoutEffect } from 'react';
     
@@ -355,13 +441,13 @@
     
     export default Child; 
     </pre>
-</details>
-<!----------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="headerExtra"> Context <mark>createContext()</mark> / <mark>useContext()</mark> </h2>
-    <p> - in React 18.0 we can create contexts, all components (no matter how deep) have access to the context state </p>
-    <p> - in a context have a centralized state (object) which can be accessed and modified by any of the component in the context <u>(context state object properties are merged in the context state (like state works in class components))</u>
-    <pre class="syntax">
+  </details>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Context <mark>createContext()</mark> / <mark>useContext()</mark> </h2>
+  <p> - in React 18.0 we can create contexts, all components (no matter how deep) have access to the context state </p>
+  <p> - in a context have a centralized state (object) which can be accessed and modified by any of the component in the context <u>(context state object properties are merged in the context state (like state works in class components))</u>
+  <pre class="syntax">
 // <mark>Main.js</mark> ----------------------------------------------------------------------------
     import React from 'react';
     import <strong>ChildComponent</strong> from './ChildComponent'
@@ -390,8 +476,8 @@
         
     }
     </pre>
-<details class="example">
-<summary> Example : </summary>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
 // Main.js ----------------------------------------------------------------------------
     import React, { createContext, useContext, useEffect } from 'react';
@@ -454,9 +540,10 @@
     
     export default GrandChild;    
     </pre>
-</details>
-    
-    
-    <br><br>
+  </details>
+
+
+  <br><br>
 </body>
+
 </html>

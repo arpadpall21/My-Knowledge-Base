@@ -125,8 +125,7 @@
         - <strong>g</strong> - global routing (45bits) = globally assigned by IANA (global hierarchical assignement)
         <br>
         - <strong>s</strong> - subnet id (16bits) = identifies the subnet, assigned by the Administrator <br>
-        - <strong>i</strong> - interface id (64bits) = individual node addresses on the subnet, assigned by the
-        Administrator
+        - <strong>i</strong> - interface id (64bits) = identifies the host (calculated randomly (on Windows), based on the MAC address (on Linux))
       </td>
     </tr>
     <tr class="10.02">
@@ -280,14 +279,34 @@
     </pre>
   <!----------------------------------------------------------------------------------------------->
   <hr>
-  <h3 style="color:darkblue;"><u> IPv6 Transition Technologies </u></h3>
+  <h2 style="color:darkblue;"><u> IPv6 on the Internet </u></h2>
 
 
   <p> - IPv6 is hierarchically designed, multiple addresses are put into one large IPv6 (hierarchically), so IPv6 have no subnet mask (not in sence IPv4 has) </p>
   <p> - IPv6 address types define what the address is used for, we can easily identify IPv6 types from their prefixes (first bits) </p>
+
+  <!--
+  - IPv6 doesn't use NAT!
+  - in IPv6 each device has a unique global IP address (yep exactly)
+      - the Global Unicast allows this
+      - there are no subnet mask for global unicast (not needed)
+  - the submask segment can be allocated in a hierarchy way (to identify multiple networks)
+
+  - because the interface identifier is automatically calculdate DHCP is not required 
+  
+  
+  
+-- concept
+    - Dual Stack
+        - host having both IPv4 and IPv6 interfaces 
+-->
+
+
+
+
   <!----------------------------------------------------------------------------------------------->
   <hr>
-  <h3 style="color:darkblue;"><u> IPv6 Transition Technologies </u></h3>
+  <h2 style="color:darkblue;"><u> IPv6 Transition Technologies </u></h2>
   <p> - <mark class="mark">ISATAP</mark> (Intra-site Automatic Tunnel Addressing Protocol) router allows an IPv6 network to communicate with an IPv4 network (and vice versa) <u>private networks only</u> </p>
   <p> - <mark class="mark">6to4</mark> allows the IPv6 traffic through an IPv4 network (cannot tunnel IPv4 traffic through IPv6 network) </p>
   <p> - <mark class="mark">Teredo</mark> from an IPv4 network we connect to a Teredo Server/Relay which transform the traffic to IPv6 </p>

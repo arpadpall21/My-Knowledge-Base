@@ -4,8 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title> TypeScript </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../Assets/stylesPages.css">
   <script src="../Assets/scriptPages.js"></script>
@@ -171,7 +170,17 @@
   <p style="font-size:22px;"> <mark><strong>tsType</strong></mark> can be: </p>
   <h2 class="header"> JavaScript Types: </h2>
   <pre class="syntax">
-    <mark>string</mark> <mark>number</mark> <mark>bigint</mark> <mark>boolean</mark> <mark>undefined</mark> <mark>null</mark> <mark>symbol</mark> <mark>object</mark>  // JavaScript types   
+    <lit>string</lit>                                                     // JavaScript types 
+    <lit>number</lit>
+    <lit>bigint</lit>
+    <lit>boolean</lit>
+    <lit>undefined</lit>
+    <lit>null</lit>
+    <lit>symbol</lit>
+    
+    <lit>object</lit>
+    <lit>Date</lit>
+    
     <strong>tsType</strong>[]                                                   // array of <strong>tsType</strong> (ex: <mark>number[]</mark> = array holding only numbers)    
     </pre>
   <details class="example">
@@ -189,15 +198,15 @@
   <pre class="syntax">
     <strong>val</strong>                                                        // type can be any value (ex: <mark>'test'</mark> or <mark>32</mark>)    
     
-    <mark>any</mark>                                                        // can be any type, callable, assignable 
-    <mark>unknown</mark>                                                    // can be any type, not callable, not assignable  <span id="browserSupport" style="color:yellow;"><span>v.3</span></span>    
+    <lit>any</lit>                                                        // can be any type, callable, assignable 
+    <lit>unknown</lit>                                                    // can be any type, not callable, not assignable  <span id="browserSupport" style="color:yellow;"><span>v.3</span></span>    
     
-    <mark>void</mark>                                                       // function return type where function has no return     
-    <mark>never</mark>                                                      // function return type where function throws an error or has inifinite loop (should never happen)    
+    <lit>void</lit>                                                       // function return type where function has no return     
+    <lit>never</lit>                                                      // function return type where function throws an error or has inifinite loop (should never happen)    
     
     [<strong>tsType</strong><i>, ...</i>]                                              // tuple (fixed length array with annotated types) (values can be changes -> not a Python style tupe)    
     
-    enum <strong>enumName</strong> { <strong>varName</strong><small>=<i>val</i></small><i>, ...</i> }                         // enum (a set of <u>unchangable values</u>) (object-like data type where values cannot be changed once declared)    
+    <lit>enum</lit> <strong>enumName</strong> { <strong>varName</strong><small>=<i>val</i></small><i>, ...</i> }                         // enum (a set of <u>unchangable values</u>) (object-like data type where values cannot be changed once declared)    
                                                                // values (<i>val</i>) are defined as <mark>0, 1, 2, ...</mark> by default
                                                                // values can be accessed as <mark><strong>enumName.varName</strong></mark> or <mark><strong>enumName['varName']</strong></mark>    
     </pre>
@@ -406,7 +415,7 @@
   </p>
   <p style="text-indent: 30px;"> - to type narrow we use techniques like: <mark>typeof</mark> operator, checking type properties / protitype
     checking / using the TypeScript <mark>as</mark> operator </p>
-  
+
   <p> - <b>Type Guard</b> is essentially a function that verifies the type(s) of an argument and returns a boolean accordingly <u>(this technique is especially powerful in Typescript because the <mark>typeof</mark> operator can only check built-in types (but not custom types))</u> </p>
   <p> - <b>Type Assertion</b> is a technique to identify a value as certain type </p>
   <pre class="syntax">
