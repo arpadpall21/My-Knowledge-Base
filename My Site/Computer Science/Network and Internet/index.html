@@ -104,7 +104,7 @@
       (dnschecker.org)</a></p>
   <h2 style="color:green;"><u> Remember This : </u></h2>
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-  <p> Network Concepts: <a href="../../Dictionary/Concepts/index.html#network" target="_blank">[link]</a> </p>
+  <p> Network Concepts: <a href="../../Dictionary/Concepts & Acronyms/index.html#network" target="_blank">[link]</a> </p>
   <h2 class="header"><u> The OSI model (Open System Interconnection) </u></h2>
   <p> - the OSI model is a conceptual model which characterizes and standardizes how telecommunication systems should work </p>
   <p> - defines 7 conceptual layers, these layers do not refer to a specific structure or technology but rather they describe a function at the specified level </p>
@@ -152,96 +152,6 @@
   <p> - the internet is basically a buch or router that routes the traffic between private networks (routers are in hierarchy) </p>
   <p> - a host need 4 thing in order to communicate on the internet (<mark class="mark">IP address</mark>, <mark class="mark">Subnet Mask</mark>, <mark class="mark">Gateway IP address</mark> and <mark class="mark">DNS Server IP address</mark>) </p>
   <img src="Internet.png" alt="Internet" height="250">
-
-
-
-
-  <!--
-(2023-11-07)
-  - This summary was collected when I started to have a glance on Azure networks, but I've decieded to stop because it's a deep topic and I have to understand networking first before jumping into complex topics like this 
-  
-  
-  Virtual Network
-      - suppoorts IPv4 (1+ subnets are required withn virtual network)
-      - suppoorts IPv6 (0+ subnets are required withn virtual network)
-      - we can resize subnets, but only when theye empty they
-  
-  Public IP (Azure resource)
-      - to create Public IPs for inbound traffic
-      - 2 tiers (SKU):
-          - Basic
-              - dynamic or static
-              - open by default
-              - on AZ support
-          - Standard
-              - Static only
-              - Locked down by default
-              - AZ support 
-  
-  
-  - Azure backbone -> Azure's global network (already documented)
-  
-  -> Vnet peering -> virtual networks can be peered regardless of their geographich location (vnet peering -> local, global peering -> global)
-    -> not peered networks cannot talk to each other (no transitive connection -> meaning if A -> B -> C connection A cannot talk to C), for that we have to create a mesh connection which allows transitive conneciton
-  
-  -> Network Interface 
-    -> configurable network interface (VMs has their default interface, but we can assign a custom interface)
-  
-  
-  -> Express Route -> connection between a local network and Azure cloud 
-  
-  -> SKU (Stock Keeping Unit) a type of unit -> expression used in Azure (refers to a specific version or offering)
-  
-  
-  -> S2S VPN (Site to Site VPN) secure connection between to private network through the internet (secure tunnel)
-  -> P2S VPN (Point to Site) secure connection to an Azure VPN from an individual computer
-  
-  
-  
-  - get a bit more into IPv4 IPv6 networking (update your current knowledge)
-    - how the heck IPv6 works in public internet
--->
-
-
-
-  <!--
-
-
-
-??????????????????????????????????????????????????????????????????????????
-??????????????????????????????????????????????????????????????????????????
-??????????????????????????????????????????????????????????????????????????
-OK
-    - dig in http connection keep-alive (how long the connection is active stuf....)
-      - the reasone for HTTP keep-alive connection is to use the same connection for multiple data transfers (to avoid open new connections which requires resources (mostly time))
-    
-    
-OK
-    - dig around sockets (domain socket, websocket)
-        - well from an overview a domain socket works the same way as websocket but a file is used instead of IP:port
-        - supports datagram (SOCK_DGRAM) and stream (SOCK_STREAM) socket types
-        - a domain sockert is faster then network socket
-    
-    
-OK
-    - check Node UDP Notes for left over methods (address join stuff like this)
-        - well this is used with multicasting but I don't feel I need to dig in this now 
-        
-        
-    - get a bit around IPv6
-        - what exactly is the multicast IPv6 
-    
-    
-OK
-    - get familiar with routing table
-    
-    
-OK
-    - explain route summarization (this is very important in networking)
-        - https://www.youtube.com/watch?v=zmxLg4jV0ts&list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi&index=11
-
--->
-
 
 
   <br><br>

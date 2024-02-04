@@ -338,45 +338,37 @@
     }
     </pre>
   </details>
-  <!--
-    - useRef(<optval>val</optval>)
-        - returns an object { current: <optval>val</optval> }
-        - modifying this object will NOT rerender the component (this can be used well to store stuff in it!!!)
-        - the returned object sotres values between rerenders (this makes them a perfect state that does not trigger rerender)
-  
-  
-  - modifying several time the component state will not triggere that many rerenders (instead once the function executed all state are modified then one rerender will be triggered)
--->
-
-
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-  <h2 class="headerExtra"> Referencing child components and calling function inside them <mark>useRef()</mark> / <mark>useImperativeHandle()</mark> / <mark>forwardRef()</mark> </h2>
-  <p> - <mark>useRef()</mark> references a child component (or DOM element) </p>
-  <p> - with <mark>useImperativeHandle()</mark> and <mark>forwardRef()</mark> we can call functions in the child component from the parent </p>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> The <mark>useImperativeHandle()</mark> / <mark>forwardRef()</mark> hooks </h2>
+  <p> - these hooks (with <mark>useRef()</mark>) provides a way to call function in the child component from the parent component </p>
   <pre class="syntax">
-    import React from 'react'
-    import <strong>ChildComponent</strong> from './ChildComponent'
+    import { useRef, useEffect } from 'react';
+    import <strong>ChildComponent</strong> from './ChildComponent';
     
     function <strong>Component</strong>() {
-        const <strong>chRef</strong> = React.useRef()                                                   // <strong>chRef</strong> will reference the child component    
+        const <strong>refVal</strong> = useRef(null)                          // will reference the child component 
         
-        React.useEffect(() => {
-            <strong>chRef</strong>.current.<strong>childFn</strong>()                                                    // calling the child component's function from the parent component (after the this component is fully rendered)    
+        useEffect(() => {
+            <strong>refVal</strong>.current.<strong>childFn1</strong>(<optval>val</optval>)                     // calling the child component's function from the parent component (after the this component is fully rendered)  
+            <strong>refVal</strong>.current.<strong>childFn2</strong>(<optval>val</optval>)
         })
         
         return {
-            &lt;<strong>ChildComponent</strong> ref={<strong>chRef</strong>}/&gt;
+            &lt;<strong>ChildComponent</strong> ref={<strong>refVal</strong>}/&gt;
         }
     }
     
     
 // <mark>ChildComponent.js</mark> ------------------------------------------------------------------
-    import React from 'react'
+    import { forwardRef, useImperativeHandle } from 'react';
     
-    const <strong>ChildComponent</strong> = React.forwardRef((<strong>props, ref</strong>) => {                          // forward referencing the component    
-        React.useImperativeHandle(<strong>ref</strong>, () => {
-            <strong>fn</strong>() {}                                                                    // function that can be called from the parent component    
+    const <strong>ChildComponent</strong> = forwardRef((props, ref) => {      // forward referencing the component    
+        useImperativeHandle(ref, () => {
+            return {
+                <reqval>childFn1</reqval>(<optval>val</optval>) { }                            // functions are callable from the parent component    
+                <reqval>childFn2</reqval>(<optval>val</optval>) { }
+            }
         })
     })
     
@@ -385,94 +377,76 @@
   <details class="example">
     <summary> Example : </summary>
     <pre>
-    import React, { useRef, useLayoutEffect } from 'react';
-    
-    function TestComponent () {
-        const el = useRef()
-        
-        useLayoutEffect(() => {
-            el.current                                                                 // -> paragraph DOM element 
-        })
-        
-        return (
-            &lt;div&gt;
-                &lt;p ref={el}&gt; test &lt;/p&gt;
-            &lt;/div&gt;
-        )
-    }
-    
-    export default TestComponent
-    </pre>
-    <pre>
 // Main.js ----------------------------------------------------------------------------
-    import React, { useEffect, useRef } from 'react';
+    import { useRef } from 'react';
+    import ChildComponent from './TestComponentChild';
     
-    import Child from './ChildComponent'
-    
-    function TestComponent () {
+    function TestComponent() {
         const childRef = useRef()
-        
-        useEffect(() => {
-            childRef.current.test();                                                   // calling functions is the child component  
-            childRef.current.test2();
-        })
-        
-        return &lt;Child ref={childRef}/&gt;                                                 // the component is wrapped in <mark>forwardRef</mark> so we can reference it 
+    
+      function handleClick1() {
+          childRef.current.test(1);                     // calling function in the child component with argument
+      }
+    
+      function handleClick2() {
+          childRef.current.test2('a');
+      }
+    
+      return (
+          &lt;div&gt;
+              &lt;p onClick={handleClick1}&gt; Click-1 &lt;/p&gt;
+              &lt;p onClick={handleClick2}&gt; Click-2 &lt;/p&gt;
+              &lt;ChildComponent ref={childRef} /&gt;
+          &lt;/div&gt;
+      )
     }
     
-    export default TestComponent   
+    export default TestComponent;    
     
     
 // Child.js ---------------------------------------------------------------------------
     import React, { forwardRef, useImperativeHandle } from 'react';
     
-    const Child = forwardRef((props, ref) =&gt; {                                         // wrapping the component in <mark>forwardRef</mark>
-      useImperativeHandle(ref, () =&gt; ({
-          test() {console.log('test called!')},
-          test2() {console.log('test2 called!')},
-      }));
-      
-      return (
-        &lt;div&gt;
-          &lt;p Child Component &lt;/p&gt;
-        &lt;/div&gt;
-      )
+    const Child = forwardRef((props, ref) => {                  // wrapping the component in <mark>forwardRef</mark>
+        useImperativeHandle(ref, () => ({
+            test(arg) { arg },                                  // -> 1
+            test2(arg) { arg },                                 // -> 'a'
+        }));
+    
+        return &lt;p&gt; Child Component &lt;/p&gt;
     });
     
-    export default Child; 
+    
+    export default Child;
     </pre>
   </details>
   <!----------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="headerExtra"> Context <mark>createContext()</mark> / <mark>useContext()</mark> </h2>
-  <p> - in React 18.0 we can create contexts, all components (no matter how deep) have access to the context state </p>
+  <p> - from React v18 we can create contexts, all components (no matter how deep) have access to the context state </p>
   <p> - in a context have a centralized state (object) which can be accessed and modified by any of the component in the context <u>(context state object properties are merged in the context state (like state works in class components))</u>
   <pre class="syntax">
 // <mark>Main.js</mark> ----------------------------------------------------------------------------
     import React from 'react';
     import <strong>ChildComponent</strong> from './ChildComponent'
     
-    cosnt <strong>__ctx</strong> = React.createContext(<strong>ctxObj</strong>)                                          // initializing context object (centralized state object)    
+    export const <strong>Ctx</strong> = React.createContext(null)         // initializing context object (centralized state object)    
     
     function <strong>Component</strong>(){
-        const <strong>ctx</strong> = React.useContext(<strong>__ctx</strong>)                                            // using the context inside the component    
-        
         return (
-            <em>&lt;Ctx.Provider value={<strong>ctx</strong>}&gt;</em>                                                 // all child components inside this context have access to <strong>ctx</strong>    
+            <lit>&lt;<reqval>Ctx</reqval>.Provider value={<strong>defVal</strong>}&gt;</lit>                // all child components inside this context have access to <strong>ctx</strong>  
                 &lt;<strong>ChildComponent </strong>/&gt;
-            <em>&lt;/Ctx.Provider&gt;</em>
+            <lit>&lt;/<reqval>Ctx</reqval>.Provider&gt;</lit>
         )
     }
-    
-    export { <strong>__ctx</strong> }                                                                   // exporting context (cerntalized state)    
     
     
 // <mark>ChildComponent.js</mark> ------------------------------------------------------------------
     import React from 'react'
-    import { <strong>__ctx</strong> } from './Main'                                                     // importing context (cerntalized state)    
+    import { <strong>Ctx</strong> } from './Main'                         // importing context (cerntalized state)    
     
     export default <strong>ChildComponent</strong>(){
-        const <strong>ctx</strong> = React.useContext(<strong>__ctx</strong>)                                            // <strong>ctx</strong> is the centralized state object (can be get or set)    
+        const <strong>ctx</strong> = React.useContext(<strong>Ctx</strong>)                // the returned <strong>ctx</strong> is the context (centralized state object (can be get or set))    
         
     }
     </pre>
@@ -541,6 +515,16 @@
     export default GrandChild;    
     </pre>
   </details>
+
+
+
+  <!--
+  - modifying several time the component state will not triggere that many rerenders (instead once the function executed all state are modified then one rerender will be triggered)
+  
+  - rerendering a parent componet will rerender all its child components 
+
+-->
+
 
 
   <br><br>

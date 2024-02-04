@@ -206,9 +206,9 @@
     
     [<strong>tsType</strong><i>, ...</i>]                                              // tuple (fixed length array with annotated types) (values can be changes -> not a Python style tupe)    
     
-    <lit>enum</lit> <strong>enumName</strong> { <strong>varName</strong><small>=<i>val</i></small><i>, ...</i> }                         // enum (a set of <u>unchangable values</u>) (object-like data type where values cannot be changed once declared)    
+    <lit>enum</lit> <strong>Enum</strong> { <strong>MEMBER</strong><small>=<i>val</i></small><i>, ...</i> }                              // enum (a set of <u>unchangable values</u> where only one member can be used) 
                                                                // values (<i>val</i>) are defined as <mark>0, 1, 2, ...</mark> by default
-                                                               // values can be accessed as <mark><strong>enumName.varName</strong></mark> or <mark><strong>enumName['varName']</strong></mark>    
+                                                               // values can be accessed as <mark><strong>Enum.MEMBER</strong></mark> or <mark><strong>Enum['MEMBER']</strong></mark>    
     </pre>
   <details class="example">
     <summary> DEMO </summary>
@@ -263,21 +263,21 @@
     
     
 // enum ------------------------------------------------------------
-    enum MyEnum { zero, one, tow};
+    enum MyEnum { ZERO, ONE, TOW };
     
-    console.log( MyEnum.zero )      // -> 0
-    console.log( MyEnum.one )       // -> 1
-    MyEnum.zero = 3;                // -! this throws an error
+    console.log( MyEnum.ZERO )      // -> 0
+    console.log( MyEnum.ONE )       // -> 1
+    MyEnum.ZERO = 3;                // -! this throws an error
     
     
-    enum Pepe { name="Péter", surname="Bozóki" }
+    enum Pepe { NAME="Péter", SURNAME="Bozóki" };
     
     function concateName(name : string, surname: string ): string {
         return surname + ' ' + name;
     }
     
-    console.log( Pepe.surname, Pepe.name );                 // -> 'Bozóki Péter'    
-    console.log( concateName(Pepe.name, Pepe.surname) )     // -> 'Bozóki Péter'    
+    console.log( Pepe.SURNAME, Pepe.NAME );                 // -> 'Bozóki Péter'    
+    console.log( concateName(Pepe.NAME, Pepe.SURNAME) )     // -> 'Bozóki Péter'    
     </pre>
   </details>
   <hr>

@@ -36,7 +36,7 @@
   <p> - (on a switch) switch port to MAC addresses mapping (dynamically updated with ARP requests) </p>
   <h3 class="header"> ARP Table (Address Resolution Protocol IPv4) / NDP (Network Discovery Protocol IPv6) </h3>
   <p> - MAC address to IP address mapping (OSI Layer 2 to Layer 3 mapping) </p>
-  <p> - through ARP requests host discover each other on the network (OSI Layer 2 hop-to-hop transmission) (the ARP table is dynamically updated) </p>
+  <p> - through ARP requests host discover each other on the network (OSI Layer 2 hop-to-hop transmission) (the ARP table updated dynamically) </p>
   <!------------------------------------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="headerExtra" id="rout"><u> NAT / PAT </u></h2>
@@ -61,13 +61,13 @@
   <!------------------------------------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="headerExtra"> Routers </h2>
-  <p> - Internet is basically a bunch or routers connectect togehter (in hierarchy), there are 3 ways routers can be connected: </p>
+  <p> - Internet is basically a bunch or routers connectecd togehter (in hierarchy), there are 3 ways routers can be connected: </p>
   <p class="indent-lv1"> <mark class="mark">Direct Connection</mark>: NIC directly connected (automatically discovers the connected other router) </p>
   <p class="indent-lv1"> <mark class="mark">Static Routing</mark>: Administrator statically configure routes </p>
   <p class="indent-lv1"> <mark class="mark">Dynamic Routing</mark>: Routers dynamically create routes between each other (try to chose the most optimal route) </p>
   <h3 class="header"> Route Summarization </h3>
   <p> - it's a technique to create one route summary that represent multiple network/subnets (also called route aggregation) </p>
-  <p> - it's a ery useful technique because routers are placed in hierarchy on the internet (ex <mark>0.0.0.0/0</mark> default route -> all traffic is forwarded here) </p>
+  <p> - it's a very useful technique because routers are placed in hierarchy on the internet (ex <mark>0.0.0.0/0</mark> default route -> all traffic is forwarded here) </p>
   <img src="Route Summarization.png" alt="Route Summarization" height="350">
   <!------------------------------------------------------------------------------------------------------------------------->
   <hr>

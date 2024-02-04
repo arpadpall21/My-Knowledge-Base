@@ -4,8 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title> Redux </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../Assets/stylesPages.css">
   <script src="../Assets/scriptPages.js"></script>
@@ -66,7 +65,8 @@
     calculates and returns a NEW store (should not mutate the original store) (should be a pure function)</p>
   <p style="text-indent: 30px;"> <b>- action:</b> plain JS object having the <mark>type</mark> (and usually the
     <mark>payload</mark>) property (ex: <mark>{ type: <strong>action:str</strong>, payload: <strong>obj</strong>
-      }</mark>), describes the action that the store should perform </p>
+      }</mark>), describes the action that the store should perform
+  </p>
   <p style="text-indent: 30px;"> <b>- action creator:</b> function that returns a redux action </p>
   <p style="text-indent: 30px;"> <b>- dispatcher:</b> a function that accepts a redux action object then dispatches it
     to the store (this should be the only way to update the store) </p>
@@ -477,10 +477,9 @@
   </details>
   <!---------------------------------------------------------------------------------------------->
   <h2 class="header"><u> RTK Query </u></h2>
-  <p> - the RTQ Query is an awesome data fetching tool, in has its own (store) slice <u>where requests are cached</u>
-    (cached requests won't hit the network unless we force them) </p>
+  <p> - the RTQ Query is an awesome data fetching tool, in has its own (store) slice <u>where requests are cached</u> (cached requests won't hit the network unless we force them) </p>
   <p> - provides hooks that rerender the react component based on fetch loading state </p>
-  <h3 style="color:darkblue;"><u> <mark>createApi()</mark> / <mark>fetchBaseQuery()</mark> / <mark>skiptoken()</mark>
+  <h3 style="color:darkblue;"><u> <mark>createApi()</mark> / <mark>fetchBaseQuery()</mark> / <mark>skipToken()</mark>
     </u></h3>
   <pre class="syntax">
 <span style="color:darkgray;">// index.js file --------------------------------------------------------------------</span>
@@ -527,7 +526,7 @@
     });
     
     
-<span style="color:darkgray;">// compnent file --------------------------------------------------------------------</span>
+<span style="color:darkgray;">// component file -------------------------------------------------------------------</span>
     import { skipToken } from '@reduxjs/toolkit/query/react';
     
     <em>function <strong>Component</strong>() {</em>
@@ -595,8 +594,6 @@
         const result = await addPost(requestBody)              // send post request (this is a promise)
         result.data;                                           // get response 
       }
-      
-      
     }
     
     export default App;

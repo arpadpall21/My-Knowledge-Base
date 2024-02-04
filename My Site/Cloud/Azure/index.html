@@ -26,6 +26,8 @@
   <h2 style="color:green;"><u> Remember This : </u></h2>
 
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> Concpets: </p>
+  <p class="indent-lv1"> - SKU (Stock Keeping Unit) describes the resource characteristics </p>
   <h2 class="header"> Azure Global Infrastructure </h2>
   <p> - <mark class="mark">Azure backbone</mark> -> Azure's global network </p>
   <p> - <mark class="mark">Region</mark> -> Geographic location where one or multiple data centers reside </p>
@@ -121,7 +123,25 @@
   <hr>
   <!--------------------------------------------------------------------------------------------->
   <h2 class="headerExtra"> Resources </h2>
-  <h3 class="header"> Advize and Security Services </h3>
+  <h3 class="header"> Azure DevOps </h3>
+  <p class="indent-lv1"> Azure development tools </p>
+  <p class="indent-lv2"> - <mark class="mark">Boards</mark> -> Jira style ticketing system </p>
+  <p class="indent-lv2"> - <mark class="mark">Repos</mark> -> Code repositories </p>
+  <p class="indent-lv2"> - <mark class="mark">Pipelines</mark> -> CI/CD pipelines </p>
+  <p class="indent-lv3"> - Concepts: </p>
+  <p class="indent-lv4"> - <mark class="mark">Trigger</mark> -> Action that triggers the pipeline </p>
+  <p class="indent-lv4"> - <mark class="mark">Template</mark> -> Pipeline script that can be imported and reused </p>
+  <p class="indent-lv4"> - <mark class="mark">Agent</mark> -> Machine that execute the pipeline jobs </p>
+  <p class="indent-lv4"> - <mark class="mark">Agent Pools</mark> -> A group of agents </p>
+  <p class="indent-lv4"> - <mark class="mark">Artifact</mark> -> The output of the pipeline process </p>
+  <p class="indent-lv4"> - <mark class="mark">Stage</mark> -> A set of jobs representing a functional proces (like test, build, deploy, etc...) </p>
+  <p class="indent-lv4"> - <mark class="mark">Job</mark> -> A set of steps executed on the same Agent </p>
+  <p class="indent-lv4"> - <mark class="mark">Step</mark> -> A <mark class="mark">Task</mark> or <mark class="mark">Script</mark> </p>
+  <p class="indent-lv4"> - <mark class="mark">Task</mark> -> Azure built-in script (like <mark>UsePythonVersion@0</mark> sets up a specified Python version) </p>
+  <p class="indent-lv4"> - <mark class="mark">Script</mark> -> A set of commands executed in bash os PowerShell </p>
+  <p class="indent-lv2"> - <mark class="mark">Artifacts</mark> -> hosts & shares software packages </p>
+  <p class="indent-lv2"> - <mark class="mark">Test Plans</mark> -> provides manual testing environments and tools (we can use all sorts of VMs for manual testing) </p>
+  <h3 class="header"> Advice and Security Services </h3>
   <p class="indent-lv1"> <mark class="mark">Azure Marketplace</mark> -> marketplace for services or service groups built by Microsoft or 3rd party vendors </p>
   <p class="indent-lv1"> <mark class="mark">Azure Advizor</mark> -> Gives recommendations according to Azure best practices (Cost, Security, Reliability, Performance, Operational Excellence) </p>
   <p class="indent-lv1"> <mark class="mark">Azure Security Center</mark> -> Continouously scans resources for security issues (gives feedback in Azure Advizor) </p>
@@ -129,65 +149,6 @@
   <p class="indent-lv1"> <mark class="mark">Azure Key Vault</mark> -> Centralized secret storage store </p>
   <p class="indent-lv2"> - we can use SDK to access these secrets </p>
   <p class="indent-lv2"> - monitored service </p>
-  <h3 class="header"> Azure DevOps </h3>
-  <p class="indent-lv1"> Azure development tools </p>
-  <p class="indent-lv2"> - <mark class="mark">Boards</mark> -> Jira style ticketing system </p>
-  <p class="indent-lv2"> - <mark class="mark">Repos</mark> -> Code repositories </p>
-  <p class="indent-lv2"> - <mark class="mark">Pipelines</mark> -> CI/CD pipelines </p>
-
-
-  <!--
-  - the azure-pipelines.yml file describes the pipeline 
-  
-  - pipeline features
-      https://learn.microsoft.com/en-us/azure/devops/pipelines/get-started/pipelines-get-started?view=azure-devops#feature-availability
-  
-  - yaml file summary
-      https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/?view=azure-pipelines
-  
-  
-  
-  trigger                       # describes what triggers the pipeline
-    - ...
-  
-  pool:
-    vmImage: 'ubuntu-latest'    # microsoft agent 
-  
-  
-  steps:                        # building step(s)
-    - task: task
-  
-  
-  
--------------------
------  TEST  ------
--------------------
-  - Agent
-      - is the platform to execute a job 
-  - Template
-      - pipeline scirpt that can be imported and used in the main script 
-  
-  - when creating the pipeline the output can be chosen (like the Azure container registry)
-  
-  
-  - a pipeline is made up of stages
-  - a pipeline can deploy the one or more environments
-  - a stage has jobs (no need to declare if there's on one job)
-    - a job run on one agent (a job can be agentless)
-  - a job contains steps
-  - a step can be a task or script
-    - task -> pre-packages script
-    - script -> executed script in bash or PowerShell
-  
-  
-  
-  -->
-
-
-
-
-  <p class="indent-lv2"> - <mark class="mark">Artifacts</mark> -> hosts & shares software packages </p>
-  <p class="indent-lv2"> - <mark class="mark">Test Plans</mark> -> provides manual testing environments and tools (we can use all sorts of VMs for manual testing) </p>
   <h3 class="header"> Compute Resources </h3>
   <p class="indent-lv1"> <mark class="mark">VM (Virtual Machine)</mark> -> machine in the cloud </p>
   <p class="indent-lv2"> - we can get different performance (there are built-in images but we can customize the performance) </p>
@@ -240,10 +201,18 @@
   <p class="indent-lv1"> <mark class="mark">Azure HD Inside</mark> </p>
   <p class="indent-lv1"> <mark class="mark">Azure Databricks</mark> </p>
   <h3 class="header"> Network </h3>
-  <p class="indent-lv1"> <mark class="mark">Virtual Network</mark> -> logical network for resource isolation </p>
-  <p class="indent-lv2"> - can contain subnetworks </p>
+  <p class="indent-lv1"> <mark class="mark">Virtual Network</mark> -> IPv4 or IPv6 logical network for resource isolation </p>
   <p class="indent-lv2"> - must reside in a single region </p>
-  <p class="indent-lv2"> - under the same subscription any VM can be used in a virutal network (even VMs in different resource groups) </p>
+  <p class="indent-lv2"> - under the same subscription any VM can be used in a virtual network (even VMs in different resource groups) </p>
+  <p class="indent-lv2"> - <mark class="mark">vnet peering</mark> -> peering Azure Virtual Networks in different regions (throug Azure Backbone) </p>
+  <p class="indent-lv3"> - does no transitive communication (ex: in serial a connection <mark>A</mark> -> <mark>B</mark> -> <mark>C</mark>, <u><mark>A</mark> cannot communicate with <mark>C</mark></u>) </p>
+  <p class="indent-lv1"> <mark class="mark">Network Interface</mark> -> Virtual network interface card (NIC) that connects a VM into a virtual network </p>
+  <p class="indent-lv1"> <mark class="mark">Public IP</mark> -> Public IP for in or outbound internet traffic </p>
+  <p class="indent-lv2"> - Static -> fixed IP (for in and outbound traffic) </p>
+  <p class="indent-lv2"> - Dynamic -> changes every time the associated resource is restarted (for outbound traffic only) </p>
+  <p class="indent-lv3"> - SKU: </p>
+  <p class="indent-lv4"> - <mark class="mark">Basic</mark> -> Static or Dynamic </p>
+  <p class="indent-lv4"> - <mark class="mark">Standard</mark> -> Static </p>
   <p class="indent-lv1"> <mark class="mark">Network Security Group (NSG)</mark> -> controls the subnet traffic within the Virtual Network </p>
   <p class="indent-lv1"> <mark class="mark">Application Security Group (ASG)</mark> -> controls the traffic of a group of servers </p>
   <p class="indent-lv2"> - we can create a group of servers within a subnet, ASG controls the netwrok traffic of this group </p>
@@ -259,10 +228,11 @@
   <p class="indent-lv1"> <mark class="mark">Firewall</mark> -> Azure firewall on virtual network (monitors and controls traffic) </p>
   <p class="indent-lv1"> <mark class="mark">DDoS protection plans</mark> -> Distributed Denial of Service protection of a virtual network </p>
   <p class="indent-lv2"> - can protect autoscaling group to generate hight costs, etc.. </p>
-  <p class="indent-lv2"> - 2 tiers: </p>
-  <p style="text-indent:60px;"> - <mark class="mark">Basic</mark> </p>
-  <p style="text-indent:60px;"> - <mark class="mark">Standard</mark> -> provides monitoring and machine learning for better protection </p>
+  <p class="indent-lv2"> - SKU: </p>
+  <p class="indent-lv3"> - <mark class="mark">Basic</mark> </p>
+  <p class="indent-lv3"> - <mark class="mark">Standard</mark> -> provides monitoring and machine learning for better protection </p>
   <p class="indent-lv1"> <mark class="mark">Azure Front Door (CDN)</mark> -> Azure's CDN service </p>
+  <p class="indent-lv1"> <mark class="mark">Express Route</mark> -> a direct connection of an on-premise network and Azure (private traffic that does not go through the internet) </p>
   <h3 class="header"> IoT Services </h3>
   <p class="indent-lv1"> <mark class="mark">IoT Hub</mark> -> allows communication between IoT devices and Azure </p>
   <p class="indent-lv2"> - PaaS bi-directional communication service (supports HTTPS, AMQP, MQTT protocols) </p>
