@@ -76,13 +76,18 @@
   <p class="indent-lv1"> - connection oriented (point-to-point), estabilishes a connection between pairs (the sender send some message then the receiver acknowledges the received message) </p>
   <p class="indent-lv1"> - reliable because the receiver acknowledges the received messages <u>in the correct order</u>, but slower than UDP (becasue of the acknowledge messages) </p>
   <p class="indent-lv1"> - has flow control -> monitors the bandwidth in order to adjust the optimal transmission speed in order to not to lose packets on the wire </p>
-
   <p> <mark class="mark">UDP</mark> (User Datagram Protocol): </p>
   <p class="indent-lv1"> - not connection oriented, the sender sends some message to a destination and then don't care (Fire and Forget) </p>
   <p class="indent-lv1"> - faster than TCP but unreliable because the sent messages can be lost without any error feedback (has no receiver acknowledgement) </p>
   <p class="indent-lv1"> - has no flow control -> uses the full bandwith to send datagrams </p>
   <img src="TCP vs UDP.jpg" alt="TCP vs UDP" height="250">
-
+  <!------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> VPN (Virtual Pirvate Network) </h2>
+  <p> - a service that basically acts as a client for you with several security benefits: </p>
+  <p class="indent-lv1"> - creates a secure tunnel between your device and the VPN service (so you're not directly connected to the target site but to the VPN, this creates a secure tunnel so your ISP (or anyone in between) cannot see your requested sites) </p>
+  <p class="indent-lv1"> - the VPM hides your public IP, so sites cannot see who you are (they see the VPN's public IP instead) </p>
+  <img src="vpn.jpeg" alt="vpn" height="250">
 
   <br><br>
 </body>

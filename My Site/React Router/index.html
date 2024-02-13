@@ -4,8 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title> React Router (react-router-dom v6.4) </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../Assets/stylesPages.css">
   <script src="../Assets/scriptPages.js"></script>
@@ -23,8 +22,8 @@
       <th> Description </th>
     </tr>
     <tr class="05.01">
-        <td> npm install react-router </td>
-        <td> install React Rooter (including react-router-dom) </td>
+      <td> npm install react-router </td>
+      <td> install React Rooter (including react-router-dom) </td>
     </tr>
   </table>
 
@@ -127,7 +126,7 @@
   </details>
   <!----------------------------------------------------------------------------------------->
   <hr>
-  <h2 class='header'> Route <mark>&lt;Route&gt;</mark> / <mark>&lt;Navigate&gt;</mark></h2>
+  <h2 class='header'> The <mark>&lt;Route&gt;</mark> component </h2>
   <pre class='syntax'>
     &lt;Route path='<strong>baseRoute</strong>' element={<strong>reactComponent</strong>} &gt; 
       &lt;Route
@@ -149,9 +148,7 @@
              // optional <mark>?</mark> makes this param optional route segment
     *        // matches any following route 
   </pre>
-  <h3 class='header'> <mark>useParams()</mark> / <mark>useLoaderData()</mark> / <mark>useLocation()</mark> /
-    <mark>useNavigation()</mark> / <mark>redirect()</mark> hooks
-  </h3>
+  <h3 class="header"> The <mark>&lt;Navigate&gt;</mark> component and <mark>useParams()</mark> / <mark>useLoaderData()</mark> / <mark>useLocation()</mark> / <mark>useNavigation()</mark> / <mark>redirect()</mark> hooks </h3>
   <pre class='syntax'>
 <span style='color:grey;'>// index.js -------------------------</span>
   &lt;Route path='<strong>route</strong>' element={<strong>SomeComponent</strong>} loader={loaderFn} /&gt;

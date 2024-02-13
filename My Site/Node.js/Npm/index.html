@@ -53,13 +53,13 @@
     </tr>
     <tr class="05.02">
       <td> <em>npm</em> help <i>cmd</i> </td>
-      <td> 
+      <td>
         - help log in general or for <i>cmd</i>
       </td>
     </tr>
     <tr class="09.01">
       <td> <em>npm</em> prune </td>
-      <td> 
+      <td>
         - removes 'extraneous' packages (packages not registered in the <mark>package.json</mark> file) </td>
     </tr>
     <tr class="07.01">
@@ -76,17 +76,17 @@
     </tr>
     <tr class="12.01">
       <td> <em>npm</em> init <small>[options]</small> </td>
-      <td> 
+      <td>
         - initializes the local npm package by walking you through to create a <mark>package.json</mark> file <br>
         <small>[options]</small> <br>
         - (<small>-y|--yes</small>) creates a <mark>package.json</mark> file with default settings
       </td>
     </tr>
     <tr class="11.01">
-      <td> 
+      <td>
         <em>npm</em> list | ll | la <small>[options]</small>
       </td>
-      <td> 
+      <td>
         - prints locally installed packages (an their dependencies) in a tree structure <br>
         <small>[options]</small> <br>
         - (<i>package ...</i>) prints the specified package(s) <br>
@@ -105,8 +105,8 @@
     </tr>
     <tr class="13.03">
       <td> <em>npm</em> run | run-script <strong>cmd</strong> </td>
-      <td> 
-        - runs the <mark>scripts.<strong>cmd</strong></mark> in <mark>package.json</mark> 
+      <td>
+        - runs the <mark>scripts.<strong>cmd</strong></mark> in <mark>package.json</mark>
       </td>
     </tr>
     <tr class="13.02">
@@ -119,7 +119,7 @@
     </tr>
     <tr class="08.01">
       <td> <em>npm</em> uninstall | remove | r | rm | un | unlink <strong>package</strong> <i>...</i> <small>[options]</small> </td>
-      <td> 
+      <td>
         - uninstalls the specified package(s) <u>and all its (their) dependencies</u> <br>
         <small>[options]</small> <br>
         - (<small>-g|--global</small>) global specified package(s) <br>
@@ -128,7 +128,7 @@
     </tr>
     <tr class="10.01">
       <td> <em>npm</em> update | up | upgrade <small>[options]</small> </td>
-      <td> 
+      <td>
         - updates (installs missing) prod packages (<mark>dependencies</mark> in <mark>package.json</mark>) <br>
         <small>[options]</small> <br>
         - (<i>package ...</i>) specified package only <br>
@@ -137,6 +137,11 @@
         - (<small>-g|--global</small>) global packages <br>
         - (<small>-D</small>) dev dependencies only (<mark>devDependencies</mark> in <mark>package.json</mark>) <br>
       </td>
+    </tr>
+    <tr class="05.03">
+      <td> <em>npm</em> view <reqval>package</reqval>
+      </td>
+      <td> - prints verbose information about the <reqval>package</reqval> (version, author, license, dependencies, etc...) </td>
     </tr>
     <tr class="05.01">
       <td> <em>npm</em> --version | -v </td>

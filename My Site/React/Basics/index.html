@@ -4,8 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title> React JS </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../../Assets/stylesPages.css">
   <script src="../../Assets/scriptPages.js"></script>
@@ -279,6 +278,126 @@ pall@Ryzen:~/Documents/CodePlus/My Site/03 Improuve/Learn WebDesign/React JS/TES
   </details>
 
   <br><br>
+
+
+
+  <!--
+  - modifying several time the component state will not trigger that many rerenders (instead once the function executed all state are modified then one rerender will be triggered) (this is called batching -> setting multiple states then rerender the componet once)
+      - once we set the new state is value change only for the new rerender (not for the current render) (so we are basically scheduling the new value)
+      Setting state does not change the variable in the existing render, but it requests a new render.
+      - a new object triggers the rerender (mutating the old one won't!)
+
+  - rerendering a parent componet will rerender all its child components that's the hole idea how to control child componets
+  
+  
+  - useContext is great becaus all child elements can access to the root parnet state (without flowing down with props)
+    - follow hierarchy design the state should live in a component level where all child component can access it
+  
+  
+  - keep your component pure 
+      - give the outside variable modification example!!!
+      - in strict development mode component rendered twice so this rule is enforced this way 
+  
+  - think on component hierarchy when you build your app
+  - 'one way data flow (parent-through-children)' (find the closes comon parent component)
+
+  - the data can be set inversely (pass down the set as props) document this down!!!
+      - also we can pass down event handler as props (one the 'on' prefix -> these are props so we don't need to name them as the required 'onClic')
+  
+  
+  - for each list element you need a unique key
+      - WARNING it's not a good idea to use map or filter method indexes because this makes rerenders the item (this can lead to performace issues because the component is remounted!)
+          - if possible use reliable keys (like DB id, etc...)
+      - React uses these key to identify components (TEST different component on the same place)
+      - keys are unique within parent component 
+      - if the component has no key and react renders anothor component on the same place the old state is preserved because react thinks that's the same component
+  
+  - JSX roule -> return a single element (can be a fragment)
+  
+  - default value for props (document it)
+    - the children props (document it) 
+      - this prop receives ONLY react components!!! (NOOO it receives anything that was specified between the componet tags!!! TEST this -> !!!!)
+      - always the last argument
+  
+  - props can be changed (we can dynamically pass new props down)
+  
+  - in conditional rendering with && if the left side is 0 then 0 will be rendered!!! (document this down)
+      - In JSX, {cond && <A />} means “if cond, render <A />, otherwise nothing”.
+  
+  - it is a convention to name event handler prefixed with 'handle'
+  - it is a convertion to call the event argument 'e' in event handlers
+
+  - react renders everything on the initial run (document this on basics page)
+      - rerender -> only modify the dom if it was changed from the previous 
+
+  - when setState(fn) used we can update the previous value during render agan (document this behaviour)
+      - so setState(oldState + 1)               -> replaces the old value
+      - setState(oldState => oldState + 1)      -> based on the stored state updates the state
+
+  - explain the reactive (single source of truth approach)
+
+  - Declarative Programming -> we define what the program should accomplish then the program takes care the process
+  - Imperative Programming  -> we define the exact sequence of steps to achieve the desired outcome 
+
+  - if we want two componet to share the same state we lift up the state in the closest comon component then pass it down as props 
+  
+  - controlled / uncontrolled - a component can be controlled by its parent
+  
+  - the state is destroyed when the component is unmounted 
+  
+  - update useReducer hook 
+      - the action argument is an object { type: <>, ... } (not a string as it was documented!!!)
+      - use switch statement in your reducer function!!
+      - reducer is more of a declarative programming approach (we tell what to do then the program takes care of the action)
+      - reducer function must be pure (like components)
+      - reducers should update ojbect without mutation
+      
+  - just mention somewhere that in large apps using reducers and in context is great!
+  
+  - explain and test that the context provider default 'value={defVal}' is when the component renders
+      - it is optional -> I suppose
+  
+  - with useRef() hoook store everythiong on current !!!
+      - write a demo that focueses on DOM
+      - only use useRef() for non destructive DOM actions like focus, scorll, etc...
+  
+  - so forwardRef() provides a way to reference a doom node in a child component 
+  - the useImperativeHanlde() doc is OK
+  
+  - useEffect()
+      - use it when you need to synchronize to an external system (effect = synchronize with external system)
+      - TEST if you updated the component will the cleanup function run???
+  
+  - stale = outdated / no longer valid
+  
+  - Component lifecycle:    (Document this it's important)
+      - Mount     = React sync its virtual DOM with the Browser DOM 
+      - Update    = React check if the current virtual DOM is different from the previous (paints the dom if not)
+                      - when you update a component tree React modifies only components that are festh
+      - Unmount   = React Removes the component from the browser DOM
+  
+  - think of React as domain driven development (ouside events needs to be synced with react useEffect() useRef())
+  
+  - reactive values -> variables in the component that if change the component reacts to it
+      - declaring a value within the component with const is NOT a reactive value (in this case the linter won't complain)
+  
+  - useEffectEvent() -> experimental hook (document this)
+      - sometimes we want to pass values in useEffect (withoug specifying as dependency)
+      - this hook will solve this problem (until then just supress the lineter)
+  
+  - passing objects or functions as useEffect() hook dependency is not recommended (avoid if possible)
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+-- version hooks !!!
+
+
+
+
+-->
+
+
+
+
   <h2 class="test" style=""><a href="TEST/index.html"> TEST > </a></h2>
 </body>
 

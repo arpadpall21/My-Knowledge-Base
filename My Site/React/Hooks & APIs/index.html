@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title> Hooks </title>
+  <title> Hooks & APIs </title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../../Assets/stylesPages.css">
@@ -11,10 +11,10 @@
 </head>
 
 <body>
-  <h1> Hooks </h1>
+  <h1> Hooks & APIs </h1>
   <p> Updated ( 2022-05-01 / 2022-11-21 / 2024-01-22 )</p>
   <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
-    <a href="../index.html" title="Learn WebDesign">React></a> Hooks
+    <a href="../index.html" title="Learn WebDesign">React></a> Hooks & APIs
   </p>
   <br>
   <details class="example" id="notes">
@@ -275,8 +275,8 @@
   <!----------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="header"> The <mark>useRef()</mark> hook</h2>
-  <p> 1) - creates and returns an object that can be used as internal store (updating it <u>will not rerender the component</u> = state that not rerender the component when mutated) </p>
-  <p> 2) - references a DOM object </p>
+  <p> 1) - creates and returns an object that can be used as internal store (updating it <u>will not rerender the component</u> = a state that does not rerender the component when mutated) </p>
+  <p> 2) - references a DOM object (provides a way to directly manipulate the DOM) </p>
   <pre class="syntax">
     import { useRef, useEffect } from 'react';
     
@@ -341,7 +341,7 @@
   <!----------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="header"> The <mark>useImperativeHandle()</mark> / <mark>forwardRef()</mark> hooks </h2>
-  <p> - these hooks (with <mark>useRef()</mark>) provides a way to call function in the child component from the parent component </p>
+  <p> - these hooks (with <mark>useRef()</mark>) provides a way to call functions in the child component from the parent component </p>
   <pre class="syntax">
     import { useRef, useEffect } from 'react';
     import <strong>ChildComponent</strong> from './ChildComponent';
@@ -515,16 +515,6 @@
     export default GrandChild;    
     </pre>
   </details>
-
-
-
-  <!--
-  - modifying several time the component state will not triggere that many rerenders (instead once the function executed all state are modified then one rerender will be triggered)
-  
-  - rerendering a parent componet will rerender all its child components 
-
--->
-
 
 
   <br><br>

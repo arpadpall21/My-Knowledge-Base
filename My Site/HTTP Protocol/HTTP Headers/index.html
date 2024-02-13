@@ -16,36 +16,34 @@
   <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
     <a href="../index.html">HTTP Protocol></a> HTTP Header Fields
   </p>
-  <p class="subSite">
-    <a href="#authentication">Authentication</a> /
-    <a href="#caching">Caching</a> /
-    <a href="#conditionals">Conditionals</a> /
-    <a href="#connection_management">Connection Management</a> /
-    <a href="#content_negotiation">Content Negotiation</a> /
-    <a href="#controls">Controls</a> /
-    <a href="#cookies">Cookies</a> /
-    <a href="#cors">CORS</a> /
-    <a href="#do_not_track">No Not Track</a> /
-    <a href="#downloads">Downloads</a> /
-    <a href="#message_body_information">Message Body Information</a> /
-    <a href="#proxies">Proxies</a> /
-    <a href="#redirects">Redirects</a> /
-    <a href="#request_context">Request Context</a> /
-    <a href="#response_context">Response Context</a> /
-    <a href="#range_requests">Range Requests</a> /
-    <a href="#security">Security</a> /
-    <a href="#transfer_coding">Transfer Coding</a> /
-    <a href="#other">Other</a> /
-    <a href="#http/2">HTTP/2 Pseudo Header Fields</a>
-  </p>
+  <p class="subSite"> <a href="#authentication">Authentication</a> </p>
+  <p class="subSite"> <a href="#caching">Caching</a> </p>
+  <p class="subSite"> <a href="#conditionals">Conditionals</a> </p>
+  <p class="subSite"> <a href="#connection_management">Connection Management</a> </p>
+  <p class="subSite"> <a href="#content_negotiation">Content Negotiation</a> </p>
+  <p class="subSite"> <a href="#controls">Controls</a> </p>
+  <p class="subSite"> <a href="#cookies">Cookies</a> </p>
+  <p class="subSite"> <a href="#cors">CORS</a> </p>
+  <p class="subSite"> <a href="#do_not_track">No Not Track</a> </p>
+  <p class="subSite"> <a href="#downloads">Downloads</a> </p>
+  <p class="subSite"> <a href="#message_body_information">Message Body Information</a> </p>
+  <p class="subSite"> <a href="#proxies">Proxies</a> </p>
+  <p class="subSite"> <a href="#redirects">Redirects</a> </p>
+  <p class="subSite"> <a href="#request_context">Request Context</a> </p>
+  <p class="subSite"> <a href="#response_context">Response Context</a> </p>
+  <p class="subSite"> <a href="#range_requests">Range Requests</a> </p>
+  <p class="subSite"> <a href="#security">Security</a> </p>
+  <p class="subSite"> <a href="#transfer_coding">Transfer Coding</a> </p>
+  <p class="subSite"> <a href="#other">Other</a> </p>
+  <p class="subSite"> <a href="#http/2">HTTP/2 Pseudo Header Fields</a> </p>
   <pre class="syntax">
-SYNTAX:     req             = Request Header Fields
-            res             = Response Header Fields 
-            gen             = General Header Fields (both Request and Response headers)
-            ent             = Entity Headers (metadata about the body or resource both Request and Response)
-            
-            <span style="color:orange">colored orange</span>  = Forbidden Header Name = header cannot be modified programatically
-            <span style="color:lightgreen">colored green</span>   = Not-Forbidden Headers Name = can be modified programatically  
+    req             = Request Header Fields
+    res             = Response Header Fields 
+    gen             = General Header Fields (both Request and Response headers)
+    ent             = Entity Headers (metadata about the body or resource both Request and Response)
+    
+    <span style="color:orange">colored orange</span>  = Forbidden Header Name = header cannot be modified programatically
+    <span style="color:lightgreen">colored green</span>   = Not-Forbidden Headers Name = can be modified programatically  
     </pre>
   <table class="table">
     <caption>
@@ -395,7 +393,7 @@ SYNTAX:     req             = Request Header Fields
         </span>
       </td>
       <td>
-        - <span class="openable">server sends a unique version identifier (string) of its resource<div>
+        - server sends a unique <span class="openable">version identifier (string) of its resource<div>
             <p> - <mark>If-Match</mark> and <mark>If-None-Match</mark> use it to change the behaviour of the request
             </p>
           </div></span>
@@ -419,8 +417,7 @@ SYNTAX:     req             = Request Header Fields
         </span>
       </td>
       <td>
-        - <span class="openable">client makes the request conditional and applies the method only if the stored resource
-          matches one of the passed ETags<div>
+        - client makes the request conditional and applies the method only <span class="openable">if the stored resource matches one of the passed ETags<div>
             <p> - comparison with the stored server ETag uses <u>strong algorithm (two files identical byte to byte)</u>
           </div></span>
         <span class="browserSupport" title="updated : 2020-07-18">
@@ -469,8 +466,7 @@ SYNTAX:     req             = Request Header Fields
         </span>
       </td>
       <td>
-        - <span class="openable">client makes the request conditional and applies the method only if the stored resource
-          does not match one of the passed ETags<div>
+        - client makes the request conditional and applies the method only if the stored resource <span class="openable">does not match one of the passed ETags<div>
             <p> - comparison with the stored server ETag uses <u>strong algorithm (two files identical byte to byte)</u>
             </p>
           </div></span>
@@ -522,12 +518,9 @@ SYNTAX:     req             = Request Header Fields
         </span>
       </td>
       <td>
-        - <span class="openable">server indicates the last time when the its resource was modified (used for version
-          controling) (CORS)<div>
-            <p> - less accurate then the <mark>ETag</mark> header but easier to calculate </p>
-            <p> - requests using <mark>If-Modified-Since</mark> and <mark>If-Unmodified-Since</mark> make use of this
-              filed </p>
-          </div></span>
+        - server indicates the last time when the its resource was modified (used for version controling) (CORS) <br>
+        - less accurate then the <mark>ETag</mark> header but easier to calculate <br>
+        - requests using <mark>If-Modified-Since</mark> and <mark>If-Unmodified-Since</mark> make use of this field
         <span class="browserSupport" title="updated : 2020-07-18">
           <span><i class="fab fa-chrome"></i> yes </span>
           <span><i class="fab fa-firefox"></i> yes </span>
@@ -881,7 +874,7 @@ SYNTAX:     req             = Request Header Fields
       </td>
     </tr>
     <tr class="40.01">
-      <td colspan="3" id="cors"> CORS </td>
+      <td colspan="3" id="cors"> CORS (enforced by browsers only!) </td>
     </tr>
     <tr class="41.02">
       <td> <span style="color:green;">res</span> </td>
@@ -1030,8 +1023,8 @@ SYNTAX:     req             = Request Header Fields
       <td> <span style="color:orangered;">req</span> </td>
       <td> Access-Control-Request-Headers: <strong>headerName</strong><i>, ...</i> </td>
       <td>
-        - for preflight requests, the browsers indicates which http headers the client wishes to use for the actual
-        request
+        - preflight request <br>
+        - the browsers indicates which http headers the client wishes to use for the actual request
         <span class="browserSupport" title="updated : 2020-07-18">
           <span><i class="fab fa-chrome"></i> 4 </span>
           <span><i class="fab fa-firefox"></i> 3.5 </span>
@@ -1045,8 +1038,8 @@ SYNTAX:     req             = Request Header Fields
       <td> <span style="color:orangered;">req</span> </td>
       <td> Access-Control-Request-Method: <strong>reqMethod</strong> </td>
       <td>
-        - for preflight requests, the browsers indicates which http request method the client wishes to use for the
-        actual request
+        - preflight request <br>
+        - the browsers indicates which http request method the client wishes to use for the actual request
         <span class="browserSupport" title="updated : 2020-07-18">
           <span><i class="fab fa-chrome"></i> 4 </span>
           <span><i class="fab fa-firefox"></i> 3.5 </span>
@@ -1343,7 +1336,7 @@ SYNTAX:     req             = Request Header Fields
       </td>
     </tr>
     <tr class="60.05">
-      <td> <span style="color:lightgreen;">req</span> </td>
+      <td> <span style="color:green;">req</span> </td>
       <td> X-forwarded-Proto: http|https </td>
       <td>
         - <u>[not-standard = part of <mark>Forwarded</mark>]</u> protocol used between the client and the load balancer
@@ -1472,17 +1465,10 @@ SYNTAX:     req             = Request Header Fields
           </div></strong>
       </td>
       <td>
-        - server controls how much referrer information should be included in a request sent via the
-        <mark>Referer</mark> header <br>
-        - the referrer policy can be set <span class="openable">inside HTML elements which request resources from other
-          servers<div>
-            <p> - the document referrer policy can be set through the <mark>&lt;meta&gt;</mark> element (ex:
-              <mark>&lt;meta name="referrer" content="origin"&gt;</mark>)
-            </p>
-            <p> - HTML elements requesting resources : <mark>&lt;a&gt;</mark> <mark>&lt;area&gt;</mark>
-              <mark>&lt;img&gt;</mark> <mark>&lt;iframe&gt;</mark> <mark>&lt;script&gt;</mark> <mark>&lt;link&gt;</mark>
-              (ex: <mark>&lt;a href="http://example.com" referrerpolicy="origin"&gt;
-            </p>
+        - server controls how much referrer information should be included in a request sent via the <mark>Referer</mark> header <br>
+        - the referrer policy can be set inside HTML elements what request resources <span class="openable">from other servers<div>
+            <p> - the document referrer policy can be set through the <mark>&lt;meta&gt;</mark> element (ex: <mark>&lt;meta name="referrer" content="origin"&gt;</mark>) </p>
+            <p> - HTML elements requesting resources : <mark>&lt;a&gt;</mark> <mark>&lt;area&gt;</mark> <mark>&lt;img&gt;</mark> <mark>&lt;iframe&gt;</mark> <mark>&lt;script&gt;</mark> <mark>&lt;link&gt;</mark> (ex: <mark>&lt;a href="http://example.com" referrerpolicy="origin"&gt;) </p>
           </div></span>
         <span class="browserSupport" title="updated : 2020-07-19">
           <span><i class="fab fa-chrome"></i> 56 </span>

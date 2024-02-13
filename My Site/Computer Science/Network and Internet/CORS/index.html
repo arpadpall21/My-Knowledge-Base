@@ -4,16 +4,15 @@
 <head>
   <meta charset="utf-8">
   <title> CORS </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../../../Assets/stylesPages.css">
   <script src="../../../Assets/scriptPages.js"></script>
 </head>
 
 <body>
-  <h1> CORS (Cross Origin Resource Sharing) (ver 3.4.1) </h1>
-  <p> Updated ( 2020-07-15 )</p>
+  <h1> CORS (Cross Origin Resource Sharing) </h1>
+  <p> Updated ( 2020-07-15 / 2024-07-13 )</p>
   <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
     <a href="../index.html" title="Learn WebDesign">Computer Science></a>
     <a href="../index.html" title="Learn WebDesign">Network and Internet></a> CORS
@@ -28,23 +27,26 @@
   <h2 style="color:green;"><u> Remember This : </u></h2>
 
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-  <p> - if an application (web page) requests a resource from other than its own origin (the server which hosts this
-    site) than it makes a <u>cross-origin request</u> </p>
-  <p> - http cross-origin requests are regulated by the CORS mechanism which uses http headers to control access
-    cross-origin resources </p>
-  <p> - web servers include in their responses these headers (ex: <mark>Access-Control-Allow-Origin</mark>) which
-    regulate the access if the resource was requested from an external (third party) site </p>
-  <p> - browsers' <mark>XMLHttpRequest</mark> and <mark>Fetch</mark> APIs can only request resources from the site's own
-    origin (same-origin-policy) <u>(unless the response from other origins include the right CORS headers) </u> </p>
+  <p> - a web application makes a <u>cross origin request</u> when it make a request to an origin other than its own server </p>
+  <p> - with CORS we can control: </p>
+  <p class="indent-lv1"> - on the frontend: to which origins the app is allowed to make requests (and how) </p>
+  <p class="indent-lv1"> - on the backend: who can access our resources (and how) </p>
+  <p class="indent-lv1"> - by default (when no CORS headers are specified) a web app only allows to access its own server </p>
+  <p> - CORS roules are configured through various HTTP request/response headers <mark>Access-Control-*</mark> <a href="../../../HTTP Protocol/HTTP Headers/index.html#cors" target="_blank">[link]</a> </p>
+  <p><u> - CORS is enforced only by web browsers (any other networking tool ignores CORS headers)</u>, the goal is to prevent XSS (Cross Site Scipting) and CSRF (Cross Site Forgery) attacks </p>
   <img src="CORS_principle.png" title="CORS" height="500">
+  <!---------------------------------------------------------------------------------------------->
   <hr>
-  <!------------------------------------------------------------------------------------------------------------->
-  <h2 style="color:darkblue;"><u> CORS Request </u></h2>
-  <p> - preflight request = an <mark>OPTIONS</mark> request with <mark>Access-Control-Request-Method</mark>
-    <mark>Access-Control-Request-Headers</mark> and <mark>Origin</mark> headers </p>
-  <p> - the below image describes when the preflight request is triggered to figure out what kind of access the
-    third-party server supports </p>
-
+  <h3 class="header"> preflight request </h3>
+  <p> - the frontend app makes a preflight request to its own server in order to 'ask' what 3rd party origins it's allowed to request (and how) </p>
+  <pre class="syntax">
+  OPTION                                              // a preflight request is an OPTION request 
+  
+  Origin: <reqval>origin</reqval>                                      // client's origin 
+  Access-Control-Request-Headers: <reqval>httpHeader</reqval><optval>, ...</optval>     // headers to include in the cross origin request
+  Access-Control-Request-Method: <reqval>httpMethod</reqval>           // method to request the cross origin
+  </pre>
+  <p> - a preflight request is made only in certain conditions: </p>
   <img src="CORS Request.png" title="CORS" height="500">
   <br><br>
 </body>
