@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Components </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Components </h1>
+  <p> Updated ( 2020-10-20 / 2024-02-15)</p>
+  <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
+    <a href="../index.html">React></a> Components
+  </p>
+  <p class="subSite"> <a href="./Class Components/index.html">Class Components ></a> </p>
+
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - Components are the building blocks of a React application, it's a function that returns JSX (each component is responsible for its own piece of code (that controls a DOM piece)) </p>
+  <p> - the component function <u>must be pure</u> (no side effect, always returns the same value for the same input), in strict mode components are rendered twice to enforce this roule </p>
+  <p> - we can think of a react component as a domain, any outside effects needs to be synced with the component (ex: a network request is synced with <mark>useEffect()</mark>, direct DOM modifications are synced with <mark>useRef()</mark> hooks) </p>
+  <p> Reactive Value VS Non Reactive Value: </p>
+  <p class="indent-lv1"> - <mark class="mark">Reactive Value</mark>: a value when changed triggers the component rerender </p>
+  <p class="indent-lv1"> - <mark class="mark">Non Reactive Value</mark>: a value when changed does not trigger the component rerender </p>
+  <pre class="syntax">
+<reqval>Component</reqval>.js             // same file name as the component
+  
+  
+  import { useState } from 'react';
+  
+  function <reqval>Component</reqval>(<reqval>props:obj</reqval>) {
+    const [<reqval>reactiveValue</reqval>, <reqval>setReactiveValue</reqval>] = useState();
+    const <reqval>nonReactiveValue</reqval> = <reqVal>something</reqVal>
+    
+    <reqval>reactiveValue</reqval>        // triggers the component rerender when changed 
+    <reqval>nonReactiveValue</reqval>     // does not trigger the component rerender when changed
+    
+    return <reqval>JSX</reqval>
+  }
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> Pure Component </h4>
+    <pre>
+    import { useState } from react;
+    
+    
+    const count = 0;
+    
+    function NotPureComponent() {           // -! not pure component (relies on external value -> ths will give you lots of headaces!)
+      return &lt;p&gt; {count} &lt;/p&gt;
+    }
+    
+    
+    function PureComponent() {              // pure component 
+      const [count, setCount] = useState();
+      
+      return &lt;p&gt; {count} &lt;/p&gt;
+    }
+    </pre>
+    <hr>
+    <!--------------------------------------------->
+    <h4 class="header"> Reactive VS Non Reactive value </h4>
+    <pre>
+    import { useState } from 'react';
+    
+    function SomeComponent() {
+      const [count, setCount] = useState(0);              // <mark>count</mark> is a reactive value (when change the component rerenders)
+      
+      return &lt;p onClick={() =&gt; setCount(count + 1)}&gt; {count} &lt;/p&gt;;
+    }
+    
+    
+// ------------------------------------------------------------
+    function SomeComponent() {
+      let count = 0;                                      // <mark>count</mark> is not a reactive value (when changed the component does not rerender)
+      
+      return &lt;p onClick={() =&gt; count += 1 }&gt; {count} &lt;/p&gt;;
+    }
+    </pre>
+
+
+  </details>
+  <!------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header">Componet Lifecycles</h2>
+  <p> - a component have 3 lifecycles: </p>
+  <p class="indent-lv1"> - <mark class="mark">Mount</mark>: renders the JSX on the DOM (always happens on the first component tirgger) </p>
+  <p class="indent-lv1"> - <mark class="mark">Update</mark>: check if the currently rendered elements on the DOM are in sync with the component's JSX </p>
+  <p class="indent-lv2"> - if DOM elements are not in sync with the current JSX -> sync JSX the DOM by 'repaints' the DOM (belonging to this component) </p>
+  <p class="indent-lv2"> - if DOM elements are in sync with the current JSX -> does nothing (that's the React power, only modifies DOM elements when necessary)
+  <p class="indent-lv1"> - <mark class="mark">Unmount</mark>: removes elements from the DOM (belonging to this component) </p>
+  <!------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header">Controled VS Uncontroled component </h2>
+  <p> - a Controled component changes based on the received props (controled by the parent) </p>
+  <p> - an Uncontroled component is not affected by any parent change </p>
+  <pre>
+  function MyComponent({ color }) {                         // controled component (color rendered based on the received <mark>color</mark> props)
+    return &lt;p style={{ color }}&gt; Hello World! &lt;/p&gt;;
+  }
+  
+  function MyComponent2() {                                 // uncontroled component (cannot be controlled from parent)
+    const color = 'red';
+    return &lt;p style={{ color }}&gt; Hello World! &lt;/p&gt;;
+  }
+  </pre>
+  <!------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Conditional rendering </h2>
+  <p> - we basically render JSX based on some kind of condition, the most comonly used techniques are the <mark>if</mark> statement, <mark>&&</mark> (and) conditions and the <mark>?</mark> ternary operator </p>
+  <pre class="syntax">
+  function <reqval>Component</reqval>() {
+    if (<reqval>condition</reqval>) {                   // if <reqval>condition</reqval> is truthy renders <reqval>JSX</reqval>
+      return <reqval>JSX</reqval>
+    }
+    
+    return (
+      {<reqval>condition</reqval> && <reqval>Component</reqval>}         // if <reqval>condition</reqval> is truthy renders <reqval>Component</reqval>, otherwise does not render it    
+      {<reqval>condition</reqval> ? (                   // if <reqval>condition</reqval> is truthy renders <reqval>Component1</reqval>, otherwise renders <reqval>Component2</reqval>
+        <reqval>Component1</reqval>
+      ) : (
+        <reqval>Component2</reqval>
+      )}
+    );
+  }
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <pre>
+    function MyComponent({ price }) {
+      if (price > 1000) {
+        return &lt;p&gt;The price is too high!&lt;/p&gt;
+      }
+      
+      return (
+        &lt;&gt;
+          {price &gt; 700 && &lt;p&gt;The price is expensive!&lt;/p&gt;}
+          {price &lt; 500 ? (
+            &lt;p&gt;Buy it!&lt;/p&gt;
+          ) : (
+            &lt;p&gt;Don't buy it!&lt;/p&gt;
+          )}
+        &lt;/&gt;
+      );
+    }
+    </pre>
+  </details>
+  <!------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Single Source of Truth </h2>
+  <p> - because react Components are abstraction over HTML interacting with the HTML elements won't be directly reflected (ex: typing in an input field) </p>
+  <p> - we keep an internal state in sync with the UI in order to control the underlying DOM </p>
+  <p> - 1) the user interacts with the UI -> 2) triggers an event -> 3) updates the 'single source of truth' state -> 4) component rerendered with the new value </p>
+  <pre>
+  import { useState } from 'react';
+    
+  export default function ChildComponent({ price }) {
+    const [textAreaValue, setTextAreaValue] = useState('');     // single source of truth state
+    
+    return (
+      &lt;textarea
+        value={textAreaValue}
+        onChange={(e) =&gt; setTextAreaValue(e.target.value)}     // when the user types the state is updated -> the updated state will trigger a rerender then the new state is rendered on the screen   
+      / &gt;
+    );
+  }
+  </pre>
+  <!------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Component Keys </h2>
+  <p> - Component states are tied to the position in the render tree (not to the Component itself), the <mark>key</mark> props can be used to uniquely identify components so React knows about each Component </p>
+  <p> - in general this is not a big deal, but there are 2 cases where this is apparent: </p>
+  <p class="indent-lv1"> - list items or table cells must be uniquely identified, otherwise when changing the list (filter, reorder, etc...) all list items are Unmounted and Mounted again </p>
+  <p class="indent-lv1"> - in case the same component is rendered differently on the same place, React thinks it's the same component and uses the same state for both (unless we specify a <mark>key</mark> for each) </p>
+  
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> Using keys for each list items </h4>
+    <pre>
+    const someList = [                // some external data
+      { id: 1, name: 'Emil' },
+      { id: 2, name: 'July' },
+      { id: 3, name: 'Frank' },
+    ]
+    
+    const MyComponent = () =&gt; {
+      return (
+        &lt;ul&gt;
+          {someList.map((item) =&gt; &lt;li key={item.id}&gt;({item.id}) Name: {item.name}&lt;/li&gt;)}   // each item is uniquely identified
+        &lt;/ul&gt;
+      )
+    }
+    </pre>
+    <!------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Same component reused on the same position </h4>
+    <pre>
+    import { useState } from 'react';
+    
+    const Player = ({ player }) =&gt; {
+      const [score, setScore] = useState(0);
+      return (
+        &lt;div&gt;
+          &lt;p&gt; Player name : {player} &lt;/p&gt;
+          &lt;p&gt; score: {score} &lt;/p&gt;
+          &lt;button onClick={() =&gt; {setScore(score + 1)}}&gt; Increment Score &lt;/button&gt;
+        &lt;/div&gt;
+      );
+    }
+    
+    const App = () =&gt; {
+      const [playerA, setPlayerA] = useState(true);
+      
+      return (
+        &lt;div&gt;
+          {playerA ? (
+            &lt;Player player="A" key="A"/&gt;          // without keys React 'thinks' these are the same Components (would use the same state for both Components)    
+          ) : (
+            &lt;Player player="B" key="B"/&gt;
+          )}
+          &lt;button onClick={() =&gt; setPlayerA(!playerA)}&gt; Toggle Players &lt;/button&gt;
+        &lt;/div&gt;
+      )
+    }
+    </pre>
+  </details>
+  <!------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> JSX </h2>
+  <p> - JSX (JavaScript XML) is a HTML-like JavaSript interpolated script, it's iterpreted by React and 'painted' as vanilla HTML on the DOM </p>
+  <pre class="syntax">
+    &lt;<strong>rootnode</strong>&gt; or <small>&lt;React.Fragment&gt;|&lt;&gt;</small>                 // JSX must have wrapped in a root node <small>(from v.16.2 react fragment can be used (root element that is not rendered on the DOM))</small>
+        &lt;<strong>element</strong> /&gt;                                   // JSX elements follow strict XML rules, every element must be properly closed   
+        &lt;<strong>element</strong>&gt;<i>content...</i>{<strong>exp</strong>}<i>content...</i>&lt;/<strong>element</strong>&gt;  // interpolation where an <span class="openable">expression<div>
+                    <p> - can contain React variable, property or any JavaScript expression </p>
+        </div></span> is interpreted 
+        &lt;<strong>Component</strong> /&gt;                                 // other components can be nested 
+        {/*<strong>comment</strong>*/}                                 // comment (NO other HTML or JS comment syntax allowed)
+    &lt;/<strong>rootnode</strong>&gt; or <small>&lt;/React.Fragment&gt;|&lt;/&gt;</small>
+    </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
+// React root script file -------------------------------------------------------------
+    import React from 'react';                                                         // React modules have to be imported 
+    import ReactDOM from 'react-dom';
+    
+    function ChildComponent(){
+        return &lt;p&gt;Child Component&lt;/p&gt;
+    }
+    
+    function TestComponent(){
+        return (
+            &lt;div&gt;                                                                      // Component must have ONE root node 
+                &lt;p&gt; Test element  &lt;/p&gt;
+                &lt;p&gt; Expression result is {1 + 1} &lt;/p&gt;                                  // expressions between curly brackets are resolved and the value is returned    
+                &lt;ChildComponent /&gt;                                                     // other Components can be nested 
+                {/* some comment */}                                                   // JSX comment (no HTML or JavaScript comments allowed)    
+            &lt;/div&gt;
+        )
+    }
+    
+    ReactDOM.render(&lt;TestComponent /&gt;, document.getElementById('testElement'));        // 'TestComponent' rendered into 'testElement' HTML element in the DOM   
+    ReactDOM.render(&lt;p&gt;some content &lt;p&gt, document.getElementById('testElement2'));     // JSX can be rendered directly but it isn't a common practice    
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> <mark>ReactDOM.render()</mark> TEST </u></h4>
+    <pre>
+// React HTML file &lt;body&gt; -------------------------------------------------------------
+    &lt;p id="testElement" /&gt;
+    &lt;p id="testElement2" /&gt;
+    </pre>
+    <pre>
+// React root script file -------------------------------------------------------------
+    import React from 'react';                                                         // React modules have to be imported 
+    import ReactDOM from 'react-dom';
+    
+    function TestComponent(){
+        return &lt;p&gt;Hello World!&lt;/p&gt;
+    }
+    
+    ReactDOM.render(&lt;TestComponent /&gt;, document.getElementById('testElement'));        // the React.render() method renders the JSX into tha target HTML element in the React HTML file 
+    ReactDOM.render(&lt;p&gt;Some JSX&lt;/p&gt;, document.getElementById('testElement2'));         // we can directly write JSX into the method  
+    </pre>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> JSX TEST </u></h4>
+    <pre>
+// React root script file -------------------------------------------------------------
+    import React from 'react';                                                         // React modules have to be imported 
+    import ReactDOM from 'react-dom';
+    
+    function ChildComponent(){
+        return &lt;p&gt;Child Component&lt;/p&gt;
+    }
+    
+    function TestComponent(){
+        return (
+            &lt;div&gt;                                                                      {/* one root node */}
+                &lt;p&gt; Test element  &lt;/p&gt;
+                &lt;p&gt; Expression result is {1 + 1} &lt;/p&gt;                                  {/* expression in JSX */}
+                &lt;ChildComponent /&gt;                                                     {/* child component */}
+            &lt;/div&gt;
+        )
+    }
+    
+    const root = ReactDOM.createRoot(document.getElementById('testElement'));
+    root.render(&lt;TestComponent /&gt;)
+    </pre>
+  </details>
+  <!------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> HTML element (Components) </h2>
+  <p> - from React perspective HTML elements are components, but we use the same syntax as they were a normal HTML element (like: <mark>&lt;p&gt;Hello World!&lt;/p&gt;)</mark> <u>except the following elements!</u> </p>
+  <pre class="syntax">
+  &lt;texarea value=<reqval>val</reqval> /&gt;                    // textare accepts a <mark>value</mark> props 
+  
+  
+  &lt;select value=<reqval>val</reqval>&gt;                       // the <reqval>val</reqval> is one of the listed option's <reqval>val</reqval>
+    &lt;option value=<reqval>val</reqval> &gt;<reqval>content</reqval>&lt;/option&gt;
+    <optval>...</optval>
+  &lt;/select&gt;
+  
+  
+  &lt;progress value={<reqval>nr</reqval>} /&gt;                  // <reqval>nr</reqval> = percentage score between <mark>0 - 1</mark> (ex: <mark>0.5</mark>)
+  </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
+    import { useState } from 'react';
+  
+    export default function ChildComponent() {
+      const [inputState, setInputState] = useState('');
+      const [textareaState, setTextareaState] = useState('');
+      const [selectState, setSelectState] = useState('1');
+  
+      return (
+        &lt;&gt;
+          &lt;progress value={0.55} /&gt;
+          
+          &lt;input onChange={(e) =&gt; setInputState(e.target.value)} /&gt;
+          
+          &lt;textarea onChange={(e) =&gt; setTextareaState(e.target.value)} /&gt;
+          
+          &lt;select value={selectState} onChange={(e) =&gt; setSelectState(e.target.value)}&gt;
+            &lt;option value="1"&gt; 1 &lt;/option&gt;
+            &lt;option value="2"&gt; 2 &lt;/option&gt;
+            &lt;option value="3"&gt; 3 &lt;/option&gt;
+          &lt;/select&gt;
+        &lt;/&gt;
+      );
+    }
+  </pre>
+    <!---------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Class component </h4>
+    <pre>
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    
+    class MyApp extends React.Component{
+        constructor(){
+            super();
+            this.state = { 
+                textAr: '',
+                option: 'Dog'
+            };
+        };
+        
+        submitHandler = (ev) => { 
+            ev.preventDefault(); 
+            console.log(this.state); 
+        }
+        
+        inputHandler = (ev) => { 
+            this.state[ev.target.name] = ev.target.value;
+        }
+        
+        render(){
+            console.count('rendered!');
+            return( 
+                &lt;form onSubmit={this.submitHandler}&gt;
+                    &lt;textarea name='textAr' onChange={this.inputHandler} /&gt;            // texarea has its value attribute in React 
+                    &lt;br /&gt;
+                    &lt;select name='option' onChange={this.inputHandler}&gt;                // the drop-down list parent select element  has its value attribute in React 
+                        &lt;option value='Dog'&gt;Dog&lt;/option&gt;
+                        &lt;option value='Cat'&gt;Cat&lt;/option&gt;
+                        &lt;option value='Goat'&gt;Goat&lt;/option&gt;
+                    &lt;/select&gt;
+                    &lt;br /&gt;
+                    &lt;button&gt;Submit&lt;/button&gt;
+                &lt;/form&gt;
+            );
+        };
+        
+    };
+    
+    ReactDOM.render(&lt;MyApp testProps='something'/&gt;, document.getElementById('testElement'));
+    </pre>
+  </details>
+  <!------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Special React Components </h2>
+  <p> - <mark>Profiler</mark> - lets you measure the rendering performance of a Component tree (measure the performance in production mode (disable strict mode)) <a href="https://react.dev/reference/react/Profiler" target="_blank">[link]</a> </p>
+  <p> - <mark>StrictMode</mark> - runs React in strict mode to find common bugs <a href="https://react.dev/reference/react/StrictMode" target="_blank">[link]</a> </p>
+  <p class="indent-lv1"> - re-render Components an extra time to find bugs (Component must be pure functions) </p>
+  <p class="indent-lv1"> - re-run Effects an extra time to find bugs (like missing cleanup) </p>
+  <p class="indent-lv1"> - check for deprecated code </p>
+  <p> - <mark>Suspense</mark> - loads suspense-enable data sources while displaying a fallback Component <a href="https://react.dev/reference/react/Suspense" target="_blank">[link]</a> </p>
+  <p class="indent-lv1"> - at the time of writing this it only usable for for <mark>lazy()</mark> loading (2024-02-23) </p>
+  <pre class="syntax">
+  import { Suspense} from 'react';
+  
+  function <reqval>Component</reqval>() {
+      return (
+          &lt;Suspense fallback={<reqval>FallbackComponent</reqval>} &gt;                         // displays fallback durring the loading time 
+              <reqval>SuspenseSource</reqval>                                               // suspense-enabled data source
+          &lt;/Suspense&gt;
+      )
+  }
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 class="header"> The <mark>Suspense()</mark> Component </h4>
+    <pre>
+    import { Suspense, lazy } from 'react';
+    const ListComponent = lazy(() =&gt; import('./ListComponent'))
+    
+    const App = () =&gt; {
+      
+      return (
+        &lt;Suspense fallback={&lt;p&gt;Loading...&lt;/p&gt;}&gt;     // loads the component while displaing fallback 
+          &lt;p&gt; My List &lt;/p&gt;
+          &lt;ListComponent /&gt;
+        &lt;/Suspense&gt;
+      );
+    }
+    </pre>
+  </details>
+  
+  <br><br>
+</body>
+
+</html>

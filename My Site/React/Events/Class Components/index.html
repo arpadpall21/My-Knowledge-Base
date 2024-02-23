@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Class Components </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Class Components </h1>
+  <p> Updated ( 2020-10-23 / 2024-01-11 )</p>
+  <p class="sitenav"> <a href="../../../index.html" title="home">MySite></a>
+    <a href="../../index.html" title="Learn WebDesign">React></a>
+    <a href="../index.html" title="Learn WebDesign">Events></a> Class Components
+  </p>
+
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <pre class="syntax">
+SYNTAX:     
+  <span style="color:darkgray;">// Events and Event handlers in JSX -------------------------------------------------</span>
+            &lt;<strong>element</strong> <strong>event</strong>={<strong class="openable">eventHandler<div>
+                <p> <mark>this.<strong>eventHandler</strong></mark> - calling the event handler without any arguments passed (in the event handler the 1st argument is the React event object in this case) </p>
+                <p> <mark>(ev) => this.<strong>eventHandler(ev, arg<i>, ...</i>)</strong></mark> - an arrow function calls the event handler and passes arguments and the event object to the event handler </p> 
+                <p> <mark>this.<strong>eventHandler</strong>.bind(this, <strong>arg</strong><i>, ...</i>)</mark> - binds the call and  passes arguments to the event handler (in the event handler the last argument is always the event object in this case) </p>
+            </div></strong>} /&gt;                                          // in JSX we have the same events as in HTML but are camelCased (ex: <mark>onClick</mark>, <mark>onKeypress</mark>, etc...)
+                                                                                          in React the event handler method is an <u>arrow function because of the <mark>this</mark> binding</u> and it's placed inside the Component    
+                                                                                          
+  <span style="color:darkgray;">// Event handler with no arguments passed -------------------------------------------</span>
+            <em>class <strong>Component</strong> extends React.Component{</em>
+                <strong>eventHandler</strong> = (ev)=>{                                                 // the event handler is an arrow function (<mark>this</mark> inside always references this Component)    
+                    ev;                                                                  // React event object is the first argument <u>if no arguments are passed by the <strong>eventHandler</strong> from JSX</u>    
+                }                                               
+                <em>render(){
+                    return </em>&lt;<strong>element event</strong>={this.<strong>eventHandler</strong>} />                       // event calls the event handler from JSX  
+                <em>}</em>
+            <em>}</em>
+    
+    
+  <span style="color:darkgray;">// Event handler with arguments passed (1st possibility) ----------------------------</span>
+            <em>class <strong>Component</strong> extends React.Component{</em>
+                <strong>eventHandler</strong> = (ev, <strong>arg</strong><i>, ...</i>)=>{  
+                    ev;                                                                // React event object    
+                    <strong>arg</strong>                                                                // passed arguments  
+                }                                               
+                <em>render(){
+                    return </em>&lt;<strong>element event</strong>={(ev)=>this.<strong>eventHandler(ev, arg<i>, ...</i>)</strong>} />   // an arrow function calls the event handler which passes arguments to the event handler and the React event object   
+                <em>}</em>
+            <em>}</em>
+    
+    
+  <span style="color:darkgray;">// Event handler with arguments passed (2nd possibility) ----------------------------</span>
+            <em>class <strong>Component</strong> extends React.Component{</em>
+                <strong>eventHandler</strong> = (<strong>arg</strong><i>, ...</i>, ev)=>{  
+                    <strong>arg</strong>                                                                // passed arguments  
+                    ev;                                                                // React event object is always the last argument in this case     
+                }                                               
+                <em>render(){
+                    return </em>&lt;<strong>element event</strong>={this.<strong>eventHandler</strong>.bind(this, <strong>arg</strnog><i>, ...</i>) )</strong>} />  // event handler bound and arguments are passed (event object is passed automatically as last argument)    
+                <em>}</em>                
+            <em>}</em>
+    </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
+    import React, { Component } from 'react';
+    import ReactDOM from 'react-dom';
+    
+// calling the event handler without any argument passed ------------------------------
+    class MyApp extends React.Component{
+        click = (ev) => {                                                              // event handler must be an arrow function and placed inside the component 
+            ev;                                                                        // -> React event object (does the same as the regular dom event object)    
+            this;                                                                      // this keyword references always this component (because it's placed in an arrow function)     
+        }
+        render(){
+            return(
+                &lt;button onClick={ this.click }&gt;click me!&lt;/button&gt;                      // onclick calls the event handler without passing any arguments 
+            );
+        };
+    };
+    
+// calling the event handler and passing arguments to it ------------------------------
+    class MyApp extends React.Component{
+        click = (ev, a, b) => {
+            ev;                                                                        // -> React event object (does the same as the regular dom event object)    
+            a;                                                                         // -> 21   
+            b;                                                                         // -> 22   
+        }
+        render(){
+            return(
+                &lt;button onClick={ (ev)=&gt;this.click(ev, 21, 22) }&gt;click me!&lt;/button&gt;    // an arrow function calls the event handler and passes arguments and the event object to it    
+            );
+        };
+    };
+    
+// calling the event handler and passing arguments to it (2nd possibility) ------------
+    class MyApp extends React.Component{
+        click = (a, b, ev) => {
+            a;                                                                         // -> 
+            b;                                                                         // -> 
+            ev;                                                                        // -> React event object (does the same as the regular dom event object)    
+        }
+        render(){
+            return(
+                &lt;button onClick={ this.click.bind(this, '21', '22') }&gt;click me!&lt;/button&gt;  // event handler bound and arguments are passed // -! the last argument is always the event object (no need to pass it manually)    
+            );
+        };
+    };
+    
+    ReactDOM.render(&lt;MyApp /&gt;, document.getElementById('testElement'));
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> event TEST </u></h4>
+    <pre>
+    import React, { Component } from 'react';
+    import ReactDOM from 'react-dom';
+    
+    class MyApp extends React.Component{
+        click = () => {                                                                // event handler method must be inside the Component and defined as arrow function because of the 'this' keyword bind 
+            console.log( this );                                                       // 'this' keyword always represents this Component (class) (because it is inside an arrow function)    
+            console.log( 'clicked!' );
+        }
+        render(){
+            return(
+                &lt;div&gt;
+                    &lt;button onClick={this.click}&gt; click on me! &lt;/button&gt;               // event names are camelCased  
+                &lt;/div&gt;
+            );
+        };
+    };
+    
+    ReactDOM.render(&lt;MyApp /&gt;, document.getElementById('testElement'));
+    </pre>
+    <hr>
+    <!--------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> passing argument to the event handler TEST </u></h4>
+    <p> - 2 ways to pass arguments to the event handler but both are tricky a bit! </p>
+    <pre>
+    import React, { Component } from 'react';
+    import ReactDOM from 'react-dom';
+    
+    class MyApp extends React.Component{
+        click = (a) => {
+            console.log( a );
+        }
+        render(){
+            return(
+                &lt;div&gt;
+                    &lt;button onClick={ ()=&gt;this.click('arg1') }&gt; click on me! &lt;/button&gt;          // anonymus arrow function calls the event handler with arguments 
+                    &lt;button onClick={ this.click('arg2') }&gt; click on me! &lt;/button&gt;              // -! this is immediately called when the page loads! (don't do that)
+                    
+                    &lt;button onClick={ this.click.bind(this, 'arg3') }&gt; click on me! &lt;/button&gt;   // binding the handler to this with arguments    
+                &lt;/div&gt;
+            );
+        };
+    };
+    
+    ReactDOM.render(&lt;MyApp />, document.getElementById('testElement'));
+    </pre>
+    <hr>
+    <!--------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> React Event object TEST </u></h4>
+    <pre>
+    import React, { Component } from 'react';
+    import ReactDOM from 'react-dom';
+    
+    class MyApp extends React.Component{
+        click = (a, b, c) => {
+            console.log( a );
+            console.log( b );
+            console.log( c.timeStamp );
+        }
+        render(){
+            return(
+                &lt;div&gt;
+                    &lt;button onClick={ (ev)=&gt;this.click('arg1', 21, ev) }&gt; click on me! &lt;/button&gt;     // event object 'ev' is passed manually to the 'click' event handler   
+                    &lt;button onClick={ (ev)=&gt;this.click(ev, 'arg1', 21) }&gt; click on me! &lt;/button&gt;     // event object 'ev' is passed manually to the 'click' event handler   
+                &lt;/div&gt;
+            );
+        };
+    };
+    
+    ReactDOM.render(&lt;MyApp /&gt;, document.getElementById('testElement'));
+    </pre>
+    <hr>
+    <!--------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> external event handler function TEST </u></h4>
+    <p> - this is not recommended it's just for testing purposes </p>
+    <pre>
+    import React, { Component } from 'react';
+    import ReactDOM from 'react-dom';
+    
+    function hoverOver(){                                                              // handler function is placed outside the Component (not recommended)    
+            window.alert('hovered over!');
+        }
+    
+    class MyApp extends React.Component{
+        render(){
+            return &lt;img src="https://www.fillmurray.com/200/100" onMouseOver={hoverOver}/&gt;;
+        };
+    };
+    
+    ReactDOM.render(&lt;MyApp /&gt;, document.getElementById('testElement'));
+    </pre>
+  </details>
+
+
+  <br><br>
+</body>
+
+</html>

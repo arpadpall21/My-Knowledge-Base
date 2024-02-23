@@ -16,7 +16,23 @@
   <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
     <a href="../index.html" title="Learn WebDesign">React></a> Hooks & APIs
   </p>
-  <br>
+  <p class="subSite"><a href="#custom"> Custom hooks </a> </p>
+  <h2 class="header"> State hooks </h2>
+  <p class="subSite indent-lv1"><a href="#state"> <mark>useState()</mark> / <mark>useReducer()</mark> > </a> </p>
+  <h2 class="header"> Context hooks & APIs </h2>
+  <p class="subSite indent-lv1"><a href="#context"> <mark>createContext()</mark> / <mark>useContext()</mark> ></a> </p>
+  <h2 class="header"> Ref hooks & APIs </h2>
+  <p class="subSite indent-lv1"><a href="#ref"> <mark>useRef()</mark> > </a></p>
+  <p class="subSite indent-lv1"><a href="#forwardRef"> <mark>forwardRef()</mark> > </a></p>
+  <p class="subSite indent-lv1"><a href="#useImperativeHandle"> <mark>useImperativeHandle()</mark> > </a></p>
+  <h2 class="header"> Effect hooks </h2>
+  <p class="subSite indent-lv1"><a href="#effect"> <mark>useEffect()</mark> / <mark>useLayoutEffect()</mark> / <mark>useInsertionEffect()</mark> > </a> </p>
+  <h2 class="header"> Performance hooks & APIs </h2>
+  <p class="subSite indent-lv1"><a href="#useMemo"> <mark>useMemo()</mark> / <mark>useCallback()</mark> > </a></p>
+  <p class="subSite indent-lv1"><a href="#useTransition"> <mark>useTransition()</mark> / <mark>startTransition()</mark> / <mark>useDeferredValue()</mark> > </a></p>
+  <p class="subSite indent-lv1"><a href="#lazy"> <mark>lazy()</mark> / <mark>memo()</mark> > </a> </p>
+  <h2 class="header"> Other hooks </h2>
+  <p class="subSite indent-lv1"><a href="#otherHooks"> Other hooks > </a></p>
   <details class="example" id="notes">
     <summary> Notes :</summary>
     <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
@@ -26,15 +42,17 @@
   <h2 style="color:green;"><u> Remember This : </u></h2>
 
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-  <p> - hooks are supported from React version <b>16.8</b> </p>
+  <p> - hooks are supported from React version <b>16.8</b> (concurrency is intoduced from <b>v18</b>)</p>
   <p> - Hook rules: </p>
   <p style="text-indent:25px;"> - only call a hook directly from the component (or from a custom hooks) <u>(ex: never call a hook from an <mark>if</mark> or <mark>loop</mark> statement or from a custom JavaScript function)</u> </p>
   <!----------------------------------------------------------------------------------------------->
   <hr>
-  <h2 class="header"> Custom Hooks </h2>
+  <h2 class="headerExtra" id="custom"> Custom Hooks </h2>
   <p> - we can create our own hook, simply create a function where we use built-in hooks (must be prefixed with <mark>use</mark> (ex: <mark>use<strong>MyHook</strong></mark>)) </p>
   <pre class="syntax">
-    function use<strong>MyHook</strong>() { }
+    function use<strong>MyHook</strong>() {
+      <reqval>hooks...</reqval>
+    }
   </pre>
   <details class="example">
     <summary> Example : </summary>
@@ -75,9 +93,14 @@
   </details>
   <!----------------------------------------------------------------------------------------------->
   <hr>
-  <h2 class="header"> The <mark>useState()</mark> / <mark>useReducer()</mark> hooks</h2>
+  <h2 class="headerExtra"> State hooks </h2>
+  <p> - these hooks lets you interact with the component's state </p>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header" id="state"> The <mark>useSate()</mark> / <mark>useReducer()</mark> hooks </h2>
   <p> - <mark>useState()</mark> creates an individual state (multiple state can be used in a component) </p>
-  <p> - <mark>useReducer()</mark> creates an individual state, changes its predefined state based on a dispatched action (different use of state) </p>
+  <p> - <mark>useReducer()</mark> creates an individual state, changes its predefined state based on a dispatched action (declarative programming approach of using state) </p>
+  <p class="indent-lv1"> - it's powerful when used in <mark>context</mark> in large applications </p>
   <pre class="syntax">
     import React from 'react'
     
@@ -88,17 +111,18 @@
         <p> - <reqval>fn</reqval> - called only once when the component mounts for the first time (and never again), the returned value will be the default state </p>
         </div></optval>) 
         
-        <strong>stateVar</strong>                                                                       // value of the current state 
+        <strong>stateVar</strong>                                                                       // -> current state value
         <strong>stateUpdateFn</strong>(<strong class="openable">exp|fn<div>
             <p> - <reqval>exp</reqval> - expression result will be the new state </p>
-            <p> - <reqval>fn(previousState)</reqval> - the returned value will be the new state </p>
-        </div></strong>)                                                         // updates the state of its hook (the <strong>exp|fn</strong> result will be the new value of the hook state) (rerenders the component = changes the state)
+            <p> - <reqval>fn(previousState)</reqval> - the returned value will be the new state (keeps setting the state in the current render) </p>
+        </div></strong>)                                                         // setting the state  
     }                                                                                     
     
     
 <span style="color:darkgray;">// <mark>useReducer()</mark> -----------------------------------------------------------------------</span>
-    function <strong>reducerFn</strong>(<strong>state, action</strong>) {                                                // reducer function returns a state, (<strong>stateVar</strong> = previous state / <strong>action</strong> passed by <strong>dispatchFn</strong>)   
-        <span style="color:darkgray;">// return the new state based on the received <strong>action</strong></span>    
+    function <strong>reducerFn</strong>(<strong>prevState, action:obj</strong>) {                                        // returns the new state based on the passed <reqval>action:obj</reqval> <u>(function must be pure)</u>
+        <span style="color:darkgray;">// must return a new <reqval>state</reqval> <u>(never mutate then return <reqval>prevState</reqval>)</u></span>
+        <span style="color:darkgray;">// the <mark>switch</mark> statement is the most comonly used technique here...</span>   
     }
     
     function <strong>Component</strong> () {
@@ -108,7 +132,7 @@
         </div></optval>)
         
         <strong>stateVar</strong>                                                                       // value of the current state 
-        <strong>dispatchFn</strong>(<strong>action</strong>)                                                             // dispatches the <strong>action</strong> to the <strong>reducerFn</strong> (dispatch specified <strong>action:str</strong> to change the state to the predefined value)
+        <strong>dispatchFn</strong>(<strong>action</strong>)                                                             // dispatches the <strong>action</strong> to the <strong>reducerFn</strong>, the <reqval>action</reqval> is an object of of format <mark>{ type: <reqval>actionType:str</reqval><optval>, ...</optval> }</mark>    
     }                                                                                     
     </pre>
   <details class="example">
@@ -136,31 +160,74 @@
     
     export default TestComponent    
     </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>useState()</mark> setting state with <mark>
+        <reqval>setState(newVal)</reqval>
+      </mark> VS <mark>
+        <reqval>setState(fn)</reqval>
+      </mark> </h4>
+    <pre>
+    import { useState } from 'react';
+    
+    
+// setState(newVal) --------------------------------------------------
+    export default function ChildComponent() {
+      const [double, setDouble] = useState(1);
+      
+      function clickHandler() {
+        setDouble(double * 2);
+        setDouble(double * 2);                       // idemponent (state is set to <mark>4</mark> at the first set state)
+      }
+      
+      return &lt;p4 onClick={clickHandler}&gt;Double {double} &lt;/p4&gt;
+    }
+    
+    
+// setState(fn) ------------------------------------------------------
+    export default function ChildComponent() {
+      const [double, setDouble] = useState(1);
+      
+      function clickHandler() {
+        setDouble((prevState) =&gt; prevState * 2);
+        setDouble((prevState) =&gt; prevState * 2);     // we keep modifying the already set state (state is set to <mark>8</mark> at the first set state)
+      }
+      
+      return &lt;p4 onClick={clickHandler}&gt;Double {double} &lt;/p4&gt;
+    }
+    </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>useReducer()</mark> hook </h4>
     <pre>
     import React, { useReducer } from 'react';
     
-    function reducer(state, action) {                                                  // reducer returns a predefined state based on the passed action 
-        switch (action) {
-            case 'reset':
-                return 0;
-            case 'increment':
-                return state + 1;
-            case 'decrement':
-                return state - 1;
-            default:
-                return state
+    function reducer(state, action) {                   // returns a new state based on the dispatched action 
+        switch (action.type) {
+            case 'reset': {
+                return { default: 0, current: 0 };
+            }
+            case 'increment': {
+                return { default: 0, current: current + 1 }
+            }
+            case 'decrement': {
+                return { default: 0, current: current - 1 }
+            }
+            default: {
+                return state;
+            }
         }
     }
     
     function TestComponent () {
-        const [count, dispatchCount] = useReducer(reducer, 0)
+        const [count, dispatchCount] = useReducer(reducer, { default: 0, current: 0 })
 
         return (
             &lt;div&gt;
-                &lt;p&gt; {count} &lt;/p&gt;
-                &lt;button onClick={ () =&gt; dispatchCount('increment') }&gt; add &lt;/button&gt;    // dispatching action 
-                &lt;button onClick={ () =&gt; dispatchCount('decrement') }&gt; remove &lt;/button&gt;
-                &lt;button onClick={ () =&gt; dispatchCount('reset') }&gt; reset &lt;/button&gt;
+                &lt;p&gt; {count.current} &lt;/p&gt;
+                &lt;button onClick={() =&gt; dispatchCount({ type: 'increment' })}&gt; add &lt;/button&gt;    // dispatching action 
+                &lt;button onClick={() =&gt; dispatchCount({ type: 'decrement' })}&gt; remove &lt;/button&gt;
+                &lt;button onClick={() =&gt; dispatchCount({ type: 'reset' })}&gt; reset &lt;/button&gt;
             &lt;/div&gt;
         )
     }
@@ -170,122 +237,146 @@
   </details>
   <!----------------------------------------------------------------------------------------------->
   <hr>
-  <h2 class="header"> The <mark>useEffect()</mark> / <mark>useLayoutEffect()</mark> hooks</h2>
-  <p> - these hooks replace the old class component render function steps -> <mark>componentDidMount()</mark> -> <mark>componentDidUpdate()</mark> -> <mark>componentWillUnmount()</mark> </p>
-  <p> - <mark>useEffect()</mark> - runs its function when the component is fully rendered </p>
-  <p> - <mark>useLayoutEffect()</mark> - runs its function during component render (before React paints the DOM) <u>(can affect performance, never use it to update the component state)</u> </p>
+  <h2 class="headerExtra"> Context hooks & APIs </h2>
+  <p> - a context can be provided for a group of components, so all the components have access to same context </p>
+  <p> - this solution is used to avoid passing the data through the component hierarchy as props, instead we use a simple context </p>
+  <p> - if the context used by a Component changes then the Component rerenders </p>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header" id="context"> The <mark>createContext()</mark> / <mark>useContext()</mark> API & hook </h2>
+  <p> - <mark>createContext()</mark> creates a context </p>
+  <p> - <mark>useContext()</mark> returns the provided context so we can read and subscribe the context </p>
   <pre class="syntax">
+// <mark>Main.js</mark> ----------------------------------------------------------------------------
+    import React from 'react';
+    import <strong>ChildComponent</strong> from './ChildComponent'
+    
+    export const <strong>Ctx</strong> = React.createContext(<reqval>defVal</reqval>)       // creates a context object (<reqval>defVal</reqval> used if there's no contenxt provider above the component that uses this context)     
+    
+    function <strong>Component</strong>(){
+        return (
+            <opt>&lt;<reqval>Ctx</reqval>.Provider value={<strong>ctcDefVal</strong>}&gt;</opt>             // all child components inside this context (no matter how deep) have access to this <strong>ctx</strong> with default value <reqval>ctxDefVal</reqval>     
+                &lt;<strong>ChildComponent </strong>/&gt;                         // the provider is not required, its purpose is to give a namespace for a group of components (with a default value)     
+            <opt>&lt;/<reqval>Ctx</reqval>.Provider&gt;</opt>
+        )
+    }
+    
+    
+// <mark>ChildComponent.js</mark> ------------------------------------------------------------------
     import React from 'react'
+    import { <strong>Ctx</strong> } from './Main'                         // importing context      
     
-    function <strong>Component</strong> () {
-        React.useEffect(<strong class="openable">fn<div>
-            <p> - we can return a 'cleanup' function what React calls when the component unmounts </p>
-        </div></strong>, <opt class="openable">[<optval>val, ...</optval>]<div>
-            <p> - only runs its function when any <optval>val</optval> changes <u>(always runs for the 1st time)</u> </p>
-            <p> - <mark>[]</mark> (empty Array) -> runs its function only when the component mounts for the 1st time </p>
-        </div></opt>)
+    export default <strong>ChildComponent</strong>(){
+        const <strong>ctx</strong> = React.useContext(<strong>Ctx</strong>)                // returns the <strong>ctx</strong> 
         
-        React.useLayoutEffect(<reqval class="openable">fn<div>
-            <p> - we can return a 'cleanup' function what React calls when the component unmounts </p>
-        </div></reqval>, <opt class="openable">[<optval>val, ...</optval>]<div>
-            <p> - only runs its function when any <optval>val</optval> changes <u>(always runs for the 1st time)</u> </p>
-            <p> - <mark>[]</mark> (empty Array) -> runs its function only when the component mounts for the 1st time </p>
-        </div></opt>)                                 // does the same as <mark>useEffect()</mark> just the timing changes 
-    } 
-    
-    
-<span style="color:darkgray;">// <mark>useEffect()</mark> VS <mark>useLayoutEffect()</mark>----------------------------------------------------</span>
-
-    <mark>useEffect</mark>                  <em>|| React business logic   ->   React paints the new DOM   ->   <mark>useEffect</mark></em>
-    <mark>useLayoutEffect</mark>            <em>|| React business logic   ->   <mark>useLayoutEffect</mark>            ->   React paints the new DOM</em>
+    }
     </pre>
   <details class="example">
     <summary> Example : </summary>
     <pre>
-    import React, { useState, useEffect, useLayoutEffect } from 'react';
+// App.js -----------------------------------------------------------------------------
+    import { useState, createContext } from 'react';
+    import Panel from './Panel';
+    import NameComponent from './NameComponent';
+    import ThemeSwitcherComponent from './ThemeSwitcherComponent';
     
+    export const BoldContext = createContext({ boldFonts: false, setBoldFonts: null });
     
-    function TestComponent () {
-        const [count, updateCount] = useState(0)
+    const App = () =&gt; {
+      const [boldFonts, setBoldFonts] = useState(false);                  // because the set is set here all child components will receive the new context (all child component will be rerendered)    
+      
+      return (
+        &lt;&gt;
+          &lt;BoldContext.Provider value={{ boldFonts, setBoldFonts }}&gt;      // passing the state and its setter in the context
+            &lt;Panel&gt;                                                         // in this situation we have to use the provider because we pass the state in it
+              &lt;NameComponent /&gt;
+              &lt;ThemeSwitcherComponent /&gt;
+            &lt;/Panel&gt;
+          &lt;/BoldContext.Provider&gt;
+        &lt;/&gt;
+      )
+    }
+    
+    export default App;
+    
         
-        useEffect(() => {
-            console.log('component mouted')
-            return () => console.log('component unmouted')
-        }, [count]);                                                                   // runs its function only when the <mark>count</mark> stat changes (and for the first time)
-        
-        useEffect(() => {                                                              // runs every time the component is mounted / unmounted  
-            console.log('component mouted')
-            return () => console.log('component unmouted')
-        });
-        
-        useEffect(() => {                                                              // runs only once when the component is mounted for the first time (empty Array passed <mark>[]</mark>)
-            console.log('component mouted')
-            return () => console.log('component unmouted')                             // cleanup function runs only when the component is unmounted 
-        }, []);
         
         useLayoutEffect(() => {                                                        // essentially does the same as <mark>useEffect</mark> but runs its function right before React paints the new DOM  
             document.title = 'new title'
         }, [count]);
-        
-        return (
-            &lt;div&gt;
-                &lt;p&gt; { count } &lt;/p&gt;
-                &lt;button onClick={() =&gt; updateCount(count + 1)}&gt; add &lt;/button&gt;
-            &lt;/div&gt;
-        )
+    
+        useLayoutEffect(() => {                                                        // essentially does the same as <mark>useEffect</mark> but runs its function right before React paints the new DOM  
+            document.title = 'new title'
+        }, [count]);
+    
+// Panel.js ---------------------------------------------------------------------------
+    const Panel = ({ children }) =&gt; {                                     // no props passed through the intermediate component (this is the whole point of using context)
+      return (
+        &lt;div&gt;
+          {children}
+        &lt;/div&gt;
+      )
     }
     
-    export default TestComponent    </pre>
+    export default Panel;
+    
+    
+    
+// NameComponent.js -------------------------------------------------------------------
+    import { useContext } from 'react';
+    import { BoldContext } from './App';
+    
+    const NameComponent = () =&gt; {
+      const { boldFonts } = useContext(BoldContext);
+    
+      return &lt;p style={{ fontWeight: boldFonts ? 'bold' : 'default' }}&gt; Name: SomeName &lt;/p&gt;   // style set based on context value
+    }
+    
+    export default NameComponent;
+    
+    
+    
+// ThemeSwitcherComponent.js ----------------------------------------------------------
+    import { useContext } from 'react';
+    import { BoldContext } from './App';
+    
+    const ThemeSwitcherComponent = () =&gt; {
+      const { boldFonts, setBoldFonts } = useContext(BoldContext);
+    
+      return (
+        &lt;button
+          style={{ fontWeight: boldFonts ? 'bold' : 'default' }}
+          onClick={() =&gt; setBoldFonts(!boldFonts)}                        // grand child component set the state
+        &gt; Toggle font weight &lt;/button&gt;
+      );
+    }
+    
+    export default ThemeSwitcherComponent;
+    </pre>
   </details>
   <!----------------------------------------------------------------------------------------------->
   <hr>
-  <h2 class="header"> The <mark>useMemo()</mark> / <mark>useCallback()</mark> hooks</h2>
-  <p> - these hooks are used to optimize performance </p>
-  <p> - <mark>useMemo</mark> - returns a value computed by its function (the ide is to recompute the value only when needed) </p>
-  <p> - <mark>useCallback</mark> - returns a callback (the idea is that the callback is recomputed only when needed (ex: used when the callback has some variables in it) </p>
-  <pre class="syntax">
-    import React from 'react'
-    
-    function <strong>Component</strong> () {
-        const <strong>memoVar</strong> = React.useMemo(<strong>fn</strong>, <opt class="openable">[<optval>val, ...</optval>]<div>
-            <p> - only runs its function when any <optval>val</optval> changes <u>(always runs for the 1st time)</u> </p>
-            <p> - <mark>[]</mark> (empty Array) -> runs its function only when the component mounts for the 1st time </p>
-        </div></opt>) 
-        
-        const <strong>fn</strong> = React.useCallback(<strong>fn</strong>, <opt class="openable">[<optval>val, ...</optval>]<div>
-            <p> - only runs its function when any <optval>val</optval> changes <u>(always runs for the 1st time)</u> </p>
-            <p> - <mark>[]</mark> (empty Array) -> runs its function only when the component mounts for the 1st time </p>
-        </div></opt>)  
-    } 
-    </pre>
-  <details class="example">
-    <summary> Example : </summary>
-    <pre>
-    import React, { useMemo, useCallback } from 'react';
-    
-    function TestComponent () {
-        const random = Math.random();
-        
-        const randomMemoized = useMemo(() => random, [])              // random given for the first time will be memoized
-        
-        const memoizedCallback = useCallback(() => random, [])        // the returned callback always returns the random given for the first time
-    }
-    </pre>
-  </details>
+  <h2 class="headerExtra"> Ref hooks & APIs </h2>
+  <p> - these tools are used for 2 things: </p>
+  <p class="indent-lv1"> - to directly reference a DOM node (escape from the React paradig) </p>
+  <p class="indent-lv1"> - to hold a state without triggering the component when changing this state </p>
   <!----------------------------------------------------------------------------------------------->
   <hr>
-  <h2 class="header"> The <mark>useRef()</mark> hook</h2>
-  <p> 1) - creates and returns an object that can be used as internal store (updating it <u>will not rerender the component</u> = a state that does not rerender the component when mutated) </p>
-  <p> 2) - references a DOM object (provides a way to directly manipulate the DOM) </p>
+  <h2 class="header" id="ref"> The <mark>useRef()</mark> hook </h2>
+  <p> - <mark>useRef()</mark> </p>
   <pre class="syntax">
-    import { useRef, useEffect } from 'react';
+    import { useRef } from 'react';
     
 <span style="color: darkgray;">// store data in ref object --------------------------------------------------- </span>
     function <strong>Component</strong>() {
         const <reqval>refVal</reqval> = useRef(<optval>val</optval>);  // creates and returns a <mark>{ current: <optval>val</optval> }</mark> object
         
-        <reqval>refVal</reqval>;                      // -> { current: <optval>val</optval> }     // object will keep the data between rerenders
-        <reqval>refVal</reqval>.current = <reqval>val</reqval>         // mutating the ref object will not rerender the component
+        <optval>someEventHandler</optval> {
+            <reqval>refVal</reqval>;                  // -> { current: <optval>val</optval> }     // object will keep the data between rerenders <u>(never use these values to display (use state for that))</u>    
+            <reqval>refVal</reqval>.current = <reqval>val</reqval>     // changing the ref object won't trigger rerender (use only the <mark>current</mark> key to stord data on)
+        }
+        
+        <reqval>refVal</reqval>.current = <reqval>val</reqval>         <span style="color:orange;">// never change the ref value during rerender!</span>
     }
     
     
@@ -293,9 +384,9 @@
     function <strong>Component</strong>() {
         const <reqval>refVal</reqval> = useRef(null);
         
-        useEffect(() => {
-            <reqval>refVal</reqval>.current            // references the DOM object (paragraph)
-        }, []);
+        <optval>someEventHandler</optval> {
+            <reqval>refVal</reqval>.current            // references the DOM node (paragraph) <u>(only use it for non destructive tasks ex: <mark>ref.current.focus()</mark>)</u>    
+        }
         
         return &lt;p ref={<reqval>refVal</reqval>}&gt; &lt;/p&gt;
     }
@@ -304,54 +395,116 @@
     <summary> Example : </summary>
     <h3 class="header"> using <mark>useRef</mark> to store values between rerenders </h3>
     <pre>
-    import { useRef, useEffect } from 'react';
+    import { useRef } from 'react';
     
-    function TestComponent() {
-      const refVal = useRef('init val');      // keep set values between rerenders
-    
-      useEffect(() => {
-        refVal.current = 'new val';           // mutating ref object will not tirgger the component rerender
-        refVal.customProp = 'custom val';
-      }, [])
-    
-      return (
-        <p> some paragraph </p>
-      )
+    const App = () => {
+      const ref = useRef(0);
+      
+      function handleClick() {
+        ref.current += 1;
+        console.log(`You've clicked ${ref.current} times!`);    // ref should not be used to display data
+      }
+      
+      return &lt;button onClick={handleClick}&gt; Click! &lt;/button&gt;
     }
-    
-    export default TestComponent;
     </pre>
     <h3 class="header"> using <mark>useRef</mark> to reference a DOM element </h3>
     <pre>
-    import { useRef, useEffect } from 'react';
+    import { useRef } from 'react';
     
-    function TestComponent() {
-      const refVal = useRef(null);
-    
-      useEffect(() => {
-        console.log(refVal.current)       // -> paragraph DOM element
-      }, [])
-    
+    const App = () =&gt; {
+      const inputRef = useRef(null);
+      
+      function handleClick() {
+        inputRef.current.focus();     // triggers focus directly on the DOM node
+      }
+      
       return (
-        &lt;p ref={refVal}&gt; some paragraph &lt;/p&gt;
-      )
+        &lt;&gt;
+          &lt;input ref={inputRef}/&gt;
+          &lt;button onClick={handleClick}&gt; Focus &lt;/button&gt;
+        &lt;/&gt;
+      );
     }
+    
+    export default App;
     </pre>
   </details>
   <!----------------------------------------------------------------------------------------------->
   <hr>
-  <h2 class="header"> The <mark>useImperativeHandle()</mark> / <mark>forwardRef()</mark> hooks </h2>
-  <p> - these hooks (with <mark>useRef()</mark>) provides a way to call functions in the child component from the parent component </p>
+  <h2 class="header" id="forwardRef"> The <mark>forwardRef()</mark> API </h2>
+  <p> - <mark>forwardRef()</mark> - Components cannot use <mark>ref</mark> (like HTML elements), this API allows the Component to receive and forward the <mark>ref</mark> </p>
   <pre class="syntax">
-    import { useRef, useEffect } from 'react';
+    import { useRef } from 'react';
     import <strong>ChildComponent</strong> from './ChildComponent';
     
     function <strong>Component</strong>() {
-        const <strong>refVal</strong> = useRef(null)                          // will reference the child component 
+        const <strong>refVal</strong> = useRef(null)
         
-        useEffect(() => {
-            <strong>refVal</strong>.current.<strong>childFn1</strong>(<optval>val</optval>)                     // calling the child component's function from the parent component (after the this component is fully rendered)  
-            <strong>refVal</strong>.current.<strong>childFn2</strong>(<optval>val</optval>)
+        <optval>someEventHandler</optval> {
+          <strong>refVal</strong>.current                                     // references the DOM node in the <reqval>ChildComponent</reqval> (span)
+        }
+        
+        return &lt;<strong>ChildComponent</strong> ref={<strong>refVal</strong>}/&gt;
+    }
+    
+    
+// <mark>ChildComponent.js</mark> ------------------------------------------------------------------
+    import { forwardRef } from 'react';
+    
+    const <strong>ChildComponent</strong> = forwardRef((props, ref) => {      // forward referencing the component    
+        return &lt;span ref={ref}&gt; &lt;/span&gt;                      // DOM node forwarded to <reqval>Component</reqval>
+    })
+    
+    export default <strong>ChildComponent</strong>
+    </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre>
+// Main.js ----------------------------------------------------------------------------
+    import { useRef } from 'react';
+    import ChildComponent from './ChildComponent';
+    
+    const App = () => {
+      const inputRef = useRef(null);
+      
+      function handleClick() {
+        inputRef.current.focus();             // input node in the ChildComponent gets focus
+      }
+      
+      return (
+        &lt;&gt;
+          &lt;button onClick={handleClick}&gt; Focus &lt;/button&gt;
+          &lt;ChildComponent ref={inputRef} /&gt;
+        &lt;/&gt;
+      );
+    }
+    
+    
+// ChildComponent.js ------------------------------------------------------------------
+    import { forwardRef } from 'react';
+    
+    const ChildComponent = forwardRef((props, ref) =&gt; {
+      return &lt;input ref={ref} /&gt;          // HTML component forwarded to the parent Component
+    })
+    
+    export default ChildComponent;
+    </pre>
+  </details>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header" id="useImperativeHandle"> The <mark>useImperativeHandle()</mark> hook </h2>
+  <p class="indent-lv2"> - <mark>useImperativeHandle()</mark> - Exposes an object to the parent Component through the forwarded ref </p>
+    <pre class="syntax">
+    import { useRef } from 'react';
+    import <strong>ChildComponent</strong> from './ChildComponent';
+    
+    function <strong>Component</strong>() {
+        const <strong>refVal</strong> = useRef(null)
+        
+        <optval>someEventHandler</optval> {
+            <strong>refVal</strong>.current                                   // returns the forwarded object from <reqval>ChildComponent</reqval>
+            <strong>refVal</strong>.current.<strong>childFn</strong>(<optval>val</optval>)                      // calling the child component's function from the parent component  
         })
         
         return {
@@ -365,11 +518,15 @@
     
     const <strong>ChildComponent</strong> = forwardRef((props, ref) => {      // forward referencing the component    
         useImperativeHandle(ref, () => {
-            return {
-                <reqval>childFn1</reqval>(<optval>val</optval>) { }                            // functions are callable from the parent component    
-                <reqval>childFn2</reqval>(<optval>val</optval>) { }
+            return {                                         // object forwarded to <reqval>Component</reqval>
+                <opt><optval>childFn</optval>(<optval>val</optval>) { }</opt>                             // functions are callable from the parent component    
+                <optval>key: val,</optval>
+                <optval>...</optval>
             }
-        })
+        }, <opt class="openable">[<optval>val, ...</optval>]<div>
+            <p> - only runs its function when any <optval>val</optval> changes (check diff with <mark>Object.is()</mark>) <u>(always runs for the 1st time)</u> </p>
+            <p> - <mark>[]</mark> (empty Array) -> runs its function only when the component mounts for the 1st time </p>
+        </div></opt>)
     })
     
     export default <strong>ChildComponent</strong>
@@ -379,142 +536,463 @@
     <pre>
 // Main.js ----------------------------------------------------------------------------
     import { useRef } from 'react';
-    import ChildComponent from './TestComponentChild';
+    import ChildComponent from './ChildComponent';
     
-    function TestComponent() {
-        const childRef = useRef()
-    
-      function handleClick1() {
-          childRef.current.test(1);                     // calling function in the child component with argument
+    const App = () =&gt; {
+      const inputRef = useRef(null);
+      
+      function handleClick() {
+        inputRef.current.yellowInput();               // function called in the child component
       }
-    
-      function handleClick2() {
-          childRef.current.test2('a');
-      }
-    
+      
       return (
-          &lt;div&gt;
-              &lt;p onClick={handleClick1}&gt; Click-1 &lt;/p&gt;
-              &lt;p onClick={handleClick2}&gt; Click-2 &lt;/p&gt;
-              &lt;ChildComponent ref={childRef} /&gt;
-          &lt;/div&gt;
-      )
+        &lt;&gt;
+          &lt;button onClick={handleClick}&gt; Toggle yellow input border color &lt;/button&gt;
+          &lt;ChildComponent ref={inputRef} /&gt;
+        &lt;/&gt;
+      );
     }
     
-    export default TestComponent;    
+    export default App;
     
     
-// Child.js ---------------------------------------------------------------------------
-    import React, { forwardRef, useImperativeHandle } from 'react';
+// ChildComponent.js ------------------------------------------------------------------
+    import { useState, forwardRef, useImperativeHandle } from 'react';
     
-    const Child = forwardRef((props, ref) => {                  // wrapping the component in <mark>forwardRef</mark>
-        useImperativeHandle(ref, () => ({
-            test(arg) { arg },                                  // -> 1
-            test2(arg) { arg },                                 // -> 'a'
-        }));
+    const ChildComponent = forwardRef((props, ref) => {
+      const [yellowInputBorder, setYellowInputBorder] = useState(false);
     
-        return &lt;p&gt; Child Component &lt;/p&gt;
-    });
+      useImperativeHandle(ref, () =&gt; {
+        return {                                                        // object forwarded to the parent Component 
+          yellowInput() { setYellowInputBorder(!yellowInputBorder)}
+        }
+      })
+      
+      return &lt;input style={{ borderColor: yellowInputBorder ? 'yellow' : 'black' }} /&gt;
+    })
     
+    export default ChildComponent;
+    </pre>
+  </details>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Effect hooks </h2>
+  <p> - these hooks are used to connect to and synchronize with external systems (like: network fetch, borwser DOM, etc...) </p>
+  <p> - these are 'escape patches' from the React paradigm <u>(don't use these tools to orchestrate data flow in your application)</u> </p>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header" id="effect"> The <mark>useEffect()</mark> / <mark>useLayoutEffect()</mark> / <mark>useInsertionEffect()</mark> hooks</h2>
+  <p> - <mark>useEffect()</mark> - runs its function when the component is fully rendered </p>
+  <p> - <mark>useLayoutEffect()</mark> - runs its function during component render (before React paints the DOM) </p>
+  <p class="indent-lv1"> - used to calculate the layout before painting the new DOM </p>
+    <p> - <mark>useInsertionEffect()</mark> - runs its function before DOM manipulation (before React paints the DOM) </p>
+  <p class="indent-lv1"> - used to inject styles into the DOM (intended to solve the flicker problem when the style is inserted after render) </p>
+  <pre class="syntax">
+    import { useEffect, useLayoutEffect, useInsertionEffect } from 'react'
+    
+    function <strong>Component</strong> () {
+        useEffect(<strong class="openable">fn<div>
+            <p> - we can return a 'cleanup' function what React calls when the component unmounts </p>
+        </div></strong>, <opt class="openable">[<optval>val, ...</optval>]<div>
+            <p> - only runs its function when any <optval>val</optval> changes (check diff with <mark>Object.is()</mark>) <u>(always runs for the 1st time)</u> </p>
+            <p> - <mark>[]</mark> (empty Array) -> runs its function only when the component mounts for the 1st time </p>
+        </div></opt>)             // syntactically these hooks are the same but each have different uses
+                                                  <span style="color:orange;">// any reactive value used in <reqval>fn</reqval> must be listed in the depencendy array (<mark><opt>[<optval>val, ...</optval>]</opt></mark>) (react docs highly stress this) </span>
+        useLayoutEffect(<reqval class="openable">fn<div>
+            <p> - we can return a 'cleanup' function what React calls when the component unmounts </p>
+        </div></reqval>, <opt class="openable">[<optval>val, ...</optval>]<div>
+            <p> - only runs its function when any <optval>val</optval> changes (check diff with <mark>Object.is()</mark>) <u>(always runs for the 1st time)</u> </p>
+            <p> - <mark>[]</mark> (empty Array) -> runs its function only when the component mounts for the 1st time </p>
+        </div></opt>)
+        
+        useInsertionEffect(<reqval class="openable">fn<div>
+            <p> - we can return a 'cleanup' function what React calls when the component unmounts </p>
+        </div></reqval>, <opt class="openable">[<optval>val, ...</optval>]<div>
+            <p> - only runs its function when any <optval>val</optval> changes (check diff with <mark>Object.is()</mark>) <u>(always runs for the 1st time)</u> </p>
+            <p> - <mark>[]</mark> (empty Array) -> runs its function only when the component mounts for the 1st time </p>
+        </div></opt>)
+    } 
+    
+    
+<span style="color:darkgray;">// <mark>useEffect()</mark> VS <mark>useLayoutEffect()</mark> VS <mark> useInsertionEffect()</mark> timing -----------------</span>
+
+    <mark>useEffect</mark>              <lit>React business logic  ->  DOM manipulation      ->  React paints the new DOM  ->  <mark>useEffect()</mark></lit>
+    <mark>useLayoutEffect</mark>        <lit>React business logic  ->  DOM manipulation      ->  <mark>useLayoutEffect()</mark>         ->  React paints the new DOM</lit>
+    <mark>useInsertionEffect</mark>     <lit>React business logic  ->  <mark>useInsertionEffect()</mark>  ->  DOM manipulation          ->  React paints the new DOM</lit>
+    </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> The <mark>useEffect()</mark> hook </h4>
+    <pre>
+    import { useEffect } from 'react';
+    
+    const ChatRoom = ({ roomId }) => {
+        useEffect(() => {
+            const connection = createConnection(roomId);  // used to sync with an external resource
+            connection.connect();
+            return () => connection.disconnect();         // cleanup function trigger disconnect when the component Unmounts 
+        }, [roomId]);                                     // -! reactive value used is required as dependency
+    }
+    </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>useLayoutEffect()</mark> hook </h4>
+    <pre>
+    import { useRef, useLayoutEffect } from 'react';
+    
+    const App = () => {
+      const ref = useRef(null);
+      
+      useLayoutEffect(() => {
+        console.log(ref.current.getBoundingClientRect())    // we get the position of the element before the DOM is painted
+        // we could do some DOM manipulation before the new DOM is painted (careful about the performance implications)
+      })
+      
+      return &lt;p ref={ref}&gt; Some Paragraph &lt;/p&gt;;
+    }
+    
+    export default App;
+    </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>useInsertionEffect()</mark> hook </h4>
+    <pre>
+    import { useInsertionEffect } from 'react';
+    
+    const App = () => {
+      useInsertionEffect(() => {
+      const style = document.createElement('style');      // before the DOM render we add styles
+    
+      style.textContent = `
+        #box {
+          width: 100px;
+          height: 100px;
+          background-color: salmon;
+          color: white;
+        }
+        
+        body {
+          background-color: orange;
+        }
+      `;
+      
+      document.head.appendChild(style);
+      }, [])
+    }
+    
+    export default App;
+    </pre>
+  </details>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Performance hooks & APIs </h2>
+  <p> - these hooks are used to optimize performance </p>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header" id="useMemo"> The <mark>useMemo()</mark> / <mark>useCallback()</mark> hooks</h2>
+  <p> - <mark>useMemo()</mark> - used to recompute a value when needed only </p>
+  <p> - <mark>useCallback()</mark> - caches a function definition between rerenders (the idea is to recompute the function definition only when needed)</p>
+  <pre class="syntax">
+    import { useMemo } from 'react'
+    
+    function <strong>Component</strong> () {
+        const <strong>memoVar</strong> = useMemo(() => {
+            <span style="color:darkgray;">// expensive calculation ...</span>
+        }, <opt class="openable">[<optval>val, ...</optval>]<div>
+            <p> - only runs its function when any <optval>val</optval> changes (check diff with <mark>Object.is()</mark>) <u>(always runs for the 1st time)</u> </p>
+            <p> - <mark>[]</mark> (empty Array) -> runs its function only when the component mounts for the 1st time </p>
+        </div></opt>) 
+        
+        const <strong>cachedFn</strong> = React.useCallback(<strong>fn</strong>, <opt class="openable">[<optval>val, ...</optval>]<div>
+            <p> - only runs its function when any <optval>val</optval> changes (check diff with <mark>Object.is()</mark>) <u>(always runs for the 1st time)</u> </p>
+            <p> - <mark>[]</mark> (empty Array) -> runs its function only when the component mounts for the 1st time </p>
+        </div></opt>)     // recompute <reqval>fn</reqval> definition only when dependency (<mark>[<optval>val, ...</optval>]</mark>) changes 
+    } 
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 class="header"> The <mark>useMemo()</mark> hoook </h4>
+    <pre>
+    import { useMemo } from 'react';
+    
+    const ChildComponent = ({ listItems }) => {
+      const filteredListItems = useMemo(() => {
+        return listItems.filter((item) => !!item);
+      }, [listItems])                                 // we only recompute when the <mark>listeItems</mark> changes 
+      
+      return (
+        &lt;ol&gt;
+          {filteredListItems.map((item) =&gt; &lt;p key={item}&gt;{item}&lt;/p&gt;)}
+        &lt;/ol&gt;
+      );
+    }
+    
+    
+// in this case we can do even better, memoize the component itself --------------
+    import { useMemo } from 'react';
+    
+    const ChildComponent = ({ listItems }) => {
+      const filteredList = useMemo(() => {
+        const filteredListItems = listItems.filter((item) => !!item);
+        
+        return (
+          &lt;ol&gt;
+            {filteredListItems.map((item) =&gt; &lt;p key={item}&gt;{item}&lt;/p&gt;)}
+          &lt;/ol&gt;
+        );
+      }, [listItems])
+      
+      return filteredList;
+    }
+    </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>useCallback()</mark> hook </h4>
+    <pre>
+    import { useCallback } from 'react';
+    
+    const ChildComponent = ({ name }) => {
+      const getDeveloperStats = useCallback(() => {
+        return {
+          name,
+          profession: 'software developer',
+          level: 'senior',
+          type: 'web developer',
+        }
+      }, [name])                         // we recompute the function definition only when the <mark>name</mark> changes   
+      
+    }
+    </pre>
+  </details>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header" id="useTransition"> The <mark>useTransition()</mark> / <mark>startTransition()</mark> / <mark>useDeferredValue()</mark> hooks & API </h2>
+  <h3> IMPORTNAT: at the time of writing this (2024-02-22) these tools are new, so their usage will probably evolve in the furue </h3>
+  <p> - <mark>useTransition()</mark> <b>(v18)</b> - updates the state without blocking the UI </p>
+  <p class="indent-lv1"> - a transition is a background task where we update the state while not blocking the UI <u>(do not use any async logic in transition)</u> </p>
+  <p class="indent-lv1"> - here's the idea and workfow of usage: </p>
+  <p class="indent-lv2"> 1) first we update states and render the UI while starting the transion </p>
+  <p class="indent-lv2"> 2) the transition is pending until the operation finishes or interruped (while not blocking the UI) </p>
+  <p class="indent-lv2"> 3) the transition finishes triggers a rerender in order to update the UI (with the transition result) </p>
+  <p> - <mark>startTransition()</mark> <b>(v18)</b> - API does the same as <mark>useTransition()</mark> but has no pending indicator (mostly used in class components) </p>
+    <p> - <mark>useDeferredValue()</mark> <b>(v18)</b> - defers the update of a state </p>
+  <pre class="syntax">
+  import { useState, useTransition, startTransition, useDeferredValue } from 'react';
+      
+<span style="color:darkgray;">// <mark>useTransation()</mark> / <mark>startTransition()</mark> ----------------------------</span>
+    function <reqval>Component</reqval>() {
+        const [isPending, startTransition] = useTransition();         // (for <mark>startTransition()</mark> remove this line)
+        const [<reqval>primaryState</reqval>, <reqval>setPrimaryState</reqval>] = useState();
+        const [<reqval>secondaryState</reqval>, <reqval>setSecondaryState</reqval>] = useState();
+        
+        isPending                                       // on 1st render set to <mark>true</mark>  /  on 2nd render set to <mark>false</mark>
+        
+        <optval>someEventHandler</optval> {
+            <reqval>setPrimaryState()</reqval>                           // updated on the 1st render
+            
+            startTransition(() => {
+                <reqval>setSecondaryState()</reqval>                     // updated on the 2nd render
+            })
+        }
+    }
+    
+    
+<span style="color:darkgray;">// <mark>useDeferredValue()</mark> ---------------------------------------------</span>
+    function <reqval>Component</reqval>({ <reqval>someState</reqval> }) {                 // recommended to use when we only get the state (when we are setting the state it's best to use <mark>useTransition()</mark>)
+        <reqval>deferedState</reqval> = useDeferredValue(<reqval>someState</reqval>)      // <span class="openable">defers to update <reqval>deferedState</reqval><div>
+        <p> - if <reqval>someState</reqval> updates quickly several times <reqval>deferedState</reqval> updated at once when the frequent <reqval>somState</reqval> update stops </p>
+        <p> ex: </p>
+        <p> - the user quickly types <mark>abcde</mark> then stops typing -> the <reqval>someState</reqval> is updated 5 times </p>
+        <p> - the <reqval>deferedState</reqval> is updated only once <u>when the user stops typing</u> (that's the deferring principal) </p>
+        </div></span>
+    }
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 class="header"> The <mark>useTransation()</mark> hook </h4>
+    <pre>
+    import { useState, useTransition } from 'react';
+    
+    const ChildComponent = () =&gt; {
+      const [isPending, startTransition] = useTransition();
+      const [inputValue, setIntpuValue] = useState();
+      const [listItems, setListItems] = useState();
+      
+      function handleClick(e) {
+        setIntpuValue(e.target.value);                   // on 1st render updated and rendered
+        
+        startTransition(() =&gt; {
+          let internalListItems = [];                    // on 1st render triggered and executing on the background
+          for (let i = 0; i < 20000; i++) {
+            internalListItems.push(&lt;li&gt;{e.target.value}&lt;/li&gt;)
+          }
+          
+          setListItems(internalListItems)                // on 2nd render updated and rendered
+        });
+      }
+      
+      return (
+        &lt;&gt;
+          &lt;input onChange={handleClick} value={inputValue} /&gt;
+          {isPending && &lt;p&gt; Updating... &lt;/p&gt;}            // on 1st render <mark>true</mark>   /  on 2nd render <mark>false</mark>
+          &lt;ol&gt;
+            {listItems}
+          &lt;/ol&gt;
+        &lt;/&gt;
+      )
+    }
+    </pre>
+    <!----------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>startTransaction()</mark> API </h4>
+    <p> - does the same as <mark>useTransation()</mark> but it's not a hook and has no pending indicator (this is just a working demo, but this APIs real use case is in class components) </p>
+    <pre>
+    import { useState, startTransition } from 'react';
+    
+    const ChildComponent = () =&gt; {
+      const [inputValue, setIntpuValue] = useState();
+      const [listItems, setListItems] = useState();
+      
+      function handleClick(e) {
+        setIntpuValue(e.target.value);
+        
+        startTransition(() =&gt; {
+          let internalListItems = [];
+          for (let i = 0; i < 20000; i++) {
+            internalListItems.push(&lt;li&gt;{e.target.value}&lt;/li&gt;)
+          }
+          
+          setListItems(internalListItems)
+        });
+      }
+      
+      return (
+        &lt;&gt;
+          &lt;input onChange={handleClick} value={inputValue} /&gt;
+          &lt;ol&gt;
+            {listItems}
+          &lt;/ol&gt;
+        &lt;/&gt;
+      )
+    }
+    </pre>
+    <!----------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>useDeferredValue()</mark> hook </h4>
+    <pre>
+// App.js -----------------------------------------------------------------------
+    import { useState } from 'react';
+    import Child from './Child';
+    
+    const App = () =&gt; {
+      const [inputValue, setIntpuValue] = useState();
+      
+      function handleClick(e) {
+        setIntpuValue(e.target.value)
+      }
+      
+      return (
+        &lt;&gt;
+          &lt;input onChange={handleClick} value={inputValue} /&gt;
+          &lt;ListInput input={inputValue} /&gt;
+        &lt;/&gt;
+      );
+    }
+    
+    export default App;
+    
+    
+// Child.js ---------------------------------------------------------------------
+    import { useDeferredValue } from 'react';
+    
+    const Child = ({ input }) =&gt; {                         // the use case of <mark>useDeferredValue()</mark> is when we only get a state (so we cannot set it), otherwise it's recommended to use the <mark>useTransition()</mark> hook 
+      const LIST_SIZE = 20000;
+      const deferredInput = useDeferredValue(input);       // basically what flows through here is deferred 
+        const list = [];
+        for (let i = 0; i &lt; LIST_SIZE; i++) {
+          list.push(&lt;p key={i}&gt;{deferredInput}&lt;/p&gt;)
+        }
+      
+      return list
+    }
     
     export default Child;
     </pre>
   </details>
   <!----------------------------------------------------------------------------------------------->
   <hr>
-  <h2 class="headerExtra"> Context <mark>createContext()</mark> / <mark>useContext()</mark> </h2>
-  <p> - from React v18 we can create contexts, all components (no matter how deep) have access to the context state </p>
-  <p> - in a context have a centralized state (object) which can be accessed and modified by any of the component in the context <u>(context state object properties are merged in the context state (like state works in class components))</u>
+  <h2 class="header" id="lazy"> The <mark>lazy()</mark> / <mark>memo()</mark> API </h2>
+  <p> - <mark>lazy()</mark> - lazy loads a component (caches the loaded component so it's imported only once ) </p>
+  <p> - <mark>memo()</mark> - makes the component only rerender when any of its prop changes (not garaneteed, React might still rerender the Component) </p>
+  <p class="indent-lv1"> - also works with context (only rerenders the component when the used context changes) </p>
   <pre class="syntax">
-// <mark>Main.js</mark> ----------------------------------------------------------------------------
-    import React from 'react';
-    import <strong>ChildComponent</strong> from './ChildComponent'
+    import { Suspense, lazy, memo } from 'react';
     
-    export const <strong>Ctx</strong> = React.createContext(null)         // initializing context object (centralized state object)    
+<span style="color:darkgray;">// <mark>lazy()</mark> -----------------------------------------------------------</span>
+    const <reqval>SomeComponent</reqval> = lazy(() => import(<reqval>componentPath</reqval>)|<reqval>promiseLikeObj</reqval>)   // won't load the component here
     
-    function <strong>Component</strong>(){
+    function <reqval>Component</reqval>() {
         return (
-            <lit>&lt;<reqval>Ctx</reqval>.Provider value={<strong>defVal</strong>}&gt;</lit>                // all child components inside this context have access to <strong>ctx</strong>  
-                &lt;<strong>ChildComponent </strong>/&gt;
-            <lit>&lt;/<reqval>Ctx</reqval>.Provider&gt;</lit>
+            &lt;Suspense fallback={<reqval>FallbackComponent</reqval>} &gt;                         // displays fallback durring the loading time 
+                &lt;<reqval>SomeComponent</reqval> /&gt;                                            // loads the component on demand 
+            &lt;/Suspense&gt;
         )
     }
     
     
-// <mark>ChildComponent.js</mark> ------------------------------------------------------------------
-    import React from 'react'
-    import { <strong>Ctx</strong> } from './Main'                         // importing context (cerntalized state)    
-    
-    export default <strong>ChildComponent</strong>(){
-        const <strong>ctx</strong> = React.useContext(<strong>Ctx</strong>)                // the returned <strong>ctx</strong> is the context (centralized state object (can be get or set))    
-        
-    }
-    </pre>
+<span style="color:darkgray;">// <mark>memo()</mark> -----------------------------------------------------------</span>
+    const <reqval>Component</reqval> = memo(function({ <reqval>prop</reqval><optval>, ...</optval> }) {                         // component rerenders only if any of its <reqval>prop</reqval> changes 
+        return <reqval>JSX</reqval>
+    }, <optval class="openable">fn(prevProp, nextProp)<div>
+      <p> return <mark>true</mark> -> component does not rerender </p>
+      <p> return <mark>false</mark> -> component rerenders </p>
+    </div></optval>)
+  </pre>
   <details class="example">
     <summary> Example : </summary>
+    <h4 class="header"> The <mark>lazy()</mark> API </h4>
     <pre>
-// Main.js ----------------------------------------------------------------------------
-    import React, { createContext, useContext, useEffect } from 'react';
+    import { Suspense, lazy } from 'react';
+    const ListComponent = lazy(() =&gt; import('./ListComponent'))
     
-    import Child from './Child';
-    import GrandChild from './GrandChild';
-    
-    const Ctx = createContext({p1:'child', p2:'grandChild'});                          // creates a context (with default value)
-    
-    function TestComponent () {
-        const ctx = useContext(Ctx);                                                   // using context in the parent 
-        
-        useEffect(() => {
-            console.log( ctx );                                                        // -> {p1: 'child', p2: 'grandChild', newProp: 'newVal'}     // cotext after components are fully rendered (the <mark>newProp</mark> is set by the GrandChild component)   
-        });
-        
-        return (
-            &lt;Ctx.Provider value={ctx}&gt;                                                 // context provider (all components inside have access to the context state)
-            &lt;div&gt;
-                &lt;p&gt; test &lt;/p&gt; 
-                &lt;Child /&gt;
-                &lt;GrandChild /&gt;
-            &lt;/div&gt;
-            &lt;/Ctx.Provider&gt;
-        );
-    };
-    
-    export { Ctx };                                                                    // exporting context 
-    export default TestComponent;    
-    
-    
-// Child.js ---------------------------------------------------------------------------
-    import React, { useContext } from 'react';
-    
-    import { Ctx } from './Main';                                                      // importing context state 
-    
-    const Child = () => {
-      const ctx = useContext(Ctx);                                                     // get context 
+    const App = () =&gt; {
       
-      return &lt;p&gt; Child Component value = {ctx.p1} &lt;/p&gt;
-    };
-    
-    export default Child; 
-    
-    
-// GrandChild.js ----------------------------------------------------------------------
-    import React, { useContext } from 'react';
-    
-    import { Ctx } from './Main';                                                      // importing context state 
-    
-    
-    const GrandChild = () => {
-      const ctx = useContext(Ctx);                                                     // get context 
-      
-      ctx.newProp = 'newVal';                                                          // context state can be modified by any of the component members (porperties will be merged into the state context)
-      cxt = null;                                                                      // -! the conext state inself cannot be changed (this thros an Error)
-      
-      return &lt;p&gt; Grand Child Component value = {ctx.p2} &lt;/p&gt;
+      return (
+        &lt;Suspense fallback={&lt;p&gt;Loading...&lt;/p&gt;}&gt;     // loads the component while displaing fallback 
+          &lt;p&gt; My List &lt;/p&gt;
+          &lt;ListComponent /&gt;
+        &lt;/Suspense&gt;
+      );
     }
+    </pre>
+    <!-------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>memo()</mark> API </h4>
+    <pre>
+    import { memo } from 'react';
     
-    export default GrandChild;    
+    const ChildComponent = memo(({ redText }) =&gt; {     // component only rerenders when the prop changes 
+        return &lt;p style={{ color: redText ? 'red' : 'black' }}&gt; ChildComponent &lt;/p&gt;
+    });
+    </pre>
+    <!-------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>memo()</mark> with cotext </h4>
+    <pre>
+    import { memo, useContext } from 'react';
+    import { RedContext } from './App';
+    
+    const ChildComponent = memo(() =&gt; {
+      const redText = useContext(RedContext);         // component only rerenders when the context changes 
+      
+      return &lt;p style={{ color: redText ? 'red' : 'black' }}&gt; ChildComponent &lt;/p&gt;;
+    });
     </pre>
   </details>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra" id="otherHooks"> Other Hooks </h2>
+  <p> - these hooks are not used by developers but most by library authors <a href="https://react.dev/reference/react/hooks#other-hooks" target="_blank">[link]</a></p>
 
 
   <br><br>

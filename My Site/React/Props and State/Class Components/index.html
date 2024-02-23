@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Class Components </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Class Components </h1>
+  <p> Updated ( 2020-10-22 / 2024-02-16 ) </p>
+  <p class="sitenav"> <a href="../../../index.html" title="home">MySite></a>
+    <a href="../../index.html">React></a>
+    <a href="../index.html">Props and State></a> Class Components
+  </p>
+
+  <table class="table">
+    <caption>
+      State (Component state)
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> JSX </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td> this.state </td>
+      <td>
+        - (in Class Component) holds the Component's state values
+      </td>
+    </tr>
+    <tr>
+      <td>
+        this.setState(<strong class="openable">state:obj|fn(prevState)<div>
+            <p> <strong>state:obj</strong> - new <mark>state</mark> object <u style="color:orangered;">(Asynchronous = does not garantee that the <mark>state</mark> is updated for the next re-render)</u> </p>
+            <p> <strong>fn(prevState)</strong> - function must return an object which will be the new <mark>state</mark> object (argument <strong>prevState</strong> = previous <mark>state</mark> object) <u style="color:orangered;">(Synchronous = garantees that the <mark>state</mark> is updated for the next re-render)</u> </p>
+          </div></strong>)
+      </td>
+      <td>
+        - (in Class Component method) set the Component's <mark>state</mark> object and rerenders the Component (calls Update Lifecycle methods) <br>
+        - merges the passed object into the component state object <br>
+        - in react this is the only recommended way to change the Component <mark>state</mark> (because it re-renders the Component)
+      </td>
+    </tr>
+  </table> <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <h2 class="headerExtra"><u> Props </u></h2>
+  <pre class="syntax">
+    class <reqval>Component</reqval> extends React.Component {
+      constructor(props) {
+        super(props);
+      }
+      
+      render() {
+        return (
+          <reqval>JSX</reqval> {this.props.<reqval>propsKey</reqval>} <reqval>JSX</reqval>    // referencing prop keys
+        )
+      }
+    }
+  </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    
+// Function Component -----------------------------------------------------------------
+    function MyApp(props){                                                             // props are available as first argument in a Function Component    
+        return( &lt;p&gt;Surname: {props.surname} Firstname: {props.firstname}&lt;/p&gt; )           // using props values in JSX  
+    }
+    
+// Class Component --------------------------------------------------------------------
+    class MyApp extends React.Component{
+        constructor(props){                                                            // constructor method not required but if present must hold the props argument 
+            super(props);                                                                // super must be called before anything else with props argument (references the parent component props)    
+            props.surname;                                                             // -> 'Pall'
+            props = null;                                                              // -! props values are read only (this will throw an error)    
+        }
+        render(){
+            return( &lt;p&gt;Surname: {this.props.surname} Firstname: {this.props.firstname}&lt;/p&gt; )  // using props values in JSX   // -! if any props property value is null or undefined JSX won't display it   
+        }
+    }
+    
+// ------------------------------------------------------------------------------------
+    ReactDOM.render(<MyApp surname="Pall" firstname="Arpad"/>, document.getElementById('testElement'));                         // props are passed as Component property/value pairs into the component 
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> <mark>props</mark> in Constructor function TEST </u></h4>
+    <pre>
+// main React script file (index.js) --------------------------------------------------
+// ------------------------------------------------------------------------------------
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    
+    import Joke from './Joke.js';
+    
+    function App(){
+        return(
+            &lt;div&gt;
+                &lt;Joke question="har 4 foot 1 tail" punchLine="Cat"/&gt;                   // prop values are passed as component properties into the component    
+                &lt;Joke question="Has no hands or legs but can limb" punchLine="fart"/&gt;
+                &lt;Joke question="Furry Sweety" punchLine="Dog"/&gt;
+            &lt;/div&gt;
+        )
+    }
+    
+    ReactDOM.render(&lt;App /&gt;, document.getElementById('testElement'));
+    
+// Joke.js file -----------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
+    import React from 'react';
+    
+    function Joke(props){                                                              // the 'props' object holds the passed component property values 
+        return(
+            &lt;div style={{border:'solid 1px black', padding:'0 10px'}}&gt;
+                &lt;p&gt; Question: {props.question} &lt;/p&gt;                                    // we can use these values as we like programatically 
+                &lt;p&gt; Punchline: {props.punchLine} &lt;/p&gt;
+            &lt;/div&gt;
+        )
+    }
+    
+    export default Joke;
+    </pre>
+    <hr>
+    <!-------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>props</mark> in Constructor function TEST </u></h4>
+    <pre>
+// main React script file (index.js) --------------------------------------------------
+// ------------------------------------------------------------------------------------
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    
+    import Joke from './Joke.js';
+    
+    function App(){
+        return(
+            &lt;div&gt;
+                &lt;Joke question="har 4 foot 1 tail" punchLine="Cat"/&gt;                   // prop values are passed as component properties into the component    
+                &lt;Joke question="Has no hands or legs but can limb" punchLine="fart"/&gt;
+                &lt;Joke question="Furry Sweety" punchLine="Dog"/&gt;
+            &lt;/div&gt;
+        )
+    }
+    
+    ReactDOM.render(&lt;App /&gt;, document.getElementById('testElement'));
+    
+// Joke.js file -----------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
+    import React from 'react';
+    
+    class Joke extends React.Component{
+        constructor(props){
+            super(props);
+        }
+        render(){
+            return(
+                &lt;div style={{border:'solid 1px black', padding:'0 10px'}}&gt;       
+                    &lt;p&gt; Question: {this.props.question} &lt;/p&gt;                           // props values are available through the 'this.props'    
+                    &lt;p&gt; Punchline: {this.props.punchLine} &lt;/p&gt;
+                &lt;/div&gt;
+            )
+        };
+    };
+    
+    export default Joke;    
+    </pre>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------------------------------------->
+  <h2 class="headerExtra"><u> State </u></h2>
+  <pre class="syntax">
+    class <strong>Component</strong> extends React.Component{
+      constructor(){
+          super()
+          this.state                         // holds this <strong>Component</strong>'s' state 
+      }
+      <strong>method</strong>(){
+          this.setState(<strong>state:obj</strong>)           // set the <mark>state</mark> object and Updates this <strong>Component</strong> (calls Update Lifecycle methods)  
+        }
+    }
+    </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    
+    class MyApp extends React.Component{
+        constructor(){
+            super();
+            this.state = {surName:'Pall', firstName:'Arpad'}                           // initializing the state object when the Component creates   
+        }
+        render(){
+            return( &lt;p&gt;My name is {this.state.surName} {this.state.firstName}&lt;/p&gt; )    // using state values  
+        }
+        componentDidMount(){
+            setTimeout(()=>{                                                           // after 10 seconds   
+                this.setState({surName:'Biro', firstName:'Bircsy'});                   // re-renders the Component with new state properies    
+                // this.state = {surName:'Biro', firstName:'Bircsy'}                   // -! manually setting the state object is not recommended (mainly because it does not triggers re-rendering)  
+            // setState with function -------------------------------------------------
+                this.setState(function(prevState){
+                    prevState;                                                         // previous state object 
+                    return {surName:'Biro', firstName:'Bircsy'};                       // the returned an object will be the new state object  
+                });
+            }, 10000);
+        }
+    }
+    
+    ReactDOM.render(<MyApp />, document.getElementById('testElement'));
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> Class Component <mark>state</mark> TEST </u></h4>
+    <pre>
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    
+    class MyApp extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {                                                             // state object values set 
+                surName: 'Pall',
+                firstName: 'Arpad',
+                age: 35
+            }
+        }
+        render(){
+            return( &lt;p&gt;Surname: {this.state.surName} Firstname: {this.state.firstName} Age: {this.state.age}&lt;/p&gt; )  // state values used here 
+        }
+        componentDidMount(){
+            setTimeout(()=>{
+                this.setState({surName:'Biro', firstName:'Bircsy', age:34});           // sets the state object and updates the component (Update Lifecycle methods called) son the component is re-rendered with new state values 
+                // this.state.surName = 'Biro';                                        // manually setting the state object is not recommended in React   
+            }, 3000);
+        }
+    }
+    
+    ReactDOM.render(&lt;MyApp /&gt;, document.getElementById('testElement'));
+    </pre>
+    <hr>
+    <!-------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>setState</mark> with function TEST </u></h4>
+    <pre>
+    import React, { Component } from 'react';
+    import ReactDOM from 'react-dom';
+    
+    class MyApp extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {count:0};
+        }
+        handleClick = () =>{
+            this.setState(function(prevState){                                         // argument is the previous state object
+                return {count:prevState.count + 1}                                     // must return an object which will be the updated state object    
+            });
+        }
+        render(){
+            return (
+                &lt;div style={{textAlign:'center', fontSize:30}}&lt;
+                    &lt;h1&lt; {this.state.count}&lt;/h1&lt;
+                    &lt;button style={{fontSize:35}} onClick={this.handleClick}&lt;Change!&lt;/button&lt;
+                &lt;/div&lt;
+            )
+        };
+    };
+    
+    ReactDOM.render(&lt;MyApp /&lt;, document.getElementById('testElement'));
+    </pre>
+  </details>
+
+
+  <br><br>
+</body>
+
+</html>

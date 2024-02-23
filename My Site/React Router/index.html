@@ -31,8 +31,7 @@
   <p><a href="https://reactrouter.com/en/main" target="_blank">reactrouter.com</a></p>
   <h2 style="color:green;"><u> Remember This : </u></h2>
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-  <p> - React Router allows client side routing for SPAs (Single Page Application), (frontend navigation without making
-    request to the server for new pages) </p>
+  <p> - React Router allows client side routing for SPAs (Single Page Application), (frontend navigation without making request to the server for new pages) </p>
   <p> - React Router keeps track of the URL and renders components on the UI based on the current URL (location) </p>
   <p> - check out git hub repo <mark>arpadpall21/react_router_demo</mark> for a functional demo </p>
   <details class="example">
@@ -126,7 +125,7 @@
   </details>
   <!----------------------------------------------------------------------------------------->
   <hr>
-  <h2 class='header'> The <mark>&lt;Route&gt;</mark> component </h2>
+  <h2 class='header'> Routing <mark>&lt;Route&gt;</mark> component </h2>
   <pre class='syntax'>
     &lt;Route path='<strong>baseRoute</strong>' element={<strong>reactComponent</strong>} &gt; 
       &lt;Route
@@ -148,7 +147,20 @@
              // optional <mark>?</mark> makes this param optional route segment
     *        // matches any following route 
   </pre>
-  <h3 class="header"> The <mark>&lt;Navigate&gt;</mark> component and <mark>useParams()</mark> / <mark>useLoaderData()</mark> / <mark>useLocation()</mark> / <mark>useNavigation()</mark> / <mark>redirect()</mark> hooks </h3>
+  <h2 class="header"> The <mark>useParams()</mark> / <mark>useLoaderData()</mark> / <mark>useLocation()</mark> / <mark>useNavigation()</mark> hooks </h2>
+  <pre class='syntax'>
+  import { useParams, useLoaderData, useLocation, useNavigation } from 'react-router-dom'
+  
+  function <strong>Component</strong>() {
+    const params = useParams()            // return an object containing param values on the current route (if any)
+    const loaderData = useLoaderData()    // returns the <mark>loaderFn</mark> returned value 
+    const location = useLocation()        // returns an object containing location information (like the current url path)
+    const useNavigation()                 // returns navigation informations (ex like the loading state of the current component)
+    
+    return <strong>jsx</strong>
+  }  
+  </pre>
+  <h2 class="header"> Redirect <mark>&lt;Navigate&gt;</mark> component / <mark>redirect()</mark> function / <mark>useNavigate()</mark> hook </h2>
   <pre class='syntax'>
 <span style='color:grey;'>// index.js -------------------------</span>
   &lt;Route path='<strong>route</strong>' element={<strong>SomeComponent</strong>} loader={loaderFn} /&gt;
@@ -160,22 +172,28 @@
   
   
 <span style='color:grey;'>// SomeComponent.js -------------------</span>
-  import { Navigate, useParams, useLoaderData, useLocation, useNavigation } from 'react-router-dom'
+  import { Navigate, useNavigate } from 'react-router-dom'
   
-  
-  export default function <strong>SomeComponent()</strong> {
-    const params = useParams()            // return an object containing param values on the current route (if any)
-    const loaderData = useLoaderData()    // returns the <mark>loaderFn</mark> returned value 
-    const location = useLocation()        // returns an object containing location information (like the current url path)
-    const useNavigation()                 // returns navigation informations (ex like the loading state of the current component)
+  function <strong>Component</strong>() {
+    const navigate = useNavigate()
+    
+    function <reqval>handerSomeEvent</reqval>() {
+      naviage(<reqval>route</reqval>)                          // redirects to <strong>route</strong>   
+    }
     
     if (<strong>someCondition</strong>) {
-        return &lt;Navigate to='<strong>route</strong>'&gt;      // navigates the user to <strong>route</strong>   
+        return &lt;Navigate to='<strong>route</strong>'&gt;          // redirects to <strong>route</strong>   
     }
     
     return <strong>jsx</strong>
   }  
   </pre>
+
+
+
+
+
+
   <details class="example">
     <summary> Example : </summary>
     <pre>

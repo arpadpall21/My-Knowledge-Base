@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title> React JS </title>
+  <title> Basics </title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../../Assets/stylesPages.css">
@@ -14,8 +14,8 @@
 </head>
 
 <body>
-  <h1> React JS (ver 4.0.0) </h1>
-  <p> Updated ( 2020-10-17 )</p>
+  <h1> Basics </h1>
+  <p> Updated ( 2020-10-17 / 2024-02-14 )</p>
   <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
     <a href="../index.html" title="Learn WebDesign">React></a> Basics
   </p>
@@ -28,42 +28,20 @@
       <th> Description </th>
     </tr>
     <tr class="05.01">
-      <td colspan="2"> Setting up React Developement Environemnt </td>
-    </tr>
-    <tr class="05.02">
-      <td> <em>$</em> npm install create-react-app </td>
-      <td> - npm install React locally (where you want to set up the React Environment) </td>
-    </tr>
-    <tr class="05.03">
-      <td> <em>$</em> npx create-react-app <strong>appName</strong> <small>[--template typescript]</small> </td>
+      <td> npx create-react-app <strong>appName</strong> <small>[--template typescript]</small> </td>
       <td>
         - sets up the <strong>appName</strong> React Application Environemnt <br>
         (<small>--template typescript</small>) environemnt create in TypeScript
       </td>
     </tr>
-    <tr class="06.01">
-      <td> <em>$</em> npm start </td>
+    <tr class="05.02">
+      <td> npm start </td>
       <td> - starts the React Environment Developement Server (on <mark>localhost:3000</mark>) (calling from the
         <strong>appName</strong> directory)
       </td>
     </tr>
-    <tr class="07.01">
-      <td> <em>$</em> npm view react|react-native|react-redux version </td>
-      <td> - prints the version of the specified react library </td>
-    </tr>
-    <tr class="08.01">
-      <td> <strong>appDirPath</strong>/public/index.html </td>
-      <td> - location of React application HTML document </td>
-    </tr>
-    <tr class="08.02">
-      <td> <strong>appDirPath</strong>/src/index.js </td>
-      <td> - location of React root script file </td>
-    </tr>
-    <tr class="15.01">
-      <td colspan="2"> Build React App Production version </td>
-    </tr>
-    <tr class="15.02">
-      <td> <em>$</em> npm run build </td>
+    <tr class="10.01">
+      <td> npm run build </td>
       <td>
         - builds a production version of the current developement React App (called from the developement React
         App directory) <br>
@@ -84,82 +62,41 @@
   <h2 style="color:green;"><u> Remember This : </u></h2>
 
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-  <p> - React JS is a JavaScript library which is used to build single page application </p>
-  <p> - React applications are composed by UI React Components </p>
-  <p> - a React Component is basically a <u>reusable</u> set of HTML elements building a piece of the application
-    (Component) </p>
-  <p> - React does not manipulates the DOM directly instead it maintains a Virtual DOM and only renders HTML elements
-    when needed, this makes React fast! </p>
-  <hr>
-  <!----------------------------------------------------------------------------------------------->
-  <h2 class="headerExtra"><u>Using React </u></h2>
-  <p> - there are 2 ways of using React JS either directly in HTML file or setting up the React environemnt with
-    <mark>node</mark> and <mark>npm</mark>
-  </p>
-  <hr>
-  <!----------------------------------------------------------------------------------------------->
-  <h2 style="color:darkblue;"><u>Using React directly in HTML </u></h2>
-  <p> - using React directly from HTML is not ment to be used in production, its OK mostly for quick testing </p>
+  <p> - React is a JavaScript library to build single page application, it's an application development methology </p>
+  <p> - it provides a full development environment then we can 'build' the application and serve it by a web server (building is basically translating the react code into a browser readabe code) </p>
   <pre class="syntax">
-SYNTAX:     <em>&lt;html&gt;
-                &lt;head&gt;</em>
-                    &lt;script src="https://unpkg.com/react@16/umd/react.production.min.js"&gt;&lt;/script&gt;              // include these 3 CDN links to the head of the HTML document and you're good to go   
-                    &lt;script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"&gt;&lt;/script&gt;
-                    &lt;script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"&gt;&lt;/script&gt;
-                <em>&lt;/head&gt;
-                &lt;body&gt;</em>
+<span style="color:darkgray;">// React project folder --------------------------------</span>
+  <reqval>&lt;react folder&gt;</reqval>
+    |-- public          // contains all static assets (logo, fonts, etc...)
+    |-- src             // contains the React logic (components, etc...)
+  </pre>
+  <p> - React also can be used through CDN, directly from HTML document (but it's mostly a try out thing not a production stuff) </p>
+  <details class="example">
+    <summary> DEMO </summary>
+    <h4 class="header"> Using React directly in the HTML document (through CDN) </h4>
+    <pre>
+    <em>&lt;html&gt;
+        &lt;head&gt;</em>
+            &lt;script src="https://unpkg.com/react@16/umd/react.production.min.js"&gt;&lt;/script&gt;              // include these 3 CDN links to the head of the HTML document and you're good to go   
+            &lt;script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"&gt;&lt;/script&gt;
+            &lt;script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"&gt;&lt;/script&gt;
+        <em>&lt;/head&gt;
+        &lt;body&gt;</em>
+            &lt;div id="testElement"&gt;&lt;/div&gt;            // target HTML element wher to render the React Component    
+        
+            &lt;script type="text/babel"&gt;
+                function TestComponent(){           // React Code 
+                    return &lt;h1&gt;Hello World!&lt;/h1&gt;
+                }
                 
-                    &lt;script type="text/babel"&gt;
-                        <strong>React code ... </strong>                                                // React code 
-                    &lt;/script&gt;
-                <em>&lt;/body&gt;
-            &lt;/html&gt;</em>
+                ReactDOM.render(&lt;TestComponent /&gt;, document.getElementById('testElement'));
+            &lt;/script&gt;
+        <em>&lt;/body&gt;
+    &lt;/html&gt;</em>
     </pre>
-  <details class="example">
-    <summary> DEMO </summary>
-    <pre>
-    &lt;div id="testElement"&gt;&lt;/div&gt;                                                       // target HTML element wher to render the React Component    
-    
-&lt;script type='text/babel'&gt;
-    function TestComponent(){                                                          // React Code 
-        return &lt;h1&gt;Hello World!&lt;/h1&gt;
-    }
-    
-    ReactDOM.render(&lt;TestComponent /&gt;, document.getElementById('testElement'));
-&lt;/script&gt;
-    </pre>
-  </details>
-  <details class="example">
-    <summary> Example : </summary>
-    <h4 style="color:darkblue;"><u> React directly in HTML TEST </u></h4>
-    <div id="testElement"> </div>
-    <script type='text/babel'>
-      function TestComponent() {
-        return <h1>Hello World!</h1>
-      }
-
-      ReactDOM.render(<TestComponent />, document.getElementById('testElement'));
-
-    </script>
-    <pre>
-    &lt;div id="testElement"&gt; &lt;/div&gt;
-    
-&lt;script type='text/babel'&gt;
-    function TestComponent(){
-        return &lt;h1&gt;Hello World!&lt;/h1&gt;
-    }
-    
-    ReactDOM.render(&lt;TestComponent /&gt;, document.getElementById('testElement'));
-&lt;/script&gt;
-    </pre>
-  </details>
-  <hr>
-  <!----------------------------------------------------------------------------------------------->
-  <h2 style="color:darkblue;"><u> Setting up React Development Environment <mark>create-react-app</mark> /
-      <mark>start</mark> / <mark>view</mark> </u></h2>
-  <p> - setting up a React Development Environment is the 'right way' to develop React apps </p>
-  <details class="example">
-    <summary> DEMO </summary>
+    <!----------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Setting up React Development Environment <mark>create-react-app</mark> / <mark>start</mark> / <mark>view</mark> </h4>
     <pre class="cmd">
     pall@Ryzen:~/Documents/CodePlus/My Site/03 Improuve/Learn WebDesign/React JS/TEST$ npm install create-react-app     // installs React locally 
         // ...  
@@ -174,29 +111,9 @@ SYNTAX:     <em>&lt;html&gt;
     pall@Ryzen:~/Documents/CodePlus/My Site/03 Improuve/Learn WebDesign/React JS/TEST$ npm view react version           // React version 
     16.14.0
     </pre>
-  </details>
-  <details class="example">
-    <summary> Example : </summary>
-    <h4 style="color:darkblue;"><u> Set up React Environment </u></h4>
-    <pre class="cmd">
-pall@Ryzen:~/Documents/CodePlus/My Site/03 Improuve/Learn WebDesign/React JS/TEST$ npm install create-react-app     // installs React locally 
-    // ...  
-    
-pall@Ryzen:~/Documents/CodePlus/My Site/03 Improuve/Learn WebDesign/React JS/TEST$ npx create-react-app pallapp     // sets up 'pallapp' React Developement Environment (in the 'pallapp' directory) 
-    // ...
-    
-pall@Ryzen:~/Documents/CodePlus/My Site/03 Improuve/Learn WebDesign/React JS/TEST$ cd pallapp                       // navigating into the created application directory    
-pall@Ryzen:~/Documents/CodePlus/My Site/03 Improuve/Learn WebDesign/React JS/TEST/pallapp$ npm start                // starts the React developement Server 
-    </pre>
-  </details>
-  <hr>
-  <!----------------------------------------------------------------------------------------------->
-  <h2 style="color:darkblue;"><u> Build React Apps production version <mark>build</mark></u></h2>
-  <p> - in Development Enviroment we develop the app, once finished we build the 'production' version simply with the
-    <mark>build</mark> command
-  </p>
-  <details class="example">
-    <summary> DEMO </summary>
+    <!----------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Build & server the app <mark>build</mark></h4>
     <pre class="cmd">
     pall@Ryzen:~/React JS/TEST/pallapp$ npm run build                                  // builds a production version of the 'pallapp' React app (creates a 'build' directory and stores the necessary App files in it)    
     </pre>
@@ -215,190 +132,17 @@ pall@Ryzen:~/Documents/CodePlus/My Site/03 Improuve/Learn WebDesign/React JS/TES
     app.listen(1000, '127.0.0.1');                                                     // served on 'localhost:1000'  
     </pre>
   </details>
-  <details class="example">
-    <summary> Example : </summary>
-    <h4 style="color:darkblue;"><u> Serving React App with express.js TEST </u></h4>
-    <p> - the most popular and easy way is to serve React Apps with express.js </p>
-    <pre>
-    var express = require('express');
-    var path = require('path');
-    var app = express();
-    
-    app.use(express.static(path.join(__dirname, 'build')));                            // serving static files (the page's .css and .js files)
-    
-    app.get('/', function(req, res){
-        res.sendFile(path.join(__dirname, 'build', 'index.html'))                      // serving the main file 
-    });
-    
-    app.listen(1000, '127.0.0.1');
-    </pre>
-    <hr>
-    <!----------------------------------------------------------------------------------------------->
-    <h4 style="color:darkblue;"><u> Serving React App with node server TEST </u></h4>
-    <pre>
-    var http = require('http');
-    var fs = require('fs');   
-    
-    var srv = http.createServer(function(req, res){
-        var url = req.url;
-        if(req.url == '/') url = '/index.html';
-        
-        fs.readFile(__dirname + '/build' + url, function(err, data){                   // serving the requested files (main 'index.html' and its static files)    
-            if(err) console.log(err)
-            res.writeHead(200);
-            res.end(data);
-        });    
-        
-    });
-    
-    srv.listen(1000, '127.0.0.1', ()=>console.log('server listening'));                // serving on 'localhost:1000'
-    </pre>
-    <hr>
-    <!----------------------------------------------------------------------------------------------->
-    <h4 style="color:darkblue;"><u> Serving React App with node HTTP/2 TLS server TEST </u></h4>
-    <pre>
-    var http2 = require('http2');
-    var fs = require('fs');
-    
-    var options = {key:fs.readFileSync('./pallKey.pem'), cert:fs.readFileSync('./pallCer.cer')};
-    var srv = http2.createSecureServer(options);
-    
-    srv.listen(1000, 'localhost', ()=>console.log('server is listening!'));
-    
-    srv.on('stream', function(stream, headers){
-        var url = headers[':path'];
-        if(url == '/') url = '/index.html';
-        
-        fs.readFile(__dirname + '/build' + url, function(err, data){        // serving the requested files (main 'index.html' and its static files)
-            if(err) console.log(err);
-            stream.end(data);
-        })
-    });
-    </pre>
-  </details>
+  <!------------------------------------------------------------------------------------------>
+  <hr>
+  <h2 class="header"> React core mechanic explained </h2>
+  <p> - the React application is composed by components, each component contains its own JSX code that is rendered on the DOM </p>
+  <p> - components have their own states, by setting the state React will rerender the component and (re)paints the DOM part for which the component is responsible (if necessary) </p>
+  <p> - components are structured in hierarchy (triggering a component will rerender <u>all</u> its child components) </p>
+  <p> - React does not manipulates the DOM directly, instead it maintains a Virtual DOM and only (re)renders HTML elements when needed, this makes React fast! </p>
+  <img src="React Core Mechanic.png" alt="React Core Mechanic" height="200">
 
   <br><br>
-
-
-
-  <!--
-  - modifying several time the component state will not trigger that many rerenders (instead once the function executed all state are modified then one rerender will be triggered) (this is called batching -> setting multiple states then rerender the componet once)
-      - once we set the new state is value change only for the new rerender (not for the current render) (so we are basically scheduling the new value)
-      Setting state does not change the variable in the existing render, but it requests a new render.
-      - a new object triggers the rerender (mutating the old one won't!)
-
-  - rerendering a parent componet will rerender all its child components that's the hole idea how to control child componets
-  
-  
-  - useContext is great becaus all child elements can access to the root parnet state (without flowing down with props)
-    - follow hierarchy design the state should live in a component level where all child component can access it
-  
-  
-  - keep your component pure 
-      - give the outside variable modification example!!!
-      - in strict development mode component rendered twice so this rule is enforced this way 
-  
-  - think on component hierarchy when you build your app
-  - 'one way data flow (parent-through-children)' (find the closes comon parent component)
-
-  - the data can be set inversely (pass down the set as props) document this down!!!
-      - also we can pass down event handler as props (one the 'on' prefix -> these are props so we don't need to name them as the required 'onClic')
-  
-  
-  - for each list element you need a unique key
-      - WARNING it's not a good idea to use map or filter method indexes because this makes rerenders the item (this can lead to performace issues because the component is remounted!)
-          - if possible use reliable keys (like DB id, etc...)
-      - React uses these key to identify components (TEST different component on the same place)
-      - keys are unique within parent component 
-      - if the component has no key and react renders anothor component on the same place the old state is preserved because react thinks that's the same component
-  
-  - JSX roule -> return a single element (can be a fragment)
-  
-  - default value for props (document it)
-    - the children props (document it) 
-      - this prop receives ONLY react components!!! (NOOO it receives anything that was specified between the componet tags!!! TEST this -> !!!!)
-      - always the last argument
-  
-  - props can be changed (we can dynamically pass new props down)
-  
-  - in conditional rendering with && if the left side is 0 then 0 will be rendered!!! (document this down)
-      - In JSX, {cond && <A />} means “if cond, render <A />, otherwise nothing”.
-  
-  - it is a convention to name event handler prefixed with 'handle'
-  - it is a convertion to call the event argument 'e' in event handlers
-
-  - react renders everything on the initial run (document this on basics page)
-      - rerender -> only modify the dom if it was changed from the previous 
-
-  - when setState(fn) used we can update the previous value during render agan (document this behaviour)
-      - so setState(oldState + 1)               -> replaces the old value
-      - setState(oldState => oldState + 1)      -> based on the stored state updates the state
-
-  - explain the reactive (single source of truth approach)
-
-  - Declarative Programming -> we define what the program should accomplish then the program takes care the process
-  - Imperative Programming  -> we define the exact sequence of steps to achieve the desired outcome 
-
-  - if we want two componet to share the same state we lift up the state in the closest comon component then pass it down as props 
-  
-  - controlled / uncontrolled - a component can be controlled by its parent
-  
-  - the state is destroyed when the component is unmounted 
-  
-  - update useReducer hook 
-      - the action argument is an object { type: <>, ... } (not a string as it was documented!!!)
-      - use switch statement in your reducer function!!
-      - reducer is more of a declarative programming approach (we tell what to do then the program takes care of the action)
-      - reducer function must be pure (like components)
-      - reducers should update ojbect without mutation
-      
-  - just mention somewhere that in large apps using reducers and in context is great!
-  
-  - explain and test that the context provider default 'value={defVal}' is when the component renders
-      - it is optional -> I suppose
-  
-  - with useRef() hoook store everythiong on current !!!
-      - write a demo that focueses on DOM
-      - only use useRef() for non destructive DOM actions like focus, scorll, etc...
-  
-  - so forwardRef() provides a way to reference a doom node in a child component 
-  - the useImperativeHanlde() doc is OK
-  
-  - useEffect()
-      - use it when you need to synchronize to an external system (effect = synchronize with external system)
-      - TEST if you updated the component will the cleanup function run???
-  
-  - stale = outdated / no longer valid
-  
-  - Component lifecycle:    (Document this it's important)
-      - Mount     = React sync its virtual DOM with the Browser DOM 
-      - Update    = React check if the current virtual DOM is different from the previous (paints the dom if not)
-                      - when you update a component tree React modifies only components that are festh
-      - Unmount   = React Removes the component from the browser DOM
-  
-  - think of React as domain driven development (ouside events needs to be synced with react useEffect() useRef())
-  
-  - reactive values -> variables in the component that if change the component reacts to it
-      - declaring a value within the component with const is NOT a reactive value (in this case the linter won't complain)
-  
-  - useEffectEvent() -> experimental hook (document this)
-      - sometimes we want to pass values in useEffect (withoug specifying as dependency)
-      - this hook will solve this problem (until then just supress the lineter)
-  
-  - passing objects or functions as useEffect() hook dependency is not recommended (avoid if possible)
-----------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------
--- version hooks !!!
-
-
-
-
--->
-
-
-
-
-  <h2 class="test" style=""><a href="TEST/index.html"> TEST > </a></h2>
+  <h2 class="test"><a href="TEST/index.html"> TEST > </a></h2>
 </body>
 
 </html>
