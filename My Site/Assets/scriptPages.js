@@ -1,29 +1,167 @@
-$(document).ready(function () {
-  // color fonts after the "//" and "// ->" in "<pre>" elements
-  var preCollection = $("pre[class!='syntax']");                  // collect pre elements without "syntax" class
-  for (let i = 0; i < preCollection.length; i++) {
-    let pre = preCollection[i].innerHTML;                       // content of the current "pre" element 
-    var currentLine = new RegExp(".{1,}", "g");                 // select one line ("." selects all element except new line!)
-    var newPre = "", store = "", lineCount = 0;
+const preCommentInfoColor = '#00b3b3';
+const preCommentWarningColor = '#e19a00';
+const preCommentErrorColor = 'orangered';
+const preCommentReturnColor = 'cornflowerblue';
 
-    while (currentLine.exec(pre) != null) {                      // counting the number of lines in the current "pre" element
-      lineCount++;
+const preBackgroundColor = '#f5f2e7';
+const preSyntaxBackgroundColor = '#4b4b4b';
+
+
+function getLines(preElement) {
+  const result = [];
+  let multilineOpener = ['', 0, ''];
+  
+  for (let line of preElement.innerHTML.split('\n')) {
+    if(/\/\//.test(line) && /class="openable"|class='openable'/.test(line)) {
+      const openerElement = line.match(/(?<=<)[a-z|A-Z]*(?=( class="openable"| class='openable'))/)[0];
+
+      if (new RegExp(`</${openerElement}>`).test(line)) {
+        result.push(line);
+        continue;
+      }
+
+      multilineOpener[0] = openerElement;
+      multilineOpener[1] += 1;
+      multilineOpener[2] = line;
+      continue;
+    } else if (multilineOpener[1] === 1 && line.match(new RegExp(`</${multilineOpener[0]}>`))) {
+      multilineOpener[2] += line;
+      result.push(multilineOpener[2]);
+      multilineOpener = ['', 0, ''];
+      continue;
+    } else if (multilineOpener[1] > 0) {
+      multilineOpener[2] += line;
+      continue;
     }
-    for (; lineCount > 0; lineCount--) {
-      let testLine = currentLine.exec(pre)[0];                // returns the current line each time it is called 
 
-      testLine = testLine.replace(/\/\/ -&gt;.{1,}/, "$&".fontcolor("cornflowerblue"));   // color the line if starts by the specified regExp 
-      testLine = testLine.replace(/\/\/ [^-].{1,}/, "$&".fontcolor("grey"));
-      testLine = testLine.replace(/\/\/ --.{1,}/, "$&".fontcolor("grey"));
-      testLine = testLine.replace(/# [^-].{1,}/, "$&".fontcolor("grey"));
-      testLine = testLine.replace(/# --.{1,}/, "$&".fontcolor("grey"));
-      testLine = testLine.replace(/\/\/ -! .{1,}/, "$&".fontcolor("#e19a00"));
-      testLine = testLine.replace(/\/\/ !! .{1,}/, "$&".fontcolor("orangered"));
-
-      newPre += store.concat(testLine + "\n");                // the "\n" adds a new line character at the end of every line
-    }
-    preCollection[i].innerHTML = newPre;                            // override the old content with the new one 
+    result.push(line);
   }
+
+  console.log(result);
+
+  return result;
+}
+
+function colorComments(line) {
+  return line.replace(/\/\/.*/, (match) => {
+      if (match.startsWith('// -!')) {
+        return `<span style="color:${preCommentWarningColor}">${match}</span>`;
+      } else if (match.startsWith('// !!')) {
+        return `<span style="color:${preCommentErrorColor}">${match}</span>`;
+      } else if (match.startsWith('// -&gt;')) {
+        return `<span style="color:${preCommentReturnColor}">${match}</span>`;
+      } else {
+        return `<span style="color:${preCommentInfoColor}">${match}</span>`;
+      }
+  })
+
+}
+
+$(document).ready(function () {
+  
+  
+  // list of string lines start with certain character for styling 
+  
+  //
+  // -!
+  // !!
+  // ->
+  
+  
+  
+  // color fonts after the "//" and "// ->" in "<pre>" elements
+  // var preCollection = $("pre[class!='syntax']");                  // collect pre elements without "syntax" class
+  
+  
+  const preElements = $("pre");                  // collect pre elements without "syntax" class
+  
+  
+  for (let preElement of preElements) {
+    let result = '';
+
+    console.log(preElement)
+
+    for (line of getLines(preElement)) {
+      const coloredLine = colorComments(line);
+      
+      
+      // line selector
+      // replacer
+      // marginer
+    
+    
+    
+      if (preElement.classList.contains('syntax')) {
+        result += `<div style="background-color:${preSyntaxBackgroundColor}; margin:0; padding:0">${coloredLine}</div>`;
+        continue;
+      }
+      
+      result += `<div style="background-color:${preBackgroundColor}; margin:0; padding:0">${coloredLine}</div>`;
+    }
+    
+    preElement.innerHTML = result;
+    
+    
+    
+    
+    
+    
+    
+    
+    // let pre = currentPreElement.innerHTML;                       // content of the current "pre" element 
+    // var currentLine = new RegExp(".{1,}", "g");                 // select one line ("." selects all element except new line!)
+    // var newPre = "", store = "", lineCount = 0;
+
+    // while (currentLine.exec(pre) != null) {                      // counting the number of lines in the current "pre" element
+    //   lineCount++;
+    // }
+    // for (; lineCount > 0; lineCount--) {
+    //   let testLine = currentLine.exec(pre)[0];                // returns the current line each time it is called 
+
+    //   testLine = testLine.replace(/\/\/ -&gt;.{1,}/, "$&".fontcolor("cornflowerblue"));   // color the line if starts by the specified regExp 
+    //   testLine = testLine.replace(/\/\/ [^-].{1,}/, "$&".fontcolor("#00b3b3"));
+    //   // testLine = testLine.replace(/\/\/ --.{1,}/, "$&".fontcolor("red"));
+    //   testLine = testLine.replace(/# [^-].{1,}/, "$&".fontcolor("grey"));
+    //   testLine = testLine.replace(/# --.{1,}/, "$&".fontcolor("grey"));
+    //   testLine = testLine.replace(/\/\/ -! .{1,}/, "$&".fontcolor("#e19a00"));
+    //   testLine = testLine.replace(/\/\/ !! .{1,}/, "$&".fontcolor("orangered"));
+
+    //   newPre += store.concat(testLine + "\n");                // the "\n" adds a new line character at the end of every line
+    // }
+    // currentPreElement.innerHTML = newPre;                            // override the old content with the new one 
+  }
+
+
+
+
+// -----------------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------------------
+  // for (let i = 0; i < preCollection.length; i++) {
+  //   let pre = preCollection[i].innerHTML;                       // content of the current "pre" element 
+  //   var currentLine = new RegExp(".{1,}", "g");                 // select one line ("." selects all element except new line!)
+  //   var newPre = "", store = "", lineCount = 0;
+
+  //   while (currentLine.exec(pre) != null) {                      // counting the number of lines in the current "pre" element
+  //     lineCount++;
+  //   }
+  //   for (; lineCount > 0; lineCount--) {
+  //     let testLine = currentLine.exec(pre)[0];                // returns the current line each time it is called 
+
+  //     testLine = testLine.replace(/\/\/ -&gt;.{1,}/, "$&".fontcolor("cornflowerblue"));   // color the line if starts by the specified regExp 
+  //     testLine = testLine.replace(/\/\/ [^-].{1,}/, "$&".fontcolor("#00b3b3"));
+  //     // testLine = testLine.replace(/\/\/ --.{1,}/, "$&".fontcolor("red"));
+  //     testLine = testLine.replace(/# [^-].{1,}/, "$&".fontcolor("grey"));
+  //     testLine = testLine.replace(/# --.{1,}/, "$&".fontcolor("grey"));
+  //     testLine = testLine.replace(/\/\/ -! .{1,}/, "$&".fontcolor("#e19a00"));
+  //     testLine = testLine.replace(/\/\/ !! .{1,}/, "$&".fontcolor("orangered"));
+
+  //     newPre += store.concat(testLine + "\n");                // the "\n" adds a new line character at the end of every line
+  //   }
+  //   preCollection[i].innerHTML = newPre;                            // override the old content with the new one 
+  // }
+
+
 
   // print an "empty" message if the "<details>" element does not have any "<p>" children in the "Note" section
   if (!document.getElementById("notes")) { }                      // if the "notes" element does not exist nothing happens (we must set this code otherwise it will cause an error!)
@@ -35,11 +173,15 @@ $(document).ready(function () {
 
   // -------------------------------------------------------------------------------------
   // program openable element ------------------------------------------------------------
-  if (!document.querySelector('.table caption span[class=changeListOrder]')) {         // keep backward compatibility for non v4.0.0 pages
-    $('.openable').click(function () {
-      $(this).children('div').slideToggle('fast');
-    });
-  } else {
+  // if (!document.querySelector('.table caption span[class=changeListOrder]')) {         // keep backward compatibility for non v4.0.0 pages
+    // $('.openable').click(function () {
+    //   console.log('????')
+      
+    //     console.log(this);
+      
+    //   $(this).children('div').slideToggle(0);
+    // });
+  // } else {
     $('.openable').mouseup(function () {
       if (window.getComputedStyle(this.querySelector('div')).display === 'block') {
         this.querySelector('div').style.display = 'none';
@@ -49,14 +191,14 @@ $(document).ready(function () {
         this.querySelector('div').style.position = 'absolute';
       }
     })
-  }
+  // }
 
   // -------------------------------------------------------------------------------------
   // table order (alphabetically / grouped) ----------------------------------------------
   if (document.querySelector('.table caption span[class=changeListOrder]')) {          // run this code only if the page has v4.0.0 table 
     let tables = document.querySelectorAll('.table');
 
-    function openableToggle(ev) {                                                    // openable element handler 
+    function openableToggle() {
       if (window.getComputedStyle(this.querySelector('div')).display === 'block') {
         this.querySelector('div').style.display = 'none';
         this.querySelector('div').style.position = 'static';
@@ -170,9 +312,6 @@ $(document).ready(function () {
   document.documentElement.addEventListener('keydown', function (ev) {
     if (ev.key === 'Control') ctrKeyPressed = true;
     if (ev.key === 'o') oKeyPressed = true;
-
-    console.log(ctrKeyPressed, oKeyPressed)
-
     if (ctrKeyPressed && oKeyPressed) {
       for (switchElement of tableSwitchCol) {
         switchElement.dispatchEvent(mouseUpEv)

@@ -1,129 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Router API </title> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Router API </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Router API (ver 4.0.0) </h1>
-    <p> Updated ( 2021-01-30 )</p>
-    <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
-        <a href="../index.html">Express JS></a> Router API  
-    </p>
-<table class="table"> 
-<caption> Router
-            <span id="browserSupport" title="updated: 2021-01-30">
-                <span>Express v4.0.0 </span>
-            </span> 
-            <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  <h1> Router API </h1>
+  <p> Updated ( 2021-01-30 / 2024-02-25 )</p>
+  <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
+    <a href="../index.html">Express JS></a> Router API
+  </p>
+  <table class="table">
+    <caption> Router
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
     <tr>
-        <th style="width:30%;"> Method / Property </th>
-        <th> Description </th>
+      <th style="width:30%;"> Method / Property </th>
+      <th> Description </th>
     </tr>
-    <tr class='1'>
-        <td> <strong>router</strong> </td>
-        <td> 
-            - router instance is created and returned by <mark><strong>express</strong>.Router()</mark>  
-        </td>
+    <tr class="1">
+      <td>
+        <strong>express</strong>.Router(<i class="openable">option:obj<div>
+            <p> caseSensitive: <strong>bol</strong> - the router is case sensitive in request <strong>routePath</strong> (<mark>/foo</mark> and <mark>/Foo</mark> treated differently)(Default: <mark>false</mark>) </p>
+            <p> mergeParams: <strong>bol</strong> - preservers the parent app (parameters) <mark><strong>req</strong>.params</mark> values (in case of conflict the child values take precedence over the parent values) (Default: <mark>false</mark>) </p>
+            <p> strict: <strong>bol</strong> - strict routing (<mark>/foo</mark> and <mark>/foo/</mark> treated differently) (Default: <mark>false</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - creates a new <strong>router</strong> which is basically namespaces a path segment (passed as <strong>middelware</strong>)
+      </td>
     </tr>
     <tr class='2'>
-        <td>  
-            <strong>router</strong>.<strong class="openable">httpMethod<div>
-                    <p><b><u> Supported HTTP methods </u></b></p>
-                    <p> - <mark>checkout</mark> </p>
-                    <p> - <mark>copy</mark> </p>
-                    <p> - <mark>delete</mark> </p>
-                    <p> - <mark>get</mark> </p>
-                    <p> - <mark>head</mark> </p>
-                    <p> - <mark>lock</mark> </p>
-                    <p> - <mark>merge</mark> </p>
-                    <p> - <mark>mkactivity</mark> </p>
-                    <p> - <mark>mkcol</mark> </p>
-                    <p> - <mark>move</mark> </p>
-                    <p> - <mark>m-search</mark> </p>
-                    <p> - <mark>notify</mark> </p>
-                    <p> - <mark>options</mark> </p>
-                    <p> - <mark>patch</mark> </p>
-                    <p> - <mark>post</mark> </p>
-                    <p> - <mark>purge</mark> </p>
-                    <p> - <mark>put</mark> </p>
-                    <p> - <mark>report</mark> </p>
-                    <p> - <mark>search</mark> </p>
-                    <p> - <mark>subscribe</mark> </p>
-                    <p> - <mark>trace</mark> </p>
-                    <p> - <mark>unlock</mark> </p>
-                    <p> - <mark>unsubscribe</mark> </p>
-                </div>
-                </strong>(<strong>routePath|[routePath, ...]</strong>, <strong>middleware, ...|[middleware, ...]</strong>)
-        </td>
-        <td> 
-            - triggers middlewares when <strong>httpMethod</strong> request(s) hit the <u>exact <strong>routePath</strong></u>
-        </td>
+      <td>
+        <strong>router</strong>.<strong class="openable">httpMethod<div>
+            <p> ex: <mark>get</mark> </p>
+          </div>
+        </strong>(<strong>routePath|[routePath, ...]</strong>, <strong>middleware, ...|[middleware, ...]</strong>)
+      </td>
+      <td>
+        - triggers middlewares when <strong>httpMethod</strong> request(s) hit the <u>exact <strong>routePath</strong></u>
+      </td>
     </tr>
     <tr class='2.1'>
-        <td>  
-            <strong>router</strong>.all(<strong>routePath|[routePath, ...]</strong>, <strong>middleware, ...|[middleware, ...]</strong>)  
-        </td>
-        <td> 
-            - triggers middlewares when any HTTP request(s) hit the <u>exact <strong>routePath</strong></u>   
-        </td>
-    </tr>  
+      <td>
+        <strong>router</strong>.all(<strong>routePath|[routePath, ...]</strong>, <strong>middleware, ...|[middleware, ...]</strong>)
+      </td>
+      <td>
+        - triggers middlewares when any HTTP request(s) hit the <u>exact <strong>routePath</strong></u>
+      </td>
+    </tr>
     <tr class="5">
-        <td>  
-            <strong>router</strong>.param(<i>param:str</i>, <i class="openable">fn(req, res, next, id)<div>
-                <p> <mark>id</mark> = route parameter value as a string </p>
-            </div></i>)
-        </td>
-        <td> 
-            - triggers the callback when the router receives a value through the specified route parameter (<i>param</i>) <br>
-            - the callback acts as <strong>middleware</strong> when its triggered, so the <mark>next()</mark> must be called for the next <strong>middleware</strong> in the stack   
-        </td>
+      <td>
+        <strong>router</strong>.param(<reqval>param:str</reqval>, <reqval class="openable">fn(req, res, next, id)<div>
+            <p> <mark>id</mark> = route parameter value as a string </p>
+          </div></reqval>)
+      </td>
+      <td>
+        - triggers the callback when the router receives a value through the specified route parameter (<i>param</i>) <br>
+        - the callback acts as <strong>middleware</strong> when its triggered, so the <mark>next()</mark> must be called for the next <strong>middleware</strong> in the stack
+      </td>
     </tr>
     <tr class='4'>
-        <td> <strong>router</strong>.route(<strong>routePath|[routePath, ...]</strong>) </td>
-        <td> 
-            - returns a single route instance (<strong>singleRoute</strong>) on which HTTP request methods can be attached (chained)    
-        </td>
+      <td> <strong>router</strong>.route(<strong>routePath|[routePath, ...]</strong>) </td>
+      <td>
+        - returns a single route instance (<strong>singleRoute</strong>) on which HTTP request methods can be attached (chained)
+      </td>
     </tr>
-        <tr class="4.1"><td></td><td></td></tr>
+    <tr class="4.1">
+      <td></td>
+      <td></td>
+    </tr>
     <tr class="4.2">
-        <td> <strong>singleRoute</strong>.<strong>httpMethod</strong>(<strong>middleware, ...|[middleware, ...]</strong>)<i>...</i> </td>
-        <td> 
-            - HTTP request methods can be chained that execute their middleware when the <strong>singleRoute</strong> <u>exact <strong>routePath</strong></u> is hit  
-        </td>
+      <td> <strong>singleRoute</strong>.<strong>httpMethod</strong>(<strong>middleware, ...|[middleware, ...]</strong>)<i>...</i> </td>
+      <td>
+        - HTTP request methods can be chained that execute their middleware when the <strong>singleRoute</strong> <u>exact <strong>routePath</strong></u> is hit
+      </td>
     </tr>
     <tr class='3'>
-        <td> <strong>router</strong>.use(<strong>routePath|[routePath, ...]</strong>, <strong>middleware, ...|[middleware, ...]</strong>) </td>
-        <td> 
-            - mounts the specified <strong>middleware</strong>(s) at the specified path(s) <br>
-            - triggers middlewares when any HTTP request(s) hit the <u class="openable">base <strong>routePath</strong><div>
-                <p><u><b> the path is computed in the router scope </b></u></p>
-                <p> <mark>app.use('/', middleware, ...)</mark> = will trigger for any request becasue the base is the root </p>
-                <p> <mark>app.use('/profile', middleware, ...)</mark> = will trigger for any request having a URL base of <mark>/profile</mark> (ex: <mark>/profile/pete/xhr</mark>, <mark>/profile/steve/hxx</mark> but won't trigger for <mark>/steve/hxx</mark>) </p>
-            </div></u>
-        </td>
-    </tr> 
-</table>
-<h2 style="color:green;"><u> Notes : </u></h2>
-    <details class="example" id="notes">
+      <td> <strong>router</strong>.use(<strong>routePath|[routePath, ...]</strong>, <strong>middleware, ...|[middleware, ...]</strong>) </td>
+      <td>
+        - mounts the specified <strong>middleware</strong>(s) at the specified path(s) <br>
+        - triggers middlewares when any HTTP request <u class="openable">starts with <strong>routePath</strong>
+          <div>
+            <p><u><b> the path is computed in the router scope </b></u></p>
+            <p> <mark>app.use('/', middleware, ...)</mark> = will trigger for any request becasue the base is the root </p>
+            <p> <mark>app.use('/profile', middleware, ...)</mark> = will trigger for any request having a URL base of <mark>/profile</mark> (ex: <mark>/profile/pete/xhr</mark>, <mark>/profile/steve/hxx</mark> but won't trigger for <mark>/steve/hxx</mark>) </p>
+          </div>
+        </u>
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-        <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - a Router is an isolated instance of routes and middlewares (like a mini app) </p>
-    <p> - usually routers are in their own separated module to make the express app more managable </p>
-<h2 style="color:darkblue;"><u> Router <mark>httpMethod()</mark> / <mark>all()</mark> / <mark>use()</mark> / <mark>route()</mark> / <mark>param()</mark> </u></h2>
-<details class="example" >
-<summary> DEMO </summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+    <p><a href="https://expressjs.com/en/4x/api.html#router" target="_blank"> Router API (expressjs.com)</a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - a Router is an namespaced route path  </p>
+  <pre class="syntax">
+  <reqval>router</reqval> = express.Router()
+  
+  <reqval>app</reqval>.use(<reqval>routePath</reqval>, <reqval>router</reqval>)         // mounts as middleware (ex: <reqval>routePath</reqval> is <mark>/user</mark> -> this <reqval>router</reqval> will handle all requests prefixed with <mark>/user</mark>)    
+  </pre>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     const express = require('express');
     const app = express();
@@ -171,10 +161,9 @@
     
     app.listen(1000, () => { console.log('Express is Listening') })      
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> <mark>all()</mark> / <mark><strong>httpMethod</strong>()</mark> / <mark>use()</mark> TEST </u></h4>
+    <!--------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>all()</mark> / <mark><strong>httpMethod</strong>()</mark> / <mark>use()</mark> TEST </h4>
     <p> - <mark>index.js</mark> file </p>
     <pre>
     const express = require('express');
@@ -206,9 +195,9 @@
     
     module.exports = router;
     </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>route()</mark> TEST </u></h4>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------------------->
+    <h4 class="header"> <mark>route()</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -225,9 +214,9 @@
     
     app.listen(1000, () => { console.log('Express is Listening') })  
     </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>param()</mark> TEST </u></h4>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------------------->
+    <h4 class="header"> <mark>param()</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -252,8 +241,9 @@
         
     app.listen(1000, () => { console.log('Express is Listening') })  
     </pre>
-</details>
+  </details>
 
-    <br><br>
+  <br><br>
 </body>
+
 </html>

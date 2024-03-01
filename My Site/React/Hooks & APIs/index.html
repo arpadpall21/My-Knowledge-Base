@@ -597,7 +597,7 @@
             <p> - only runs its function when any <optval>val</optval> changes (check diff with <mark>Object.is()</mark>) <u>(always runs for the 1st time)</u> </p>
             <p> - <mark>[]</mark> (empty Array) -> runs its function only when the component mounts for the 1st time </p>
         </div></opt>)             // syntactically these hooks are the same but each have different uses
-                                                  <span style="color:orange;">// any reactive value used in <reqval>fn</reqval> must be listed in the depencendy array (<mark><opt>[<optval>val, ...</optval>]</opt></mark>) (react docs highly stress this) </span>
+                                                  <span style="color:orange;">// any reactive value used in <reqval>fn</reqval> must be listed in the depencendy array (<mark><opt>[<optval>val, ...</optval>]</opt></mark>) (react docs highly stresses this) </span>
         useLayoutEffect(<reqval class="openable">fn<div>
             <p> - we can return a 'cleanup' function what React calls when the component unmounts </p>
         </div></reqval>, <opt class="openable">[<optval>val, ...</optval>]<div>

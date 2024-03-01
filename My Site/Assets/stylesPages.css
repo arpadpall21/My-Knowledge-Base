@@ -94,7 +94,6 @@ pre{
 .syntax reqval, .formula reqval, .table reqval, mark reqval {
     color: lightcoral;
     font-weight: normal;
-    font-style: italic;
 }
 
 .syntax optval, .formula optval, .table optval, mark optval {

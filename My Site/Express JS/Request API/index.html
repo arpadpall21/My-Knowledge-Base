@@ -9,16 +9,13 @@
     <script src="../../Assets/scriptPages.js"></script>
 </head>
 <body>
-<h1> Request API (ver 4.0.0) </h1>
-    <p> Updated ( 2021-01-27 )</p>
+<h1> Request API </h1>
+    <p> Updated ( 2021-01-27 / 2024-02-25 )</p>
     <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
         <a href="../index.html">Express JS></a> Request API  
     </p>
 <table class="table">
 <caption> Request Object  
-            <span id="browserSupport" title="updated: 2021-01-28">
-                <span>Express v4.0.0 </span>
-            </span>
     <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
 </caption>
     <tr>
@@ -307,12 +304,16 @@
         <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
     </details>
 <h2 style="color:green;"><u> Useful Links : </u></h2>
-    
+    <p><a href="https://expressjs.com/en/4x/api.html#req" target="_blank"> Request API (expressjs.com)</a></p>
 <h2 style="color:green;"><u> Remember This : </u></h2>
     
 <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - the Express Request Object represents the Client Request </p> 
-<h2 style="color:darkblue;"><u> Request <mark>app</mark> / <mark>hostname</mark> / <mark>ip</mark> / <mark>ips</mark> / <mark>method</mark> / <mark>protocol</mark> / <mark>secure</mark> / <mark>subdomains</mark> / <mark>originalUrl</mark> / <mark>route</mark> / <mark>baseUrl</mark> / <mark>path</mark> / <mark>cookies</mark> / <mark>signedCookies</mark> / <mark>fresh</mark> / <mark>stale</mark> / <mark>params</mark> / <mark>query</mark> / <mark>accepts()</mark> / <mark>acceptsCharsets()</mark> / <mark>acceptsEncodings()</mark> / <mark>acceptsLanguages()</mark> / <mark>is()</mark> / <mark>range()</mark> / <mark>xhr</mark> / <mark>headers</mark> / <mark>get()</mark> / <mark>body</mark> </u></h2>
+    <pre class="syntax">
+    
+    function <reqval>middleware</reqval>(req, res, next) {
+        req                                 // request object 
+    }
+    </pre>
 <details class="example">
 <summary> DEMO </summary>
     <pre>
@@ -362,7 +363,9 @@
         
     app.listen(1000, () => { console.log('Express is Listening') })      
     </pre>
-    <p> - <mark>originalUrl</mark> / <mark>route</mark> / <mark>baseUrl</mark> / <mark>path</mark> properties </p>
+    <!-------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>originalUrl</mark> / <mark>route</mark> / <mark>baseUrl</mark> / <mark>path</mark> properties </h4>
     <p> - the test request URL is <mark>localhost:1000/pall?favCol=blue</mark> (for non-nested examples) </p>
     <p> - the test request URL is <mark>localhost:1000/pall/21?favCol=blue</mark> (for nested examples) </p>
     <pre>
@@ -436,7 +439,9 @@
     
     app.listen(1000, () => { console.log('Express is Listening') });   
     </pre>
-    <p> - <mark>cookies</mark> / <mark>signedCookies</mark> properties </p>
+    <!-------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>cookies</mark> / <mark>signedCookies</mark> properties </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -458,7 +463,9 @@
     
     app.listen(1000, () => { console.log('Express is Listening') })      
     </pre>
-    <p> - <mark>params</mark> property (the URL is <mark>http://localhost:1000/sub/nest/child</mark>) </p>
+    <!-------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>params</mark> property (the URL is <mark>http://localhost:1000/sub/nest/child</mark>) </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -481,7 +488,9 @@
     
     app.listen(1000, () => { console.log('Express is Listening') })  
     </pre>
-    <p> - <mark>accept()</mark> / <mark>acceptsCharsets()</mark> / <mark>acceptsEncodings()</mark> / <mark>acceptsLanguages()</mark> / <mark>is()</mark> / <mark>range()</mark> / <mark>xhr</mark> methods and property </p>
+    <!-------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>accept()</mark> / <mark>acceptsCharsets()</mark> / <mark>acceptsEncodings()</mark> / <mark>acceptsLanguages()</mark> / <mark>is()</mark> / <mark>range()</mark> / <mark>xhr</mark> methods and property </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -559,10 +568,9 @@
     
     app.listen(1000, () => { console.log('Express is Listening') })      
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> <mark>app</mark> / <mark>hostname</mark> / <mark>ip</mark> / <mark>ips</mark> / <mark>method</mark> / <mark>protocol</mark> / <mark>secure</mark> TEST </u></h4>
+    <!-------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header" <mark>app</mark> / <mark>hostname</mark> / <mark>ip</mark> / <mark>ips</mark> / <mark>method</mark> / <mark>protocol</mark> / <mark>secure</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -586,9 +594,9 @@
         host: 'localhost',
     }, () => { console.log('Express is Listening') })      
     </pre>
-<hr>
-<!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>subdomains</mark> TEST </u></h4>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 class="header"> <mark>subdomains</mark> TEST </h4>
     <p> - the request URL is <mark>sub1.sub2.testSite.com:1000</mark> </p>
     <pre>
     const express = require('express');
@@ -609,7 +617,7 @@
     </pre>
 <hr>
 <!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>hostname</mark> / <mark>ip</mark> / <mark>ips</mark> / <mark>protocol</mark> with 'trust proxy' settings TEST </u></h4>
+<h4 class="header"> <mark>hostname</mark> / <mark>ip</mark> / <mark>ips</mark> / <mark>protocol</mark> with 'trust proxy' settings TEST </h4>
     <p> - request header <mark>X-Forwarded-Host:forwHost1, forwHost2, forwHost3</mark> is set </p>
     <p> - request header <mark>X-Forwarded-For:1.1.1.1, 2.2.2.2, 3.3.3.3</mark> is set </p>
     <p> - request header <mark>X-Forwarded-Proto:httpH</mark> is set </p>
@@ -637,7 +645,7 @@
     </pre>
 <hr>
 <!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>baseUrl</mark> TEST </u></h4>
+<h4 class="header"> <mark>baseUrl</mark> TEST </h4>
     <pre>
     const router = express.Router();
         
@@ -667,7 +675,7 @@
     </pre>
 <hr>
 <!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>originalUrl</mark> TEST </u></h4>
+<h4 class="header"> <mark>originalUrl</mark> TEST </h4>
     <p> - the request URL is <mark>localhost:1000/test/sub/nest/child?egy=1&ketto=2&harom=3#</mark> </p>
     <pre>
     const express = require('express');
@@ -689,7 +697,7 @@
     </pre>
 <hr>
 <!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>path</mark> TEST </u></h4>
+<h4 class="header"> <mark>path</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -742,7 +750,7 @@
     </pre>
 <hr>
 <!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>route</mark> TEST </u></h4>
+<h4 class="header"> <mark>route</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -795,7 +803,7 @@
     </pre>
 <hr>
 <!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>cookies</mark> / <mark>signedCookies</mark> TEST </u></h4>
+<h4 class="header"> <mark>cookies</mark> / <mark>signedCookies</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -821,7 +829,7 @@
     </pre>
 <hr>
 <!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>fresh</mark> / <mark>stale</mark> TEST </u></h4>
+<h4 class="header"> <mark>fresh</mark> / <mark>stale</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -843,7 +851,7 @@
     </pre>
 <hr>
 <!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>params</mark> TEST </u></h4>
+<h4 class="header"> <mark>params</mark> TEST </h4>
     <p> - the request url is <mark>localhost:1000/sub/nest/child</mark> </p>
     <pre>
     const express = require('express');
@@ -868,7 +876,7 @@
     </pre>
 <hr>
 <!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>query</mark> TEST </u></h4>
+<h4 class="header"> <mark>query</mark> TEST </h4>
     <p> - the request url is <mark>localhost:1000/sub/nest/child?one=1&two=2&three=3</mark> </p>    
     <pre>
     const express = require('express');
@@ -893,7 +901,7 @@
     </pre>
 <hr>
 <!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>accept()</mark> / <mark>acceptsCharsets()</mark> / <mark>acceptsEncodings()</mark> / <mark>acceptsLanguages()</mark> / <mark>is()</mark> / <mark>range()</mark> / <mark>xhr()</mark> TEST </u></h4>
+<h4 class="header"> <mark>accept()</mark> / <mark>acceptsCharsets()</mark> / <mark>acceptsEncodings()</mark> / <mark>acceptsLanguages()</mark> / <mark>is()</mark> / <mark>range()</mark> / <mark>xhr()</mark> TEST </h4>
     <p> - the request has a <mark>Accept:text/html</mark> header </p>
     <p> - the request has a <mark>Accept-Charset:utf-8, utf-16, ascii</mark> header </p>
     <p> - the request has a <mark>Accept-Encoding:gzip, deflate, br</mark> header </p>
@@ -943,7 +951,7 @@
     </pre>
 <hr>
 <!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>headers</mark> / <mark>get()</mark> TEST </u></h4>
+<h4 class="header"> <mark>headers</mark> / <mark>get()</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -964,7 +972,7 @@
     </pre>
 <hr>
 <!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>body</mark> TEST </u></h4>
+<h4 class="header"> <mark>body</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();

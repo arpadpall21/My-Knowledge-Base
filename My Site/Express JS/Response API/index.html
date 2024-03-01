@@ -9,16 +9,13 @@
     <script src="../../Assets/scriptPages.js"></script>
 </head>
 <body>
-<h1> Response API (ver 4.0.0) </h1>
-    <p> Updated ( 2021-01-28 )</p>
+<h1> Response API </h1>
+    <p> Updated ( 2021-01-28 / 2024-02-25 )</p>
     <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
         <a href="../index.html">Express JS></a> Response API  
     </p>
 <table class="table">
 <caption> Response Object  
-        <span id="browserSupport" title="updated: 2021-01-30">
-            <span>Express v4.0.0 </span>
-        </span>
         <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
 </caption>
     <tr>
@@ -334,15 +331,19 @@
         <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
     </details>
 <h2 style="color:green;"><u> Useful Links : </u></h2>
-    
+    <p><a href="https://expressjs.com/en/4x/api.html#res" target="_blank"> Response API (expressjs.com)</a></p>
 <h2 style="color:green;"><u> Remember This : </u></h2>
     
 <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - the Express Response Object represents a Server Response </p>
-<h2 style="color:darkblue;"><u> Response <mark>app</mark> / <mark>get()</mark> / <mark>set()</mark> / <mark>headersSent</mark> / <mark>status()</mark> / <mark>attachment()</mark> / <mark>links()</mark> / <mark>location()</mark> / <mark>type()</mark> / <mark>vary()</mark> / <mark>cookie()</mark> / <mark>clearCookie()</mark> / <mark>end()</mark> / <mark>send()</mark> / <mark>sendFile()</mark> / <mark>download()</mark> / <mark>json()</mark> / <mark>jsonp()</mark> / <mark>sendStatus()</mark> / <mark>locals()</mark> / <mark>render()</mark> / <mark>format()</mark> / <mark>redirect()</mark></u></h2>
+    <pre class="syntax">
+    
+    function <reqval>middleware</reqval>(req, res, next) {
+        res                                 // response object 
+    }
+    </pre>
 <details class="example">
 <summary> DEMO </summary>
-    <p> - <mark>app</mark> / <mark>get()</mark> / <mark>set()</mark> / <mark>append()</mark> / <mark>headersSent</mark> methods and property </p>
+    <h4 class="header"> <mark>app</mark> / <mark>get()</mark> / <mark>set()</mark> / <mark>append()</mark> / <mark>headersSent</mark> methods and property </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -383,7 +384,9 @@
     
     app.listen(1000, () => { console.log('Express is Listening') })  
     </pre>
-    <p> - <mark>status()</mark> / <mark>attachment()</mark> / <mark>links()</mark> / <mark>location()</mark> / <mark>type()</mark> / <mark>vary()</mark> methods </p>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header">  <mark>status()</mark> / <mark>attachment()</mark> / <mark>links()</mark> / <mark>location()</mark> / <mark>type()</mark> / <mark>vary()</mark> methods </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -431,7 +434,9 @@
     
     app.listen(1000, () => { console.log('Express is Listening') })  
     </pre>
-    <p> - <mark>cookie()</mark> / <mark>clearCookie()</mark> methods </p>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>cookie()</mark> / <mark>clearCookie()</mark> methods </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -466,7 +471,9 @@
     
     app.listen(1000, () => { console.log('Express is Listening') })  
     </pre>
-    <p> - <mark>end()</mark> / <mark>send()</mark> / <mark>sendFile()</mark> / <mark>download()</mark> / <mark>json()</mark> / <mark>jsonp()</mark> / <mark>sendStatus()</mark>  methods </p>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>end()</mark> / <mark>send()</mark> / <mark>sendFile()</mark> / <mark>download()</mark> / <mark>json()</mark> / <mark>jsonp()</mark> / <mark>sendStatus()</mark>  methods </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -519,7 +526,9 @@
     
     app.listen(1000, () => { console.log('Express is Listening') })  
     </pre>
-    <p> - <mark>locals</mark> / <mark>render()</mark> property and method </p>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>locals</mark> / <mark>render()</mark> property and method </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -549,7 +558,9 @@
         p #{name} paragraph
         p #{name2} paragraph    
     </pre>
-    <p> - <mark>format()</mark> / <mark>redirect()</mark> methods </p>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>format()</mark> / <mark>redirect()</mark> methods </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -580,10 +591,9 @@
     
     app.listen(1000, () => { console.log('Express is Listening') })  
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> <mark>app</mark> / <mark>get()</mark> / <mark>set()</mark> / <mark>append()</mark> / <mark>headersSent</mark> TEST </u></h4>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>app</mark> / <mark>get()</mark> / <mark>set()</mark> / <mark>append()</mark> / <mark>headersSent</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -624,9 +634,9 @@
     
     app.listen(1000, () => { console.log('Express is Listening') })  
     </pre>
-<hr>
-<!--------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>attachment()</mark> / <mark>links()</mark> / <mark>location()</mark> / <mark>type()</mark> / <mark>vary()</mark> TEST </u></h4>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>attachment()</mark> / <mark>links()</mark> / <mark>location()</mark> / <mark>type()</mark> / <mark>vary()</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -670,9 +680,9 @@
     
     app.listen(1000, () => { console.log('Express is Listening') })  
     </pre>
-<hr>
-<!--------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>cookie()</mark> / <mark>clearCookie()</mark> TEST </u></h4>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>cookie()</mark> / <mark>clearCookie()</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -707,9 +717,9 @@
     
     app.listen(1000, () => { console.log('Express is Listening') })  
     </pre>
-<hr>
-<!--------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>end()</mark> / <mark>send()</mark> / <mark>sendFile()</mark> / <mark>download()</mark> / <mark>json()</mark> / <mark>jsonp()</mark> / <mark>status()</mark> / <mark>sendStatus()</mark> TEST </u></h4>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>end()</mark> / <mark>send()</mark> / <mark>sendFile()</mark> / <mark>download()</mark> / <mark>json()</mark> / <mark>jsonp()</mark> / <mark>status()</mark> / <mark>sendStatus()</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -784,9 +794,9 @@
     
     app.listen(1000, () => { console.log('Express is Listening') })  
     </pre>
-<hr>
-<!--------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>locals</mark> / <mark>render()</mark> TEST </u></h4>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>locals</mark> / <mark>render()</mark> TEST </h4>
     <p> - <mark>./index.js</mark> (file) </p>
     <pre>
     const express = require('express');
@@ -818,9 +828,9 @@
         p #{name} paragraph
         p #{name2} paragraph    
     </pre>
-<hr>
-<!--------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>format()</mark> TEST </u></h4>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>format()</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -844,9 +854,9 @@
     
     app.listen(1000, () => { console.log('Express is Listening') })  
     </pre>
-<hr>
-<!--------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>redirect()</mark> TEST </u></h4>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>redirect()</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();

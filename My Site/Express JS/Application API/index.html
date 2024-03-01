@@ -1,550 +1,518 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Application API </title> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Application API </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Application API (ver 4.0.0) </h1>
-    <p> Updated ( 2021-01-25 )</p>
-    <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
-        <a href="../index.html">Express JS></a> Application API  
-    </p>
-<table class="table">
-<caption> Expressjs Application Methods and Properties 
-            <span id="browserSupport" title="updated: 2021-01-22">
-                <span>Express v4.0.0 </span>
-            </span>
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  <h1> Application API </h1>
+  <p> Updated ( 2021-01-25 / 2024-02-25 )</p>
+  <p class="sitenav"> <a href="../../index.html" title="home">MySite></a>
+    <a href="../index.html">Express JS></a> Application API
+  </p>
+  <table class="table">
+    <caption>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
     <tr>
-        <th style="width:30%;"> Property / Method </th>
-        <th> Description </th>
+      <th style="width:30%;"> Property / Method </th>
+      <th> Description </th>
     </tr>
     <tr class="0">
-        <td> <strong>express</strong>() </td>
-        <td> - top-level function returns an <strong>app</strong> object which is an Express application instance </td>
-    </tr>
-    <tr class="03.02">
-        <td>  
-            <strong>express</strong>.json(<i class="openable">option:obj<div>
-                <p> inflate: <strong>bol</strong> - enables/disables body inflation (Default: <mark>true</mark>) </p>
-                <p> limit: <strong>nr|str</strong> - maximum request body size (<strong>nr</strong> = number of bytes) (Default: <mark>"100kb"</mark>) </p>
-                <p> reviver: <strong>fn</strong> - function passed directly to <mark>JSON.parse()</mark> (function can modify JSON values when parsed) (Default: <mark>null</mark>) </p>
-                <p> strict: <strong>bol</strong> - only objects and Arrays are accepted, when disabled accept anything that <mark>JSON.parse()</mark> accept (Default: <mark>true</mark>) </p>
-                <p> type: <strong>str|[str, ...]|fn</strong> - the watched <mark>Content-Type</mark> header value(s) when this middelware is triggered (Default: <mark>application/json</mark>) </p>
-                <p> verify: <strong>fn(req, res, buf, encoding)</strong> - function can be passed to verify the data (<mark>buf</mark> = <strong>buf</strong> | <mark>encoding</mark> = request encoding) (Default: <mark>undefined</mark>) </p>
-            </div></i>)
-        </td>
-        <td> 
-            - returns a (body parser) <strong>middleware</strong> which parses incomming requests with JSON parser <br>
-            - only looks at requests where there is a header <mark>Content-Type:application/json</mark> (ignores other requests) <br>
-            - accpets any unicode encoding and supports automatic <mark>deflate</mark> and <mark>gzip</mark> inflation <br>
-            - the data is populated in the next middelware <mark><strong>req</strong>.body</mark> as JavaScript data 
-            <span id="browserSupport" title="updated: 2021-01-22">
-                <span> Express v4.16.0 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="03.03">
-        <td>  
-            <strong>express</strong>.raw(<i class="openable">option:obj<div>
-                <p> inflate: <strong>bol</strong> - enables/disables body inflation (Default: <mark>true</mark>) </p>
-                <p> limit: <strong>nr|str</strong> - maximum request body size (<strong>nr</strong> = number of bytes) (Default: <mark>"100kb"</mark>) </p>
-                <p> type: <strong>str|[str, ...]|fn</strong> - the watched <mark>Content-Type</mark> header value(s) when this middelware is triggered (Default: <mark>application/octet-stream</mark>) </p>
-                <p> verify: <strong>fn(req, res, buf, encoding)</strong> - function can be passed to verify the data (<mark>buf</mark> = <strong>buf</strong> | <mark>encoding</mark> = request encoding) (Default: <mark>undefined</mark>) </p>
-            </div></i>)            
-        </td>
-        <td> 
-            - returns a (body parser) <strong>middleware</strong> which parses incomming requests with Buffer parser <br>
-            - only looks at requests where there is a header <mark>Content-Type:application/octet-stream</mark> (ignores other requests) <br>
-            - accpets any unicode encoding and supports automatic <mark>deflate</mark> and <mark>gzip</mark> inflation <br>
-            - the data is populated in the next middelware <mark><strong>req</strong>.body</mark> as <strong>buf</strong> (Buffer)    
-            <span id="browserSupport" title="updated: 2021-01-22">
-                <span> Express v4.17.0 </span>
-            </span>
-        </td>
+      <td> <strong>express</strong>() </td>
+      <td> - top-level function returns an <strong>app</strong> object which is an Express application instance </td>
     </tr>
     <tr class="01">
-        <td>  
-            <strong>express</strong>.Router(<i class="openable">option:obj<div>
-                <p> caseSensitive: <strong>bol</strong> - the router is case sensitive in request <strong>routePath</strong> (<mark>/foo</mark> and <mark>/Foo</mark> treated differently)(Default: <mark>false</mark>) </p>
-                <p> mergeParams: <strong>bol</strong> - preservers the parent app (parameters) <mark><strong>req</strong>.params</mark> values (in case of conflict the child values take precedence over the parent values) (Default: <mark>false</mark>) </p>
-                <p> strict: <strong>bol</strong> - strict routing (<mark>/foo</mark> and <mark>/foo/</mark> treated differently) (Default: <mark>false</mark>) </p>
-            </div></i>)
-        </td>
-        <td> 
-            - creates a new <strong>router</strong> object which is an isolated instance of middleware and routes <br>
-            - it can be passed as <strong>middelware</strong> in methods 
-        </td>
+      <td>
+        <strong>express</strong>.Router(<i class="openable">option:obj<div>
+            <p> caseSensitive: <strong>bol</strong> - the router is case sensitive in request <strong>routePath</strong> (<mark>/foo</mark> and <mark>/Foo</mark> treated differently)(Default: <mark>false</mark>) </p>
+            <p> mergeParams: <strong>bol</strong> - preservers the parent app (parameters) <mark><strong>req</strong>.params</mark> values (in case of conflict the child values take precedence over the parent values) (Default: <mark>false</mark>) </p>
+            <p> strict: <strong>bol</strong> - strict routing (<mark>/foo</mark> and <mark>/foo/</mark> treated differently) (Default: <mark>false</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - creates a new <strong>router</strong> which is basically namespaces a path segment (passed as <strong>middelware</strong>)
+      </td>
     </tr>
     <tr class="02">
-        <td>  
-            <strong>express</strong>.static(<strong>path:str</strong>, <i class="openable">option:obj<div>
-                <p> dotifies: <strong>str</strong> - how to tread files or directories that begin with a dot <mark>.</mark> (Default: <mark>ignore</mark> = respond with <mark>404</mark> then call <mark>next()</mark>) (<mark>deny</mark> = deny the request for dotified files, responde with <mark>403</mark> then call <mark>next()</mark>) (<mark>allow</mark> = treat them as normal files) </p>
-                <p> etag: <strong>bol</strong> - generates an weak ETag and includes the generated <mark>ETag:<strong>etagVal</strong></mark> in the response (Default: <mark>true</mark>) </p>
-                <p> extensions: <strong>bol|[str, ...]</strong> - if a file not found search for it with the specified extentions (ex: <mark>['html', 'htm']</mark>) (Default: <mark>false</mark>) </p>
-                <p> fallthrough: <strong>bol</strong> - (Default: <mark>true</mark> on client error (Bad Request, etc...) this middleware simply calls <mark>next()</mark>) (<mark>false</mark> on client error this middleware calls <mark>next(err)</mark>) </p>
-                <p> immutable: <strong>bol</strong> - adds <mark>immutable</mark> in the response <mark>Cache-Control</mark> header (Default: <mark>false</mark>) </p>
-                <p> lastModified: <strong>bol</strong> - includes the <mark>Last-Modified</mark> header in the response with the last modified date of the requested file (Default: <mark>false</mark>) </p>
-                <p> maxAge: <strong>nr</strong> - sets the max-age property in the <mark>Cache-Control</mark> header (in milliseconds) (Default: <mark>0</mark>) </p>
-                <p> redirect: <strong>bol</strong> - redirect to trailing <mark>/</mark> when the pathname is a directory (Default: <mark>true</mark>) </p>
-                <p> setHeaders: <strong>fn(res, path, stat)</strong> - function to set response headers (no need to return anything) (<mark>res</mark> = response object this is where the headers should be set) (<mark>path</mark> = path of the response file) (<mark>stat</mark> = stats of the file) </p>
-            </div></i>)
-        </td>
-        <td> 
-            - returns a <strong>middleware</strong> that serves static files from the passed directory (<strong>path:str</strong>) (can be called multiple times to set multiple directories) <br>
-            - checks the <mark><strong>req</strong>.url</mark> value then searches for the files in the passed <strong>path:str</strong> directory <br>
-            - if no file found internally calls <mark>next()</mark> (calls the next middleware in the stack) 
-        </td>
+      <td>
+        <strong>express</strong>.static(<strong>path:str</strong>, <i class="openable">option:obj<div>
+            <p> dotifies: <strong>str</strong> - how to tread files or directories that begin with a dot <mark>.</mark> (Default: <mark>ignore</mark> = respond with <mark>404</mark> then call <mark>next()</mark>) (<mark>deny</mark> = deny the request for dotified files, responde with <mark>403</mark> then call <mark>next()</mark>) (<mark>allow</mark> = treat them as normal files) </p>
+            <p> etag: <strong>bol</strong> - generates an weak ETag and includes the generated <mark>ETag:<strong>etagVal</strong></mark> in the response (Default: <mark>true</mark>) </p>
+            <p> extensions: <strong>bol|[str, ...]</strong> - if a file not found search for it with the specified extentions (ex: <mark>['html', 'htm']</mark>) (Default: <mark>false</mark>) </p>
+            <p> fallthrough: <strong>bol</strong> - (Default: <mark>true</mark> on client error (Bad Request, etc...) this middleware simply calls <mark>next()</mark>) (<mark>false</mark> on client error this middleware calls <mark>next(err)</mark>) </p>
+            <p> immutable: <strong>bol</strong> - adds <mark>immutable</mark> in the response <mark>Cache-Control</mark> header (Default: <mark>false</mark>) </p>
+            <p> lastModified: <strong>bol</strong> - includes the <mark>Last-Modified</mark> header in the response with the last modified date of the requested file (Default: <mark>false</mark>) </p>
+            <p> maxAge: <strong>nr</strong> - sets the max-age property in the <mark>Cache-Control</mark> header (in milliseconds) (Default: <mark>0</mark>) </p>
+            <p> redirect: <strong>bol</strong> - redirect to trailing <mark>/</mark> when the pathname is a directory (Default: <mark>true</mark>) </p>
+            <p> setHeaders: <strong>fn(res, path, stat)</strong> - function to set response headers (no need to return anything) (<mark>res</mark> = response object this is where the headers should be set) (<mark>path</mark> = path of the response file) (<mark>stat</mark> = stats of the file) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns a <strong>middleware</strong> that serves static files from the passed directory (<strong>path:str</strong>) (can be called multiple times to set multiple directories) <br>
+        - checks the <mark><strong>req</strong>.url</mark> value then searches for the files in the passed <strong>path:str</strong> directory <br>
+        - if no file found internally calls <mark>next()</mark> (calls the next middleware in the stack)
+      </td>
+    </tr>
+    <tr class="03.02">
+      <td>
+        <strong>express</strong>.json(<i class="openable">option:obj<div>
+            <p> inflate: <strong>bol</strong> - enables/disables body inflation (Default: <mark>true</mark>) </p>
+            <p> limit: <strong>nr|str</strong> - maximum request body size (<strong>nr</strong> = number of bytes) (Default: <mark>"100kb"</mark>) </p>
+            <p> reviver: <strong>fn</strong> - function passed directly to <mark>JSON.parse()</mark> (function can modify JSON values when parsed) (Default: <mark>null</mark>) </p>
+            <p> strict: <strong>bol</strong> - only objects and Arrays are accepted, when disabled accept anything that <mark>JSON.parse()</mark> accept (Default: <mark>true</mark>) </p>
+            <p> type: <strong>str|[str, ...]|fn</strong> - the watched <mark>Content-Type</mark> header value(s) when this middelware is triggered (Default: <mark>application/json</mark>) </p>
+            <p> verify: <strong>fn(req, res, buf, encoding)</strong> - function can be passed to verify the data (<mark>buf</mark> = <strong>buf</strong> | <mark>encoding</mark> = request encoding) (Default: <mark>undefined</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns a (body parser) <strong>middleware</strong> which parses incomming requests with JSON parser <br>
+        - only looks at requests where there is a header <mark>Content-Type:application/json</mark> (ignores other requests) <br>
+        - accpets any unicode encoding and supports automatic <mark>deflate</mark> and <mark>gzip</mark> inflation <br>
+        - the data is populated in the next middelware <mark><strong>req</strong>.body</mark> as JavaScript data
+        <span id="browserSupport" title="updated: 2021-01-22">
+          <span> Express v4.16.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr class="03.03">
+      <td>
+        <strong>express</strong>.raw(<i class="openable">option:obj<div>
+            <p> inflate: <strong>bol</strong> - enables/disables body inflation (Default: <mark>true</mark>) </p>
+            <p> limit: <strong>nr|str</strong> - maximum request body size (<strong>nr</strong> = number of bytes) (Default: <mark>"100kb"</mark>) </p>
+            <p> type: <strong>str|[str, ...]|fn</strong> - the watched <mark>Content-Type</mark> header value(s) when this middelware is triggered (Default: <mark>application/octet-stream</mark>) </p>
+            <p> verify: <strong>fn(req, res, buf, encoding)</strong> - function can be passed to verify the data (<mark>buf</mark> = <strong>buf</strong> | <mark>encoding</mark> = request encoding) (Default: <mark>undefined</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns a (body parser) <strong>middleware</strong> which parses incomming requests with Buffer parser <br>
+        - only looks at requests where there is a header <mark>Content-Type:application/octet-stream</mark> (ignores other requests) <br>
+        - accpets any unicode encoding and supports automatic <mark>deflate</mark> and <mark>gzip</mark> inflation <br>
+        - the data is populated in the next middelware <mark><strong>req</strong>.body</mark> as <strong>buf</strong> (Buffer)
+        <span id="browserSupport" title="updated: 2021-01-22">
+          <span> Express v4.17.0 </span>
+        </span>
+      </td>
     </tr>
     <tr class="03.01">
-        <td>  
-            <strong>express</strong>.text(<i class="openable">option:obj<div>
-                <p> defaultCharset: <strong>str</strong> - specifies charset if the <mark>Content-Type</mark> header doesn't have it (Default: <mark>"utf-8"</mark>) </p>
-                <p> inflate: <strong>bol</strong> - enables/disables body inflation (Default: <mark>true</mark>) </p>
-                <p> limit: <strong>nr|str</strong> - maximum request body size (<strong>nr</strong> = number of bytes) (Default: <mark>"100kb"</mark>) </p>
-                <p> type: <strong>str|[str, ...]|fn</strong> - the watched <mark>Content-Type</mark> header value(s) when this middelware is triggered (Default: <mark>text/plain</mark>) </p>
-                <p> verify: <strong>fn(req, res, buf, encoding)</strong> - function can be passed to verify the data (<mark>buf</mark> = <strong>buf</strong> | <mark>encoding</mark> = request encoding) (Default: <mark>undefined</mark>) </p>
-            </div></i>)
-        </td>
-        <td> 
-            - returns a (body parser) <strong>middleware</strong> which parses incomming requests with string parser <br>
-            - only looks at requests where there is a header <mark>Content-Type:text/plain</mark> (ignores other requests) <br>
-            - accpets any unicode encoding and supports automatic <mark>deflate</mark> and <mark>gzip</mark> inflation <br>
-            - the data is populated in the next middelware <mark><strong>req</strong>.body</mark> as string    
-            <span id="browserSupport" title="updated: 2021-01-22">
-                <span> Express v4.17.0 </span>
-            </span>
-        </td>
+      <td>
+        <strong>express</strong>.text(<i class="openable">option:obj<div>
+            <p> defaultCharset: <strong>str</strong> - specifies charset if the <mark>Content-Type</mark> header doesn't have it (Default: <mark>"utf-8"</mark>) </p>
+            <p> inflate: <strong>bol</strong> - enables/disables body inflation (Default: <mark>true</mark>) </p>
+            <p> limit: <strong>nr|str</strong> - maximum request body size (<strong>nr</strong> = number of bytes) (Default: <mark>"100kb"</mark>) </p>
+            <p> type: <strong>str|[str, ...]|fn</strong> - the watched <mark>Content-Type</mark> header value(s) when this middelware is triggered (Default: <mark>text/plain</mark>) </p>
+            <p> verify: <strong>fn(req, res, buf, encoding)</strong> - function can be passed to verify the data (<mark>buf</mark> = <strong>buf</strong> | <mark>encoding</mark> = request encoding) (Default: <mark>undefined</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns a (body parser) <strong>middleware</strong> which parses incomming requests with string parser <br>
+        - only looks at requests where there is a header <mark>Content-Type:text/plain</mark> (ignores other requests) <br>
+        - accpets any unicode encoding and supports automatic <mark>deflate</mark> and <mark>gzip</mark> inflation <br>
+        - the data is populated in the next middelware <mark><strong>req</strong>.body</mark> as string
+        <span id="browserSupport" title="updated: 2021-01-22">
+          <span> Express v4.17.0 </span>
+        </span>
+      </td>
     </tr>
     <tr class="03.04">
-        <td>  
-            <strong>express</strong>.urlencoded(<i class="openable">option:obj<div>
-                <p> extended: <strong>bol</strong> - (Default: <mark>true</mark> uses the <mark>qs</mark> parser library <u>[Deprecation warning in Express v4.14.1])</u> (<mark>false</mark>  used the <mark>querystring</mark> parser library) </p>
-                <p> inflate: <strong>bol</strong> - enables/disables body inflation (Default: <mark>true</mark>) </p>
-                <p> limit: <strong>nr|str</strong> - maximum request body size (<strong>nr</strong> = number of bytes) (Default: <mark>"100kb"</mark>) </p>
-                <p> parameterLimit: <strong>nr</strong> - maximum number of paramters (key/value pairs) allowed in the request payload (if exeeded an error will be raised) (Default: <mark>1000</mark>) </p>
-                <p> type: <strong>str|[str, ...]|fn</strong> - the watched <mark>Content-Type</mark> header value(s) when this middelware is triggered (Default: <mark>application/x-www-form-urlencoded</mark>) </p>
-                <p> verify: <strong>fn(req, res, buf, encoding)</strong> - function can be passed to verify the data (<mark>buf</mark> = <strong>buf</strong> | <mark>encoding</mark> = request encoding) (Default: <mark>undefined</mark>) </p>
-            </div></i>)
-        </td>
-        <td> 
-            - returns a (body parser) <strong>middleware</strong> which parses incomming requests with urlencoder parser <br>
-            - only looks at requests where there is a header <mark>Content-Type:application/x-www-form-urlencoded</mark> (ignores other requests) <br>
-            - accpets UTF-8 encoding only and supports automatic <mark>deflate</mark> and <mark>gzip</mark> inflation <br>
-            - the data is populated in the next middelware <mark><strong>req</strong>.body</mark> as JavaScript data 
-            <span id="browserSupport" title="updated: 2021-01-22">
-                <span> Express v4.16.0 </span>
-            </span>
-        </td>
+      <td>
+        <strong>express</strong>.urlencoded(<i class="openable">option:obj<div>
+            <p> extended: <strong>bol</strong> - (Default: <mark>true</mark> uses the <mark>qs</mark> parser library <u>[Deprecation warning in Express v4.14.1])</u> (<mark>false</mark> used the <mark>querystring</mark> parser library) </p>
+            <p> inflate: <strong>bol</strong> - enables/disables body inflation (Default: <mark>true</mark>) </p>
+            <p> limit: <strong>nr|str</strong> - maximum request body size (<strong>nr</strong> = number of bytes) (Default: <mark>"100kb"</mark>) </p>
+            <p> parameterLimit: <strong>nr</strong> - maximum number of paramters (key/value pairs) allowed in the request payload (if exeeded an error will be raised) (Default: <mark>1000</mark>) </p>
+            <p> type: <strong>str|[str, ...]|fn</strong> - the watched <mark>Content-Type</mark> header value(s) when this middelware is triggered (Default: <mark>application/x-www-form-urlencoded</mark>) </p>
+            <p> verify: <strong>fn(req, res, buf, encoding)</strong> - function can be passed to verify the data (<mark>buf</mark> = <strong>buf</strong> | <mark>encoding</mark> = request encoding) (Default: <mark>undefined</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns a (body parser) <strong>middleware</strong> which parses incomming requests with urlencoder parser <br>
+        - only looks at requests where there is a header <mark>Content-Type:application/x-www-form-urlencoded</mark> (ignores other requests) <br>
+        - accpets UTF-8 encoding only and supports automatic <mark>deflate</mark> and <mark>gzip</mark> inflation <br>
+        - the data is populated in the next middelware <mark><strong>req</strong>.body</mark> as JavaScript data
+        <span id="browserSupport" title="updated: 2021-01-22">
+          <span> Express v4.16.0 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="04.01">
-        <td colspan="2"> <mark>app</mark> (Expressjs application instance) object </td>
+  </table>
+    <br>
+  <table class="table">
+    <caption>
+      <mark>app</mark>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Property / Method </th>
+      <th> Description </th>
     </tr>
     <tr class="04.02">
-        <td>  
-            <strong>app</strong>
-        </td>
-        <td> 
-            - an Expressjs application instance returned by <mark><strong>express</strong>()</mark> <br>
-            - also can be passed as <strong>middleware</strong> so it becomes a sub-app
-        </td>
-    </tr>
-    <tr class="09.06">
-        <td>  
-            <strong>app</strong>.<strong class="openable">httpMethod<div>
-                <p><b><u> Supported HTTP methods </u></b></p>
-                <p> - <mark>checkout</mark> </p>
-                <p> - <mark>copy</mark> </p>
-                <p> - <mark>delete</mark> </p>
-                <p> - <mark>get</mark> </p>
-                <p> - <mark>head</mark> </p>
-                <p> - <mark>lock</mark> </p>
-                <p> - <mark>merge</mark> </p>
-                <p> - <mark>mkactivity</mark> </p>
-                <p> - <mark>mkcol</mark> </p>
-                <p> - <mark>move</mark> </p>
-                <p> - <mark>m-search</mark> </p>
-                <p> - <mark>notify</mark> </p>
-                <p> - <mark>options</mark> </p>
-                <p> - <mark>patch</mark> </p>
-                <p> - <mark>post</mark> </p>
-                <p> - <mark>purge</mark> </p>
-                <p> - <mark>put</mark> </p>
-                <p> - <mark>report</mark> </p>
-                <p> - <mark>search</mark> </p>
-                <p> - <mark>subscribe</mark> </p>
-                <p> - <mark>trace</mark> </p>
-                <p> - <mark>unlock</mark> </p>
-                <p> - <mark>unsubscribe</mark> </p>
-            </div></strong>(<strong>routePath|[routePath, ...]</strong>, <strong>middleware, ...|[middleware, ...]</strong>)
-        </td>
-        <td> 
-            - triggers middlewares when <strong>httpMethod</strong> request(s) hit the <u>exact <strong>routePath</strong></u>
-        </td>
-    </tr>
-    <tr class="09.05">
-        <td>  
-            <strong>app</strong>.all(<strong>routePath|[routePath, ...]</strong>, <strong>middleware, ...|[middleware, ...]</strong>)
-        </td>
-        <td> 
-            - triggers middlewares when any HTTP request(s) hit the <u>exact <strong>routePath</strong></u>
-        </td>
-    </tr>
-    <tr class="09.04">
-        <td>  
-            <strong>app</strong>.delete(<strong>routePath|[routePath, ...]</strong>, <strong>middleware, ...|[middleware, ...]</strong>)
-        </td>
-        <td> 
-            - triggers middlewares when DELETE request(s) hit the <u>exact <strong>routePath</strong></u>
-        </td>
-    </tr>
-    <tr class="05.06">
-        <td>  
-            <strong>app</strong>.disable(<strong>key:str</strong>)
-        </td>
-        <td> 
-            - disables the specified <span class="openable">application setting<div>
-                <p> case sensitive routing: <strong>bol</strong> - enables case sensitive routing in <strong>routePath</strong> (<mark>/Foo</mark> not the same as <mark>/foo</mark>) <u>(sub-apps inherits this value)</u> (Default: <mark>false</mark>) </p>
-                <p> env: <strong>str</strong> - environment mode (Default: global varible <mark>NODE_ENV</mark> value) <u>(should be set to <mark>production</mark> if Express is running in production)</u> </p>
-                <p> etag: <strong>bol|str</strong> - sets an <mark>ETag</mark> header to the response (Default: <mark>"weak"</mark> = sets a weak ETag header) (<mark>"strong"</mark> = strong ETag) (<mark>true</mark> = weak ETag) (<mark>false</mark> = no ETag header) </p>
-                <p> jsonp callback name: <strong>str</strong> - default JSONP callback name (Default: <mark>callback</mark>) </p>
-                <p> json escape: <strong>bol</strong> - escapes <mark>&lt;</mark> <mark>&gt;</mark> and <mark>&amp;</mark> characters in <mark><strong>res</strong>.json</mark> <mark><strong>res</strong>.jsonp</mark> <mark><strong>res</strong>.send</mark> (in order to mitigate XSS attacks) (Default: <mark>undefined</mark>) </p>
-                <p> json replacer: <strong>fn|arr</strong> - replacer (2nd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
-                <p> json spaces: <strong>str|nr</strong> - space (3rd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
-                <p> query parser: <strong>str|bol</strong> (Default: <mark>'extended'</mark> = uses the <mark>qs</mark> query parser library) (<mark>'simple'</mark> = uses the <mark>querystring</mark> query pareser library) (<mark>false</mark> = disables query parsing) </p>
-                <p> strict routing: <strong>bol</strong> - enables strict routing (<mark>/foo</mark> not the same as <mark>/Foo</mark>) (Default: <mark>undefined</mark>) <u>(sub-apps inherit this option)</u> </p>
-                <p> subdomain offset: <strong>nr</strong> - number of dot separated to the subdomain (Default: <mark>2</mark>) </p>
-                <p> trust proxy: <strong>any</strong> - indicates that the app is behind a front-facing proxy <a href="https://expressjs.com/en/4x/api.html#trust.proxy.options.table" target="_blanc"> proxy options </a> (Default: <mark>false</mark>) <u>(sub-apps inherit this option)</u> </p>
-                <p> views: <strong>dirPath:str|[dirPath:str, ...]</strong> - sets the template engine source directories (Default: <mark>process.cwd() + 'views'</mark>) </p>
-                <p> view cache: <strong>bol</strong> - enables template engine caching (Default: <mark>true</mark> in production otherwise <mark>undefined</mark>) </p> 
-                <p> view engine: <strong>str</strong> - view engine (template engine) to use (template engine to use when we call <mark><strong>app</strong>.render()</mark> or <mark><strong>res</strong>.render()</mark> to dynimically render HTML) (Default: <mark>undefined</mark>) </p>
-                <p> x-powered-by: <strong>bol</strong> - enables <mark>X-Powered-By</mark> HTTP header (Default: <mark>true</mark>) </p>
-            </div></span> 
-        </td>
-    </tr>
-    <tr class="05.07">
-        <td>  
-            <strong>app</strong>.disabled(<strong>key:str</strong>)
-        </td>
-        <td> 
-            - checks if the specified <span class="openable">application setting<div>
-                <p> case sensitive routing: <strong>bol</strong> - enables case sensitive routing in <strong>routePath</strong> (<mark>/Foo</mark> not the same as <mark>/foo</mark>) <u>(sub-apps inherits this value)</u> (Default: <mark>false</mark>) </p>
-                <p> env: <strong>str</strong> - environment mode (Default: global varible <mark>NODE_ENV</mark> value) <u>(should be set to <mark>production</mark> if Express is running in production)</u> </p>
-                <p> etag: <strong>bol|str</strong> - sets an <mark>ETag</mark> header to the response (Default: <mark>"weak"</mark> = sets a weak ETag header) (<mark>"strong"</mark> = strong ETag) (<mark>true</mark> = weak ETag) (<mark>false</mark> = no ETag header) </p>
-                <p> jsonp callback name: <strong>str</strong> - default JSONP callback name (Default: <mark>callback</mark>) </p>
-                <p> json escape: <strong>bol</strong> - escapes <mark>&lt;</mark> <mark>&gt;</mark> and <mark>&amp;</mark> characters in <mark><strong>res</strong>.json</mark> <mark><strong>res</strong>.jsonp</mark> <mark><strong>res</strong>.send</mark> (in order to mitigate XSS attacks) (Default: <mark>undefined</mark>) </p>
-                <p> json replacer: <strong>fn|arr</strong> - replacer (2nd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
-                <p> json spaces: <strong>str|nr</strong> - space (3rd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
-                <p> query parser: <strong>str|bol</strong> (Default: <mark>'extended'</mark> = uses the <mark>qs</mark> query parser library) (<mark>'simple'</mark> = uses the <mark>querystring</mark> query pareser library) (<mark>false</mark> = disables query parsing) </p>
-                <p> strict routing: <strong>bol</strong> - enables strict routing (<mark>/foo</mark> not the same as <mark>/Foo</mark>) (Default: <mark>undefined</mark>) <u>(sub-apps inherit this option)</u> </p>
-                <p> subdomain offset: <strong>nr</strong> - number of dot separated to the subdomain (Default: <mark>2</mark>) </p>
-                <p> trust proxy: <strong>any</strong> - indicates that the app is behind a front-facing proxy <a href="https://expressjs.com/en/4x/api.html#trust.proxy.options.table" target="_blanc"> proxy options </a> (Default: <mark>false</mark>) <u>(sub-apps inherit this option)</u> </p>
-                <p> views: <strong>dirPath:str|[dirPath:str, ...]</strong> - sets the template engine source directories (Default: <mark>process.cwd() + 'views'</mark>) </p>
-                <p> view cache: <strong>bol</strong> - enables template engine caching (Default: <mark>true</mark> in production otherwise <mark>undefined</mark>) </p> 
-                <p> view engine: <strong>str</strong> - view engine (template engine) to use (template engine to use when we call <mark><strong>app</strong>.render()</mark> or <mark><strong>res</strong>.render()</mark> to dynimically render HTML) (Default: <mark>undefined</mark>) </p>
-                <p> x-powered-by: <strong>bol</strong> - enables <mark>X-Powered-By</mark> HTTP header (Default: <mark>true</mark>) </p>
-            </div></span> is disable and returns a boolean accordingly 
-        </td>
-    </tr>
-    <tr class="05.04">
-        <td>  
-            <strong>app</strong>.enable(<strong>key:str</strong>)
-        </td>
-        <td> 
-            - enables the specified <span class="openable">application setting<div>
-                <p> case sensitive routing: <strong>bol</strong> - enables case sensitive routing in <strong>routePath</strong> (<mark>/Foo</mark> not the same as <mark>/foo</mark>) <u>(sub-apps inherits this value)</u> (Default: <mark>false</mark>) </p>
-                <p> env: <strong>str</strong> - environment mode (Default: global varible <mark>NODE_ENV</mark> value) <u>(should be set to <mark>production</mark> if Express is running in production)</u> </p>
-                <p> etag: <strong>bol|str</strong> - sets an <mark>ETag</mark> header to the response (Default: <mark>"weak"</mark> = sets a weak ETag header) (<mark>"strong"</mark> = strong ETag) (<mark>true</mark> = weak ETag) (<mark>false</mark> = no ETag header) </p>
-                <p> jsonp callback name: <strong>str</strong> - default JSONP callback name (Default: <mark>callback</mark>) </p>
-                <p> json escape: <strong>bol</strong> - escapes <mark>&lt;</mark> <mark>&gt;</mark> and <mark>&amp;</mark> characters in <mark><strong>res</strong>.json</mark> <mark><strong>res</strong>.jsonp</mark> <mark><strong>res</strong>.send</mark> (in order to mitigate XSS attacks) (Default: <mark>undefined</mark>) </p>
-                <p> json replacer: <strong>fn|arr</strong> - replacer (2nd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
-                <p> json spaces: <strong>str|nr</strong> - space (3rd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
-                <p> query parser: <strong>str|bol</strong> (Default: <mark>'extended'</mark> = uses the <mark>qs</mark> query parser library) (<mark>'simple'</mark> = uses the <mark>querystring</mark> query pareser library) (<mark>false</mark> = disables query parsing) </p>
-                <p> strict routing: <strong>bol</strong> - enables strict routing (<mark>/foo</mark> not the same as <mark>/Foo</mark>) (Default: <mark>undefined</mark>) <u>(sub-apps inherit this option)</u> </p>
-                <p> subdomain offset: <strong>nr</strong> - number of dot separated to the subdomain (Default: <mark>2</mark>) </p>
-                <p> trust proxy: <strong>any</strong> - indicates that the app is behind a front-facing proxy <a href="https://expressjs.com/en/4x/api.html#trust.proxy.options.table" target="_blanc"> proxy options </a> (Default: <mark>false</mark>) <u>(sub-apps inherit this option)</u> </p>
-                <p> views: <strong>dirPath:str|[dirPath:str, ...]</strong> - sets the template engine source directories (Default: <mark>process.cwd() + 'views'</mark>) </p>
-                <p> view cache: <strong>bol</strong> - enables template engine caching (Default: <mark>true</mark> in production otherwise <mark>undefined</mark>) </p> 
-                <p> view engine: <strong>str</strong> - view engine (template engine) to use (template engine to use when we call <mark><strong>app</strong>.render()</mark> or <mark><strong>res</strong>.render()</mark> to dynimically render HTML) (Default: <mark>undefined</mark>) </p>
-                <p> x-powered-by: <strong>bol</strong> - enables <mark>X-Powered-By</mark> HTTP header (Default: <mark>true</mark>) </p>
-            </div></span>
-        </td>
-    </tr>
-    <tr class="05.05">
-        <td>  
-            <strong>app</strong>.enabled(<strong>key:str</strong>)
-        </td>
-        <td> 
-            - checks if the specified <span class="openable">application setting<div>
-                <p> case sensitive routing: <strong>bol</strong> - enables case sensitive routing in <strong>routePath</strong> (<mark>/Foo</mark> not the same as <mark>/foo</mark>) <u>(sub-apps inherits this value)</u> (Default: <mark>false</mark>) </p>
-                <p> env: <strong>str</strong> - environment mode (Default: global varible <mark>NODE_ENV</mark> value) <u>(should be set to <mark>production</mark> if Express is running in production)</u> </p>
-                <p> etag: <strong>bol|str</strong> - sets an <mark>ETag</mark> header to the response (Default: <mark>"weak"</mark> = sets a weak ETag header) (<mark>"strong"</mark> = strong ETag) (<mark>true</mark> = weak ETag) (<mark>false</mark> = no ETag header) </p>
-                <p> jsonp callback name: <strong>str</strong> - default JSONP callback name (Default: <mark>callback</mark>) </p>
-                <p> json escape: <strong>bol</strong> - escapes <mark>&lt;</mark> <mark>&gt;</mark> and <mark>&amp;</mark> characters in <mark><strong>res</strong>.json</mark> <mark><strong>res</strong>.jsonp</mark> <mark><strong>res</strong>.send</mark> (in order to mitigate XSS attacks) (Default: <mark>undefined</mark>) </p>
-                <p> json replacer: <strong>fn|arr</strong> - replacer (2nd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
-                <p> json spaces: <strong>str|nr</strong> - space (3rd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
-                <p> query parser: <strong>str|bol</strong> (Default: <mark>'extended'</mark> = uses the <mark>qs</mark> query parser library) (<mark>'simple'</mark> = uses the <mark>querystring</mark> query pareser library) (<mark>false</mark> = disables query parsing) </p>
-                <p> strict routing: <strong>bol</strong> - enables strict routing (<mark>/foo</mark> not the same as <mark>/Foo</mark>) (Default: <mark>undefined</mark>) <u>(sub-apps inherit this option)</u> </p>
-                <p> subdomain offset: <strong>nr</strong> - number of dot separated to the subdomain (Default: <mark>2</mark>) </p>
-                <p> trust proxy: <strong>any</strong> - indicates that the app is behind a front-facing proxy <a href="https://expressjs.com/en/4x/api.html#trust.proxy.options.table" target="_blanc"> proxy options </a> (Default: <mark>false</mark>) <u>(sub-apps inherit this option)</u> </p>
-                <p> views: <strong>dirPath:str|[dirPath:str, ...]</strong> - sets the template engine source directories (Default: <mark>process.cwd() + 'views'</mark>) </p>
-                <p> view cache: <strong>bol</strong> - enables template engine caching (Default: <mark>true</mark> in production otherwise <mark>undefined</mark>) </p> 
-                <p> view engine: <strong>str</strong> - view engine (template engine) to use (template engine to use when we call <mark><strong>app</strong>.render()</mark> or <mark><strong>res</strong>.render()</mark> to dynimically render HTML) (Default: <mark>undefined</mark>) </p>
-                <p> x-powered-by: <strong>bol</strong> - enables <mark>X-Powered-By</mark> HTTP header (Default: <mark>true</mark>) </p>
-            </div></span> is enabled and returns a boolean accordingly
-        </td>
-    </tr>
-    <tr class="08.01">
-        <td>  
-            <strong>app</strong>.engine(<strong class="openable">ext:str, fn<div>
-                <p> <mark>ext</mark> - file extension to be watched </p>
-                <p> <mark>fn</mark> - the callback that Express calls to pass and receive the data (ex: <mark>require('ejs').renderFile</mark>) </p>
-            </div></strong>) 
-        </td>
-        <td> 
-            - <span class="openable">registers a template engine<div>
-                <p> - template engines that does not provied an <mark><strong>templateEngine</strong>.__express</mark> function need to be registered with this method so Express can use it </p>
-                <p> - a the time of writing this Pug and EJS doesn't need to be registered </p>
-                <p> - this is how EJS needed to be registered before <mark>app.engine('html', require('ejs').renderFile)</mark> </p>
-            </div></span> that does not provide an <mark>__express</mark> function (for Pug and EJS doesn't needed) 
-        </td>
-    </tr>
-    <tr class="05.02">
-        <td>  
-            <strong>app</strong>.get(<strong>key:str</strong>)
-        </td>
-        <td> 
-            - returns the specified <span class="openable">application setting<div>
-                <p> case sensitive routing: <strong>bol</strong> - enables case sensitive routing in <strong>routePath</strong> (<mark>/Foo</mark> not the same as <mark>/foo</mark>) <u>(sub-apps inherits this value)</u> (Default: <mark>false</mark>) </p>
-                <p> env: <strong>str</strong> - environment mode (Default: global varible <mark>NODE_ENV</mark> value) <u>(should be set to <mark>production</mark> if Express is running in production)</u> </p>
-                <p> etag: <strong>bol|str</strong> - sets an <mark>ETag</mark> header to the response (Default: <mark>"weak"</mark> = sets a weak ETag header) (<mark>"strong"</mark> = strong ETag) (<mark>true</mark> = weak ETag) (<mark>false</mark> = no ETag header) </p>
-                <p> jsonp callback name: <strong>str</strong> - default JSONP callback name (Default: <mark>callback</mark>) </p>
-                <p> json escape: <strong>bol</strong> - escapes <mark>&lt;</mark> <mark>&gt;</mark> and <mark>&amp;</mark> characters in <mark><strong>res</strong>.json</mark> <mark><strong>res</strong>.jsonp</mark> <mark><strong>res</strong>.send</mark> (in order to mitigate XSS attacks) (Default: <mark>undefined</mark>) </p>
-                <p> json replacer: <strong>fn|arr</strong> - replacer (2nd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
-                <p> json spaces: <strong>str|nr</strong> - space (3rd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
-                <p> query parser: <strong>str|bol</strong> (Default: <mark>'extended'</mark> = uses the <mark>qs</mark> query parser library) (<mark>'simple'</mark> = uses the <mark>querystring</mark> query pareser library) (<mark>false</mark> = disables query parsing) </p>
-                <p> strict routing: <strong>bol</strong> - enables strict routing (<mark>/foo</mark> not the same as <mark>/Foo</mark>) (Default: <mark>undefined</mark>) <u>(sub-apps inherit this option)</u> </p>
-                <p> subdomain offset: <strong>nr</strong> - number of dot separated to the subdomain (Default: <mark>2</mark>) </p>
-                <p> trust proxy: <strong>any</strong> - indicates that the app is behind a front-facing proxy <a href="https://expressjs.com/en/4x/api.html#trust.proxy.options.table" target="_blanc"> proxy options </a> (Default: <mark>false</mark>) <u>(sub-apps inherit this option)</u> </p>
-                <p> views: <strong>dirPath:str|[dirPath:str, ...]</strong> - sets the template engine source directories (Default: <mark>process.cwd() + 'views'</mark>) </p>
-                <p> view cache: <strong>bol</strong> - enables template engine caching (Default: <mark>true</mark> in production otherwise <mark>undefined</mark>) </p> 
-                <p> view engine: <strong>str</strong> - view engine (template engine) to use (template engine to use when we call <mark><strong>app</strong>.render()</mark> or <mark><strong>res</strong>.render()</mark> to dynimically render HTML) (Default: <mark>undefined</mark>) </p>
-                <p> x-powered-by: <strong>bol</strong> - enables <mark>X-Powered-By</mark> HTTP header (Default: <mark>true</mark>) </p>
-            </div></span> value (or the app local variable value)    
-        </td>
-    </tr>
-    <tr class="09.01">
-        <td>  
-            <strong>app</strong>.get(<strong>routePath|[routePath, ...]</strong>, <strong>middleware, ...|[middleware, ...]</strong>)
-        </td>
-        <td> 
-            - triggers middlewares when GET request(s) hit the <u>exact <strong>routePath</strong></u>
-        </td>
-    </tr>
-    <tr class="12.01">
-        <td>  
-            <strong>app</strong>.listen(<i>port:nr, host:str, </i><i class="openable">backlog:nr<div>
-                <p> - maximum allowed pending connections (defined by the OS) (Default <mark>511</mark>) </p>
-            </div></i>, <i class="openable">fn<div>
-                <p> - triggers when the server is listening </p>
-            </div></i>) 
-        </td>
-        <td> 
-            - asynchronously starts the Express server listening for TCP or IPC connections
-        </td>
-    </tr>
-        <tr class="12.02"><td></td><td></td></tr>
-    <tr class="12.03">
-        <td>
-            <strong>app</strong>.listen(<strong class="openable">ipcSocket:path<div>
-                <p> - <u>on UNIX</u> creates a Unix Domain Socket (ex: <mark>'./domSocket'</mark> = creates a domain socket in the current directory) <u>(not removed from the file system if the server is not explicitly closed!)</u> </p>
-                <p> - <u>on Windows</u> creates a Named Pipe (not visible in the file system), named pipe must start with <mark>\\?\pipe\</mark> or <mark>\\.\pipe\</mark> (ex: <mark>'\\\\?\\pipe\\C:\\namedPipe'</mark>) <u>(named pipes are automatically removed when the server process closes)</u> </p>
-            </div></strong>, <i class="openable">backlog:nr<div>
-                <p> - maximum allowed pending connections (defined by the OS) (Default <mark>511) </mark>
-            </div></i>, <i class="openable">fn<div>
-                <p> - triggers when the server is listening </p>
-            </div></i>)
-        </td>
-        <td>  </td>
-    </tr>
-    
-    
-    <tr class="05.01">
-        <td>  
-            <strong>app</strong>.locals
-        </td>
-        <td> 
-            - returns a settings object which contains the current <span class="openable">application setting<div>
-                <p> case sensitive routing: <strong>bol</strong> - enables case sensitive routing in <strong>routePath</strong> (<mark>/Foo</mark> not the same as <mark>/foo</mark>) <u>(sub-apps inherits this value)</u> (Default: <mark>false</mark>) </p>
-                <p> env: <strong>str</strong> - environment mode (Default: global varible <mark>NODE_ENV</mark> value) <u>(should be set to <mark>production</mark> if Express is running in production)</u> </p>
-                <p> etag: <strong>bol|str</strong> - sets an <mark>ETag</mark> header to the response (Default: <mark>"weak"</mark> = sets a weak ETag header) (<mark>"strong"</mark> = strong ETag) (<mark>true</mark> = weak ETag) (<mark>false</mark> = no ETag header) </p>
-                <p> jsonp callback name: <strong>str</strong> - default JSONP callback name (Default: <mark>callback</mark>) </p>
-                <p> json escape: <strong>bol</strong> - escapes <mark>&lt;</mark> <mark>&gt;</mark> and <mark>&amp;</mark> characters in <mark><strong>res</strong>.json</mark> <mark><strong>res</strong>.jsonp</mark> <mark><strong>res</strong>.send</mark> (in order to mitigate XSS attacks) (Default: <mark>undefined</mark>) </p>
-                <p> json replacer: <strong>fn|arr</strong> - replacer (2nd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
-                <p> json spaces: <strong>str|nr</strong> - space (3rd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
-                <p> query parser: <strong>str|bol</strong> (Default: <mark>'extended'</mark> = uses the <mark>qs</mark> query parser library) (<mark>'simple'</mark> = uses the <mark>querystring</mark> query pareser library) (<mark>false</mark> = disables query parsing) </p>
-                <p> strict routing: <strong>bol</strong> - enables strict routing (<mark>/foo</mark> not the same as <mark>/Foo</mark>) (Default: <mark>undefined</mark>) <u>(sub-apps inherit this option)</u> </p>
-                <p> subdomain offset: <strong>nr</strong> - number of dot separated to the subdomain (Default: <mark>2</mark>) </p>
-                <p> trust proxy: <strong>any</strong> - indicates that the app is behind a front-facing proxy <a href="https://expressjs.com/en/4x/api.html#trust.proxy.options.table" target="_blanc"> proxy options </a> (Default: <mark>false</mark>) <u>(sub-apps inherit this option)</u> </p>
-                <p> views: <strong>dirPath:str|[dirPath:str, ...]</strong> - sets the template engine source directories (Default: <mark>process.cwd() + 'views'</mark>) </p>
-                <p> view cache: <strong>bol</strong> - enables template engine caching (Default: <mark>true</mark> in production otherwise <mark>undefined</mark>) </p> 
-                <p> view engine: <strong>str</strong> - view engine (template engine) to use (template engine to use when we call <mark><strong>app</strong>.render()</mark> or <mark><strong>res</strong>.render()</mark> to dynimically render HTML) (Default: <mark>undefined</mark>) </p>
-                <p> x-powered-by: <strong>bol</strong> - enables <mark>X-Powered-By</mark> HTTP header (Default: <mark>true</mark>) </p>
-            </div></span> <br>
-            - the returned object also contains the applcation local variables    
-        </td>
-    </tr>
-    <tr class="06.02">
-        <td>  
-            <strong>app.listener</strong>('mount', <strong class="openable">fn(parent)<div>
-                <p> - <mark>parent</mark> = the parent app object on which this app is mounted </p>
-            </div></strong>)
-        </td>
-        <td> 
-            - event triggers when this app is mounted on another app (when passed as <strong>middleware</strong> in another app)
-        </td>
-    </tr>
-    <tr class="06.01">
-        <td>  
-            <strong>app</strong>.mountpath
-        </td>
-        <td> 
-            - returns the URL path on which this <u>sub-app</u> is mounted (the URL path of the direct parent app on which this app is mounted)
-        </td>
-    </tr>
-    <tr class="07">
-        <td>  
-            <strong>app</strong>.param(<i>param:str|[param:str, ...]</i>, <i class="openable">fn(req, res, next, id)<div>
-                <p> <mark>id</mark> = route parameter value as a string </p>
-            </div></i>)
-        </td>
-        <td> 
-            - triggers the callback when the app receives a value through the specified route parameter(s) (<i>param</i>) <br>
-            - the callback is triggered as many times as many route parameter matches are <br>
-            - the callback acts as <strong>middleware</strong> when its triggered, so the <mark>next()</mark> must be called for the next parameter or <strong>middleware</strong> in the stack
-        </td>
-    </tr>
-    <tr class="06.03">
-        <td>  
-            <strong>app</strong>.path()
-        </td>
-        <td> 
-            - returns the <span class="openable">canonical URL path<div>
-                <p> - URL path calculated from the top-level <strong>app</strong> (included) to this <strong>app</strong> (excluded) </p>
-            </div></span> on which this <u>sub-app</u> is mounted    
-        </td>
-    </tr>
-    <tr class="09.02">
-        <td>  
-            <strong>app</strong>.post(<strong>routePath|[routePath, ...]</strong>, <strong>middleware, ...|[middleware, ...]</strong>)
-        </td>
-        <td> 
-            - triggers middlewares when POST request(s) hit the <u>exact <strong>routePath</strong></u>
-        </td>
-    </tr>
-    <tr class="08.02">
-        <td>  
-            <strong>app</strong>.render(<strong class="openable">viewPath:str<div>
-                <p> - the source of the view file for the template engine (ex: <mark>index.pug</mark>) </p>
-                <p> - relative to the <mark>views</mark> application setting </p>
-            </div></strong>, <i class="openable">locals:obj<div>
-                <p> - values passed to the template as an object </p>
-            </div></i>, <i class="openable">fn(err, html)<div>
-                <p> - callback is triggered when the template engine responds </p>
-                <p> <mark>err</mark> - Error </p>
-                <p> <mark>html</mark> - the generated HTML page by the template engine </p>
-            </div></i>)
-        </td>
-        <td> 
-            - <span class="openable">the set template engine<div>
-                <p> - template engine is set by the <mark>view engine</mark> application setting (ex: <mark>app.set('view engine', 'pug')</mark>) </p>
-            </div></span> renders the targeted view and returns the result in the callback <br>
-            - basically values from the <mark><strong>app</strong>.locals</mark> and from the 2nd argument (<i>locals</i>) are passed to the set template engine which computes and returns the HTML in the callback 
-        </td>
-    </tr>
-    <tr class="09.03">
-        <td>  
-            <strong>app</strong>.put(<strong>routePath|[routePath, ...]</strong>, <strong>middleware, ...|[middleware, ...]</strong>)
-        </td>
-        <td> 
-            - triggers middlewares when PUT request(s) hit the <u>exact <strong>routePath</strong></u>
-        </td>
-    </tr>
-    <tr class="11.1">
-        <td>  
-            <strong>app</strong>.route(<strong>routePath|[routePath, ...]</strong>)
-        </td>
-        <td> 
-            - returns a single route instance (<strong>singleRoute</strong>) on which HTTP request methods can be attached (chained) 
-        </td>
-    </tr>
-        <tr class="11.2"><td></td><td></td></tr>
-    <tr class="11.3">
-        <td>  
-            <strong>singleRoute</strong>.<strong>httpMethod</strong>(<strong>middleware, ...|[middleware, ...]</strong>)<i>...</i>
-        </td>
-        <td> 
-            - HTTP request methods can be chained that execute their middleware when the <strong>singleRoute</strong> <u>exact <strong>routePath</strong></u> is hit
-        </td>
-    </tr>
-    <tr class="05.03">
-        <td>  
-            <strong>app</strong>.set(<strong>key:str, val:any</strong>)
-        </td>
-        <td> 
-            - sets the specified <span class="openable">application setting<div>
-                <p> case sensitive routing: <strong>bol</strong> - enables case sensitive routing in <strong>routePath</strong> (<mark>/Foo</mark> not the same as <mark>/foo</mark>) <u>(sub-apps inherits this value)</u> (Default: <mark>false</mark>) </p>
-                <p> env: <strong>str</strong> - environment mode (Default: global varible <mark>NODE_ENV</mark> value) <u>(should be set to <mark>production</mark> if Express is running in production)</u> </p>
-                <p> etag: <strong>bol|str</strong> - sets an <mark>ETag</mark> header to the response (Default: <mark>"weak"</mark> = sets a weak ETag header) (<mark>"strong"</mark> = strong ETag) (<mark>true</mark> = weak ETag) (<mark>false</mark> = no ETag header) </p>
-                <p> jsonp callback name: <strong>str</strong> - default JSONP callback name (Default: <mark>callback</mark>) </p>
-                <p> json escape: <strong>bol</strong> - escapes <mark>&lt;</mark> <mark>&gt;</mark> and <mark>&amp;</mark> characters in <mark><strong>res</strong>.json</mark> <mark><strong>res</strong>.jsonp</mark> <mark><strong>res</strong>.send</mark> (in order to mitigate XSS attacks) (Default: <mark>undefined</mark>) </p>
-                <p> json replacer: <strong>fn|arr</strong> - replacer (2nd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
-                <p> json spaces: <strong>str|nr</strong> - space (3rd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
-                <p> query parser: <strong>str|bol</strong> (Default: <mark>'extended'</mark> = uses the <mark>qs</mark> query parser library) (<mark>'simple'</mark> = uses the <mark>querystring</mark> query pareser library) (<mark>false</mark> = disables query parsing) </p>
-                <p> strict routing: <strong>bol</strong> - enables strict routing (<mark>/foo</mark> not the same as <mark>/Foo</mark>) (Default: <mark>undefined</mark>) <u>(sub-apps inherit this option)</u> </p>
-                <p> subdomain offset: <strong>nr</strong> - number of dot separated to the subdomain (Default: <mark>2</mark>) </p>
-                <p> trust proxy: <strong>any</strong> - indicates that the app is behind a front-facing proxy <a href="https://expressjs.com/en/4x/api.html#trust.proxy.options.table" target="_blanc"> proxy options </a> (Default: <mark>false</mark>) <u>(sub-apps inherit this option)</u> </p>
-                <p> views: <strong>dirPath:str|[dirPath:str, ...]</strong> - sets the template engine source directories (Default: <mark>process.cwd() + 'views'</mark>) </p>
-                <p> view cache: <strong>bol</strong> - enables template engine caching (Default: <mark>true</mark> in production otherwise <mark>undefined</mark>) </p> 
-                <p> view engine: <strong>str</strong> - view engine (template engine) to use (template engine to use when we call <mark><strong>app</strong>.render()</mark> or <mark><strong>res</strong>.render()</mark> to dynimically render HTML) (Default: <mark>undefined</mark>) </p>
-                <p> x-powered-by: <strong>bol</strong> - enables <mark>X-Powered-By</mark> HTTP header (Default: <mark>true</mark>) </p>
-            </div></span> (or the app local variable value)
-        </td>
+      <td>
+        <strong>app</strong>
+      </td>
+      <td>
+        - an Expressjs application instance returned by <mark><strong>express</strong>()</mark> <br>
+        - also can be passed as <strong>middleware</strong> so it becomes a sub-app
+      </td>
     </tr>
     <tr class="10">
-        <td>  
-            <strong>app</strong>.use(<strong>routePath|[routePath, ...]</strong>, <strong>middleware, ...|[middleware, ...]</strong>)
-        </td>
-        <td> 
-            - mounts the specified <strong>middleware</strong>(s) at the specified path(s) <br>
-            - triggers middlewares when any HTTP request(s) hit the <u class="openable">base <strong>routePath</strong><div>
-                <p> <mark>app.use('/', middleware, ...)</mark> = will trigger for any request becasue the base is the root </p>
-                <p> <mark>app.use('/profile', middleware, ...)</mark> = will trigger for any request having a URL base of <mark>/profile</mark> (ex: <mark>/profile/pete/xhr</mark>, <mark>/profile/steve/hxx</mark> but won't trigger for <mark>/steve/hxx</mark>) </p>
-            </div></u> 
-        </td>
-    </tr>  
-</table>
-<h2 style="color:green;"><u> Notes : </u></h2>
-    <details class="example" id="notes">
+      <td>
+        <strong>app</strong>.use(<strong>routePath|[routePath, ...]</strong>, <strong>middleware, ...|[middleware, ...]</strong>)
+      </td>
+      <td>
+        - mounts the specified <strong>middleware</strong>(s) at the specified path(s) <br>
+        - triggers middlewares when any HTTP request(s) <u class="openable">starts with <strong>routePath</strong>
+          <div>
+            <p> <mark>app.use('/', middleware, ...)</mark> = will trigger for any request becasue the base is the root </p>
+            <p> <mark>app.use('/profile', middleware, ...)</mark> = will trigger for any request having a URL base of <mark>/profile</mark> (ex: <mark>/profile/pete/xhr</mark>, <mark>/profile/steve/hxx</mark> but won't trigger for <mark>/steve/hxx</mark>) </p>
+          </div>
+        </u>
+      </td>
+    </tr>
+    <tr class="09.06">
+      <td>
+        <strong>app</strong>.<strong class="openable">httpMethod<div>
+            <p> - ex: <mark>get</mark> </p>
+          </div></strong>(<strong>routePath|[routePath, ...]</strong>, <strong>middleware, ...|[middleware, ...]</strong>)
+      </td>
+      <td>
+        - triggers middlewares when <strong>httpMethod</strong> request(s) hit the <u>exact <strong>routePath</strong></u>
+      </td>
+    </tr>
+    <tr class="09.05">
+      <td>
+        <strong>app</strong>.all(<strong>routePath|[routePath, ...]</strong>, <strong>middleware, ...|[middleware, ...]</strong>)
+      </td>
+      <td>
+        - triggers middlewares when any HTTP request(s) hit the <u>exact <strong>routePath</strong></u>
+      </td>
+    </tr>
+    <tr class="05.06">
+      <td>
+        <strong>app</strong>.disable(<strong>key:str</strong>)
+      </td>
+      <td>
+        - disables the specified <span class="openable">application setting<div>
+            <p> case sensitive routing: <strong>bol</strong> - enables case sensitive routing in <strong>routePath</strong> (<mark>/Foo</mark> not the same as <mark>/foo</mark>) <u>(sub-apps inherits this value)</u> (Default: <mark>false</mark>) </p>
+            <p> env: <strong>str</strong> - environment mode (Default: global varible <mark>NODE_ENV</mark> value) <u>(should be set to <mark>production</mark> if Express is running in production)</u> </p>
+            <p> etag: <strong>bol|str</strong> - sets an <mark>ETag</mark> header to the response (Default: <mark>"weak"</mark> = sets a weak ETag header) (<mark>"strong"</mark> = strong ETag) (<mark>true</mark> = weak ETag) (<mark>false</mark> = no ETag header) </p>
+            <p> jsonp callback name: <strong>str</strong> - default JSONP callback name (Default: <mark>callback</mark>) </p>
+            <p> json escape: <strong>bol</strong> - escapes <mark>&lt;</mark> <mark>&gt;</mark> and <mark>&amp;</mark> characters in <mark><strong>res</strong>.json</mark> <mark><strong>res</strong>.jsonp</mark> <mark><strong>res</strong>.send</mark> (in order to mitigate XSS attacks) (Default: <mark>undefined</mark>) </p>
+            <p> json replacer: <strong>fn|arr</strong> - replacer (2nd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
+            <p> json spaces: <strong>str|nr</strong> - space (3rd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
+            <p> query parser: <strong>str|bol</strong> (Default: <mark>'extended'</mark> = uses the <mark>qs</mark> query parser library) (<mark>'simple'</mark> = uses the <mark>querystring</mark> query pareser library) (<mark>false</mark> = disables query parsing) </p>
+            <p> strict routing: <strong>bol</strong> - enables strict routing (<mark>/foo</mark> not the same as <mark>/Foo</mark>) (Default: <mark>undefined</mark>) <u>(sub-apps inherit this option)</u> </p>
+            <p> subdomain offset: <strong>nr</strong> - number of dot separated to the subdomain (Default: <mark>2</mark>) </p>
+            <p> trust proxy: <strong>any</strong> - indicates that the app is behind a front-facing proxy <a href="https://expressjs.com/en/4x/api.html#trust.proxy.options.table" target="_blanc"> proxy options </a> (Default: <mark>false</mark>) <u>(sub-apps inherit this option)</u> </p>
+            <p> views: <strong>dirPath:str|[dirPath:str, ...]</strong> - sets the template engine source directories (Default: <mark>process.cwd() + 'views'</mark>) </p>
+            <p> view cache: <strong>bol</strong> - enables template engine caching (Default: <mark>true</mark> in production otherwise <mark>undefined</mark>) </p>
+            <p> view engine: <strong>str</strong> - view engine (template engine) to use (template engine to use when we call <mark><strong>app</strong>.render()</mark> or <mark><strong>res</strong>.render()</mark> to dynimically render HTML) (Default: <mark>undefined</mark>) </p>
+            <p> x-powered-by: <strong>bol</strong> - enables <mark>X-Powered-By</mark> HTTP header (Default: <mark>true</mark>) </p>
+          </div></span>
+      </td>
+    </tr>
+    <tr class="05.07">
+      <td>
+        <strong>app</strong>.disabled(<strong>key:str</strong>)
+      </td>
+      <td>
+        - checks if the specified <span class="openable">application setting<div>
+            <p> case sensitive routing: <strong>bol</strong> - enables case sensitive routing in <strong>routePath</strong> (<mark>/Foo</mark> not the same as <mark>/foo</mark>) <u>(sub-apps inherits this value)</u> (Default: <mark>false</mark>) </p>
+            <p> env: <strong>str</strong> - environment mode (Default: global varible <mark>NODE_ENV</mark> value) <u>(should be set to <mark>production</mark> if Express is running in production)</u> </p>
+            <p> etag: <strong>bol|str</strong> - sets an <mark>ETag</mark> header to the response (Default: <mark>"weak"</mark> = sets a weak ETag header) (<mark>"strong"</mark> = strong ETag) (<mark>true</mark> = weak ETag) (<mark>false</mark> = no ETag header) </p>
+            <p> jsonp callback name: <strong>str</strong> - default JSONP callback name (Default: <mark>callback</mark>) </p>
+            <p> json escape: <strong>bol</strong> - escapes <mark>&lt;</mark> <mark>&gt;</mark> and <mark>&amp;</mark> characters in <mark><strong>res</strong>.json</mark> <mark><strong>res</strong>.jsonp</mark> <mark><strong>res</strong>.send</mark> (in order to mitigate XSS attacks) (Default: <mark>undefined</mark>) </p>
+            <p> json replacer: <strong>fn|arr</strong> - replacer (2nd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
+            <p> json spaces: <strong>str|nr</strong> - space (3rd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
+            <p> query parser: <strong>str|bol</strong> (Default: <mark>'extended'</mark> = uses the <mark>qs</mark> query parser library) (<mark>'simple'</mark> = uses the <mark>querystring</mark> query pareser library) (<mark>false</mark> = disables query parsing) </p>
+            <p> strict routing: <strong>bol</strong> - enables strict routing (<mark>/foo</mark> not the same as <mark>/Foo</mark>) (Default: <mark>undefined</mark>) <u>(sub-apps inherit this option)</u> </p>
+            <p> subdomain offset: <strong>nr</strong> - number of dot separated to the subdomain (Default: <mark>2</mark>) </p>
+            <p> trust proxy: <strong>any</strong> - indicates that the app is behind a front-facing proxy <a href="https://expressjs.com/en/4x/api.html#trust.proxy.options.table" target="_blanc"> proxy options </a> (Default: <mark>false</mark>) <u>(sub-apps inherit this option)</u> </p>
+            <p> views: <strong>dirPath:str|[dirPath:str, ...]</strong> - sets the template engine source directories (Default: <mark>process.cwd() + 'views'</mark>) </p>
+            <p> view cache: <strong>bol</strong> - enables template engine caching (Default: <mark>true</mark> in production otherwise <mark>undefined</mark>) </p>
+            <p> view engine: <strong>str</strong> - view engine (template engine) to use (template engine to use when we call <mark><strong>app</strong>.render()</mark> or <mark><strong>res</strong>.render()</mark> to dynimically render HTML) (Default: <mark>undefined</mark>) </p>
+            <p> x-powered-by: <strong>bol</strong> - enables <mark>X-Powered-By</mark> HTTP header (Default: <mark>true</mark>) </p>
+          </div></span> is disable and returns a boolean accordingly
+      </td>
+    </tr>
+    <tr class="05.04">
+      <td>
+        <strong>app</strong>.enable(<strong>key:str</strong>)
+      </td>
+      <td>
+        - enables the specified <span class="openable">application setting<div>
+            <p> case sensitive routing: <strong>bol</strong> - enables case sensitive routing in <strong>routePath</strong> (<mark>/Foo</mark> not the same as <mark>/foo</mark>) <u>(sub-apps inherits this value)</u> (Default: <mark>false</mark>) </p>
+            <p> env: <strong>str</strong> - environment mode (Default: global varible <mark>NODE_ENV</mark> value) <u>(should be set to <mark>production</mark> if Express is running in production)</u> </p>
+            <p> etag: <strong>bol|str</strong> - sets an <mark>ETag</mark> header to the response (Default: <mark>"weak"</mark> = sets a weak ETag header) (<mark>"strong"</mark> = strong ETag) (<mark>true</mark> = weak ETag) (<mark>false</mark> = no ETag header) </p>
+            <p> jsonp callback name: <strong>str</strong> - default JSONP callback name (Default: <mark>callback</mark>) </p>
+            <p> json escape: <strong>bol</strong> - escapes <mark>&lt;</mark> <mark>&gt;</mark> and <mark>&amp;</mark> characters in <mark><strong>res</strong>.json</mark> <mark><strong>res</strong>.jsonp</mark> <mark><strong>res</strong>.send</mark> (in order to mitigate XSS attacks) (Default: <mark>undefined</mark>) </p>
+            <p> json replacer: <strong>fn|arr</strong> - replacer (2nd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
+            <p> json spaces: <strong>str|nr</strong> - space (3rd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
+            <p> query parser: <strong>str|bol</strong> (Default: <mark>'extended'</mark> = uses the <mark>qs</mark> query parser library) (<mark>'simple'</mark> = uses the <mark>querystring</mark> query pareser library) (<mark>false</mark> = disables query parsing) </p>
+            <p> strict routing: <strong>bol</strong> - enables strict routing (<mark>/foo</mark> not the same as <mark>/Foo</mark>) (Default: <mark>undefined</mark>) <u>(sub-apps inherit this option)</u> </p>
+            <p> subdomain offset: <strong>nr</strong> - number of dot separated to the subdomain (Default: <mark>2</mark>) </p>
+            <p> trust proxy: <strong>any</strong> - indicates that the app is behind a front-facing proxy <a href="https://expressjs.com/en/4x/api.html#trust.proxy.options.table" target="_blanc"> proxy options </a> (Default: <mark>false</mark>) <u>(sub-apps inherit this option)</u> </p>
+            <p> views: <strong>dirPath:str|[dirPath:str, ...]</strong> - sets the template engine source directories (Default: <mark>process.cwd() + 'views'</mark>) </p>
+            <p> view cache: <strong>bol</strong> - enables template engine caching (Default: <mark>true</mark> in production otherwise <mark>undefined</mark>) </p>
+            <p> view engine: <strong>str</strong> - view engine (template engine) to use (template engine to use when we call <mark><strong>app</strong>.render()</mark> or <mark><strong>res</strong>.render()</mark> to dynimically render HTML) (Default: <mark>undefined</mark>) </p>
+            <p> x-powered-by: <strong>bol</strong> - enables <mark>X-Powered-By</mark> HTTP header (Default: <mark>true</mark>) </p>
+          </div></span>
+      </td>
+    </tr>
+    <tr class="05.05">
+      <td>
+        <strong>app</strong>.enabled(<strong>key:str</strong>)
+      </td>
+      <td>
+        - checks if the specified <span class="openable">application setting<div>
+            <p> case sensitive routing: <strong>bol</strong> - enables case sensitive routing in <strong>routePath</strong> (<mark>/Foo</mark> not the same as <mark>/foo</mark>) <u>(sub-apps inherits this value)</u> (Default: <mark>false</mark>) </p>
+            <p> env: <strong>str</strong> - environment mode (Default: global varible <mark>NODE_ENV</mark> value) <u>(should be set to <mark>production</mark> if Express is running in production)</u> </p>
+            <p> etag: <strong>bol|str</strong> - sets an <mark>ETag</mark> header to the response (Default: <mark>"weak"</mark> = sets a weak ETag header) (<mark>"strong"</mark> = strong ETag) (<mark>true</mark> = weak ETag) (<mark>false</mark> = no ETag header) </p>
+            <p> jsonp callback name: <strong>str</strong> - default JSONP callback name (Default: <mark>callback</mark>) </p>
+            <p> json escape: <strong>bol</strong> - escapes <mark>&lt;</mark> <mark>&gt;</mark> and <mark>&amp;</mark> characters in <mark><strong>res</strong>.json</mark> <mark><strong>res</strong>.jsonp</mark> <mark><strong>res</strong>.send</mark> (in order to mitigate XSS attacks) (Default: <mark>undefined</mark>) </p>
+            <p> json replacer: <strong>fn|arr</strong> - replacer (2nd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
+            <p> json spaces: <strong>str|nr</strong> - space (3rd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
+            <p> query parser: <strong>str|bol</strong> (Default: <mark>'extended'</mark> = uses the <mark>qs</mark> query parser library) (<mark>'simple'</mark> = uses the <mark>querystring</mark> query pareser library) (<mark>false</mark> = disables query parsing) </p>
+            <p> strict routing: <strong>bol</strong> - enables strict routing (<mark>/foo</mark> not the same as <mark>/Foo</mark>) (Default: <mark>undefined</mark>) <u>(sub-apps inherit this option)</u> </p>
+            <p> subdomain offset: <strong>nr</strong> - number of dot separated to the subdomain (Default: <mark>2</mark>) </p>
+            <p> trust proxy: <strong>any</strong> - indicates that the app is behind a front-facing proxy <a href="https://expressjs.com/en/4x/api.html#trust.proxy.options.table" target="_blanc"> proxy options </a> (Default: <mark>false</mark>) <u>(sub-apps inherit this option)</u> </p>
+            <p> views: <strong>dirPath:str|[dirPath:str, ...]</strong> - sets the template engine source directories (Default: <mark>process.cwd() + 'views'</mark>) </p>
+            <p> view cache: <strong>bol</strong> - enables template engine caching (Default: <mark>true</mark> in production otherwise <mark>undefined</mark>) </p>
+            <p> view engine: <strong>str</strong> - view engine (template engine) to use (template engine to use when we call <mark><strong>app</strong>.render()</mark> or <mark><strong>res</strong>.render()</mark> to dynimically render HTML) (Default: <mark>undefined</mark>) </p>
+            <p> x-powered-by: <strong>bol</strong> - enables <mark>X-Powered-By</mark> HTTP header (Default: <mark>true</mark>) </p>
+          </div></span> is enabled and returns a boolean accordingly
+      </td>
+    </tr>
+    <tr class="08.01">
+      <td>
+        <strong>app</strong>.engine(<strong class="openable">ext:str, fn<div>
+            <p> <mark>ext</mark> - file extension to be watched </p>
+            <p> <mark>fn</mark> - the callback that Express calls to pass and receive the data (ex: <mark>require('ejs').renderFile</mark>) </p>
+          </div></strong>)
+      </td>
+      <td>
+        - <span class="openable">registers a template engine<div>
+            <p> - template engines that does not provied an <mark><strong>templateEngine</strong>.__express</mark> function need to be registered with this method so Express can use it </p>
+            <p> - a the time of writing this Pug and EJS doesn't need to be registered </p>
+            <p> - this is how EJS needed to be registered before <mark>app.engine('html', require('ejs').renderFile)</mark> </p>
+          </div></span> that does not provide an <mark>__express</mark> function (for Pug and EJS doesn't needed)
+      </td>
+    </tr>
+    <tr class="05.02">
+      <td>
+        <strong>app</strong>.get(<strong>key:str</strong>)
+      </td>
+      <td>
+        - returns the specified <span class="openable">application setting<div>
+            <p> case sensitive routing: <strong>bol</strong> - enables case sensitive routing in <strong>routePath</strong> (<mark>/Foo</mark> not the same as <mark>/foo</mark>) <u>(sub-apps inherits this value)</u> (Default: <mark>false</mark>) </p>
+            <p> env: <strong>str</strong> - environment mode (Default: global varible <mark>NODE_ENV</mark> value) <u>(should be set to <mark>production</mark> if Express is running in production)</u> </p>
+            <p> etag: <strong>bol|str</strong> - sets an <mark>ETag</mark> header to the response (Default: <mark>"weak"</mark> = sets a weak ETag header) (<mark>"strong"</mark> = strong ETag) (<mark>true</mark> = weak ETag) (<mark>false</mark> = no ETag header) </p>
+            <p> jsonp callback name: <strong>str</strong> - default JSONP callback name (Default: <mark>callback</mark>) </p>
+            <p> json escape: <strong>bol</strong> - escapes <mark>&lt;</mark> <mark>&gt;</mark> and <mark>&amp;</mark> characters in <mark><strong>res</strong>.json</mark> <mark><strong>res</strong>.jsonp</mark> <mark><strong>res</strong>.send</mark> (in order to mitigate XSS attacks) (Default: <mark>undefined</mark>) </p>
+            <p> json replacer: <strong>fn|arr</strong> - replacer (2nd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
+            <p> json spaces: <strong>str|nr</strong> - space (3rd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
+            <p> query parser: <strong>str|bol</strong> (Default: <mark>'extended'</mark> = uses the <mark>qs</mark> query parser library) (<mark>'simple'</mark> = uses the <mark>querystring</mark> query pareser library) (<mark>false</mark> = disables query parsing) </p>
+            <p> strict routing: <strong>bol</strong> - enables strict routing (<mark>/foo</mark> not the same as <mark>/Foo</mark>) (Default: <mark>undefined</mark>) <u>(sub-apps inherit this option)</u> </p>
+            <p> subdomain offset: <strong>nr</strong> - number of dot separated to the subdomain (Default: <mark>2</mark>) </p>
+            <p> trust proxy: <strong>any</strong> - indicates that the app is behind a front-facing proxy <a href="https://expressjs.com/en/4x/api.html#trust.proxy.options.table" target="_blanc"> proxy options </a> (Default: <mark>false</mark>) <u>(sub-apps inherit this option)</u> </p>
+            <p> views: <strong>dirPath:str|[dirPath:str, ...]</strong> - sets the template engine source directories (Default: <mark>process.cwd() + 'views'</mark>) </p>
+            <p> view cache: <strong>bol</strong> - enables template engine caching (Default: <mark>true</mark> in production otherwise <mark>undefined</mark>) </p>
+            <p> view engine: <strong>str</strong> - view engine (template engine) to use (template engine to use when we call <mark><strong>app</strong>.render()</mark> or <mark><strong>res</strong>.render()</mark> to dynimically render HTML) (Default: <mark>undefined</mark>) </p>
+            <p> x-powered-by: <strong>bol</strong> - enables <mark>X-Powered-By</mark> HTTP header (Default: <mark>true</mark>) </p>
+          </div></span> value (or the app local variable value)
+      </td>
+    </tr>
+      <td>
+        <strong>app</strong>.set(<strong>key:str, val:any</strong>)
+      </td>
+      <td>
+        - sets the specified <span class="openable">application setting<div>
+            <p> case sensitive routing: <strong>bol</strong> - enables case sensitive routing in <strong>routePath</strong> (<mark>/Foo</mark> not the same as <mark>/foo</mark>) <u>(sub-apps inherits this value)</u> (Default: <mark>false</mark>) </p>
+            <p> env: <strong>str</strong> - environment mode (Default: global varible <mark>NODE_ENV</mark> value) <u>(should be set to <mark>production</mark> if Express is running in production)</u> </p>
+            <p> etag: <strong>bol|str</strong> - sets an <mark>ETag</mark> header to the response (Default: <mark>"weak"</mark> = sets a weak ETag header) (<mark>"strong"</mark> = strong ETag) (<mark>true</mark> = weak ETag) (<mark>false</mark> = no ETag header) </p>
+            <p> jsonp callback name: <strong>str</strong> - default JSONP callback name (Default: <mark>callback</mark>) </p>
+            <p> json escape: <strong>bol</strong> - escapes <mark>&lt;</mark> <mark>&gt;</mark> and <mark>&amp;</mark> characters in <mark><strong>res</strong>.json</mark> <mark><strong>res</strong>.jsonp</mark> <mark><strong>res</strong>.send</mark> (in order to mitigate XSS attacks) (Default: <mark>undefined</mark>) </p>
+            <p> json replacer: <strong>fn|arr</strong> - replacer (2nd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
+            <p> json spaces: <strong>str|nr</strong> - space (3rd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
+            <p> query parser: <strong>str|bol</strong> (Default: <mark>'extended'</mark> = uses the <mark>qs</mark> query parser library) (<mark>'simple'</mark> = uses the <mark>querystring</mark> query pareser library) (<mark>false</mark> = disables query parsing) </p>
+            <p> strict routing: <strong>bol</strong> - enables strict routing (<mark>/foo</mark> not the same as <mark>/Foo</mark>) (Default: <mark>undefined</mark>) <u>(sub-apps inherit this option)</u> </p>
+            <p> subdomain offset: <strong>nr</strong> - number of dot separated to the subdomain (Default: <mark>2</mark>) </p>
+            <p> trust proxy: <strong>any</strong> - indicates that the app is behind a front-facing proxy <a href="https://expressjs.com/en/4x/api.html#trust.proxy.options.table" target="_blanc"> proxy options </a> (Default: <mark>false</mark>) <u>(sub-apps inherit this option)</u> </p>
+            <p> views: <strong>dirPath:str|[dirPath:str, ...]</strong> - sets the template engine source directories (Default: <mark>process.cwd() + 'views'</mark>) </p>
+            <p> view cache: <strong>bol</strong> - enables template engine caching (Default: <mark>true</mark> in production otherwise <mark>undefined</mark>) </p>
+            <p> view engine: <strong>str</strong> - view engine (template engine) to use (template engine to use when we call <mark><strong>app</strong>.render()</mark> or <mark><strong>res</strong>.render()</mark> to dynimically render HTML) (Default: <mark>undefined</mark>) </p>
+            <p> x-powered-by: <strong>bol</strong> - enables <mark>X-Powered-By</mark> HTTP header (Default: <mark>true</mark>) </p>
+          </div></span> (or the app local variable value)
+      </td>
+    </tr>
+    <tr class="12.01">
+      <td>
+        <strong>app</strong>.listen(<i>port:nr, host:str, </i><i class="openable">backlog:nr<div>
+            <p> - maximum allowed pending connections (defined by the OS) (Default <mark>511</mark>) </p>
+          </div></i>, <i class="openable">fn<div>
+            <p> - triggers when the server is listening </p>
+          </div></i>)
+      </td>
+      <td>
+        - asynchronously starts the Express server listening for TCP or IPC connections
+      </td>
+    </tr>
+    <tr class="12.02">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="12.03">
+      <td>
+        <strong>app</strong>.listen(<strong class="openable">ipcSocket:path<div>
+            <p> - <u>on UNIX</u> creates a Unix Domain Socket (ex: <mark>'./domSocket'</mark> = creates a domain socket in the current directory) <u>(not removed from the file system if the server is not explicitly closed!)</u> </p>
+            <p> - <u>on Windows</u> creates a Named Pipe (not visible in the file system), named pipe must start with <mark>\\?\pipe\</mark> or <mark>\\.\pipe\</mark> (ex: <mark>'\\\\?\\pipe\\C:\\namedPipe'</mark>) <u>(named pipes are automatically removed when the server process closes)</u> </p>
+          </div></strong>, <i class="openable">backlog:nr<div>
+            <p> - maximum allowed pending connections (defined by the OS) (Default <mark>511) </mark>
+          </div></i>, <i class="openable">fn<div>
+            <p> - triggers when the server is listening </p>
+          </div></i>)
+      </td>
+      <td> </td>
+    </tr>
+    <tr class="05.01">
+      <td>
+        <strong>app</strong>.locals
+      </td>
+      <td>
+        - returns a settings object which contains the current <span class="openable">application setting<div>
+            <p> case sensitive routing: <strong>bol</strong> - enables case sensitive routing in <strong>routePath</strong> (<mark>/Foo</mark> not the same as <mark>/foo</mark>) <u>(sub-apps inherits this value)</u> (Default: <mark>false</mark>) </p>
+            <p> env: <strong>str</strong> - environment mode (Default: global varible <mark>NODE_ENV</mark> value) <u>(should be set to <mark>production</mark> if Express is running in production)</u> </p>
+            <p> etag: <strong>bol|str</strong> - sets an <mark>ETag</mark> header to the response (Default: <mark>"weak"</mark> = sets a weak ETag header) (<mark>"strong"</mark> = strong ETag) (<mark>true</mark> = weak ETag) (<mark>false</mark> = no ETag header) </p>
+            <p> jsonp callback name: <strong>str</strong> - default JSONP callback name (Default: <mark>callback</mark>) </p>
+            <p> json escape: <strong>bol</strong> - escapes <mark>&lt;</mark> <mark>&gt;</mark> and <mark>&amp;</mark> characters in <mark><strong>res</strong>.json</mark> <mark><strong>res</strong>.jsonp</mark> <mark><strong>res</strong>.send</mark> (in order to mitigate XSS attacks) (Default: <mark>undefined</mark>) </p>
+            <p> json replacer: <strong>fn|arr</strong> - replacer (2nd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
+            <p> json spaces: <strong>str|nr</strong> - space (3rd argument) in the <mark>JSON.stringify()</mark> method (Default: <mark>undefined</mark>) </p>
+            <p> query parser: <strong>str|bol</strong> (Default: <mark>'extended'</mark> = uses the <mark>qs</mark> query parser library) (<mark>'simple'</mark> = uses the <mark>querystring</mark> query pareser library) (<mark>false</mark> = disables query parsing) </p>
+            <p> strict routing: <strong>bol</strong> - enables strict routing (<mark>/foo</mark> not the same as <mark>/Foo</mark>) (Default: <mark>undefined</mark>) <u>(sub-apps inherit this option)</u> </p>
+            <p> subdomain offset: <strong>nr</strong> - number of dot separated to the subdomain (Default: <mark>2</mark>) </p>
+            <p> trust proxy: <strong>any</strong> - indicates that the app is behind a front-facing proxy <a href="https://expressjs.com/en/4x/api.html#trust.proxy.options.table" target="_blanc"> proxy options </a> (Default: <mark>false</mark>) <u>(sub-apps inherit this option)</u> </p>
+            <p> views: <strong>dirPath:str|[dirPath:str, ...]</strong> - sets the template engine source directories (Default: <mark>process.cwd() + 'views'</mark>) </p>
+            <p> view cache: <strong>bol</strong> - enables template engine caching (Default: <mark>true</mark> in production otherwise <mark>undefined</mark>) </p>
+            <p> view engine: <strong>str</strong> - view engine (template engine) to use (template engine to use when we call <mark><strong>app</strong>.render()</mark> or <mark><strong>res</strong>.render()</mark> to dynimically render HTML) (Default: <mark>undefined</mark>) </p>
+            <p> x-powered-by: <strong>bol</strong> - enables <mark>X-Powered-By</mark> HTTP header (Default: <mark>true</mark>) </p>
+          </div></span> <br>
+        - the returned object also contains the applcation local variables
+      </td>
+    </tr>
+    <tr class="06.02">
+      <td>
+        <strong>app.listener</strong>('mount', <strong class="openable">fn(parent)<div>
+            <p> - <mark>parent</mark> = the parent app object on which this app is mounted </p>
+          </div></strong>)
+      </td>
+      <td>
+        - event triggers when this app is mounted on another app (when passed as <strong>middleware</strong> in another app)
+      </td>
+    </tr>
+    <tr class="06.01">
+      <td>
+        <strong>app</strong>.mountpath
+      </td>
+      <td>
+        - returns the URL path on which this <u>sub-app</u> is mounted (the URL path of the direct parent app on which this app is mounted)
+      </td>
+    </tr>
+    <tr class="07">
+      <td>
+        <strong>app</strong>.param(<reqval>param:str|[param:str, ...]</reqval>, <reqval class="openable">fn(req, res, next, id)<div>
+            <p> <mark>id</mark> = route parameter value as a string </p>
+          </div></reqval>)
+      </td>
+      <td>
+        - triggers the callback when the app receives a value through the specified route parameter(s) (<i>param</i>) <br>
+        - the callback is triggered as many times as many route parameter matches are <br>
+        - the callback acts as <strong>middleware</strong> when its triggered, so the <mark>next()</mark> must be called for the next parameter or <strong>middleware</strong> in the stack
+      </td>
+    </tr>
+    <tr class="06.03">
+      <td>
+        <strong>app</strong>.path()
+      </td>
+      <td>
+        - returns the <span class="openable">canonical URL path<div>
+            <p> - URL path calculated from the top-level <strong>app</strong> (included) to this <strong>app</strong> (excluded) </p>
+          </div></span> on which this <u>sub-app</u> is mounted
+      </td>
+    </tr>
+    <tr class="08.02">
+      <td>
+        <strong>app</strong>.render(<strong class="openable">viewPath:str<div>
+            <p> - the source of the view file for the template engine (ex: <mark>index.pug</mark>) </p>
+            <p> - relative to the <mark>views</mark> application setting </p>
+          </div></strong>, <i class="openable">locals:obj<div>
+            <p> - values passed to the template as an object </p>
+          </div></i>, <i class="openable">fn(err, html)<div>
+            <p> - callback is triggered when the template engine responds </p>
+            <p> <mark>err</mark> - Error </p>
+            <p> <mark>html</mark> - the generated HTML page by the template engine </p>
+          </div></i>)
+      </td>
+      <td>
+        - <span class="openable">the set template engine<div>
+            <p> - template engine is set by the <mark>view engine</mark> application setting (ex: <mark>app.set('view engine', 'pug')</mark>) </p>
+          </div></span> renders the targeted view and returns the result in the callback <br>
+        - basically values from the <mark><strong>app</strong>.locals</mark> and from the 2nd argument (<i>locals</i>) are passed to the set template engine which computes and returns the HTML in the callback
+      </td>
+    </tr>
+    <tr class="11.1">
+      <td>
+        <strong>app</strong>.route(<strong>routePath|[routePath, ...]</strong>)
+      </td>
+      <td>
+        - returns a single route instance (<strong>singleRoute</strong>) on which HTTP request methods can be attached (chained)
+      </td>
+    </tr>
+    <tr class="11.2">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="11.3">
+      <td>
+        <strong>singleRoute</strong>.<strong>httpMethod</strong>(<strong>middleware, ...|[middleware, ...]</strong>)<i>...</i>
+      </td>
+      <td>
+        - HTTP request methods can be chained that execute their middleware when the <strong>singleRoute</strong> <u>exact <strong>routePath</strong></u> is hit
+      </td>
+    </tr>
+    <tr class="05.03">
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-        <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://expressjs.com/en/4x/api.html#app" target="_blank"> Express APP API (expressjs.com)</a></p>
+  <p><a href="https://expressjs.com/en/4x/api.html#app.set" target="_blank">express application settings (expressjs.com) </a> </p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <pre class="syntax">
+    const express = require('express');
+    const <reqval>app</reqval> = express();
     
-<h2 style="color:green;"><u> Remember This : </u></h2>
+    <span style="color:darkgray">// app...</span>
+  
+  
+<span style="color:darkgray;">// express apps can be mounted on each others route ------------------</span>
+    const <reqval>app2</reqval> = express();
     
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - the <mark>app</mark> API represents an Expressjs instance, it has various routing tools and settings </p>
-<h2 style="color:darkblue;"><u> Exppress App <mark>express()</mark> / <mark>Router()</mark> / <mark>static()</mark> / <mark>text()</mark> / <mark>json()</mark> / <mark>raw()</mark> / <mark>urlencoded()</mark> / <mark>app</mark> / <mark>locals</mark> / <mark>get()</mark> / <mark>set()</mark> / <mark>enable()</mark> / <mark>enabled()</mark> / <mark>disable()</mark> / <mark>disabled()</mark> / <mark>mountpath()</mark> / <mark>mount (event)</mark> / <mark>path()</mark> / <mark>param()</mark> / <mark>engine()</mark> / <mark>render()</mark> / <mark>get()</mark> / <mark>post()</mark> / <mark>put()</mark> / <mark>delete()</mark> / <mark>all()</mark> / <mark>httpMethod()</mark> / <mark>use()</mark> / <mark>route()</mark> / <mark>singleRoute</mark> / <mark>listen()</mark> </u></h2>
-<details class="example">
-<summary> DEMO </summary>
-    <p> - <mark>express</mark> </p>
+    <reqval>app</reqval>.use(<reqval>routePath</reqval>, <reqval>app2</reqval>)
+  </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <h4 class="header"> The <mark>express</mark> app </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -575,7 +543,9 @@
     
     app.listen(1000, ()=> console.log('Expressjs is listening!'));
     </pre>
-    <p> - <mark>app</mark> </p>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>express</mark> app 2 </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -653,7 +623,9 @@
   // --------------------------
     app.listen('/unixSocket.soc', ()=> console.log('Listening!'));                     // listening over domain socket  
     </pre>
-    <p> - using template engine with Express <mark>render()</mark> / <mark>engine()</mark> </p>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Using template engine with Express <mark>render()</mark> / <mark>engine()</mark> </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -683,6 +655,9 @@
     &lt;/body&gt;
     &lt;/html&gt; 
     </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Other </h4>
     <p> - the <mark>use()</mark> methods mounts middelwares on route paths = other <mark>use()</mark> and <mark>httpMethod()</mark> methods are triggered after it </p>
     <p> - other <mark>httpMethod()</mark> or <mark>all()</mark> methods are the communication endpoints </p>
     <pre>
@@ -703,10 +678,9 @@
                                                                                            
     app.listen(1000, ()=> console.log('Expressjs is listening!'));   
     </pre>
-</details>     
-<details class="example">
-<summary> Example: </summary>
-<h4 style="color:darkblue;"><u> <mark>json()</mark> / <mark>text()</mark> / <mark>raw()</mark> / <mark>urlencoded()</mark> TEST </u></h4>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"><mark>json()</mark> / <mark>text()</mark> / <mark>raw()</mark> / <mark>urlencoded()</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -765,9 +739,9 @@
     
     app.listen(1000, ()=> console.log('Expressjs is listening!'));
     </pre>
-<hr>
-<!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>static()</mark> TEST </u></h4>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 class="header"> <mark>static()</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -780,9 +754,9 @@
     
     app.listen(1000, ()=> console.log('Expressjs is listening!'));
     </pre>
-<hr>
-<!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>locals</mark> / <mark>get()</mark> / <mark>set()</mark> / <mark>disable()</mark> / <mark>disabled()</mark> / <mark>enable()</mark> / <mark>enabled()</mark> TEST </u></h4>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 class="header"> <mark>locals</mark> / <mark>get()</mark> / <mark>set()</mark> / <mark>disable()</mark> / <mark>disabled()</mark> / <mark>enable()</mark> / <mark>enabled()</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -812,9 +786,9 @@
     
     app.listen(1000, ()=> console.log('Expressjs is listening!'));
     </pre>
-<hr>
-<!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>mountpath</mark> / <mark>path()</mark> / <mark>moun</mark> (event) TEST </u></h4>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 class="header"> <mark>mountpath</mark> / <mark>path()</mark> / <mark>moun</mark> (event) TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -842,10 +816,10 @@
     console.log( app3.path() );                                                        // -> '/sub/nest/moreNest'      // the canonical path on which this app is mounted   
     
     app.listen(1000, ()=> console.log('Expressjs is listening!'));
-    </pre>    
-<hr>
-<!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>param()</mark> TEST </u></h4>
+    </pre>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 class="header"> <mark>param()</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -861,9 +835,9 @@
     
     app.listen(1000, ()=> console.log('Expressjs is listening!'));
     </pre>
-<hr>
-<!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> Using Jade/Pug Template engine with Expressjs <mark>engine()</mark> / <mark>render()</mark> TEST </u></h4>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 class="header"> Using Jade/Pug Template engine with Expressjs <mark>engine()</mark> / <mark>render()</mark> TEST </h4>
     <p> - <mark>index.js</mark> file </p>
     <pre>
     const express = require('express');
@@ -890,9 +864,9 @@
       body
         p #{name} paragraph
     </pre>
-<hr>
-<!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> Using EJS Template engine with Expressjs <mark>engine()</mark> / <mark>render()</mark> TEST </u></h4>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 class="header"> Using EJS Template engine with Expressjs <mark>engine()</mark> / <mark>render()</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -923,9 +897,9 @@
     &lt;/body&gt;
     &lt;/html&gt;    
     </pre>
-<hr>
-<!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>get()</mark> / <mark>post()</mark> / <mark>put()</mark> / <mark>delete()</mark> / <mark>httpMethod()</mark> / <mark>all()</mark> / <mark>use()</mark> TEST </u></h4>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 class="header"> <mark>get()</mark> / <mark>post()</mark> / <mark>put()</mark> / <mark>delete()</mark> / <mark>httpMethod()</mark> / <mark>all()</mark> / <mark>use()</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -949,9 +923,9 @@
 
     
     </pre>
-<hr>
-<!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>use()</mark> VS <mark>httpMethod()</mark> TEST </u></h4>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 class="header"> <mark>use()</mark> VS <mark>httpMethod()</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -968,9 +942,9 @@
     
     app.listen(1000, ()=> console.log('Expressjs is listening!'));   
     </pre>
-<hr>
-<!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>route()</mark> TEST </u></h4>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 class="header"> <mark>route()</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -985,9 +959,9 @@
         
     app.listen(1000, ()=> console.log('Expressjs is listening!'));   
     </pre>
-<hr>
-<!---------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>listen()</mark> TEST </u></h4>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 class="header"> <mark>listen()</mark> TEST </h4>
     <pre>
     const express = require('express');
     const app = express();
@@ -1005,8 +979,9 @@
 // ------------------------------------------------------------------------------------
     app.listen('/unixSocket.soc', ()=> console.log('Expressjs is listening!'));        // listening over domain socket  
     </pre>
-</details>
-    
-    <br><br>
+  </details>
+
+  <br><br>
 </body>
+
 </html>

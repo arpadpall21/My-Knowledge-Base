@@ -1257,11 +1257,45 @@
       <td>
         Content-Type: <strong class="openable">MIMEtype<div>
             <p> <mark><strong>MIMEtype</strong></mark> - MIME type (ex: <mark>text/html</mark>) </p>
-            <p> <mark><strong>MIMEtype</strong>; charset=<strong>carSet</strong></mark> - MIME type with character
-              encoding </p>
-            <p> <mark>multipart/form-data; bundary=<strong>boundary</strong></mark> - for multipart entities the
-              boundary directive is required </p>
-            <p>
+            <p> <mark><strong>MIMEtype</strong>; charset=<strong>carSet</strong></mark> - MIME type with character encoding </p>
+            <hr>
+            <h4 class="header"> Most Common Ones </h4>
+            <p> - <mark>application/json</mark> / <mark>application/xml</mark> / <mark>text/html</mark> / <mark>text/plain</mark> / <mark>image/png</mark> / <mark>image/jpeg</mark> / <mark>image/gif</mark> / <mark>application/pdf</mark> </p>
+            <hr>
+            <h4 class="header"> The <mark>application/x-www-form-urlencoded</mark> </h4>
+            <p> - <mark>application/x-www-form-urlencoded</mark> used to send HTML forms that does not contain binary data (files) (HTML form default) </p>
+            <p> - form data is url encoded and sent in the body </p>
+            <p> ex: </p>
+            <pre style="white-space: pre-line;">
+            POST /login HTTP/1.1
+            Host: example.com
+            Content-Type: application/x-www-form-urlencoded
+            Content-Length: 37
+            
+            username=johndoe&password=mysecretpass
+            </pre>
+            <hr>
+            <h4 class="header"> The <mark>multipart/form-data</mark> </h4>
+            <p> - <mark>multipart/form-data; bundary=<strong>boundary</strong></mark> - used to send HTML forms containing binary data (files) </p>
+            <p> - the <reqval>boundary</reqval> describes the start and the end of the form description in the header </p>
+            <p> - request contains several <mark>Content-Disposition</mark> headers describing each form fields </p>
+            <p> ex: </p>
+            <pre style="white-space: pre-line;">
+            POST /submit-form HTTP/1.1
+            Host: example.com
+            Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+            
+            ------WebKitFormBoundary7MA4YWxkTrZu0gW
+            Content-Disposition: form-data; name="username"
+            
+            JohnDoe
+            ------WebKitFormBoundary7MA4YWxkTrZu0gW
+            Content-Disposition: form-data; name="profile_picture"; filename="example.png"
+            Content-Type: image/png
+            
+            [Binary image data]
+            ------WebKitFormBoundary7MA4YWxkTrZu0gW--
+            </pre>
           </div></strong>
       </td>
       <td>
