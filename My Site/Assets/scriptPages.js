@@ -3,41 +3,181 @@ const preCommentWarningColor = '#e19a00';
 const preCommentErrorColor = 'orangered';
 const preCommentReturnColor = 'cornflowerblue';
 
-const preBackgroundColor = '#f5f2e7';
+const preBackgroundColor = '#f2f2f0';
+const preBackgroundColor2 = '#e8e8e8';
 const preSyntaxBackgroundColor = '#4b4b4b';
+const preSyntaxBackgroundColor2 = '#454545';
+
+/**
+ * @param {string} line 
+ * @returns {?Object}
+ */
+function getOpenableElements(line) {
+  const openerElements = line.match(/(?<=<)[a-z|A-Z]*(?=( class="openable"| class='openable'))/g);
+
+  if (openerElements === null) {
+    return false;
+  }
+
+  return openerElements.reduce((acc, val) => {
+    acc[val] = (acc[val] || 0) + 1;
+    return acc;
+  }, {});
+}
+
+/**
+ * @param {string} line
+ * @param {object} openerElements
+ * @returns {string?} line
+ *
+ * side effect -> updates multilineOpener
+ */
+function allOpenerClosed(line, openerElements, multilineOpener) {
+  if (!openerElements) {
+    return null;
+  }
+
+  for (let openerElement in openerElements) {
+    const closersElements = line.match(new RegExp(`</${openerElement}>`, 'g')) ? line.match(new RegExp(`</${openerElement}>`, 'g')) : [];
+
+    if (closersElements.length !== openerElements[openerElement]) {
+      multilineOpener[0] = openerElement;
+      multilineOpener[1] += 1;
+      multilineOpener[2] += line;
+      return null;
+    }
+  }
+
+  return line;
+}
+
+function allOpenerClosed2(line, openerElements) {
+  if (!openerElements) {
+    return false;
+  }
+
+  for (let openerElement in openerElements) {
+    const closersElements = line.match(new RegExp(`</${openerElement}>`, 'g')) ? line.match(new RegExp(`</${openerElement}>`, 'g')) : [];
+
+    if (closersElements.length !== openerElements[openerElement]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function getNonClosedOpener(line, openerElements) {
+  if (!openerElements) {
+    return false;
+  }
+
+  for (let openerElement in openerElements) {
+    const closersElements = line.match(new RegExp(`</${openerElement}>`, 'g')) ? line.match(new RegExp(`</${openerElement}>`, 'g')) : [];
+
+    if (closersElements.length !== openerElements[openerElement]) {
+      return openerElement;
+    }
+  }
+
+  return false;
+}
 
 
 function getLines(preElement) {
   const result = [];
   let multilineOpener = ['', 0, ''];
   
-  for (let line of preElement.innerHTML.split('\n')) {
-    if(/\/\//.test(line) && /class="openable"|class='openable'/.test(line)) {
-      const openerElement = line.match(/(?<=<)[a-z|A-Z]*(?=( class="openable"| class='openable'))/)[0];
+  lineLoop: for (let line of preElement.innerHTML.split('\n')) {
+    const openerElements = getOpenableElements(line);
+    if (openerElements && multilineOpener[1] === 0) {
+      // const processedLine = allOpenerClosed(line, openerElements, multilineOpener);
+      
 
-      if (new RegExp(`</${openerElement}>`).test(line)) {
+      // if (processedLine) {
+      //   result.push(processedLine);
+      // }
+      const nonClosedOpener = getNonClosedOpener(line, openerElements)
+      if (nonClosedOpener) {
+        multilineOpener[0] = nonClosedOpener;
+        multilineOpener[1] += 1;
+        multilineOpener[2] += line;
+        continue;
+      } else {
         result.push(line);
         continue;
       }
 
-      multilineOpener[0] = openerElement;
-      multilineOpener[1] += 1;
-      multilineOpener[2] = line;
-      continue;
-    } else if (multilineOpener[1] === 1 && line.match(new RegExp(`</${multilineOpener[0]}>`))) {
-      multilineOpener[2] += line;
-      result.push(multilineOpener[2]);
-      multilineOpener = ['', 0, ''];
-      continue;
-    } else if (multilineOpener[1] > 0) {
-      multilineOpener[2] += line;
-      continue;
-    }
+      } else if (multilineOpener[1] > 0) {
+console.log('--- inside opened opener  ---')
+        if (new RegExp(`</${multilineOpener[0]}>`).test(line)) {
+console.log('--- inside opened opener closing opener  ---')
+          
+          const openerElements = getOpenableElements(line);
+          const nonClosedOpener = getNonClosedOpener(line, openerElements)
+          
+          if (nonClosedOpener) {
+            multilineOpener[0] = nonClosedOpener;
+            multilineOpener[1] += 1;
+            multilineOpener[2] += line;
+            continue;
+          } else {
+            multilineOpener[2] += line;
+            result.push(multilineOpener[2]);
+            multilineOpener = ['', 0, ''];
+            continue;
+          }
+        }
+console.log('--- inside opened opener collecting lines  ---')
+        
+        multilineOpener[2] += line;
+        continue;
+      }
+
+
+
+
+    // console.log(line.match(/class="openable"|class='openable'/g))
+
+
+// one or multiple opener closed
+// one or multiple opener where the last opener is multiline
+// opener multiline closes with new opener opens 
+// opener multiline closes with no opener opens 
+
+
+    
+
+
+    // if (openableElements.length > 1 || multilineOpener[1] > 0) {
+    //   return ['<p style="background-color:red; padding: 20px; color: white"> DO NOT USE multiple openable elements on the same line in &ltpre&gt; elements! </p>']
+    // }
+
+    // if(openableElements.length === 1) {
+    //   const openerElement = line.match(/(?<=<)[a-z|A-Z]*(?=( class="openable"| class='openable'))/)[0];
+    //   if (new RegExp(`</${openerElement}>`).test(line)) {
+    //     result.push(line);
+    //     continue;
+    //   }
+
+    //   multilineOpener[0] = openerElement;
+    //   multilineOpener[1] += 1;
+    //   multilineOpener[2] = line;
+    //   continue;
+    // } else if (multilineOpener[1] === 1 && line.match(new RegExp(`</${multilineOpener[0]}>`))) {
+    //   multilineOpener[2] += line;
+    //   result.push(multilineOpener[2]);
+    //   multilineOpener = ['', 0, ''];
+    //   continue;
+    // } else if (multilineOpener[1] > 0) {
+    //   multilineOpener[2] += line;
+    //   continue;
+    // }
 
     result.push(line);
   }
 
-  console.log(result);
+  console.log(result)
 
   return result;
 }
@@ -58,140 +198,59 @@ function colorComments(line) {
 }
 
 $(document).ready(function () {
-  
-  
-  // list of string lines start with certain character for styling 
-  
-  //
-  // -!
-  // !!
-  // ->
-  
-  
-  
-  // color fonts after the "//" and "// ->" in "<pre>" elements
-  // var preCollection = $("pre[class!='syntax']");                  // collect pre elements without "syntax" class
-  
-  
-  const preElements = $("pre");                  // collect pre elements without "syntax" class
-  
-  
-  for (let preElement of preElements) {
+// format pre elements
+// -------------------------------------------------------------------------------------
+  for (let preElement of $('pre')) {
     let result = '';
-
-    console.log(preElement)
+    let evenOdd = true;
 
     for (line of getLines(preElement)) {
       const coloredLine = colorComments(line);
-      
-      
-      // line selector
-      // replacer
-      // marginer
-    
-    
-    
+
       if (preElement.classList.contains('syntax')) {
-        result += `<div style="background-color:${preSyntaxBackgroundColor}; margin:0; padding:0">${coloredLine}</div>`;
-        continue;
+        result += `<div style="background-color:${evenOdd ? preSyntaxBackgroundColor: preSyntaxBackgroundColor2};">${coloredLine}</div>`;
+      } else {
+        result += `<div style="background-color:${evenOdd ? preBackgroundColor: preBackgroundColor2};">${coloredLine}</div>`;
       }
-      
-      result += `<div style="background-color:${preBackgroundColor}; margin:0; padding:0">${coloredLine}</div>`;
+
+      evenOdd = !evenOdd;
     }
-    
+
     preElement.innerHTML = result;
-    
-    
-    
-    
-    
-    
-    
-    
-    // let pre = currentPreElement.innerHTML;                       // content of the current "pre" element 
-    // var currentLine = new RegExp(".{1,}", "g");                 // select one line ("." selects all element except new line!)
-    // var newPre = "", store = "", lineCount = 0;
-
-    // while (currentLine.exec(pre) != null) {                      // counting the number of lines in the current "pre" element
-    //   lineCount++;
-    // }
-    // for (; lineCount > 0; lineCount--) {
-    //   let testLine = currentLine.exec(pre)[0];                // returns the current line each time it is called 
-
-    //   testLine = testLine.replace(/\/\/ -&gt;.{1,}/, "$&".fontcolor("cornflowerblue"));   // color the line if starts by the specified regExp 
-    //   testLine = testLine.replace(/\/\/ [^-].{1,}/, "$&".fontcolor("#00b3b3"));
-    //   // testLine = testLine.replace(/\/\/ --.{1,}/, "$&".fontcolor("red"));
-    //   testLine = testLine.replace(/# [^-].{1,}/, "$&".fontcolor("grey"));
-    //   testLine = testLine.replace(/# --.{1,}/, "$&".fontcolor("grey"));
-    //   testLine = testLine.replace(/\/\/ -! .{1,}/, "$&".fontcolor("#e19a00"));
-    //   testLine = testLine.replace(/\/\/ !! .{1,}/, "$&".fontcolor("orangered"));
-
-    //   newPre += store.concat(testLine + "\n");                // the "\n" adds a new line character at the end of every line
-    // }
-    // currentPreElement.innerHTML = newPre;                            // override the old content with the new one 
   }
 
+  $('.openable').mouseup(function () {
+    if (window.getComputedStyle(this.querySelector('div')).display === 'block') {
+      this.querySelector('.openable > div').style.display = 'none';
+      this.querySelector('.openable > div').style.position = 'static';
+    } else {
+      this.querySelector('.openable > div').style.display = 'block';
+      this.querySelector('.openable > div').style.position = 'absolute';
+    }
+  });
+
+  // $('.openable').click(function () {
+  //   console.log($('.openable > div'));
+    
+  //   $(this).children('div').slideToggle('fast');
+  // });
 
 
 
-// -----------------------------------------------------------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------------------------------------------------------
-  // for (let i = 0; i < preCollection.length; i++) {
-  //   let pre = preCollection[i].innerHTML;                       // content of the current "pre" element 
-  //   var currentLine = new RegExp(".{1,}", "g");                 // select one line ("." selects all element except new line!)
-  //   var newPre = "", store = "", lineCount = 0;
-
-  //   while (currentLine.exec(pre) != null) {                      // counting the number of lines in the current "pre" element
-  //     lineCount++;
-  //   }
-  //   for (; lineCount > 0; lineCount--) {
-  //     let testLine = currentLine.exec(pre)[0];                // returns the current line each time it is called 
-
-  //     testLine = testLine.replace(/\/\/ -&gt;.{1,}/, "$&".fontcolor("cornflowerblue"));   // color the line if starts by the specified regExp 
-  //     testLine = testLine.replace(/\/\/ [^-].{1,}/, "$&".fontcolor("#00b3b3"));
-  //     // testLine = testLine.replace(/\/\/ --.{1,}/, "$&".fontcolor("red"));
-  //     testLine = testLine.replace(/# [^-].{1,}/, "$&".fontcolor("grey"));
-  //     testLine = testLine.replace(/# --.{1,}/, "$&".fontcolor("grey"));
-  //     testLine = testLine.replace(/\/\/ -! .{1,}/, "$&".fontcolor("#e19a00"));
-  //     testLine = testLine.replace(/\/\/ !! .{1,}/, "$&".fontcolor("orangered"));
-
-  //     newPre += store.concat(testLine + "\n");                // the "\n" adds a new line character at the end of every line
-  //   }
-  //   preCollection[i].innerHTML = newPre;                            // override the old content with the new one 
-  // }
 
 
 
-  // print an "empty" message if the "<details>" element does not have any "<p>" children in the "Note" section
-  if (!document.getElementById("notes")) { }                      // if the "notes" element does not exist nothing happens (we must set this code otherwise it will cause an error!)
-  else {
+
+// format notes section
+// -------------------------------------------------------------------------------------
+  if (!document.getElementById("notes")) {
+  } else {
     if (!document.getElementById("notes").querySelector("p")) {
       $("#notes summary").append(" (empty)");
     }
   }
 
-  // -------------------------------------------------------------------------------------
-  // program openable element ------------------------------------------------------------
-  // if (!document.querySelector('.table caption span[class=changeListOrder]')) {         // keep backward compatibility for non v4.0.0 pages
-    // $('.openable').click(function () {
-    //   console.log('????')
-      
-    //     console.log(this);
-      
-    //   $(this).children('div').slideToggle(0);
-    // });
-  // } else {
-    $('.openable').mouseup(function () {
-      if (window.getComputedStyle(this.querySelector('div')).display === 'block') {
-        this.querySelector('div').style.display = 'none';
-        this.querySelector('div').style.position = 'static';
-      } else {
-        this.querySelector('div').style.display = 'block';
-        this.querySelector('div').style.position = 'absolute';
-      }
-    })
-  // }
+
 
   // -------------------------------------------------------------------------------------
   // table order (alphabetically / grouped) ----------------------------------------------

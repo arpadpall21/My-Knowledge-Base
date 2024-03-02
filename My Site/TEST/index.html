@@ -16,7 +16,33 @@
   <p class="sitenav"> <a href="../index.html">MySite></a> TEST </p>
 
 
+  
+  
   <pre>
+  
+  one line <span class="openable">open me<div> <p> test </p> </div> </span> test  // test  <b class="openable">open me<div> 
+    <p> - inside opener 1 </p>
+    <p> - inside opener 1 </p>
+  </div></b> bla bla bla <span class="openable">open me<div> test </div></span> <i class="openable">open me<div> test </div></i> <i class="openable">open me<div> 
+    <p> - inside opener 2</p>
+    <p> - inside opener 2</p>
+  </div> </i>
+  </pre>
+  <!-- <pre>
+  
+  one line <span class="openable">open me<div> <p> test </p> </div> </span> test test  <b class="openable">open me<div> 
+    <p> - inside opener1 </p>
+    <p> - inside opener2 </p>
+    <p> - inside opener3 </p>
+  </div></b> bla bla bla <b class="openable">open me<div> 
+    <p> - inside opener1 </p>
+    <p> - inside opener2 </p>
+    <p> - inside opener3 </p>
+  </div></b>
+  </pre> -->
+
+
+<!-- <pre>
   
 // starter line ---
 // -! starter line ---
@@ -24,9 +50,15 @@
 // -> starter line ---
   
   some code goes here <opt>optional</opt>            // info
-  some code goes here <opt>optional</opt>            // -! warning <span class="openable"> Open me <div> Hello </div></span>
+  some code goes here <reqval class="openable">optional<div>
+    <p> - multiline </p>
+    <p> - multiline </p>
+    <p> - multiline </p>
+    <p> - multiline </p>
+    <p> - multiline </p>
+  </div></reqval>            // -! warning <span class="openable"> open <div><p> - test </p></div></span>
   some code goes here <opt>optional</opt>            // !! error
-  some code goes here <opt>optional</opt>            // -> return <span class="openable"> Hello World <div>
+  some code goes here <opt> x </opt>            // -> return <span class="openable"> Hello World <div>
     <p> - 1 you've opened me! </p>
     <p> - 2 you've opened me! </p>
     <p> - 3 you've opened me! </p>
@@ -35,11 +67,24 @@
   </div></span> after openable stuff
   
   <lit>literal</lit>
+  this is some normal text whit <lit class="openable">openable<div>
+    <p> - multiline openable paragraph </p>
+    <p> - multiline openable paragraph </p>
+    <p> - multiline openable paragraph </p>
+    <p> - multiline openable paragraph </p>
+  </div></lit>
   <opt>optional</opt>
   <reqval>required value</reqval>
-  <optval>optional value</optval>
-  </pre>
-  
+  <optval class="openable">optional value<div>
+    <p> - multiline comment </p>
+    <p> - multiline comment </p>
+    <p> - multiline comment </p>
+    <p> - multiline comment </p>
+  </div></optval>
+  </pre> -->
+
+<!-- 
+
   <pre class="syntax">
   
 // starter line ---
@@ -48,9 +93,15 @@
 // -> starter line ---
   
   some code goes here <opt>optional</opt>            // info
-  some code goes here <opt>optional</opt>            // -! warning <span class="openable"> Open me <div> Hello </div></span>
+  some code goes here <reqval class="openable">optional<div>
+    <p> - multiline </p>
+    <p> - multiline </p>
+    <p> - multiline </p>
+    <p> - multiline </p>
+    <p> - multiline </p>
+  </div></reqval>            // -! warning <span class="openable"> Open me <div> Hello </div></span>
   some code goes here <opt>optional</opt>            // !! error
-  some code goes here <opt>optional</opt>            // -> return <span class="openable"> Hello World <div>
+  some code goes here <opt class="openable">optional<div> single line </div></opt>            // -> return <span class="openable"> Hello World <div>
     <p> - 1 you've opened me! </p>
     <p> - 2 you've opened me! </p>
     <p> - 3 you've opened me! </p>
@@ -59,10 +110,22 @@
   </div></span> after openable stuff
   
   <lit>literal</lit>
+  this is some normal text whit <lit class="openable">openable<div>
+    <p> - multiline openable paragraph </p>
+    <p> - multiline openable paragraph </p>
+    <p> - multiline openable paragraph </p>
+    <p> - multiline openable paragraph </p>
+  </div></lit>
   <opt>optional</opt>
   <reqval>required value</reqval>
-  <optval>optional value</optval>
-  </pre>
+  <optval class="openable">optional value<div>
+    <p> - multiline comment </p>
+    <p> - multiline comment </p>
+    <p> - multiline comment </p>
+    <p> - multiline comment </p>
+  </div></optval>
+  </pre> -->
+  
 
 
 
