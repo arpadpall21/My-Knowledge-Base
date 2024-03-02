@@ -29,47 +29,18 @@ function getOpenableElements(line) {
  * @param {string} line
  * @param {object} openerElements
  * @returns {string?} line
- *
- * side effect -> updates multilineOpener
  */
-function allOpenerClosed(line, openerElements, multilineOpener) {
-  if (!openerElements) {
-    return null;
-  }
-
-  for (let openerElement in openerElements) {
-    const closersElements = line.match(new RegExp(`</${openerElement}>`, 'g')) ? line.match(new RegExp(`</${openerElement}>`, 'g')) : [];
-
-    if (closersElements.length !== openerElements[openerElement]) {
-      multilineOpener[0] = openerElement;
-      multilineOpener[1] += 1;
-      multilineOpener[2] += line;
-      return null;
-    }
-  }
-
-  return line;
-}
-
-function allOpenerClosed2(line, openerElements) {
+function getNonClosedOpener(line, openerElements, nonClosedOpener) {
   if (!openerElements) {
     return false;
   }
 
-  for (let openerElement in openerElements) {
-    const closersElements = line.match(new RegExp(`</${openerElement}>`, 'g')) ? line.match(new RegExp(`</${openerElement}>`, 'g')) : [];
-
-    if (closersElements.length !== openerElements[openerElement]) {
-      return false;
+  if (nonClosedOpener) {
+    if (!openerElements[nonClosedOpener]) {
+      openerElements[nonClosedOpener] = 1;
+    } else {
+      openerElements[nonClosedOpener] += 1;
     }
-  }
-
-  return true;
-}
-
-function getNonClosedOpener(line, openerElements) {
-  if (!openerElements) {
-    return false;
   }
 
   for (let openerElement in openerElements) {
@@ -83,21 +54,15 @@ function getNonClosedOpener(line, openerElements) {
   return false;
 }
 
-
 function getLines(preElement) {
   const result = [];
   let multilineOpener = ['', 0, ''];
-  
+
   lineLoop: for (let line of preElement.innerHTML.split('\n')) {
     const openerElements = getOpenableElements(line);
     if (openerElements && multilineOpener[1] === 0) {
-      // const processedLine = allOpenerClosed(line, openerElements, multilineOpener);
-      
+      const nonClosedOpener = getNonClosedOpener(line, openerElements);
 
-      // if (processedLine) {
-      //   result.push(processedLine);
-      // }
-      const nonClosedOpener = getNonClosedOpener(line, openerElements)
       if (nonClosedOpener) {
         multilineOpener[0] = nonClosedOpener;
         multilineOpener[1] += 1;
@@ -109,13 +74,10 @@ function getLines(preElement) {
       }
 
       } else if (multilineOpener[1] > 0) {
-console.log('--- inside opened opener  ---')
         if (new RegExp(`</${multilineOpener[0]}>`).test(line)) {
-console.log('--- inside opened opener closing opener  ---')
-          
           const openerElements = getOpenableElements(line);
-          const nonClosedOpener = getNonClosedOpener(line, openerElements)
-          
+          const nonClosedOpener = getNonClosedOpener(line, openerElements, multilineOpener[0])
+
           if (nonClosedOpener) {
             multilineOpener[0] = nonClosedOpener;
             multilineOpener[1] += 1;
@@ -128,56 +90,13 @@ console.log('--- inside opened opener closing opener  ---')
             continue;
           }
         }
-console.log('--- inside opened opener collecting lines  ---')
-        
+
         multilineOpener[2] += line;
         continue;
       }
 
-
-
-
-    // console.log(line.match(/class="openable"|class='openable'/g))
-
-
-// one or multiple opener closed
-// one or multiple opener where the last opener is multiline
-// opener multiline closes with new opener opens 
-// opener multiline closes with no opener opens 
-
-
-    
-
-
-    // if (openableElements.length > 1 || multilineOpener[1] > 0) {
-    //   return ['<p style="background-color:red; padding: 20px; color: white"> DO NOT USE multiple openable elements on the same line in &ltpre&gt; elements! </p>']
-    // }
-
-    // if(openableElements.length === 1) {
-    //   const openerElement = line.match(/(?<=<)[a-z|A-Z]*(?=( class="openable"| class='openable'))/)[0];
-    //   if (new RegExp(`</${openerElement}>`).test(line)) {
-    //     result.push(line);
-    //     continue;
-    //   }
-
-    //   multilineOpener[0] = openerElement;
-    //   multilineOpener[1] += 1;
-    //   multilineOpener[2] = line;
-    //   continue;
-    // } else if (multilineOpener[1] === 1 && line.match(new RegExp(`</${multilineOpener[0]}>`))) {
-    //   multilineOpener[2] += line;
-    //   result.push(multilineOpener[2]);
-    //   multilineOpener = ['', 0, ''];
-    //   continue;
-    // } else if (multilineOpener[1] > 0) {
-    //   multilineOpener[2] += line;
-    //   continue;
-    // }
-
     result.push(line);
   }
-
-  console.log(result)
 
   return result;
 }
@@ -229,11 +148,6 @@ $(document).ready(function () {
     }
   });
 
-  // $('.openable').click(function () {
-  //   console.log($('.openable > div'));
-    
-  //   $(this).children('div').slideToggle('fast');
-  // });
 
 
 
