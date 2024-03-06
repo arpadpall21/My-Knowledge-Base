@@ -8,92 +8,143 @@ const preBackgroundColor2 = '#e8e8e8';
 const preSyntaxBackgroundColor = '#4b4b4b';
 const preSyntaxBackgroundColor2 = '#454545';
 
-/**
- * @param {string} line 
- * @returns {?Object}
- */
-function getOpenableElements(line) {
-  const openerElements = line.match(/(?<=<)[a-z|A-Z]*(?=( class="openable"| class='openable'))/g);
+const recognizedEntities = ['&lt;', '&gt;'];
+const extraSpaceAfterLatestCharacter = 4;
 
-  if (openerElements === null) {
-    return false;
+/**
+ * @param {string} line
+ * @returns {number}
+ */
+function getLineLengthWithoutComment(line) {
+  if (line.startsWith('//')) {
+    return 0;
   }
 
-  return openerElements.reduce((acc, val) => {
-    acc[val] = (acc[val] || 0) + 1;
-    return acc;
-  }, {});
+  let currentLine = line;
+  const commentIndex = line.indexOf('//');
+
+  if (commentIndex > 0) {
+    currentLine = line.substring(0, commentIndex).trimEnd();
+  }
+
+  const numberOfOpenableTags = currentLine.match(/class="openable"/g) ? currentLine.match(/class="openable"/g) : [];
+  const noEntities = currentLine.replace(new RegExp(`${recognizedEntities.join('|')}`, 'g'), '*')
+  const noDiv = noEntities.replace(/<div\b[^>]*>(.*?)<\/div>/gi, '');
+  const noHtmlTag = noDiv.replace(/<[^>]+>/g, '');
+
+  return noHtmlTag.length + numberOfOpenableTags.length;
 }
 
 /**
  * @param {string} line
- * @param {object} openerElements
- * @returns {string?} line
+ * @returns {string} clearedLine
  */
-function getNonClosedOpener(line, openerElements, nonClosedOpener) {
-  if (!openerElements) {
-    return false;
+function removeWrapingTagsIfLineHasStartTag(line) {
+  if (line.startsWith('<')) {
+    return line.replace(/^<[^>]+>\s*|\s*<\/[^>]+>$/g, '');
   }
 
-  if (nonClosedOpener) {
-    if (!openerElements[nonClosedOpener]) {
-      openerElements[nonClosedOpener] = 1;
-    } else {
-      openerElements[nonClosedOpener] += 1;
-    }
-  }
-
-  for (let openerElement in openerElements) {
-    const closersElements = line.match(new RegExp(`</${openerElement}>`, 'g')) ? line.match(new RegExp(`</${openerElement}>`, 'g')) : [];
-
-    if (closersElements.length !== openerElements[openerElement]) {
-      return openerElement;
-    }
-  }
-
-  return false;
+  return line;
 }
 
+/**
+ * @param {string[]} lines
+ * @returns {number}
+ */
+function getFarthestCharacterForEachLine(lines) {
+  const result = {
+    lines: [],
+    farthestCharacter: 0,
+  }
+
+  for (let line of lines) {
+    const realLineLengthWithoutComment = getLineLengthWithoutComment(line);
+    const tagWrapedlessLine = removeWrapingTagsIfLineHasStartTag(line);
+
+    result.lines.push({ line: tagWrapedlessLine, realLineLengthWithoutComment })
+    result.farthestCharacter = realLineLengthWithoutComment > result.farthestCharacter 
+      ? realLineLengthWithoutComment 
+      : result.farthestCharacter;
+  }
+
+  result.farthestCharacter += extraSpaceAfterLatestCharacter;
+
+  return result;
+}
+
+/**
+ * @param {string} line
+ * @returns {string} nonClosedOpenable
+ */
+function getNonClosedOpenable(line) {
+  const openerOpenables = line.match(/(?<=<)[a-z|A-Z]*(?= class="openable")/g);
+
+  if (openerOpenables === null) {
+    return '';
+  }
+
+  const openerOpenableOpenCounted = openerOpenables.reduce((acc, val) => {
+    acc[val] = (acc[val] || 0) + 1;
+    return acc;
+  }, {});
+
+  for (let openerOpenable in openerOpenableOpenCounted) {
+    const allOpenerTags = line.match(new RegExp(`</${openerOpenable}>|<${openerOpenable}( |>)`, 'g'));
+
+    if (allOpenerTags && allOpenerTags.length % 2 !== 0) {
+      return openerOpenable
+    }
+  }
+
+  return '';
+}
+
+/**
+ * @param {string} line
+ * @param {string} nonClosedOpenable
+ * @returns {boolean}
+ */
+function isNonClosedOpenableClosed(line, nonClosedOpenable) {
+  return new RegExp(`</${nonClosedOpenable}>`).test(line);
+}
+
+/**
+ * @param {HTMLElement} preElement
+ * @returns {string[]}
+ */
 function getLines(preElement) {
   const result = [];
-  let multilineOpener = ['', 0, ''];
+  const multilineOpenableCollector = { nonClosedOpenable: '', lineCollection: '' };
 
-  lineLoop: for (let line of preElement.innerHTML.split('\n')) {
-    const openerElements = getOpenableElements(line);
-    if (openerElements && multilineOpener[1] === 0) {
-      const nonClosedOpener = getNonClosedOpener(line, openerElements);
+  for (const line of preElement.innerHTML.split('\n')) {
+    if (multilineOpenableCollector.nonClosedOpenable) {
+      if (isNonClosedOpenableClosed(line, multilineOpenableCollector.nonClosedOpenable)) {
+        const nonClosedOpenable = getNonClosedOpenable(line);
 
-      if (nonClosedOpener) {
-        multilineOpener[0] = nonClosedOpener;
-        multilineOpener[1] += 1;
-        multilineOpener[2] += line;
-        continue;
-      } else {
-        result.push(line);
-        continue;
-      }
-
-      } else if (multilineOpener[1] > 0) {
-        if (new RegExp(`</${multilineOpener[0]}>`).test(line)) {
-          const openerElements = getOpenableElements(line);
-          const nonClosedOpener = getNonClosedOpener(line, openerElements, multilineOpener[0])
-
-          if (nonClosedOpener) {
-            multilineOpener[0] = nonClosedOpener;
-            multilineOpener[1] += 1;
-            multilineOpener[2] += line;
-            continue;
-          } else {
-            multilineOpener[2] += line;
-            result.push(multilineOpener[2]);
-            multilineOpener = ['', 0, ''];
-            continue;
-          }
+        if (nonClosedOpenable) {
+          multilineOpenableCollector.nonClosedOpenable = nonClosedOpenable;
+          multilineOpenableCollector.lineCollection += line;
+          continue;
+        } else {
+          result.push(multilineOpenableCollector.lineCollection += line);
+          multilineOpenableCollector.nonClosedOpenable = '';
+          multilineOpenableCollector.lineCollection = '';
+          continue;
         }
 
-        multilineOpener[2] += line;
+      } else {
+        multilineOpenableCollector.lineCollection += line;
         continue;
       }
+    }
+
+    const nonClosedOpenable = getNonClosedOpenable(line);
+
+    if (nonClosedOpenable) {
+      multilineOpenableCollector.nonClosedOpenable = nonClosedOpenable;
+      multilineOpenableCollector.lineCollection += line;
+      continue;
+    }
 
     result.push(line);
   }
@@ -101,6 +152,10 @@ function getLines(preElement) {
   return result;
 }
 
+/**
+ * @param {string} line
+ * @returns {string}
+ */
 function colorComments(line) {
   return line.replace(/\/\/.*/, (match) => {
       if (match.startsWith('// -!')) {
@@ -113,7 +168,35 @@ function colorComments(line) {
         return `<span style="color:${preCommentInfoColor}">${match}</span>`;
       }
   })
+}
 
+/**
+ * @param {object} farthestCharacterForEachLine
+ * @returns {string[]}
+ */
+function formatLines(farthestCharacterForEachLine) {
+  const result = [];
+
+  for (let lineObj of farthestCharacterForEachLine.lines) {  
+    if (lineObj.line.startsWith('//')) {
+      let entitiesLength = 0;
+
+      if (/<[^>]+>/.test(lineObj.line)) {
+        entitiesLength = lineObj.line.match(/<[^>]+>/g).join('').length;
+      }
+
+      const paddedLine = lineObj.line.padEnd(farthestCharacterForEachLine.farthestCharacter + entitiesLength, '-');
+      const shortenedLine = paddedLine.substring(0, farthestCharacterForEachLine.farthestCharacter + entitiesLength);
+
+      result.push(shortenedLine);
+      continue;
+    }
+    
+    result.push(lineObj.line);
+  }
+
+  result.push('-'.repeat(farthestCharacterForEachLine.farthestCharacter))
+  return result;
 }
 
 $(document).ready(function () {
@@ -122,8 +205,11 @@ $(document).ready(function () {
   for (let preElement of $('pre')) {
     let result = '';
     let evenOdd = true;
+    const lines = getLines(preElement);
+    const farthestCharacterForEachLine = getFarthestCharacterForEachLine(lines);
+    const formatedLines = formatLines(farthestCharacterForEachLine);
 
-    for (line of getLines(preElement)) {
+    for (let line of formatedLines) {
       const coloredLine = colorComments(line);
 
       if (preElement.classList.contains('syntax')) {

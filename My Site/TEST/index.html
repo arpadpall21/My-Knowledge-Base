@@ -11,30 +11,59 @@
 </head>
 
 <body>
+
+
+
+
+
+
   <h1> TEST </h1>
   <p> Updated ( 2021-10-27 )</p>
   <p class="sitenav"> <a href="../index.html">MySite></a> TEST </p>
 
+<!-- 
 
-  
-  
   <pre>
+    
+    hit  <span class="openable"> simple span <div> <p> test </p> </div></span>   // one two
+    
+    
+   get <i> one <span> x </span> </i> intermed          <optval class="openable"> open me <div>
+    <p> - hi </p>
+    <p> - hi </p>
+    <p> - hi </p>
+  </div> </optval> after inter      <i class="openable"> open me <div> test test </div> </i>        // comment comment <i> one <span> x </span> </i> test 
   
-  one line <span class="openable">open me<div> <p> test </p> </div> </span> test  // test  <b class="openable">open me<div> 
+  adf
+  
+  
+  
+  &lt;h&gt;  // comment 
+  
+  
+  
+  
+  one line test         // test  <b class="openable">open me<div> 
     <p> - inside opener 1 </p>
+  </div></b> bla bla bla <span class="openable">open me<div> test </div></span> <span class="openable">open me<div> test </div></span> <span class="openable">open me<div> 
     <p> - inside opener 1 </p>
-  </div></b> bla bla bla <b class="openable">open me<div> test </div></b> <span class="openable">open me<div> test </div></span> <i class="openable">open me<div> test </div></i> <b class="openable">open me<div> 
-    <p> - inside opener 1 </p>
-    <p> - inside opener 1 </p>
-  </div></b> <b class="openable">open me<div> 
-    <p> - inside opener 1 </p>
-    <p> - inside opener 1 </p>
-  </div></b> <i class="openable">open me<div> 
-    <p> - inside opener 1 </p>
-    <p> - inside opener 1 </p>
-  </div></i> <b class="openable">open me single line<div> <p> - inside opener 1 </p></div></b>
+  </div></span> 
   
   </pre>
+
+  <pre class="syntax">
+    <strong class="openable">fn<div>      </div></strong>  <i class="openable">fd <div> test      </div></i>             // syntactically these hooks are the same but each have different uses
+  
+  </pre>
+  <pre class="syntax">
+  <i class="openable">fn<div> </div></i><i class="openable">fn<div> </div></i><i class="openable">fn<div> </div></i>    // syn
+  <i class="openable">fn<div> test test </div></i>  <b class="openable">fn<div> 
+    test test
+    <p> - paragraph </p>
+  </div></b>               // hello buddy
+  fn    
+  </pre>
+
   <pre>
   
   one line <span class="openable">open me<div> <p> test </p> </div> </span> test test  <b class="openable">open me<div> 
@@ -132,8 +161,55 @@
     <p> - multiline comment </p>
   </div></optval>
   </pre>
-  
+    -->
 
+
+  <pre class="syntax">
+  one 
+  
+// ----------------
+// ------<mark>Hello</mark>--<mark>Hello</mark>-
+// --------------------------------------------------------------------------------------
+// -------------------------------------<mark>Hello</mark>-------------------------------------------------
+<span style="background-color: red;">      // --------<mark>Hello</mark>--<mark>Hello</mark> -------------      </span>
+  
+  two <span class="openable">openable <div> <p> - test </p> </div></span> hello hell <span class="openable">openable <div> 
+    <p> - test </p> 
+    <p> - test </p> 
+    <p> - test </p> 
+  </div></span> test test test 
+  
+  </pre>
+
+
+
+  <pre class="syntax">
+    import { useRef } from 'react';
+    
+<span style="color: darkgray;">// store data in ref object --------------------------------------------------- </span>
+    function <strong>Component</strong>() {
+        const <reqval>refVal</reqval> = useRef(<optval>val</optval>);  // creates and returns a <mark>{ current: <optval>val</optval> }</mark> object
+        
+        <optval>someEventHandler</optval> {
+            <reqval>refVal</reqval>;                  // -> { current: <optval>val</optval> }     // object will keep the data between rerenders <u>(never use these values to display (use state for that))</u>    
+            <reqval>refVal</reqval>.current = <reqval>val</reqval>     // changing the ref object won't trigger rerender (use only the <mark>current</mark> key to stord data on)
+        }
+        
+        <reqval>refVal</reqval>.current = <reqval>val</reqval>         <span style="color:orange;">// never change the ref value during rerender!</span>
+    }
+    
+    
+<span style="color: darkgray;">// referencing DOM element ---------------------------------------------------- </span>
+    function <strong>Component</strong>() {
+        const <reqval>refVal</reqval> = useRef(null);
+        
+        <optval>someEventHandler</optval> {
+            <reqval>refVal</reqval>.current            // references the DOM node (paragraph) <u>(only use it for non destructive tasks ex: <mark>ref.current.focus()</mark>)</u>    
+        }
+        
+        return &lt;p ref={<reqval>refVal</reqval>}&gt; &lt;/p&gt;
+    }
+  </pre>
 
 
 
