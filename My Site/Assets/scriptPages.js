@@ -1,15 +1,34 @@
-const preCommentInfoColor = '#00b3b3';
-const preCommentWarningColor = '#e19a00';
-const preCommentErrorColor = 'orangered';
-const preCommentReturnColor = 'cornflowerblue';
+const colorMap = {
+  preElement: {
+    background: {
+      primary: '#f2f2f0',
+      secondary: '#e8e8e8',
+    },
+    comment: {
+      info: '#707070',
+      warning: '#e19a00',
+      error: 'orangered',
+      return: 'cornflowerblue',
+    },
+  },
+  preSyntaxElement: {
+    background: {
+      primary: '#4b4b4b',
+      secondary: '#454545',
+    },
+    comment: {
+      info: '#56b053',
+      warning: '#e19a00',
+      error: 'orangered',
+      return: 'cornflowerblue',
+    },
+  }
+}
 
-const preBackgroundColor = '#f2f2f0';
-const preBackgroundColor2 = '#e8e8e8';
-const preSyntaxBackgroundColor = '#4b4b4b';
-const preSyntaxBackgroundColor2 = '#454545';
-
-const recognizedEntities = ['&lt;', '&gt;'];
-const extraSpaceAfterLatestCharacter = 4;
+const extraSpaceAfterLatestCharacter = 3;
+const extraSpaceAfterLatestCharacterSecondary = 3;
+const ignoreCommentFormatingUpToCharacter = 20;
+const recognizedEntities = ['&lt;', '&gt;', '&amp;'];
 
 /**
  * @param {string} line
@@ -149,6 +168,8 @@ function getLines(preElement) {
     result.push(line);
   }
 
+  console.log(result);
+
   return result;
 }
 
@@ -156,16 +177,16 @@ function getLines(preElement) {
  * @param {string} line
  * @returns {string}
  */
-function colorComments(line) {
+function colorComments(line, commentColors) {
   return line.replace(/\/\/.*/, (match) => {
       if (match.startsWith('// -!')) {
-        return `<span style="color:${preCommentWarningColor}">${match}</span>`;
+        return `<span style="color:${commentColors.warning}">${match}</span>`;
       } else if (match.startsWith('// !!')) {
-        return `<span style="color:${preCommentErrorColor}">${match}</span>`;
+        return `<span style="color:${commentColors.error}">${match}</span>`;
       } else if (match.startsWith('// -&gt;')) {
-        return `<span style="color:${preCommentReturnColor}">${match}</span>`;
+        return `<span style="color:${commentColors.return}">${match}</span>`;
       } else {
-        return `<span style="color:${preCommentInfoColor}">${match}</span>`;
+        return `<span style="color:${commentColors.info}">${match}</span>`;
       }
   })
 }
@@ -177,8 +198,11 @@ function colorComments(line) {
 function formatLines(farthestCharacterForEachLine) {
   const result = [];
 
-  for (let lineObj of farthestCharacterForEachLine.lines) {  
-    if (lineObj.line.startsWith('//')) {
+  for (let lineObj of farthestCharacterForEachLine.lines) {
+    if (lineObj.line.substring(1, ignoreCommentFormatingUpToCharacter).indexOf('//') > -1) {
+      result.push(lineObj.line);
+      continue;
+    } else if (lineObj.line.startsWith('//')) {
       let entitiesLength = 0;
 
       if (/<[^>]+>/.test(lineObj.line)) {
@@ -190,12 +214,24 @@ function formatLines(farthestCharacterForEachLine) {
 
       result.push(shortenedLine);
       continue;
+    } else if (lineObj.line.indexOf('//') > -1) {
+      const commentIndex = lineObj.line.indexOf('//');
+      const comment = lineObj.line.substring(commentIndex);
+      const beforeComment = lineObj.line.substring(0, lineObj.line.indexOf('//')).trimEnd();
+      let padDistance = farthestCharacterForEachLine.farthestCharacter - getLineLengthWithoutComment(lineObj.line);
+
+      if (lineObj.line.indexOf('///') > 0) {
+        padDistance += extraSpaceAfterLatestCharacterSecondary;
+      }
+
+      const paddedLine = beforeComment.padEnd(beforeComment.length + padDistance, ' ') + comment;
+      result.push(paddedLine);
+      continue;
     }
-    
+
     result.push(lineObj.line);
   }
 
-  result.push('-'.repeat(farthestCharacterForEachLine.farthestCharacter))
   return result;
 }
 
@@ -205,19 +241,19 @@ $(document).ready(function () {
   for (let preElement of $('pre')) {
     let result = '';
     let evenOdd = true;
+    let color = colorMap.preElement;
+
+    if (preElement.classList.contains('syntax')) {
+      color = colorMap.preSyntaxElement;
+    }
+
     const lines = getLines(preElement);
     const farthestCharacterForEachLine = getFarthestCharacterForEachLine(lines);
     const formatedLines = formatLines(farthestCharacterForEachLine);
 
     for (let line of formatedLines) {
-      const coloredLine = colorComments(line);
-
-      if (preElement.classList.contains('syntax')) {
-        result += `<div style="background-color:${evenOdd ? preSyntaxBackgroundColor: preSyntaxBackgroundColor2};">${coloredLine}</div>`;
-      } else {
-        result += `<div style="background-color:${evenOdd ? preBackgroundColor: preBackgroundColor2};">${coloredLine}</div>`;
-      }
-
+      const coloredLine = colorComments(line, color.comment);
+      result += `<div style="background-color:${evenOdd ? color.background.primary: color.background.secondary};">${coloredLine}</div>`;
       evenOdd = !evenOdd;
     }
 
