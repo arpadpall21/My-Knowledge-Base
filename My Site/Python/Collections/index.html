@@ -738,23 +738,23 @@
   <h2 class="header"> Accessing and Slicing Collection (Iterable) Members </h2>
   <p><u> - slicing creates a <u>shallow copy</u> </u></p>
   <pre class="syntax">
-<span style="color:darkgrey;">// dictionary -------------------------------------------------------------------------</span>    
+// dictionary --------------------------------------------------------------
     <strong>dict</strong>[<strong>key</strong>]                                                                          // returns the dictionary key value <u>(raises a KeyError if the key does not exist)</u>
     <strong>dict</strong>.get(<strong>key</strong>)                                                                      // returns the dictionary key value (returns <mark>None</mark> if the key does not exist)   
     
-    import itertools                                                                  <span id="browserSupport" style="color:yellow;"> <span><i class="fab fa-python"></i> 3.0 </span></span>
+    import itertools                                <span id="browserSupport" style="color:yellow;"> <span><i class="fab fa-python"></i> 3.0 </span></span>
     dict(itertools.islice(<strong>dict</strong>.items(), <strong class="openable">stIdx(inc), endIdx(exc)<div>
     <pre>
     my_dict = {'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5}
     
-    dict(itertools.islice(my_dict.items(), 1, 4))      // -> {'two': 2, 'three': 3, 'four': 4}
-    dict(itertools.islice(my_dict.items(), 2))         // -> {'one': 1, 'two': 2}
-    dict(itertools.islice(my_dict.items(), 2, None))   // -> {'three': 3, 'four': 4, 'five': 5}
+    dict(itertools.islice(my_dict.items(), 1, 4))       {'two': 2, 'three': 3, 'four': 4}
+    dict(itertools.islice(my_dict.items(), 2))          {'one': 1, 'two': 2}
+    dict(itertools.islice(my_dict.items(), 2, None))    {'three': 3, 'four': 4, 'five': 5}
     </pre>
     </div></strong>))                     // returns a new dictionary of the specified range
     
     
-<span style="color:darkgrey;">// iterable (this syntax will work on every <strong>itarable</strong>) having solo members -------------</span>    
+// iterable (this syntax will work on every <strong>itarable</strong>) having solo members -
     <strong>iterable</strong>[<strong>idx</strong>]                                                                      // returns the item at the specified index 
     <strong>iterable</strong>[-<strong>idx</strong>]                                                                     // negative indexes are counted from end to start (<mark>-1</mark> = last member)    
     

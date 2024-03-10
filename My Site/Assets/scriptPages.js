@@ -18,7 +18,19 @@ const colorMap = {
       secondary: '#454545',
     },
     comment: {
-      info: '#56b053',
+      info: '#a2b0a3',
+      warning: '#e19a00',
+      error: 'orangered',
+      return: 'cornflowerblue',
+    },
+  },
+  preCmdElement: {
+    background: {
+      primary: '#202644',
+      secondary: '#202333',
+    },
+    comment: {
+      info: '#a2b0a3',
       warning: '#e19a00',
       error: 'orangered',
       return: 'cornflowerblue',
@@ -28,7 +40,7 @@ const colorMap = {
 
 const extraSpaceAfterLatestCharacter = 3;
 const extraSpaceAfterLatestCharacterSecondary = 3;
-const ignoreCommentFormatingUpToCharacter = 20;
+const ignoreCommentFormatingUpToCharacter = 40;
 const recognizedEntities = ['&lt;', '&gt;', '&amp;'];
 
 // table formating config
@@ -39,12 +51,16 @@ const tableRowSeparatorElements = ['|', '/'];
  * @returns {number}
  */
 function getLineLengthWithoutComment(line) {
-  if (line.startsWith('//')) {
+  if (
+    line.startsWith('//')
+    || line.trim().length === 0
+    || line.indexOf('<span id="browserSupport"') > -1
+  ) {
     return 0;
   }
 
   let currentLine = line;
-  const commentIndex = line.indexOf('//');
+  const commentIndex = line.indexOf('// ');
 
   if (commentIndex > 0) {
     currentLine = line.substring(0, commentIndex).trimEnd();
@@ -201,10 +217,10 @@ function formatLines(farthestCharacterForEachLine) {
   const result = [];
 
   for (let lineObj of farthestCharacterForEachLine.lines) {
-    if (lineObj.line.substring(1, ignoreCommentFormatingUpToCharacter).indexOf('//') > -1) {
+    if (lineObj.line.substring(1, ignoreCommentFormatingUpToCharacter).indexOf('// ') > -1) {
       result.push(lineObj.line);
       continue;
-    } else if (lineObj.line.startsWith('//')) {
+    } else if (lineObj.line.startsWith('// ')) {
       let entitiesLength = 0;
 
       if (/<[^>]+>/.test(lineObj.line)) {
@@ -216,8 +232,8 @@ function formatLines(farthestCharacterForEachLine) {
 
       result.push(shortenedLine);
       continue;
-    } else if (lineObj.line.indexOf('//') > -1) {
-      const commentIndex = lineObj.line.indexOf('//');
+    } else if (lineObj.line.indexOf('// ') > -1) {
+      const commentIndex = lineObj.line.indexOf('// ');
       const comment = lineObj.line.substring(commentIndex);
       const beforeComment = lineObj.line.substring(0, lineObj.line.indexOf('//')).trimEnd();
       let padDistance = farthestCharacterForEachLine.farthestCharacter - getLineLengthWithoutComment(lineObj.line);
@@ -247,6 +263,8 @@ $(document).ready(function () {
 
     if (preElement.classList.contains('syntax')) {
       color = colorMap.preSyntaxElement;
+    } else if (preElement.classList.contains('cmd') || preElement.classList.contains('cmd')) {
+      color = colorMap.preCmdElement;
     }
 
     const lines = getLines(preElement);
@@ -261,8 +279,6 @@ $(document).ready(function () {
 
     preElement.innerHTML = result;
   }
-
-
 
   $('.openable').mouseup(function () {
     if (window.getComputedStyle(this.querySelector('div')).display === 'block') {
@@ -282,7 +298,6 @@ $(document).ready(function () {
       $("#notes summary").append(" (empty)");
     }
   }
-
 
   // -------------------------------------------------------------------------------------
   // table styling (auto orders in order to be backward compatible) ----------------------

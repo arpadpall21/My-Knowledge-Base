@@ -69,7 +69,7 @@
     from typing import Annotated
     
     from fastapi import FastAPI, Request, Path, Query, Header, Cookie, Body, Form, File, UploadFile, HTTPException
-    from fastapi.responses import <strong class="openable">ResponseClass<div>
+    from fastapi.responses import <reqval class="openable">ResponseClass<div>
       <h4 class="header"> <strong>ResponseClass</strong> can be any of the below classes </h4>
       <p> - <mark>Response</mark> all responses are subclasses of this class </p>
       <p> - <mark>JSONResponse</mark> - returns json response </p>
@@ -88,9 +88,9 @@
       <p> - <mark>delete_cookie(<strong>cookieKey</strong>=<strong>val</strong><i>, ...</i>)</mark> - used to delete cookies from the client's browser (basically expires the cookies) </p>
       <p> - <mark>media_type</mark> - set the Content-Type header explicitly (ex: <mark>"text/html"</mark>) </p>
       <p> - <mark>is_sent</mark> - boolean that indicates whether the response has been sent </p>
-    </div></strong>
+    </div></reqval>
     
-    <strong>app</strong> = FastAPI(<a href="https://fastapi.tiangolo.com/tutorial/metadata/" target="_blank">arg</a>)
+    <strong>app</strong> = FastAPI(<a href="https:\/\/fastapi.tiangolo.com/tutorial/metadata/" target="_blank">arg</a>)
     
     
     @<strong>app</strong>.<strong>httpMethod</strong>(<strong>fastApiRoute:str</strong>,
@@ -98,7 +98,7 @@
                       response_model_exclude_unset=True,             // default values in <strong>pydanticInstance</strong> are excluded in the response    
                     response_class=<strong>ResponseClass</strong>,                  // sets and annotates the response type (also sets the OpenAPI documentation)   
                     response_code=<strong>int</strong>,                             // sets the default response code (default: <mark>200</mark>) (also sets the OpenAPI documentation)
-                    responses=<strong class="openable">dict<div>
+                    responses=<reqval class="openable">dict<div>
                         <p> - key: <strong>status_code:int</strong> - response status code </p>
                         <p> - value: <strong>dict</strong> - dictionary can contain the following items: </p>
                         <p style="text-indent: 20px;"> <mark>model</mark>: <strong>ResponseClass|PydanticModel</strong> - response model for the given HTTP status code </p>
@@ -107,41 +107,41 @@
                         <hr>
                         <p> ex: </p>
                         <p> <mark>@app.get('/some_path', responses={404: {'model': PydanticModel, 'description': 'some description'}})</mark> </p>
-                    </div></strong>,                               // OpenAPI documentation for multiple response codes 
+                    </div></reqval>,                               // OpenAPI documentation for multiple response codes 
     def <small class="openable">async<div>
         <p> - FastAPI handles non async function just as async </p>
         <p> - async function is mainly used when <mark>await</mark> logics are used in the function body </p>
-    </div></small> <strong>pathFn</strong>(<strong>request</strong>: Request,                                        // captures the request object (contains client info, request body, headers, cookies, etc... <a href="https://www.starlette.io/requests/" target="_blank">[full link]</a>)
+    </div></small> <strong>pathFn</strong>(<strong>request</strong>: Request,                                        // captures the request object (contains client info, request body, headers, cookies, etc... <a href="https:\/\/www.starlette.io/requests/" target="_blank">[full link]</a>)
                       <strong>param</strong><small>[: <i>type</i>=<i>defVal</i>]</small>,                                    // captures (and optionally validates) the value of route <strong>param</strong> if the argument name is the same as the route param name (ex: (<strong>fastApiRoute:str</strong> -> <mark>/get_id/{id}</mark> (arg name <mark>id</mark>))
-                        <strong>param</strong>: Annotated[<strong>type</strong>, Path(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>,             // capture and validate route param (more fine grained approach)
+                        <strong>param</strong>: Annotated[<strong>type</strong>, Path(<a href="https:\/\/docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>,             // capture and validate route param (more fine grained approach)
                       <strong>queryStringKey</strong><small>[: <i>type</i>=<i>defVal</i>]</small>,                           // captures (and optionally validates) the url query string key value if the argument name is the same as the query string key value in the url (ex: (url -> <mark>/hello?limit=5</mark>) (arg name <mark>limit</mark>))    
-                        <strong>queryStringKey</strong>: Annotated[<strong>type</strong>, Query(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>,   // capture and validate query string key (a more fine grained approach)
-                      <strong>header</strong>: Annotated[<strong>type</strong>, Header(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>,          // captures and validates a request header 
-                      <strong>cookie</strong>: Annotated[<strong>type</strong>, Cookie(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>,          // captures and validates a request cookie
+                        <strong>queryStringKey</strong>: Annotated[<strong>type</strong>, Query(<a href="https:\/\/docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>,   // capture and validate query string key (a more fine grained approach)
+                      <strong>header</strong>: Annotated[<strong>type</strong>, Header(<a href="https:\/\/docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>,          // captures and validates a request header 
+                      <strong>cookie</strong>: Annotated[<strong>type</strong>, Cookie(<a href="https:\/\/docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>,          // captures and validates a request cookie
                       <strong>body</strong>: <strong>PydanticModel</strong>,                                     // caputres and validates the request body according to <strong>PydanticModel</strong> validations (json request body)
-                        <strong>body|bodyKey</strong>: Annotated[<strong>type</strong>, Body(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>       // another way to capture and validate the request body <u>(one arg = <strong>body</strong> / multiple args = <strong>bodyKey</strong>)</u> (json request body)
-                      <strong>formField</strong>: Annotated[<strong>type</strong>, Form(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>,         // captures and validates a form field (form-data request)
+                        <strong>body|bodyKey</strong>: Annotated[<strong>type</strong>, Body(<a href="https:\/\/docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>       // another way to capture and validate the request body <u>(one arg = <strong>body</strong> / multiple args = <strong>bodyKey</strong>)</u> (json request body)
+                      <strong>formField</strong>: Annotated[<strong>type</strong>, Form(<a href="https:\/\/docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)] <small>= <i>defVal</i></small>,         // captures and validates a form field (form-data request)
                       <strong>file</strong>: Annotated[byte|<span class="openable">UplodaFile<div>
                       <p> - provides us with tools to work with the uploaded file </p>
-                      <p> - attributes : <a href="https://fastapi.tiangolo.com/tutorial/request-files/?h=uploadfile#uploadfile" target="_blank">[link]</a></p>
-                  </div></span>, File(<a href="https://docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)],           // captures the file (file upload request)
+                      <p> - attributes : <a href="https:\/\/fastapi.tiangolo.com/tutorial/request-files/?h=uploadfile#uploadfile" target="_blank">[link]</a></p>
+                  </div></span>, File(<a href="https:\/\/docs.pydantic.dev/latest/api/fields/" target="_blank">args</a>)],           // captures the file (file upload request)
                                                                                <span style="color:orange;">// arguments without default value are required by the api</span>
                                                                                <span style="color:orange;">// argument validations are documented by OpenAPI (<mark><strong>host</strong>/docs</mark> <mark><strong>host</strong>/redoc</mark>) </span>    
                   ) -> <strong>PydanticModel</strong>:                                      // annotates the json response type (for OpenAPI documentation about the response json structure (<mark>response_model</mark> has higher precedence than this return type annotation))
         
       <span style="color:darkgray;">// error response ----------------</span>
-        raise HTTPException(<strong class="openable">arg<div>
+        raise HTTPException(<reqval class="openable">arg<div>
             <p> - <mark>status_code</mark>=<strong>int</strong> - status code </p>
             <p> - <mark>detail</mark>=<strong>str</strong> - error message </p>
             <p> - <mark>headers</mark>=<strong>dict</strong> - additional headers </p>
-        </div></strong>)                                          // FastAPI recommends to use HTTPException for error (400) responses <u>(but this solution doesn't work if we want custom message formats)</u>    
+        </div></reqval>)                                          // FastAPI recommends to use HTTPException for error (400) responses <u>(but this solution doesn't work if we want custom message formats)</u>    
         
-        <span style="color:darkgray;"># some logic...</span>
+        // some logic...
         return <strong>ResponseClass()|data</strong>                                        // returns a response object (call the response class to the create response object), if <strong>data</strong> is returned the response type is application/json
                                                                                <span style="color:orange;">// the returned responses are NOT documented by OpenAPI </span>
     
     
-    <span style="color:darkgray;">// <strong>fastApiRoute</strong> -----------------------------</span>
+// <strong>fastApiRoute</strong> -----------------------------
     <strong>route</strong>                      // exact route
     <strong>route</strong>{<strong>param</strong>}<i>route</i>          // captures the route <strong>param</strong> and passes it into the route handling function as argument
     <strong>route</strong>{<strong>route</strong>:path}<i>route</i>     // <strong>route</strong>:path matches any of the following route  (works like the <mark>*</mark> in globs)     
@@ -1001,7 +1001,7 @@
             await websocket.send_json(<strong>message:dict</strong>)                        // sending message to the client
         
         <span style="color:darkgray;">// closing connection ---------</span>
-        await websocket.close(<small>code=<i><a href="https://github.com/Luka967/websocket-close-codes" target="_blank">wsCode:int</a></i></small>)                             // closes this websocket connection (Default websocket close code <mark>1000</mark>)   
+        await websocket.close(<small>code=<i><a href="https:\/\/github.com/Luka967/websocket-close-codes" target="_blank">wsCode:int</a></i></small>)                             // closes this websocket connection (Default websocket close code <mark>1000</mark>)   
         
         
         websocket.<strong class="openable">attribute<div>

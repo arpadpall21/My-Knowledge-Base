@@ -349,7 +349,7 @@ SYNTAX :    function <reqval>Const</reqval> (<i>arg1, arg2, ...</i>) {          
         
                                             <span id="browserSupport" style="color:yellow;" title="Updated: 2022-03-15"> <span><i class="fab fa-chrome"></i> 74 </span><span><i class="fab fa-firefox"></i> 90 </span><span><i class="fab fa-opera"></i> 62 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span><span><i class="fab fa-safari"></i> 14.1 </span><span><i class="fab fa-node-js"></i> 12.0.0 </span></span>                
         #<reqval>propId</reqval> <i>= val</i>                     // only available inside this class (<mark><reqval>Class1</reqval></mark>), accessible as <mark>this.#<reqval>propId</reqval></mark> where <mark>this</mark> references the instance that will be created     
-        get|set #<reqval>propId</reqval>(<i>val</i>) {                                                            can be declared as getter or setter property   
+        get|set #<reqval>propId</reqval>(<i>val</i>) {                                                            // can be declared as getter or setter property   
             this;                         // -> <reqval>instance</reqval>
         };
         

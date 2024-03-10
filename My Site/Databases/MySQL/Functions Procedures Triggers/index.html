@@ -48,12 +48,12 @@ SYNTAX:     CREATE FUNCTION <i>db.</i><strong>fn</strong> (<i>arg dataType, ...<
             
             
             SHOW FUNCTION STATUS <small>[LIKE <i>pattern</i>]</small>                                        // returns the characteristics of all stored functions that the user have access to    
-                                                                                          (<small>LIKE</small>) filters functions by pattern     
+                                                                                          // (<small>LIKE</small>) filters functions by pattern     
                                                                                           
             SHOW CREATE FUNCTION <strong>fn</strong>                                                    // returns the exact string that is used to create the specified function (can be used to re-create the function)    
             
             DROP FUNCTION <small>[IF EXISTS]</small> <i>db.</i><strong>fn</strong>                                            // drops (deletes) the specified function 
-                                                                                          (<small>IF EXISTS</small>) does not throw an error if the function does not exist    
+                                                                                          // (<small>IF EXISTS</small>) does not throw an error if the function does not exist    
     </pre>
 <details class="example">
 <summary> DEMO </summary>
@@ -261,12 +261,12 @@ SYNTAX:     CREATE PROCEDURE <i>db.</i><strong>proc</strong>(<small class="opena
             
             
             SHOW PROCEDURE STATUS <small>[LIKE <i>pattern</i>]</small>                                       // returns the characteristics of all stored procedures that the user have access to    
-                                                                                         (<small>LIKE</small>) filters procedures by pattern
+                                                                                         /// (<small>LIKE</small>) filters procedures by pattern
                                                                                          
             SHOW CREATE PROCEDURE <strong>proc</strong>                                                 // returns the exact string that is used to create the specified procedure (can be used to re-create the procedure)    
             
             DROP PROCEDURE <small>[IF EXISTS]</small> <i>db.</i><strong>proc</strong>                                         // drops (deletes) the specified procedure 
-                                                                                         (<small>IF EXISTS</small>) does not throw an error if the procedure does not exist  
+                                                                                         /// (<small>IF EXISTS</small>) does not throw an error if the procedure does not exist  
     </pre>
 <details class="example">
 <summary> DEMO </summary>
@@ -335,7 +335,7 @@ SYNTAX:     CREATE PROCEDURE <i>db.</i><strong>proc</strong>(<small class="opena
 <hr>
 <!-------------------------------------------------------------------------------------------------------->
 <h4 style="color:darkblue;"><u> Procedure TEST </u></h4>
-    <pre class="cmd">
+    <pre class="cli">
     mysql> CREATE PROCEDURE proc_1()                                                   // most basic procedure 
         ->   SELECT * FROM Students;                                                     // have one statement in the body  
     Query OK, 0 rows affected (0.01 sec)
@@ -555,7 +555,7 @@ SYNTAX:     CREATE TRIGGER <strong>trigger</strong> <span class="openable">BEFOR
             SHOW TRIGGERS                                                              // prints all triggers in the current database    
             
             DROP TRIGGER <small>[IF EXISTS]</small> <i>db.</i><strong>trigger</strong>                                        // deletes the specified trigger 
-                                                                                         (<small>IF EXISTS</small>) does not throw an error if the trigger does not exist  
+                                                                                         /// (<small>IF EXISTS</small>) does not throw an error if the trigger does not exist  
     </pre>
 <details class="example">
 <summary> DEMO </summary>

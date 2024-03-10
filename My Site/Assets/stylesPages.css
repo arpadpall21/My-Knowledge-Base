@@ -238,7 +238,6 @@ a {
 /*-----------------------------------------------------------*/
 /*-- command line like pre element style --------------------*/
 .cmd, .cli {
-    background-color: #202644;
     color: white;
 }
 

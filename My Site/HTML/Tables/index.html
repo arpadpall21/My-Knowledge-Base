@@ -25,16 +25,16 @@
         <td>  </td>
         <td> 
             defines the table's caption<br>
-            <span style="color:blue;"> &nbsp; - must be inserted after the <mark>&lt;table&gt;</mark> tag</span><br>
-            <span style="color:blue;"> &nbsp; - only one per table</span>
+            <span style="color:#7f85a3;"> &nbsp; - must be inserted after the <mark>&lt;table&gt;</mark> tag</span><br>
+            <span style="color:#7f85a3;"> &nbsp; - only one per table</span>
         </td>
     </tr>
     <tr>
         <td> &lt;col&gt; </td>
-        <td> span="<i>nr</i>" <span style="color:blue;">(span columns for styling only)</span><br> </td>
+        <td> span="<i>nr</i>" <span style="color:#7f85a3;">(span columns for styling only)</span><br> </td>
         <td> 
             specifies a table's column in the sequence<br>
-            <span style="color:blue;"> &nbsp; - must be child of the <mark>&lt;colgroup&gt;</mark> element</span>
+            <span style="color:#7f85a3;"> &nbsp; - must be child of the <mark>&lt;colgroup&gt;</mark> element</span>
         </td>
     </tr>
     <tr>
@@ -42,8 +42,8 @@
         <td>  </td>
         <td> 
             defines a group for the table columns for formating (nests <mark>&lt;col&gt;</mark> elements)<br>
-            <span style="color:blue;"> &nbsp; - must be child element of the <mark>&lt;table&gt;</mark> element</span><br>
-            <span style="color:blue;"> &nbsp; - must come after the <mark>&lt;caption&gt;</mark> element and before any <mark>&lt;thead&gt;</mark>, <mark>&lt;tbody&gt;</mark>, <mark>&lt;tfoot&gt;</mark>, <mark>&lt;tr&gt;</mark> elements </span>
+            <span style="color:#7f85a3;"> &nbsp; - must be child element of the <mark>&lt;table&gt;</mark> element</span><br>
+            <span style="color:#7f85a3;"> &nbsp; - must come after the <mark>&lt;caption&gt;</mark> element and before any <mark>&lt;thead&gt;</mark>, <mark>&lt;tbody&gt;</mark>, <mark>&lt;tfoot&gt;</mark>, <mark>&lt;tr&gt;</mark> elements </span>
         </td>
     </tr>
     <tr>
@@ -56,17 +56,17 @@
         <td>  </td>
         <td>  
             groups body content in the table <u style="color:orangered;">required! (you don't need to specify it but the browser automatically include one in the table when it is rendered)</u><br>
-            <span style="color:blue;"> &nbsp; - used in conjonction with the <mark>&lt;thead&gt;</mark> and <mark>&lt;tfoot&gt;</mark> elements</span><br>
-            <span style="color:blue;"> &nbsp; - must be child element of the <mark>&lt;table&gt;</mark> element</span><br>
-            <span style="color:blue;"> &nbsp; - comes after the <mark>&lt;caption&gt;</mark>, <mark>&lt;colgroup&gt;</mark> and <mark>&lt;thead&gt;</mark> elements <span style="color:orangered;">(according to W3C)</span> </span><br>
+            <span style="color:#7f85a3;"> &nbsp; - used in conjonction with the <mark>&lt;thead&gt;</mark> and <mark>&lt;tfoot&gt;</mark> elements</span><br>
+            <span style="color:#7f85a3;"> &nbsp; - must be child element of the <mark>&lt;table&gt;</mark> element</span><br>
+            <span style="color:#7f85a3;"> &nbsp; - comes after the <mark>&lt;caption&gt;</mark>, <mark>&lt;colgroup&gt;</mark> and <mark>&lt;thead&gt;</mark> elements <span style="color:orangered;">(according to W3C)</span> </span><br>
         </td>
     </tr>
     <tr>
         <td> &lt;td&gt; </td>
         <td>  
-            colspan="<i>nr</i>" <span style="color:blue;">(span columns)</span><br>
-            headers="<i>id</i>" <span style="color:blue;">(specified the header relation with other headers [no visual effect])</span><br>
-            rowspan="<i>nr</i>" <span style="color:blue;">(span rows)</span>
+            colspan="<i>nr</i>" <span style="color:#7f85a3;">(span columns)</span><br>
+            headers="<i>id</i>" <span style="color:#7f85a3;">(specified the header relation with other headers [no visual effect])</span><br>
+            rowspan="<i>nr</i>" <span style="color:#7f85a3;">(span rows)</span>
         </td>
         <td> defines a standard cell in the table </td>
     </tr>
@@ -75,20 +75,20 @@
         <td>  </td>
         <td> 
             groups footer content in the table<br>
-            <span style="color:blue;"> &nbsp; - used in conjonction with the <mark>&lt;thead&gt;</mark> and <mark>&lt;tbody&gt;</mark> elements</span><br>
-            <span style="color:blue;"> &nbsp; - must be child element of the <mark>&lt;table&gt;</mark> element</span><br>
-            <span style="color:blue;"> &nbsp; - comes after the <mark>&lt;caption&gt;</mark>, <mark>&lt;colgroup&gt;</mark> and <mark>&lt;thead&gt;</mark> elements <span style="color:orangered;">(according to W3C)</span> </span><br>
-            <span style="color:blue;"> &nbsp; - comes before <mark>&lt;tbody&gt;</mark>, <mark>&lt;th&gt;</mark> elements <span style="color:orangered;">(according to W3C)</span> </span>
+            <span style="color:#7f85a3;"> &nbsp; - used in conjonction with the <mark>&lt;thead&gt;</mark> and <mark>&lt;tbody&gt;</mark> elements</span><br>
+            <span style="color:#7f85a3;"> &nbsp; - must be child element of the <mark>&lt;table&gt;</mark> element</span><br>
+            <span style="color:#7f85a3;"> &nbsp; - comes after the <mark>&lt;caption&gt;</mark>, <mark>&lt;colgroup&gt;</mark> and <mark>&lt;thead&gt;</mark> elements <span style="color:orangered;">(according to W3C)</span> </span><br>
+            <span style="color:#7f85a3;"> &nbsp; - comes before <mark>&lt;tbody&gt;</mark>, <mark>&lt;th&gt;</mark> elements <span style="color:orangered;">(according to W3C)</span> </span>
         </td>
     </tr>
     <tr>
         <td> &lt;th&gt; </td>
         <td> 
-            abbr="<i>text</i> <span style="color:blue;">(specifies an abreviated version of the content)</span><br> 
-            colspan="<i>nr</i>" <span style="color:blue;">(span columns)</span><br>
-            headers="<i>id</i>" <span style="color:blue;">(specified the header relation with other headers [no visual effect])</span><br>
-            rowspan="<i>nr</i>" <span style="color:blue;">(span rows)</span><br>
-            scope="col / colgroup / row / rowgroup" <span style="color:blue;">(specifies header scope [no visual effect])</span>
+            abbr="<i>text</i> <span style="color:#7f85a3;">(specifies an abreviated version of the content)</span><br> 
+            colspan="<i>nr</i>" <span style="color:#7f85a3;">(span columns)</span><br>
+            headers="<i>id</i>" <span style="color:#7f85a3;">(specified the header relation with other headers [no visual effect])</span><br>
+            rowspan="<i>nr</i>" <span style="color:#7f85a3;">(span rows)</span><br>
+            scope="col / colgroup / row / rowgroup" <span style="color:#7f85a3;">(specifies header scope [no visual effect])</span>
         </td>
         <td> defines a header cell in the table </td>
     </tr>
@@ -97,10 +97,10 @@
         <td>  </td>
         <td> 
             groups header elements<br>
-            <span style="color:blue;"> &nbsp; - used in conjonction with the <mark>&lt;tbody&gt;</mark> and <mark>&lt;tfoot&gt;</mark> elements</span><br>
-            <span style="color:blue;"> &nbsp; - must be child element of the <mark>&lt;table&gt;</mark> element</span><br>
-            <span style="color:blue;"> &nbsp; - comes after the <mark>&lt;caption&gt;</mark> and <mark>&lt;colgroup&gt;</mark> elements</span> <br>
-            <span style="color:blue;"> &nbsp; - comes before <mark>&lt;tbody&gt;</mark>, <mark>&lt;tfoot&gt;</mark>, <mark>&lt;tr&gt;</mark> elements <span style="color:orangered;">(according to W3C)</span> </span>
+            <span style="color:#7f85a3;"> &nbsp; - used in conjonction with the <mark>&lt;tbody&gt;</mark> and <mark>&lt;tfoot&gt;</mark> elements</span><br>
+            <span style="color:#7f85a3;"> &nbsp; - must be child element of the <mark>&lt;table&gt;</mark> element</span><br>
+            <span style="color:#7f85a3;"> &nbsp; - comes after the <mark>&lt;caption&gt;</mark> and <mark>&lt;colgroup&gt;</mark> elements</span> <br>
+            <span style="color:#7f85a3;"> &nbsp; - comes before <mark>&lt;tbody&gt;</mark>, <mark>&lt;tfoot&gt;</mark>, <mark>&lt;tr&gt;</mark> elements <span style="color:orangered;">(according to W3C)</span> </span>
         </td>
     </tr>
     <tr>

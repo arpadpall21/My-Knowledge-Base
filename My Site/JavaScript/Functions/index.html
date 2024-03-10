@@ -347,6 +347,7 @@ Example :   var <strong>funcID</strong> = function() {}                         
     <p> - function arguments are the real values passed and received by the function </p>
     <p> - JavaScript does not perform any type checking on passed arguments and will return "undefined" on missing arguments <u>(unless an optional argument is set with the <mark>=</mark> operator)</u> </p>
     <p> - because there is no type checking <span style="color:yellow;">actions can also be passed</span> not just values </p>
+    
     <pre class="syntax">
 SYNTAX : 
   <span style="color:darkgray;">// default argument -----------------------------------------------------------------</span>  <span id="browserSupport" style="color:yellow;" title="updated :2021-05-15"><span><i class="fab fa-chrome"></i> 49 </span><span><i class="fab fa-firefox"></i> 15 </span><span><i class="fab fa-opera"></i> 36 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 14 </span><span><i class="fab fa-safari"></i> 10 </span><span><i class="fab fa-node-js"></i> 6.0.0 </span></span>    
@@ -939,7 +940,7 @@ SYNTAX :    <em>function</em>* <strong>fnId</strong><em>(<i>arg, ...</i>) {</em>
             
             var <strong>genObj</strong> = <strong>fnId</strong>();                                                       // creates the generator object    
     
-  <span style="color:darkgray;">// ----------------------------------------------------------------------------------</span>
+<span style="color:darkgray;">// ----------------------------------------------------------------------------------</span>
                                                                                           <span id="browserSupport" title="updated :2021-05-15" style="color:yellow;"><span><i class="fab fa-chrome"></i> 39 </span><span><i class="fab fa-firefox"></i> 26 </span><span><i class="fab fa-opera"></i> 26 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 13 </span><span><i class="fab fa-safari"></i> 10 </span><span><i class="fab fa-node-js"></i> 4.0.0 </span></span>
             <strong>genObj</strong>.next(<i class="openable">val<div>
                 <p> - the called <mark>yield</mark> keyword value (excluded from the yield's expression) </p>
