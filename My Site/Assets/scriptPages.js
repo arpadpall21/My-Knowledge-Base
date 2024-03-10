@@ -1,3 +1,4 @@
+// pre formating config
 const colorMap = {
   preElement: {
     background: {
@@ -29,6 +30,9 @@ const extraSpaceAfterLatestCharacter = 3;
 const extraSpaceAfterLatestCharacterSecondary = 3;
 const ignoreCommentFormatingUpToCharacter = 20;
 const recognizedEntities = ['&lt;', '&gt;', '&amp;'];
+
+// table formating config
+const tableRowSeparatorElements = ['|', '/'];
 
 /**
  * @param {string} line
@@ -168,8 +172,6 @@ function getLines(preElement) {
     result.push(line);
   }
 
-  console.log(result);
-
   return result;
 }
 
@@ -260,8 +262,6 @@ $(document).ready(function () {
     preElement.innerHTML = result;
   }
 
-  console.log( $('.openable'))
-
   $('.openable').mouseup(function () {
     if (window.getComputedStyle(this.querySelector('div')).display === 'block') {
       this.querySelector('.openable > div').style.display = 'none';
@@ -282,14 +282,20 @@ $(document).ready(function () {
   }
 
 
-// table should be backward compatible
-// 
-
-
-  // -------------------------------------------------------------------------------------
+ // -------------------------------------------------------------------------------------
   // table order (alphabetically / grouped) ----------------------------------------------
   if (document.querySelector('.table caption span[class=changeListOrder]')) {          // run this code only if the page has v4.0.0 table 
     let tables = document.querySelectorAll('.table');
+
+    function openableToggle() {
+      if (window.getComputedStyle(this.querySelector('div')).display === 'block') {
+        this.querySelector('div').style.display = 'none';
+        this.querySelector('div').style.position = 'static';
+      } else {
+        this.querySelector('div').style.display = 'block';
+        this.querySelector('div').style.position = 'absolute';
+      }
+    }
 
     for (a = 0; a < tables.length; a++) {
       let curTable = tables[a];
@@ -298,7 +304,7 @@ $(document).ready(function () {
       let clickSpan = curOrdSpan.firstElementChild;
 
       let nthTable = a;
-      let tblStGrouped = sessionStorage.getItem(`tb_${nthTable}_lStGrouped`);
+      let tblStGrouped = 'yes';
 
       function tableHandler(ev) {
         if (tblStGrouped === 'yes') {
@@ -353,12 +359,21 @@ $(document).ready(function () {
             td.fontSize = '1em';
             td.textIndent = '-25px';
             td.paddingLeft = '30px';
+          });
 
-          })
-          curTable.querySelectorAll('tr').forEach(function (node) {
-            let td = node.style;
-            td.backgroundColor = '#4b4b4b';
-            td.color = 'white';
+          curTable.querySelectorAll('tr').forEach((tr) => {
+            if (tableRowSeparatorElements.includes($(tr).children(":eq(0)").text())) {
+              tr.style.backgroundColor = '#4b4b4b';
+              tr.style.color = 'transparent';
+              return
+            }
+            
+            tr.style.backgroundColor = '#4b4b4b';
+            tr.style.color = 'white';
+          });
+
+          curTable.querySelectorAll('.openable').forEach(function (node) {
+            node.addEventListener('mouseup', openableToggle)
           })
 
         } else {
@@ -370,6 +385,10 @@ $(document).ready(function () {
           curTable.querySelector('tbody').remove();
           let orgTable_copy = orgTable.cloneNode(true);                   // clone a new copy in order to keep the original table
           curTable.append(orgTable_copy.querySelector('tbody'));
+
+          curTable.querySelectorAll('.openable').forEach(function (node) {
+            node.addEventListener('mouseup', openableToggle)
+          })
         }
       }
       tableHandler();
@@ -378,10 +397,24 @@ $(document).ready(function () {
     }
   }
 
+  // toggle ver.4.0.0 table statuses  
+  const tableSwitchCol = document.getElementsByClassName('changeListOrder');
+  let ctrKeyPressed = false;
+  let oKeyPressed = false;
+  var mouseUpEv = new Event('mouseup', { bubbles: true })
+
+  document.documentElement.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Control') ctrKeyPressed = true;
+    if (ev.key === 'o') oKeyPressed = true;
+    if (ctrKeyPressed && oKeyPressed) {
+      for (switchElement of tableSwitchCol) {
+        switchElement.dispatchEvent(mouseUpEv)
+      }
+    }
+  })
 
   document.documentElement.addEventListener('keyup', function (ev) {
     if (ev.key === 'Alt') ctrKeyPressed = false;
     if (ev.key === 'o') oKeyPressed = false;
   })
 });
-
