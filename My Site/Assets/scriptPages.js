@@ -260,6 +260,8 @@ $(document).ready(function () {
     preElement.innerHTML = result;
   }
 
+  console.log( $('.openable'))
+
   $('.openable').mouseup(function () {
     if (window.getComputedStyle(this.querySelector('div')).display === 'block') {
       this.querySelector('.openable > div').style.display = 'none';
@@ -269,13 +271,6 @@ $(document).ready(function () {
       this.querySelector('.openable > div').style.position = 'absolute';
     }
   });
-
-
-
-
-
-
-
 
 // format notes section
 // -------------------------------------------------------------------------------------
@@ -287,21 +282,14 @@ $(document).ready(function () {
   }
 
 
+// table should be backward compatible
+// 
+
 
   // -------------------------------------------------------------------------------------
   // table order (alphabetically / grouped) ----------------------------------------------
   if (document.querySelector('.table caption span[class=changeListOrder]')) {          // run this code only if the page has v4.0.0 table 
     let tables = document.querySelectorAll('.table');
-
-    function openableToggle() {
-      if (window.getComputedStyle(this.querySelector('div')).display === 'block') {
-        this.querySelector('div').style.display = 'none';
-        this.querySelector('div').style.position = 'static';
-      } else {
-        this.querySelector('div').style.display = 'block';
-        this.querySelector('div').style.position = 'absolute';
-      }
-    }
 
     for (a = 0; a < tables.length; a++) {
       let curTable = tables[a];
@@ -373,10 +361,6 @@ $(document).ready(function () {
             td.color = 'white';
           })
 
-          curTable.querySelectorAll('.openable').forEach(function (node) {
-            node.addEventListener('mouseup', openableToggle)
-          })
-
         } else {
           clickSpan.innerHTML = 'Alphabetically';
 
@@ -386,10 +370,6 @@ $(document).ready(function () {
           curTable.querySelector('tbody').remove();
           let orgTable_copy = orgTable.cloneNode(true);                   // clone a new copy in order to keep the original table
           curTable.append(orgTable_copy.querySelector('tbody'));
-
-          curTable.querySelectorAll('.openable').forEach(function (node) {
-            node.addEventListener('mouseup', openableToggle)
-          })
         }
       }
       tableHandler();
@@ -398,21 +378,6 @@ $(document).ready(function () {
     }
   }
 
-  // toggle ver.4.0.0 table statuses  
-  const tableSwitchCol = document.getElementsByClassName('changeListOrder');
-  let ctrKeyPressed = false;
-  let oKeyPressed = false;
-  var mouseUpEv = new Event('mouseup', { bubbles: true })
-
-  document.documentElement.addEventListener('keydown', function (ev) {
-    if (ev.key === 'Control') ctrKeyPressed = true;
-    if (ev.key === 'o') oKeyPressed = true;
-    if (ctrKeyPressed && oKeyPressed) {
-      for (switchElement of tableSwitchCol) {
-        switchElement.dispatchEvent(mouseUpEv)
-      }
-    }
-  })
 
   document.documentElement.addEventListener('keyup', function (ev) {
     if (ev.key === 'Alt') ctrKeyPressed = false;

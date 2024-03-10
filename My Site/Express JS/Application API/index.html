@@ -499,13 +499,14 @@
 
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
   <pre class="syntax">
+-----------------------------------------------------
     const express = require('express');
     const <reqval>app</reqval> = express();
     
     <span style="color:darkgray">// app...</span>
   
   
-<span style="color:darkgray;">// express apps can be mounted on each others route ------------------</span>
+// express apps can be mounted on each others route ---------
     const <reqval>app2</reqval> = express();
     
     <reqval>app</reqval>.use(<reqval>routePath</reqval>, <reqval>app2</reqval>)

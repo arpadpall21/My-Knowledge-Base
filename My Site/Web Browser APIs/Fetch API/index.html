@@ -1047,9 +1047,9 @@ SYNTAX:     <em>new</em> AbortController()                                      
     <p> - the <mark>Request</mark> interface represents the request of the fetch API </p>
     <p> - the <mark>Body</mark> mixin methods and properties are available on both the <mark>Request</mark> and <mark>Response</mark> interfaces (mixin = interface which is not directly implemented but on other interfaces) </p>
     <pre class="syntax">
-SYNTAX:     <em>new</em> Request(<strong class="openable">url:str|req:obj<div>
+SYNTAX:     <em>new</em> Request(<reqval class="openable">url:str|req:obj<div>
                 <p> - <strong>req</strong> - another Request Object is passed = copy created </p>
-            </div></strong>, <i class="openable">option:obj<div>
+            </div></reqval>, <i class="openable">option:obj<div>
                 <p> method: <strong>str</strong> - request method (Default: <mark>'GET'</mark>) </p>
                 <p> headers: <strong>obj|headers:obj</strong> - request headers (object literal or <strong>headers</strong> object) </p>
                 <p> body: <strong>str|blob|bufferSource|formData|URLSearchParams|readableStream</strong> - request body </p>
@@ -1063,7 +1063,7 @@ SYNTAX:     <em>new</em> Request(<strong class="openable">url:str|req:obj<div>
             
             
             <strong>req</strong>.clone()                                                                // creates a copy and returns a new <strong>req</strong> (Request) object    
-                                                                                          if the request's body has already been used this method cannot create a new request copy (throws an error)    
+                                                                                          // if the request's body has already been used this method cannot create a new request copy (throws an error)    
             
             <strong>req</strong>.method                                                                 // (getter only) returns the request method (ex: <mark>'GET'</mark>)     
             <strong>req</strong>.headers                                                                // (getter only) returns a <strong>headers</strong> object containing the request headers    
@@ -1080,7 +1080,7 @@ SYNTAX:     <em>new</em> Request(<strong class="openable">url:str|req:obj<div>
             <strong>req</strong>.destination                                                            // (getter only) type of content being requested (ex: <mark>'audio'</mark>)  
             
             
-  <span style="color:darkgray;">// <mark>Body</mark> mixin properties and methods on Request object ------------------------------</span>
+// <mark>Body</mark> mixin properties and methods on Request object ------------------------------
             <strong>req</strong>.body                                                                   // returns <mark>undefined</mark> it suppose to return a <strong>readableStream</strong> of the request body <u>(apparently this mixin property only works on the <strong>res</strong> (Response) object) [TESTED: 2020-11-27])</u>    
             <strong>req</strong>.bodyUsed                                                               // returns <mark>true</mark> if the request body has already been used (read), <mark>false</mark> otherwise    
             
@@ -1244,7 +1244,7 @@ SYNTAX:     <em>new</em> Response(<strong>body:str|blob|formData|bufferSource|re
             
             
             <strong>res</strong>.clone()                                                                // creates a copy and returns a new <strong>res</strong> (Response) object    
-                                                                                          if the response's body has already been used this method cannot create a new response copy (throws an error)    
+                                                                                          // if the response's body has already been used this method cannot create a new response copy (throws an error)    
             <strong>res</strong>.error()                                                                // creates a copy and returns a new <strong>res</strong> (Response) object associated with a network error <u>(available in serviceWorker only)</u> <u>[NOT TESTED: 2020-11-28]</u>    
             <strong>res</strong>.redirect(<strong>url:str</strong>, <i>stCode:nr</i>)                                           // creates a copy and returns a new <strong>res</strong> (Response) object with the set URL and status code <u>(available in serviceWorker only)</u> <u>[NOT TESTED: 2020-11-28]</u>    
             
@@ -1389,12 +1389,12 @@ SYNTAX:     <em>new</em> Response(<strong>body:str|blob|formData|bufferSource|re
 <h2 style="color:darkblue;"><u> The <mark>Headers</mark> interface </u></h2>
     <p> - the <mark>Headers</mark> interface allows us to perform various actions on HTTP request and response headers </p>
     <pre class="syntax">
-SYNTAX:     <em>new</em> Headers(<strong class="openable">obj|headers<div>
+SYNTAX:     <em>new</em> Headers(<reqval class="openable">obj|headers<div>
                 <p> - <strong>obj</strong> - object literal </p>
                 <p> - <strong>headers</strong> - another <strong>headers</strong> object </p>
-            </div></strong>)                                                  // creates and returns a new <strong>headers</strong> object (iterable object <mark>for... of</mark> loop can be used on it)
-                                                                                          header names and values accept ASCII characters only, header names are (parsed to) lowercased    
-                                                                                          implements <span class="openable">header guard<div>
+            </div></reqval>)                                                  // creates and returns a new <strong>headers</strong> object (iterable object <mark>for... of</mark> loop can be used on it)
+                                                                                          // header names and values accept ASCII characters only, header names are (parsed to) lowercased    
+                                                                                          // implements <span class="openable">header guard<div>
                 <p style="font-weight:bold; font-size:1.2em;"> Headers guard <mark>none</mark> </p>
                 <p> - if the <strong>headers</strong> object is created by a <mark>Headers()</mark> constructor </p>
                 <p> - any request headers can be modified (custom headers included) in the <strong>headers</strong> object </p>

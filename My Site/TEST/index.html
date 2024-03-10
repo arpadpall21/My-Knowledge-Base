@@ -20,255 +20,282 @@
   <h1> TEST </h1>
   <p> Updated ( 2021-10-27 )</p>
   <p class="sitenav"> <a href="../index.html">MySite></a> TEST </p>
+  
+  
+  
+  
+  
+  <table class="table">
+    <caption>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Property / Method </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td> <strong>express</strong>() </td>
+      <td> - top-level function returns an <strong>app</strong> object which is an Express application instance </td>
+    </tr>
+    <tr><td>|</td><td></td></tr>
+    <tr>
+      <td>
+        <strong>express</strong>.Router(<i class="openable">option:obj<div>
+            <p> caseSensitive: <strong>bol</strong> - the router is case sensitive in request <strong>routePath</strong> (<mark>/foo</mark> and <mark>/Foo</mark> treated differently)(Default: <mark>false</mark>) </p>
+            <p> mergeParams: <strong>bol</strong> - preservers the parent app (parameters) <mark><strong>req</strong>.params</mark> values (in case of conflict the child values take precedence over the parent values) (Default: <mark>false</mark>) </p>
+            <p> strict: <strong>bol</strong> - strict routing (<mark>/foo</mark> and <mark>/foo/</mark> treated differently) (Default: <mark>false</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - creates a new <strong>router</strong> which is basically namespaces a path segment (passed as <strong>middelware</strong>)
+      </td>
+    </tr>
+    <tr><td>|</td><td></td></tr>
+    <tr>
+      <td>
+        <strong>express</strong>.static(<strong>path:str</strong>, <i class="openable">option:obj<div>
+            <p> dotifies: <strong>str</strong> - how to tread files or directories that begin with a dot <mark>.</mark> (Default: <mark>ignore</mark> = respond with <mark>404</mark> then call <mark>next()</mark>) (<mark>deny</mark> = deny the request for dotified files, responde with <mark>403</mark> then call <mark>next()</mark>) (<mark>allow</mark> = treat them as normal files) </p>
+            <p> etag: <strong>bol</strong> - generates an weak ETag and includes the generated <mark>ETag:<strong>etagVal</strong></mark> in the response (Default: <mark>true</mark>) </p>
+            <p> extensions: <strong>bol|[str, ...]</strong> - if a file not found search for it with the specified extentions (ex: <mark>['html', 'htm']</mark>) (Default: <mark>false</mark>) </p>
+            <p> fallthrough: <strong>bol</strong> - (Default: <mark>true</mark> on client error (Bad Request, etc...) this middleware simply calls <mark>next()</mark>) (<mark>false</mark> on client error this middleware calls <mark>next(err)</mark>) </p>
+            <p> immutable: <strong>bol</strong> - adds <mark>immutable</mark> in the response <mark>Cache-Control</mark> header (Default: <mark>false</mark>) </p>
+            <p> lastModified: <strong>bol</strong> - includes the <mark>Last-Modified</mark> header in the response with the last modified date of the requested file (Default: <mark>false</mark>) </p>
+            <p> maxAge: <strong>nr</strong> - sets the max-age property in the <mark>Cache-Control</mark> header (in milliseconds) (Default: <mark>0</mark>) </p>
+            <p> redirect: <strong>bol</strong> - redirect to trailing <mark>/</mark> when the pathname is a directory (Default: <mark>true</mark>) </p>
+            <p> setHeaders: <strong>fn(res, path, stat)</strong> - function to set response headers (no need to return anything) (<mark>res</mark> = response object this is where the headers should be set) (<mark>path</mark> = path of the response file) (<mark>stat</mark> = stats of the file) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns a <strong>middleware</strong> that serves static files from the passed directory (<strong>path:str</strong>) (can be called multiple times to set multiple directories) <br>
+        - checks the <mark><strong>req</strong>.url</mark> value then searches for the files in the passed <strong>path:str</strong> directory <br>
+        - if no file found internally calls <mark>next()</mark> (calls the next middleware in the stack)
+      </td>
+    </tr>
+    </tr>
+    <tr><td colspan="2"> separator </td></tr>
+    <tr>
+      <td>
+        <strong>express</strong>.text(<i class="openable">option:obj<div>
+            <p> defaultCharset: <strong>str</strong> - specifies charset if the <mark>Content-Type</mark> header doesn't have it (Default: <mark>"utf-8"</mark>) </p>
+            <p> inflate: <strong>bol</strong> - enables/disables body inflation (Default: <mark>true</mark>) </p>
+            <p> limit: <strong>nr|str</strong> - maximum request body size (<strong>nr</strong> = number of bytes) (Default: <mark>"100kb"</mark>) </p>
+            <p> type: <strong>str|[str, ...]|fn</strong> - the watched <mark>Content-Type</mark> header value(s) when this middelware is triggered (Default: <mark>text/plain</mark>) </p>
+            <p> verify: <strong>fn(req, res, buf, encoding)</strong> - function can be passed to verify the data (<mark>buf</mark> = <strong>buf</strong> | <mark>encoding</mark> = request encoding) (Default: <mark>undefined</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns a (body parser) <strong>middleware</strong> which parses incomming requests with string parser <br>
+        - only looks at requests where there is a header <mark>Content-Type:text/plain</mark> (ignores other requests) <br>
+        - accpets any unicode encoding and supports automatic <mark>deflate</mark> and <mark>gzip</mark> inflation <br>
+        - the data is populated in the next middelware <mark><strong>req</strong>.body</mark> as string
+        <span id="browserSupport" title="updated: 2021-01-22">
+          <span> Express v4.17.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>express</strong>.json(<i class="openable">option:obj<div>
+            <p> inflate: <strong>bol</strong> - enables/disables body inflation (Default: <mark>true</mark>) </p>
+            <p> limit: <strong>nr|str</strong> - maximum request body size (<strong>nr</strong> = number of bytes) (Default: <mark>"100kb"</mark>) </p>
+            <p> reviver: <strong>fn</strong> - function passed directly to <mark>JSON.parse()</mark> (function can modify JSON values when parsed) (Default: <mark>null</mark>) </p>
+            <p> strict: <strong>bol</strong> - only objects and Arrays are accepted, when disabled accept anything that <mark>JSON.parse()</mark> accept (Default: <mark>true</mark>) </p>
+            <p> type: <strong>str|[str, ...]|fn</strong> - the watched <mark>Content-Type</mark> header value(s) when this middelware is triggered (Default: <mark>application/json</mark>) </p>
+            <p> verify: <strong>fn(req, res, buf, encoding)</strong> - function can be passed to verify the data (<mark>buf</mark> = <strong>buf</strong> | <mark>encoding</mark> = request encoding) (Default: <mark>undefined</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns a (body parser) <strong>middleware</strong> which parses incomming requests with JSON parser <span class="openable"> single openable <div> <p> test test </p> </div> </span> <br>
+        - only looks at requests where there is a header <mark>Content-Type:application/json</mark> (ignores other requests) <br>
+        - accpets any unicode encoding and supports <span class="openable"> single openable 
+          <div> 
+            <p> test test </p> 
+            <p> test test </p> 
+            <p> test test </p> 
+            <p> test test </p> 
+          </div> </span>automatic <mark>deflate</mark> and <mark>gzip</mark> inflation <br>
+        - the data is populated in the next middelware <mark><strong>req</strong>.body</mark> as JavaScript data
+        <span id="browserSupport" title="updated: 2021-01-22">
+          <span> Express v4.16.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>express</strong>.raw(<i class="openable">option:obj<div>
+            <p> inflate: <strong>bol</strong> - enables/disables body inflation (Default: <mark>true</mark>) </p>
+            <p> limit: <strong>nr|str</strong> - maximum request body size (<strong>nr</strong> = number of bytes) (Default: <mark>"100kb"</mark>) </p>
+            <p> type: <strong>str|[str, ...]|fn</strong> - the watched <mark>Content-Type</mark> header value(s) when this middelware is triggered (Default: <mark>application/octet-stream</mark>) </p>
+            <p> verify: <strong>fn(req, res, buf, encoding)</strong> - function can be passed to verify the data (<mark>buf</mark> = <strong>buf</strong> | <mark>encoding</mark> = request encoding) (Default: <mark>undefined</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns a (body parser) <strong>middleware</strong> which parses incomming requests with Buffer parser <br>
+        - only looks at requests where there is a header <mark>Content-Type:application/octet-stream</mark> (ignores other requests) <br>
+        - accpets any unicode encoding and supports automatic <mark>deflate</mark> and <mark>gzip</mark> inflation <br>
+        - the data is populated in the next middelware <mark><strong>req</strong>.body</mark> as <strong>buf</strong> (Buffer)
+        <span id="browserSupport" title="updated: 2021-01-22">
+          <span> Express v4.17.0 </span>
+        </span>
+      </td>
+    <tr>
+      <td>
+        <strong>express</strong>.urlencoded(<i class="openable">option:obj<div>
+            <p> extended: <strong>bol</strong> - (Default: <mark>true</mark> uses the <mark>qs</mark> parser library <u>[Deprecation warning in Express v4.14.1])</u> (<mark>false</mark> used the <mark>querystring</mark> parser library) </p>
+            <p> inflate: <strong>bol</strong> - enables/disables body inflation (Default: <mark>true</mark>) </p>
+            <p> limit: <strong>nr|str</strong> - maximum request body size (<strong>nr</strong> = number of bytes) (Default: <mark>"100kb"</mark>) </p>
+            <p> parameterLimit: <strong>nr</strong> - maximum number of paramters (key/value pairs) allowed in the request payload (if exeeded an error will be raised) (Default: <mark>1000</mark>) </p>
+            <p> type: <strong>str|[str, ...]|fn</strong> - the watched <mark>Content-Type</mark> header value(s) when this middelware is triggered (Default: <mark>application/x-www-form-urlencoded</mark>) </p>
+            <p> verify: <strong>fn(req, res, buf, encoding)</strong> - function can be passed to verify the data (<mark>buf</mark> = <strong>buf</strong> | <mark>encoding</mark> = request encoding) (Default: <mark>undefined</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns a (body parser) <strong>middleware</strong> which parses incomming requests with urlencoder parser <br>
+        - only looks at requests where there is a header <mark>Content-Type:application/x-www-form-urlencoded</mark> (ignores other requests) <br>
+        - accpets UTF-8 encoding only and supports automatic <mark>deflate</mark> and <mark>gzip</mark> inflation <br>
+        - the data is populated in the next middelware <mark><strong>req</strong>.body</mark> as JavaScript data
+        <span id="browserSupport" title="updated: 2021-01-22">
+          <span> Express v4.16.0 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
 
 
 <!-- 
-  <pre>
-    
-    hit  <span class="openable"> simple span <div> <p> test </p> </div></span>   // one two
-    
-    
-   get <i> one <span> x </span> </i> intermed          <optval class="openable"> open me <div>
-    <p> - hi </p>
-    <p> - hi </p>
-    <p> - hi </p>
-  </div> </optval> after inter      <i class="openable"> open me<div> test test </div> </i>        // comment comment <i> one <span> x </span> </i> test 
-  /// you
-  
-  
-  adf
-  
-  
-  
-  &lt;h&gt;  // comment 
-  /// helo
-  
-  
-  
-  
-  one line test         // test  <b class="openable">open me<div> 
-    <p> - inside opener 1 </p>
-  </div></b> bla bla bla <span class="openable">open me<div> test </div></span> <span class="openable">open me<div> test </div></span> <span class="openable">open me<div> 
-    <p> - inside opener 1 </p>
-  </div></span> 
-  
-  </pre>
-
-  <pre class="syntax">
-    <strong class="openable">fn<div>      </div></strong>  <i class="openable">fd <div> test      </div></i>             // syntactically these hooks are the same but each have different uses
-  
-  </pre>
-  <pre class="syntax">
-  <i class="openable">fn<div> </div></i><i class="openable">fn<div> </div></i><i class="openable">fn<div> </div></i>    // syn
-  <i class="openable">fn<div> test test </div></i>  <b class="openable">fn<div> 
-    test test
-    <p> - paragraph </p>
-  </div></b>               // hello buddy
-  fn    
-  </pre>
-
-  <pre>
-  
-  one line <span class="openable">open me<div> <p> test </p> </div> </span> test test  <b class="openable">open me<div> 
-    <p> - inside opener1 </p>
-    <p> - inside opener2 </p>
-    <p> - inside opener3 </p>
-  </div></b> bla bla bla <b class="openable">open me<div> 
-    <p> - inside opener1 </p>
-    <p> - inside opener2 </p>
-    <p> - inside opener3 </p>
-  </div></b>
-  </pre>
-
-
-<pre>
-  
-// starter line ---
-// -! starter line ---
-// !! starter line ---
-// -> starter line ---
-  
-  some code goes here <opt>optional</opt>            // info
-  some code goes here <reqval class="openable">optional<div>
-    <p> - multiline </p>
-    <p> - multiline </p>
-    <p> - multiline </p>
-    <p> - multiline </p>
-    <p> - multiline </p>
-  </div></reqval>            // -! warning <span class="openable"> open <div><p> - test </p></div></span>
-  some code goes here <opt>optional</opt>            // !! error
-  some code goes here <opt> x </opt>            // -> return <span class="openable"> Hello World <div>
-    <p> - 1 you've opened me! </p>
-    <p> - 2 you've opened me! </p>
-    <p> - 3 you've opened me! </p>
-    <p> - 4 you've opened me! </p>
-    <p> - 5 you've opened me! </p>
-  </div></span> after openable stuff
-  
-  <lit>literal</lit>
-  this is some normal text whit <lit class="openable">openable<div>
-    <p> - multiline openable paragraph </p>
-    <p> - multiline openable paragraph </p>
-    <p> - multiline openable paragraph </p>
-    <p> - multiline openable paragraph </p>
-  </div></lit>
-  <opt>optional</opt>
-  <reqval>required value</reqval>
-  <optval class="openable">optional value<div>
-    <p> - multiline comment </p>
-    <p> - multiline comment </p>
-    <p> - multiline comment </p>
-    <p> - multiline comment </p>
-  </div></optval>
-  </pre>
-
-
-
-  
-// starter line ---
-// -! starter line ---
-// !! starter line ---
-// -> starter line ---
-  
-  some code goes here <opt>optional</opt>            // info
-  some code goes here <reqval class="openable">optional<div>
-    <p> - multiline </p>
-    <p> - multiline </p>
-    <p> - multiline </p>
-    <p> - multiline </p>
-    <p> - multiline </p>
-  </div></reqval>            // -! warning <span class="openable"> Open me <div> Hello </div></span>
-  some code goes here <opt>optional</opt>            // !! error
-  some code goes here <opt class="openable">optional<div> single line </div></opt>            // -> return <span class="openable"> Hello World <div>
-    <p> - 1 you've opened me! </p>
-    <p> - 2 you've opened me! </p>
-    <p> - 3 you've opened me! </p>
-    <p> - 4 you've opened me! </p>
-    <p> - 5 you've opened me! </p>
-  </div></span> after openable stuff
-  
-  <lit>literal</lit>
-  this is some normal text whit <lit class="openable">openable<div>
-    <p> - multiline openable paragraph </p>
-    <p> - multiline openable paragraph </p>
-    <p> - multiline openable paragraph </p>
-    <p> - multiline openable paragraph </p>
-  </div></lit>
-  <opt>optional</opt>
-  <reqval>required value</reqval>
-  <optval class="openable">optional value<div>
-    <p> - multiline comment </p>
-    <p> - multiline comment </p>
-    <p> - multiline comment </p>
-    <p> - multiline comment </p>
-  </div></optval>
-  
-  <pre class="syntax">
-// --
-  // ---
-    // --
-      // --
-        // --
-          // --
-            // --
-              // --
-                // --
-                  // --
-                    // --
-                      // --
-  
-  // somme comment
-  
-  test && lkasjflkja;flja;sldjf;laskjdf;asdf                               // comment 
-  
-  test       // comment 
-  </pre>
-   
--->
-
-  <pre class="syntax">
-      <strong>store</strong>.dispatch(<strong class="openable">reduxAction<div>
-        <p><mark>{ state: <i>actionName:str</i><small>, payload: <i>obj</i></small> }</mark></p>
-      </div></strong>)                   // dispatche an action to the store (this should be the only what to update the store)
-      
-      
-      <optval> test </optval>
-      <optval_> test </optval_>
-    </pre>
-
-
-
-<!--  
-
-    <pre>
-    import { useState, useTransition } from 'react';
-    
-    const ChildComponent = () =&gt; {
-      const [isPending, startTransition] = useTransition();
-      const [inputValue, setIntpuValue] = useState();
-      const [listItems, setListItems] = useState();
-      
-      function handleClick(e) {
-        setIntpuValue(e.target.value);                   // on 1st render updated and rendered
-        
-        startTransition(() =&gt; {
-          let internalListItems = [];                    // on 1st render triggered and executing on the background
-          for (let i = 0; i < 20000; i++) {
-            internalListItems.push(&lt;li&gt;{e.target.value}&lt;/li&gt;)
-          }
-          
-          setListItems(internalListItems)                // on 2nd render updated and rendered
-        });
-      }
-      
-      return (    // -> yooo
-        &lt;&gt;
-          &lt;input onChange={handleClick} value={inputValue} /&gt;                                    // -! lasdjf
-          isPending && Updating...             // on 1st render <mark>true</mark>     on 2nd render <mark>false</mark>
-          &lt;ol&gt;
-            {listItems}
-          &lt;/ol&gt;
-        &lt;/&gt;
-      )
-    }
-    </pre>
-
-
+  <table class="table">
+    <caption>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Property / Method </th>
+      <th> Description </th>
+    </tr>
+    <tr class="0">
+      <td> <strong>express</strong>() </td>
+      <td> - top-level function returns an <strong>app</strong> object which is an Express application instance </td>
+    </tr>
+    <tr class="01">
+      <td>
+        <strong>express</strong>.Router(<i class="openable">option:obj<div>
+            <p> caseSensitive: <strong>bol</strong> - the router is case sensitive in request <strong>routePath</strong> (<mark>/foo</mark> and <mark>/Foo</mark> treated differently)(Default: <mark>false</mark>) </p>
+            <p> mergeParams: <strong>bol</strong> - preservers the parent app (parameters) <mark><strong>req</strong>.params</mark> values (in case of conflict the child values take precedence over the parent values) (Default: <mark>false</mark>) </p>
+            <p> strict: <strong>bol</strong> - strict routing (<mark>/foo</mark> and <mark>/foo/</mark> treated differently) (Default: <mark>false</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - creates a new <strong>router</strong> which is basically namespaces a path segment (passed as <strong>middelware</strong>)
+      </td>
+    </tr>
+    <tr class="02">
+      <td>
+        <strong>express</strong>.static(<strong>path:str</strong>, <i class="openable">option:obj<div>
+            <p> dotifies: <strong>str</strong> - how to tread files or directories that begin with a dot <mark>.</mark> (Default: <mark>ignore</mark> = respond with <mark>404</mark> then call <mark>next()</mark>) (<mark>deny</mark> = deny the request for dotified files, responde with <mark>403</mark> then call <mark>next()</mark>) (<mark>allow</mark> = treat them as normal files) </p>
+            <p> etag: <strong>bol</strong> - generates an weak ETag and includes the generated <mark>ETag:<strong>etagVal</strong></mark> in the response (Default: <mark>true</mark>) </p>
+            <p> extensions: <strong>bol|[str, ...]</strong> - if a file not found search for it with the specified extentions (ex: <mark>['html', 'htm']</mark>) (Default: <mark>false</mark>) </p>
+            <p> fallthrough: <strong>bol</strong> - (Default: <mark>true</mark> on client error (Bad Request, etc...) this middleware simply calls <mark>next()</mark>) (<mark>false</mark> on client error this middleware calls <mark>next(err)</mark>) </p>
+            <p> immutable: <strong>bol</strong> - adds <mark>immutable</mark> in the response <mark>Cache-Control</mark> header (Default: <mark>false</mark>) </p>
+            <p> lastModified: <strong>bol</strong> - includes the <mark>Last-Modified</mark> header in the response with the last modified date of the requested file (Default: <mark>false</mark>) </p>
+            <p> maxAge: <strong>nr</strong> - sets the max-age property in the <mark>Cache-Control</mark> header (in milliseconds) (Default: <mark>0</mark>) </p>
+            <p> redirect: <strong>bol</strong> - redirect to trailing <mark>/</mark> when the pathname is a directory (Default: <mark>true</mark>) </p>
+            <p> setHeaders: <strong>fn(res, path, stat)</strong> - function to set response headers (no need to return anything) (<mark>res</mark> = response object this is where the headers should be set) (<mark>path</mark> = path of the response file) (<mark>stat</mark> = stats of the file) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns a <strong>middleware</strong> that serves static files from the passed directory (<strong>path:str</strong>) (can be called multiple times to set multiple directories) <br>
+        - checks the <mark><strong>req</strong>.url</mark> value then searches for the files in the passed <strong>path:str</strong> directory <br>
+        - if no file found internally calls <mark>next()</mark> (calls the next middleware in the stack)
+      </td>
+    </tr>
+    <tr class="03.02">
+      <td>
+        <strong>express</strong>.json(<i class="openable">option:obj<div>
+            <p> inflate: <strong>bol</strong> - enables/disables body inflation (Default: <mark>true</mark>) </p>
+            <p> limit: <strong>nr|str</strong> - maximum request body size (<strong>nr</strong> = number of bytes) (Default: <mark>"100kb"</mark>) </p>
+            <p> reviver: <strong>fn</strong> - function passed directly to <mark>JSON.parse()</mark> (function can modify JSON values when parsed) (Default: <mark>null</mark>) </p>
+            <p> strict: <strong>bol</strong> - only objects and Arrays are accepted, when disabled accept anything that <mark>JSON.parse()</mark> accept (Default: <mark>true</mark>) </p>
+            <p> type: <strong>str|[str, ...]|fn</strong> - the watched <mark>Content-Type</mark> header value(s) when this middelware is triggered (Default: <mark>application/json</mark>) </p>
+            <p> verify: <strong>fn(req, res, buf, encoding)</strong> - function can be passed to verify the data (<mark>buf</mark> = <strong>buf</strong> | <mark>encoding</mark> = request encoding) (Default: <mark>undefined</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns a (body parser) <strong>middleware</strong> which parses incomming requests with JSON parser <span class="openable"> single openable <div> <p> test test </p> </div> </span> <br>
+        - only looks at requests where there is a header <mark>Content-Type:application/json</mark> (ignores other requests) <br>
+        - accpets any unicode encoding and supports <span class="openable"> single openable 
+          <div> 
+            <p> test test </p> 
+            <p> test test </p> 
+            <p> test test </p> 
+            <p> test test </p> 
+          </div> </span>automatic <mark>deflate</mark> and <mark>gzip</mark> inflation <br>
+        - the data is populated in the next middelware <mark><strong>req</strong>.body</mark> as JavaScript data
+        <span id="browserSupport" title="updated: 2021-01-22">
+          <span> Express v4.16.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr class="03.03">
+      <td>
+        <strong>express</strong>.raw(<i class="openable">option:obj<div>
+            <p> inflate: <strong>bol</strong> - enables/disables body inflation (Default: <mark>true</mark>) </p>
+            <p> limit: <strong>nr|str</strong> - maximum request body size (<strong>nr</strong> = number of bytes) (Default: <mark>"100kb"</mark>) </p>
+            <p> type: <strong>str|[str, ...]|fn</strong> - the watched <mark>Content-Type</mark> header value(s) when this middelware is triggered (Default: <mark>application/octet-stream</mark>) </p>
+            <p> verify: <strong>fn(req, res, buf, encoding)</strong> - function can be passed to verify the data (<mark>buf</mark> = <strong>buf</strong> | <mark>encoding</mark> = request encoding) (Default: <mark>undefined</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns a (body parser) <strong>middleware</strong> which parses incomming requests with Buffer parser <br>
+        - only looks at requests where there is a header <mark>Content-Type:application/octet-stream</mark> (ignores other requests) <br>
+        - accpets any unicode encoding and supports automatic <mark>deflate</mark> and <mark>gzip</mark> inflation <br>
+        - the data is populated in the next middelware <mark><strong>req</strong>.body</mark> as <strong>buf</strong> (Buffer)
+        <span id="browserSupport" title="updated: 2021-01-22">
+          <span> Express v4.17.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr class="03.01">
+      <td>
+        <strong>express</strong>.text(<i class="openable">option:obj<div>
+            <p> defaultCharset: <strong>str</strong> - specifies charset if the <mark>Content-Type</mark> header doesn't have it (Default: <mark>"utf-8"</mark>) </p>
+            <p> inflate: <strong>bol</strong> - enables/disables body inflation (Default: <mark>true</mark>) </p>
+            <p> limit: <strong>nr|str</strong> - maximum request body size (<strong>nr</strong> = number of bytes) (Default: <mark>"100kb"</mark>) </p>
+            <p> type: <strong>str|[str, ...]|fn</strong> - the watched <mark>Content-Type</mark> header value(s) when this middelware is triggered (Default: <mark>text/plain</mark>) </p>
+            <p> verify: <strong>fn(req, res, buf, encoding)</strong> - function can be passed to verify the data (<mark>buf</mark> = <strong>buf</strong> | <mark>encoding</mark> = request encoding) (Default: <mark>undefined</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns a (body parser) <strong>middleware</strong> which parses incomming requests with string parser <br>
+        - only looks at requests where there is a header <mark>Content-Type:text/plain</mark> (ignores other requests) <br>
+        - accpets any unicode encoding and supports automatic <mark>deflate</mark> and <mark>gzip</mark> inflation <br>
+        - the data is populated in the next middelware <mark><strong>req</strong>.body</mark> as string
+        <span id="browserSupport" title="updated: 2021-01-22">
+          <span> Express v4.17.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr class="03.04">
+      <td>
+        <strong>express</strong>.urlencoded(<i class="openable">option:obj<div>
+            <p> extended: <strong>bol</strong> - (Default: <mark>true</mark> uses the <mark>qs</mark> parser library <u>[Deprecation warning in Express v4.14.1])</u> (<mark>false</mark> used the <mark>querystring</mark> parser library) </p>
+            <p> inflate: <strong>bol</strong> - enables/disables body inflation (Default: <mark>true</mark>) </p>
+            <p> limit: <strong>nr|str</strong> - maximum request body size (<strong>nr</strong> = number of bytes) (Default: <mark>"100kb"</mark>) </p>
+            <p> parameterLimit: <strong>nr</strong> - maximum number of paramters (key/value pairs) allowed in the request payload (if exeeded an error will be raised) (Default: <mark>1000</mark>) </p>
+            <p> type: <strong>str|[str, ...]|fn</strong> - the watched <mark>Content-Type</mark> header value(s) when this middelware is triggered (Default: <mark>application/x-www-form-urlencoded</mark>) </p>
+            <p> verify: <strong>fn(req, res, buf, encoding)</strong> - function can be passed to verify the data (<mark>buf</mark> = <strong>buf</strong> | <mark>encoding</mark> = request encoding) (Default: <mark>undefined</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns a (body parser) <strong>middleware</strong> which parses incomming requests with urlencoder parser <br>
+        - only looks at requests where there is a header <mark>Content-Type:application/x-www-form-urlencoded</mark> (ignores other requests) <br>
+        - accpets UTF-8 encoding only and supports automatic <mark>deflate</mark> and <mark>gzip</mark> inflation <br>
+        - the data is populated in the next middelware <mark><strong>req</strong>.body</mark> as JavaScript data
+        <span id="browserSupport" title="updated: 2021-01-22">
+          <span> Express v4.16.0 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
  -->
-
-
-<!-- 
-  <pre class="syntax">
-    import { useRef } from 'react';
-    
-<span style="color: darkgray;">// store data in ref object --------------------------------------------------- </span>
-    function <strong>Component</strong>() {
-        const <reqval>refVal</reqval> = useRef(<optval>val</optval>);  // creates and returns a <mark>{ current: <optval>val</optval> }</mark> object
-        
-        <optval>someEventHandler</optval> {
-            <reqval>refVal</reqval>;                  // -> { current: <optval>val</optval> }     // object will keep the data between rerenders <u>(never use these values to display (use state for that))</u>    
-            <reqval>refVal</reqval>.current = <reqval>val</reqval>     // changing the ref object won't trigger rerender (use only the <mark>current</mark> key to stord data on)
-        }
-        
-        <reqval>refVal</reqval>.current = <reqval>val</reqval>         <span style="color:orange;">// never change the ref value during rerender!</span>
-    }
-    
-    
-<span style="color: darkgray;">// referencing DOM element ---------------------------------------------------- </span>
-    function <strong>Component</strong>() {
-        const <reqval>refVal</reqval> = useRef(null);
-        
-        <optval>someEventHandler</optval> {
-            <reqval>refVal</reqval>.current            // references the DOM node (paragraph) <u>(only use it for non destructive tasks ex: <mark>ref.current.focus()</mark>)</u>    
-        }
-        
-        return &lt;p ref={<reqval>refVal</reqval>}&gt; &lt;/p&gt;
-    }
-  </pre>
- -->
-
-
-
   <br><br>
 </body>
 
