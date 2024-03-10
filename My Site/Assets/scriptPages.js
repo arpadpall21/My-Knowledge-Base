@@ -85,8 +85,8 @@ function getFarthestCharacterForEachLine(lines) {
     const tagWrapedlessLine = removeWrapingTagsIfLineHasStartTag(line);
 
     result.lines.push({ line: tagWrapedlessLine, realLineLengthWithoutComment })
-    result.farthestCharacter = realLineLengthWithoutComment > result.farthestCharacter 
-      ? realLineLengthWithoutComment 
+    result.farthestCharacter = realLineLengthWithoutComment > result.farthestCharacter
+      ? realLineLengthWithoutComment
       : result.farthestCharacter;
   }
 
@@ -181,15 +181,15 @@ function getLines(preElement) {
  */
 function colorComments(line, commentColors) {
   return line.replace(/\/\/.*/, (match) => {
-      if (match.startsWith('// -!')) {
-        return `<span style="color:${commentColors.warning}">${match}</span>`;
-      } else if (match.startsWith('// !!')) {
-        return `<span style="color:${commentColors.error}">${match}</span>`;
-      } else if (match.startsWith('// -&gt;')) {
-        return `<span style="color:${commentColors.return}">${match}</span>`;
-      } else {
-        return `<span style="color:${commentColors.info}">${match}</span>`;
-      }
+    if (match.startsWith('// -!')) {
+      return `<span style="color:${commentColors.warning}">${match}</span>`;
+    } else if (match.startsWith('// !!')) {
+      return `<span style="color:${commentColors.error}">${match}</span>`;
+    } else if (match.startsWith('// -&gt;')) {
+      return `<span style="color:${commentColors.return}">${match}</span>`;
+    } else {
+      return `<span style="color:${commentColors.info}">${match}</span>`;
+    }
   })
 }
 
@@ -238,8 +238,8 @@ function formatLines(farthestCharacterForEachLine) {
 }
 
 $(document).ready(function () {
-// format pre elements
-// -------------------------------------------------------------------------------------
+  // format pre elements
+  // -------------------------------------------------------------------------------------
   for (let preElement of $('pre')) {
     let result = '';
     let evenOdd = true;
@@ -255,12 +255,14 @@ $(document).ready(function () {
 
     for (let line of formatedLines) {
       const coloredLine = colorComments(line, color.comment);
-      result += `<div style="background-color:${evenOdd ? color.background.primary: color.background.secondary};">${coloredLine}</div>`;
+      result += `<div style="background-color:${evenOdd ? color.background.primary : color.background.secondary};">${coloredLine}</div>`;
       evenOdd = !evenOdd;
     }
 
     preElement.innerHTML = result;
   }
+
+
 
   $('.openable').mouseup(function () {
     if (window.getComputedStyle(this.querySelector('div')).display === 'block') {
@@ -272,8 +274,8 @@ $(document).ready(function () {
     }
   });
 
-// format notes section
-// -------------------------------------------------------------------------------------
+  // format notes section
+  // -------------------------------------------------------------------------------------
   if (!document.getElementById("notes")) {
   } else {
     if (!document.getElementById("notes").querySelector("p")) {
@@ -282,139 +284,81 @@ $(document).ready(function () {
   }
 
 
- // -------------------------------------------------------------------------------------
-  // table order (alphabetically / grouped) ----------------------------------------------
-  if (document.querySelector('.table caption span[class=changeListOrder]')) {          // run this code only if the page has v4.0.0 table 
-    let tables = document.querySelectorAll('.table');
+  // -------------------------------------------------------------------------------------
+  // table styling (auto orders in order to be backward compatible) ----------------------
+  for (const table of document.querySelectorAll('.table')) {
+    let rows = table.querySelectorAll('tbody tr[class]');
+    let rowsObj = {}
+    let rowNames = [];
+    let loopItCounter = 0;
 
-    function openableToggle() {
-      if (window.getComputedStyle(this.querySelector('div')).display === 'block') {
-        this.querySelector('div').style.display = 'none';
-        this.querySelector('div').style.position = 'static';
-      } else {
-        this.querySelector('div').style.display = 'block';
-        this.querySelector('div').style.position = 'absolute';
-      }
-    }
+    rows.forEach(function (node) {
+      rowsObj[node.className] = node;
+      rowNames.push(node.className);
+      node.remove();
 
-    for (a = 0; a < tables.length; a++) {
-      let curTable = tables[a];
-      let orgTable = curTable.cloneNode(true);                                    // copy made to keep the original layout        
-      let curOrdSpan = curTable.firstElementChild.lastElementChild;               // the span element that when clicked changes the table state   
-      let clickSpan = curOrdSpan.firstElementChild;
+      loopItCounter++;
+      if (loopItCounter == rows.length) {                              // once all rows are removed runs this code 
+        rowNames.sort();
 
-      let nthTable = a;
-      let tblStGrouped = 'yes';
+        for (i = 0; i < rows.length; i++) {
+          let currentRowName = Number.parseInt(rowNames[i]);
+          let nextRowName = Number.parseInt(rowNames[i + 1]);
 
-      function tableHandler(ev) {
-        if (tblStGrouped === 'yes') {
-          clickSpan.innerHTML = 'Grouped';
+          if (currentRowName == nextRowName) {
+            table.querySelector('tbody').appendChild(rowsObj[rowNames[i]])
+          } else {
+            table.querySelector('tbody').appendChild(rowsObj[rowNames[i]]);
 
-          tblStGrouped = 'no';
-          sessionStorage.setItem(`tb_${nthTable}_lStGrouped`, 'yes');
+            let emptyRow = document.createElement('tr')
+            let emptyRow2 = document.createElement('tr')
+            table.querySelector('tbody').append(emptyRow);
+            table.querySelector('tbody').append(emptyRow2);
 
-          let rows = curTable.querySelectorAll('tbody tr[class]');
-          let rowsObj = {}
-          let rowNames = [];
-          let loopItCounter = 0;
-
-          rows.forEach(function (node, key, nodeList) {
-            rowsObj[node.className] = node;
-            rowNames.push(node.className);
-            node.remove();
-
-            loopItCounter++;
-            if (loopItCounter == rows.length) {                              // once all rows are removed runs this code 
-              rowNames.sort();
-
-              for (i = 0; i < rows.length; i++) {
-                let currentRowName = Number.parseInt(rowNames[i]);
-                let nextRowName = Number.parseInt(rowNames[i + 1]);
-
-                if (currentRowName == nextRowName) {
-                  curTable.querySelector('tbody').appendChild(rowsObj[rowNames[i]])
-                } else {
-                  curTable.querySelector('tbody').appendChild(rowsObj[rowNames[i]]);
-
-                  let emptyRow = document.createElement('tr')
-                  let emptyRow2 = document.createElement('tr')
-                  curTable.querySelector('tbody').append(emptyRow);
-                  curTable.querySelector('tbody').append(emptyRow2);
-
-                  let children = ''
-                  let cellNumbers = curTable.querySelectorAll('tbody tr th').length
-                  for (k = 0; k < cellNumbers; k++) {
-                    children += '<td> &nbsp; </td>';
-                  }
-                  emptyRow.outerHTML = "<tr style='background-color:initial'>" + children + "</tr>";
-                  emptyRow2.outerHTML = "<tr style='background-color:initial'>" + children + "</tr>";
-                }
-              }
+            let children = ''
+            let cellNumbers = table.querySelectorAll('tbody tr th').length
+            for (k = 0; k < cellNumbers; k++) {
+              children += '<td> &nbsp; </td>';
             }
-          })
-
-          curTable.querySelectorAll('td').forEach(function (node) {
-            let td = node.style;
-            td.fontFamily = 'monospace';
-            td.fontSize = '1em';
-            td.textIndent = '-25px';
-            td.paddingLeft = '30px';
-          });
-
-          curTable.querySelectorAll('tr').forEach((tr) => {
-            if (tableRowSeparatorElements.includes($(tr).children(":eq(0)").text())) {
-              tr.style.backgroundColor = '#4b4b4b';
-              tr.style.color = 'transparent';
-              return
-            }
-            
-            tr.style.backgroundColor = '#4b4b4b';
-            tr.style.color = 'white';
-          });
-
-          curTable.querySelectorAll('.openable').forEach(function (node) {
-            node.addEventListener('mouseup', openableToggle)
-          })
-
-        } else {
-          clickSpan.innerHTML = 'Alphabetically';
-
-          tblStGrouped = 'yes';
-          sessionStorage.setItem(`tb_${nthTable}_lStGrouped`, 'no');
-
-          curTable.querySelector('tbody').remove();
-          let orgTable_copy = orgTable.cloneNode(true);                   // clone a new copy in order to keep the original table
-          curTable.append(orgTable_copy.querySelector('tbody'));
-
-          curTable.querySelectorAll('.openable').forEach(function (node) {
-            node.addEventListener('mouseup', openableToggle)
-          })
+            emptyRow.outerHTML = "<tr style='background-color:initial'>" + children + "</tr>";
+            emptyRow2.outerHTML = "<tr style='background-color:initial'>" + children + "</tr>";
+          }
         }
       }
-      tableHandler();
+    })
 
-      curOrdSpan.addEventListener('mouseup', tableHandler)
-    }
-  }
+    table.querySelectorAll('td').forEach(function (node) {
+      let td = node.style;
+      td.fontFamily = 'monospace';
+      td.fontSize = '1em';
+      td.textIndent = '-25px';
+      td.paddingLeft = '30px';
+    });
 
-  // toggle ver.4.0.0 table statuses  
-  const tableSwitchCol = document.getElementsByClassName('changeListOrder');
-  let ctrKeyPressed = false;
-  let oKeyPressed = false;
-  var mouseUpEv = new Event('mouseup', { bubbles: true })
-
-  document.documentElement.addEventListener('keydown', function (ev) {
-    if (ev.key === 'Control') ctrKeyPressed = true;
-    if (ev.key === 'o') oKeyPressed = true;
-    if (ctrKeyPressed && oKeyPressed) {
-      for (switchElement of tableSwitchCol) {
-        switchElement.dispatchEvent(mouseUpEv)
+    table.querySelectorAll('tr').forEach((tr) => {
+      if (tableRowSeparatorElements.includes($(tr).children(":eq(0)").text())) {
+        tr.style.backgroundColor = '#4b4b4b';
+        tr.style.color = 'transparent';
+        tr.style.fontSize = '2em';
+        return
       }
-    }
-  })
 
-  document.documentElement.addEventListener('keyup', function (ev) {
-    if (ev.key === 'Alt') ctrKeyPressed = false;
-    if (ev.key === 'o') oKeyPressed = false;
-  })
+      tr.style.backgroundColor = '#4b4b4b';
+      tr.style.color = 'white';
+    });
+
+    table.querySelectorAll('.openable').forEach((node) => {
+      node.addEventListener('mouseup', function openableToggle() {
+        if (window.getComputedStyle(this.querySelector('div')).display !== 'block') {
+          this.querySelector('div').style.display = 'none';
+          this.querySelector('div').style.position = 'static';
+          return;
+        }
+
+        this.querySelector('div').style.display = 'block';
+        this.querySelector('div').style.position = 'absolute';
+      });
+
+    });
+  }
 });
