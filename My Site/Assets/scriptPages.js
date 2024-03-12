@@ -45,6 +45,8 @@ const recognizedEntities = ['&lt;', '&gt;', '&amp;'];
 
 // table formating config
 const tableRowSeparatorElements = ['|', '/'];
+const tableBackgroundColor = '#4b4b4b';
+const tableGroupingSeparatorBackgroundColor = '#3b3a3a';
 
 /**
  * @param {string} line
@@ -333,10 +335,10 @@ $(document).ready(function () {
             let children = ''
             let cellNumbers = table.querySelectorAll('tbody tr th').length
             for (k = 0; k < cellNumbers; k++) {
-              children += '<td> &nbsp; </td>';
+              children += `<td style="background-color: ${tableGroupingSeparatorBackgroundColor}"> &nbsp; </td>`;
             }
-            emptyRow.outerHTML = "<tr style='background-color:initial'>" + children + "</tr>";
-            emptyRow2.outerHTML = "<tr style='background-color:initial'>" + children + "</tr>";
+            emptyRow.outerHTML = "<tr>" + children + "</tr>";
+            emptyRow2.outerHTML = "<tr>" + children + "</tr>";
           }
         }
       }
@@ -352,13 +354,13 @@ $(document).ready(function () {
 
     table.querySelectorAll('tr').forEach((tr) => {
       if (tableRowSeparatorElements.includes($(tr).children(":eq(0)").text())) {
-        tr.style.backgroundColor = '#4b4b4b';
+        tr.style.backgroundColor = tableGroupingSeparatorBackgroundColor;
         tr.style.color = 'transparent';
         tr.style.fontSize = '2em';
         return
       }
 
-      tr.style.backgroundColor = '#4b4b4b';
+      tr.style.backgroundColor = tableBackgroundColor;
       tr.style.color = 'white';
     });
 

@@ -10,12 +10,12 @@
 </head>
 <body>
 <h1> Streams (ver 3.2) </h1>
-    <p> Updated ( 2019-06-25 / 2019-07-23 )</p>
+    <p> Updated ( 2019-06-25 / 2019-07-23 / 2024-03-11 )</p>
     <p class="sitenav"> <a href="../../index.html">MySite></a>
         <a href="../index.html">Node.js></a> Streams
     </p>
-    <p class="subSite"><a href="Writable Streams/index.html"> Writable Streams > </a></p>
     <p class="subSite"><a href="Readable Streams/index.html"> Readable Streams > </a></p>
+    <p class="subSite"><a href="Writable Streams/index.html"> Writable Streams > </a></p>
     <p class="subSite"><a href="Duplex and Transform Streams/index.html"> Duplex and Transform Streams > </a></p>
     <p class="subSite"><a href="Stream Implementers API/index.html"> Stream Implementers API > </a></p>
 <table class="table">
@@ -51,22 +51,167 @@
     <summary> Notes :</summary>
     </details>
 <h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="https://nodejs.org/docs/latest/api/webstreams.html" target="_blank">Stream Nodejs docs (nodejs.com) </a></p>
+    <p><a href="https://nodejs.org/docs/latest/api/stream.html" target="_blank">Stream Nodejs docs (nodejs.com) </a></p>
 <h2 style="color:green;"><u> Remember This : </u></h2>
     <p> - I tested to overflow a buffer and I expected some data loss but it never occured here [2019-06-28] </p>
 <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - the stream interface allows us to 'stream data' (sending <u>large data</u> chunk by chunk)  </p>
-    <p> - in Node.js there are many built-in streams, but we also can create streams directly (which is rarely used) </p> 
-    <p> - all Node.js built-in streams <u>operate exclusively on string, Buffer or Uint8Array</u></p>
-    <p> - It is possible to create streams which can operate on any type of values <u>(except <mark>null</mark>)</u>, such streams operate in <u>object mode</u> (switching an existing stream to 'object mode' is NOT safe) </p>
-    <p> - the stream stores the data in an internal Buffer (accessible by the <mark>writableBuffer</mark> and <mark>readableBuffer</mark> properties) </p>
-    <p> - the Buffer size is defined by the <mark>highWaterMark</mark> option when the stream is created (normal streams size = bytes / streams in object mode size = number of objects) <u>we can pass larger data chunks than the buffer size (they will be stored in the memory) but it's not recommended!</u> </p>
+    <p> - the stream moduel provides an abstrat iinterface for streaming data (writing/consuming <u>large data</u> chunk by chunk) </p>
+    <p> - a stream can be Readable, Writable or both (Duplex, Transform), all node streams are instance of <mark>EventEmitter</mark> </p>
+    <p> - almost all node APIs use streams (http socker, file, etc...), but we also can implement our own (rarely used) </p>
+    <p> - streams can operate on: </p>
+    <p class="indent-lv1"> - string, <mark>Buffer</mark> or <mark>Uint8Array</mark> (default) </p>
+    <p class="indent-lv1"> - object mode (object instead serialized data), all data type supported <u>except null</u> <u>(switching an existing stream into object mode is not safe!)</u> </p>
+    <h2 class="header"> Buffering </h2>
+    <p> - streams use an internal buffer for temporarily store data, the limit of this buffer is described as <mark>highWaterMark</mark>, its size indicates the stored bytes (or stored objects in object mode) (Duplex and Transform streams have 2 buffers (one on each side) </p>
+    <p> - the <mark>highWaterMark</mark> is a treshold <u>not a hard memory limiter</u>, so the buffer can be fored to store more data (risky game) </p>
+    <p> - behaviour on <mark>highWaterMark</mark> limit overflow: </p>
+    <p class="indent-lv1"> - ReadableStream -> stop reading the underlying resource untill buffer space freed up </p>
+    <p class="indent-lv1"> - WritableStream -> the <mark><reqval>readableStream</reqval>.read()</mark> returns <mark>false</mark> (returns <mark>true</mark> if treshold is under the limit again) </p>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------------->
+    
+    
+    
+    
+    
+    <!--
+    
+    
+    
+    - I go through this once readable & writable is finished
+        - stream.Readable.from()
+            - creates a readable stream from iteraltor
+        - stream.Duplex.from()
+            - creates a duplex stream
+        - stream.addAbortSignal()
+            - attaches an abort signal so the stream (same effect as .destroy(new AbortError()) call)
+        
+        - stream.getDefaultHighWater
+            - also set method -> document it!
+    
+    
+    - stream Promises API
+    v15.0.0
+    
+    - provides a promise api aproach rather than using callbacks (does the same but with Promises)
+    - finised() (promise)
+    - pipeline() (promise)
+    
+    
+    
+    - writable stream
+        - abstraction for destination to which the data is written
+        
+    WritableStrea.closed
+        - returns true if the close event has been emitted
+    WritableStrea.closed
+        - returns true if strea.destroy() has been called
+    
+    
+    
+    - update readableFlowing property
+    - async interator reading data -> document this (imporatnt)
+    Creating readable streams with async generators
+    https://nodejs.org/docs/latest/api/stream.html#piping-to-writable-streams-from-async-iterators
+    
+    - for backward compatibility reason removing the 'drain' event will not pauses the stream
+
+    ----------------------------------------------------------------------------
+    ----------------------------------------------------------------------------
+    ----------------------------------------------------------------------------
+    object mode ?
+    
+    -->
+    
+    <!--
+    
+      <h2 style="color:darkblue;"><u> <mark>from()</mark> method </u></h2>
+  <pre class="syntax">
+SYNTAX :    const stream = require('stream');
+            
+            stream.Readable.from(<strong>iterableObj</strong><i>, option:obj</i>)                      // returns a readable stream out of an iteralbe object <u>(the created stream is in object mode by default)</u>
+                - <strong>iterableObj</strong> : object impelementing the <mark>Symbol.iterator</mark> or <mark>Symbol.asyncIterator</mark> protocol   
+                - <i>option:obj</i> 
+                    - highWaterMark: <strong>nr</strong>                // sets the buffer size (Default : 16384 / 16 in object mode)
+                    - encoding: <strong>str</strong>                    // decode the Buffers to the specified string (Default : null) 
+                    - objectMode: <strong>bol</strong>                  // sets the stream in object mode (Default : true)
+                    - autoDestroy: <strong>bol</strong>                 // stream calls the <mark>destroy()</mark> method on itself after ending (Default: false)
+    </pre>
+  <pre>
+    const stream = require("stream");
+    
+    var str = 'myString';                                                      // string is not an object but we still can use it because it has the 'Symbol.iterator' protocol 
+    var arr = [1, 'two', true];
+    
+    async function* generateData() {                                           // asynchronous generator function (generates data asynchronously)
+        yield 43;
+        yield 'fourty two';
+        yield false;
+    }
+    
+    var readString1 = stream.Readable.from(str, {objectMode:false});           // -! stream is not operating in object mode
+    var readString2 = stream.Readable.from(arr);
+    var readString3 = stream.Readable.from(generateData());
+    </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h3 style="color:darkblue;"><u> <mark>from()</mark> TEST </u></h3>
+    <p> - delayed the event listeners in order to better see the result </p>
+    <pre style="margin-bottom:1px;">
+    const stream = require('stream');
+    
+    async function* generate() {                                               // asynchronously generated data 
+        yield 'kicsi';
+        yield 'kutya';
+        yield 'tarka'
+    }
+    
+    var readStream = stream.Readable.from(["kicsi", "kutya", "tarka"], {objectMode:false});
+    setTimeout(()=>{
+        console.log("// readStream ----------------------------------");
+        readStream.on('data', chunk => console.log( chunk.toString() ));
+    }, 0);
+    
+    var readStream2 = stream.Readable.from(generate(), {objectMode:false});
+    setTimeout(()=>{
+        console.log("// readStream2 ---------------------------------");
+        readStream2.on('data', chunk => console.log( chunk.toString() ));
+    }, 1000);
+    
+    var readStream3 = stream.Readable.from(generate(), {objectMode:false});
+    setTimeout(()=>{
+        console.log("// readStream3 ---------------------------------");
+        readStream3.on('readable', () => console.log(String(readStream3.read()) ));
+    }, 2000);
+    </pre>
+    <pre class="cmd" style="margin-top:1px;">
+    PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\readable streams\13 from() TEST>node main
+        // readStream ----------------------------------
+        kicsi
+        kutya
+        tarka
+        // readStream2 ---------------------------------
+        kicsi
+        kutya
+        tarka
+        // readStream3 ---------------------------------
+        kicsikutyatarka                                                        // the 'readable' event listener buffers as many data as possible in the buffer memory at once 
+        null                                                                   // last call 
+    PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\readable streams\13 from() TEST>    </pre>
+  </details>
+
+    
+    
+    -->
+    
+    
+    
 <h2 class="headerExtra"><u> Utility methods </u></h2>
 <h2 style="color:darkblue;"><u> the <mark>finished()</mark> / <mark>pipeline()</mark> methods </u></h2>
     <pre class="syntax">
-SYNTAX :    const stream = require('stream');
+    const stream = require('stream');
             
-            stream.finished(<strong>readable|writableStream</strong><i>, option:obj</i>, function(<i>err</i>))       // invokes the callback function when the writable|readable stream is no longer writable|readable 
+    stream.finished(<strong>readable|writableStream</strong><i>, option:obj</i>, function(<i>err</i>))       // invokes the callback function when the writable|readable stream is no longer writable|readable 
                 - <i>option:obj</i>                                                             invokes the callback function if the stream has experienced an error or a premature close 
                                                                                          thrown error is hadled by the callback function    
                     - error: <strong>bol</strong>                   // if set to <mark>false</mark> the callback function does not handle the thrown error by the stream (Default : <mark>true</mark>)

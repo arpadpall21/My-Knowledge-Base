@@ -1,216 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Writable Streams </title> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../../Assets/stylesPages.css"> 
-    <script src="../../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Writable Streams </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Writable Streams (ver 3.2) </h1>
-    <p> Updated ( 2019-07-12 )</p>
-    <p class="sitenav"> <a href="../../../index.html">MySite></a>
-        <a href="../../index.html">Node.js></a> 
-        <a href="../index.html">Streams></a> Writable Streams    
-    </p>
-<table class="table">
+  <h1> Writable Streams </h1>
+  <p> Updated ( 2019-07-12 / 2024-02-11 )</p>
+  <p class="sitenav"> <a href="../../../index.html">MySite></a>
+    <a href="../../index.html">Node.js></a>
+    <a href="../index.html">Streams></a> Writable Streams
+  </p>
+  <table class="table">
     <tr>
-        <th style="width:30%;"> Method / Property </th>
-        <th> Description </th>
+      <th style="width:30%;"> Method / Property </th>
+      <th> Description </th>
     </tr>
     <tr>
-        <td id="cork"> <strong>writableStream</strong>.cork() </td>
-        <td> - data chunks written after this method will be forces to be buffered in the stream buffer memory<br>
-             - data is kept in the memory utill eigther the <mark>uncork()</mark> or the <mark>end()</mark> method flushes it in the underlying system)
-            <span id="browserSupport" title="updated : 2019-06-28">
-                <span><i class="fab fa-node-js"></i> 0.11.2 </span>
-            </span>
-        </td>
+      <td id="write"> <strong>writableStream</strong>.write(<strong>chunk:any</strong><i>, encode:str, fn(err)</i>) </td>
+      <td>
+        - writes a data chunk in the internal buffer memory <br>
+        - the callback function is fired once the data successfully flushed in the underlying system <u>(if an error occurs the callback function is NOT garanteed to fire)</u><br>
+        - returns <mark>true</mark> if the data chunk size is smaller than the buffer size specified by the <mark>highWaterMark</mark> when the stream was created <br>
+        - returns <mark>false</mark> if the data chunk is bigger than <mark>highWaterMark</mark> and fires the <mark>drain</mark> event<br>
+        <span id="browserSupport" title="updated : 2019-06-27">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+          <span><i class="fab fa-node-js"></i> 8.0.0 Uint8Array </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td id="destroy"> <strong>writableStream</strong>.destroy(<i>error:str</i><small>, function(<i>err</i>)</small>) </td>
-        <td> - immediately destroys the stream <u>(destroys pending data)</u> and emits the <mark>close</mark> event <br>
-             - emits the <mark>close</mark> event <br>
-             - returns the stream itself<br>
-             - optionally throws a custom error what can be handled directly in the callback function <u>(this is not in the Node.js specification but it works fine)</u> or by the <mark>error</mark> event listener<br>
-             - if an error is passed the <mark>close</mark> event is not emitted
-            <span id="browserSupport" title="updated : 2019-06-27">
-                <span><i class="fab fa-node-js"></i> 8.0.0 </span>
-            </span>
-        </td>
+      <td id="end"> <strong>writableStream</strong>.end(<optval>chunk:any, encode:str, fn</optval>) </td>
+      <td>
+        - signals that no more data will be written to the stream and emits the <mark>finish</mark> event (optionally writes a last chunk)
+        <span id="browserSupport" title="updated : 2019-06-27">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+          <span><i class="fab fa-node-js"></i> 8.0.0 Uint8Array </span>
+          <span><i class="fab fa-node-js"></i> 10.0.0 retuns the Stream </span>
+          <span><i class="fab fa-node-js"></i> 15.0.0 callback invoked before 'finish' or 'error' emitted </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td id="end"> <strong>writableStream</strong>.end(<i>chunk:any, encode:str, fn</i>) </td>
-        <td> signals that no more data will be written to the stream and emits the 'finish' event (optionally writes a last chunk)
-            <span id="browserSupport" title="updated : 2019-06-27">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-                <span><i class="fab fa-node-js"></i> 8.0.0 Uint8Array </span>
-                <span><i class="fab fa-node-js"></i> 10.0.0 retuns the Stream </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
-        <td> <strong>writableStream</strong>.writableBuffer </td>
-        <td> returns the <u>current</u> buffer of the writable stream
-            <span id="browserSupport" title="updated : 2019-06-27">
-                <span><i class="fab fa-node-js"></i> ?.?.? </span>
-            </span>
-        </td>
+      <td> <strong>writableStream</strong>.setDefaultEncoding(<strong>encode:str</strong>) </td>
+      <td>
+        - sets the default encoding for the stream and returns the stream itself
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 0.11.15 </span>
+          <span><i class="fab fa-node-js"></i> 6.1.0 returns the Stream </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td id="write"> <strong>writableStream</strong>.write(<strong>chunk:any</strong><i>, encode:str, fn(err)</i>) </td>
-        <td> - writes a data chunk in the internal buffer memory <br>
-             - the callback function is fired once the data successfully flushed in the underlying system <u>(if an error occurs the callback function is NOT garanteed to fire)</u><br>
-             - returns <mark>true</mark> if the data chunk size is smaller than the buffer size specified by the <mark>highWaterMark</mark> when the stream was created <br>
-             - returns <mark>false</mark> if the data chunk is bigger than <mark>highWaterMark</mark> and fires the <mark>drain</mark> event<br> - returns <mark>false</mark> if the stream is not draining
-            <span id="browserSupport" title="updated : 2019-06-27">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-                <span><i class="fab fa-node-js"></i> 8.0.0 Uint8Array </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
-        <td> <strong>writableStream</strong>.setDefaultEncoding(<strong>encode:str</strong>) </td>
-        <td> sets the default encoding for the writable stream and returns the stream itself
-            <span id="browserSupport" title="updated : 2019-06-27">
-                <span><i class="fab fa-node-js"></i> 0.11.15 </span>
-                <span><i class="fab fa-node-js"></i> 6.1.0 returns the Stream </span>
-            </span>
-        </td>
+      <td id="cork"> <strong>writableStream</strong>.cork() </td>
+      <td>
+        - causes the written data to be kept in the internal buffer (prevents writing the data to the underlying system) <br>
+        - the data is kept in memory utill eigther the <mark>uncork()</mark> or the <mark>end()</mark> method is called (flushes the data to the underlying system)
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 0.11.2 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td id="uncork"> <strong>writableStream</strong>.uncork() </td>
-        <td> flushes all data from the buffer to the underlying system since the <mark>cork()</mark> method (this method must be called the number of times the <mark>cork()</mark> method was called)
-            <span id="browserSupport" title="updated : 2019-06-28">
-                <span><i class="fab fa-node-js"></i> 0.11.2 </span>
-            </span>
-        </td>
+      <td id="uncork"> <strong>writableStream</strong>.uncork() </td>
+      <td>
+        - flushes all data from the buffer to the underlying system <br>
+        - must be called as many times as the <mark>cork()</mark> method previously was called
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 0.11.2 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>writableStream</strong>.writable </td>
-        <td> returns <mark>true</mark> if it's safe to call the <mark>write()</mark> method
-            <span id="browserSupport" title="updated : 2019-06-29">
-                <span><i class="fab fa-node-js"></i> 11.4.0 </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
-        <td> <strong>writableStream</strong>.writableHighWaterMark </td>
-        <td> returns the value of the <mark>HighWaterMark</mark> when the stream was constructed (default: 16384)
-            <span id="browserSupport" title="updated : 2019-06-29">
-                <span><i class="fab fa-node-js"></i> 9.3.0 </span>
-            </span>
-        </td>
+      <td> <strong>writableStream</strong>.writableHighWaterMark </td>
+      <td>
+        - returns the value of the <mark>HighWaterMark</mark> when the stream was created (default: 16384)
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 9.3.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>writableStream</strong>.writableLength </td>
-        <td> returns the number of bytes (or objects if the stream is in object mode) in the buffer memory queue 
-            <span id="browserSupport" title="updated : 2019-06-29">
-                <span><i class="fab fa-node-js"></i> 9.4.0 </span>
-            </span>
-        </td>
+      <td> <strong>writableStream</strong>.writableLength </td>
+      <td>
+        - returns the current number of byes in the buffer <br>
+        - in object mode returns the number of objects
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 9.4.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>writableStream</strong>.writableObjectMode </td>
-        <td> returns a boolean indicating if the stream is operating in object mode
-            <span id="browserSupport" title="updated : 2019-06-29">
-                <span><i class="fab fa-node-js"></i> 12.3.0 </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
-        <td colspan="2"> Events </td>
+      <td id="destroy"> <strong>writableStream</strong>.destroy(<i>error:str</i><small>, function(<i>err</i>)</small>) </td>
+      <td>
+        - immediately destroys the stream <u>(destroys all pending data)</u> and emits the <mark>close</mark> event <br>
+        - returns the stream itself<br>
+        - optionally throws a custom error what can be handled directly in the callback function <br>
+        - if an error is passed the <mark>close</mark> event is not emitted
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 8.0.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>writableStream.listener</strong><em>(</em>'close', function()<em>)</em> </td>
-        <td> event emitted when the stream and the underlying recource is closed, indicates that no more events will be emitted and no further computation will occur
-            <span id="browserSupport" title="updated : 2019-06-29">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
-        <td> <strong>writableStream.listener</strong><em>(</em>'drain' <strong>fn</strong><em>)</em> </td>
-        <td> when the <mark>write()</mark> method returns <mark>false</mark> the stream buffer is overflown, once the buffer is freed up this event is emitted to signal that the stream can be written again
-            <span id="browserSupport" title="updated : 2019-06-29">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-            </span>
-        </td>
+      <td> <strong>writableStream</strong>.writable </td>
+      <td> 
+        - returns <mark>true</mark> if it's safe to call the <mark>write()</mark> method (if the stream was not destroeyd or errored)
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 11.4.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>writableStream.listener</strong><em>(</em>'error' function(<strong>error</strong>)<em>)</em> </td>
-        <td> - event emitted if an error occured while writing or piping the data <u>(the stream is NOT closed when this event is emitted)</u> <br>
-             - error event handler handles the thrown error by the stream (allowing the program to continue)
-            <span id="browserSupport" title="updated : 2019-06-29">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-            </span>
-        </td>
+      <td> <strong>writableStream</strong>.writableObjectMode </td>
+      <td>
+        - returns <mark>true</mark> if the stream operates in object mode, <mark>false</mark> otherwise
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 12.3.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>writableStream.listener</strong><em>(</em>'finish', function()<em>)</em> </td>
-        <td> event emitted when the <mark>end()</mark> method is called and the data is flushed to the underlying system 
-            <span id="browserSupport" title="updated : 2019-06-29">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-            </span>
-        </td>
+      <td> <strong>writableStream</strong>.close </td>
+      <td>
+        - returns <mark>true</mark> if the <mark>close</mark> event was emitted, <mark>false</mark> otherwise
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 18.0.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>writableStream.listener</strong><em>(</em>'pipe', function(<strong>readableStream</strong>)<em>)</em> </td>
-        <td> event emitted when the <mark>pipe()</mark> method is called
-            <span id="browserSupport" title="updated : 2019-06-29">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-            </span>
-        </td>
+      <td> <strong>writableStream</strong>.destroyed </td>
+      <td>
+        - returns <mark>true</mark> if the stream was destroyed, <mark>false</mark> otherwise
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 8.0.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>writableStream.listener</strong><em>(</em>'unpipe', function(<strong>readableStream</strong>)<em>)</em> </td>
-        <td> - event emited when the <mark>unpipe()</mark> method is called <br>
-             - emitted when the writable stream emits an error during piping <br>
-             - emitted when when the writable stream is unpiped <u style="color:orangered;">(this is not in the Node.js specification but in my test this is clearly the case! [2019-07-12])</u>   
-            <span id="browserSupport" title="updated : 2019-06-29">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-            </span>
-        </td>
+      <td> <strong>writableStream</strong>.writableEnded </td>
+      <td>
+        - returns <mark>true</mark> if the <mark>end()</mark> method was called, <mark>false</mark> otherwise <br>
+        - doesn't necessary means the data is flushed to the underlying system
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 8.0.0 </span>
+        </span>
+      </td>
     </tr>
-</table>
-<h2 style="color:green;"><u> Notes : </u></h2>
-    <details class="example" id="notes">
+    <tr>
+      <td> <strong>writableStream</strong>.writableCorked </td>
+      <td>
+        - returns the number of time the stream was cored (the number of times we need to call <mark>uncork()</mark> in order to uncork the stream)
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 13.2.0 </span>
+          <span><i class="fab fa-node-js"></i> 12.16.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <strong>writableStream</strong>.errored </td>
+      <td>
+        - returns the error if the stream was destroyed by error
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 18.0.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <strong>writableStream</strong>.writableFinished </td>
+      <td>
+        - returns <mark>true</mark> right before the <mark>finish</mark> event was emitted, <mark>false</mark> otherwise <br>
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 18.0.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <strong>writableStream</strong>.writableNeedDrain </td>
+      <td>
+        - returns <mark>true</mark> if the stream buffer is full and the <mark>drain</mark> event was emitted, <mark>false</mark> otherwise <br>
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 15.2.0 </span>
+          <span><i class="fab fa-node-js"></i> 14.7.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2"> Events </td>
+    </tr>
+    <tr>
+      <td> <strong>writableStream.listener</strong>('close', <reqval>fn</reqval>) </td>
+      <td>
+        - emitted when the stream and the underlying recource is closed, indicates that no more events will be emitted and no further computation will occur
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <strong>writableStream.listener</strong>('finish', <reqval>fn</reqval>)</td>
+      <td>
+        - event emitted when the <mark>end()</mark> method is called and the data is flushed to the underlying system
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <strong>writableStream.listener</strong>('pipe', <strong>fn(readableStream)</strong>) </td>
+      <td>
+        - event emitted when the <mark>pipe()</mark> method is called
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <strong>writableStream.listener</strong>('unpipe', <strong>fn(readableStream)</strong>) </td>
+      <td>
+        - event emited when the <mark>unpipe()</mark> method is called <br>
+        - emitted when the <reqval>writableStream</reqval> emits an error during piping <br>
+        - emitted when the <reqval>writableStream</reqval> is unpiped
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <strong>writableStream.listener</strong>('drain' <strong>fn</strong>) </td>
+      <td>
+        - when the <mark>write()</mark> method returns <mark>false</mark> (the stream buffer HighWaterMark is overflown), once the buffer is freed up this event is emitted to signal that the stream can be written again
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <strong>writableStream.listener</strong>('error' <strong>fn(error)</strong> </td>
+      <td>
+        - event emitted when an error occured while writing the stream <u>(not indication that the stream is closed)</u> <br>
+        - error event handler handles the thrown error by the stream (allowing the program to continue)
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    <p> - the Node.js specification says that the <mark>unpipe</mark> event is emitted when we call the <mark>unpipe()</mark> method or when an error occurs, BUT in my tests it is also emitted at the end of streaming (I suppose it is emmited when the writable stream is unpiped) [TESTED 2019-06-29]</p>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - writable streams are destinations when the data is written </p>
-    <p> - writing larger data chunks than the <mark>highWaterMark</mark> (buffer size) is allowed (the extra data is written in the memory) but it is not recommended to abuse this practice because this <u>could lead to vulnerability and poor garbage collection</u>, the <mark>drain</mark> event is fired when this happes </p>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="headerExtra"><h2 class="headerExtra"><u> Methods and Properties </u></h2>
-<h2 style="color:darkblue;"><u> <mark>writableBuffer</mark> / <mark>write()</mark> / <mark>end()</mark> / <mark>setDefaultEncoding()</mark> / <mark>destroy()</mark> property and methods </u></h2>
-    <pre class="syntax">
-SYNTAX:     <strong>writableStream</strong>.writableBuffer                                      // returns the <u>current</u> buffer of the writable stream 
-            
-            <strong>writableStream</strong>.write(<strong>chunk:any</strong><i>, encode:str, fn(err)</i>)               // writes a data chunk in the internal buffer memory
-                                                                                  the callback function is fired once the data successfully flushed in the underlying system <u>(if an error occurs the callback function is NOT garanteed to fire)</u>   
-                                                                                  returns <mark>true</mark> if the data chunk size is smaller than the buffer size specified by the <mark>highWaterMark</mark> when the stream was created
-                                                                                  returns <mark>false</mark> if the data chunk is bigger t<mark>highWaterMark</mark> and fires the <mark>drain</mark> event 
-                                                                                  returns <mark>false</mark> if the stream is not draining
-            
-            <strong>writableStream</strong>.end(<i>chunk:any, encode:str, fn</i>)                      // signals that no more data will be written to the stream and emits the 'finish' event (optionally writes a last chunk)   
-                - <strong>chunk:any</strong> : data to write (string | Buffer | Uint8Array for normal stream, any (except null) for sterams operating in object mode)   
-                - <i>encode:str</i> : encoding if the data is a string (object mode streams ignore this)
-                - <i>fn(err)</i> : callback function fires when the data is fulshed <u style="color:orange;">error NOT called reliably! (accodring to Node.js.org)</u>
-            
-            <strong>writableStream</strong>.setDefaultEncoding(<strong>encode:str</strong>)                      // sets the default encoding for the writable stream and returns the stream itself   
-            
-            <strong>writableStream</strong>.destroy(<i>error:str</i><small>, function(<i>err</i>)</small>)                   // immediately destroys the stream <u>(destroys pending data)</u> and emits the <mark>close</mark> event 
-                                                                                  returns the stream itself 
-                                                                                  optionally throws a custom error what can be handled directly in the callback function <u>(this is not in the Node.js specification but it works fine)</u> or by the <mark>error</mark> event listener   
-                                                                                  if an error is passed the <mark>close</mark> event is not emitted    
-    </pre>
-    <pre>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - a Writable stream is an abstraction of a destination </p>
+
+
+
+
+  <!--------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra">
+    <h2 class="headerExtra"><u> Methods and Properties </u></h2>
+    <h3 class="header"> The <mark>write()</mark> / <mark>end()</mark> / <mark>setDefaultEncoding()</mark> / <mark>destroy()</mark> methods </h3>
+    <details class="example">
+      <summary> Example : </summary>
+      <pre>
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
         
@@ -230,11 +328,9 @@ SYNTAX:     <strong>writableStream</strong>.writableBuffer                      
 // writableBuffer -------------------------------------------------------------
     writableStream.writableBuffer;                                             // -> [{...}]              // returns the current buffer 
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3 style="color:darkblue;"><u> <mark>writableBuffer</mark> TEST </u></h3>
-    <p style="color:yellow;"> - for some reson the first chunk is not displayed in the buffer</p>
-    <pre style="margin-bottom:1px;">
+      <h3 style="color:darkblue;"><u> <mark>writableBuffer</mark> TEST </u></h3>
+      <p style="color:yellow;"> - for some reson the first chunk is not displayed in the buffer</p>
+      <pre style="margin-bottom:1px;">
     const fs = require('fs');var {fork} = require('child_process');
     var writeStream = fs.createWriteStream('write.txt');    
         
@@ -244,7 +340,7 @@ SYNTAX:     <strong>writableStream</strong>.writableBuffer                      
     
     console.log( writeStream.writableBuffer );
     </pre>
-    <pre class="cmd" style="margin-top:1px;">
+      <pre class="cmd" style="margin-top:1px;">
     PS D:\safe\code +\My Site\03 improuve\learn Webdesign\04 node.js\stream\01 writableBuffer TEST> node main
         [
         {
@@ -270,11 +366,11 @@ SYNTAX:     <strong>writableStream</strong>.writableBuffer                      
         ]
     PS D:\safe\code +\My Site\03 improuve\learn Webdesign\04 node.js\stream\01 writableBuffer TEST>    
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>write()</mark> / <mark>end()</mark> TEST </u></h3>
-    <p style="color:yellow;"> - the 'drain' event does not fire when I use the 'end()' method to finish the stream for some reason [TESTED 2019-27] </p>
-    <pre style="margin-bottom:1px;">
+      <!--------------------------------------------------------------------------------------------------------->
+      <hr>
+      <h3 style="color:darkblue;"><u> <mark>write()</mark> / <mark>end()</mark> TEST </u></h3>
+      <p style="color:yellow;"> - the 'drain' event does not fire when I use the 'end()' method to finish the stream for some reason [TESTED 2019-27] </p>
+      <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
     
@@ -300,7 +396,7 @@ SYNTAX:     <strong>writableStream</strong>.writableBuffer                      
         console.log( 'streaming finished!' );                                  // callback function fires when the method finishes writing the data 
     });
     </pre>
-    <pre class="cmd" style="margin-top:1px;">
+      <pre class="cmd" style="margin-top:1px;">
     PS D:\safe\code +\My Site\03 improuve\learn Webdesign\04 node.js\stream\02 write() end() TEST> node main
         true                                                                   // -! writeStream.write()        (first)
         false                                                                  // -! writeStream.write()        (second)
@@ -309,10 +405,10 @@ SYNTAX:     <strong>writableStream</strong>.writableBuffer                      
         streaming finished!                                                    // -! callback function ot the 'end()' method 
     PS D:\safe\code +\My Site\03 improuve\learn Webdesign\04 node.js\stream\02 write() end() TEST>    
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>setDefaultEncoding()</mark> / <mark>destroy()</mark> TEST </u></h3>
-    <pre style="margin-bottom:1px;">
+      <!--------------------------------------------------------------------------------------------------------->
+      <hr>
+      <h3 style="color:darkblue;"><u> <mark>setDefaultEncoding()</mark> / <mark>destroy()</mark> TEST </u></h3>
+      <pre style="margin-bottom:1px;">
 const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
         
@@ -328,16 +424,16 @@ const fs = require('fs');
     writeStream.write('some data \n');
     writeStream.destroy('destroyed!');                                         // destroys the stream immediately and passes ane error message  
     </pre>
-    <pre class="cmd" style="margin-top:1px;">
+      <pre class="cmd" style="margin-top:1px;">
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 Node.js\stream\03 defaultEncoding() destroy() TEST> node main
         WriteStream { ... }                                                    // returned by the 'setDefaultEncoding' method 
         destroyed!                                                             // -! returned error message 
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 Node.js\stream\03 defaultEncoding() destroy() TEST>    
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>destroy()</mark> callback function handles the thrown error TEST </u></h3>
-    <pre style="margin-bottom:1px;">
+      <!--------------------------------------------------------------------------------------------------------->
+      <hr>
+      <h3 style="color:darkblue;"><u> <mark>destroy()</mark> callback function handles the thrown error TEST </u></h3>
+      <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');
     
@@ -345,21 +441,19 @@ const fs = require('fs');
         console.log( "error thrown = " + err);                                 // we can handle the thrown error here 
     });                                                                        // -! this is not in the Node.js specification but it works fine!
     </pre>
-    <pre class="cmd" style="margin-top:1px;">
+      <pre class="cmd" style="margin-top:1px;">
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\writable streams\03.1 destroy() callback function handles the thrown error TEST> node main
         error thrown = myError
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\writable streams\03.1 destroy() callback function handles the thrown error TEST>    
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> <mark>cork()</mark> / <mark>uncork()</mark> methods </u></h2>
-    <pre class="syntax">
-SYNTAX:     <strong>writableStream</strong>.cork()                                              // data chunks written after this method will be forces to be buffered in the stream buffer memory 
-                                                                                  data is kept in the memory utill eigther the <mark>uncork()</mark> or the <mark>end()</mark> method flushes it in the underlying system)
-            <strong>writableStream</strong>.uncork()                                            // flushes all data from the buffer to the underlying system since the <mark>cork()</mark> method (this method must be called the number of times the <mark>cork()</mark> method was called)    
-    </pre>
-    <pre>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h3 class="header"> The <mark>cork()</mark> / <mark>uncork()</mark> methods </h3>
+    <details class="example">
+      <summary> Example : </summary>
+      <h3 style="color:darkblue;"><u> <mark>cork()</mark> / <mark>uncork()</mark> TEST </u></h3>
+      <pre>
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
     
@@ -369,10 +463,7 @@ SYNTAX:     <strong>writableStream</strong>.cork()                              
     writeStream.uncork();                                                      // flushes all data from the buffer in the underlying system since the 'cork()' method  // -! if this is omitted the data is never written to the target, the 'end()' method aslo flushes the data  
     writeStream.writableBuffer;                                                // -> []        // buffer empty because the above method flushed the data in the underlying system  
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3 style="color:darkblue;"><u> <mark>cork()</mark> / <mark>uncork()</mark> TEST </u></h3>
-    <pre style="margin-bottom:1px;">
+      <pre style="margin-bottom:1px;">
     writeStream.cork();                                                        // all data from this point will be buffered in the stream buffer memory 
         writeStream.write(' first data ');
         writeStream.write(' second data ');
@@ -380,7 +471,7 @@ SYNTAX:     <strong>writableStream</strong>.cork()                              
     writeStream.uncork();
         console.log( writeStream.writableBuffer );                             // at this point the buffer is empty 
     </pre>
-    <pre class="cmd" style="margin-top:1px;">
+      <pre class="cmd" style="margin-top:1px;">
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 Node.js\stream\04 cork() uncork() TEST> node main
     [{                                                                         // -! writableStream.writableBuffer (first)
         chunk: &lt;Buffer 20 66 69 72 73 74 20 64 61 74 61 20&gt;,
@@ -404,11 +495,11 @@ SYNTAX:     <strong>writableStream</strong>.cork()                              
     []                                                                         // -! writableStream.writableBuffer (second) Empty because the data is flused in the file    
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 Node.js\stream\04 cork() uncork() TEST>    
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>cork()</mark> / <mark>uncork()</mark> TEST-2 </u></h3>
-    <p> - I generate some content for 10 seconds and after that I'll flush all data in the file, during that 10 seconds nothing is written in the file since the data is kept in the buffer </p>
-    <pre style="margin-bottom:1px;">
+      <!--------------------------------------------------------------------------------------------------------->
+      <hr>
+      <h3 style="color:darkblue;"><u> <mark>cork()</mark> / <mark>uncork()</mark> TEST-2 </u></h3>
+      <p> - I generate some content for 10 seconds and after that I'll flush all data in the file, during that 10 seconds nothing is written in the file since the data is kept in the buffer </p>
+      <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
     
@@ -422,16 +513,16 @@ SYNTAX:     <strong>writableStream</strong>.cork()                              
         }    
     }, 250);
     </pre>
-    <pre class="cmd" style="margin-top:1px;">
+      <pre class="cmd" style="margin-top:1px;">
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\05 cork() uncork() TEST 2> node main
         // we wait 10 seconds for the program to finish (during these 10 seconds the 'write.txt' file is not written) 
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\05 cork() uncork() TEST 2>
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> overflow buffer size TEST </u></h3>
-    <p> - in this test I overflowed the buffer like more than 10 times than the buffer size, I expected some data loss but it never occured </p>
-    <pre style="margin-bottom:1px;">
+      <!--------------------------------------------------------------------------------------------------------->
+      <hr>
+      <h3 style="color:darkblue;"><u> overflow buffer size TEST </u></h3>
+      <p> - in this test I overflowed the buffer like more than 10 times than the buffer size, I expected some data loss but it never occured </p>
+      <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
     
@@ -452,24 +543,18 @@ SYNTAX:     <strong>writableStream</strong>.cork()                              
         }    
     }, 250);
     </pre>
-    <pre class="cmd" style="margin-top:1px;">
+      <pre class="cmd" style="margin-top:1px;">
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\06 overflow buffer size TEST> node main
         drain event fired!                                                     // fires right before the program closes (I expected to fire this as soon as the buffer overflows)
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\06 overflow buffer size TEST>    
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> <mark>writable</mark> / <mark>writableLength</mark> / <mark>writableHighWaterMark</mark> / <mark>writableObjectMode</mark> promeprties  </u></h2>
-    <pre class="syntax">
-SYNTAX:     <strong>writableStream</strong>.writable                                            // returns <mark>true</mark> if it's safe to call the <mark>write()</mark> method   
-            <strong>writableStream</strong>.writableLength                                      // returns the number of bytes (or objects if the stream is in object mode) in the buffer memory queue    
-            
-            <strong>writableStream</strong>.writableHighWaterMark                               // returns the value of the <mark>HighWaterMark</mark> when the stream was constructed (default: 16384)   
-            
-            <strong>writableStream</strong>.writableObjectMode                                  // returns a boolean indicating if the stream is operating in object mode   
-    </pre>
-    <pre>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h3 class="header"> The <mark>writable</mark> / <mark>writableLength</mark> / <mark>writableHighWaterMark</mark> / <mark>writableObjectMode</mark> promeprties </h3>
+    <details class="example">
+      <summary> Example : </summary>
+      <pre>
 const fs = require('fs');
 var writeStream = fs.createWriteStream('write.txt');    
     
@@ -482,11 +567,10 @@ var writeStream = fs.createWriteStream('write.txt');
     writeStream.writableLength;                                                // -> 29       // 29 bytes are currently in the buffer memory 
     writeStream.writable;                                                      // -> true     // it is safe to call the 'write()' method again   // -! I tested this below with overflowing buffer memory but it still returned true [2019-06-29]    
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3 style="color:darkblue;"><u> <mark>writable</mark> TEST </u></h3>
-    <p style="color:yellow;"> - I don't know when the <mark>writable</mark> property should return false, in this test even when the buffer memory oferflows it still returns true </p>
-    <pre style="margin-bottom:1px;">
+
+      <h3 style="color:darkblue;"><u> <mark>writable</mark> TEST </u></h3>
+      <p style="color:yellow;"> - I don't know when the <mark>writable</mark> property should return false, in this test even when the buffer memory oferflows it still returns true </p>
+      <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
         
@@ -508,16 +592,16 @@ var writeStream = fs.createWriteStream('write.txt');
         
     console.log( writeStream.writable );                                       // -> true 
     </pre>
-    <pre class="cmd" style="margin-top:1px;">
+      <pre class="cmd" style="margin-top:1px;">
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\07 writable TEST> node main
         true                                                                   // -! writeStream.writable (first)
         true                                                                   // -! writeStream.writable (second)
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\07 writable TEST>    
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>writableLength</mark> / <mark>writableHighWaterMark</mark> TEST </u></h3>
-    <pre style="margin-bottom:1px;">
+      <!--------------------------------------------------------------------------------------------------------->
+      <hr>
+      <h3 style="color:darkblue;"><u> <mark>writableLength</mark> / <mark>writableHighWaterMark</mark> TEST </u></h3>
+      <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
     
@@ -534,7 +618,7 @@ var writeStream = fs.createWriteStream('write.txt');
         console.log( writeStream.writableLength );                             // -> 37         // -! I expected here that the buffer memory if flushed but it's not 
         console.log( writeStream.writableBuffer );                             // -> [{...}]    // data is still in the buffer memory (I don't know why)  
     </pre>
-    <pre class="cmd" style="margin-top:1px;">
+      <pre class="cmd" style="margin-top:1px;">
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\08 writableLength writableHighWaterMark TEST> node main
         16384                                                                  // -! writableStream.writableHighWaterMark 
         0                                                                      // -! writableStream.writableLength  (first)
@@ -563,30 +647,28 @@ var writeStream = fs.createWriteStream('write.txt');
         }]
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\08 writableLength writableHighWaterMark TEST>    
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>writableObjectMode</mark> TEST </u></h3>
-    <pre style="margin-bottom:1px;">
+      <!--------------------------------------------------------------------------------------------------------->
+      <hr>
+      <h3 style="color:darkblue;"><u> <mark>writableObjectMode</mark> TEST </u></h3>
+      <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
     
     console.log( writeStream.writableObjectMode );                             // -> false         // stream is not in object mode 
     </pre>
-    <pre class="cmd" style="margin-top:1px;">
+      <pre class="cmd" style="margin-top:1px;">
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\09 writableObjectMode TEST> node main
         false                                                                  // -! writableStream.writableObjectMode 
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\09 writableObjectMode TEST>
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="headerExtra"><u> Events </u></h2>
-<h2 style="color:darkblue;"><u> <mark>close</mark> / <mark>finish</mark> events </u></h2>
-    <pre class="syntax">
-SYNTAX:     <strong>writableStream.listener</strong><em>(</em>'close', function()<em>)</em>                       // event emitted when the stream and the underlying recource is closed, indicates that no more events will be emitted and no further computation will occur  
-            <strong>writableStream.listener</strong><em>(</em>'finish', function()<em>)</em>                      // event emitted when the <mark>end()</mark> method is called and the data is flushed to the underlying system     
-    </pre>
-    <pre>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h2 class="headerExtra"><u> Events </u></h2>
+    <h3 class="header"> The <mark>close</mark> / <mark>finish</mark> events </h3>
+    <details class="example">
+      <summary> Example : </summary>
+      <pre>
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
 
@@ -597,10 +679,8 @@ SYNTAX:     <strong>writableStream.listener</strong><em>(</em>'close', function(
     writeStream.end();                                                         // this triggers both events
     // writableStream.destroy();                                               // this would trigger only the 'close' event 
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3 style="color:darkblue;"><u> <mark>close</mark> / <mark>finish</mark> events TEST </u></h3>
-    <pre style="margin-bottom:1px;">
+      <h3 style="color:darkblue;"><u> <mark>close</mark> / <mark>finish</mark> events TEST </u></h3>
+      <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
     
@@ -615,22 +695,18 @@ SYNTAX:     <strong>writableStream.listener</strong><em>(</em>'close', function(
     // writeStream.end();                                                      // -! if we end the stream by this 'end()' method both events are called! 
     writeStream.destroy();    
     </pre>
-    <pre class="cmd" style="margin-top:1px;">
+      <pre class="cmd" style="margin-top:1px;">
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\10 close finish events TEST> node main
         close event called                                                     // -! the 'finish' event would be called if the stream ended by the 'end()' method  
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\10 close finish events TEST>    
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> <mark>drain</mark> / <mark>error</mark> events </u></h2>
-    <pre class="syntax">
-SYNTAX:     <strong>writableStream.listener</strong><em>(</em>'drain' function()<em>)</em>                        // when the <mark>write()</mark> method returns <mark>false</mark> the stream buffer is overflown, once the buffer is freed up this event is emitted to signal that the stream can be written again    
-            
-            <strong>writableStream.listener</strong><em>(</em>'error' function(<strong>error</strong>)<em>)</em>                   // event emitted if an error occured while writing or piping the data <u>(the stream is NOT closed when this event is emitted)</u>
-                                                                                  error event handler handles the thrown error by the stream (allowing the program to continue)
-    </pre>
-    <pre>   
+    </details>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h3 class="header"> The <mark>drain</mark> / <mark>error</mark> events </h3>
+    <details class="example">
+      <summary> Example : </summary>
+      <pre>
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
     
@@ -644,10 +720,8 @@ SYNTAX:     <strong>writableStream.listener</strong><em>(</em>'drain' function()
     });
     writeStream.write(41);                                                     // exception raised because the passed data is not a string (triggers the 'error' event)    
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3 style="color:darkblue;"><u> <mark>drain</mark> event TEST </u></h3>
-    <pre style="margin-bottom:1px;">
+      <h3 style="color:darkblue;"><u> <mark>drain</mark> event TEST </u></h3>
+      <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
     
@@ -666,16 +740,16 @@ SYNTAX:     <strong>writableStream.listener</strong><em>(</em>'drain' function()
         
     console.log( writeStream.writableLength );    
     </pre>
-    <pre class="cmd" style="margin-top:1px;">
+      <pre class="cmd" style="margin-top:1px;">
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\11 drain event TEST>  node main
         17190                                                                  // -! writeStream.writableLength
         drain event emitted                                                    // 'drain' event 
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\11 drain event TEST>    
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>error</mark> event TEST </u></h3>
-    <pre style="margin-bottom:1px;">
+      <!--------------------------------------------------------------------------------------------------------->
+      <hr>
+      <h3 style="color:darkblue;"><u> <mark>error</mark> event TEST </u></h3>
+      <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
         
@@ -692,7 +766,7 @@ SYNTAX:     <strong>writableStream.listener</strong><em>(</em>'drain' function()
         
     console.log( 'module fully loaded!' );                                     // monitoring if the program continues working (it does)
     </pre>
-    <pre class="cmd" style="margin-top:1px;">
+      <pre class="cmd" style="margin-top:1px;">
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\12 error event TEST> node main
         TypeError [ERR_INVALID_ARG_TYPE]: The "chunk" argument must be one of type string or Buffer. Received type number
             at validChunk (_stream_writable.js:265:10)
@@ -707,20 +781,13 @@ SYNTAX:     <strong>writableStream.listener</strong><em>(</em>'drain' function()
         module fully loaded!                                                   // !! because we handle the error the program can continue working 
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\12 error event TEST>    
     </pre>
-    
-    
-    
-</details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> <mark>pipe</mark> / <mark>unpipe</mark> events </u></h2>
-    <pre class="syntax">
-SYNTAX:     <strong>writableStream.listener</strong><em>(</em>'pipe', function(<strong>readableStream</strong>)<em>)</em>          // event emitted when the <mark>pipe()</mark> method is called 
-            <strong>writableStream.listener</strong><em>(</em>'unpipe', function(<strong>readableStream</strong>)<em>)</em>        // event emited when the <mark>unpipe()</mark> method is called 
-                                                                                  emitted when the writable stream emits an error during piping
-                                                                                  emitted when when the writable stream is unpiped <u style="color:orange;">(this is not in the Node.js specification but in my test this is clearly the case! [2019-07-12])</u>   
-    </pre>
-    <pre>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h3 class="header"> The <mark>pipe</mark> / <mark>unpipe</mark> events </h3>
+    <details class="example">
+      <summary> Example : </summary>
+      <pre>
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
     var readStream = fs.createReadStream('read.txt');    
@@ -735,11 +802,9 @@ SYNTAX:     <strong>writableStream.listener</strong><em>(</em>'pipe', function(<
     readStream.pipe(writeStream);
                                                                                // -! 'unpipe()' method never called 
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3 style="color:darkblue;"><u> <mark>pipe</mark> / <mark>unpipe</mark> events TEST </u></h3>
-    <p style="color:yellow;"> - for some very strange reason the <mark>unpipe</mark> event is emitted in this test without calling the <mark>unpipe()</mark> method, I don't know why [TESTED 2019-06-29] </p>
-    <pre style="margin-bottom:1px;">
+      <h3 style="color:darkblue;"><u> <mark>pipe</mark> / <mark>unpipe</mark> events TEST </u></h3>
+      <p style="color:yellow;"> - for some very strange reason the <mark>unpipe</mark> event is emitted in this test without calling the <mark>unpipe()</mark> method, I don't know why [TESTED 2019-06-29] </p>
+      <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
     var readStream = fs.createReadStream('read.txt');
@@ -754,14 +819,15 @@ SYNTAX:     <strong>writableStream.listener</strong><em>(</em>'pipe', function(<
     readStream.pipe(writeStream);                                              // piping data 
                                                                                // !! 'unpipe()' method is NOT called
     </pre>
-    <pre class="cmd" style="margin-top:1px;">
+      <pre class="cmd" style="margin-top:1px;">
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\13 pipe unpipe events TEST> node main
         pipe event emitted
         unpipe event emitted                                                   // !! 'unpipe' event is clearly NOT called here (WTF)
     PS D:\safe\code +\my site\03 improuve\Learn webdesign\04 node.js\stream\13 pipe unpipe events TEST>    
     </pre>
-</details>
+    </details>
 
     <br><br>
 </body>
+
 </html>

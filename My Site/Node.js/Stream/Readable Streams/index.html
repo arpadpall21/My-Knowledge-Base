@@ -1,299 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Readable Streams </title> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../../Assets/stylesPages.css"> 
-    <script src="../../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Readable Streams </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Readable Streams (ver 3.2) </h1>
-    <p> Updated ( 2019-07-12 )</p>
-    <p class="sitenav"> <a href="../../../index.html">MySite></a>
-        <a href="../../index.html">Node.js></a> 
-        <a href="../index.html">Streams></a> Readable Streams    
-    </p>
-<table class="table">
+  <h1> Readable Streams </h1>
+  <p> Updated ( 2019-07-12 / 2024-03-11 )</p>
+  <p class="sitenav"> <a href="../../../index.html">MySite></a>
+    <a href="../../index.html">Node.js></a>
+    <a href="../index.html">Streams></a> Readable Streams
+  </p>
+  <table class="table">
     <tr>
-        <th style="width:30%;"> Method / Property </th>
-        <th> Description </th>
+      <th style="width:30%;"> Method / Property </th>
+      <th> Description </th>
     </tr>
     <tr>
-        <td> stream.Readable.from(<strong>iterableObj</strong><i>, option:obj</i>) </td>
-        <td> returns a readable stream out of an iteralbe object <u>(the created stream is in object mode by default)</u>
-            <span id="browserSupport" title="updated : 2019-07-06">
-                <span><i class="fab fa-node-js"></i> ?.?.? </span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.read(<i>chunkSize:nr</i>) </td>
+      <td>
+        - <u>(for stream in pause mode)</u> removes and returns a data chunk from the internal buffer <br>
+        - emints the <mark>data</mark> event if successfully removes data from the buffer<br>
+        - if there is no data available in the buffer returns <mark>null</mark>
+        <span id="browserSupport" title="updated : 2019-07-09">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream</strong>[Symbol.asyncIterator]() </td>
-        <td> built-in symbol allows us to iterate through the stream <u>asynchronously</u>, each iterated chunk is as big as it is defined by the <mark>HightWaterMark</mark> property
-            <span id="browserSupport" title="updated : 2019-07-06">
-                <span><i class="fab fa-node-js"></i> 10.0.0 </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
-        <td> <strong>readableStream</strong>.destroy(<i>error:str</i><small>, function(<i>err</i>)</small>) </td>
-        <td> - immediately destroys the stream (destroys pending data) <br>
-             - emits the <mark>close</mark> event <br>
-             - returns the stream itself <br>
-             - optionally throws a custom error what can be handled directly in the callback function <u>(this is not in the Node.js specification but it works fine)</u> or by the error event listener <br>
-             - if an error is passed the <mark>close</mark> event is not emitted
-            <span id="browserSupport" title="updated : 2019-07-09">
-                <span><i class="fab fa-node-js"></i> 8.0.0 </span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.readableFlowing </td>
+      <td>
+        - indicates the state of <strong>readableStream</strong> <br>
+        - <mark>null</mark> -> no mechanism consumes the provided data <br>
+        - <mark>true</mark> -> Flowing <br>
+        - <mark>false</mark> -> Paused
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 9.4.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream</strong>.isPaused() </td>
-        <td> returns <mark>true</mark> if the readable stream is in paused flowing mode, otherwise returns <mark>false</mark>
-            <span id="browserSupport" title="updated : 2019-07-09">
-                <span><i class="fab fa-node-js"></i> 0.11.14 </span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.setEncoding(<i>encode:str</i>) </td>
+      <td>
+        - sets the character encoding for the read data <br>
+        - ex: if <optval>encode</optval> set to <mark>utf8</mark> the read data will be utf8 encoded string (not <reqval>buf</reqval> which is the default)
+        <span id="browserSupport" title="updated : 2019-07-09">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream</strong>.pause() </td>
-        <td> pauses the stream by stopping it to emit the <mark>data</mark> event (available data will remain in the buffer memory) 
-            <span id="browserSupport" title="updated : 2019-07-09">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.readableEncoding </td>
+      <td> 
+        - returns the encoding of the stream
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 12.7.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream</strong>.pipe(<strong>writableStream</strong><small>, {end:<i>bol</i>}</small>) </td>
-        <td> - streams the data <u>automatically</u> from a readable to a writable stream <br>
-             - switches the readable stream into readable flowing mode and manages the data flow automatically<br>
-             - returns the destination (writable stream), this allows chaining multiple sources to the same destination 
-             - if the readable stream throws an exception the writable stream is never closed!
-            <span id="browserSupport" title="updated : 2019-07-09">
-                <span><i class="fab fa-node-js"></i> 0.9.8 </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
-        <td> <strong>readableStream</strong>.read(<i>size:nr</i>) </td>
-        <td> - <u>removes and returns a data chunk</u> from the internal buffer <br>
-             - if it returns a data chunk the <mark>data</mark> event is emitted <br>
-             - if there is no data available in the buffer returns <mark>null</mark> <br>
-             - we can specify the number of bytes (size) to return (if no size argument passed the whole data is returned) (in object mode returns 1 object per call) <br>
-             - if the called size is not available <mark>null</mark> will be returned<br>
-             <u>- this method sholud be called only when the stream is paused because when the stream is in flowing readable mode this method is automatically called!</u>
-            <span id="browserSupport" title="updated : 2019-07-09">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.unshift(<strong>chunk:any</strong><i>, encode:str</i>) </td>
+      <td>
+        - pushes a chunk of data <u>in the internal buffer</u> <br>
+        - pushing <mark>null</mark> signal the end of the stream <br>
+        - cannot be called after the <mark>end</mark> event
+        <span id="browserSupport" title="updated : 2019-07-09">
+          <span><i class="fab fa-node-js"></i> 0.9.11 </span>
+          <span><i class="fab fa-node-js"></i> 8.0.0 chunk can be Uint8Array </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream</strong>.readable </td>
-        <td> returns <mark>true</mark> if it is safe to call the <mark>read()</mark> method
-            <span id="browserSupport" title="updated : 2019-07-10">
-                <span><i class="fab fa-node-js"></i> 11.4.0 </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
-        <td> <strong>readableStream</strong>.readableBuffer </td>
-        <td> returns the <u>current</u> buffer of the readable stream 
-            <span id="browserSupport" title="updated : 2019-07-09">
-                <span><i class="fab fa-node-js"></i> ?.?.? </span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.pause() </td>
+      <td>
+        - switches the <strong>readableStream</strong> in Paused mode (available data will remain in the buffer)
+        <span id="browserSupport" title="updated : 2019-07-09">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream</strong>.readableFlowing </td>
-        <td> indicates the state of the readable stream (<mark>null</mark> = no mechanism consumes the provided data) (<mark>true</mark> = stream is flowing) (<mark>false</mark> = stream is paused)
-            <span id="browserSupport" title="updated : 2019-07-09">
-                <span><i class="fab fa-node-js"></i> ?.?.? </span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.isPaused() </td>
+      <td>
+        - returns <mark>true</mark> if the <strong>readableStream</strong> is in Paused mode, <mark>false</mark> otherwiser
+        <span id="browserSupport" title="updated : 2019-07-09">
+          <span><i class="fab fa-node-js"></i> 0.11.14 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream</strong>.readableHighWaterMark </td>
-        <td> returns the value of the <mark>HighWaterMark</mark> when the stream was constructed (default: 65536)
-            <span id="browserSupport" title="updated : 2019-07-10">
-                <span><i class="fab fa-node-js"></i> 9.3.0 </span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.resume() </td>
+      <td>
+        - switches the <strong>readableStream</strong> in Flowing mode
+        <span id="browserSupport" title="updated : 2019-07-09">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+          <span><i class="fab fa-node-js"></i> 10.0.0 has no effect if the <mark>readable</mark> event listener is set </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream</strong>.readableLength </td>
-        <td> returns the number of bytes (or objects if the stream is in object mode) in the buffer memory queue
-            <span id="browserSupport" title="updated : 2019-07-10">
-                <span><i class="fab fa-node-js"></i> 9.4.0 </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
-        <td> <strong>readableStream</strong>.readableObjectMode </td>
-        <td> returns a boolean indicating if the stream is operating in object mode
-            <span id="browserSupport" title="updated : 2019-07-10">
-                <span><i class="fab fa-node-js"></i> 12.3.0 </span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.pipe(<strong>writableStream</strong>, <optval class="openable">option:obj<div>
+        <p> <mark>end</mark>: <reqval>bool</reqval> -> ends the writable stream when the reader ends (Default: <mark>true</mark>) </p>
+      </div></optval><small>) </td>
+      <td>
+        - pipes the data from <strong>readableStream</strong> to <strong>writableStream</strong> <br>
+        - switches the <strong>readableStream</strong> into Readable mode and manages the data flow automatically<br>
+        - returns the destination <strong>writableStream</strong>, this allows chaining multiple sources to the same destination <br>
+        - if the <strong>readableStream</strong> throws an exception the writable stream is never closed!
+        <span id="browserSupport" title="updated : 2019-07-09">
+          <span><i class="fab fa-node-js"></i> 0.9.8 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream</strong>.resume() </td>
-        <td> causes an explicit paused stream to emit the <mark>data</mark> event, therefore switching it into flowing readable mode
-            <span id="browserSupport" title="updated : 2019-07-09">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-                <span><i class="fab fa-node-js"></i> 10.0.0 has no effect if the <mark>readable</mark> event listener is set </span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.unpipe(<i>writableStream</i>) </td>
+      <td>
+        - detaches all <optval>writableStram</optval> destination (no argument) or the specified one <br>
+        - switches the <strong>readableStream</strong> into Paused mode <br>
+        - returns the <strong>readableStream</strong> itself
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream</strong>.setEncoding(<i>encode:str</i>) </td>
-        <td> sets the character encoding for the data read from the stream and retruns the stream itself (if this method is not specified the data is read as Buffer object, if no argument passed data is read as string)
-            <span id="browserSupport" title="updated : 2019-07-09">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
-        <td> <strong>readableStream</strong>.unpipe(<i>writableStream</i>) </td>
-        <td> detaches the writable stream previously attached by the <mark>pipe()</mark> method and switches the readable stream into paused reading mode, returns the readable stream (if no destination is specified all destinations are detached)
-            <span id="browserSupport" title="updated : 2019-07-09">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.readableHighWaterMark </td>
+      <td> 
+        - returns the streams <mark>HighWaterMark</mark> size (default: 65536)
+        <span id="browserSupport" title="updated : 2019-07-10">
+          <span><i class="fab fa-node-js"></i> 9.3.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream</strong>.unshift(<strong>chunk:any</strong><i>, encode:str</i>) </td>
-        <td> pushes a chunk of data <u>in the internal buffer</u> (cannot be called after the <mark>end</mark> event) (not recommended to use during the read process)
-            <span id="browserSupport" title="updated : 2019-07-09">
-                <span><i class="fab fa-node-js"></i> 0.9.11 </span>
-                <span><i class="fab fa-node-js"></i> 8.0.0 chunk can be Uint8Array </span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.readableLength </td>
+      <td> 
+        - returns the current number of bytes in the buffer <br>
+        - in object mode returns the number of objects
+        <span id="browserSupport" title="updated : 2019-07-10">
+          <span><i class="fab fa-node-js"></i> 9.4.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream</strong>.wrap(<strong>readableStream</strong>) </td>
-        <td> convert the passed readable stream into an <a href="https://nodejs.org/dist/latest-v12.x/docs/api/stream.html#stream_compatibility_with_older_node_js_versions" target="_blank">'old-style'</a> stream (prior Node.js 0.10) <a href="https://nodejs.org/dist/latest-v12.x/docs/api/stream.html#stream_readable_wrap_stream" target="_blank">[link]</a> [NOT TESTED]
-            <span id="browserSupport" title="updated : 2019-07-10">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
-        <td colspan="2"> Events </td>
+      <td> <strong>readableStream</strong>.destroy(<i>error:str</i>, <reqval>fn(err)</reqval>) </td>
+      <td>
+        - immediately destroys the stream (with all pending data) <br>
+        - emits the <mark>close</mark> event <br>
+        - returns the stream itself <br>
+        - optionally throws a custom error that can be handled directly in the callback function
+        - if an error is passed the <mark>close</mark> event is not emitted
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 8.0.0 </span>
+          <span><i class="fab fa-node-js"></i> 14.0.0 no-op behaviour if the stream is already destroyed </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream.listener</strong><em>(</em>'close', function()<em>)</em> </td>
-        <td> event emitted when the stream and the underlying system is closed (indicates that there won't be any further computation)
-            <span id="browserSupport" title="updated : 2019-07-10">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
-        <td> <strong>readableStream.listener</strong><em>(</em>'data', function(<strong>dataChunk</strong>)<em>)</em> </td>
-        <td> - attaching this event to the stream will switch the stream into flowing readable mode <br>
-              - returns the data chunk in the callback function <br>
-              - <u>data is passed as soon as it is available</u> and callback function called as many times as necessary<br>
-              - event emitted by the <mark>pipe()</mark> and <mark>resume()</mark> methods <br>
-              - the <mark>read()</mark> method only emits this event if it returns a data chunk <br>
-              - removing the 'data' event listener does NOT pauses the stream (because of backward compatibility)
-            <span id="browserSupport" title="updated : 2019-07-12">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.readable </td>
+      <td> 
+        - returns <mark>true</mark> if it is safe to call the <mark>read()</mark> method (if the stream is not destroyed or errored)
+        <span id="browserSupport" title="updated : 2019-07-10">
+          <span><i class="fab fa-node-js"></i> 11.4.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream.listener</strong><em>(</em>'end', function()<em>)</em> </td>
-        <td> event emitted when the available data is <u>fully consumed</u> from the stream (indicates that no more data is available to consume)
-            <span id="browserSupport" title="updated : 2019-07-10">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.readableObjectMode </td>
+      <td> 
+        - returns <mark>true</mark> if the stream is in object mode, <mark>false</mark> otherwise
+        <span id="browserSupport" title="updated : 2019-07-10">
+          <span><i class="fab fa-node-js"></i> 12.3.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream.listener</strong><em>(</em>'error', function(<strong>error</strong>)<em>)</em> </td>
-        <td> event emitted <u>and handled</u> when some error occured during the reading process
-            <span id="browserSupport" title="updated : 2019-07-10">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.destroyed </td>
+      <td>
+        - returns <mark>true</mark> if the <mark>destroy()</mark> method was called, <mark>false</mark> otherwise
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 8.0.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream.listener</strong><em>(</em>'pause', function()<em>)</em> </td>
-        <td> event emited when the <mark>pause()</mark> method is called and the <mark>reaableFlowing</mark> property is not false
-            <span id="browserSupport" title="updated : 2019-07-10">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.closed </td>
+      <td>
+        - returns <mark>true</mark> if the <mark>close</mark> event was emitted, <mark>false</mark> otherwise
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 8.0.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream.listener</strong><em>(</em>'readable', function()<em>)</em> </td>
-        <td> - attaching this event listener to the stream will cause the data chunk to be buffered in the internal buffer memory (once the data is pulled from the buffer the callback is recalled in order to fill the buffer again) <br>
-             - event emitted when there is data available to be read from the stream <br>
-             - once the stream is fully consumed and the buffer is empty the callback is called for the last time before the <mark>end</mark> event<br>
-             - keeps the stream in paused readable mode (unlike the <mark>drain</mark> event) <br>
-             - takes precedence over the <mark>data</mark> event (if they are used at the same time) 
-            <span id="browserSupport" title="updated : 2019-07-10">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-                <span><i class="fab fa-node-js"></i> 10.0.0 requires calling <mark>read()</mark> / emitted in the next tick after <mark>push()</mark></span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.readableEnded </td>
+      <td>
+        - returns <mark>true</mark> if the <mark>end</mark> event was emitted, <mark>false</mark> otherwise
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 12.9.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <strong>readableStream.listener</strong><em>(</em>'resume', function()<em>)</em> </td>
-        <td> event emited when the <mark>resume()</mark> method is called and the <mark>readableFlowing</mark> is not true
-            <span id="browserSupport" title="updated : 2019-07-10">
-                <span><i class="fab fa-node-js"></i> 0.9.4 </span>
-            </span>
-        </td>
+      <td> <strong>readableStream</strong>.errored </td>
+      <td>
+        - returns the error if the stream was destroyed with an error
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 18.0.0 </span>
+        </span>
+      </td>
     </tr>
-</table>
-<h2 style="color:green;"><u> Notes : </u></h2>
-    <details class="example" id="notes">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2"> Events </td>
+    </tr>
+    <tr>
+      <td> <strong>readableStream.listener</strong>('readable', <reqval>fn</reqval>) </td>
+      <td>
+        - causes the <reqval>readableStream</reqval> to switch in Paused mode <br>
+        - repeteadly calls its callback when there are 'enough' data in the <reqval>readableStream</reqval>'s' internal buffer <br>
+        - once the stream is fully consumed and the buffer is empty the callback is called for the last time before the <mark>end</mark> event<br>
+        - takes precedence over the <mark>data</mark> event (so attaching the <mark>data</mark> event to <mark>readableStream</mark> won't switch the <reqval>readableStream</reqval> into Flowing mode)
+        <span id="browserSupport" title="updated : 2019-07-10">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+          <span><i class="fab fa-node-js"></i> 10.0.0 requires calling <mark>read()</mark> / emitted in the next tick after <mark>push()</mark></span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <strong>readableStream.listener</strong>('data', <strong>fn(dataChunk:buf)</strong>) </td>
+      <td>
+        - causes the <strong>readableStream</strong> to switch in Flowing mode <br>
+        - returns the data chunks in the callback (callback called as many times as necessary) <br>
+        - event emitted by the <mark>pipe()</mark> and <mark>resume()</mark> methods <br>
+        - the <mark>read()</mark> method only emits this event if it returns a data chunk <br>
+        - removing this even does NOT pauses the stream (for backward compatibility reasons)
+        <span id="browserSupport" title="updated : 2019-07-12">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <strong>readableStream.listener</strong>('pause', <reqval>fn</reqval>) </td>
+      <td>
+        - event emited when the <mark>pause()</mark> method is called and the <mark>reaableFlowing</mark> property is not false
+        <span id="browserSupport" title="updated : 2019-07-10">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <strong>readableStream.listener</strong>('resume', <reqval>fn</reqval>) </td>
+      <td>
+        - event emited when the <mark>resume()</mark> method is called and the <mark>readableFlowing</mark> is not true
+        <span id="browserSupport" title="updated : 2019-07-10">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <strong>readableStream.listener</strong>('end', <reqval>fn</reqval>) </td>
+      <td>
+        - event emitted when the available data is <u>fully consumed</u> from the stream (indicates that no more data is available to consume)
+        <span id="browserSupport" title="updated : 2019-07-10">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <strong>readableStream.listener</strong>('close', <reqval>fn</reqval>) </td>
+      <td>
+        - event emitted when the stream and the underlying system is closed (indicates that there won't be any further computation)
+        <span id="browserSupport" title="updated : 2019-07-10">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <strong>readableStream.listener</strong>('end', <reqval>fn(err)</reqval>) </td>
+      <td>
+        - event emitted <u>and handled</u> when some error occured during the reading process
+        <span id="browserSupport" title="updated : 2019-07-10">
+          <span><i class="fab fa-node-js"></i> 0.9.4 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    <p> - the <mark>read()</mark> method does not return anything if I use it with the <mark>data</mark> event listener, <u>this is because the <mark>data</mark> event listener calls the <mark>read()</mark> method internally </u></p>
-    <p> - the <mark>readable</mark> event listener does not read streams operating in object mode correctly [TESTED : 2019-07-24]</p>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - readable streams are sources where the data is consumed from </p>
-    <p> - a readable stream can be in one of 3 states </p>
-    <ul style="margin:.1em;">
-        <li> <u style="font-size:1.2em;">No read mode</u>, in this state there is no mechanism consumes the data, (data might be accumulating in the internal buffer) <u>(all readable streams begins in this mode)</u></li>
-        <li> <u style="font-size:1.2em;">Paused reading mode</u>, in this state a method must be called explicitly to read chunks of data from it </li>
-        <li> <u style="font-size:1.2em;">Flowing reading mode</u>, in this state the data is read and provided automatically to an application as quickly as possible from the underlying system </li>
-    </ul>
-    <p> - a readable stream does not generate data untill some mechanism calls for it and stops as soon as the request stops (if it's switched in "flowing mode" explicitly and there is no consumer the data will be lost)</p>
-    <p> - data from a readable stream sholud be consumed with one style only! (like: only using the <mark>pipe()</mark> method), using multiple read techniques may lead to intuitive behaviour </p>
-    <pre class="syntax">
-SYNTAX :    <strong>readableStream</strong>[Symbol.asyncIterator]()                             // built-in symbol allows us to iterate through the stream <u>asynchronously</u>, each iterated chunk is as big as it is defined by the <mark>HightWaterMark</mark> property   
-    
-    <span style="color:#c5e8c5;">// ------------------------------------------------------------------------ </span>
-            async function <strong>funcId</strong>() {
-                for await(<strong>id</strong> of <strong>readableStream</strong>) {
-                    <strong>id</strong>                                                         &lt;-- chunk of data (size corresponds to the <mark>HighWaterMark</mark> of the stream)
-                }
-            }
-    </pre>
-    <pre>
-    const fs = require('fs');
-    var readStream = fs.createReadStream('read.txt');    
-    
-// a readable stream is NOT iterable ------------------------------------------
-    for( i of readStream ) { i }                                               // this throws an error with the 'not iterable' message
-    
-// iterating by using an asynchornous mechanism -------------------------------
-    async function iterate() {                                                 // asynchronous function (returns a promise object)
-        for await (i of readStream ) {
-            i;                                                                 // at each iteration returns a chunk of data (size corresponds to the "HighWaterMark" of the stream (65536 bytes by default))   
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - a Readable stream is an abstraction of a source </p>
+  <p> - Readable streams can operate in 2 modes: <u>(when the stream is created it's always in Paused mode)</u> </p>
+  <p class="indent-lv1"> <mark class="mark">Flowing</mark> -> continuouously reads data from the underlying system and provides the application with data as fast as possible </p>
+  <p class="indent-lv1"> <mark class="mark">Paused</mark> -> explicity must be called with <mark>
+      <reqval>readableStream</reqval>.read()
+    </mark> to get data chunks </p>
+  <p> - a Paused readableStream can be switched from <mark class="mark">Paused</mark> to <mark class="mark">Flowing</mark> mode by: </p>
+  <p class="indent-lv1"> - attaching the <mark>data</mark> event on it </p>
+  <p class="indent-lv1"> - calling <mark>
+      <reqval>readableStream</reqval>.resume()
+    </mark> on it </p>
+  <p class="indent-lv1"> - calling <mark>
+      <reqval>readableStream</reqval>.pipe()
+    </mark> on it </p>
+  <p class="indent-lv1"> - in general the readable stream does not generate data untill some reading mechanism calls for it and stops as soon as the request stops </p>
+  <p> - a Flowing readableStream can be switched from <mark class="mark">Flowing</mark> to <mark class="mark">Paused</mark> mode by: </p>
+  <p class="indent-lv1"> - calling <mark>
+      <reqval>readableStream</reqval>.pause()
+    </mark> on it </p>
+  <p class="indent-lv1"> - removing reader destinations from it <mark>
+      <reqval>readableStream</reqval>.unpipe()
+    </mark> </p>
+  <p> - the stream API provides multiple reading techniques, however it's recommended to use one of them (don't mix reading techniques) </p>
+  <hr>
+  <!------------------------------------------------------------------------------->
+  <h2 class="headerExtra"> Reading a Paused stream chunk by chunk </h2>
+  <h3 class="header"> Using <mark>for await</mark> loop </h3>
+  <pre class="syntax">
+    async function <strong>someFunction</strong>() {
+        for await(const <strong>chunk</strong> of <strong>readableStream</strong>) {
+            <strong>chunk</strong>                           // -> <reqval>buf</reqval>    // chunk of data (size corresponds to the <mark>highWaterMark</mark> of the stream)
         }
     }
-    iterate();                                                                 // call 
-    </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3 style="color:darkblue;"><u> Symbol.asyncIterator TEST </u></h3>
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');    
@@ -312,92 +400,33 @@ SYNTAX :    <strong>readableStream</strong>[Symbol.asyncIterator]()             
         &lt;Buffer 20 61 6e 64 20 73 63 72 61 6d 62 6c 65 64 20 69 74 20 74 6f 20 6d 61 6b 65 20 61 20 74 79 70 65 20 73 70 65 63 69 6d 65 6e 20 62 6f 6f 6b 2e 20 49 74 ... 39936 more bytes&gt;
     PS D:\safe\code +\my site\03 improuve\Learn WebDesign\04 Node.js\stream\14 Symbol.asyncIterator TEST>    
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="headerExtra"><u> Methods and Properties </u></h2>    
-<h2 style="color:darkblue;"><u> <mark>from()</mark> method </u></h2>
-    <pre class="syntax">
-SYNTAX :    const stream = require('stream');
-            
-            stream.Readable.from(<strong>iterableObj</strong><i>, option:obj</i>)                      // returns a readable stream out of an iteralbe object <u>(the created stream is in object mode by default)</u>
-                - <strong>iterableObj</strong> : object impelementing the <mark>Symbol.iterator</mark> or <mark>Symbol.asyncIterator</mark> protocol   
-                - <i>option:obj</i> 
-                    - highWaterMark: <strong>nr</strong>                // sets the buffer size (Default : 16384 / 16 in object mode)
-                    - encoding: <strong>str</strong>                    // decode the Buffers to the specified string (Default : null) 
-                    - objectMode: <strong>bol</strong>                  // sets the stream in object mode (Default : true)
-                    - autoDestroy: <strong>bol</strong>                 // stream calls the <mark>destroy()</mark> method on itself after ending (Default: false)
-    </pre>
+  </details>
+  <hr>
+  <!------------------------------------------------------------------------------->
+  <h3 class="header"> Using <mark>readable</mark> event and <mark>read()</mark> method </h3>
+  <pre class="syntax">
+    <reqval>readableStream</reqval>.on('readable', () => {    // calls its callback once the internal buffer is full and the last read data chunk
+        <reqval>readableStream</reqval>.read();               // -> <reqval>buf</reqval> containing the read data chunk (returns <mark>null</mark> on no data)
+    });
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
-    const stream = require("stream");
-    
-    var str = 'myString';                                                      // string is not an object but we still can use it because it has the 'Symbol.iterator' protocol 
-    var arr = [1, 'two', true];
-    
-    async function* generateData() {                                           // asynchronous generator function (generates data asynchronously)
-        yield 43;
-        yield 'fourty two';
-        yield false;
-    }
-    
-    var readString1 = stream.Readable.from(str, {objectMode:false});           // -! stream is not operating in object mode
-    var readString2 = stream.Readable.from(arr);
-    var readString3 = stream.Readable.from(generateData());
-    </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3 style="color:darkblue;"><u> <mark>from()</mark> TEST </u></h3>
-    <p> - delayed the event listeners in order to better see the result </p>
-    <pre style="margin-bottom:1px;">
-    const stream = require('stream');
-    
-    async function* generate() {                                               // asynchronously generated data 
-        yield 'kicsi';
-        yield 'kutya';
-        yield 'tarka'
-    }
-    
-    var readStream = stream.Readable.from(["kicsi", "kutya", "tarka"], {objectMode:false});
-    setTimeout(()=>{
-        console.log("// readStream ----------------------------------");
-        readStream.on('data', chunk => console.log( chunk.toString() ));
-    }, 0);
-    
-    var readStream2 = stream.Readable.from(generate(), {objectMode:false});
-    setTimeout(()=>{
-        console.log("// readStream2 ---------------------------------");
-        readStream2.on('data', chunk => console.log( chunk.toString() ));
-    }, 1000);
-    
-    var readStream3 = stream.Readable.from(generate(), {objectMode:false});
-    setTimeout(()=>{
-        console.log("// readStream3 ---------------------------------");
-        readStream3.on('readable', () => console.log(String(readStream3.read()) ));
-    }, 2000);
-    </pre>
-    <pre class="cmd" style="margin-top:1px;">
-    PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\readable streams\13 from() TEST>node main
-        // readStream ----------------------------------
-        kicsi
-        kutya
-        tarka
-        // readStream2 ---------------------------------
-        kicsi
-        kutya
-        tarka
-        // readStream3 ---------------------------------
-        kicsikutyatarka                                                        // the 'readable' event listener buffers as many data as possible in the buffer memory at once 
-        null                                                                   // last call 
-    PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\readable streams\13 from() TEST>    </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> <mark>readableBuffer</mark> / <mark>readableFlowing</mark> / <mark>setEncoding()</mark> properties and method </u></h2> 
-    <pre class="syntax">
-SYNTAX :    <strong>readableStream</strong>.readableBuffer                                      // returns the <u>current</u> buffer of the readable stream   
-            <strong>readableStream</strong>.readableFlowing                                     // indicates the state of the readable stream (<mark>null</mark> = no mechanism consumes the provided data) (<mark>true</mark> = stream is flowing) (<mark>false</mark> = stream is paused)     
-            <strong>readableStream</strong>.setEncoding(<i>encode:str</i>)                             // sets the character encoding for the data read from the stream and retruns the stream itself (if this method is not specified the data is read as Buffer object, if no argument passed data is read as string)   
-    </pre>
+  import { createReadStream } from 'node:fs';
+  
+  const rStreamFile = createReadStream('./test.txt');
+  
+  rStreamFile.on('readable', () => {
+    rStreamFile.read()                  // -> <reqval>buf</reqval> | ... | <mark>null</mark>
+  });
+  </pre>
+  </details>
+  <hr>
+  <!------------------------------------------------------------------------------->
+  <h2 class="headerExtra"> Methods and Properties </h2>
+  <h3 class="header"> The <mark>readableFlowing</mark> / <mark>setEncoding()</mark> properties and method </h3>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');    
@@ -424,49 +453,10 @@ SYNTAX :    <strong>readableStream</strong>.readableBuffer                      
     readStream.on('data', function(chunk){
         chunk;                                                                 // -> '736f6d6520646174612066726f6d207468652073747265616d0d0a0d0a' 
     });
-    
-// readableBuffer ------------------------------------------------------------ // -! for some reason only the data explicity written in the buffer is readable by the 'readableBuffer' propety (security reason maybe? [TESTED 2019-07-09])   
-    readStream.setEncoding('utf-8');
-    readStream.unshift('data explicitly written in the buffer');               // data direcly written in the internal writable buffer 
-    
-    readStream.on('data', function(chunk){
-        console.log( chunk );                                                  // -> 'data explicitly written in the buffer some data from the stream'   // datas from the buffer and from the readable stream are returned 
-    });
-    
-    readStream.readableBuffer;                                                 // -> BufferList { head: [Object], tail: [Object], length: 1 }
-    readStream.readableBuffer.head;                                            // -> { data: 'data explicitly written in the buffer', next: null }  // !! data explicitly written in the buffer is available here only  
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3 style="color:darkblue;"><u> <mark>readableBuffer</mark> TEST </u></h3>
-    <pre style="margin-bottom:1px;">
-    const fs = require('fs');
-    var readStream = fs.createReadStream('read.txt');
-    var writeStream = fs.createWriteStream('write.txt');
-    
-// Node.js handles data streaming automatically -------------------------------
-    readStream.on('data', function(chunk){
-        writeStream.write(chunk);
-        console.log( readStream.readableBuffer );                              // -! in this situation (when node manages data streaming) the buffer is empty (same goes with writable streams)   
-    });
-    
-// explicitly writing data in the buffer --------------------------------------
-    readStream.unshift('some data');                                           // we explicitly write data in the buffer here (this data is available through the 'readableBuffer' property)
-    console.log( readStream.readableBuffer );
-    </pre>
-    <pre class="cmd" style="margin-top:1px;">
-// Node.js handles data streaming automatically -------------------------------
-    BufferList { head: null, tail: null, length: 0 }                           // -! internal buffer is empty (I don't know the real rason for that)
-    BufferList { head: null, tail: null, length: 0 }
-    BufferList { head: null, tail: null, length: 0 }
-    
-// explicitly writing data in the buffer --------------------------------------
-    BufferList { head:[Object], tail:[Object], length:1 }                      // -! the written data is available in the buffer in this situation
-                                                                               // both 'head' nad 'tail' holds the same data (iterable objects)
-    </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>readableFlowing</mark> TEST </u></h3>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h3 style="color:darkblue;"><u> <mark>readableFlowing</mark> TEST </u></h3>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');
@@ -488,9 +478,9 @@ SYNTAX :    <strong>readableStream</strong>.readableBuffer                      
         false
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\16 readableflowing>   
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>setEncoding()</mark> TEST </u></h3>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h3 style="color:darkblue;"><u> <mark>setEncoding()</mark> TEST </u></h3>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');
@@ -521,30 +511,12 @@ SYNTAX :    <strong>readableStream</strong>.readableBuffer                      
         736f6d65207465787420726561642066726f6d207468652022726561642e747874222066696c650d0a0d0a
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\17 setEncoding() TEST>    
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> <mark>read()</mark> / <mark>pause()</mark> / <mark>isPaused()</mark> / <mark>resume()</mark> / <mark>unshift()</mark> / <mark>destroy()</mark> methods </u></h2>    
-    <pre class="syntax">
-SYNTAX :    <strong>readableStream</strong>.unshift(<strong>chunk:any</strong><i>, encode:str</i>)                      // pushes a chunk of data <u>in the internal buffer</u> (cannot be called after the <mark>end</mark> event) (not recommended to use during the read process)   
-            
-            <strong>readableStream</strong>.read(<i>size:nr</i>)                                       // <u>removes and returns a data chunk</u> from the internal buffer 
-                                                                                  if it returns a data chunk the <mark>data</mark> event is emitted
-                                                                                  if there is no data available in the buffer returns <mark>null</mark>
-                                                                                  we can specify the number of bytes (size) to return (if no size argument passed the whole data is returned) (in object mode returns 1 object per call)
-                                                                                  if the called size is not available <mark>null</mark> will be returned 
-                                                                                  <u>- this method sholud be called only when the stream is paused because when the stream is in flowing readable mode this method is automatically called!</u>
-                    
-            <strong>readableStream</strong>.pause()                                             // pauses the stream by stopping it to emit the <mark>data</mark> event (available data will remain in the buffer memory) 
-            <strong>readableStream</strong>.resume()                                            // causes an explicit paused stream to emit the <mark>data</mark> event, therefore switching it into flowing readable mode   
-            <strong>readableStream</strong>.isPaused()                                          // returns <mark>true</mark> if the readable stream is in paused reading mode, otherwise returns <mark>false</mark>                   
-            
-            <strong>readableStream</strong>.destroy(<i>error:str</i><small>, function(<i>err</i>)</small>)                   // immediately destroys the stream (destroys pending data) 
-                                                                                  emits the <mark>close</mark> event 
-                                                                                  returns the stream itself,
-                                                                                  optionally throws a custom error what can be handled directly in the callback function <u>(this is not in the Node.js specification but it works fine)</u> or by the error event listener   
-                                                                                  if an error is passed the <mark>close</mark> event is not emitted
-    </pre>
+  </details>
+  <hr>
+  <!------------------------------------------------------------------------------->
+  <h3 class="header"> The <mark>unshift()</mark> / <mark>read()</mark> / <mark>pause()</mark> / <mark>isPaused()</mark> / <mark>resume()</mark> / <mark>destroy()</mark> methods </h3>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');    
@@ -564,9 +536,7 @@ SYNTAX :    <strong>readableStream</strong>.unshift(<strong>chunk:any</strong><i
 // destroy() ------------------------------------------------------------------
     readStream.destroy();                                                      // -> ReadStream { ... }     // this destroys immediately the stream and emits the 'close' event  
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3 style="color:darkblue;"><u> <mark>unshift()</mark> / <mark>read()</mark> TEST </u></h3>
+    <h3 style="color:darkblue;"><u> <mark>unshift()</mark> / <mark>read()</mark> TEST </u></h3>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');
@@ -591,10 +561,10 @@ SYNTAX :    <strong>readableStream</strong>.unshift(<strong>chunk:any</strong><i
         &lt;Buffer 2d 2d 2d&gt;                                                      // -> this is '---' 
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\18 unshift() read() TEST>    
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>pause()</mark> / <mark>resume()</mark> / <mark>isPaused()</mark> TEST </u></h3>
-    <p style="color:yellow;"> - Careful! in this test the stream is NOT closed (see nor the 'end' neither the 'close' events are emitted), this is because when we resume the stream is paused again! </p> 
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h3 style="color:darkblue;"><u> <mark>pause()</mark> / <mark>resume()</mark> / <mark>isPaused()</mark> TEST </u></h3>
+    <p style="color:yellow;"> - Careful! in this test the stream is NOT closed (see nor the 'end' neither the 'close' events are emitted), this is because when we resume the stream is paused again! </p>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');
@@ -630,9 +600,9 @@ SYNTAX :    <strong>readableStream</strong>.unshift(<strong>chunk:any</strong><i
         true                                                                   // pausing the stream again (stream is not closed becuase the 3rd chunk is never sent through)   
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\19 pause() resume() isPaused() TEST>    
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>destroy()</mark> TEST </u></h3>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h3 style="color:darkblue;"><u> <mark>destroy()</mark> TEST </u></h3>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');
@@ -652,9 +622,9 @@ SYNTAX :    <strong>readableStream</strong>.unshift(<strong>chunk:any</strong><i
         close event emitted                                                    // -! 'close' event emitted by the 'destroy()' method
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\20 destroy() TEST>    
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>pause()</mark> method with the <mark>pipe()</mark> method TEST </u></h3>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h3 style="color:darkblue;"><u> <mark>pause()</mark> method with the <mark>pipe()</mark> method TEST </u></h3>
     <p> - pauses the readable stream as expected (destination file is empty which proves that the stream is paused) </p>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
@@ -671,19 +641,12 @@ SYNTAX :    <strong>readableStream</strong>.unshift(<strong>chunk:any</strong><i
         true                                                                   // -! readStream.isPaused()
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\20.1 pause() with pipe() TEST>    
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> <mark>pipe()</mark> / <mark>unpipe()</mark> methods </u></h2>    
-    <pre class="syntax">
-SYNTAX :    <strong>readableStream</strong>.pipe(<strong>writableStream</strong><small>, {end:<i>bol</i>}</small>)                     // streams the data <u>automatically</u> from a readable to a writable stream 
-                                                                                  switches the readable stream into readable flowing mode and manages the data flow automatically
-                                                                                  returns the destination (writable stream), this allows chaining multiple sources to the same destination 
-                                                                                  if the readable stream throws an exception the writable stream is never closed!  
-                - <small>{end:<i>bol</i>}</small> : controls if the writable stream should be ended when the readable stream ends (default <mark>true</mark>)   
-                
-            <strong>readableStream</strong>.unpipe(<i>writableStream</i>)                              // detaches the writable stream previously attached by the <mark>pipe()</mark> method and switches the readable stream into paused reading mode, returns the readable stream (if no destination is specified all destinations are detached)   
-    </pre>
+  </details>
+  <hr>
+  <!------------------------------------------------------------------------------->
+  <h3 class="header"> The <mark>pipe()</mark> / <mark>unpipe()</mark> methods </h3>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
@@ -693,9 +656,7 @@ SYNTAX :    <strong>readableStream</strong>.pipe(<strong>writableStream</strong>
     readStream.unpipe(writeStream);                                            // -> ReadStream { ... }     // detaches the target writable stream 
     readStream.isPaused()                                                      // -> true                   // readable stream is in paused reading mode after the 'unpipe()' method is called  
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3 style="color:darkblue;"><u> <mark>pipe()</mark> TEST </u></h3>
+    <h3 style="color:darkblue;"><u> <mark>pipe()</mark> TEST </u></h3>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var readStream1 = fs.createReadStream('read1.txt');    
@@ -708,9 +669,9 @@ SYNTAX :    <strong>readableStream</strong>.pipe(<strong>writableStream</strong>
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\21 pipe() TEST> node main
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\21 pipe() TEST>    
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>pipe()</mark> option TEST </u></h3>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h3 style="color:darkblue;"><u> <mark>pipe()</mark> option TEST </u></h3>
     <p> - the 'close' event is not emitted because the writable stream is not closed </p>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
@@ -727,9 +688,9 @@ SYNTAX :    <strong>readableStream</strong>.pipe(<strong>writableStream</strong>
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\22 pipe() option TEST> node main
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\22 pipe() option TEST>    
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>unpipe()</mark> TEST </u></h3>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h3 style="color:darkblue;"><u> <mark>unpipe()</mark> TEST </u></h3>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');    
@@ -753,20 +714,13 @@ SYNTAX :    <strong>readableStream</strong>.pipe(<strong>writableStream</strong>
         false                                                                  // -! readStream.isPaused()
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\23 unpipe() TEST>    
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> <mark>readableHighWaterMark</mark> / <mark>readableLength</mark> / <mark>readableObjectMode</mark> / <mark>readable</mark> / <mark>wrap()</mark> properties and method </u></h2>    
-    <pre class="syntax">
-SYNTAX :    <strong>readableStream</strong>.readableHighWaterMark                               // returns the value of the <mark>HighWaterMark</mark> when the stream was constructed (default: 65536) 
-            <strong>readableStream</strong>.readableLength                                      // returns the number of bytes (or objects if the stream is in object mode) in the buffer memory queue   
-            <strong>readableStream</strong>.readableObjectMode                                  // returns a boolean indicating if the stream is operating in object mode
-            
-            <strong>readableStream</strong>.readable                                            // returns <mark>true</mark> if it is safe to call the <mark>read()</mark> method   
-            
-            <strong>readableStream</strong>.wrap(<strong>readableStream</strong>)                                // convert the passed readable stream into an <a href="https://nodejs.org/dist/latest-v12.x/docs/api/stream.html#stream_compatibility_with_older_node_js_versions" target="_blank">'old-style'</a> stream (prior Node.js 0.10) <a href="https://nodejs.org/dist/latest-v12.x/docs/api/stream.html#stream_readable_wrap_stream" target="_blank">[link]</a> [NOT TESTED]
-    </pre>
-    <pre>
+  </details>
+  <hr>
+  <!------------------------------------------------------------------------------->
+  <h3 class="header"> The <mark>readableHighWaterMark</mark> / <mark>readableLength</mark> / <mark>readableObjectMode</mark> / <mark>readable</mark> properties and method </h3>
+  <details class="example">
+    <summary> Example : </summary>
+  <pre>
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');    
     
@@ -782,9 +736,7 @@ SYNTAX :    <strong>readableStream</strong>.readableHighWaterMark               
 // readable -------------------------------------------------------------------
     readStream.readable;                                                       // -> true           // it is safe to call the 'read()' method 
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3 style="color:darkblue;"><u> <mark>readableHighWaterMark</mark> / <mark>readableObjectMode</mark> / <mark>readableLength</mark> TEST </u></h3>
+    <h3 style="color:darkblue;"><u> <mark>readableHighWaterMark</mark> / <mark>readableObjectMode</mark> / <mark>readableLength</mark> TEST </u></h3>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');    
@@ -807,9 +759,9 @@ SYNTAX :    <strong>readableStream</strong>.readableHighWaterMark               
         9                                                                      // -! readStream.readableLength
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 Node.js\stream\25 readableHighWaterMark readableObjectMode readableLength TEST>    
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<h3 style="color:darkblue;"><u> <mark>readable</mark> TEST </u></h3>
-    <p style="color:yellow;"> - in this test I overflowed the internal buffer memory size but still the 'readable' property returns <mark>true</mark> (indicating that it's safe to call the <mark>read()</mark> method) I don't know when it sholud return <mark>false</mark></p> 
+    <!--------------------------------------------------------------------------------------------------------->
+    <h3 style="color:darkblue;"><u> <mark>readable</mark> TEST </u></h3>
+    <p style="color:yellow;"> - in this test I overflowed the internal buffer memory size but still the 'readable' property returns <mark>true</mark> (indicating that it's safe to call the <mark>read()</mark> method) I don't know when it sholud return <mark>false</mark></p>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');    
@@ -832,32 +784,13 @@ SYNTAX :    <strong>readableStream</strong>.readableHighWaterMark               
         574000                                                                  // -! readStream.readableLength             // bytes in the buffer memory (overflows)
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 Node.js\stream\26 readable TEST>    
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="headerExtra"><u> Events </u></h2>    
-<h2 style="color:darkblue;"><u> <mark>data</mark> / <mark>readable</mark> / <mark>error</mark> events </u></h2>    
-    <p> - the <mark>data</mark> and <mark>readable</mark> events use different reading techniques </p>
-    <ul> 
-        <li> the <mark>data</mark> event listener switches the stream into flowing readable mode and returns the data chunks in the callback function </li>
-        <li> the <mark>readable</mark> event listener buffers the data in the internal buffer, once we pull data from the buffer recalls the listener in order to rebuffer the data in the buffer again, <u>does not switches the stream into flowing readable mode</u> </li>
-    </ul>
-    <pre class="syntax">
-SYNTAX :    <strong>readableStream.listener</strong><em>(</em>'data', function(<strong>dataChunk</strong>)<em>)</em>               // attaching this event to the stream will switch the stream into flowing readable mode 
-                                                                                  returns the data chunk in the callback function 
-                                                                                  <u>data is passed as soon as it is available</u> and callback function called as many times as necessary
-                                                                                  event emitted by the <mark>pipe()</mark> and <mark>resume()</mark> methods 
-                                                                                  the <mark>read()</mark> method only emits this event if it returns a data chunk 
-                                                                                  removing the 'data' event listener does NOT pauses the stream (because of backward compatibility)  
-            
-            <strong>readableStream.listener</strong><em>(</em>'readable', function()<em>)</em>                    // attaching this event listener to the stream will cause the data chunk to be buffered in the internal buffer memory (once the data is pulled from the buffer the callback is recalled in order to fill the buffer again)   
-                                                                                  event emitted when there is data available to be read from the stream 
-                                                                                  once the stream is fully consumed and the buffer is empty the callback is called for the last time before the <mark>end</mark> event
-                                                                                  keeps the stream in paused readable mode (unlike the <mark>drain</mark> event)
-                                                                                  takes precedence over the <mark>data</mark> event (if they are used at the same time)   
-                                                                                  
-            <strong>readableStream.listener</strong><em>(</em>'error', function(<strong>error</strong>)<em>)</em>                  // event emitted <u>and handled</u> when some error occured during the reading process    
-    </pre>
+  </details>
+  <!--------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"><u> Events </u></h2>
+  <h3 class="header"> The <mark>data</mark> / <mark>readable</mark> / <mark>error</mark> events </h3>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');    
@@ -878,10 +811,8 @@ SYNTAX :    <strong>readableStream.listener</strong><em>(</em>'data', function(<
     readStream.on('error', function(error){                                   // event fired when an error occures during the reading 
         error;                                                                // -! error is returned and handled here (won't block the module)   
     });    
-    </pre>
-<details class="example">
-<summary> Example : </summary>
-<h2 style="color:darkblue;"><u> <mark>data</mark> event TEST </u></h2>
+  </pre>
+    <h2 style="color:darkblue;"><u> <mark>data</mark> event TEST </u></h2>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');    
@@ -901,9 +832,9 @@ SYNTAX :    <strong>readableStream.listener</strong><em>(</em>'data', function(<
         &lt;Buffer 20 61 6e 64 20 73 63 72 61 6d 62 6c 65 64 20 69 74 20 74 6f 20 6d 61 6b 65 20 61 20 74 79 70 65 20 73 70 65 63 69 6d 65 6e 20 62 6f 6f 6b 2e 20 49 74 ... 39938 more bytes&gt;
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 Node.js\stream\27 data event TEST>    
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>    
-<h2 style="color:darkblue;"><u> <mark>readable</mark> VS <mark>data</mark> events TEST </u></h2>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h2 style="color:darkblue;"><u> <mark>readable</mark> VS <mark>data</mark> events TEST </u></h2>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');    
@@ -941,9 +872,9 @@ SYNTAX :    <strong>readableStream.listener</strong><em>(</em>'data', function(<
         0                                                                      // call 3
         &lt;Buffer 20 61 6e 64 20 73 63 72 61 6d 62 6c 65 64 20 69 74 20 74 6f 20 6d 61 6b 65 20 61 20 74 79 70 65 20 73 70 65 63 69 6d 65 6e 20 62 6f 6f 6b 2e 20 49 74 ... 39938 more bytes&gt;
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>    
-<h2 style="color:darkblue;"><u> <mark>error</mark> event TEST </u></h2>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h2 style="color:darkblue;"><u> <mark>error</mark> event TEST </u></h2>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');    
@@ -960,9 +891,9 @@ SYNTAX :    <strong>readableStream.listener</strong><em>(</em>'data', function(<
         object                                                                 // handled thrown error 
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 Node.js\stream\29 error event TEST>    
     </pre>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>    
-<h2 style="color:darkblue;"><u> stream is not paused when we remove the <mark>data</mark> event TEST </u></h2>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h2 style="color:darkblue;"><u> stream is not paused when we remove the <mark>data</mark> event TEST </u></h2>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');    
@@ -981,14 +912,12 @@ SYNTAX :    <strong>readableStream.listener</strong><em>(</em>'data', function(<
         false                                                                  // -! readStream.isPaused()
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\21.1 stream is not paused when we remove the data event TEST>    
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> <mark>pause</mark> / <mark>resume</mark> events </u></h2>    
-    <pre class="syntax">
-SYNTAX :    <strong>readableStream.listener</strong><em>(</em>'pause', function()<em>)</em>                      // event emited when the <mark>pause()</mark> method is called and the <mark>reaableFlowing</mark> property is not false
-            <strong>readableStream.listener</strong><em>(</em>'resume', function()<em>)</em>                     // event emited when the <mark>resume()</mark> method is called and the <mark>readableFlowing</mark> is not true   
-    </pre>
+  </details>
+  <!--------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h3 class="header"> The <mark>pause</mark> / <mark>resume</mark> events </h3>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');    
@@ -998,10 +927,8 @@ SYNTAX :    <strong>readableStream.listener</strong><em>(</em>'pause', function(
     
     readStream.pause();
     readStream.resume();
-    </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3 style="color:darkblue;"><u> <mark>pause</mark> / <mark>resume</mark> events TEST </u></h3>
+  </pre>
+    <h3 style="color:darkblue;"><u> <mark>pause</mark> / <mark>resume</mark> events TEST </u></h3>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');    
@@ -1022,14 +949,12 @@ SYNTAX :    <strong>readableStream.listener</strong><em>(</em>'pause', function(
         resume event emitted
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 Node.js\stream\30 pause resume events TEST>    
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> <mark>close</mark> / <mark>end</mark> events </u></h2>    
-    <pre class="syntax">
-SYNTAX :    <strong>readableStream.listener</strong><em>(</em>'close', function()<em>)</em>                      // event emitted when the stream and the underlying system is closed (indicates that there won't be any further computation)  
-            <strong>readableStream.listener</strong><em>(</em>'end', function()<em>)</em>                        // event emitted when the available data is <u>fully consumed</u> from the stream (indicates that no more data is available to consume)    
-    </pre>
+  </details>
+  <!--------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h3 class="header"> The <mark>close</mark> / <mark>end</mark> events </h3>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     const fs = require('fs');
     var writeStream = fs.createWriteStream('write.txt');    
@@ -1039,10 +964,8 @@ SYNTAX :    <strong>readableStream.listener</strong><em>(</em>'close', function(
     readStream.on('end', function(){ });                                      // event emitted when no more data is available in the 'readStream'
     
     readStream.pipe(writeStream);
-    </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3 style="color:darkblue;"><u> <mark>close</mark> / <mark>end</mark> events TEST </u></h3>
+  </pre>
+    <h3 style="color:darkblue;"><u> <mark>close</mark> / <mark>end</mark> events TEST </u></h3>
     <pre style="margin-bottom:1px;">
     const fs = require('fs');
     var readStream = fs.createReadStream('read.txt');    
@@ -1065,8 +988,9 @@ SYNTAX :    <strong>readableStream.listener</strong><em>(</em>'close', function(
         close event emitted!                                                  // 'close' event emitted only 
     PS D:\safe\code +\my site\03 Improuve\Learn WebDesign\04 node.js\stream\31 close end events TEST>    
     </pre>
-</details>
-    
-    <br><br>
+  </details>
+
+  <br><br>
 </body>
+
 </html>
