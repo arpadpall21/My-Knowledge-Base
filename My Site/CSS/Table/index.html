@@ -1,159 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title> Table Styling </title> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
-</head>
-<body>
-<h1> Table Styling (ver 4.0.0) </h1>
-    <p> Updated ( 2018-08-16 )</p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html" title="CSS">CSS></a> Table  
-    </p>
-<table class="table">
-<caption> 
-    Table Styling
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
-    <tr>
-        <th style="width:15%"> Property </th>
-        <th style="width:40%"> Value </th>
-        <th> Description </th>
-    </tr>
-    <tr class=2.2>
-        <td> border-collapse </td>
-        <td>  
-            separate <span class="cssAV">(Default: separate borders)</span><br>
-            collapse <span class="cssAV">(collapse borders into a single one)</span><br>
-        </td>
-        <td> 
-            - defines if the border of the <mark>&lt;table&gt;</mark> element should collapse with its children <br>
-            - used by <mark>&lt;table&gt;</mark> / <mark>&lt;inline-table&gt;</mark> elements </span>
-            <span id="browserSupport" title="updated: 2020-07-24">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 4 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5 </span>
-                <span><i class="fab fa-safari"></i> 1.4 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="2.1">
-        <td> border-spacing </td>
-        <td> 
-            <strong>length</strong> <span class="cssAV">(Default: <mark>2px</mark>, space between cells)</span><br>
-            <strong>lengthHor</strong> <i>lengthVert</i> <span class="cssAV">(space between cells separately)</span><br>
-        </td>
-        <td> 
-            - defines the space between table cells<br>
-            - used by <mark>&lt;table&gt;</mark> / <mark>&lt;inline-table&gt;</mark> elements </span>
-            <span id="browserSupport" title="updated: 2020-07-24">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 4 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="1">
-        <td> caption-side </td>
-        <td>  
-            top <span class="cssAV">(Default: above the table)</span><br>
-            bottom <span class="cssAV">(below the table)</span><br>
-        </td>
-        <td> 
-            - defines the caption position<br>
-            - used by <mark>&lt;table&gt;</mark> / <mark>&lt;inline-table&gt;</mark> / <mark>&lt;caption&gt;</mark> elements </span>
-            <span id="browserSupport" title="updated: 2020-07-24">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 4 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="3">
-        <td> empty-cells </td>
-        <td>  
-            show <span class="cssAV">(Default: show borders)</span><br>
-            hide <span class="cssAV">(hide borders)</span><br> 
-        </td>
-        <td> 
-            - defines whether show or hide empty table cell <u>borders</u><br>
-            - used by <mark>&lt;table&gt;</mark> / <mark>&lt;inline-table&gt;</mark> / <mark>&lt;td&gt;</mark> / <mark>&lt;th&gt;</mark> / <mark>&lt;tr&gt;</mark> elements </span>
-            <span id="browserSupport" title="updated: 2020-07-24">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 4 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
-                <span><i class="fab fa-safari"></i> 1.2 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="4">
-        <td> table-layout </td>
-        <td>  
-            auto <span class="cssAV">(Default: renders the whole table at once)</span><br>
-            fixed <span class="cssAV">(renders the table dinamically)</span><br> 
-        </td>
-        <td> 
-            - defines the rendering method (show part what is already downloaded or not)<br>
-            - used by <mark>&lt;table&gt;</mark> / <mark>&lt;inline-table&gt;</mark> elements </span>
-            <span id="browserSupport" title="updated: 2020-07-24">
-                <span><i class="fab fa-chrome"></i> 14 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 7 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-</table>
-<h2 style="color:green;"><u> Notes : </u></h2>
-    <details class="example" id="notes">
-    <summary> Notes :</summary>
-        <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
 
-<details class="example">
-<summary> Example : </summary>
-<h4><u> Cell Spaning </u></h4>
-    <table class="first">
-    <caption> Test Table (caption)</caption>
-        <tr>
-            <th> Ab </th>
-            <th colspan="2"> B </th>
-        </tr>
-        <tr>
-            <td> 1 </td>
-            <td> 2 </td>
-            <td> 3 </td>
-        </tr>
-        <tr>
-            <td rowspan="2"> 4 </td>
-            <td> 5 </td>
-            <td> 6 </td>
-        </tr>
-        <tr>
-            <td> 7 </td>
-            <td> 8 </td>
-        </tr>
+<head>
+  <meta charset="utf-8">
+  <title> Table Styling </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Table Styling </h1>
+  <p> Updated ( 2018-08-16 / 2024-03-13 )</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Table
+  </p>
+  <table class="table">
+    <tr>
+      <th style="width:15%"> Property </th>
+      <th style="width:40%"> Value </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td> table-layout </td>
+      <td>
+        auto <span class="cssAV">(Default: defined by the browser (usually the table is rendered around contens, so the content will adjust table element sizes))</span><br>
+        fixed <span class="cssAV">(thable element sizes are fixed, so the contet is forced in the fixed elements)</span><br>
+      </td>
+      <td>
+        - rendering method how the browser renders table elements<br>
+        - used by <mark>&lt;table&gt;</mark> / <mark>&lt;inline-table&gt;</mark> elements </span>
+        <span id="browserSupport" title="updated: 2020-07-24">
+          <span><i class="fab fa-chrome"></i> 14 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 7 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> caption-side </td>
+      <td>
+        top <span class="cssAV">(Default: above the table)</span><br>
+        bottom <span class="cssAV">(below the table)</span><br>
+      </td>
+      <td>
+        - defines the caption position<br>
+        - used by <mark>&lt;table&gt;</mark> / <mark>&lt;inline-table&gt;</mark> / <mark>&lt;caption&gt;</mark> elements </span>
+        <span id="browserSupport" title="updated: 2020-07-24">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 4 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> border-spacing </td>
+      <td>
+        <strong>length</strong> <span class="cssAV">(Default: <mark>2px</mark>, space between cells)</span><br>
+        <strong>lengthHor</strong> <i>lengthVert</i> <span class="cssAV">(space between cells separately)</span><br>
+      </td>
+      <td>
+        - defines the space between table cells<br>
+        - used by <mark>&lt;table&gt;</mark> / <mark>&lt;inline-table&gt;</mark> elements </span>
+        <span id="browserSupport" title="updated: 2020-07-24">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 4 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> border-collapse </td>
+      <td>
+        separate <span class="cssAV">(Default: separate borders)</span><br>
+        collapse <span class="cssAV">(collapse borders into a single one)</span><br>
+      </td>
+      <td>
+        - defines if the border of the <mark>&lt;table&gt;</mark> element should collapse with its children <br>
+        - used by <mark>&lt;table&gt;</mark> / <mark>&lt;inline-table&gt;</mark> elements </span>
+        <span id="browserSupport" title="updated: 2020-07-24">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 4 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5 </span>
+          <span><i class="fab fa-safari"></i> 1.4 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> empty-cells </td>
+      <td>
+        show <span class="cssAV">(Default: show borders)</span><br>
+        hide <span class="cssAV">(hide borders)</span><br>
+      </td>
+      <td>
+        - defines whether show or hide empty table cell <u>borders</u><br>
+        - used by <mark>&lt;table&gt;</mark> / <mark>&lt;inline-table&gt;</mark> / <mark>&lt;td&gt;</mark> / <mark>&lt;th&gt;</mark> / <mark>&lt;tr&gt;</mark> elements </span>
+        <span id="browserSupport" title="updated: 2020-07-24">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 4 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
+          <span><i class="fab fa-safari"></i> 1.2 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <h2 class="header" style="background-color: transparent;"> Table Css properties </h2>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 class="header"> The <mark>table-layout</mark> property </h4>
+    <p> - table is rendered around the content </p>
+    <table class="table_layout_test_1">
+      <tr>
+        <td> long textongtextlong textlong textlong textlong textlong textlong textlong textlong text </td>
+        <td> 2 </td>
+      </tr>
+      <tr>
+        <td> 1 </td>
+        <td> 2 </td>
+      </tr>
+      <tr>
+        <td> 1 </td>
+        <td> 2 </td>
+      </tr>
+    </table>
+    <p> - table element size fixed
+    <table class="table_layout_test_2">
+      <tr>
+        <td> long textong textlong textlong textlongtextlong textlong textlong textlong textlong text </td>
+        <td> 2 </td>
+      </tr>
+      <tr>
+        <td> 1 </td>
+        <td> 2 </td>
+      </tr>
+      <tr>
+        <td> 1 </td>
+        <td> 2 </td>
+      </tr>
     </table>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
+// HTML ---
+    &lt;table class="table_layout_test_1"&gt;
+      &lt;tr&gt;
+        &lt;td&gt; long textongtextlong textlong textlong textlong textlong textlong textlong textlong text &lt;/td&gt;
+        &lt;td&gt; 2 &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt; 1 &lt;/td&gt;
+        &lt;td&gt; 2 &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt; 1 &lt;/td&gt;
+        &lt;td&gt; 2 &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+    
+    
+    &lt;table class="table_layout_test_2"&gt;
+      &lt;tr&gt;
+        &lt;td&gt; long textongtextlong textlong textlong textlong textlong textlong textlong textlong text &lt;/td&gt;
+        &lt;td&gt; 2 &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt; 1 &lt;/td&gt;
+        &lt;td&gt; 2 &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt; 1 &lt;/td&gt;
+        &lt;td&gt; 2 &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+    
+    
+// CSS ---
+    .table_layout_test_1, .table_layout_test_1 tr, .table_layout_test_1 td {
+        border: solid 1px black;
+    }
+    
+    .table_layout_test_2, .table_layout_test_2 tr, .table_layout_test_2 td {
+        border: solid 1px black;
+        width: 100%;
+    }
+    
+    .table_layout_test_2 {
+        table-layout: fixed;
+        width: 100%;
+    }
+    </pre>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>cell-spaning</mark> property </h4>
+    <table class="first">
+      <caption> Test Table (caption)</caption>
+      <tr>
+        <th> Ab </th>
+        <th colspan="2"> B </th>
+      </tr>
+      <tr>
+        <td> 1 </td>
+        <td> 2 </td>
+        <td> 3 </td>
+      </tr>
+      <tr>
+        <td rowspan="2"> 4 </td>
+        <td> 5 </td>
+        <td> 6 </td>
+      </tr>
+      <tr>
+        <td> 7 </td>
+        <td> 8 </td>
+      </tr>
+    </table>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;table class="first"&gt;
     &lt;caption&gt; Test Table (caption)&lt;/caption&gt;
@@ -196,29 +294,29 @@
     }
     </pre>
     </details>
-<!--------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h4><u> Border Spacing Property </u></h4>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>border-spacing</mark> property </h4>
     <table class="bordspace">
-        <tr>
-            <td>Jill</td>
-            <td>Smith</td>
-            <td>50</td>
-        </tr>
-        <tr>
-            <td>Eve</td>
-            <td>Jackson</td>
-            <td>94</td>
-        </tr>
-        <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>80</td>
-        </tr>
+      <tr>
+        <td>Jill</td>
+        <td>Smith</td>
+        <td>50</td>
+      </tr>
+      <tr>
+        <td>Eve</td>
+        <td>Jackson</td>
+        <td>94</td>
+      </tr>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>80</td>
+      </tr>
     </table>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;table class="bordspace"&gt;
         &lt;tr&gt;
@@ -251,34 +349,34 @@
     }
     </pre>
     </details>
-<!--------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h4><u> Hovering rows </u></h4>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Hovering rows </h4>
     <table class="tab">
-        <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Savings</th>
-        </tr>
-        <tr>
-            <td>Peter</td>
-            <td>Grifin</td>
-            <td>100$</td>
-        </tr>
-        <tr>
-            <td>Lois</td>
-            <td>Grifin</td>
-            <td>150$</td>
-        </tr>
-        <tr>
-            <td>Joes</td>
-            <td>Swanson</td>
-            <td>500$</td>
-        </tr>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Savings</th>
+      </tr>
+      <tr>
+        <td>Peter</td>
+        <td>Grifin</td>
+        <td>100$</td>
+      </tr>
+      <tr>
+        <td>Lois</td>
+        <td>Grifin</td>
+        <td>150$</td>
+      </tr>
+      <tr>
+        <td>Joes</td>
+        <td>Swanson</td>
+        <td>500$</td>
+      </tr>
     </table>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;table class="tab"&gt;
     &lt;tr&gt;
@@ -321,39 +419,39 @@
     }
     </pre>
     </details>
-<!--------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h4><u> Stripped Table </u></h4>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Stripped Table </h4>
     <table class="ta">
-        <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Savings</th>
-        </tr>
-        <tr>
-            <td>Peter</td>
-            <td>Griffin</td>
-            <td>$100</td>
-        </tr>
-        <tr>
-            <td>Lois</td>
-            <td>Griffin</td>
-            <td>$150</td>
-        </tr>
-        <tr>
-            <td>Joe</td>
-            <td>Swanson</td>
-            <td>$300</td>
-        </tr>
-        <tr>
-            <td>Cleveland</td>
-            <td>Brown</td>
-            <td>$250</td>
-        </tr>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Savings</th>
+      </tr>
+      <tr>
+        <td>Peter</td>
+        <td>Griffin</td>
+        <td>$100</td>
+      </tr>
+      <tr>
+        <td>Lois</td>
+        <td>Griffin</td>
+        <td>$150</td>
+      </tr>
+      <tr>
+        <td>Joe</td>
+        <td>Swanson</td>
+        <td>$300</td>
+      </tr>
+      <tr>
+        <td>Cleveland</td>
+        <td>Brown</td>
+        <td>$250</td>
+      </tr>
     </table>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;table class="ta"&gt;
         &lt;tr&gt;
@@ -399,55 +497,55 @@
     }
     </pre>
     </details>
-<!--------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h4><u> Targeting Columns </u></h4>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Targeting Columns </h4>
     <table class="colon_style">
-    <caption> Column Styled Table</caption>
-    <colgroup>
+      <caption> Column Styled Table</caption>
+      <colgroup>
         <col style="background-color:yellow;">
         <col span="2" style="background-color:blue;">
         <col span="3" style="background-color:white;">
         <col span="2" style="background-color:red;">
         <col style="background-color:yellow;">
-    </colgroup>
-        <tr>
-            <th> -A- </th>
-            <th> -B- </th>
-            <th> -C- </th>
-            <th> -D- </th>
-            <th> -E- </th>
-            <th> -F- </th>
-            <th> -G- </th>
-            <th> -H- </th>
-            <th> -I- </th>
-        </tr>
-        <tr>
-            <td> -1- </td>
-            <td> -2- </td>
-            <td> -3- </td>
-            <td> -4- </td>
-            <td> -5- </td>
-            <td> -6- </td>
-            <td> -7- </td>
-            <td> -8- </td>
-            <td> -9- </td>
-        </tr>
-        <tr>
-            <td> -1- </td>
-            <td> -2- </td>
-            <td> -3- </td>
-            <td> -4- </td>
-            <td> -5- </td>
-            <td> -6- </td>
-            <td> -7- </td>
-            <td> -8- </td>
-            <td> -9- </td>
-        </tr>
+      </colgroup>
+      <tr>
+        <th> -A- </th>
+        <th> -B- </th>
+        <th> -C- </th>
+        <th> -D- </th>
+        <th> -E- </th>
+        <th> -F- </th>
+        <th> -G- </th>
+        <th> -H- </th>
+        <th> -I- </th>
+      </tr>
+      <tr>
+        <td> -1- </td>
+        <td> -2- </td>
+        <td> -3- </td>
+        <td> -4- </td>
+        <td> -5- </td>
+        <td> -6- </td>
+        <td> -7- </td>
+        <td> -8- </td>
+        <td> -9- </td>
+      </tr>
+      <tr>
+        <td> -1- </td>
+        <td> -2- </td>
+        <td> -3- </td>
+        <td> -4- </td>
+        <td> -5- </td>
+        <td> -6- </td>
+        <td> -7- </td>
+        <td> -8- </td>
+        <td> -9- </td>
+      </tr>
     </table>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     -- CODE (HTML) --
     &lt;table class="colon_style"&gt;
     &lt;caption&gt; Colon Styled Table &lt;/caption&gt;
@@ -504,56 +602,56 @@
     }
     </pre>
     </details>
-<!--------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h4><u> Targeting row <mark>thead</mark>, <mark>tbody</mark>, <mark>tofoot</mark> elements </u></h4>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Targeting row <mark>thead</mark>, <mark>tbody</mark>, <mark>tofoot</mark> elements </h4>
     <table class="row_style">
-    <caption>Row Styled Table</caption>
-        <thead>
-            <tr>
-                <th> -A- </th>
-                <th> -B- </th>
-                <th> -C- </th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <td> -X- </td>
-                <td> -Y- </td>
-                <td> -Z- </td>
-            </tr>
-        </tfoot>
-        <tbody>
-            <tr>
-                <td> -10- </td>
-                <td> -20- </td>
-                <td> -30- </td>
-            </tr>
-            <tr>
-                <td> -11- </td>
-                <td> -21 </td>
-                <td> -31 </td>
-            </tr>
-            <tr>
-                <td> -12- </td>
-                <td> -22 </td>
-                <td> -32 </td>
-            </tr>
-            <tr>
-                <td> -13- </td>
-                <td> -23 </td>
-                <td> -33 </td>
-            </tr>
-            <tr>
-                <td> -14- </td>
-                <td> -24 </td>
-                <td> -34 </td>
-            </tr>
-        </tbody>
+      <caption>Row Styled Table</caption>
+      <thead>
+        <tr>
+          <th> -A- </th>
+          <th> -B- </th>
+          <th> -C- </th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td> -X- </td>
+          <td> -Y- </td>
+          <td> -Z- </td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <tr>
+          <td> -10- </td>
+          <td> -20- </td>
+          <td> -30- </td>
+        </tr>
+        <tr>
+          <td> -11- </td>
+          <td> -21 </td>
+          <td> -31 </td>
+        </tr>
+        <tr>
+          <td> -12- </td>
+          <td> -22 </td>
+          <td> -32 </td>
+        </tr>
+        <tr>
+          <td> -13- </td>
+          <td> -23 </td>
+          <td> -33 </td>
+        </tr>
+        <tr>
+          <td> -14- </td>
+          <td> -24 </td>
+          <td> -34 </td>
+        </tr>
+      </tbody>
     </table>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;table class="row_style"&gt;
     &lt;caption&gt; Row Styled Table&lt;/caption&gt;
@@ -613,35 +711,35 @@
     }
     </pre>
     </details>
-<!--------------------------------------------------------------------------------------------------------------------->    
-<hr>
-<h4><u> Placing "caption" and removing empty cells </u></h4> 
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>caption-side</mark> / <mark>empty-cells</mark> properties </h4>
     <table class="style_style">
-    <caption style="caption-side: bottom;"> Caption on the bottom </caption>        
-        <tr>
-            <th> -A- </th>
-            <th>     </th>
-            <th> -C- </th>
-        </tr>
-        <tr>
-            <td >     </td>
-            <td> -2- </td>
-            <td> -3- </td>
-        </tr>
-        <tr>
-            <td> -1- </td>
-            <td>     </td>
-            <td> -3- </td>
-        </tr>
-        <tr>
-            <td> -1- </td>
-            <td> -2- </td>
-            <td>     </td>
-        </tr>
+      <caption style="caption-side: bottom;"> Caption on the bottom </caption>
+      <tr>
+        <th> -A- </th>
+        <th> </th>
+        <th> -C- </th>
+      </tr>
+      <tr>
+        <td> </td>
+        <td> -2- </td>
+        <td> -3- </td>
+      </tr>
+      <tr>
+        <td> -1- </td>
+        <td> </td>
+        <td> -3- </td>
+      </tr>
+      <tr>
+        <td> -1- </td>
+        <td> -2- </td>
+        <td> </td>
+      </tr>
     </table>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;table class="style_style">
     &lt;caption&gt; Caption on the bottom &lt;/caption&gt;
@@ -688,62 +786,9 @@
     }
     </pre>
     </details>
-<!--------------------------------------------------------------------------------------------------------------------->    
-<hr>
-<h4><u> <mark>tbody</mark> element automatically added TEST </u></h4>
-    <table id="testTbody">
-        <th>
-            <td> A </td>
-            <td> B </td>
-            <td> C </td>
-        </th>
-        <tr>
-            <td> 1 </td>    
-            <td> 2 </td>    
-            <td> 3 </td>    
-        </tr>
-        <tr>
-            <td> 1 </td>    
-            <td> 2 </td>    
-            <td> 3 </td>    
-        </tr>
-    </table>
-    <p id="testTbody_print"> the above table's first child element is = <mark></mark></p>
-<script>
-    document.getElementById("testTbody_print").firstElementChild.textContent = 
-        document.getElementById("testTbody").firstElementChild.tagName;
-</script>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-// -! the "tbody" element is not in the original code it is added and shown here!
-    
-    <table id="testTbody">
-        <th>
-            <td> A </td>
-            <td> B </td>
-            <td> C </td>
-        </th> 
-        <tr> 
-            <td> 1 </td>    
-            <td> 2 </td>    
-            <td> 3 </td>    
-        </tr> 
-        <tr> 
-            <td> 1 </td>    
-            <td> 2 </td>    
-            <td> 3 </td>    
-        </tr>
-    </table>
-    <p id="testTbody_print"> the above table's first child element is = <mark></mark></p>
-<script>
-    document.getElementById("testTbody_print").firstElementChild.textContent = 
-        document.getElementById("testTbody").firstElementChild.tagName;
-</script>
-        </pre> 
-        </details>
-</details>
-    
-    <br><br>
+  </details>
+
+  <br><br>
 </body>
+
 </html>

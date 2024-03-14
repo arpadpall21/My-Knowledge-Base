@@ -1,160 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Tables </title>    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="../../Assets/stylesPages.css">
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Tables </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Tables (ver 2.9) </h1>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html">HTML></a> Tables  
-    </p>
-<table class="table">
-<caption> TAG's </caption>
+  <h1> Tables </h1>
+  <p> Updated ( 2016-06-01 / 2024-03-13 ) </p>
+
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html">HTML></a> Tables
+  </p>
+  <table class="table">
     <tr>
-        <th> Tag </th>
-        <th> Attribute </th>
-        <th> Description </th>
+      <th style="width: 15%;"> Tag </th>
+      <th style="width: 40%;"> Attribute </th>
+      <th> Description </th>
     </tr>
     <tr>
-        <td> &lt;caption&gt; </td>
-        <td>  </td>
-        <td> 
-            defines the table's caption<br>
-            <span style="color:#7f85a3;"> &nbsp; - must be inserted after the <mark>&lt;table&gt;</mark> tag</span><br>
-            <span style="color:#7f85a3;"> &nbsp; - only one per table</span>
-        </td>
+      <td> &lt;table&gt; </td>
+      <td> </td>
+      <td> - defines a table </td>
     </tr>
     <tr>
-        <td> &lt;col&gt; </td>
-        <td> span="<i>nr</i>" <span style="color:#7f85a3;">(span columns for styling only)</span><br> </td>
-        <td> 
-            specifies a table's column in the sequence<br>
-            <span style="color:#7f85a3;"> &nbsp; - must be child of the <mark>&lt;colgroup&gt;</mark> element</span>
-        </td>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
-        <td> &lt;colgroup&gt; </td>
-        <td>  </td>
-        <td> 
-            defines a group for the table columns for formating (nests <mark>&lt;col&gt;</mark> elements)<br>
-            <span style="color:#7f85a3;"> &nbsp; - must be child element of the <mark>&lt;table&gt;</mark> element</span><br>
-            <span style="color:#7f85a3;"> &nbsp; - must come after the <mark>&lt;caption&gt;</mark> element and before any <mark>&lt;thead&gt;</mark>, <mark>&lt;tbody&gt;</mark>, <mark>&lt;tfoot&gt;</mark>, <mark>&lt;tr&gt;</mark> elements </span>
-        </td>
+      <td> &lt;caption&gt; </td>
+      <td> </td>
+      <td>
+        - defines the table's caption<br>
+        - only one per table
+      </td>
     </tr>
     <tr>
-        <td> &lt;table&gt; </td>
-        <td>  </td>
-        <td> defines a table </td>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
-        <td> &lt;tbody&gt; </td>
-        <td>  </td>
-        <td>  
-            groups body content in the table <u style="color:orangered;">required! (you don't need to specify it but the browser automatically include one in the table when it is rendered)</u><br>
-            <span style="color:#7f85a3;"> &nbsp; - used in conjonction with the <mark>&lt;thead&gt;</mark> and <mark>&lt;tfoot&gt;</mark> elements</span><br>
-            <span style="color:#7f85a3;"> &nbsp; - must be child element of the <mark>&lt;table&gt;</mark> element</span><br>
-            <span style="color:#7f85a3;"> &nbsp; - comes after the <mark>&lt;caption&gt;</mark>, <mark>&lt;colgroup&gt;</mark> and <mark>&lt;thead&gt;</mark> elements <span style="color:orangered;">(according to W3C)</span> </span><br>
-        </td>
+      <td> &lt;colgroup&gt; </td>
+      <td> </td>
+      <td>
+        - defines a group for the table columns (nests <mark>&lt;col&gt;</mark> elements) <br>
+        - must be child element of the <mark>&lt;table&gt;</mark> element
+      </td>
     </tr>
     <tr>
-        <td> &lt;td&gt; </td>
-        <td>  
-            colspan="<i>nr</i>" <span style="color:#7f85a3;">(span columns)</span><br>
-            headers="<i>id</i>" <span style="color:#7f85a3;">(specified the header relation with other headers [no visual effect])</span><br>
-            rowspan="<i>nr</i>" <span style="color:#7f85a3;">(span rows)</span>
-        </td>
-        <td> defines a standard cell in the table </td>
+      <td> &lt;col&gt; </td>
+      <td> span="<i>nr</i>" <span style="color:#7f85a3;">(span columns for styling only)</span><br> </td>
+      <td>
+        - specifies a table column (in the sequence) (makes possible to select table columns) <br>
+        - must be child of the <mark>&lt;colgroup&gt;</mark> element
+      </td>
     </tr>
     <tr>
-        <td> &lt;tfoot&gt; </td>
-        <td>  </td>
-        <td> 
-            groups footer content in the table<br>
-            <span style="color:#7f85a3;"> &nbsp; - used in conjonction with the <mark>&lt;thead&gt;</mark> and <mark>&lt;tbody&gt;</mark> elements</span><br>
-            <span style="color:#7f85a3;"> &nbsp; - must be child element of the <mark>&lt;table&gt;</mark> element</span><br>
-            <span style="color:#7f85a3;"> &nbsp; - comes after the <mark>&lt;caption&gt;</mark>, <mark>&lt;colgroup&gt;</mark> and <mark>&lt;thead&gt;</mark> elements <span style="color:orangered;">(according to W3C)</span> </span><br>
-            <span style="color:#7f85a3;"> &nbsp; - comes before <mark>&lt;tbody&gt;</mark>, <mark>&lt;th&gt;</mark> elements <span style="color:orangered;">(according to W3C)</span> </span>
-        </td>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
-        <td> &lt;th&gt; </td>
-        <td> 
-            abbr="<i>text</i> <span style="color:#7f85a3;">(specifies an abreviated version of the content)</span><br> 
-            colspan="<i>nr</i>" <span style="color:#7f85a3;">(span columns)</span><br>
-            headers="<i>id</i>" <span style="color:#7f85a3;">(specified the header relation with other headers [no visual effect])</span><br>
-            rowspan="<i>nr</i>" <span style="color:#7f85a3;">(span rows)</span><br>
-            scope="col / colgroup / row / rowgroup" <span style="color:#7f85a3;">(specifies header scope [no visual effect])</span>
-        </td>
-        <td> defines a header cell in the table </td>
+      <td> &lt;tr&gt; </td>
+      <td> </td>
+      <td> - defines a table row </td>
     </tr>
     <tr>
-        <td> &lt;thead&gt; </td>
-        <td>  </td>
-        <td> 
-            groups header elements<br>
-            <span style="color:#7f85a3;"> &nbsp; - used in conjonction with the <mark>&lt;tbody&gt;</mark> and <mark>&lt;tfoot&gt;</mark> elements</span><br>
-            <span style="color:#7f85a3;"> &nbsp; - must be child element of the <mark>&lt;table&gt;</mark> element</span><br>
-            <span style="color:#7f85a3;"> &nbsp; - comes after the <mark>&lt;caption&gt;</mark> and <mark>&lt;colgroup&gt;</mark> elements</span> <br>
-            <span style="color:#7f85a3;"> &nbsp; - comes before <mark>&lt;tbody&gt;</mark>, <mark>&lt;tfoot&gt;</mark>, <mark>&lt;tr&gt;</mark> elements <span style="color:orangered;">(according to W3C)</span> </span>
-        </td>
+      <td> &lt;th&gt; </td>
+      <td>
+        abbr="<i>text</i> <span style="color:#7f85a3;">(specifies an abreviated version of the content)</span><br>
+        colspan="<i>nr</i>" <span style="color:#7f85a3;">(span columns)</span><br>
+        headers="<i>id</i>" <span style="color:#7f85a3;">(specified the header relation with other headers [no visual effect])</span><br>
+        rowspan="<i>nr</i>" <span style="color:#7f85a3;">(span rows)</span><br>
+        scope="col / colgroup / row / rowgroup" <span style="color:#7f85a3;">(specifies header scope [no visual effect])</span>
+      </td>
+      <td> - defines a header cell in the table </td>
     </tr>
     <tr>
-        <td> &lt;tr&gt; </td>
-        <td>  </td>
-        <td> defines a table row </td>
+      <td> &lt;td&gt; </td>
+      <td>
+        colspan="<i>nr</i>" <span style="color:#7f85a3;">(span columns)</span><br>
+        headers="<i>id</i>" <span style="color:#7f85a3;">(specified the header relation with other headers [no visual effect])</span><br>
+        rowspan="<i>nr</i>" <span style="color:#7f85a3;">(span rows)</span>
+      </td>
+      <td> - defines a standard cell in the table </td>
     </tr>
-</table>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="http://www.w3schools.com/html/html_tables.asp" target="_blank"> W3Schools HTML Table </a></p>
-    <p><a href="http://www.w3schools.com/css/css_table.asp" target="_blank"> W3Schools CSS Table </a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    <p> - the <mark>&lt;colgroup&gt;</mark> element has limited style posibilities, can only style <mark>background / border / width / visibility</mark> </p>
-    <p> - the <mark>&lt;tfoot&gt;</mark> element comes after the <mark>&lt;thead&gt;</mark> element but <u>before the <mark>&lt;tbody&gt;</mark> element</u> (according to W3C), I tested by mixing these element and the browser (Chrome) renders them in the right order (thead -&gt; tbody -&gt; tfoot [2018-08-16]) </p>
-    <p> - at least one <mark>&lt;tbody&gt;</mark> element is required in a table <u>if you don't specify it the browser automatically wraps the table's content in one</u></p>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - the <mark>&lt;table&gt;</mark> element defines a table element which contains other children elements, these elements are independent therefore they can be targeted infividually </p>
-    <p> - ordinary elements can be rendered as table element by using the <mark>display</mark> property see: <a href="../../02 CSS/Element Rendering/index.html" target="_blank"> Rendering Elements (CSS) </a></p>    
-    <pre class="syntax">
-SYNTAX :    &lt;table&gt;
-                &lt;caption&gt; <i>captionTitle</i> &lt;/caption&gt;      // caption comes afther the "&lt;table&gt;" TAG
-                &lt;colgroup&gt;                             // colgroup nest col TAGs and comes after the "&lt;caption&gt;" TAG
-                    &lt;col&gt;                              // refers to the 1st column
-                    &lt;col span="2"&gt;                     // refers to the 2nd and 3rd columns
-                &lt;/colgroup&gt;
-                &lt;thead&gt;                                // &lt;thead&gt;, &lt;tfoot&gt;, &lt;tbody&gt; are optional but they <u>must be used in conjonction</u>
-                    &lt;tr&gt;                               // you can mix up these elements, browser will render them in the <u>order of &lt;thead&gt; --&gt; &lt;tbody&gt; --&gt; &lt;tfoot&gt;</u>
-                        &lt;th&gt; <i>content</i> &lt;/th&gt;
-                        &lt;th&gt; <i>content</i> &lt;/th&gt;
-                        &lt;th&gt; <i>content</i> &lt;/th&gt;
-                    &lt;/tr&gt;
-                &lt;/thead&gt;
-                &lt;tfoot&gt;                                // &lt;tfoot&gt; comes after &lt;thead&gt; according to (W3C) but not by MDN
-                    &lt;tr&gt;
-                        &lt;td&gt; <i>content</i> &lt;/td&gt;
-                        &lt;td&gt; <i>content</i> &lt;/td&gt;
-                        &lt;td&gt; <i>content</i> &lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tfoot&gt;
-                &lt;tbody&gt;                                // groups body content <u style="color:orange;">Required! (you don't need to specify it but the browser automatically include one in the table when it is rendered)</u>
-                    &lt;tr&gt;
-                        &lt;td&gt; <i>content</i> &lt;/td&gt;
-                        &lt;td&gt; <i>content</i> &lt;/td&gt;
-                        &lt;td&gt; <i>content</i> &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt; <i>content</i> &lt;/td&gt;
-                        &lt;td&gt; <i>content</i> &lt;/td&gt;
-                        &lt;td&gt; <i>content</i> &lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-            &lt;/table&gt;
-    </pre>  
-    <pre>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> &lt;thead&gt; </td>
+      <td> </td>
+      <td>
+        - (optional) groups header elements <br>
+      </td>
+    </tr>
+    <tr>
+      <td> &lt;tbody&gt; </td>
+      <td> </td>
+      <td>
+        - groups the table body <u>(not required but if ignored the browser automatically wraps the table body in this tag)
+      </td>
+    </tr>
+    <tr>
+      <td> &lt;tfoot&gt; </td>
+      <td> </td>
+      <td>
+        - (optional) groups footer elements
+      </td>
+    </tr>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="http://www.w3schools.com/html/html_tables.asp" target="_blank"> W3Schools HTML Table </a></p>
+  <p><a href="http://www.w3schools.com/css/css_table.asp" target="_blank"> W3Schools CSS Table </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - the <mark>&lt;colgroup&gt;</mark> element has limited style posibilities, can only style <mark>background / border / width / visibility</mark> </p>
+  <p> - at least one <mark>&lt;tbody&gt;</mark> element is required in a table <u>if you don't specify it the browser automatically wraps the table's content in one</u></p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - the <mark>&lt;table&gt;</mark> element defines a table element which contains other children elements, these elements are independent therefore they can be targeted infividually </p>
+  <p> - ordinary elements can be rendered as table element by using the <mark>display</mark> property see: <a href="../../02 CSS/Element Rendering/index.html" target="_blank"> Rendering Elements (CSS) </a></p>
+  <pre class="syntax">
+    &lt;table&gt;
+      &lt;caption&gt; <i>captionTitle</i> &lt;/caption&gt;      // caption comes afther the "&lt;table&gt;" TAG
+      &lt;colgroup&gt;                             // colgroup nest col TAGs and comes after the "&lt;caption&gt;" TAG
+          &lt;col&gt;                              // refers to the 1st column
+          &lt;col span="2"&gt;                     // refers to the 2nd and 3rd columns
+      &lt;/colgroup&gt;
+      &lt;thead&gt;                                // optional
+          &lt;tr&gt;        
+              &lt;th&gt; <i>content</i> &lt;/th&gt;
+              &lt;th&gt; <i>content</i> &lt;/th&gt;
+              &lt;th&gt; <i>content</i> &lt;/th&gt;
+          &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;                                // -! groups body content (we don't have to set it, but the browser will automatically wraps the table content in this case)
+            &lt;tr&gt;
+                &lt;td&gt; <i>content</i> &lt;/td&gt;
+                &lt;td&gt; <i>content</i> &lt;/td&gt;
+                &lt;td&gt; <i>content</i> &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt; <i>content</i> &lt;/td&gt;
+                &lt;td&gt; <i>content</i> &lt;/td&gt;
+                &lt;td&gt; <i>content</i> &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+      &lt;tfoot&gt;                                   // optional
+          &lt;tr&gt;
+              &lt;td&gt; <i>content</i> &lt;/td&gt;
+              &lt;td&gt; <i>content</i> &lt;/td&gt;
+              &lt;td&gt; <i>content</i> &lt;/td&gt;
+          &lt;/tr&gt;
+      &lt;/tfoot&gt;
+    &lt;/table&gt;
+    </pre>
+  <pre>
     &lt;table&gt;
         &lt;caption&gt; myTable &lt;/caption&gt;      
         &lt;colgroup&gt;                             
@@ -188,33 +198,33 @@ SYNTAX :    &lt;table&gt;
         &lt;/tbody&gt;
     &lt;/table&gt;
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> Cell Spaning </u></h4>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> Cell Spaning </u></h4>
     <table class="first">
-    <caption> Test Table (caption)</caption>
-        <tr>
-            <th> Ab </th>
-            <th colspan="2"> B </th>
-        </tr>
-        <tr>
-            <td> 1 </td>
-            <td> 2 </td>
-            <td> 3 </td>
-        </tr>
-        <tr>
-            <td rowspan="2"> 4 </td>
-            <td> 5 </td>
-            <td> 6 </td>
-        </tr>
-        <tr>
-            <td> 7 </td>
-            <td> 8 </td>
-        </tr>
+      <caption> Test Table (caption)</caption>
+      <tr>
+        <th> Ab </th>
+        <th colspan="2"> B </th>
+      </tr>
+      <tr>
+        <td> 1 </td>
+        <td> 2 </td>
+        <td> 3 </td>
+      </tr>
+      <tr>
+        <td rowspan="2"> 4 </td>
+        <td> 5 </td>
+        <td> 6 </td>
+      </tr>
+      <tr>
+        <td> 7 </td>
+        <td> 8 </td>
+      </tr>
     </table>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;table class="first"&gt;
     &lt;caption&gt; Test Table (caption)&lt;/caption&gt;
@@ -257,29 +267,29 @@ SYNTAX :    &lt;table&gt;
     }
     </pre>
     </details>
-<!--------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h4><u> Border Spacing Property </u></h4>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4><u> Border Spacing Property </u></h4>
     <table class="bordspace">
-        <tr>
-            <td>Jill</td>
-            <td>Smith</td>
-            <td>50</td>
-        </tr>
-        <tr>
-            <td>Eve</td>
-            <td>Jackson</td>
-            <td>94</td>
-        </tr>
-        <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>80</td>
-        </tr>
+      <tr>
+        <td>Jill</td>
+        <td>Smith</td>
+        <td>50</td>
+      </tr>
+      <tr>
+        <td>Eve</td>
+        <td>Jackson</td>
+        <td>94</td>
+      </tr>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>80</td>
+      </tr>
     </table>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;table class="bordspace"&gt;
         &lt;tr&gt;
@@ -312,34 +322,34 @@ SYNTAX :    &lt;table&gt;
     }
     </pre>
     </details>
-<!--------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h4><u> Hovering rows </u></h4>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4><u> Hovering rows </u></h4>
     <table class="tab">
-        <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Savings</th>
-        </tr>
-        <tr>
-            <td>Peter</td>
-            <td>Grifin</td>
-            <td>100$</td>
-        </tr>
-        <tr>
-            <td>Lois</td>
-            <td>Grifin</td>
-            <td>150$</td>
-        </tr>
-        <tr>
-            <td>Joes</td>
-            <td>Swanson</td>
-            <td>500$</td>
-        </tr>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Savings</th>
+      </tr>
+      <tr>
+        <td>Peter</td>
+        <td>Grifin</td>
+        <td>100$</td>
+      </tr>
+      <tr>
+        <td>Lois</td>
+        <td>Grifin</td>
+        <td>150$</td>
+      </tr>
+      <tr>
+        <td>Joes</td>
+        <td>Swanson</td>
+        <td>500$</td>
+      </tr>
     </table>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;table class="tab"&gt;
     &lt;tr&gt;
@@ -382,39 +392,39 @@ SYNTAX :    &lt;table&gt;
     }
     </pre>
     </details>
-<!--------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h4><u> Stripped Table </u></h4>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4><u> Stripped Table </u></h4>
     <table class="ta">
-        <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Savings</th>
-        </tr>
-        <tr>
-            <td>Peter</td>
-            <td>Griffin</td>
-            <td>$100</td>
-        </tr>
-        <tr>
-            <td>Lois</td>
-            <td>Griffin</td>
-            <td>$150</td>
-        </tr>
-        <tr>
-            <td>Joe</td>
-            <td>Swanson</td>
-            <td>$300</td>
-        </tr>
-        <tr>
-            <td>Cleveland</td>
-            <td>Brown</td>
-            <td>$250</td>
-        </tr>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Savings</th>
+      </tr>
+      <tr>
+        <td>Peter</td>
+        <td>Griffin</td>
+        <td>$100</td>
+      </tr>
+      <tr>
+        <td>Lois</td>
+        <td>Griffin</td>
+        <td>$150</td>
+      </tr>
+      <tr>
+        <td>Joe</td>
+        <td>Swanson</td>
+        <td>$300</td>
+      </tr>
+      <tr>
+        <td>Cleveland</td>
+        <td>Brown</td>
+        <td>$250</td>
+      </tr>
     </table>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;table class="ta"&gt;
         &lt;tr&gt;
@@ -460,55 +470,55 @@ SYNTAX :    &lt;table&gt;
     }
     </pre>
     </details>
-<!--------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h4><u> Targeting Columns </u></h4>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4><u> Targeting Columns </u></h4>
     <table class="colon_style">
-    <caption> Column Styled Table</caption>
-    <colgroup>
+      <caption> Column Styled Table</caption>
+      <colgroup>
         <col style="background-color:yellow;">
         <col span="2" style="background-color:blue;">
         <col span="3" style="background-color:white;">
         <col span="2" style="background-color:red;">
         <col style="background-color:yellow;">
-    </colgroup>
-        <tr>
-            <th> -A- </th>
-            <th> -B- </th>
-            <th> -C- </th>
-            <th> -D- </th>
-            <th> -E- </th>
-            <th> -F- </th>
-            <th> -G- </th>
-            <th> -H- </th>
-            <th> -I- </th>
-        </tr>
-        <tr>
-            <td> -1- </td>
-            <td> -2- </td>
-            <td> -3- </td>
-            <td> -4- </td>
-            <td> -5- </td>
-            <td> -6- </td>
-            <td> -7- </td>
-            <td> -8- </td>
-            <td> -9- </td>
-        </tr>
-        <tr>
-            <td> -1- </td>
-            <td> -2- </td>
-            <td> -3- </td>
-            <td> -4- </td>
-            <td> -5- </td>
-            <td> -6- </td>
-            <td> -7- </td>
-            <td> -8- </td>
-            <td> -9- </td>
-        </tr>
+      </colgroup>
+      <tr>
+        <th> -A- </th>
+        <th> -B- </th>
+        <th> -C- </th>
+        <th> -D- </th>
+        <th> -E- </th>
+        <th> -F- </th>
+        <th> -G- </th>
+        <th> -H- </th>
+        <th> -I- </th>
+      </tr>
+      <tr>
+        <td> -1- </td>
+        <td> -2- </td>
+        <td> -3- </td>
+        <td> -4- </td>
+        <td> -5- </td>
+        <td> -6- </td>
+        <td> -7- </td>
+        <td> -8- </td>
+        <td> -9- </td>
+      </tr>
+      <tr>
+        <td> -1- </td>
+        <td> -2- </td>
+        <td> -3- </td>
+        <td> -4- </td>
+        <td> -5- </td>
+        <td> -6- </td>
+        <td> -7- </td>
+        <td> -8- </td>
+        <td> -9- </td>
+      </tr>
     </table>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     -- CODE (HTML) --
     &lt;table class="colon_style"&gt;
     &lt;caption&gt; Colon Styled Table &lt;/caption&gt;
@@ -565,56 +575,56 @@ SYNTAX :    &lt;table&gt;
     }
     </pre>
     </details>
-<!--------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h4><u> Targeting row <mark>thead</mark>, <mark>tbody</mark>, <mark>tofoot</mark> elements </u></h4>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4><u> Targeting row <mark>thead</mark>, <mark>tbody</mark>, <mark>tofoot</mark> elements </u></h4>
     <table class="row_style">
-    <caption>Row Styled Table</caption>
-        <thead>
-            <tr>
-                <th> -A- </th>
-                <th> -B- </th>
-                <th> -C- </th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <td> -X- </td>
-                <td> -Y- </td>
-                <td> -Z- </td>
-            </tr>
-        </tfoot>
-        <tbody>
-            <tr>
-                <td> -10- </td>
-                <td> -20- </td>
-                <td> -30- </td>
-            </tr>
-            <tr>
-                <td> -11- </td>
-                <td> -21 </td>
-                <td> -31 </td>
-            </tr>
-            <tr>
-                <td> -12- </td>
-                <td> -22 </td>
-                <td> -32 </td>
-            </tr>
-            <tr>
-                <td> -13- </td>
-                <td> -23 </td>
-                <td> -33 </td>
-            </tr>
-            <tr>
-                <td> -14- </td>
-                <td> -24 </td>
-                <td> -34 </td>
-            </tr>
-        </tbody>
+      <caption>Row Styled Table</caption>
+      <thead>
+        <tr>
+          <th> -A- </th>
+          <th> -B- </th>
+          <th> -C- </th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td> -X- </td>
+          <td> -Y- </td>
+          <td> -Z- </td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <tr>
+          <td> -10- </td>
+          <td> -20- </td>
+          <td> -30- </td>
+        </tr>
+        <tr>
+          <td> -11- </td>
+          <td> -21 </td>
+          <td> -31 </td>
+        </tr>
+        <tr>
+          <td> -12- </td>
+          <td> -22 </td>
+          <td> -32 </td>
+        </tr>
+        <tr>
+          <td> -13- </td>
+          <td> -23 </td>
+          <td> -33 </td>
+        </tr>
+        <tr>
+          <td> -14- </td>
+          <td> -24 </td>
+          <td> -34 </td>
+        </tr>
+      </tbody>
     </table>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;table class="row_style"&gt;
     &lt;caption&gt; Row Styled Table&lt;/caption&gt;
@@ -674,35 +684,35 @@ SYNTAX :    &lt;table&gt;
     }
     </pre>
     </details>
-<!--------------------------------------------------------------------------------------------------------------------->    
-<hr>
-<h4><u> Placing "caption" and removing empty cells </u></h4> 
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4><u> Placing "caption" and removing empty cells </u></h4>
     <table class="style_style">
-    <caption style="caption-side: bottom;"> Caption on the bottom </caption>        
-        <tr>
-            <th> -A- </th>
-            <th>     </th>
-            <th> -C- </th>
-        </tr>
-        <tr>
-            <td >     </td>
-            <td> -2- </td>
-            <td> -3- </td>
-        </tr>
-        <tr>
-            <td> -1- </td>
-            <td>     </td>
-            <td> -3- </td>
-        </tr>
-        <tr>
-            <td> -1- </td>
-            <td> -2- </td>
-            <td>     </td>
-        </tr>
+      <caption style="caption-side: bottom;"> Caption on the bottom </caption>
+      <tr>
+        <th> -A- </th>
+        <th> </th>
+        <th> -C- </th>
+      </tr>
+      <tr>
+        <td> </td>
+        <td> -2- </td>
+        <td> -3- </td>
+      </tr>
+      <tr>
+        <td> -1- </td>
+        <td> </td>
+        <td> -3- </td>
+      </tr>
+      <tr>
+        <td> -1- </td>
+        <td> -2- </td>
+        <td> </td>
+      </tr>
     </table>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;table class="style_style">
     &lt;caption&gt; Caption on the bottom &lt;/caption&gt;
@@ -749,34 +759,34 @@ SYNTAX :    &lt;table&gt;
     }
     </pre>
     </details>
-<!--------------------------------------------------------------------------------------------------------------------->    
-<hr>
-<h4><u> <mark>tbody</mark> element automatically added TEST </u></h4>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4><u> <mark>tbody</mark> element automatically added TEST </u></h4>
     <table id="testTbody">
-        <th>
-            <td> A </td>
-            <td> B </td>
-            <td> C </td>
-        </th>
-        <tr>
-            <td> 1 </td>    
-            <td> 2 </td>    
-            <td> 3 </td>    
-        </tr>
-        <tr>
-            <td> 1 </td>    
-            <td> 2 </td>    
-            <td> 3 </td>    
-        </tr>
+      <th>
+      <td> A </td>
+      <td> B </td>
+      <td> C </td>
+      </th>
+      <tr>
+        <td> 1 </td>
+        <td> 2 </td>
+        <td> 3 </td>
+      </tr>
+      <tr>
+        <td> 1 </td>
+        <td> 2 </td>
+        <td> 3 </td>
+      </tr>
     </table>
     <p id="testTbody_print"> the above table's first child element is = <mark></mark></p>
-<script>
-    document.getElementById("testTbody_print").firstElementChild.textContent = 
+    <script>
+      document.getElementById("testTbody_print").firstElementChild.textContent =
         document.getElementById("testTbody").firstElementChild.tagName;
-</script>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 // -! the "tbody" element is not in the original code it is added and shown here!
     
     <table id="testTbody">
@@ -798,13 +808,14 @@ SYNTAX :    &lt;table&gt;
     </table>
     <p id="testTbody_print"> the above table's first child element is = <mark></mark></p>
 <script>
-    document.getElementById("testTbody_print").firstElementChild.textContent = 
-        document.getElementById("testTbody").firstElementChild.tagName;
+  document.getElementById("testTbody_print").firstElementChild.textContent =
+    document.getElementById("testTbody").firstElementChild.tagName;
 </script>
-        </pre> 
-        </details>
-</details>
-    
-    <br><br>
+        </pre>
+    </details>
+  </details>
+
+  <br><br>
 </body>
+
 </html>

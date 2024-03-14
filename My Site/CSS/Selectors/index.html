@@ -148,14 +148,13 @@
   <table class="table">
     <caption>
       Attribute Selectors
-      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
     </caption>
     <tr>
       <th style="width:30%"> Selector </th>
       <th> Description </th>
     </tr>
-    <tr class="05.01">
-      <td> [<strong>attr</strong><small>="<i>val</i>"</small> <small>i</small>] </td>
+    <tr>
+      <td> [<strong>attr</strong><small>[="<i>val</i>" i]</small>] </td>
       <td>
         - targets all elements with the specified attribute (and value)<br>
         - (<small>i</small>) case insensitive match
@@ -168,7 +167,11 @@
         </span>
       </td>
     </tr>
-    <tr class="10.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td> [<strong>attr</strong>~="<strong>val</strong>"] </td>
       <td>
         - css attirbutes can have multiple values (separated by space), this selector select the element if any of those
@@ -182,7 +185,11 @@
         </span>
       </td>
     </tr>
-    <tr class="20.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td> [<strong>attr</strong>*="<strong>val</strong>"] </td>
       <td>
         - target elements where the attribute value contains <strong>val</strong>
@@ -195,7 +202,7 @@
         </span>
       </td>
     </tr>
-    <tr class="20.02">
+    <tr>
       <td> [<strong>attr</strong>^="<strong>val</strong>"] </td>
       <td>
         - target elements where the attribute value starts with <strong>val</strong>
@@ -208,7 +215,7 @@
         </span>
       </td>
     </tr>
-    <tr class="20.03">
+    <tr>
       <td> [<strong>attr</strong>|="<strong>val</strong>"] </td>
       <td>
         - target elements where the attribute value starts with <strong>val</strong> <u>followed by <mark>-</mark> (hyphen)
@@ -221,7 +228,7 @@
         </span>
       </td>
     </tr>
-    <tr class="20.04">
+    <tr>
       <td> [<strong>attr</strong>$="<strong>val</strong>"] </td>
       <td>
         - target elements where the attribute value ends with <strong>val</strong>

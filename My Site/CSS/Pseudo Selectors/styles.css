@@ -326,5 +326,3 @@ form#readonly input[type="text"]:-moz-read-only{
 #myDialogBox2::backdrop {     
     background-color: rgba(255, 0, 0, .4);
 }
-
-

@@ -1,224 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Global </title> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Global </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Global (ver 4.0.0) </h1>
-    <p> Updated ( 2022-02-12 )</p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html">Node.js></a> Global
-    </p>
-<table class="table">
-<caption>
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  <h1> Global </h1>
+  <p> Updated ( 2022-02-12 / 2024-03-13 )</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html">Node.js></a> Global
+  </p>
+  <table class="table">
     <tr>
-        <th style="width:30%;"> Method / Property / statement ect... </th>
-        <th> Description </th>
+      <th style="width:30%;"> Method / Property / statement ect... </th>
+      <th> Description </th>
     </tr>
-    <tr class="0">
-        <td> 
-            atob(<strong>str</strong>)
-        </td>
-        <td> 
-            - encodes the passed <strong>str</strong> into base64 and returns it (Not recommended to use, use some <mark>Buffer</mark> tools instead)
-            <span class="browserSupport" title="updated : 2022-02-12">
-                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="0">
-        <td> 
-            btoa(<strong class="openable">strBase64<div>
-                <p> - base64 encoded string </p>
-            </div></strong>)
-        </td>
-        <td> 
-            - encodes the passed <strong>strBase64</strong> into a JavaScript string (Not recommended to use, use some <mark>Buffer</mark> tools instead)
-            <span class="browserSupport" title="updated : 2022-02-12">
-                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
-            </span>
-        </td>
-    </tr>
-</table>
-    <br>
-<table class="table">
-<caption>
-    <mark>AbortController</mark> and <mark>AbortSignal</mark> API 
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
     <tr>
-        <th style="width:30%;"> Method / Property / statement ect... </th>
-        <th> Description </th>
+      <td>
+        atob(<strong>str</strong>)
+      </td>
+      <td>
+        - encodes the passed <strong>str</strong> into base64 and returns it (Not recommended to use, use some <mark>Buffer</mark> tools instead)
+        <span class="browserSupport" title="updated : 2022-02-12">
+          <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="0">
-        <td colspan="2"> <mark>AbortController</mark> </td>
+    <tr>
+      <td>
+        btoa(<strong class="openable">strBase64<div>
+            <p> - base64 encoded string </p>
+          </div></strong>)
+      </td>
+      <td>
+        - encodes the passed <strong>strBase64</strong> into a JavaScript string (Not recommended to use, use some <mark>Buffer</mark> tools instead)
+        <span class="browserSupport" title="updated : 2022-02-12">
+          <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="0">
-        <td> 
-            new AbortController()
-        </td>
-        <td> 
-            - creates and returns a new <strong>abortController</strong> object 
-            <span class="browserSupport" title="updated : 2022-02-13">
-                <span><i class="fab fa-node-js"></i> 15.4.0 </span>
-            </span>
-        </td>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      <mark>AbortController</mark> and <mark>AbortSignal</mark> API
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Method / Property / statement ect... </th>
+      <th> Description </th>
     </tr>
-    <tr class="0">
-        <td> 
-            <strong>abortController</strong>.signal
-        </td>
-        <td> 
-            - returns the <strong>abortSignal</strong> of the abortController
-            <span class="browserSupport" title="updated : 2022-02-13">
-                <span><i class="fab fa-node-js"></i> 15.4.0 </span>
-            </span>
-        </td>
+    <tr>
+      <td colspan="2"> <mark>AbortController</mark> </td>
     </tr>
-    <tr class="0">
-        <td> 
-            <strong>abortController</strong>.abort(<i class="openable">reason:any<div>
-                <p> - retrieveable on the <mark><strong>abortSginal</strong>.reason</mark> property </p>
-            </div></i>)
-        </td>
-        <td> 
-            - triggers the abort signal, causes the <mark><strong>abortController</strong>.signal</mark> to emit the <mark>abort</mark> event   
-            <span class="browserSupport" title="updated : 2022-02-13">
-                <span><i class="fab fa-node-js"></i> 15.4.0 </span>
-                <span><i class="fab fa-node-js"></i> 17.2.0 <i>reason</i> option </span>
-            </span>
-        </td>
+    <tr>
+      <td>
+        new AbortController()
+      </td>
+      <td>
+        - creates and returns a new <strong>abortController</strong> object
+        <span class="browserSupport" title="updated : 2022-02-13">
+          <span><i class="fab fa-node-js"></i> 15.4.0 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="0">
-        <td colspan="2"> <mark>AbortSignal</mark> </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="0">
-        <td> 
-            AbortSignal.abort(<i>reason:any</i>)
-        </td>
-        <td> 
-            - returns an already aborted <strong>abortSignal</strong> object 
-            <span class="browserSupport" title="updated : 2022-02-13">
-                <span><i class="fab fa-node-js"></i> 15.4.0 </span>
-                <span><i class="fab fa-node-js"></i> 17.2.0 <i>reason</i> option </span>
-            </span>
-        </td>
+    <tr>
+      <td>
+        <strong>abortController</strong>.signal
+      </td>
+      <td>
+        - returns the <strong>abortSignal</strong> instance of the abortController
+        <span class="browserSupport" title="updated : 2022-02-13">
+          <span><i class="fab fa-node-js"></i> 15.4.0 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="0">
-        <td> 
-            AbortSignal.timeout(<strong>delay:ms</strong>)
-        </td>
-        <td> 
-            - returns an <strong>abortSignal</strong> object which will be aborted after <strong>delay</strong>
-            <span class="browserSupport" title="updated : 2022-02-13">
-                <span><i class="fab fa-node-js"></i> 15.4.0 </span>
-                <span><i class="fab fa-node-js"></i> 17.2.0 <i>reason</i> option </span>
-            </span>
-        </td>
+    <tr>
+      <td>
+        <strong>abortController</strong>.abort(<i class="openable">reason:any<div>
+            <p> - retrieveable on the <mark><strong>abortSginal</strong>.reason</mark> property </p>
+          </div></i>)
+      </td>
+      <td>
+        - triggers the abort signal, causes the <mark><strong>abortController</strong>.signal</mark> to emit the <mark>abort</mark> event
+        <span class="browserSupport" title="updated : 2022-02-13">
+          <span><i class="fab fa-node-js"></i> 15.4.0 </span>
+          <span><i class="fab fa-node-js"></i> 17.2.0 <i>reason</i> option </span>
+        </span>
+      </td>
     </tr>
-    <tr class="0">
-        <td> 
-            <strong>abortSignal</strong>.aborted
-        </td>
-        <td> 
-            - returns <mark>true</mark> if the signal is aborted, othewise returns <mark>false</mark>
-            <span class="browserSupport" title="updated : 2022-02-13">
-                <span><i class="fab fa-node-js"></i> 15.4.0 </span>
-            </span>
-        </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="0">
-        <td> 
-            <strong>abortSignal</strong>.reason
-        </td>
-        <td> 
-            - returns abort reason (the argument passed in <mark>abort()</mark>
-            <span class="browserSupport" title="updated : 2022-02-13">
-                <span><i class="fab fa-node-js"></i> 17.2.0 </span>
-            </span>
-        </td>
+    <tr>
+      <td colspan="2"> <mark>AbortSignal</mark> </td>
     </tr>
-    <tr class="0">
-        <td> 
-            <strong>abortSignal</strong>.throwIfAborted()
-        </td>
-        <td> 
-            - throws the <mark><strong>abortSignal</strong>.reason</mark> value if the <strong>abortSginal</strong> is aborted (when <mark><strong>abortSginal</strong>.aborted</mark> is <mark>true</mark>) <br>
-            - this statement throws when called (not the <strong>abrotSignal</strong>)  
-            <span class="browserSupport" title="updated : 2022-02-13">
-                <span><i class="fab fa-node-js"></i> 17.3.0 </span>
-            </span>
-        </td>
+    <tr>
+      <td>
+        AbortSignal.abort(<i>reason:any</i>)
+      </td>
+      <td>
+        - returns an already aborted <strong>abortSignal</strong> object
+        <span class="browserSupport" title="updated : 2022-02-13">
+          <span><i class="fab fa-node-js"></i> 15.4.0 </span>
+          <span><i class="fab fa-node-js"></i> 17.2.0 <i>reason</i> option </span>
+        </span>
+      </td>
     </tr>
-    <tr class="0">
-        <td colspan="2"> events </td>
+    <tr>
+      <td>
+        AbortSignal.timeout(<strong>delay:ms</strong>)
+      </td>
+      <td>
+        - returns an <strong>abortSignal</strong> object which will be aborted after <strong>delay</strong>
+        <span class="browserSupport" title="updated : 2022-02-13">
+          <span><i class="fab fa-node-js"></i> 15.4.0 </span>
+          <span><i class="fab fa-node-js"></i> 17.2.0 <i>reason</i> option </span>
+        </span>
+      </td>
     </tr>
-    <tr class="0">
-        <td> 
-            <strong>abortSginal</strong>.addEventListener('abort', <strong>fn(ev)</strong>, {once:true})
-        </td>
-        <td> 
-            - event emitted when the <strong>abortSginal</strong> is aborted (on <mark><strong>abortController</strong>.abort()</mark> / <mark><strong>abortSignal</strong>.abort()</mark> / <mark><strong>abortSignal</strong>.timeout()</mark>) <br>
-            - the <mark>AbortController</mark> API is a frontend implementation in Node.js, this is the reason why we can use <mark>addEventListener()</mark> or <mark>onabort</mark> <br>
-            - the this even should be listened only once that's why we pass the <mark>{once:true}</mark> option    
-            <span class="browserSupport" title="updated : 2022-02-13">
-                <span><i class="fab fa-node-js"></i> 15.4.0 </span>
-            </span>
-        </td>
+    <tr>
+      <td>
+        AbortSignal.any(<reqval>abrotSignal[]</reqval>)
+      </td>
+      <td>
+        - returns a aborted new <reqval>abrotSignal</reqval> if any of the passed <reqval>abrotSignal</reqval> is aborted 
+        <span class="browserSupport">
+          <span><i class="fab fa-node-js"></i> 20.3.0 / 18.17.0 </span>
+        </span>
+      </td>
     </tr>
-        <tr class="0"><td></td><td></td></tr>
-    <tr class="0">
-        <td> 
-            <strong>abortSginal</strong>.onabort = <strong>fn(ev)</strong>
-        </td>
-        <td> 
-        </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-</table>
-
-
-
-
-
-
-    <br>
-    <details class="example" id="notes">
+    <tr>
+      <td>
+        <strong>abortSignal</strong>.aborted
+      </td>
+      <td>
+        - returns <mark>true</mark> if the signal is aborted, othewise returns <mark>false</mark>
+        <span class="browserSupport" title="updated : 2022-02-13">
+          <span><i class="fab fa-node-js"></i> 15.4.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>abortSignal</strong>.reason
+      </td>
+      <td>
+        - returns abort reason (the argument passed in <mark>abort()</mark>
+        <span class="browserSupport" title="updated : 2022-02-13">
+          <span><i class="fab fa-node-js"></i> 17.2.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>abortSignal</strong>.throwIfAborted()
+      </td>
+      <td>
+        - if <mark>abortSignal.<reqval>aborted</reqval></mark> is <mark>true</mark> throws <mark>abortSignal.<reqval>reason</reqval></mark> when called
+        <span class="browserSupport" title="updated : 2022-02-13">
+          <span><i class="fab fa-node-js"></i> 17.3.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>abortSginal</strong>.onabort = <strong>fn(ev)</strong>
+      </td>
+      <td>
+        - <reqval>fn</reqval> called when the <mark><reqval>abortControler</reqval>.abort()</mark> called
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2"> events </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>abortSginal</strong>.addEventListener('abort', <strong>fn(ev)</strong>, {once:true})
+      </td>
+      <td>
+        - event emitted when the <strong>abortSginal</strong> is aborted (on <mark><strong>abortController</strong>.abort()</mark> / <mark><strong>abortSignal</strong>.abort()</mark> / <mark><strong>abortSignal</strong>.timeout()</mark>) <br>
+        - the <mark>AbortController</mark> API is a frontend implementation in Node.js, this is the reason why we can use <mark>addEventListener()</mark> or <mark>onabort</mark> <br>
+        - the this even should be listened only once that's why we pass the <mark>{once:true}</mark> option
+        <span class="browserSupport" title="updated : 2022-02-13">
+          <span><i class="fab fa-node-js"></i> 15.4.0 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-        <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="https://nodejs.org/api/globals.html" target="_blanc">Globals (nodejs.org)</a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - this page contains tools that are available on the <mark>global</mark> object but not really relevant elsewhere </p>
-<!----------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="header"> The <mark>atob()</mark> / <mark>btoa()</mark> methods </h2>
-    <details class="example">
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://nodejs.org/api/globals.html" target="_blanc">Globals (nodejs.org)</a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - this page contains tools that are available on the <mark>global</mark> object but not really relevant elsewhere </p>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> The <mark>atob()</mark> / <mark>btoa()</mark> methods </h2>
+  <details class="example">
     <summary> DEMO </summary>
-        <pre>
+    <pre>
     const toBase64 = atob('test');                                                     // encodes the passed string in base64   
     toBase64;                                                                          // -> 'µë-'        // 'test' encoded in base64   
     
     btoa(toBase64);                                                                    // -> 'test'       // converts the base64 encoded data to string   
     </pre>
-    </details>
-<!----------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="headerExtra"> The <mark>AbortController</mark> / <mark>Signal</mark> API </h2>
-    <p> - the AbortController API is used to send an abort signal to promise based APIs (This API is the frontnend <mark>AbortController</mark> implementation in Node.js) </p>
-    <p> - the idea here if we have long pending promises we can abort them by sending abort signals to them </p>
-<details class="example">
-<summary> DEMO : </summary>
+  </details>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> The <mark>AbortController</mark> / <mark>Signal</mark> API </h2>
+  <p> - This API is used to send an abort signal to promise based APIs (Compatible with the browser <mark>AbortController</mark> API) </p>
+  <p> - we can send an abort signal to promisees that are pending </p>
+  <details class="example">
+    <summary> DEMO : </summary>
     <p> - at the time of writing this (2022-02-13) I couldn't find any build in promise that supports the AbortController API, so I ductaped one here in the bellow example </p>
     <pre style="margin-bottom:1px">
     const abortController = new AbortController();                                     // the abort controller that will send the abort signal    
@@ -299,10 +326,10 @@
         err;                                                                           // -> 'some abort error'    
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h3 class="header"> <mark>AbortController</mark> / <mark>signal</mark> / <mark>abort()</mark> / <mark>addEventListener()</mark> / <mark>onabort</mark> / <mark>reason</mark> / <mark>aborted</mark> TEST </h3>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h3 class="header"> <mark>AbortController</mark> / <mark>signal</mark> / <mark>abort()</mark> / <mark>addEventListener()</mark> / <mark>onabort</mark> / <mark>reason</mark> / <mark>aborted</mark> TEST </h3>
     <pre style="margin-bottom:1px">
     const abortController = new AbortController()
     const abortSignal = abortController.signal
@@ -333,9 +360,9 @@
         some abort reason
         true
     </pre>
-<!--------------------------------------------------------------------------------------------->
-<hr>
-<h3 class="header"> <mark>AbortSignal.abort()</mark> / <mark>AbortSignal.timeout()</mark> TEST </h3>
+    <!--------------------------------------------------------------------------------------------->
+    <hr>
+    <h3 class="header"> <mark>AbortSignal.abort()</mark> / <mark>AbortSignal.timeout()</mark> TEST </h3>
     <pre style="margin-bottom:1px">
 // AbortSignal.abort() ----------------------------------------------------------------
     const abortSignal1 = AbortSignal.abort();                                          // creates an already aborted abortSignal 
@@ -365,9 +392,9 @@
         abortSignal2 aborted!                                                          // after 1 second 
         true
     </pre>
-<!--------------------------------------------------------------------------------------------->
-<hr>
-<h3 class="header"> <mark>throwIfAborted()</mark> TEST </h3>
+    <!--------------------------------------------------------------------------------------------->
+    <hr>
+    <h3 class="header"> <mark>throwIfAborted()</mark> TEST </h3>
     <pre style="margin-bottom:1px">
     const abortController = new AbortController();
     console.log( abortController.signal.aborted );                                     // -> false
@@ -388,9 +415,10 @@
         true
         some abort error
     </pre>
-</details>
-    
-    
-    <br><br>
+  </details>
+
+
+  <br><br>
 </body>
+
 </html>

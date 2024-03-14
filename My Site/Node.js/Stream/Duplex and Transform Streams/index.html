@@ -1,49 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Duplex and Transform Streams </title> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../../Assets/stylesPages.css"> 
-    <script src="../../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Duplex and Transform Streams </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Duplex and Transform Streams (ver 3.2) </h1>
-    <p> Updated ( 2019-07-23 )</p>
-    <p class="sitenav"> <a href="../../../index.html">MySite></a>
-        <a href="../../index.html">Node.js></a> 
-        <a href="../index.html">Streams></a> Duplex and Transform Streams  
-    </p>
-<table class="table">
-<caption> Duplex and Transform Streams </caption>
+  <h1> Duplex and Transform Streams </h1>
+  <p> Updated ( 2019-07-23 / 2024-03-12 )</p>
+  <p class="sitenav"> <a href="../../../index.html">MySite></a>
+    <a href="../../index.html">Node.js></a>
+    <a href="../index.html">Streams></a> Duplex and Transform Streams
+  </p>
+  <table class="table">
+    <caption> Duplex and Transform Streams </caption>
     <tr>
-        <th style="width:30%;"> Method / Property </th>
-        <th> Description </th>
+      <th style="width:30%;"> Method / Property </th>
+      <th> Description </th>
     </tr>
     <tr>
-        <td style="background-color:inherit;" colspan="2"> all writable and readable methods and properties are available here because they implement both writable and readable streams </td>
-    </tr>
-    <tr>
-        <td> <strong>duplex|transferStream</strong>.destroy(<i>err:str</i><small>, function(<i>err</i>)</small>) </td>
-        <td> destroys both reaable and writable channels 
-            <span id="browserSupport" title="updated : 2019-07-06">
-                <span><i class="fab fa-node-js"></i> 8.0.0 </span>
-            </span>
+      <td>
+        <reqval>method</reqval>
+      </td>
+      <td> 
+        - all writable and readable methods and properties are available here because they implement both writable and readable streams 
         </td>
     </tr>
-</table>
-<h2 style="color:green;"><u> Notes : </u></h2>
-    <details class="example" id="notes">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>duplex|transformStream</strong>.destroy(<i>err:str</i><small>, function(<i>err</i>)</small>)
+      </td>
+      <td>
+        - destroys both the readable and writable channels
+        <span id="browserSupport">
+          <span><i class="fab fa-node-js"></i> 8.0.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>duplex</strong>.allowHalfOpen
+      </td>
+      <td>
+        - <mark>true</mark> writable side ends when readable side ended <br>
+        - <mark>false</mark> writable side does not end when readable side ended <br>
+        - getter setter property
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - a <b>Duplex</b> stream is a writable and readable stream in one object, where <u>the writable and readalbe channels independend from each other</u> </p>
-    <p> - a <b>Transform</b> stream is a writable and readable stream in one object, where <u>the writable and readable channels are connected together</u>, data inputed through the writable channel modified some way and outputed through the readable channel </p>
-    <p style="color:yellow;"> - all readable and writable stream methods and properties are available on Duplex and Transform streams </p>
-    <pre>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - a <b>Duplex</b> stream is a writable and readable stream in one object, where <u>the writable and readalbe channels independend from each other</u> </p>
+  <p> - a <b>Transform</b> stream is a writable and readable stream in one object, where <u>the writable and readable channels are connected together</u>, data inputed through the writable channel modified some way and outputed through the readable channel </p>
+  <pre>
     const {Duplex, Transform} = require("stream");
     
 // Duplex stream --------------------------------------------------------------
@@ -81,11 +104,11 @@
         this.read();                                                           // -> data-written-to-the-transform-stream
     });
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> Duplex and Transform stream TEST </u></h4>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> Duplex and Transform stream TEST </u></h4>
     <p> - since I don't know any Duplex and Transform implemented streams I create my own ones in this test </p>
-    <p> - the very basics are illustrated here just </p> 
+    <p> - the very basics are illustrated here just </p>
     <pre style="margin-bottom:1px;">
     const {Duplex, Transform} = require('stream');
     
@@ -119,8 +142,9 @@
         TRANSFORM STREAM INPUT DATA                                            // transform stream outputs the data 
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\stream\duplex and transform streams\01 duplex and transform streams TEST>    
     </pre>
-</details>
-    
-    <br><br>
+  </details>
+
+  <br><br>
 </body>
+
 </html>

@@ -142,3 +142,18 @@ h2:not([style]) {
     font-size: 1.5em;
     text-decoration: underline;
 }
+
+        /* -- table-layout test -- */
+.table_layout_test_1, .table_layout_test_1 tr, .table_layout_test_1 td {
+    border: solid 1px black;
+}
+
+.table_layout_test_2, .table_layout_test_2 tr, .table_layout_test_2 td {
+    border: solid 1px black;
+    width: 100%;
+}
+
+.table_layout_test_2 {
+    table-layout: fixed;
+    width: 100%;
+}

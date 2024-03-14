@@ -1,604 +1,868 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> CSS Pseudos</title>  
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> CSS Pseudos</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Pseudo Selectors (ver 3.1) </h1>
-    <p> Updated( 2016-07-04 / 2017-01-11 / 2019-02-02) </p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html" title="CSS">CSS></a> Pseudo Selectors 
-    </p>
-<table class="table">
+  <h1> Pseudo Selectors </h1>
+  <p> Updated( 2016-07-04 / 2017-01-11 / 2019-02-02 / 2024-03-13 ) </p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Pseudo Selectors
+  </p>
+  <table class="table">
     <tr>
-        <th> Selector </th>
-        <th> Description </th>
+      <th style="width: 30%;"> Selector </th>
+      <th> Description </th>
     </tr>
     <tr>
-        <td colspan="2"> Pseudo Classes </td>    
-    </tr>  
-    <tr>
-        <td> <i>element</i>:active </td>
-        <td> 
-            selects the <u>element</u> during the mouse is clicking on it 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 2 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 7 </span>
-                <span><i class="fab fa-safari"></i> 3.1 </span>
-            </span>
-        </td>
+      <td colspan="2"> Pseudo Classes </td>
     </tr>
     <tr>
-        <td> <i>element</i>:checked </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects an elelement if it has the checked state toggled on (only <mark>&lt;input type="checkbox&gt;</mark> / <mark>&lt;input type="radio"&gt;</mark> / <mark>&lt;option&gt;</mark>) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.2 </span>
-            </span>
-        </td>
-    </tr> 
-    <tr>
-        <td> <i>element</i>:default </td>
-        <td>  
-            <i class="fab fa-css3-alt"></i> selects the <u>default submit button in the form</u> (can be <mark>&lt;button&gt;</mark>, <mark>&lt;input type="submit"&gt;</mark> or <mark>&lt;input type="image&gt;</mark>)<br>
-            selects the <mark>&lt;option&gt;</mark> element that has the "selected" attribute<br>
-            selects the <mark>&lt;input type="checkbox&gt;</mark> or <mark>&lt;input type="radio"&gt;</mark> elements that has the "checked" attribute<br>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 10 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 10 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:not(<strong>selector</strong>) </td>
+      <td>
+        - from <optval>selector</optval> selects all elements that do NOT match <strong>selector</strong>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.2 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:disabled </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects disabled elements (element cannot be clicked, typed into, ect..) (mostly form elements) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.2 </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
-        <td> <i>element</i>:empty </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> select elements that has <u>no child nodes</u> 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.2 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:hover </td>
+      <td>
+        - selects the element when the mouse hover over it
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 2 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 7 </span>
+          <span><i class="fab fa-safari"></i> 3.1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:enabled </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects enabled elements (element can be clicked, typed into, ect..) (mostly form elements)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.2 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:active </td>
+      <td>
+        - selects the <u>element</u> during the mouse is clicking on it
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 2 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 7 </span>
+          <span><i class="fab fa-safari"></i> 3.1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:first-child </td>
-        <td> 
-            selects the first targeted element of a group (if the element type does <u>not match it is NOT selected</u>) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 7 </span>
-                <span><i class="fab fa-safari"></i> 3.1 </span>
-            </span>
-        </td>
-    </tr> 
-    <tr>
-        <td> <i>element</i>:first-of-type </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects the first element with the corresponding type of a group of elements 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.2 </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
-        <td> <i>element</i>:focus </td>
-        <td> 
-            selects the element that has focus 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 2 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
-                <span><i class="fab fa-safari"></i> 3.1 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:any-link </td>
+      <td>
+        - targets <mark>&lt;a&gt;</mark> and <mark>&lt;area&gt;</mark> elements regardless of the link state
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 65 </span>
+          <span><i class="fab fa-firefox"></i> 50 </span>
+          <span><i class="fab fa-opera"></i> 52 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 9 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:hover </td>
-        <td> 
-            selects the element when the mouse hover over it 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 2 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 7 </span>
-                <span><i class="fab fa-safari"></i> 3.1 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:link </td>
+      <td>
+        - selects an unvisited link
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 2 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 7 </span>
+          <span><i class="fab fa-safari"></i> 3.1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:indeterminate </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects the <mark>&lt;progress&gt;</mark>, <mark>&lt;input type="checkbox&gt;</mark> or <mark>&lt;input type="radio"&gt;</mark> elements if they are in "indeterminate" state <a href="https://www.w3schools.com/cssref/sel_indeterminate.asp" target="_blank">(W3School ":indeterminate" pseudo-class [link])</a> <u style="color:orangered;">[NOT TESTED]</u> 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 39 </span>
-                <span><i class="fab fa-firefox"></i> 51 </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:visited </td>
+      <td>
+        - selects a visited link
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 2 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 7 </span>
+          <span><i class="fab fa-safari"></i> 3.1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:in-range </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> select an input element whose current value is within the set range (elements that have the "min" and "max" values only!) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 53 </span>
-                <span><i class="fab fa-firefox"></i> 50 </span>
-                <span><i class="fab fa-opera"></i> 40 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 13(partial) </span>
-                <span><i class="fab fa-safari"></i> 10.1 </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
-        <td> <i>element</i>:invalid </td>   
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects a <u>form element</u> which has a NON-VALID value according to the element's settings (like email element restrictions, min, max restrictions ect...) <u>(element without value is invalid!)</u>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 10 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 10 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-            </span>
-        </td>
-    </tr> 
-    <tr>
-        <td> <i>element</i>:lang(<strong>langCode</strong>) </td> 
-        <td> 
-            targets an element which has a "lang" attribute with the targeted language code 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 2 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
-                <span><i class="fab fa-safari"></i> 3.1 </span>
-            </span>
-        </td>
-    </tr>    
-    <tr>
-        <td> <i>element</i>:last-child </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects the last targeted element of a group (if the element type does <u>not match it is NOT selected</u>) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.2 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:focus </td>
+      <td>
+        - selects the element that has focus
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 2 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
+          <span><i class="fab fa-safari"></i> 3.1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:last-of-type </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects the last element with the corresponding type of a group of elements  
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.2 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:default </td>
+      <td>
+        - selects form elements that are default within their group (ex: default radio button)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 10 </span>
+          <span><i class="fab fa-firefox"></i> 4 </span>
+          <span><i class="fab fa-opera"></i> 10 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:link </td>
-        <td> 
-            selects an unvisited link 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 2 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 7 </span>
-                <span><i class="fab fa-safari"></i> 3.1 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:checked </td>
+      <td>
+        - selects an elelement if it has the <mark>checked</mark> attribute (only <mark>&lt;input type="checkbox&gt;</mark> / <mark>&lt;input type="radio"&gt;</mark> / <mark>&lt;option&gt;</mark>)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.2 </span>
+        </span>
+      </td>
+    </tr>
+
+    <tr>
+      <td> <i>selector</i>:indeterminate </td>
+      <td>
+        - selects the <mark>&lt;progress&gt;</mark>, <mark>&lt;input type="checkbox&gt;</mark> or <mark>&lt;input type="radio"&gt;</mark> elements with <mark>indeterminate</mark> state (ex: a checkbox that not checked or unchecked)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 39 </span>
+          <span><i class="fab fa-firefox"></i> 51 </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:not(<strong>selector</strong>) </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects every element that do NOT match the specified selector 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.2 </span>
-            </span>
-        </td>
-    </tr> 
-    <tr>
-        <td> <i>element</i>:nth-child(<strong>nr</strong>|even|odd|<strong>nr</strong>n|<strong>cycle_nr</strong>n + <strong>nr</strong>) </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects element(s) in the group or in every cycle (if element(s) type do <u>not match they are NOT selected</u>) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.2 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:enabled </td>
+      <td>
+        - selects enabled elements (interactive elements like &lt;button&gt;, &lt;select&gt;, etc...)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.2 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:nth-last-child(<strong>nr</strong>|even|odd|<strong>nr</strong>n|<strong>cycle_nr</strong>n + <strong>nr</strong>) </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects element(s) in the group or in every cycle <u>(counted form the end-to-start)</u> (if element(s) type do <u>not match they are NOT selected</u>) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.2 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:disabled </td>
+      <td>
+        - selects disabled elements (interactive elements that are disabled like &lt;button&gt;, &lt;select&gt;, etc...)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.2 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:nth-last-of-type(<strong>nr</strong>|even|odd|<strong>nr</strong>n|<strong>cycle_nr</strong>n + <strong>nr</strong>) </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects the element(s) in the group or in the cycle with the corresponding type <u>(counted form the end-to-start)</u> 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.2 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:valid </td>
+      <td>
+        - selects a input element that has a valid value according to the element's settings (like email element restrictions, min, max restrictions ect...) <br>
+        - input element without any value is considered invalid
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 10 </span>
+          <span><i class="fab fa-firefox"></i> 4 </span>
+          <span><i class="fab fa-opera"></i> 10 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:nth-of-type(<strong>nr</strong>|even|odd|<strong>nr</strong>n|<strong>cycle_nr</strong>n + <strong>nr</strong>) </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects the element(s) in the group or in the cycle with the corresponding type 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.2 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:invalid </td>
+      <td>
+        - selects a input element that has an invalid value according to the element's settings (like email element restrictions, min, max restrictions ect...) <br>
+        - input element without any value is considered invalid
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 10 </span>
+          <span><i class="fab fa-firefox"></i> 4 </span>
+          <span><i class="fab fa-opera"></i> 10 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:only-child </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects the element that is the only child of its parent 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.2 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:optional </td>
+      <td>
+        - selects form elements that don't have the <mark>required</mark> attribute
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 10 </span>
+          <span><i class="fab fa-firefox"></i> 4 </span>
+          <span><i class="fab fa-opera"></i> 10 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:only-of-type </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects the element that has the only type of the group 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.2 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:required </td>
+      <td>
+        - selects form elements that have the <mark>required</mark> attribute
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 10 </span>
+          <span><i class="fab fa-firefox"></i> 4 </span>
+          <span><i class="fab fa-opera"></i> 10 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 5 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:optional </td>   
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects <u>form elements</u> which do not have the "required" attribute 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 10 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 10 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-            </span>
-        </td>
-    </tr> 
-    <tr>
-        <td> <i>element</i>:out-of-range </td>   
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects an input element whose current value is out of the set range (elements that have the "min" and "max" values only!) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 53 </span>
-                <span><i class="fab fa-firefox"></i> 50 </span>
-                <span><i class="fab fa-opera"></i> 40 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 13(partial) </span>
-                <span><i class="fab fa-safari"></i> 10.1 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:read-write </td>
+      <td>
+        - selects form elements that don't have the <mark>readonly</mark> attribute
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 36 </span>
+          <span><i class="fab fa-firefox"></i> 3 -moz- </span>
+          <span><i class="fab fa-opera"></i> 23 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 13 </span>
+          <span><i class="fab fa-safari"></i> 9 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:read-only </td>   
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects readonly <u>form elements</u> (elements with "readonly" and "disabled" attributes) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 36 </span>
-                <span><i class="fab fa-firefox"></i> 3 -moz- </span>
-                <span><i class="fab fa-opera"></i> 23 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 13 </span>
-                <span><i class="fab fa-safari"></i> 9 </span>
-            </span>
-        </td>
-    </tr> 
-    <tr>
-        <td> <i>element</i>:read-write </td>   
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects read and writable <u>form elements</u> (elements without "readonly" attributes)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 36 </span>
-                <span><i class="fab fa-firefox"></i> 3 -moz- </span>
-                <span><i class="fab fa-opera"></i> 23 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 13 </span>
-                <span><i class="fab fa-safari"></i> 9 </span>
-            </span>
-        </td>
-    </tr> 
-    <tr>
-        <td> <i>element</i>:required </td>   
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects <u>form elements</u> which have the "required" attribute 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 10 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 10 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-            </span>
-        </td>
-    </tr> 
-    <tr>
-        <td> :root </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> select the document's root "<mark>&lt;html&gt;</mark>" element
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.2 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:read-only </td>
+      <td>
+        - selects form elements that have the <mark>readonly</mark> attribute
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 36 </span>
+          <span><i class="fab fa-firefox"></i> 3 -moz- </span>
+          <span><i class="fab fa-opera"></i> 23 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 13 </span>
+          <span><i class="fab fa-safari"></i> 9 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:target </td>   
-        <td> 
-            <i class="fab fa-css3-alt"></i><u> targets an element</u> what is targeted <u>by a bookmark anchor tag</u> (<mark>&lt;a href="#<strong>targetId</strong>&gt;</mark>) <u>after</u> the user click on the bookmark element 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.2 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:in-range </td>
+      <td>
+        - selects an input element whose current value is within the set range (elements that have the <mark>min</mark> and <mark>max</mark> atribute only)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 53 </span>
+          <span><i class="fab fa-firefox"></i> 50 </span>
+          <span><i class="fab fa-opera"></i> 40 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 13(partial) </span>
+          <span><i class="fab fa-safari"></i> 10.1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>:valid </td>   
-        <td> 
-            <i class="fab fa-css3-alt"></i> selects a <u>form element</u> which has a valid value according to the element's settings (like email element restrictions, min, max restrictions ect...) <u>(element without value is invalid!)</u>    
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 10 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 10 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-            </span>
-        </td>
-    </tr> 
-    <tr>
-        <td> <i>element</i>:visited </td>
-        <td> 
-            selects a visited link 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 2 </span>
-                <span><i class="fab fa-opera"></i> 9.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 7 </span>
-                <span><i class="fab fa-safari"></i> 3.1 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:out-of-range </td>
+      <td>
+        - selects an input element whose current value is outside the set range (elements that have the <mark>min</mark> and <mark>max</mark> atribute only)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 53 </span>
+          <span><i class="fab fa-firefox"></i> 50 </span>
+          <span><i class="fab fa-opera"></i> 40 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 13(partial) </span>
+          <span><i class="fab fa-safari"></i> 10.1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td colspan="2"> Pseudo Elements </td>    
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
-        <td> 
-            <i>element</i>::after<br>
-            <i>element</i>:after
-        </td>   
-        <td> 
-            inserts something after the targeted element (use the "content" property to insert content) <u>(the inserted content is NOT part of the DOM)</u>   
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 7/4(partial) </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9/8(partial) </span>
-                <span><i class="fab fa-safari"></i> 3.1 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:empty </td>
+      <td>
+        - select elements that don't have any child elements
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.2 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>::backdrop </td>
-        <td> 
-            selects the backdrop <u>(box rendered beneath a "full screen-mode element")(usually <mark>&lt;dialog&gt;</mark> element)</u> <u style="color:orangered;">(Experimantal : Only Chromimum [2019-02-07])</u>
-        </td>
+      <td> <i>selector</i>:only-child </td>
+      <td>
+        - selects elements that are only child of their parent (element that are alone within their parent) <br>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.2 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> 
-            <i>element</i>::before<br>
-            <i>element</i>:before
-         </td>   
-        <td> 
-            inserts something before the targeted element (use the "content" property to insert content) <u>(the inserted content is NOT part of the DOM)</u>   
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 7/4(partial) </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9/8(partial) </span>
-                <span><i class="fab fa-safari"></i> 3.1 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:only-of-type </td>
+      <td>
+        - selects elements that are unique <i>selector</i> type within their parent <br>
+        - (ex: if an element has 2 <mark>&lt;span&gt;</mark>, 1 <mark>&lt;a&gt;</mark> and 1 <mark>&lt;i&gt;</mark> children then selects <mark>&lt;a&gt;</mark> and <mark>&lt;i&gt;</mark> elements)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.2 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>::cue<i>(selector)</i> </td>
-        <td> 
-            selects webVTT(.vtt file) CUEs (<mark>&lt;video&gt;</mark> tags should be targeted) <u>(cannot position tracks)</u> <span style="color:orangered;">(the <mark>(selector)</mark> is poorly supported (partial Chrome support) [TESTED 2019-04-02])</span>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> 55 (no cue sub-selector) </span>
-                <span><i class="fab fa-opera"></i> ? </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> NO </span>
-                <span><i class="fab fa-safari"></i> ? </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
-        <td> 
-            <i>element</i>::first-letter<br>
-            <i>element</i>:first-letter 
-        </td>   
-        <td> 
-            targets the first letter in the first line of a <u>block level element</u> 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 7/3.5(partial) </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9/5.5(partial) </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>    
-    <tr>
-        <td> 
-            <i>element</i>::first-line<br>
-            <i>element</i>:first-line
-        </td>   
-        <td> 
-            targets the first line of a <u>block level element</u>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 7/3.5(partial) </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9/5.5(partial) </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:first-child </td>
+      <td>
+        - selects the first child element
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 7 </span>
+          <span><i class="fab fa-safari"></i> 3.1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> <i>element</i>::selection </td>   
-        <td> 
-            select the portion of the element what is selected by the user (<mark>color</mark>, <mark>background</mark>, <mark>cursor</mark>, <mark>outline</mark> styles only!) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 62/2 -moz- </span>
-                <span><i class="fab fa-opera"></i> 10.1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.1 </span>
-            </span>
-        </td>
+      <td> <i>selector</i>:first-of-type </td>
+      <td>
+        - selects the first child element of each type <br>
+        - (ex: if an element has 2 <mark>&lt;span&gt;</mark>, 1 <mark>&lt;a&gt;</mark> and 5 <mark>&lt;i&gt;</mark> children then selects the first <mark>&lt;span&gt;</mark>, <mark>&lt;a&gt;</mark> and <mark>&lt;i&gt;</mark> elements)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.2 </span>
+        </span>
+      </td>
     </tr>
-</table>
-<h2 style="color:green;"><u> Notes : </u></h2>
-    <details class="example" id="notes">
+
+    <tr>
+      <td> <i>selector</i>:last-child </td>
+      <td>
+        - selects the last child element
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.2 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <i>selector</i>:last-of-type </td>
+      <td>
+        - selects the last child element of each type <br>
+        - (ex: if an element has 2 <mark>&lt;span&gt;</mark>, 1 <mark>&lt;a&gt;</mark> and 5 <mark>&lt;i&gt;</mark> children then selects the last <mark>&lt;span&gt;</mark>, <mark>&lt;a&gt;</mark> and <mark>&lt;i&gt;</mark> elements)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.2 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <i>selector</i>:nth-child(<strong class="openable">step<div>
+            <p> - <mark>
+                <reqval>nr</reqval>
+              </mark> - nth element </p>
+            <p> - <mark>even</mark>|<mark>odd</mark> - every even|odd elements </p>
+            <p> - <mark>
+                <reqval>nr</reqval>n
+              </mark> - every <mark>
+                <reqval>nr</reqval>
+              </mark> element </p>
+          </div></strong>)
+      </td>
+      <td>
+        - selects <reqval>step</reqval> element of its parent
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.2 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <i>selector</i>:nth-child(<strong class="openable">step<div>
+            <p> - <mark>
+                <reqval>nr</reqval>
+              </mark> - nth element </p>
+            <p> - <mark>even</mark>|<mark>odd</mark> - every even|odd elements </p>
+            <p> - <mark>
+                <reqval>nr</reqval>n
+              </mark> - every <mark>
+                <reqval>nr</reqval>
+              </mark> element </p>
+          </div></strong>)
+      </td>
+      <td>
+        - selects <reqval>step</reqval> element of type <i>selector</i> of its parent <br>
+        - (ex: if an element has 2 <mark>&lt;span&gt;</mark> and 5 <mark>&lt;i&gt;</mark> children then we select <mark>i:nth-of-type(2)</mark>, selects the 2nd <mark>&lt;i&gt;</mark> element only)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.2 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <i>selector</i>:nth-last-child(<strong class="openable">step<div>
+            <p> - <mark>
+                <reqval>nr</reqval>
+              </mark> - nth element </p>
+            <p> - <mark>even</mark>|<mark>odd</mark> - every even|odd elements </p>
+            <p> - <mark>
+                <reqval>nr</reqval>n
+              </mark> - every <mark>
+                <reqval>nr</reqval>
+              </mark> element </p>
+          </div></strong>)
+      </td>
+      <td>
+        - selects <reqval>step</reqval> element of its parent counted from the end
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.2 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <i>selector</i>:nth-last-of-type(<strong class="openable">step<div>
+            <p> - <mark>
+                <reqval>nr</reqval>
+              </mark> - nth element </p>
+            <p> - <mark>even</mark>|<mark>odd</mark> - every even|odd elements </p>
+            <p> - <mark>
+                <reqval>nr</reqval>n
+              </mark> - every <mark>
+                <reqval>nr</reqval>
+              </mark> element </p>
+          </div></strong>)
+      </td>
+      <td>
+        - selects <reqval>step</reqval> element of type <i>selector</i> of its parent counted from the end <br>
+        - (ex: if an element has 2 <mark>&lt;span&gt;</mark> and 5 <mark>&lt;i&gt;</mark> children then we select <mark>i:nth-of-type(2)</mark>, selects the 2nd <mark>&lt;i&gt;</mark> element only counted from the end)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.2 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> :root </td>
+      <td>
+        - selects the <mark>&lt;html&gt;</mark> element itself
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.2 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <i>selector</i>:lang(<strong>langCode</strong>) </td>
+      <td>
+        - targets elements that has the <mark>lang</mark> attribute with <reqval>langCode</reqval> (language code)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 2 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
+          <span><i class="fab fa-safari"></i> 3.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <i>selector</i>:target </td>
+      <td>
+        - targets an element what is targeted by a bookmark anchor tag</u> (<mark>&lt;a href="#<strong>targetId</strong>&gt;</mark>) <u>after</u> the user clicked on the bookmark element
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.2 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <reqval>otherPseudoClasses</reqval> </td>
+      <td>
+        - <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:active" target="_blank">MDN link</a>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2"> Pseudo Elements </td>
+    </tr>
+    <tr>
+      <td>
+        <i>selector</i>::first-letter <br>
+        <i>selector</i>:first-letter
+      </td>
+      <td>
+        - targets the first line's first letter of a <u>block level element</u>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 7/3.5(partial) </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9/5.5(partial) </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <i>selector</i>::first-line<br>
+        <i>selector</i>:first-line
+      </td>
+      <td>
+        - targets the first line of a <u>block level element</u>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 7/3.5(partial) </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9/5.5(partial) </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <i>selector</i>::after<br>
+        <i>selector</i>:after
+      </td>
+      <td>
+        - insert something after the targeted element (uses the <mark>content</mark> property to insert content) <u>(the inserted content is NOT part of the DOM)</u>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 7/4(partial) </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9/8(partial) </span>
+          <span><i class="fab fa-safari"></i> 3.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <i>selector</i>::before<br>
+        <i>selector</i>:before
+      </td>
+      <td>
+        - insert something before the targeted element (uses the <mark>content</mark> property to insert content) <u>(the inserted content is NOT part of the DOM)</u>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 7/4(partial) </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9/8(partial) </span>
+          <span><i class="fab fa-safari"></i> 3.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <i>selector</i>::selection </td>
+      <td>
+        - targets the user selected part of an element (for <mark>color</mark>, <mark>background</mark>, <mark>cursor</mark>, <mark>outline</mark> styles only)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 62/2 -moz- </span>
+          <span><i class="fab fa-opera"></i> 10.1 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <i>selector</i>::placeholder </td>
+      <td>
+        - targets the placeholder in input elements
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 57 </span>
+          <span><i class="fab fa-firefox"></i> 51 </span>
+          <span><i class="fab fa-opera"></i> 44 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 10.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <i>selector</i>::file-selector-button </td>
+      <td>
+        - targets <mark>&lt;input&gt;</mark> elements with <mark>type="file"</mark>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 89 </span>
+          <span><i class="fab fa-firefox"></i> 82 </span>
+          <span><i class="fab fa-opera"></i> 75 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 89 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <i>selector</i>::marker </td>
+      <td>
+        - targets list item markers (buttlest, numbers)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 86 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 72 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 86 </span>
+          <span><i class="fab fa-safari"></i> 11.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <i>selector</i>::backdrop </td>
+      <td>
+        - selects the backdrop element (box rendered behind a fullscreen-mode element (usually <mark>&lt;dialog&gt;</mark> element))
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 32 / 69 fullscreen </span>
+          <span><i class="fab fa-firefox"></i> 47 / 98 dialgo element </span>
+          <span><i class="fab fa-opera"></i> 24 / 19 dialog element / 47 fullscreen </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 / 12 fullscreen </span>
+          <span><i class="fab fa-safari"></i> 15.4 / 16.4 fullscreen </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> video::cue<opt>(<optval>selector</optval>)</opt></i> </td>
+      <td>
+        - selects subtitles in vides <u>(cannot position tracks)</u> 
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 26 </span>
+          <span><i class="fab fa-firefox"></i> 55 (no <optval>selector</optval> support) </span>
+          <span><i class="fab fa-opera"></i> 15 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 7 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <reqval>otherPseudoElements</reqval> </td>
+      <td>
+        - <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::after" target="_blank">MDN link</a>
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
     <p> - <mark>::cue</mark> / <mark>::cue(selector) </mark> pseudo-element style WebVTT, some styles media captions [NOT TESTED becuase of poor browser support 2019-02-07] </p>
-    <p> - <mark>::slotted</mark> [NOT TESTED 2017-02-07] apparently targets element in the shadow DOM </p> 
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="http://www.w3schools.com/css/css_pseudo_classes.asp" target="_blank"> W3School Pseudo-Class </a></p>
-    <p><a href="http://www.w3schools.com/css/css_pseudo_elements.asp" target="_blank"> W3School Pseudo-Element </a></p>
-    <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes" target="_blank"> MDN Pseudo-Class </a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    <p> - images inserted by the <mark>::before</mark> or the <mark>::after</mark> pseudo-elements <u>as content</u> cannot be styled, (use them as background instead "see exercise") </p>
-    <p> - pseudo selectors are available only in css files (cannot be used as inline style) </p>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-<h2 class="headerExtra"><u> Pseudo-Class </u></h2>
-    <p> - pseudo classes select elements with a <u>special state</u></p>
-    <p> - pseudo selectors are available only in css files (cannot be used as inline style) </p>
-    <pre class="syntax">
-SYNTAX :    <i>element</i>:<strong>pseudo-class</strong> 
-    </pre>
-<hr>
-<h3 style="color:darkblue;"><u> <mark>link:</mark> / <mark>visited:</mark> / <mark>hover:</mark> / <mark>active:</mark> </u></h3>
-    <pre class="syntax">
-SYNTAX :    <i>element</i>:link                                               // selects an unvisited link
-            <i>element</i>:visited                                            // selects a visited link 
-            <i>element</i>:hover                                              // selects the element when the mouse hover over it
-            <i>element</i>:active                                             // selects the <u>element</u> during the mouse is clicking on it
-    </pre>
-    <pre>
-    &lt;a href="#" class="test"&gt; myLink &lt;/a&gt;
+    <p> - <mark>::slotted</mark> [NOT TESTED 2017-02-07] apparently targets element in the shadow DOM </p>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="http://www.w3schools.com/css/css_pseudo_classes.asp" target="_blank"> W3School Pseudo-Class </a></p>
+  <p><a href="http://www.w3schools.com/css/css_pseudo_elements.asp" target="_blank"> W3School Pseudo-Element </a></p>
+  <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes" target="_blank"> MDN Pseudo-Class </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - images inserted by the <mark>::before</mark> or the <mark>::after</mark> pseudo-elements <u>as content</u> cannot be styled, (use them as background instead "see exercise") </p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - pseudo selectors are available only in css files (cannot be used as inline style) </p>
+  <h2 class="headerExtra"><u> Pseudo-Class </u></h2>
+  <p> - pseudo classes select elements with a <u>special state</u></p>
+  <pre class="syntax">
+    <i>selector</i>:<strong>pseudo-class</strong> 
+  </pre>
+  <hr>
+  <h3 style="color:darkblue;"><u> The <mark>:not()</mark> / <mark>:empty</mark> / <mark>:only-child</mark> / <mark>:only-of-type</mark> pseudo selectors </u></h3>
+  <details class="example">
+    <summary> Example : </summary>
 
--- CSS --
+    <h3><u> <mark>:not()</mark> TEST </u></h3>
+    <div id="not">
+      <h1> This heading is selected </h1>
+      <p class="select"> This paragraph is not selected </p>
+      <h6 class="select"> This heading is not selected </h6>
+      <p> This paragraph is also selected </p>
+      <div class="select"> This DIV is not selected </div>
+      <p> This paragraph is also selected </p>
+    </div>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+-- CODE (HTML) --
+    &lt;div id="not"&gt;
+        &lt;h1&gt; This heading is selected &lt;/h1&gt;
+        &lt;p class="select"&gt; This paragraph is not selected &lt;/p&gt;
+        &lt;h6 class="select"&gt; This heading is not selected &lt;/h6&gt;
+        &lt;p&gt; This paragraph is also selected &lt;/p&gt;
+        &lt;div class="select"&gt; This DIV is not selected &lt;/div&gt;
+        &lt;p&gt; This paragraph is also selected &lt;/p&gt;
+    &lt;/div&gt;
+
+-- CODE (CSS) --
+    #not *:not(.select){                        
+        color:green;            
+    }                          
+        </pre>
+    </details>
+    <h3><u> <mark>:empty</mark> TEST </u></h3>
+    <p> the second element is NOT empty (white space = content), the the thick line is the 3rd element which has not content (therefore it is selected) </p>
+    <p class="empty_test"> this element is NOT empty (therefore it is not selected) </p>
+    <p class="empty_test"> </p>
+    <p class="empty_test"></p>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+-- CODE (HTML) --
+    &lt;p class="empty_test"&gt; this element is NOT empty (therefore it is not selected) &lt;/p&gt;
+    &lt;p class="empty_test"&gt; &lt;/p&gt;                                                         // not selected
+    &lt;p class="empty_test"&gt;&lt;/p&gt;
+    
+-- CODE (CSS) --
+    .empty_test:empty {
+        border: solid 3px red;
+    }
+        </pre>
+    </details>
+    <h3><u> <mark>:only-child</mark> / <mark>:only-of-type</mark> TEST </u></h3>
+    <dir class="parent_only">
+      <p> I'm the only child of my parent (selected by the <mark>:only-child</mark> selector because this element is the "only child" of its parent) </p>
+    </dir>
+    <dir class="parent_only">
+      <p> we are siblings of you parent (not selected) </p>
+      <span> we are siblings of you parent (selected by the <mark>:only-of-type</mark> selector because this element is the only child with this type ("span") of its parent) </span>
+      <p> we are siblings of you parent (not selected) </p>
+    </dir>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+-- CODE (HTML) -- 
+    &lt;dir class="parent_only"&gt;
+        &lt;p&gt; I'm the only child of my parent (selected by the &lt;mark&gt;:only-child&lt;/mark&gt; selector because this element is the "only child" of its parent) &lt;/p&gt;
+    &lt;/dir&gt;
+    &lt;dir class="parent_only"&gt;
+        &lt;p&gt; we are siblings of you parent (not selected) &lt;/p&gt;
+        &lt;span&gt; we are siblings of you parent (selected by the &lt;mark&gt;:only-of-type&lt;/mark&gt; selector because this element is the only child with this type ("span") of its parent) &lt;/span&gt;
+        &lt;p&gt; we are siblings of you parent (not selected) &lt;/p&gt;
+    &lt;/dir&gt;
+
+-- CODE (CSS) --
+    .parent_only {
+        border: solid 1px black;
+    }
+    .parent_only p:only-child {
+        color: green;
+        font-weight: bold;
+    }
+    .parent_only span:only-of-type {
+        color: olivedrab;
+        font-weight: bold;
+    }
+        </pre>
+    </details>
+  </details>
+  <!-------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h3 style="color:darkblue;"><u> The <mark>link:</mark> / <mark>visited:</mark> / <mark>hover:</mark> / <mark>active:</mark> pseudo selectors</u></h3>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre>
+// HTML -----
+    &lt;a href="#" class="test"&gt; myLink &lt;/a&gt;
+    
+// CSS --
     .test:link { color: green; }                                       // unvisited link targeted 
     .test:visited { color: darkgreen; }                                // visited link targeted
     .test:hover { color: yellow; }                                     // <u>element</u> targeted when the mouse hovers over it
     .test:active { color: white; }                                     // <u>element</u> targeted while the mouse click on it
     </pre>
-<details class="example">
-<summary> Example : </summary> 
-<h3><u> <mark>link:</mark> | <mark>visited:</mark> | <mark>hover:</mark> | <mark>active:</mark> TEST </u></h3>  
+    <h3><u> <mark>link:</mark> | <mark>visited:</mark> | <mark>hover:</mark> | <mark>active:</mark> TEST </u></h3>
     <p class="hover_click"> Hover and click to see the effects </p><br>
     <a id="button" href="#"> Styled Dummy button (link) </a><br><br>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="hover_click"&gt; Hover and click to see the effects &lt;/p&gt;
     &lt;a id="button" href="#"&gt; Styled Dummy button (link) &lt;/a&gt;
@@ -622,14 +886,14 @@ SYNTAX :    <i>element</i>:link                                               //
         color:white;
     }
         </pre>
-        </details>
-<h3><u> Custom Toolpit with <mark>:hover</mark> TEST </u></h3>
+    </details>
+    <h3><u> Custom Toolpit with <mark>:hover</mark> TEST </u></h3>
     <div class="toolpit"> I Will show you a toolpit! just hover over me :)
-        <p> Tada Here I am! </p>
+      <p> Tada Here I am! </p>
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;div class="toolpit"&gt; I Will show you a toolpit! just hover over me :)
         &lt;p&gt; Tada Here I am! &lt;/p&gt;
@@ -657,419 +921,13 @@ SYNTAX :    <i>element</i>:link                                               //
         display: block;
     }
         </pre>
-        </details>
-</details>
-<!-------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>:first-child</mark> / <mark>:last-child</mark> / <mark>:nth-child()</mark> / <mark>:nth-last-child()</mark> / <mark>:first-of-type</mark> / <mark>last-of-type</mark> / <mark>nth-of-type()</mark> / <mark>nth-last-of-type()</mark></u></h3>
-    <pre class="syntax">
-SYNTAX :    <i>element</i>:first-child                                        // selects the first targeted element of a group (if the element type does <u>not match it is NOT selected</u>)  
-            <i>element</i>:last-child                                         // <i class="fab fa-css3-alt"></i> selects the last targeted element of a group (if the element type does <u>not match it is NOT selected</u>)  
-            <i>element</i>:nth-child(<strong>nr</strong>|even|odd|<strong>nr</strong>n|<strong>cycle_nr</strong>n + <strong>nr</strong>)          // <i class="fab fa-css3-alt"></i> selects element(s) in the group or in every cycle (if element(s) type do <u>not match they are NOT selected</u>)
-            <i>element</i>:nth-last-child(<strong>nr</strong>|even|odd|<strong>nr</strong>n|<strong>cycle_nr</strong>n + <strong>nr</strong>)     // <i class="fab fa-css3-alt"></i> selects element(s) in the group or in every cycle <u>(counted form the end-to-start)</u> (if element(s) type do <u>not match they are NOT selected</u>)
-
-            <i>element</i>:first-of-type                                      // <i class="fab fa-css3-alt"></i> selects the first element with the corresponding type of a group of elements 
-            <i>element</i>:last-of-type                                       // <i class="fab fa-css3-alt"></i> selects the last element with the corresponding type of a group of elements 
-            <i>element</i>:nth-of-type(<strong>nr</strong>|even|odd|<strong>nr</strong>n|<strong>cycle_nr</strong>n + <strong>nr</strong>)        // <i class="fab fa-css3-alt"></i> selects the element(s) in the group or in the cycle with the corresponding type 
-            <i>element</i>:nth-last-of-type(<strong>nr</strong>|even|odd|<strong>nr</strong>n|<strong>cycle_nr</strong>n + <strong>nr</strong>)   // <i class="fab fa-css3-alt"></i> selects the element(s) in the group or in the cycle with the corresponding type <u>(counted form the end-to-start)</u>
-
-                - <strong>nr</strong>|even|odd|(<strong>nr</strong>|even|odd|<strong>nr</strong>n|<strong>cycle_nr</strong>n + <strong>nr</strong>) : <strong>nr</strong>                 - targeted element in the sequence
-                                               : even               - every even element
-                                               : odd                - every odd element
-                                               : <strong>nr</strong>n                - every <strong>nr</strong> element 
-                                               : <strong>cycle_nr</strong>n + <strong>nr</strong>     - <strong>cycle_nr</strong>n (cycle size) | <strong>nr</strong> (targeted element in <u>each cycle</u>) 
-    </pre>
-    <pre>
-    &lt;p&gt; paragraph_1 &lt;/p&gt;
-    &lt;span&gt; span_1 &lt;/span&gt; 
-    &lt;div&gt; div_1 &lt;/div&gt;
-    &lt;div&gt div_2 &lt;/div&gt;
-    &lt;p&gt; paragraph_2 &lt;/p&gt;
-    &lt;p&gt; paragraph_3 &lt;/p&gt;
-    &lt;span&gt; span_2 &lt;/span&gt;
-    &lt;div&gt> div_3 &lt;/div&gt;
-    &lt;span&gt; span_3 &lt;/span&gt;
-        
--- CSS -- 
-// :first child / :last child / :first-of-type / :last-of-type -----------------
-    p:first-child { color: red; }                                      // "paragraph_1" selected / 
-    p:last-child { color: red; }                                       <b>// nothing selected because the first element is NOT a "p" element </b>
-    div:first-of-type { color: yellow; }                               // "div_1"  selected  
-    span:last-of-type {color: yellow; }                                // "span_3" selected
-    
-// :nth-child() / nth-of-type() / nth-last-child() / nth-last-of-type() --------
-    *:nth-child(odd) { color: red; }                                   // "paragraph_1", "div_1", "paragraph_2", "span_2", "span_3" selected (every odd element)
-    span:nth-of-type(2) { color: red; }                                // "span_2" selected
-    *:nth-last-child(3n+3) { color: red; }                             // "span_2", "div_2", "paragraph_1" selected // in every 3 elements(cycle size 3) the 3rd one (counted from the end)   
-    p:nth-last-of-type(2) { color:red; }                               // "paragraph_2" selected
-
-    </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3><u> "child" <b>VS</b> "type" TEST </u></h3>
-    <div class="child_VS_type">
-        <p> first paragraph </p>
-        <div> first div element (cannot be selected as first "div" child element) </div>
-        <span> first span element </span>
-        <div> second div element </div>
-    </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- CODE (HTML) --
-    &lt;div class="child_VS_type"&gt;
-    &lt;p&gt; first paragraph &lt;/p&gt;
-    &lt;div&gt; first div element (cannot be selected as first "div" child element) &lt;/div&gt;
-    &lt;span&gt; first span element &lt;/span&gt;
-    &lt;div&gt; second div element &lt;/div&gt;
-    &lt;/div&gt;
-
--- CODE (CSS) --
-    .child_VS_type div:first-child {                // NOT SELECTED because the "div" element is not the first child of the group
-        background-color: red;
-    }       
-    .child_VS_type div:first-of-type {              // first "div" element selected
-        color: yellow;
-    }  
-        </pre>
-        </details>
-<h3><u> <mark>:first-child</mark> / <mark>:first-of-type</mark> TEST </u></h3>
-    <div class="child">
-        <p> First paragraph is selected with first child pseudo class</p>
-        <p> This second paragraph is not selected </p>
-    </div>
-    <div class="italic">
-        <p> This first <i>talic</i> written text is selectied in both paragraphs but not this <i>second</i> one</p>
-        <p> This first <i>talic</i> written text is selectied in both paragraphs but not this <i>second</i> one</p>
-    </div>
-    <div class="fitalic">
-        <p> In this first paragraph the first <i>italic</i> and also the second <i>italic</i> is selected </p>
-        <p> In this second one this first <i>italic</i> and second <i>italic</i> are not selected </p>
-    </div>
-	    <details>
-	    <summary> CODE : </summary>
-		<pre>
--- CODE (HTML) --
-	&lt;div class="child"&gt;
-		&lt;p> First paragraph is selected with first child pseudo class&lt;/p&gt;
-		&lt;p> This second paragraph is not selected &lt;/p&gt;
-	&lt;/div&gt;
-	&lt;div class="italic"&gt;
-		&lt;p&gt; This first &lt;i&gt;talic&lt;/i&gt; written text is selectied in both paragraphs but not this &lt;i>second&lt;/i> one&lt;/p>
-		&lt;p&gt; This first &lt;i&gt;talic&lt;/i&gt; written text is selectied in both paragraphs but not this &lt;i>second&lt;/i> one&lt;/p>
-	&lt;/div&gt;
-	&lt;div class="fitalic">
-		&lt;p> In this first paragraph the first &lt;i&gt;italic&lt;/i&gt; and also the second &lt;i&gt;italic&lt;/i&gt; is selected&lt;/p&gt;
-		&lt;p> In this second one this first &lt;i&gt;italic&lt;/i&gt; and second &lt;i&gt;italic&lt;/i&gt; are not selected&lt;/p&gt;
-	&lt;/div&gt;
-
--- CODE (CSS) --
-	.child{                                      .italic{                                        .fitalic{
-		background-color: aquamarine;               background-color: aquamarine;                   background-color: aquamarine;
-	}                                           }                                               }
-	.child p:first-child {                      .italic p i:first-child{                        .fitalic p:first-child i{
-		background-color: red;                      background-color: red;                          background-color: red;
-	}                                           }                                               }
-	    </pre>
-        </details>
-<h3><u> <mark>:last-child</mark> / <mark>:last-of-type</mark> TEST </u></h3>
-    <p><ins> - the :last-child pseudo element works the same just selects the last element </ins></p>
-    <div class="lchild">
-        <p> In this situation this first paragraph is not selected</p>
-        <p> This second however is selected </p>
-    </div>
-	    <details>
-	    <summary> CODE : </summary>
-		<pre>
--- CODE (HTML) --
-	&lt;div class="lchild"&gt;
-		&lt;p&gt; In this situation this first paragraph is not selected&lt;/p&gt;
-		&lt;p&gt; This second however is selected &lt;/p&gt;
-	&lt;/div&gt;
-			
--- CODE (CSS) --
-	.lchild{                                            .lchild p:last-child{
-		background-color: aquamarine;                       background-color: red;
-	}                                                   }
-	    </pre>
-	    </details>
-    <div id="ltype">
-        <p> This is the frist paragraph </p>
-        <p> This is the second paragraph </p>
-        <p> This is the third and last paragraph of its parent so it is targeted and selected </p>
-        <h3> This is a heading </h3>
-        <h3> This is also a heading </h3>
-    </div>
-	    <details>
-	    <summary> CODE : </summary>
-		<pre>
--- CODE (HTML) --
-	&lt;div id="ltype"&gt;
-		&lt;p&gt;> This is the frist paragraph &lt;/p&gt;
-		&lt;p&gt; This is the second paragraph &lt;/p&gt;
-		&lt;p&gt; This is the third and last paragraph of its parent so it is targeted and selected &lt;/p&gt;
-		&lt;h3&gt; This is a heading &lt;/h3&gt;
-		&lt;h3&gt; This is also a heading &lt;/h3&gt;
-	&lt;/div&gt;
-
--- CODE (CSS) --
-	#ltype{                                             #ltype p:last-of-type{
-		background-color: aquamarine;                       background-color: red;
-	}                                                   }
-		</pre>
-        </details>
-<h3><u> <mark>:nth-child(n)</mark> / <mark>:nth-of-type(n)</mark> // <mark>:nth-last-child(n)</mark> / <mark>:nth-of-last-type(n)</mark> </u></h3>
-    <p><ins> Simple counting with NTH method </ins></p>
-    <div id="nthsimple">
-        <h3> This is the fist heading not targeted </h3>
-        <h3> This second heading is targeted with :nth-child(n) </h3>
-        <h3> This third heading is also targeted but form the end of this DIV see code :nth-last-of-type(n)</h3>
-        <p> This fourth paragrap is targeted but from the end for this DIV with :nth-last-of-type(n)</p>
-        <p> This fifth paragrap is targeted too with :nth-of-type(n)</p>
-        <p> This sixth paragrap is not targeted</p>
-    </div>
-	    <details>
-	    <summary> CODE : </summary>
-		<pre>
--- CODE (HTML) --
-	&lt;div id="nthsimple"&gt;
-		&lt;h3&gt; This is the fist heading not targeted &lt;/h3&gt;
-		&lt;h3&gt; This second heading is targeted with :nth-child(n) &lt;/h3&gt;
-		&lt;h3&gt; This third heading is also targeted but form the end of this DIV see code :nth-last-of-type(n)&lt;/h3&gt;
-		&lt;p&gt; This fourth paragrap is targeted but from the end for this DIV with :nth-last-of-type(n)&lt;/p&gt;
-		&lt;p&gt; This fifth paragrap is targeted too with :nth-of-type(n)&lt;/p&gt;
-		&lt;p&gt; This sixth paragrap is not targeted&lt;/p&gt;
-	&lt;/div&gt;
-
-		-- CODE (CSS) --
-    #nthsimple{                                             #nthsimple p:nth-last-of-type(3){
-	    background-color: aquamarine;                           background-color: red;
-	}                                                       }
-	#nthsimple h3:nth-child(2){                             #nthsimple p:nth-of-type(2){
-		background-color: red;                                  background-color: red;
-	}                                                       }
-	#nthsimple h3:nth-last-of-type(1){
-		background-color: red;
-	}
-		</pre>
-	    </details>
-    <p><ins> Even and ODD values</ins></p>
-    <div id="evenandodd">
-        <p> First paragraph ODD</p>
-        <p> Second paragraph EVEN</p>
-        <p> Third paragraph ODD</p>
-        <p> Fourth paragraph EVEN</p>
-        <p> Fifth paragraph ODD</p>
-        <p> Sixth paragraph EVEN</p>
-    </div>
-	    <details>
-	    <summary> CODE : </summary>
-		<pre>
--- CODE (HTML) --
-	&lt;div id="evenandodd"&gt;
-		&lt;p&gt; First paragraph ODD&lt;/p&gt;
-		&lt;p&gt; Second paragraph EVEN&lt;/p&gt;
-		&lt;p&gt; Third paragraph ODD&lt;/p&gt;
-		&lt;p&gt; Fourth paragraph EVEN&lt;/p&gt;
-		&lt;p&gt; Fifth paragraph ODD&lt;/p&gt;
-		&lt;p&gt; Sixth paragraph EVEN&lt;/p&gt;
-	&lt;/div&gt;
-
--- CODE (CSS) --
-	#evenandodd{                                        #evenandodd p:nth-child(odd){
-		background-color: aquamarine;                       background-color: orange;
-	}                                                   }
-	#evenandodd p:nth-child(even){
-		background-color: orangered;
-	}
-	    </pre>
-	    </details>
-    <p><ins> Using formula (an+0) </ins></p>
-    <p> - in this exeple I will target every third line both direction </p>
-    <p> - Using the formula (an+0), a=circle size, n=is a counter(does not change!) and 0=offset value (targeted value inside the circle)</p>
-    <div id="anpluszero">
-        <p> First paragraph</p>
-        <p> Second paragraph </p>
-        <p> Third paragraph </p>
-        <p> Fourth paragraph </p>
-        <p> Fifth paragraph </p>
-        <p> Sixth paragraph </p>
-        <p> Seventh paragraph </p>
-        <p> Eight paragraph </p>
-        <p> Ninth paragraph </p>
-    </div>
-	    <details>
-	    <summary> CODE : </summary>
-		<pre>
--- CODE (HTML) --
-	&lt;div id="anpluszero"&gt;
-		&lt;p&gt; First paragraph&lt;/p&gt;
-		&lt;p&gt; Second paragraph &lt;p&gt;
-		&lt;p&gt; Third paragraph &lt;p&gt;
-		&lt;p&gt; Fourth paragraph &lt;p&gt;
-		&lt;p&gt; Fifth paragraph &lt;p&gt;
-		&lt;p&gt; Sixth paragraph &lt;p&gt;
-		&lt;p&gt; Seventh paragraph &lt;p&gt;
-		&lt;p&gt; Eight paragraph &lt;p&gt;
-		&lt;p&gt; Ninth paragraph &lt;p&gt;
-&lt;/div&gt;
-
--- CODE (CSS) --
-	#anpluszero{                                        #anpluszero p:nth-last-of-type(3n+2){
-		background-color: aquamarine;                       background-color: orange;
-	}                                                   }
-	#anpluszero p:nth-child(3n+1){
-		background-color: orangered;
-	}
-		</pre>
-	    </details>
-</details>
-<!-------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>:not()</mark> / <mark>:empty</mark> / <mark>:only-child</mark> / <mark>:only-of-type</mark> </u></h3>
-    <pre class="syntax">
-SYNTAX :    <i>element</i>:not(<strong>selector</strong>)                                      // <i class="fab fa-css3-alt"></i> selects every element that do NOT match the specified selector
-            <i>element</i>:empty                                              // <i class="fab fa-css3-alt"></i> select elements that has <u>no child nodes</u>
-            
-            <i>element</i>:only-child                                         // <i class="fab fa-css3-alt"></i> selects the element that is the only child of its parent
-            <i>element</i>:only-of-type                                       // <i class="fab fa-css3-alt"></i> selects the element that has the only type of the group
-    </pre>
-    <pre>
-    &lt;p&gt;paragraph_1&lt;/p&gt;
-    &lt;span&gt; span_1 &lt;span&gt;child span element&lt;/span&gt; &lt;/span&gt;
-    &lt;p&gt;paragraph_2&lt;/p&gt;
-    &lt;div&gt;div_1&lt;/div&gt;
-    &lt;p&gt;&lt;/p&gt;
-    
--- CSS --
-// only-of-type -------------------------------
-    :only-of-type { color: red; }                                      // "&lt;span&gt; span_1 &lt;span&gt;child span element&lt;/span&gt; &lt;/span&gt;", "&lt;span&gt;child span element&lt;/span&gt;" selected (because they are only children with no sibling element with the same type)   
-    p:only-of-type { color: red; }                                     <b>// nothing selected because there are multiple "p" elements </b> 
-    
-// only-child ---------------------------------
-    div:only-child { color: red; }                                     <b>// nothing selected because there are multiple elements in the groupe (the "div" element is not the only child) </b>
-    :only-child { color: red; }                                        // "&lt;span&gt;child span element&lt;/span&gt;" selected (element with <u>no siblings</u>)
-    
-// not() --------------------------------------
-    :not(div, span) { color: red; }                                    // "&lt;p&gt;paragraph_1&lt;/p&gt;", "&lt;p&gt;paragraph_2&lt;/p&gt;", "&lt;div&gt;div_1&lt;/div&gt;", "&lt;p&gt;&lt;/p&gt;" selected (every other element that the targeted ones)
-    :not(div, span) { color: red; }                                    <span style="color:orangered;">&lt;- this is not working <u>(":not()" pseudo-class accepts only 1 selector!)</u> </span>
-    
-// empty -------------------------------------- 
-    :empty {border: solid 2px red;}                                    // "&lt;p&gt;&lt;/p&gt;" selected
-    </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3><u> <mark>:not()</mark> TEST </u></h3>
-	<div id="not">
-        <h1> This heading is selected </h1>
-        <p class="select"> This paragraph is not selected </p>
-        <h6 class="select"> This heading is not selected </h6>
-        <p> This paragraph is also selected </p>
-        <div class="select"> This DIV is not selected </div>
-        <p> This paragraph is also selected </p>
-    </div>
-	    <details>
-	    <summary> CODE : </summary>
-		<pre>
--- CODE (HTML) --
-    &lt;div id="not"&gt;
-        &lt;h1&gt; This heading is selected &lt;/h1&gt;
-        &lt;p class="select"&gt; This paragraph is not selected &lt;/p&gt;
-        &lt;h6 class="select"&gt; This heading is not selected &lt;/h6&gt;
-        &lt;p&gt; This paragraph is also selected &lt;/p&gt;
-        &lt;div class="select"&gt; This DIV is not selected &lt;/div&gt;
-        &lt;p&gt; This paragraph is also selected &lt;/p&gt;
-    &lt;/div&gt;
-
--- CODE (CSS) --
-    #not *:not(.select){                        
-        color:green;            
-    }                          
-        </pre>
-        </details>
-<h3><u> <mark>:empty</mark> TEST </u></h3>
-    <p> the second element is NOT empty (white space = content), the the thick line is the 3rd element which has not content (therefore it is selected) </p>
-    <p class="empty_test"> this element is NOT empty (therefore it is not selected) </p>
-    <p class="empty_test"> </p>
-    <p class="empty_test"></p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- CODE (HTML) --
-    &lt;p class="empty_test"&gt; this element is NOT empty (therefore it is not selected) &lt;/p&gt;
-    &lt;p class="empty_test"&gt; &lt;/p&gt;                                                         // not selected
-    &lt;p class="empty_test"&gt;&lt;/p&gt;
-    
--- CODE (CSS) --
-    .empty_test:empty {
-        border: solid 3px red;
-    }
-        </pre>
-        </details>
-<h3><u> <mark>:only-child</mark> / <mark>:only-of-type</mark> TEST </u></h3>
-    <dir class="parent_only">
-        <p> I'm the only child of my parent (selected by the <mark>:only-child</mark> selector because this element is the "only child" of its parent) </p>
-    </dir>
-    <dir class="parent_only">
-        <p> we are siblings of you parent (not selected) </p>
-        <span> we are siblings of you parent (selected by the <mark>:only-of-type</mark> selector because this element is the only child with this type ("span") of its parent) </span>
-        <p> we are siblings of you parent (not selected) </p>
-    </dir>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- CODE (HTML) -- 
-    &lt;dir class="parent_only"&gt;
-        &lt;p&gt; I'm the only child of my parent (selected by the &lt;mark&gt;:only-child&lt;/mark&gt; selector because this element is the "only child" of its parent) &lt;/p&gt;
-    &lt;/dir&gt;
-    &lt;dir class="parent_only"&gt;
-        &lt;p&gt; we are siblings of you parent (not selected) &lt;/p&gt;
-        &lt;span&gt; we are siblings of you parent (selected by the &lt;mark&gt;:only-of-type&lt;/mark&gt; selector because this element is the only child with this type ("span") of its parent) &lt;/span&gt;
-        &lt;p&gt; we are siblings of you parent (not selected) &lt;/p&gt;
-    &lt;/dir&gt;
-
--- CODE (CSS) --
-    .parent_only {
-        border: solid 1px black;
-    }
-    .parent_only p:only-child {
-        color: green;
-        font-weight: bold;
-    }
-    .parent_only span:only-of-type {
-        color: olivedrab;
-        font-weight: bold;
-    }
-        </pre>
-        </details>
-</details> 
-<!-------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> form pseudo-classes <mark>:default</mark> / <mark>:indeterminate</mark> / <mark>:focus</mark> / <mark>:checked</mark> / <mark>:enabled</mark> / <mark>:disabled</mark> / <mark>:in-range</mark> / <mark>:out-of-range</mark> / <mark>:valid</mark> / <mark>:invalid</mark> / <mark>:optional</mark> / <mark>:required</mark> / <mark>read-write</mark> / <mark>:read-only</mark> /</u></h3>
-    <pre class="syntax">
-SYNTAX :    <i>element</i>:default                                            // <i class="fab fa-css3-alt"></i> selects the <u>default submit button in the from</u> (can be <mark>&lt;button&gt;</mark>, <mark>&lt;input type="submit"&gt;</mark> or <mark>&lt;input type="image&gt;</mark>) 
-                                                                          selects the <mark>&lt;option&gt;</mark> element that has the "selected" attribute
-                                                                          selects the <mark>&lt;input type="checkbox&gt;</mark> or <mark>&lt;input type="radio"&gt;</mark> elements that has the "checked" attribute
-            <i>element</i>:indeterminate                                      // <i class="fab fa-css3-alt"></i> selects the <mark>&lt;progress&gt;</mark>, <mark>&lt;input type="checkbox&gt;</mark> or <mark>&lt;input type="radio"&gt;</mark> elements if they are in "indeterminate" state <a href="https://www.w3schools.com/cssref/sel_indeterminate.asp" target="_blank">(W3School ":indeterminate" pseudo-class [link])</a> <u style="color:orange;">[NOT TESTED]</u>    
-
-            <i>element</i>:focus                                              // selects the element that has focus
-            <i>element</i>:checked                                            // <i class="fab fa-css3-alt"></i> selects an elelement if it has the checked state toggled on (only <mark>&lt;input type="checkbox&gt;</mark> / <mark>&lt;input type="radio"&gt;</mark> / <mark>&lt;option&gt;</mark>)
-            
-            <i>element</i>:enabled                                            // <i class="fab fa-css3-alt"></i> selects enabled elements (element can be clicked, typed into, ect..) (mostly form elements) 
-            <i>element</i>:disabled                                           // <i class="fab fa-css3-alt"></i> selects disabled elements (element cannot be clicked, typed into, ect..) (mostly form elements) 
-
-            <i>element</i>:in-range                                           // <i class="fab fa-css3-alt"></i> select an input element whose current value is within the set range (elements that have the "min" and "max" values only!)   
-            <i>element</i>:out-of-range                                       // <i class="fab fa-css3-alt"></i> select an input element whose current value is out of the set range (elements that have the "min" and "max" values only!)   
-    
-            <i>element</i>:valid                                              // <i class="fab fa-css3-alt"></i> selects a <u>form element</u> which has a valid value according to the element's settings (like email element restrictions, min, max restrictions ect...) <u>(element without value is invalid!)</u>   
-            <i>element</i>:invalid                                            // <i class="fab fa-css3-alt"></i> selects a <u>form element</u> which has a NON-VALID value according to the element's settings (like email element restrictions, min, max restrictions ect...) <u>(element without value is invalid!)</u>    
-            
-            <i>element</i>:optional                                           // <i class="fab fa-css3-alt"></i> selects <u>form elements</u> which do not have the "required" attribute 
-            <i>element</i>:required                                           // <i class="fab fa-css3-alt"></i> selects <u>form elements</u> which have the "required" attribute 
-        
-            <i>element</i>:read-write                                         // <i class="fab fa-css3-alt"></i> selects read and writable <u>form elements</u> (elements without "readonly" attributes) <span style="color:orange;">["-moz-" prefix is required in Mozilla]</span>
-            <i>element</i>:read-only                                          // <i class="fab fa-css3-alt"></i> selects readonly <u>form elements</u> (elements with "readonly" and "disabled" attributes) <span style="color:orange;">["-moz-" prefix is required in Mozilla]</span>
-    </pre>
+    </details>
+  </details>
+  <!-------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h3 style="color:darkblue;"><u> The <mark>:default</mark> / <mark>:indeterminate</mark> / <mark>:focus</mark> / <mark>:checked</mark> / <mark>:enabled</mark> / <mark>:disabled</mark> / <mark>:in-range</mark> / <mark>:out-of-range</mark> / <mark>:valid</mark> / <mark>:invalid</mark> / <mark>:optional</mark> / <mark>:required</mark> / <mark>read-write</mark> / <mark>:read-only</mark> pseudo selectors </u></h3>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     &lt;form name="myForm" id="myForm"&gt;
         &lt;input type="text" required&gt;&lt;br&gt;
@@ -1111,43 +969,41 @@ SYNTAX :    <i>element</i>:default                                            //
         :-moz-read-write {color: green;}                               <span style="color:orangered;">&lt;-- required in Mozilla </span>
         :-moz-read-only {color: red;}
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3><u> <mark>:default</mark> TEST </u></h3>
-<p> - <mark>&lt;button&gt; Submit &lt;/button&gt;</mark> targeted </p>
+    <h3><u> <mark>:default</mark> TEST </u></h3>
+    <p> - <mark>&lt;button&gt; Submit &lt;/button&gt;</mark> targeted </p>
     <form class="form">
-        <input type="text" value="myValue">
-        <button> Submit </button> 
+      <input type="text" value="myValue">
+      <button> Submit </button>
     </form>
-<p> - <mark>&lt;input type="submit"&gt;</mark> targeted </p>
+    <p> - <mark>&lt;input type="submit"&gt;</mark> targeted </p>
     <form class="form">
-        <input type="text" value="myValue">
-        <input type="submit"> 
+      <input type="text" value="myValue">
+      <input type="submit">
     </form>
-<p> - <mark>&lt;input type="image"&gt;</mark> targeted </p>
+    <p> - <mark>&lt;input type="image"&gt;</mark> targeted </p>
     <form class="form">
-        <input type="text" value="myValue">
-        <input type="image"> 
+      <input type="text" value="myValue">
+      <input type="image">
     </form>
-<p> - targets the "option" element which has the "select" attribute </p>
-   <select>
-        <option> item_1 </option>
-        <option selected> item_2 </option>
-        <option> item_3 </option>
-   </select>
-<p> - targets the <mark>&lt;input type="checkbox"&gt;</mark> and <mark>&lt;input type="radio"&gt;</mark> element if it has the "checked" attribute set </p>
+    <p> - targets the "option" element which has the "select" attribute </p>
+    <select>
+      <option> item_1 </option>
+      <option selected> item_2 </option>
+      <option> item_3 </option>
+    </select>
+    <p> - targets the <mark>&lt;input type="checkbox"&gt;</mark> and <mark>&lt;input type="radio"&gt;</mark> element if it has the "checked" attribute set </p>
     <fieldset>
-        <input type="radio">
-        <input type="radio" checked>
-        <input type="radio">
+      <input type="radio">
+      <input type="radio" checked>
+      <input type="radio">
 
-        <input type="checkbox">
-        <input type="checkbox" checked> 
-        <input type="checkbox">
-    </fieldset>         
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+      <input type="checkbox">
+      <input type="checkbox" checked>
+      <input type="checkbox">
+    </fieldset>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;form class="form"&gt;
         &lt;input type="text" value="myValue"&gt;
@@ -1192,17 +1048,17 @@ SYNTAX :    <i>element</i>:default                                            //
         width: 20px;
         height: 20px;
     }
-        </pre> 
-        </details>
-<h3><u> <mark>:focus</mark> TEST </u></h3>
+        </pre>
+    </details>
+    <h3><u> <mark>:focus</mark> TEST </u></h3>
     <p> - While you click on the input area it will turn yellow </p>
     <form>
-        <input id="focus" type="text" name="name"><br><br>
-        <input type="submit" name="submit" value="Submit">
+      <input id="focus" type="text" name="name"><br><br>
+      <input type="submit" name="submit" value="Submit">
     </form>
-	    <details>
-	    <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;form&gt;
         &lt;input id="focus" type="text" name="name">&lt;br&gt;&lt;br&gt;
@@ -1214,23 +1070,23 @@ SYNTAX :    <i>element</i>:default                                            //
         background-color: darkorange;
     }
         </pre>
-        </details>
-<h3><u> <mark>:checked</mark> TEST </u></h3>
+    </details>
+    <h3><u> <mark>:checked</mark> TEST </u></h3>
     <p> - click on the checkboxes and radio button to see the result </p>
     <form id="box">
-        <input type="radio" name="radio" value="1st button"> 1st Button <br>
-        <input type="radio" name="radio" value="2nd button"> 2nd Button <br>
-        <input type="radio" name="radio" value="3rd button"> 3rd Button <br>
-        <input type="checkbox" name="box" value="4th button"> 
-            <label for="box"> 4th Box </label><br>
-        <input type="checkbox" name="box" value="5th button"> 
-            <label for="box"> 5th Box </label><br>
-        <input type="checkbox" name="box" value="6th button"> 
-            <label for="box"> 6th Box </label><br>
+      <input type="radio" name="radio" value="1st button"> 1st Button <br>
+      <input type="radio" name="radio" value="2nd button"> 2nd Button <br>
+      <input type="radio" name="radio" value="3rd button"> 3rd Button <br>
+      <input type="checkbox" name="box" value="4th button">
+      <label for="box"> 4th Box </label><br>
+      <input type="checkbox" name="box" value="5th button">
+      <label for="box"> 5th Box </label><br>
+      <input type="checkbox" name="box" value="6th button">
+      <label for="box"> 6th Box </label><br>
     </form>
-        <details>
-        <summary> CODE : </summary>
-    <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;form id="box"&gt;
         &lt;input type="radio" name="radio" value="1st button"&gt; 1st Button &lt;br&gt;
@@ -1250,17 +1106,17 @@ SYNTAX :    <i>element</i>:default                                            //
         width: 20px;                                            font-weight: bold;
     }                                                           text-decoration: underline;
                                                             }
-		</pre> 
-	</details>
-<h3><u> <mark>:enabled</mark> / <mark>:disabled</mark> TEST </u></h3>
+		</pre>
+    </details>
+    <h3><u> <mark>:enabled</mark> / <mark>:disabled</mark> TEST </u></h3>
     <form id="txt">
-        <input type="text"> First Name <br>
-        <input type="text"> Last Name <br>
-        <input type="text" value="Disabled Field" disabled> Disabled field
+      <input type="text"> First Name <br>
+      <input type="text"> Last Name <br>
+      <input type="text" value="Disabled Field" disabled> Disabled field
     </form>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;form id="txt"&gt;
         &lt;input type="text"&gt; First Name &lt;br&gt;
@@ -1274,15 +1130,15 @@ SYNTAX :    <i>element</i>:default                                            //
     }                                                       color:white;
                                                         }
         </pre>
-        </details>
-<h3><u> <mark>:in-range</mark> / <mark>:out-of-range</mark> TEST </u></h3>
+    </details>
+    <h3><u> <mark>:in-range</mark> / <mark>:out-of-range</mark> TEST </u></h3>
     <p> - the field below will highlight differently when you enter a valid or invalid number </p>
     <form id="number">
-        <input type="number" min="10" max="20" value="15"> valid value is between 10 and 20
+      <input type="number" min="10" max="20" value="15"> valid value is between 10 and 20
     </form>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;form id="number"&gt;
         &lt;input type="number" min="10" max="20" value="15"&gt; valid value is between 10 and 20
@@ -1294,16 +1150,16 @@ SYNTAX :    <i>element</i>:default                                            //
         border: solid 2px black;                                border: solid 2px black;
     }                                                       }
         </pre>
-        </details>
-<h3><u> <mark>:valid</mark> / <mark>:invalid</mark> TEST </u></h3>
+    </details>
+    <h3><u> <mark>:valid</mark> / <mark>:invalid</mark> TEST </u></h3>
     <p> - these two pseudo classes targets valid and invalid entries </p>
     <p> - this feild below requires a valid email entry and reacts differently when entered wrong or right values</p>
     <form id="email">
-        <input type="email" name="mail"> <b>Enter a Valid email address</b>
+      <input type="email" name="mail"> <b>Enter a Valid email address</b>
     </form>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;form id="email"&gt;
         &lt;input type="email" name="mail"&gt; &lt;b&gt;Enter a Valid email address&lt;/b&gt;
@@ -1314,17 +1170,17 @@ SYNTAX :    <i>element</i>:default                                            //
         background-color: forestgreen;                  background-color: red;
     }                                               }
         </pre>
-        </details>
-<h3><u> <mark>:optional</mark> / <mark>:required</mark> </u></h3>
+    </details>
+    <h3><u> <mark>:optional</mark> / <mark>:required</mark> </u></h3>
     <p> - targets optional and required fileds </p>
     <p> <b style="text-decoration:underline;">- form elements which are not declared required are optional </b></p>
     <form id="opt">
-        <input type="text"> This field is optionals (form can be subminted without)<br>
-        <input type="text" required> This field is required (form cannot be submited without)
+      <input type="text"> This field is optionals (form can be subminted without)<br>
+      <input type="text" required> This field is required (form cannot be submited without)
     </form>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;form id="opt"&gt;
         &lt;input type="text"&gt; This field is optionals (form can be subminted without)&lt;br&gt;
@@ -1336,16 +1192,16 @@ SYNTAX :    <i>element</i>:default                                            //
         background-color: forestgreen;                          background-color: orange;
     }                                                       }
         </pre>
-        </details>
-<h3><u> <mark>:read-write</mark> / <mark>:read-only</mark> </u></h3>
+    </details>
+    <h3><u> <mark>:read-write</mark> / <mark>:read-only</mark> </u></h3>
     <p> - targets readonly and read and write fields </p>
     <form id="readonly">
-        <input type="text"> This field can be read and written<br>
-        <input type="text" readonly value="Readonly"> This field is readonly
+      <input type="text"> This field can be read and written<br>
+      <input type="text" readonly value="Readonly"> This field is readonly
     </form>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;form id="readonly"&gt;
         &lt;input type="text"&gt; This field can be read and written&lt;br&gt;
@@ -1361,53 +1217,307 @@ SYNTAX :    <i>element</i>:default                                            //
         background-color: forestgreen;                                  background-color: orange;
     }                                                               }
         </pre>
-        </details>
-</details>
-<!-------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>:root</mark> / <mark>:target</mark> / <mark>:lang()</mark> </u></h3>
-    <pre class="syntax">
-SYNTAX :    :root                                                      // <i class="fab fa-css3-alt"></i> selects the document's root "<mark>&lt;html&gt;</mark>" element
-            <i>element</i>:target                                             // <i class="fab fa-css3-alt"></i><u> targets an element</u> what is targeted <u>by a bookmark anchor tag</u> (<mark>&lt;a href="#<strong>targetId</strong>&gt;</mark>) <u>after</u> the user click on the bookmark element   
-            <i>element</i>:lang(<strong>langCode</strong>)                                     // targets an element which has a "lang" attribute with the targeted language code
-    </pre>
+    </details>
+  </details>
+  <!-------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h3 style="color:darkblue;"><u> The <mark>:first-child</mark> / <mark>:last-child</mark> / <mark>:nth-child()</mark> / <mark>:nth-last-child()</mark> / <mark>:first-of-type</mark> / <mark>last-of-type</mark> / <mark>nth-of-type()</mark> / <mark>nth-last-of-type()</mark> pseudo selectors </u></h3>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
+// HTML ---
+    &lt;div&gt;
+        &lt;p&gt;&lt;/p&gt;
+        &lt;span&gt;&lt;/span&gt; 
+        &lt;div&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;/div&gt;
+        &lt;p&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;/p&gt;
+        &lt;span&gt;&lt;/span&gt;
+        &lt;div&gt;&lt;/div&gt;
+        &lt;span&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    
+    
+// CSS ----
+// :first child / :last child / :first-of-type / :last-of-type ----
+    div :first-child { }                                             // first <mark>p</mark> element
+    div :last-child { }                                           // last <mark>span</mark> element
+    
+    div :first-of-type {  }                                     // each first <mark>p</mark> <mark>span</mark> <mark>div</mark> elements 
+    div span:first-of-type {  }                                     // first <mark>span</mark> element
+    div :last-of-type {  }                                     // each last <mark>p</mark> <mark>span</mark> <mark>div</mark> elements 
+    div p:first-of-type {  }                                     // last <mark>p</mark> element
+    
+    
+// :nth-child() / nth-of-type() / nth-last-child() / nth-last-of-type() --
+    div :nth-child(2) { }                                   // second element (which is a <mark>span</mark> element)
+    div :nth-child(even) { }                                   // every even elements (regardless of type)
+    div :nth-last-child(2) { }                                   // second element from the end (which is a <mark>div</mark> element)
+    
+    div div:nth-of-type(2) { }                              // second <mark>div</mark> element 
+    div div:nth-of-last-type(2) { }                              // second <mark>div</mark> element from the end
+    </pre>
+    <h3><u> "child" <b>VS</b> "type" TEST </u></h3>
+    <div class="child_VS_type">
+      <p> first paragraph </p>
+      <div> first div element (cannot be selected as first "div" child element) </div>
+      <span> first span element </span>
+      <div> second div element </div>
+    </div>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+-- CODE (HTML) --
+    &lt;div class="child_VS_type"&gt;
+    &lt;p&gt; first paragraph &lt;/p&gt;
+    &lt;div&gt; first div element (cannot be selected as first "div" child element) &lt;/div&gt;
+    &lt;span&gt; first span element &lt;/span&gt;
+    &lt;div&gt; second div element &lt;/div&gt;
+    &lt;/div&gt;
+
+-- CODE (CSS) --
+    .child_VS_type div:first-child {                // NOT SELECTED because the "div" element is not the first child of the group
+        background-color: red;
+    }       
+    .child_VS_type div:first-of-type {              // first "div" element selected
+        color: yellow;
+    }  
+        </pre>
+    </details>
+    <h3><u> <mark>:first-child</mark> / <mark>:first-of-type</mark> TEST </u></h3>
+    <div class="child">
+      <p> First paragraph is selected with first child pseudo class</p>
+      <p> This second paragraph is not selected </p>
+    </div>
+    <div class="italic">
+      <p> This first <i>talic</i> written text is selectied in both paragraphs but not this <i>second</i> one</p>
+      <p> This first <i>talic</i> written text is selectied in both paragraphs but not this <i>second</i> one</p>
+    </div>
+    <div class="fitalic">
+      <p> In this first paragraph the first <i>italic</i> and also the second <i>italic</i> is selected </p>
+      <p> In this second one this first <i>italic</i> and second <i>italic</i> are not selected </p>
+    </div>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+-- CODE (HTML) --
+	&lt;div class="child"&gt;
+		&lt;p> First paragraph is selected with first child pseudo class&lt;/p&gt;
+		&lt;p> This second paragraph is not selected &lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class="italic"&gt;
+		&lt;p&gt; This first &lt;i&gt;talic&lt;/i&gt; written text is selectied in both paragraphs but not this &lt;i>second&lt;/i> one&lt;/p>
+		&lt;p&gt; This first &lt;i&gt;talic&lt;/i&gt; written text is selectied in both paragraphs but not this &lt;i>second&lt;/i> one&lt;/p>
+	&lt;/div&gt;
+	&lt;div class="fitalic">
+		&lt;p> In this first paragraph the first &lt;i&gt;italic&lt;/i&gt; and also the second &lt;i&gt;italic&lt;/i&gt; is selected&lt;/p&gt;
+		&lt;p> In this second one this first &lt;i&gt;italic&lt;/i&gt; and second &lt;i&gt;italic&lt;/i&gt; are not selected&lt;/p&gt;
+	&lt;/div&gt;
+
+-- CODE (CSS) --
+	.child{                                      .italic{                                        .fitalic{
+		background-color: aquamarine;               background-color: aquamarine;                   background-color: aquamarine;
+	}                                           }                                               }
+	.child p:first-child {                      .italic p i:first-child{                        .fitalic p:first-child i{
+		background-color: red;                      background-color: red;                          background-color: red;
+	}                                           }                                               }
+	    </pre>
+    </details>
+    <h3><u> <mark>:last-child</mark> / <mark>:last-of-type</mark> TEST </u></h3>
+    <p><ins> - the :last-child pseudo element works the same just selects the last element </ins></p>
+    <div class="lchild">
+      <p> In this situation this first paragraph is not selected</p>
+      <p> This second however is selected </p>
+    </div>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+-- CODE (HTML) --
+	&lt;div class="lchild"&gt;
+		&lt;p&gt; In this situation this first paragraph is not selected&lt;/p&gt;
+		&lt;p&gt; This second however is selected &lt;/p&gt;
+	&lt;/div&gt;
+			
+-- CODE (CSS) --
+	.lchild{                                            .lchild p:last-child{
+		background-color: aquamarine;                       background-color: red;
+	}                                                   }
+	    </pre>
+    </details>
+    <div id="ltype">
+      <p> This is the frist paragraph </p>
+      <p> This is the second paragraph </p>
+      <p> This is the third and last paragraph of its parent so it is targeted and selected </p>
+      <h3> This is a heading </h3>
+      <h3> This is also a heading </h3>
+    </div>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+-- CODE (HTML) --
+	&lt;div id="ltype"&gt;
+		&lt;p&gt;> This is the frist paragraph &lt;/p&gt;
+		&lt;p&gt; This is the second paragraph &lt;/p&gt;
+		&lt;p&gt; This is the third and last paragraph of its parent so it is targeted and selected &lt;/p&gt;
+		&lt;h3&gt; This is a heading &lt;/h3&gt;
+		&lt;h3&gt; This is also a heading &lt;/h3&gt;
+	&lt;/div&gt;
+
+-- CODE (CSS) --
+	#ltype{                                             #ltype p:last-of-type{
+		background-color: aquamarine;                       background-color: red;
+	}                                                   }
+		</pre>
+    </details>
+    <h3><u> <mark>:nth-child(n)</mark> / <mark>:nth-of-type(n)</mark> // <mark>:nth-last-child(n)</mark> / <mark>:nth-of-last-type(n)</mark> </u></h3>
+    <p><ins> Simple counting with NTH method </ins></p>
+    <div id="nthsimple">
+      <h3> This is the fist heading not targeted </h3>
+      <h3> This second heading is targeted with :nth-child(n) </h3>
+      <h3> This third heading is also targeted but form the end of this DIV see code :nth-last-of-type(n)</h3>
+      <p> This fourth paragrap is targeted but from the end for this DIV with :nth-last-of-type(n)</p>
+      <p> This fifth paragrap is targeted too with :nth-of-type(n)</p>
+      <p> This sixth paragrap is not targeted</p>
+    </div>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+-- CODE (HTML) --
+	&lt;div id="nthsimple"&gt;
+		&lt;h3&gt; This is the fist heading not targeted &lt;/h3&gt;
+		&lt;h3&gt; This second heading is targeted with :nth-child(n) &lt;/h3&gt;
+		&lt;h3&gt; This third heading is also targeted but form the end of this DIV see code :nth-last-of-type(n)&lt;/h3&gt;
+		&lt;p&gt; This fourth paragrap is targeted but from the end for this DIV with :nth-last-of-type(n)&lt;/p&gt;
+		&lt;p&gt; This fifth paragrap is targeted too with :nth-of-type(n)&lt;/p&gt;
+		&lt;p&gt; This sixth paragrap is not targeted&lt;/p&gt;
+	&lt;/div&gt;
+
+		-- CODE (CSS) --
+    #nthsimple{                                             #nthsimple p:nth-last-of-type(3){
+	    background-color: aquamarine;                           background-color: red;
+	}                                                       }
+	#nthsimple h3:nth-child(2){                             #nthsimple p:nth-of-type(2){
+		background-color: red;                                  background-color: red;
+	}                                                       }
+	#nthsimple h3:nth-last-of-type(1){
+		background-color: red;
+	}
+		</pre>
+    </details>
+    <p><ins> Even and ODD values</ins></p>
+    <div id="evenandodd">
+      <p> First paragraph ODD</p>
+      <p> Second paragraph EVEN</p>
+      <p> Third paragraph ODD</p>
+      <p> Fourth paragraph EVEN</p>
+      <p> Fifth paragraph ODD</p>
+      <p> Sixth paragraph EVEN</p>
+    </div>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+-- CODE (HTML) --
+	&lt;div id="evenandodd"&gt;
+		&lt;p&gt; First paragraph ODD&lt;/p&gt;
+		&lt;p&gt; Second paragraph EVEN&lt;/p&gt;
+		&lt;p&gt; Third paragraph ODD&lt;/p&gt;
+		&lt;p&gt; Fourth paragraph EVEN&lt;/p&gt;
+		&lt;p&gt; Fifth paragraph ODD&lt;/p&gt;
+		&lt;p&gt; Sixth paragraph EVEN&lt;/p&gt;
+	&lt;/div&gt;
+
+-- CODE (CSS) --
+	#evenandodd{                                        #evenandodd p:nth-child(odd){
+		background-color: aquamarine;                       background-color: orange;
+	}                                                   }
+	#evenandodd p:nth-child(even){
+		background-color: orangered;
+	}
+	    </pre>
+    </details>
+    <p><ins> Using formula (an+0) </ins></p>
+    <p> - in this exeple I will target every third line both direction </p>
+    <p> - Using the formula (an+0), a=circle size, n=is a counter(does not change!) and 0=offset value (targeted value inside the circle)</p>
+    <div id="anpluszero">
+      <p> First paragraph</p>
+      <p> Second paragraph </p>
+      <p> Third paragraph </p>
+      <p> Fourth paragraph </p>
+      <p> Fifth paragraph </p>
+      <p> Sixth paragraph </p>
+      <p> Seventh paragraph </p>
+      <p> Eight paragraph </p>
+      <p> Ninth paragraph </p>
+    </div>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+-- CODE (HTML) --
+	&lt;div id="anpluszero"&gt;
+		&lt;p&gt; First paragraph&lt;/p&gt;
+		&lt;p&gt; Second paragraph &lt;p&gt;
+		&lt;p&gt; Third paragraph &lt;p&gt;
+		&lt;p&gt; Fourth paragraph &lt;p&gt;
+		&lt;p&gt; Fifth paragraph &lt;p&gt;
+		&lt;p&gt; Sixth paragraph &lt;p&gt;
+		&lt;p&gt; Seventh paragraph &lt;p&gt;
+		&lt;p&gt; Eight paragraph &lt;p&gt;
+		&lt;p&gt; Ninth paragraph &lt;p&gt;
+&lt;/div&gt;
+
+-- CODE (CSS) --
+	#anpluszero{                                        #anpluszero p:nth-last-of-type(3n+2){
+		background-color: aquamarine;                       background-color: orange;
+	}                                                   }
+	#anpluszero p:nth-child(3n+1){
+		background-color: orangered;
+	}
+		</pre>
+    </details>
+  </details>
+  <!-------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h3 style="color:darkblue;"><u> The <mark>:root</mark> / <mark>:target</mark> / <mark>:lang()</mark> pseudo selectors </u></h3>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre>
+// HTML -- 
     &lt;p lang="fr"&gt;La Langue Francaise&lt;/p&gt;
     
     &lt;p id="myTarget"&gt Targeted Element&lt;/p&gt;
     &lt;a href="#myTarget"&gt;target the target&lt;/a&gt;
     
--- CSS -- 
+    
+// CSS -- 
     :root { font-size: 1.3em;}                                         // "&lt;html&gt;" element targeted
     :lang(fr) { color: yellow; }                                       // "&lt;p lang="fr"&gt;La Langue Francaise&lt;/p&gt;" selected
     
-// :target ----------------- 
+// :target -------------
     p:target {color: green;}                                           // "&lt;p id="myTarget"&gt;Targeted Element&lt;/p&gt;" selected <u>after the user click on the "&lt;a href="#myTarget"&gt;target the target&lt;/a&gt;" element</u>    
     </pre>
-<details class="example" >
-<summary> Example : </summary>
-<h3><u> <mark>:root</mark> TEST </u></h3>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <h3><u> <mark>:root</mark> TEST </u></h3>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (CSS) -- 
     :root {
         /*-- font-size: 1.2em; --*/                         // sets the whole document's font size (commented out for not modifying the page)
     }
         </pre>
-        </details>
-<h3><u> <mark>:target</mark> TEST </u></h3>
-    <a href="#bookMark_1"> Target Book Mark 1 </a>  &nbsp;
+    </details>
+    <h3><u> <mark>:target</mark> TEST </u></h3>
+    <a href="#bookMark_1"> Target Book Mark 1 </a> &nbsp;
     <a href="#bookMark_2"> Target Book Mark 2 </a> &nbsp;
-    <a href="#bookMark_3"> Target Book Mark 3 </a> 
-    <div id="bookMarks">            <!-- elements are put in a container in order to target them separately -->
-        <p id="bookMark_1" id="BM"> Book Mark 1 </p>
-        <p id="bookMark_2"> Book Mark 2 </p>
-        <p id="bookMark_3"> Book Mark 3 </p>        
-    </div>    
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <a href="#bookMark_3"> Target Book Mark 3 </a>
+    <div id="bookMarks"> <!-- elements are put in a container in order to target them separately -->
+      <p id="bookMark_1" id="BM"> Book Mark 1 </p>
+      <p id="bookMark_2"> Book Mark 2 </p>
+      <p id="bookMark_3"> Book Mark 3 </p>
+    </div>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;a href="#bookMark_1"&gt; Target Book Mark 1 &lt;/a&gt;  &nbsp;
     &lt;a href="#bookMark_2"&gt; Target Book Mark 2 &lt;/a&gt; &nbsp;
@@ -1428,17 +1538,17 @@ SYNTAX :    :root                                                      // <i cla
         color: red;
     }
         </pre>
-        </details>
-<!-------------------------------------------------------------------------------------------------------------------------->    
-<hr>
-<h3><u> <mark>:lang()</mark> TEST </u></h3>
+    </details>
+    <!-------------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h3><u> <mark>:lang()</mark> TEST </u></h3>
     <p> Below only the specified language is selected</p>
     <p lang="en"> coding is awesome</p>
     <p lang="fr"> faire le code c'es nikel</p>
     <p lang="hu"> kodolni kiraly cucc</p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p lang="en"&gt; coding is awesome&lt;/p&gt;
     &lt;p lang="fr"&gt; faire le code c'es nikel&lt;/p&gt;
@@ -1451,38 +1561,34 @@ SYNTAX :    :root                                                      // <i cla
         font-weight: bold;
     }
         </pre>
-        </details>
-</details>
-<!-------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="headerExtra"><u> Pseudo Elements </u></h2>  
-<p> - pseudo elements taget specified parts of an element </p>
-    <pre class="syntax">
-SYNTAX :    <i>element</i>::<strong>pseudo-element</strong>  
+    </details>
+  </details>
+  <!-------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"><u> Pseudo Elements </u></h2>
+  <p> - pseudo elements taget specified parts of an element </p>
+  <pre class="syntax">
+    <i>selector</i>::<strong>pseudo-element</strong>  
     </pre>
-<!-------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>::first-letter</mark> / <mark>::first-line</mark> </u></h3>
-    <pre class="syntax">
-SYNTAX :    <i>element</i>::first-letter|:first-letter                        // targets the first letter in the first line of a <u>block level element</u>
-            <i>element</i>::first-line|:first-line                            // targets the first line of a <u>block level element</u>
-    </pre>
+  <!-------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h3 style="color:darkblue;"><u> The <mark>::first-letter</mark> / <mark>::first-line</mark> pseudo elements </u></h3>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     &lt;p class="test"&gt; The first letter and the first line of the paragraph is targeted &lt;/p&gt;
     
--- CSS --
+// CSS --
     .test::first-letter {color: white;}                                // first letter selected
     .test::first-line {font-variant: small-caps;}                      // first line selected
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3><u> <mark>::first-letter</mark> TEST (Drop-Cap) </u></h3>
+    <h3><u> <mark>::first-letter</mark> TEST (Drop-Cap) </u></h3>
     <div class="fLetter">
-         Drop-Cap created by targeting the first letter of this element. Drop-Cap created by targeting the first letter of this element. Drop-Cap created by targeting the first letter of this element. Drop-Cap created by targeting the first letter of this element. Drop-Cap created by targeting the first letter of this element. Drop-Cap created by targeting the first letter of this element. 
+      Drop-Cap created by targeting the first letter of this element. Drop-Cap created by targeting the first letter of this element. Drop-Cap created by targeting the first letter of this element. Drop-Cap created by targeting the first letter of this element. Drop-Cap created by targeting the first letter of this element. Drop-Cap created by targeting the first letter of this element.
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;div id="fletter-line"&gt;
         &lt;p&gt; Drop-Cap created by targeting the first letter of this element. Drop-Cap created by targeting the first letter of this element. Drop-Cap created by targeting the first letter of this element. Drop-Cap created by targeting the first letter of this element. &lt;/p&gt;
@@ -1498,14 +1604,14 @@ SYNTAX :    <i>element</i>::first-letter|:first-letter                        //
         background-color:coral;                         }
     }
         </pre>
-        </details>
-<h3><u> <mark>::first-line TEST </mark></u></h3>
+    </details>
+    <h3><u> <mark>::first-line TEST </mark></u></h3>
     <div class="fLine">
-        The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted. 
+      The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted.
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;div class="fLine"&gt;
         The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted. The first line of this blcok-level element is targeted. 
@@ -1521,15 +1627,13 @@ SYNTAX :    <i>element</i>::first-letter|:first-letter                        //
         background-color:coral; 
     }
         </pre>
-        </details>
-</details>
-<!-------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>::before</mark> / <mark>::after</mark> </u></h3>
-    <pre class="syntax">
-SYNTAX :    <i>element</i>::before|:before                                    // inserts something before the targeted element (use the "content" property to insert content) <u>(the inserted content is NOT part of the DOM)</u> 
-            <i>element</i>::after|:after                                      // inserts something after the targeted element (use the "content" property to insert content) <u>(the inserted content is NOT part of the DOM)</u>
-    </pre>
+    </details>
+  </details>
+  <!-------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h3 style="color:darkblue;"><u> The <mark>::before</mark> / <mark>::after</mark> pseudo elements </u></h3>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     &lt;p class="test"&gt; original element &lt;/p&gt;
     
@@ -1545,14 +1649,12 @@ SYNTAX :    <i>element</i>::before|:before                                    //
         height: 50px;
     }
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h3><u> <mark>::before</mark> / <mark>::after</mark> TEST </u></h3>
+    <h3><u> <mark>::before</mark> / <mark>::after</mark> TEST </u></h3>
     <p> - images inserted with the <mark>::before</mark> or <mark>::after</mark> pseudo-elements <u>are not stylable</u>, so we add it as background image in order to size it </p>
     <p class="image_insert"> Before and After pseudo-element test </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="image_insert"&gt; Before and After pseudo-element test &lt;/p&gt;
     
@@ -1570,22 +1672,22 @@ SYNTAX :    <i>element</i>::before|:before                                    //
         background-size: cover;
     }
         </pre>
-        </details>
-<h3><u> content added by the <mark>::before</mark> and <mark>::after</mark> pseudo-element are not part of the DOM TEST </u></h3>
+    </details>
+    <h3><u> content added by the <mark>::before</mark> and <mark>::after</mark> pseudo-element are not part of the DOM TEST </u></h3>
     <p id="addedContent"> original paragraph </p>
-<script>
-    $(document).ready(function(){
-    var element = document.getElementById('addedContent');
-    
-// JS cannot return the added content by the "::before" and "::after" pseudo-elements because they are not part of the DOM        
-    var nextSibling = element.nextSibling ;
-    var nextElementSibling = element.nextElementSibling ;
-    var childNodes = element.childNodes ;
-    });
-</script>    
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <script>
+      $(document).ready(function () {
+        var element = document.getElementById('addedContent');
+
+        // JS cannot return the added content by the "::before" and "::after" pseudo-elements because they are not part of the DOM        
+        var nextSibling = element.nextSibling;
+        var nextElementSibling = element.nextElementSibling;
+        var childNodes = element.childNodes;
+      });
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p id="addedContent"&gt; original paragraph &lt;/p&gt;
 &lt;script&gt;
@@ -1609,14 +1711,13 @@ SYNTAX :    <i>element</i>::before|:before                                    //
         color: yellow;
     }
         </pre>
-        </details>
-</details>
-<!-------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>::selection</mark> / <mark>::after</mark> </u></h3>
-    <pre class="syntax">
-SYNTAX :    <i>element</i>::selection                                         // select the portion of the element what is selected by the user (<mark>color</mark>, <mark>background</mark>, <mark>cursor</mark>, <mark>outline</mark> styles only!)
-    </pre>
+    </details>
+  </details>
+  <!-------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h3 style="color:darkblue;"><u> The <mark>::selection</mark> pseudo element </u></h3>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
     &lt;p class="demo"&gt; Select me! &lt;/p&gt;
     
@@ -1626,13 +1727,11 @@ SYNTAX :    <i>element</i>::selection                                         //
         color: yellow;
     }
     </pre>
-<details class="example">
-<summary> Example : </summary> 
-<h3><u> <mark>::selection</mark> TEST  </u></h3>
+    <h3><u> <mark>::selection</mark> TEST </u></h3>
     <p class="select_me"> Selection a part of this text, its background becomes blue with white letters </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="select_me"&gt; Selection a part of this text, its background becomes red with white letters &lt;/p&gt;
     
@@ -1647,20 +1746,19 @@ SYNTAX :    <i>element</i>::selection                                         //
     }
     </pre>
     </details>
-</details>
-<!-------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>::backdrop</mark> </u></h3>
-    <pre class="syntax">
-SYNTAX :    <i>element</i>::backdrop                                          // selects the backdrop <u>(box rendered beneath a "full screen-mode element")(usually <mark>&lt;dialog&gt;</mark> element)</u>   
-    </pre>
-    <pre>
+  </details>
+  <!-------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h3 style="color:darkblue;"><u> The <mark>::backdrop</mark> pseudo selector </u></h3>
+  <details class="example">
+    <summary> Example : </summary>
+  <pre>
     &lt;dialog class="myModal"&gt; Hello I'm a Dialog Box &lt;/dialog&gt;
 &lt;script&gt;
 <span style="color:orangered;">JavaScript only works in Chromium [TESTED 2019-02-01]</span>
     var modal = document.querySelector("dialog");
     modal.show();                                                      // opens the dialog box (same as the "open" attribute)
-    modal.showModal();                                                 // opens the dialog box (as modal window "full screen-mode" | creates a backdrop element | <u>user can close the modal by pressing "Esc" button</u> )  
+    modal.showModal();                                                 // opens the dialog box (as modal window "fullscreen-mode" | creates a backdrop element | <u>user can close the modal by pressing "Esc" button</u> )  
     
     modal.close("box closed");                                         // closes the dialog box (message is returned (optionnal))
     modal.returnValue                                                  // -> "box closed" (returns the value passed by the "close()" method)
@@ -1671,24 +1769,22 @@ SYNTAX :    <i>element</i>::backdrop                                          //
         background-color:red;
     }
     </pre>
-<details class="example">
-        <summary> Example : </summary>
-<h4><u> <mark>::backdrop</mark> TEST </u></h4> 
+    <h4><u> <mark>::backdrop</mark> TEST </u></h4>
     <dialog id="myDialogBox2"> click to close Modal </dialog>
     <p> Double Click to open the Modal Box </p>
-<script>
-    var dBox_ = document.getElementById("myDialogBox2");
+    <script>
+      var dBox_ = document.getElementById("myDialogBox2");
 
-    dBox_.nextElementSibling.ondblclick = function(event) {
+      dBox_.nextElementSibling.ondblclick = function (event) {
         console.log(dBox_.showModal())
-    }
-    dBox_.onmouseup = function(event) {
+      }
+      dBox_.onmouseup = function (event) {
         event.target.close("CLOSED");
-    }
-</script>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+      }
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;dialog id="myDialogBox2"&gt; click to close Modal &lt;/dialog&gt;
     &lt;p&gt; Double Click to open the Modal Box &lt;/p&gt;
@@ -1712,30 +1808,10 @@ SYNTAX :    <i>element</i>::backdrop                                          //
         background-color: rgba(255, 0, 0, .4);
     }
         </pre>
-        </details>
-</details>  
-<!-------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h3 style="color:darkblue;"><u> <mark>::cue(selector)</mark> </u></h3>
-    <pre class="syntax">
-SYNTAX :    <i>element</i>::cue<i>(selector)</i>                                     // selects webVTT(.vtt file) CUEs (<mark>&lt;video&gt;</mark> tags should be targeted) <u>(cannot position tracks)</u> <span style="color:orange;">(the <mark>(selector)</mark> is poorly supported (partial Chrome support) [TESTED 2019-04-02])</span>   
-    </pre>
-    <pre>
-// -- CODE (HTML) ------------------------------------------
-    &lt;video id="myVideo" src="Video/Demo Video 2.mp4" controls&gt;
-        &lt;track default src="Track Files/DEMO.vtt"&gt;
-    &lt;/video&gt;
-    
-// -- CODE (HTML) ------------------------------------------
-    #myVideo::cue {                                                    // cues are targeted and styled (the &lt;video&gt; element is targeted not the &lt;track&gt;)
-        font-size: 1.2em;                                              // -! we can style font apearance only (we cannot position tracks from here!)
-        color: yellow;
-    }
-    #myVideo::cue(#1) {                                                // !! the ::cue selector "(#1)" is barely supported now (Chrome only) [TESTED 2019-04-03]
-        color: red;                                           
-    }
-    </pre>
-    
-    <br><br>
+    </details>
+  </details>
+
+  <br><br>
 </body>
+
 </html>

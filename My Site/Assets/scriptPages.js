@@ -53,12 +53,12 @@ const tableGroupingSeparatorBackgroundColor = '#3b3a3a';
  * @returns {number}
  */
 function getLineLengthWithoutComment(line) {
-  if (
-    line.startsWith('//')
-    || line.trim().length === 0
-    || line.indexOf('<span id="browserSupport"') > -1
-  ) {
+  if (line.trim().length === 0 || line.indexOf('<span id="browserSupport"') > -1) {
     return 0;
+  }
+
+  if (line.startsWith('//')) {
+    return line.replace(/[ -]+$/g, "").length
   }
 
   let currentLine = line;
@@ -229,6 +229,7 @@ function formatLines(farthestCharacterForEachLine) {
         entitiesLength = lineObj.line.match(/<[^>]+>/g).join('').length;
       }
 
+      lineObj.line = lineObj.line.trimEnd();
       const paddedLine = lineObj.line.padEnd(farthestCharacterForEachLine.farthestCharacter + entitiesLength, '-');
       const shortenedLine = paddedLine.substring(0, farthestCharacterForEachLine.farthestCharacter + entitiesLength);
 
