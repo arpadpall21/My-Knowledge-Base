@@ -1,231 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Colors </title>    
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="../../Assets/stylesPages.css">
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Colors </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Colors (ver 4.0.0) </h1>
-    <p> Updated ( 2016-05-23 / 2018-09-10 / 2021-06-01) </p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html" title="CSS">CSS></a> Colors
-    </p>
-<table class="table">
-<caption>
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  <h1> Colors </h1>
+  <p> Updated ( 2016-05-23 / 2018-09-10 / 2021-06-01 / 2024-03-16 ) </p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Colors
+  </p>
+  <table class="table">
     <tr>
-        <th style="width:15%"> Property </th>
-        <th style="width:40%;"> Value </th>
-        <th> Description </th>
+      <th style="width:15%"> Property </th>
+      <th style="width:40%;"> Value </th>
+      <th> Description </th>
     </tr>
-    <tr class="05.01">
-        <td>  </td>
-        <td> <strong>colorName</strong> </td>
-        <td> 
-            - predefined names by CSS which expresses colors <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value" target="_blank">[link]</a> 
-            <span id="browserSupport" title="Updated: 2021-06-01">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>        
-            </td>
+    <tr>
+      <td> </td>
+      <td> <strong>colorName</strong> </td>
+      <td>
+        - predefined names by CSS which expresses colors <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value" target="_blank">[link]</a>
+        <span id="browserSupport" title="Updated: 2021-06-01">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="05.02">
-        <td>  </td>
-        <td> #<strong>hexValue</strong> </td>
-        <td> 
-            - hexadecimal value <mark>rrggbb</mark> which defines a color code <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value" target="_blank">[link]</a> 
-            <span id="browserSupport" title="Updated: 2021-06-01">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>        
-        </td>
+    <tr>
+      <td> </td>
+      <td> #<strong>hexValue</strong> </td>
+      <td>
+        - hexadecimal value <mark>rrggbb</mark> which defines a color code <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value" target="_blank">[link]</a>
+        <span id="browserSupport" title="Updated: 2021-06-01">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="10.01">
-        <td>  </td>
-        <td> rgb(<strong>nr(0-255)</strong>, <strong>nr(0-255)</strong>, <strong>nr(0-255)</strong>) </td>
-        <td> 
-            - defines a color by the given (red, green, blue) values 
-            <span id="browserSupport" title="Updated: 2021-06-01">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-                <span class="openable"> more... <div>
-                    <p> - space separated values (ex: <mark>rgb(255 255 255)</mark>) </p>
-                    <span id="browserSupport" title="Updated: 2021-06-01">
-                        <span><i class="fab fa-chrome"></i> 65 </span>
-                        <span><i class="fab fa-firefox"></i> 52 </span>
-                        <span><i class="fab fa-opera"></i> 52 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                        <span><i class="fab fa-safari"></i> 12.1 </span>
-                    </span>
-                    <p> - accepts an extra Alpha parameter like the <mark>rgba()</mark> function (ex: <mark>rgb(255, 255, 255, .5)</mark>) </p>
-                    <span id="browserSupport" title="Updated: 2021-06-01">
-                        <span><i class="fab fa-chrome"></i> 65 </span>
-                        <span><i class="fab fa-firefox"></i> 52 </span>
-                        <span><i class="fab fa-opera"></i> 52 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                        <span><i class="fab fa-safari"></i> 12.1 </span>
-                    </span>
-                </div></span>
-            </span>        
-        </td>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr class="10.02">
-        <td>  </td>
-        <td> rgba(<strong>nr(0-255)</strong>, <strong>nr(0-255)</strong>, <strong>nr(0-255)</strong>, <strong>op:nr(0.0 - 1.0)</strong>) </td>
-        <td> 
-            - defines a color by the given (red, green, blue) values and the opacity level 
-            <span id="browserSupport" title="Updated: 2021-06-01">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-                <span class="openable"> more... <div>
-                    <p> - space separated values (ex: <mark>rgb(255 255 255)</mark>) </p>
-                    <span id="browserSupport" title="Updated: 2021-06-01">
-                        <span><i class="fab fa-chrome"></i> 65 </span>
-                        <span><i class="fab fa-firefox"></i> 52 </span>
-                        <span><i class="fab fa-opera"></i> 52 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                        <span><i class="fab fa-safari"></i> 12.1 </span>
-                    </span>
-                </div></span>
-            </span>        
-        </td>
+    <tr>
+      <td> </td>
+      <td> rgb(<strong>nr(0-255)</strong>, <strong>nr(0-255)</strong>, <strong>nr(0-255)</strong>) </td>
+      <td>
+        - defines a color by the given (red, green, blue) values
+        <span id="browserSupport" title="Updated: 2021-06-01">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+          <span class="openable"> more... <div>
+              <p> - space separated values (ex: <mark>rgb(255 255 255)</mark>) </p>
+              <span id="browserSupport" title="Updated: 2021-06-01">
+                <span><i class="fab fa-chrome"></i> 65 </span>
+                <span><i class="fab fa-firefox"></i> 52 </span>
+                <span><i class="fab fa-opera"></i> 52 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+                <span><i class="fab fa-safari"></i> 12.1 </span>
+              </span>
+              <p> - accepts an extra Alpha parameter like the <mark>rgba()</mark> function (ex: <mark>rgb(255, 255, 255, .5)</mark>) </p>
+              <span id="browserSupport" title="Updated: 2021-06-01">
+                <span><i class="fab fa-chrome"></i> 65 </span>
+                <span><i class="fab fa-firefox"></i> 52 </span>
+                <span><i class="fab fa-opera"></i> 52 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+                <span><i class="fab fa-safari"></i> 12.1 </span>
+              </span>
+            </div></span>
+        </span>
+      </td>
     </tr>
-    <tr class="15.01">
-        <td>  </td>
-        <td> hsl(<strong>hue:nr(0-360)</strong>, <strong>sat:nr(0%-100%)</strong>, <strong>ligh:nr(0%-100%)</strong>) </td>
-        <td> 
-            - defines a color by the given (hue, saturation, light) parameters 
-            <span id="browserSupport" title="Updated: 2021-06-01">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 9.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.1 </span>
-            </span>
-        </td>
+    <tr>
+      <td> </td>
+      <td> rgba(<strong>nr(0-255)</strong>, <strong>nr(0-255)</strong>, <strong>nr(0-255)</strong>, <strong>op:nr(0.0 - 1.0)</strong>) </td>
+      <td>
+        - defines a color by the given (red, green, blue) values and the opacity level
+        <span id="browserSupport" title="Updated: 2021-06-01">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+          <span class="openable"> more... <div>
+              <p> - space separated values (ex: <mark>rgb(255 255 255)</mark>) </p>
+              <span id="browserSupport" title="Updated: 2021-06-01">
+                <span><i class="fab fa-chrome"></i> 65 </span>
+                <span><i class="fab fa-firefox"></i> 52 </span>
+                <span><i class="fab fa-opera"></i> 52 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+                <span><i class="fab fa-safari"></i> 12.1 </span>
+              </span>
+            </div></span>
+        </span>
+      </td>
     </tr>
-    <tr class="15.02">
-        <td>  </td>
-        <td> hsla(<strong>hue:nr(0-360)</strong>, <strong>sat:nr(0%-100%)</strong>, <strong>ligh:nr(0%-100%)</strong>, <strong>op:nr(0.0 - 1.0)</strong>) </td>
-        <td> 
-            - defines a color by the given (hue, saturation, light) parameters and the opacity level 
-            <span id="browserSupport" title="Updated: 2021-06-01">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 3 </span>
-                <span><i class="fab fa-opera"></i> 10 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 3.1 </span>
-            </span>
-        </td>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr class="20.01">
-        <td> opacity </td>
-        <td> <strong>op:nr(0.0-1.0)</strong> </td>
-        <td> 
-            - set the opacity of an <u>element</u>
-            <span id="browserSupport" title="Updated: 2021-06-01">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 3 </span>
-                <span><i class="fab fa-opera"></i> 9 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 2 </span>
-                <span class="openable"> more...<div>
-                    <p> percentage opacity value </p>
-                        <span id="browserSupport" title="Updated: 2021-06-01">
-                            <span><i class="fab fa-chrome"></i> 78 </span>
-                            <span><i class="fab fa-firefox"></i> 70 </span>
-                            <span><i class="fab fa-opera"></i> NO </span>
-                            <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                            <span><i class="fab fa-safari"></i> NO </span>
-                        </span>
-                </div></span>
-            </span>
-        </td>
+    <tr>
+      <td> </td>
+      <td> hsl(<strong>hue:nr(0-360)</strong>, <strong>sat:nr(0%-100%)</strong>, <strong>ligh:nr(0%-100%)</strong>) </td>
+      <td>
+        - defines a color by the given (hue, saturation, light) parameters
+        <span id="browserSupport" title="Updated: 2021-06-01">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 9.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.1 </span>
+        </span>
+      </td>
     </tr>
-</table>   
-<br>    
-    <details class="example" id="notes">
+    <tr>
+      <td> </td>
+      <td> hsla(<strong>hue:nr(0-360)</strong>, <strong>sat:nr(0%-100%)</strong>, <strong>ligh:nr(0%-100%)</strong>, <strong>op:nr(0.0 - 1.0)</strong>) </td>
+      <td>
+        - defines a color by the given (hue, saturation, light) parameters and the opacity level
+        <span id="browserSupport" title="Updated: 2021-06-01">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 3 </span>
+          <span><i class="fab fa-opera"></i> 10 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 3.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> opacity </td>
+      <td> <strong>op:nr(0.0-1.0)</strong> </td>
+      <td>
+        - set the opacity of an <u>element</u>
+        <span id="browserSupport" title="Updated: 2021-06-01">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 3 </span>
+          <span><i class="fab fa-opera"></i> 9 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 2 </span>
+          <span class="openable"> more...<div>
+              <p> percentage opacity value </p>
+              <span id="browserSupport" title="Updated: 2021-06-01">
+                <span><i class="fab fa-chrome"></i> 78 </span>
+                <span><i class="fab fa-firefox"></i> 70 </span>
+                <span><i class="fab fa-opera"></i> NO </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+                <span><i class="fab fa-safari"></i> NO </span>
+              </span>
+            </div></span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p> <a href="http://www.w3schools.com/css/css_colors.asp" target="_blank"> W3School CSS Color </a></p>
-    <p> <a href="http://www.w3schools.com/css/css3_colors.asp" target="_blank"> W3School CSS3 Color </a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <pre style="background-color:lemonchiffon; font-weight:bold;">
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p> <a href="http://www.w3schools.com/css/css_colors.asp" target="_blank"> W3School CSS Color </a></p>
+  <p> <a href="http://www.w3schools.com/css/css3_colors.asp" target="_blank"> W3School CSS3 Color </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <pre style="background-color:lemonchiffon; font-weight:bold;">
          <u>bit per pixel</u>       <u>Number Of Colors</u>           <u>Name</u>
                 1 bit                       2           Monochrome    
-                2 bits                      4           CGA                                
+                2 bits                      4           CGA    
                 4 bits                     16           EGA
                 8 bits                    256           VGA
                16 bits                 65,536           High Colors
                24 bits             16,777,216           True Colors
                32 bits          4,294,967,296           Deep Colors
     </pre>
-    <pre>
-// same color different ways to defined it --------------------------------------------
-    
+  <pre>
+// same color ----------------------
     myElement {
         color: cornflowerblue;                                                         // color name 
-        color: #6495ed;                                                                // hexadecimal value
-        color: rgb(100, 149, 237)                                                      // rgb value
-        color: hsl(218.5, 79.2%, 66.1%)                                                // hsl value
-  // control opacity (half opaque) ----------------------
-        color: rgba(100, 149, 237, 0.5)                                                // rgb value with opacity level
-        color: hsla(218.5, 79.2%, 66.1%, 0.5)                                          // hsl value with opacity level
-        opacity: 0.5;                                                                  // opacity level porperty set!
+        color: #6495ed;                                                                // hex value
+        color: rgb(100, 149, 237)                                                      // rgb
+        color: hsl(218.5, 79.2%, 66.1%)                                                // hsl
+      
+  // opacity control (half opaque) -----
+        color: rgba(100, 149, 237, 0.5)       
+        color: hsla(218.5, 79.2%, 66.1%, 0.5) 
+        opacity: 0.5;                         
     }
     </pre>
-<details class="example">    
-<summary> Example : </summary>
-<h3> RGB method </h3>
-    <p style="font-size:20px;color:rgb(150,360,68);"> This is paragrap's color is is made with RGB  code. "color:rgb(150,360,68);", this is the three color code</p>
+  <details class="example">
+    <summary> Example : </summary>
+    <h3> RGB method </h3>
+    <p style="font-size:20px;color:rgb(150,360,68);"> This is paragrap's color is is made with RGB code. "color:rgb(150,360,68);", this is the three color code</p>
     <pre>
     -- CODE (HTML) --
     &lt;p style="font-size:20px;color:rgb(150,360,68);"&gt; This is paragrap's color is is made with RGB code. "color:rgb(150,360,68);", this is the three color code &lt;/p&gt;
     </pre>
-<hr>
-<h3> Hexadecimal method </h3>
+    <hr>
+    <h3> Hexadecimal method </h3>
     <p style="font-size:20px;color:#ec2e37;"> This is paragrap's color is made with Hexadecimal code. "color:#ec2e37;", these are basicaly color codes of photoshop</p>
     <pre>
     -- CODE (HTML) --
     &lt;p style="font-size:20px;color:#ec2e37;"&gt; This is paragrap's color is made with Hexadecimal code. "color:#ec2e37;", these are basicaly color codes of photoshop&lt;/p&gt;
     </pre>
-<hr>
-<h3> Typing method </h3>    
+    <hr>
+    <h3> Typing method </h3>
     <p style="font-size:20px;color:teal;"> This is paragrap's color is is made with traditional code. "color:teal;", simple typing method</p>
     <pre>
     -- CODE (HTML) --
     &lt;p style="font-size:20px;color:teal;"&gt; This is paragrap's color is is made with traditional code. "color:teal;", simple typing method&lt;/p&gt;
     </pre>
-<hr>
-<h3> HLS method</h3>
+    <hr>
+    <h3> HLS method</h3>
     <p style="font-family:Arial, sans-serif; font-size:20px; color:hsl(315, 100%, 50%);"> This paragrap is colored with HLS, it seems to be at first glance overcomplicated but it isn't. </p>
     <pre>
     -- CODE (HTML) --
     &lt;p style="font-family:Arial, sans-serif; font-size:20px; color:hsl(315, 100%, 50%);"&gt; This paragrap is colored with HLS, 
     it seems to be at first glance overcomplicated but it isn't. &lt;/p&gt;
     </pre>
-<hr>
-<h3> Opacity Demonstrations </h3>
+    <hr>
+    <h3> Opacity Demonstrations </h3>
     <p style="font-family:Arial, sans-serif; font-size:20px; color:rgba(0,0,0,0.7);"> This Paragraph is black colored 70% (0.7) opacity with RGBA property </p>
     <p style="font-family:Arial, sans-serif; font-size:20px; color:hsla(0,0%,0%,0.5);"> This paragraph is also black colored 50% (0.5) opacity with HSLA property </p>
     <p style="font-family:Arial, sans-serif; font-size:20px; color:black; opacity:0.2;"> This paragraph is colored with traditional typing method and added an "opacity" property 20% (0.2)</p>
@@ -237,14 +251,14 @@
     and added an "opacity" property 20% (0.2)&lt;/p&gt;
     </pre>
     <div id="opacityall"> <img src="../../../../Pictures/Smilie.jpg" alt="Smile Icon" style="height:100px; float:left;">
-        If you set the opacity property for an element that will change the opacity of every elements inside!
-        This Container is 50% Opaque with all its elements indise Font, Border, Image</div>
+      If you set the opacity property for an element that will change the opacity of every elements inside!
+      This Container is 50% Opaque with all its elements indise Font, Border, Image</div>
     <div id="opacityfont"> <img src="../../../../Pictures/Smilie.jpg" alt="Smile Icon" style="height:100px; 
-        float:left;">This second example I used the opacity only for the text in this element, to to do that 
-        I HAD TO used the"color:RGBA;" property so it targets only the font color but the "HSLA" works as well!</div>
+        float:left;">This second example I used the opacity only for the text in this element, to to do that
+      I HAD TO used the"color:RGBA;" property so it targets only the font color but the "HSLA" works as well!</div>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     -- CODE (HTML) --
     &lt;div id="opacityall"&gt; &lt;img src="../../../../Pictures/Smilie.jpg" alt="Smile Icon" style="height:100px; float:left;"&gt;
         If you set the opacity property for an element that will change the opacity of every elements inside!
@@ -268,8 +282,9 @@
     }
     </pre>
     </details>
-</details>    
-    
-    <br><br>
+  </details>
+
+  <br><br>
 </body>
+
 </html>

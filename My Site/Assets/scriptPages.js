@@ -40,7 +40,7 @@ const colorMap = {
 
 const extraSpaceAfterLatestCharacter = 3;
 const extraSpaceAfterLatestCharacterSecondary = 3;
-const ignoreCommentFormatingUpToCharacter = 40;
+const ignoreCommentFormatingUpToCharacter = 34;
 const recognizedEntities = ['&lt;', '&gt;', '&amp;'];
 
 // table formating config

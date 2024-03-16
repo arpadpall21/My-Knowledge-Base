@@ -1,246 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title> CSS Size Units Functions and At Rules </title> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
-</head>
-<body>
-<h1> Size Units (ver 4.0.0) </h1>
-    <p> Updated ( 2019-01-12 / 2019-04-09 / 2020-01-17 / 2021-06-11)</p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html" title="CSS">CSS></a> Size Units 
-    </p>
-<table class="table">   
-<caption> 
-    CSS Size Units 
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
-    <tr>
-        <th style="width:30%;"> Unit </th>
-        <th> Description </th>
-    </tr>
-    <tr class="05.00">
-        <td colspan="2"> Absolute Units </td>
-    </tr>
-    <tr class="05.01">
-        <td> <strong>nr</strong>cm </td>
-        <td> - centimeters 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="05.02">
-        <td> <strong>nr</strong>mm </td>
-        <td> - milimeters 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="05.03">
-        <td> <strong>nr</strong>in </td>
-        <td> - <mark>(1in = 96px = 2.54cm)</mark>  inches 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="15.01">
-        <td> <strong>nr</strong>px </td>
-        <td> - <mark>(1px = 1/96th of 1in)</mark> pixels (absolute pixel size but relative to the screen because of pixel density)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="10.01">
-        <td> <strong>nr</strong>pt </td>
-        <td> - <mark>(1pt = 1/72th of 1in)</mark> points 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="10.02">
-        <td> <strong>nr</strong>pc </td>
-        <td> - <mark>(1pc = 12pt)</mark> picas 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="20.01">
-        <td colspan="2"> Relative Units </td>
-    <tr class="20.02">
-        <td> <strong>nr</strong>em </td>
-        <td> - relative to the <u>current</u> font size of this element 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="20.03">
-        <td> <strong>nr</strong>rem </td>
-        <td> - relative to the <u>current</u> font size of the root (<mark>&lt;html&gt;</mark>) element 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.6 </span>
-                <span><i class="fab fa-opera"></i> 11.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 4.1 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="40.01">
-        <td> <strong>nr</strong>ex </td>
-        <td> - relative to the "x-height" of the current font <u>[TESTED 2019-01-14 -> not reliable]</u> 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="40.02">
-        <td> <strong>nr</strong>ch </td>
-        <td> - relative to the width of the <mark>0</mark>(zero) character <u>[TESTED 2019-01-14 -> not reliable]</u>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 27 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 20 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 7 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="30.01">
-        <td> <strong>nr</strong>vw </td>
-        <td> 
-            - relative (percent) to the current width of the viewport 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 20 </span>
-                <span><i class="fab fa-firefox"></i> 19 </span>
-                <span><i class="fab fa-opera"></i> 20 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 6 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="30.02">
-        <td> <strong>nr</strong>vh </td>
-        <td> - relative (percent) to the current height of the viewport 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 20 </span>
-                <span><i class="fab fa-firefox"></i> 19 </span>
-                <span><i class="fab fa-opera"></i> 20 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 6 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="30.03">
-        <td> <strong>nr</strong>vmin </td>
-        <td> - relative (percent) to the smallest side (width or height which is currently the smallest) of the current viewport 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 20 </span>
-                <span><i class="fab fa-firefox"></i> 19 </span>
-                <span><i class="fab fa-opera"></i> 20 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 "vm" </span>
-                <span><i class="fab fa-safari"></i> 6 </span>
-            </span>
-        </td>
-    </tr>
-    </tr>
-    <tr class="30.04">
-        <td> <strong>nr</strong>vmax </td>
-        <td> - relative (percent) to the largest side (width or height which is currently the largest) of the current viewport 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 26 </span>
-                <span><i class="fab fa-firefox"></i> 19 </span>
-                <span><i class="fab fa-opera"></i> 20 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> NO </span>
-                <span><i class="fab fa-safari"></i> 7 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="25.01">
-        <td> <strong>nr</strong>% </td>
-        <td> 
-            - relative to the <u>same property of the parent element</u> 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="35.01">
-        <td> <strong>nr</strong>px <mark>(1px = 1/96th of 1in)</mark> </td>
-        <td> - pixels <u>(absolute pixel size but relative to the screen because of pixel density)</u> 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-</table>
-    <br>
-    <details class="example" id="notes">
-    <summary> Notes :</summary>
-	<!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href='https://www.w3schools.com/css/css_units.asp' target="_blank"> W3Schools CSS Units </a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
 
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - in CSS we have 2 types of length units, <u>absolute</u> (fixed size) and <u>relative</u> (relative to another lenght) </p>
-<hr>
-<!--------------------------------------------------------------------------------------------------------->
-<h2 style="color:darkblue;"><u> Absolute Sizes <mark>cm</mark> / <mark>mm</mark> / <mark>in</mark> / <mark>px</mark> / <mark>pt</mark> / <mark>pc</mark> </u></h2> 
-    <p> - using absolute units is not recommended on screen devices because the screen size can vary so much </p>
-<details class="example">
-<summary> DEMO </summary>
+<head>
+  <meta charset="utf-8">
+  <title> </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body> 
+  <h1> Size Units </h1>
+  <p> Updated ( 2019-01-12 / 2019-04-09 / 2020-01-17 / 2021-06-11)</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Size Units
+  </p>
+  <table class="table">
+    <tr>
+      <th style="width:30%;"> Unit </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td colspan="2"> Absolute Units </td>
+    </tr>
+    <tr>
+      <td> <strong>nr</strong>cm </td>
+      <td> - centimeters
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <strong>nr</strong>mm </td>
+      <td> - milimeters
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <strong>nr</strong>in </td>
+      <td> - <mark>(1in = 96px = 2.54cm)</mark> inches
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <strong>nr</strong>pt </td>
+      <td> - <mark>(1pt = 1/72th of 1in)</mark> points
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <strong>nr</strong>pc </td>
+      <td> - <mark>(1pc = 12pt)</mark> picas
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <strong>nr</strong>px </td>
+      <td> - <mark>(1px = 1/96th of 1in)</mark> pixels (absolute pixel size but relative to the screen because of pixel density)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2"> Relative Units </td>
+    </tr>
+    <tr>
+      <td> <strong>nr</strong>em </td>
+      <td> - relative to the <u>current</u> font size of this element
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <strong>nr</strong>rem </td>
+      <td> - relative to the <u>current</u> font size of the root (<mark>&lt;html&gt;</mark>) element
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.6 </span>
+          <span><i class="fab fa-opera"></i> 11.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 4.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <strong>nr</strong>% </td>
+      <td>
+        - relative to the <u>same property of the parent element</u>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <strong>nr</strong>vw </td>
+      <td>
+        - relative (percent) to the current width of the viewport
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 20 </span>
+          <span><i class="fab fa-firefox"></i> 19 </span>
+          <span><i class="fab fa-opera"></i> 20 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 6 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <strong>nr</strong>vh </td>
+      <td> - relative (percent) to the current height of the viewport
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 20 </span>
+          <span><i class="fab fa-firefox"></i> 19 </span>
+          <span><i class="fab fa-opera"></i> 20 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 6 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <strong>nr</strong>vmin </td>
+      <td> - relative (percent) to the smallest side (width or height which is currently the smallest) of the current viewport
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 20 </span>
+          <span><i class="fab fa-firefox"></i> 19 </span>
+          <span><i class="fab fa-opera"></i> 20 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 "vm" </span>
+          <span><i class="fab fa-safari"></i> 6 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <strong>nr</strong>vmax </td>
+      <td> - relative (percent) to the largest side (width or height which is currently the largest) of the current viewport
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 26 </span>
+          <span><i class="fab fa-firefox"></i> 19 </span>
+          <span><i class="fab fa-opera"></i> 20 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> NO </span>
+          <span><i class="fab fa-safari"></i> 7 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <strong>nr</strong>px <mark>(1px = 1/96th of 1in)</mark> </td>
+      <td> - pixels <u>(absolute pixel size but relative to the screen because of pixel density)</u>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <strong>nr</strong>ex </td>
+      <td> - relative to the "x-height" of the current font <u>[TESTED 2019-01-14 -> not reliable]</u>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> <strong>nr</strong>ch </td>
+      <td> - relative to the width of the <mark>0</mark>(zero) character <u>[TESTED 2019-01-14 -> not reliable]</u>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 27 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 20 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 7 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href='https://www.w3schools.com/css/css_units.asp' target="_blank"> W3Schools CSS Units </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - in CSS we have 2 types of length units, <u>absolute</u> (fixed size) and <u>relative</u> (relative to another lenght) </p>
+  <hr>
+  <!--------------------------------------------------------------------------------------------------------->
+  <h2 style="color:darkblue;"><u> Absolute Sizes <mark>cm</mark> / <mark>mm</mark> / <mark>in</mark> / <mark>px</mark> / <mark>pt</mark> / <mark>pc</mark> </u></h2>
+  <p> - using absolute units is not recommended on screen devices because the screen size can vary so much </p>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     &lt;div class="demo"&gt;&lt;/div&gt;
     .demo {
@@ -249,19 +275,19 @@
         height: 100mm;
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> Absolute CSS Values TEST </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> Absolute CSS Values TEST </u></h4>
     <p style="font-size:1cm;"> I'm 1 centimeter big </p>
     <p style="font-size:5mm;"> I'm 5 milimeters big </p>
     <p style="font-size:.5in;"> I'm 0.5 inches big </p>
     <p style="font-size:20px;"> I'm 20 pixels big </p>
     <p style="font-size:30pt;"> I'm 30 points big </p>
     <p style="font-size:2pc;"> I'm 2 picas big </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p style="font-size:1cm;"&gt; I'm 1 centimeter big &lt;/p&gt;
     &lt;p style="font-size:5mm;"&gt; I'm 5 milimeters big &lt;/p&gt;
     &lt;p style="font-size:.5in;"&gt; I'm 0.5 inches big &lt;/p&gt;
@@ -269,14 +295,13 @@
     &lt;p style="font-size:30pt;"&gt; I'm 30 points big &lt;/p&gt;
     &lt;p style="font-size:2pc;"&gt; I'm 2 picas big &lt;/p&gt;
         </pre>
-        </details>
-</details>    
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> Relative Sizes <mark>em</mark> / <mark>rem</mark> / <mark>ex</mark> / <mark>ch</mark> / <mark>vw</mark> / <mark>vh</mark> / <mark>vmin</mark> / <mark>vmax</mark> / <mark>%</mark> / <mark>px</mark> </u></h2>
-    <img src="font x-height.jpg" alt="font x-height" height="80">
-<details class="example">
-<summary> DEMO </summary>
+    </details>
+  </details>
+  <!--------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> Relative Sizes <mark>em</mark> / <mark>rem</mark> / <mark>ex</mark> / <mark>ch</mark> / <mark>vw</mark> / <mark>vh</mark> / <mark>vmin</mark> / <mark>vmax</mark> / <mark>%</mark> / <mark>px</mark> </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
 // em / rem ---------------
     .myElement {
@@ -300,18 +325,18 @@
         padding: 3vmax;                                                                // 3% of the largest side (width or height of the current viewport which is curently the largest)  
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> Relative values <mark>em</mark> / <mark>rem</mark> / <mark>%</mark> TEST </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> Relative values <mark>em</mark> / <mark>rem</mark> / <mark>%</mark> TEST </u></h4>
     <p style="font-size:2em;"> I'm <u>2em</u> big (twice as big as the set font size) </p>
     <p style="font-size:1.5rem;"> I'm <u>1.5rem</u> big (twice as big as the root element font-size) </p>
     <div style="font-size:0.8em; border:solid 1px black;">
-        <p style="font-size:150%;"> I'm <u>150%</u> big (relative to the font-size of the parent element) </p>
+      <p style="font-size:150%;"> I'm <u>150%</u> big (relative to the font-size of the parent element) </p>
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p style="font-size:2em;"> I'm &lt;u&gt;2em&lt;/u&gt; big (twice as big as the set font size) &lt;/p&gt;
     &lt;p style="font-size:1.5rem;"&gt; I'm &lt;u&gt;1.5rem&lt;/u&gt; big (twice as big as the root element font-size) &lt;/p&gt;
     
@@ -320,26 +345,27 @@
     &lt;/div&gt;
                                                                       // element font-size is relative to the parent's font-size (0.8 * 150% = 1.2em)
         </pre>
-        </details>
-<h4><u> Relative values <mark>vw</mark> / <mark>vh</mark> / <mark>vmin</mark> / <mark>vmax</mark>TEST </u></h4>       <p> - the height of this box is 20% relative to the current viewport's width </p>
+    </details>
+    <h4><u> Relative values <mark>vw</mark> / <mark>vh</mark> / <mark>vmin</mark> / <mark>vmax</mark>TEST </u></h4>
+    <p> - the height of this box is 20% relative to the current viewport's width </p>
     <p> - the width of this box is 20% relative to the current viewport's height </p>
     <div style="width:20vh; height:20vw; border:black 3px double; background-color:azure;"></div>
     <p style="font-size:2vmin"> My font-size is 2% of the current Smallest side (relative to the viewport) </p>
     <p style="font-size:2vmax"> My font-size is 2% of the current Largest side (relative to the viewport) </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;div style="width:20vh; height:20vw; border:black 3px double; background-color:azure;"&gt;&lt;/div&gt;
     &lt;p style="font-size:2vmin"&gt; My font-size is 2% of the current Smallest side (relative to the viewport) &lt;/p&gt;
     &lt;p style="font-size:2vmax"&gt; My font-size is 2% of the current Largest side (relative to the viewport) &lt;/p&gt;    
         </pre>
-        </details>
-<h4><u> <mark>ch</mark> and <mark>ex</mark> size TEST </u></h4>
+    </details>
+    <h4><u> <mark>ch</mark> and <mark>ex</mark> size TEST </u></h4>
     <p style="font-size:1em;"> Original font size <span style="font-size:1ex;"> <u>1ex</u> font-size (relative to the current font "x-height")</span> <span style="color:yellow;">works very bizzarely (zooming in chrome modifies this font size for some reason and across the browsers it sizes differently [TESTED 2019-01-14]) </span></p>
     <p style="font-size:1em;"> Original font size <mark>0</mark> <span style="font-size:1ch;"> <u>1ch</u> font-size (relative to the widht of the <mark>0</mark>(zero) character) </span><span style="color:yellow;">works very bizzarely (zooming in chrome modifies this font size for some reason and across the browsers it sizes differently [TESTED 2019-01-14]) </span></p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p style="font-size:1em;"&gt; 
         Original font size &lt;span style="font-size:1ex;"&gt; &lt;u&gt;1ex&lt;/u&gt; font-size (relative to the current font "x-height")&lt;/span&gt; &lt;span style="color:yellow;"&gt;works very bizzarely (zooming in chrome modifies this font size for some reason and across the browsers it sizes differently [TESTED 2019-01-14]) &lt;/span&gt;
     &lt;/p&gt;
@@ -347,19 +373,11 @@
         Original font size &lt;mark&gt;0&lt;/mark&gt; &lt;span style="font-size:1ch;"&gt; &lt;u&gt;1ch&lt;/u&gt; font-size (relative to the widht of the &lt;mark&gt;0&lt;/mark&gt;(zero) character) &lt;/span>&lt;span style="color:yellow;"&gt;works very bizzarely (zooming in chrome modifies this font size for some reason and across the browsers it sizes differently [TESTED 2019-01-14]) &lt;/span&gt;
     &lt;/p&gt;
         </pre>
-        </details>
-</details>
-    
-    
-    
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    
-    
-<div style="border:solid 2px black; height:1em; font-size:40px;">
-    <p> TEST </p>
-</div>
-    
-    
-    <br><br>
+    </details>
+  </details>
+
+
+  <br><br>
 </body>
+
 </html>

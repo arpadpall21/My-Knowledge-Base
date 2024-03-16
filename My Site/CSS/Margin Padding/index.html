@@ -1,227 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Margin and Padding </title>    
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	<link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Margin and Padding </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Margin and Padding (3.1) </h1>
-    <p> Updated (2016-05-27 / 2018-12-20) </p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html" title="CSS">CSS></a> Margin and Padding 
-    </p>
-<table class="table">    
+  <h1> Margin and Padding </h1>
+  <p> Updated ( 2016-05-27 / 2018-12-20 / 2024-03-16 ) </p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Margin and Padding
+  </p>
+  <table class="table">
     <tr>
-        <th> Property </th>
-        <th> Value </th>
-        <th> Description </th>
+      <th style="width: 15%"> Property </th>
+      <th style="width: 40%"> Value </th>
+      <th> Description </th>
     </tr>
     <tr>
-        <td> margin </td>
-        <td>  
-            <strong>top right bottom left</strong> <span style="color:#7f85a3;">(4 values)</span><br>
-            <strong>top leftRight bottom</strong> <span style="color:#7f85a3;">(3 values)</span><br>
-            <strong>topBottom leftRight</strong> <span style="color:#7f85a3;">(2 values)</span><br>
-            <strong>all</strong> <span style="color:#7f85a3;">(1 value)</span><br>
-        </td>
-        <td> 
-            margin shorthand property 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>        
-        </td>
+      <td colspan="3"> Margin </td>
     </tr>
     <tr>
-        <td> margin-bottom </td>
-        <td>  
-            <strong>cssLength</strong><br>
-            auto <span style="color:#7f85a3;">(browser calculates (horizontally centers))</span><br>
-        </td>
-        <td> 
-            sets the bottom margin of the element 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>        
-        </td>
+      <td> margin-top </td>
+      <td>
+        <strong>cssLength</strong><br>
+        auto <span style="color:#7f85a3;">(browser calculates (horizontally centers))</span><br>
+      </td>
+      <td>
+        - sets the top margin of the element
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> margin-left </td>
-        <td>  
-           <strong>cssLength</strong><br>
-            auto <span style="color:#7f85a3;">(browser calculates (horizontally centers))</span><br>
-        </td>
-        <td> 
-            sets the left margin of the element 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>        
-        </td>
+      <td> margin-right </td>
+      <td>
+        <strong>cssLength</strong><br>
+        auto <span style="color:#7f85a3;">(browser calculates (horizontally centers))</span><br>
+      </td>
+      <td>
+        - sets the right margin of the element
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> margin-right </td>
-        <td>  
-            <strong>cssLength</strong><br>
-            auto <span style="color:#7f85a3;">(browser calculates (horizontally centers))</span><br>
-        </td>
-        <td>
-            sets the right margin of the element 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>        
-        </td>
+      <td> margin-bottom </td>
+      <td>
+        <strong>cssLength</strong><br>
+        auto <span style="color:#7f85a3;">(browser calculates (horizontally centers))</span><br>
+      </td>
+      <td>
+        sets the bottom margin of the element
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> margin-top </td>
-        <td>  
-            <strong>cssLength</strong><br>
-            auto <span style="color:#7f85a3;">(browser calculates (horizontally centers))</span><br>
-        </td>
-        <td> 
-            sets the top margin of the element 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>        
-        </td>
+      <td> margin-left </td>
+      <td>
+        <strong>cssLength</strong><br>
+        auto <span style="color:#7f85a3;">(browser calculates (horizontally centers))</span><br>
+      </td>
+      <td>
+        sets the left margin of the element
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> padding </td>
-        <td>  
-            <strong>top right bottom left</strong> <span style="color:#7f85a3;">(4 values)</span><br>
-            <strong>top leftRight bottom</strong> <span style="color:#7f85a3;">(3 values)</span><br>
-            <strong>topBottom leftRight</strong> <span style="color:#7f85a3;">(2 values)</span><br>
-            <strong>all</strong> <span style="color:#7f85a3;">(1 value)</span><br>
-        </td>
-        <td> 
-            padding shorthand property  
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>        
-        </td>
+      <td> margin </td>
+      <td>
+        <strong>top right bottom left</strong> <span style="color:#7f85a3;">(4 values)</span><br>
+        <strong>top leftRight bottom</strong> <span style="color:#7f85a3;">(3 values)</span><br>
+        <strong>topBottom leftRight</strong> <span style="color:#7f85a3;">(2 values)</span><br>
+        <strong>all</strong> <span style="color:#7f85a3;">(1 value)</span><br>
+      </td>
+      <td>
+        - margin shorthand property
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> padding-bottom </td>
-        <td> 
-            <strong>cssLength</strong><br>
-        </td>
-        <td> 
-            sets the bottom padding of the element 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>        
-        </td>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
-        <td> padding-left </td>
-        <td> 
-            <strong>cssLength</strong><br>
-        </td>
-        <td> 
-            sets the left padding of the element 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>        
-        </td>
+      <td colspan="3"> Padding </td>
     </tr>
     <tr>
-        <td> padding-right </td>
-        <td> 
-            <strong>cssLength</strong><br>
-        </td>
-        <td> 
-            sets the right padding of the element 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>        
-        </td>
+      <td> padding-top </td>
+      <td>
+        <strong>cssLength</strong><br>
+      </td>
+      <td>
+        - sets the top padding of the element
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> padding-top </td>
-        <td> 
-            <strong>cssLength</strong><br>
-        </td>
-        <td> 
-            sets the top padding of the element 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>        
-        </td>
+      <td> padding-right </td>
+      <td>
+        <strong>cssLength</strong><br>
+      </td>
+      <td>
+        - sets the right padding of the element
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
-</table>
-<h2 style="color:green;"><u> Notes : </u></h2>
-    <details class="example" id="notes">
+    <tr>
+      <td> padding-bottom </td>
+      <td>
+        <strong>cssLength</strong><br>
+      </td>
+      <td>
+        - sets the bottom padding of the element
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> padding-left </td>
+      <td>
+        <strong>cssLength</strong><br>
+      </td>
+      <td>
+        - sets the left padding of the element
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> padding </td>
+      <td>
+        <strong>top right bottom left</strong> <span style="color:#7f85a3;">(4 values)</span><br>
+        <strong>top leftRight bottom</strong> <span style="color:#7f85a3;">(3 values)</span><br>
+        <strong>topBottom leftRight</strong> <span style="color:#7f85a3;">(2 values)</span><br>
+        <strong>all</strong> <span style="color:#7f85a3;">(1 value)</span><br>
+      </td>
+      <td>
+        - padding shorthand property
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p> <a href="http://www.w3schools.com/css/css_margin.asp" target="_blank"> W3Schools Margin </a></p>
-    <p> <a href="http://www.w3schools.com/css/css_padding.asp" target="_blank">W3Schools Padding </a></p>
-    <p> <a href="http://www.w3schools.com/css/css_align.asp" target="_blank">W3Schools Align </a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    <p> - if two elemets have adjacent margins, these margins will collapse in a very strange way, the browser keeps the margin that has a value <u>farther from 0</u> or subracts the negative value from the positive (if values are negative / positive) </p>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-<h2 class="headerExtra"><u> Margins  </u></h2>
-    <p> - margin is the space around the element outside of any defined borders </p>
-    <p> - the margin cannot have background and accept negative values (elements can overlap therefore) </p>
-    <pre class="syntax">
-SYNTAX :    margin-top: <strong>cssLength</strong>                                  // sets the top margin of the element
-                        auto           <span style="color:skyblue;">// browser calculates (horizontally centers) </span>
-            margin-right: <strong>cssLength</strong>                                // sets the right margin of the element
-                          auto         <span style="color:skyblue;">// browser calculates (horizontally centers) </span>
-            margin-bottom: <strong>cssLength</strong>                               // sets the bottom margin of the element
-                           auto        <span style="color:skyblue;">// browser calculates (horizontally centers) </span>
-            margin-left: <strong>cssLength</strong>                                 // sets the left margin of the element
-                         auto          <span style="color:skyblue;">// browser calculates (horizontally centers) </span>
-            
-            margin: <strong>top right bottom left</strong>  <span style="color:skyblue;">// 4 values</span>             // margin shorthand property 
-                    <strong>top leftRight bottom</strong>   <span style="color:skyblue;">// 3 values</span>  
-                    <strong>topBottom leftRight</strong>    <span style="color:skyblue;">// 2 values</span>
-                    <strong>all</strong>                    <span style="color:skyblue;">// 1 value</span>
-    </pre>
-    <pre>       
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p> <a href="http://www.w3schools.com/css/css_margin.asp" target="_blank"> W3Schools Margin </a></p>
+  <p> <a href="http://www.w3schools.com/css/css_padding.asp" target="_blank">W3Schools Padding </a></p>
+  <p> <a href="http://www.w3schools.com/css/css_align.asp" target="_blank">W3Schools Align </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <h2 class="headerExtra"><u> Margin </u></h2>
+  <p> - the margin is the space around the element outside of any defined borders </p>
+  <p> -  margins are not affected by the background (meaning the element's background is not visible on the margin) </p>
+  <h3 class="header"><u> Margin Collapse </u></h3>
+  <p> -  if two elements have adjacent margins (even parent/children) their margin is collapsed in the following way: </p>
+  <p class="indent-lv1"> - if both margins are positive or negative the largest|smallest used and the other is ignored </p> 
+  <p class="indent-lv1"> - if one margin is negative and the other is positive, margins are added up and the result is used </p> 
+  <pre>
+    <u>element A margin bottom</u>    <u>element B margin top</u>    <u>margin between elements</u>
+    
+    20px                       10px                    20px     // largest value used 
+    -15px                      -5px                    -15px    // samllest value used 
+    
+    20px                       -15px                   -5px     // (20 + -15 = -5)
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+  <pre>
     margin-top: 100px;                                             // margin top is 100px
     margin-right: 2em;                                             // margin right is twice as bit as the element's letter size
     margin-bottom: 5%;                                             // bottom margin is 5% of the parent element's width
@@ -232,17 +243,18 @@ SYNTAX :    margin-top: <strong>cssLength</strong>                              
     margin: 10px 4em 5px;                                          // top margin = 10px / left and right margins = 4em / bottom margin = 5%
     margin: 10px 8px 5px 2px;                                      // top margin = 10px / right margin = 8px / bottom margin = 5% / left margin = 2%
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> Margin set by sides </u></h4>
-        <p class="marginbyside"> This Box has a margin 45px on top, 35px bottom, 175px left, 275 right </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- HTML --
+    <hr>
+    <!------------------------------------------------------------------->
+    <h4 class="header"> Margin set by sides </h4>
+    <p class="marginbyside"> This Box has a margin 45px on top, 35px bottom, 175px left, 275 right </p>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML --
     &lt;p class="marginbyside"&gt; This Box has a margin 45px on top, 35px bottom, 175px left, 275 right &lt;/p&gt;
     
--- CSS --
+    
+// CSS --
     .marginbyside{
         border: solid black;
         background-color: aqua;
@@ -252,22 +264,24 @@ SYNTAX :    margin-top: <strong>cssLength</strong>                              
         margin-right: 275px;
     }
         </pre>
-        </details>
-<h4><u> Inherited margin </u></h4>
+    </details>
+    <hr>
+    <!------------------------------------------------------------------->
+    <h4 class="header">Inherited margin </h4>
     <div class="inheritcontainer">
-        <p> This paragraph inherits its left 100px margin form the div element for this property
-        it has to be a parent element in order to be possible to inherit it</p>
+      <p> This paragraph inherits its left 100px margin form the div element for this property it has to be a parent element in order to be possible to inherit it</p>
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- HTML --
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML --
     &lt;div class="inheritcontainer"&gt;
         &lt;p&gt; This paragraph inherits its left 100px margin form the div element for this property
         it has to be a parent element in order to be possible to inherit it&lt;/p&gt;
     &lt;/div&gt;
     
--- CSS --
+    
+// CSS --
     .inheritcontainer{
         border: red solid 3px;
         margin-left: 100px;
@@ -277,16 +291,18 @@ SYNTAX :    margin-top: <strong>cssLength</strong>                              
         border: solid black;
     }
         </pre>
-        </details>
-<h4><u> <mark>auto</mark> property centers horizontally the element </u></h4>
-    <p class="automargin"> element perfectly centered </p>   
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- HTML --
+    </details>
+    <hr>
+    <!------------------------------------------------------------------->
+    <h4 class="header"> The <mark>auto</mark> value centers horizontally the element </u></h4>
+    <p class="automargin"> element perfectly centered </p>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML --
     &lt;p class="automargin"&gt; This paragraph will be centered because its margin is set to auto &lt;/p&gt;
     
--- CSS --
+// CSS --
     .automargin{
         text-align: center;
         width: 350px;
@@ -295,23 +311,26 @@ SYNTAX :    margin-top: <strong>cssLength</strong>                              
         margin:auto;
     }
         </pre>
-        </details>
-<h4><u> <mark>%</mark> percent value TEST </u></h4>
+    </details>
+    <hr>
+    <!------------------------------------------------------------------->
+    <h4 class="header"> The <mark>%</mark> percent value TEST </h4>
     <p> - the percent value is relative to the parent element's <u>width</u> </p>
     <p> - the parent element doesn't have any dimension set so the cild element shapes it</p>
     <div class="percentcontainer">
-        <p> perfectly centered paragraph </p>
+      <p> perfectly centered paragraph </p>
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- HTML --
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML --
     &lt;div class="percentcontainer"&gt;
         &lt;p&gt; This paragraphs margin is set with "2%" margin value, very interesting value! It is a relative
         and not a static value, it takes the full lenght of its parents. &lt;/p&gt;
     &lt;/div&gt;
     
--- CSS --
+    
+// CSS --
     .percentcontainer{
         border: solid black 3px;
     }
@@ -322,104 +341,44 @@ SYNTAX :    margin-top: <strong>cssLength</strong>                              
         border: solid black 2px;
     }
         </pre>
-        </details>
-<h4><u> margin collapse TEST </u></h4>    
+    </details>
+    <hr>
+    <!------------------------------------------------------------------->
+    <h4 class="header"> margin collapse TEST </h4>
     <p class="marginCollapse"> <span style="margin-right:15px;">margin right 15px</span><span style="margin-left:30px;">margin left 30px</span> = margin between the elements is 30px because the highes margin is honored only!</p>
     <p class="marginCollapse"> <span style="margin-right:-15px;">margin right -15px</span><span style="margin-left:20px;">margin left 20px</span> = margin between the elements is 5px because the negative value is subtracted form the positive!</p>
     <p style="background-color:white; border-bottom:1px black solid; margin-bottom:-10px;"> I have a -10px bottom margin (margin kept because of the highest value)</p>
     <p style="background-color:white; border-bottom:1px black solid; margin-top:-9px;"> I have a -9px top margin </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- HTML --
-// only the 30px margin kept
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+//  HTML --
+  // only the 30px margin kept
     &lt;p class="marginCollapse"&gt; &lt;span style="margin-right:15px;"&gt;margin right 15px&lt;/span&gt;&lt;span style="margin-left:30px;"&gt;margin left 30px&lt;/span&gt; = margin between the elements is 30px because the highes margin is honored only!&lt;/p&gt;
     
-// margin here is 5px between element, in this situation (positive and negative values) an arithmetic operation is accomplished
+  // margin here is 5px between element, in this situation (positive and negative values) an arithmetic operation is accomplished
     &lt;p class="marginCollapse"&gt; &lt;span style="margin-right:-15px;"&gt;margin right -15px&lt;/span&gt;&lt;span style="margin-left:20px;"&gt;margin left 20px&lt;/span&gt; = margin between the elements is 5px because the negative value is subtracted form the positive!&lt;/p&gt;   
     
-// only the -10px margin is kept
+  // only the -10px margin is kept
     &lt;p style="background-color:white; border-bottom:1px black solid; margin-bottom:-10px;"&gt; I have a -10px bottom margin (margin kept because of the highest value)&lt;/p&gt;
     &lt;p style="background-color:white; border-bottom:1px black solid; margin-bottom:-9px;"&gt; I have a -9px top margin &lt;/p&gt;
     
--- CSS ---
+// CSS ---
     .marginCollapse span {
         border: solid 1px black;
         background-color: white;
     }
         </pre>
-        </details>
-</details>
-<!-------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> Margin Collapse </u></h2> 
-    <p> - if two elements have adjacent margins (even if parent / children) these margins will collapse (except if the element is floating or its position is absolute)  </p>
-    <p> - the collapse mechanism works very strangely <u>(some consider it as a Bug)</u>, the browser keeps the margin that has a value <u>farther from 0</u> or subracts the negative value from the positive (if values are negative / positive)</p>
-    <pre>
--- HTML --
-    &lt;p class="frist"&gt; first element &lt;/p&gt;
-    &lt;p class="second"&gt; second element &lt;/p&gt;
-    
--- CSS --
-// margin between elements is 60px (number farther from 0 is honored)
-    .first {margin-bottom: 50px;}
-    .second {margin-top: 60px;}
-    
-// margin between elements is -10px (number farther from 0 is honored)
-    .first {margin-bottom: -10px;}
-    .second {margin-top: -7px;}
-    
-// margin between elements is -5px (negative is subtracted from positive margin)
-    .first {margin-bottom: 15px;}
-    .second {margin-top: -20px;}
-    </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> margin collapse TEST </u></h4>    
-    <p class="marginCollapse"> <span style="margin-right:15px;">margin right 15px</span><span style="margin-left:30px;">margin left 30px</span> = margin between the elements is 30px because the highes margin is honored only!</p>
-    <p class="marginCollapse"> <span style="margin-right:-15px;">margin right -15px</span><span style="margin-left:20px;">margin left 20px</span> = margin between the elements is 5px because the negative value is subtracted form the positive!</p>
-    <p style="background-color:white; border-bottom:1px black solid; margin-bottom:-10px;"> I have a -10px bottom margin (margin kept because of the highest value)</p>
-    <p style="background-color:white; border-bottom:1px black solid; margin-top:-9px;"> I have a -9px top margin </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- HTML --
-// only the 30px margin kept
-    &lt;p class="marginCollapse"&gt; &lt;span style="margin-right:15px;"&gt;margin right 15px&lt;/span&gt;&lt;span style="margin-left:30px;"&gt;margin left 30px&lt;/span&gt; = margin between the elements is 30px because the highes margin is honored only!&lt;/p&gt;
-    
-// margin here is 5px between element, in this situation (positive and negative values) an arithmetic operation is accomplished
-    &lt;p class="marginCollapse"&gt; &lt;span style="margin-right:-15px;"&gt;margin right -15px&lt;/span&gt;&lt;span style="margin-left:20px;"&gt;margin left 20px&lt;/span&gt; = margin between the elements is 5px because the negative value is subtracted form the positive!&lt;/p&gt;   
-    
-// only the -10px margin is kept
-    &lt;p style="background-color:white; border-bottom:1px black solid; margin-bottom:-10px;"&gt; I have a -10px bottom margin (margin kept because of the highest value)&lt;/p&gt;
-    &lt;p style="background-color:white; border-bottom:1px black solid; margin-bottom:-9px;"&gt; I have a -9px top margin &lt;/p&gt;
-    
--- CSS ---
-    .marginCollapse span {
-        border: solid 1px black;
-        background-color: white;
-    }
-        </pre>
-        </details>
-</details>    
-<!-------------------------------------------------------------------------------------------------------->
-<hr>    
-<h2 class="headerExtra"><u> Paddings  </u></h2>
-    <p> - the padding is the space around the element's content inside of any defined border </p>
-    <p> - the padding is affected by the background and does not accept any negative values! </p>
-    <pre class="syntax">
-SYNTAX :    padding-top: <strong>cssLength</strong>                                 // sets the top padding of the element
-            padding-right: <strong>cssLength</strong>                               // sets the right padding of the element
-            padding-bottom: <strong>cssLength</strong>                              // sets the bottom padding of the element
-            padding-left: <strong>cssLength</strong>                                // sets the left padding of the element
-            
-            padding: <strong>top right bottom left</strong>  <span style="color:skyblue;">// 4 values</span>            // padding shorthand property 
-                     <strong>top leftRight bottom</strong>   <span style="color:skyblue;">// 3 values</span>  
-                     <strong>topBottom leftRight</strong>    <span style="color:skyblue;">// 2 values</span>
-                     <strong>all</strong>                    <span style="color:skyblue;">// 1 value</span>  
-
-    </pre>
-    <pre>
+    </details>
+  </details>
+  <!-------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"><u> Padding </u></h2>
+  <p> - the padding is the space around the element's content inside of any defined border </p>
+  <p> - paddings are affected by the background and does not accept any negative values! </p>
+  <details class="example">
+    <summary> Example : </summary>
+  <pre>
     padding-top: 100px;                                            // padding top is 100px
     padding-right: 2em;                                            // padding right is twice as bit as the element's letter size
     padding-bottom: 5%;                                            // bottom padding is 5% of the parent element's width
@@ -430,17 +389,18 @@ SYNTAX :    padding-top: <strong>cssLength</strong>                             
     padding: 10px 4em 5px;                                         // top padding = 10px / left and right paddings = 4em / bottom padding = 5%
     padding: 10px 8px 5px 2px;                                     // top padding = 10px / right padding = 8px / bottom padding = 5% / left padding = 2%
     </pre>
-<details class="example">    
-<summary> Example : </summary>    
-<h4><u> Personalised Padding </u></h4>
-    <p class="padding"> This paragraph has specific paddings 25 left, 50px on top, 75px right, 100px bottom</p> 
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- HTML --
+    <hr>
+    <!-------------------------------------------------------------------->
+    <h4 class="header"> Personalised Padding </h4>
+    <p class="padding"> This paragraph has specific paddings 25 left, 50px on top, 75px right, 100px bottom</p>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML --
     &lt;p class="padding"&gt; This paragraph has specific paddings 25 left, 50px on top, 75px right, 100px bottom &lt;/p&gt;
     
--- CSS --
+    
+// CSS --
     .padding{
         background-color: coral;
         border: solid blue 3px;
@@ -452,17 +412,20 @@ SYNTAX :    padding-top: <strong>cssLength</strong>                             
         margin: auto;
     }
         </pre>
-        </details>
-<h4><u> Perfectly centered with padding </u></h4>    
+    </details>
+    <hr>
+    <!-------------------------------------------------------------------->
+    <h4 class="header"> Perfectly centered with padding </h4>
     <p class="paddingCenter"> My padding centers me perfectly </p>
     <br><br>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- HTML --
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML --
     &lt;p class="paddingCenter"&gt; My padding centers me perfectly &lt;/p&gt;
-
--- CSS --        
+    
+    
+// CSS --        
     .paddingCenter {
         border: solid 2px red;
         display: inline;
@@ -471,9 +434,10 @@ SYNTAX :    padding-top: <strong>cssLength</strong>                             
         background-color: azure;
     }    
         </pre>
-        </details>
-</details>
-    
-    <br><br>
+    </details>
+  </details>
+
+  <br><br>
 </body>
+
 </html>

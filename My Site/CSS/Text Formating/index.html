@@ -1,669 +1,812 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Formating Text </title>    
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="../../Assets/stylesPages.css">
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Formating Text </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Formating Text (ver 4.0.0) </h1>
-    <p> Updated  ( 2016-05-25 / 2016-11-12 / 2018-10-31 / 2021-05-24 )</p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html" title="CSS">CSS></a> Text Formating 
-    </p>
-<table class="table">    
-<caption>
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  <h1> Formating Text </h1>
+  <p> Updated ( 2016-05-25 / 2016-11-12 / 2018-10-31 / 2021-05-24 / 2024-03-14 ) </p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Text Formating
+  </p>
+  <table class="table">
     <tr>
-        <th style="width:15%"> Property </th>
-        <th style="width:40%;"> Value </th>
-        <th> Description </th>
+      <th style="width:15%"> Property </th>
+      <th style="width:40%;"> Value </th>
+      <th> Description </th>
     </tr>
-    <tr class="05.01">
-        <td> color </td>
-        <td> 
-            <strong>colorValue</strong> <span class="cssVA">(<a href="../Colors/index.html" target="_blank">colorValue [link]</a>)</span>
-        </td>
-        <td> 
-            - specifies a color for the text 
-            <span id="browserSupport" title="Update: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>        
-        </td>
+    <tr>
+      <td> color </td>
+      <td>
+        <strong>colorValue</strong> <span class="cssVA">(<a href="../Colors/index.html" target="_blank">colorValue [link]</a>)</span>
+      </td>
+      <td>
+        - specifies a color for the text
+        <span id="browserSupport" title="Update: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="50.01">
-        <td> direction </td> 
-        <td> 
-            ltr <span class="cssAV">((Default) left-to-right)</span><br>
-            rtl <span class="cssAV">(right-to-left)</span>
-        </td>
-        <td> 
-            - defines the writing direction in a <u>block level</u> element 
-            <span id="browserSupport" title="Updated: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 2 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 9.2 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
+    <tr>
+      <td> text-transform </td>
+      <td>
+        none <span class="cssAV">([default] no effect)</span><br>
+        capitalize <span class="cssAV">(first character of each word capitalized)</span><br>
+        uppercase <span class="cssAV">(all characters transformed to uppercase)</span><br>
+        lowercase <span class="cssAV">(all characters transformed to lowercase)</span>
+      </td>
+      <td>
+        - controls the capitalisation of text
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 7 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="40.4">
-        <td> hyphens </td>
-        <td>  
-            none <span class="cssAV">(no hyphenation)</span><br>
-            manual <span class="cssAV">((Default) words are hyphenated at <mark>-</mark>(hyphen characters))</span><br>
-            auto <span class="cssAV">(browser hyphenate when algorithm is deciding (depending on the set language))</span> 
-        </td>
-        <td>
-            - controls the text hyphenation (hyphen used when the text reaches the end of the line) 
-            <span id="browserSupport" title="Updated: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 55 </span>
-                <span><i class="fab fa-firefox"></i> 43 </span>
-                <span><i class="fab fa-opera"></i> 44 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 -ms- </span>
-                <span><i class="fab fa-safari"></i> 5.1 -webkit- </span>
-            </span>
-        </td>
-    </tr>    
-    <tr class="20.02">
-        <td> letter-spacing </td>
-        <td> 
-            normal <span class="cssAV">(Default)</span><br>
-            <strong>cssLength</strong>  <span class="cssAV">(default value 0)</span>
-        </td>
-        <td> 
-            - increases or decreases the space between characters (negative values allowed) 
-            <span id="browserSupport" title="Updated: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>        
-        </td>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr class="60.01">
-        <td> line-height </td>
-        <td>  
-            normal <span class="cssAV">((Default) font size height)</span><br>
-            <strong>nr</strong> <span class="cssAV">(compared the current font size (Default <mark>0</mark>))</span><br>
-            <strong>cssLength</strong>  <span class="cssAV">(fixed value)</span><br>
-        </td>
-        <td> 
-            - sets the height of an inline box 
-            <span id="browserSupport" title="Updated: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 7 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>        
-        </td>
+    <tr>
+      <td> text-decoration-line </td>
+      <td>
+        underline<br>
+        overline<br>
+        linethrough
+      </td>
+      <td>
+        - set the text decoration type to use (multiple values can be combined)
+        <span id="browserSupport" title="Update: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 57 </span>
+          <span><i class="fab fa-firefox"></i> 36 </span>
+          <span><i class="fab fa-opera"></i> 44 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 12.1 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="40.01">
-        <td> overflow-wrap </td>
-        <td>  
-            normal <span class="cssAV">(Default) no word break)</span><br>
-            break-word <span class="cssAV">(allows unbreakable words to be broken)</span><br>
-            anywhere <span class="cssAV">(allows unbreakable words to be broken)</span>
-            <span id="browserSupport" title="Updated: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 80 </span>
-                <span><i class="fab fa-firefox"></i> 65 </span>
-                <span><i class="fab fa-opera"></i> 67 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 80 </span>
-                <span><i class="fab fa-safari"></i> NO </span>
-            </span>
-        </td>
-        <td> 
-            - long words <u>(longer the the parent element)</u> to be broken and wrap onto the next line (newer version of <mark>word-wrap</mark> property)
-            <span id="browserSupport" title="Updated: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 23 </span>
-                <span><i class="fab fa-firefox"></i> 49 </span>
-                <span><i class="fab fa-opera"></i> 12.1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
-                <span><i class="fab fa-safari"></i> 6.1 </span>
-            </span>
-        </td>
+    <tr>
+      <td> text-decoration-style </td>
+      <td>
+        solid <span class="cssAV">(Default)</span><br>
+        double<br>
+        dotted<br>
+        dashed<br>
+        wavy
+      </td>
+      <td>
+        - sets the kind of decoration line to use (<mark>text-decoration-line</mark> propety must be declared first)
+        <span id="browserSupport" title="Update: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 57 </span>
+          <span><i class="fab fa-firefox"></i> 36 </span>
+          <span><i class="fab fa-opera"></i> 44 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 12.1 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="70.02">
-        <td> quotes </td>
-        <td>  
-            none <span class="cssAV">(no quotation)</span><br>
-            <i>"stQuteLv1" "endQuteLv1" "stQuteLv2" "endQuteLv2" ...</i> <br>
-            auto <span class="cssAV">(quotation according to the elemnt's <mark>lang</mark> attribute)</span>
-            <span id="browserSupport" title="Updated: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 87 </span>
-                <span><i class="fab fa-firefox"></i> 70 </span>
-                <span><i class="fab fa-opera"></i> 73 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 87 </span>
-                <span><i class="fab fa-safari"></i> NO </span>
-            </span>
-        </td>
-        <td>  
-            - defines the quotation character for the <mark>&lt;q&gt;</mark> tag 
-            <span id="browserSupport" title="Updated: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 11 </span>
-                <span><i class="fab fa-firefox"></i> 1.5 </span>
-                <span><i class="fab fa-opera"></i> 4 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
-                <span><i class="fab fa-safari"></i> 9 </span>
-            </span>
-        </td>
+    <tr>
+      <td> text-decoration-color </td>
+      <td>
+        <strong>colorValue</strong> <span class="cssVA">(<a href="../Colors/index.html" target="_blank">colorValue [link]</a>)</span>
+      </td>
+      <td>
+        - specifies the decoration color (<mark>text-decoration-line</mark> propety must be set first)
+        <span id="browserSupport" title="Update: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 57 </span>
+          <span><i class="fab fa-firefox"></i> 36 </span>
+          <span><i class="fab fa-opera"></i> 44 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 12.1 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="70.01">
-        <td> tab-size </td>
-        <td>  
-            <strong>nr</strong> <span class="cssAV">(number of characters (Default <mark>8</mark>))</span><br>
-            <strong>cssLength</strong>            
-                <span id="browserSupport" title="Updated: 2021-05-24">
-                    <span><i class="fab fa-chrome"></i> 42 </span>
-                    <span><i class="fab fa-firefox"></i> 53 </span>
-                    <span><i class="fab fa-opera"></i> 29 </span>
-                    <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                    <span><i class="fab fa-safari"></i> NO </span>
-                </span>
-        </td>
-        <td> 
-            - specifies the width of the "tab" character </span> 
-            <span id="browserSupport" title="Updated: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 21 </span>
-                <span><i class="fab fa-firefox"></i> 4 -moz- </span>
-                <span><i class="fab fa-opera"></i> 10.5 -o- / 15 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                <span><i class="fab fa-safari"></i> 6.1 </span>
-            </span>
-        </td>
+    <tr>
+      <td> text-decoration-thickness </td>
+      <td>
+        auto <span class="cssAV">(Default)</span><br>
+        from-font <span class="cssAV">(font defined thickness, if the font file doesn't have this information = <mark>auto</mark>) </span> <br>
+        <strong>cssLength</strong>
+      </td>
+      <td>
+        - sets the stroke thickness of the decoration line (<mark>text-decoration-line</mark> propety must be declared first)
+        <span id="browserSupport" title="Update: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 89 </span>
+          <span><i class="fab fa-firefox"></i> 70 </span>
+          <span><i class="fab fa-opera"></i> 75 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 89 </span>
+          <span><i class="fab fa-safari"></i> 12.1 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="55.01">
-        <td> text-align </td>
-        <td> 
-            left <span class="cssAV">((Default) left align)</span><br>
-            right <span class="cssAV">(right align)</span><br>
-            center <span class="cssAV">(center align)</span><br>
-            justify <span class="cssAV">(stretches the lines so that each line has the same width)</span>
-        </td>
-        <td> 
-            - specifies the horizontal alignement of text in an element 
-            <span id="browserSupport" title="Update: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="55.02">
-        <td> text-align-last </td>
-        <td>  
-            auto <span class="cssAV">(last line justified and aligned left)</span><br>
-            left <span class="cssAV">(left)</span><br>
-            right <span class="cssAV">(right)</span><br>
-            center <span class="cssAV">(centered)</span><br>
-            start <span class="cssAV">(last line is aligned at the beginning of the line (right if <mark>direction:rtl</mark>))</span><br>
-            end <span class="cssAV">(last line is aligned at the end of the line (left if <mark>direction:rtl</mark>))</span>
-        </td>
-        <td> 
-            - specifies how the last line of the text is aligned 
-            <span id="browserSupport" title="Update: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 47 </span>
-                <span><i class="fab fa-firefox"></i> 12 -moz- / 46 </span>
-                <span><i class="fab fa-opera"></i> 34 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
-                <span><i class="fab fa-safari"></i> NO </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="10.05">
-        <td> text-decoration </td>
-        <td> 
-            <strong>text-decoration-line</strong> <i>text-decoration-style</i> <i>text-decoration-color</i> <i>text-decoration-thickness</i>
-        </td>
-        <td> 
-            - shorthand property for <mark>text-decoration-line</mark>, <mark>text-decoration-style</mark>, <mark>text-decoration-color</mark> and <mark>text-decoration-thickness</mark> properties  
-            <span id="browserSupport" title="Update: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3.1 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-                <span class="openable"> more...<div>
-                    <p> - as shorthand property </p>
-                    <span id="browserSupport" title="Update: 2021-05-24">
-                        <span><i class="fab fa-chrome"></i> 57 </span>
-                        <span><i class="fab fa-firefox"></i> 36 </span>
-                        <span><i class="fab fa-opera"></i> 44 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                        <span><i class="fab fa-safari"></i> 8 implemented with vendor prefix <mark>-webkit-</mark> </span>
-                    </span>  
-                </div></span>
-            </span>  
-        </td>
-    </tr>
-    <tr class="10.03">
-        <td> text-decoration-color </td>
-        <td>  
-            <strong>colorValue</strong> <span class="cssVA">(<a href="../Colors/index.html" target="_blank">colorValue [link]</a>)</span>
-        </td>
-        <td> 
-            - specifies the decoration color (<mark>text-decoration-line</mark> propety must be set first) 
-            <span id="browserSupport" title="Update: 2021-05-24">
+    <tr>
+      <td> text-decoration </td>
+      <td>
+        <strong>text-decoration-line</strong> <i>text-decoration-style</i> <i>text-decoration-color</i> <i>text-decoration-thickness</i>
+      </td>
+      <td>
+        - shorthand property for <mark>text-decoration-line</mark>, <mark>text-decoration-style</mark>, <mark>text-decoration-color</mark> and <mark>text-decoration-thickness</mark> properties
+        <span id="browserSupport" title="Update: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3.1 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+          <span class="openable"> more...<div>
+              <p> - as shorthand property </p>
+              <span id="browserSupport" title="Update: 2021-05-24">
                 <span><i class="fab fa-chrome"></i> 57 </span>
                 <span><i class="fab fa-firefox"></i> 36 </span>
                 <span><i class="fab fa-opera"></i> 44 </span>
                 <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                <span><i class="fab fa-safari"></i> 12.1 </span>
-            </span>  
-        </td>
-    </tr>
-    <tr class="10.01">
-        <td> text-decoration-line </td>
-        <td>  
-            underline<br>
-            overline<br>
-            linethrough
-        </td>
-        <td> 
-            - set the text decoration type to use (multiple values can be combined) 
-            <span id="browserSupport" title="Update: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 57 </span>
-                <span><i class="fab fa-firefox"></i> 36 </span>
-                <span><i class="fab fa-opera"></i> 44 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                <span><i class="fab fa-safari"></i> 12.1 </span>
-            </span>  
-        </td>
-    </tr>
-    <tr class="10.05">
-        <td> text-decoration-skip </td>
-        <td>  
-            none <span class="cssAV">(Default)</span><br> 
-            objects<br>
-            spaces<br>
-            edges<br>
-            box-decoration
-        </td>
-        <td> - <i class="fas fa-flask"></i> specifies what part of the decoration line should skipp the text (<mark>text-decoration-line</mark> propety must be set first)  
-            <span id="browserSupport" title="Update: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> NO </span>
-                <span><i class="fab fa-firefox"></i> NO </span>
-                <span><i class="fab fa-opera"></i> NO </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> NO </span>
-                <span><i class="fab fa-safari"></i> 12.1 </span>
-            </span>  
-        </td>
-    </tr>
-    <tr class="10.02">
-        <td> text-decoration-style </td>
-        <td>  
-            solid <span class="cssAV">(Default)</span><br>
-            double<br>
-            dotted<br>  
-            dashed<br>   
-            wavy
-        </td>
-        <td> 
-            - sets the kind of decoration line to use (<mark>text-decoration-line</mark> propety must be declared first) 
-            <span id="browserSupport" title="Update: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 57 </span>
-                <span><i class="fab fa-firefox"></i> 36 </span>
-                <span><i class="fab fa-opera"></i> 44 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                <span><i class="fab fa-safari"></i> 12.1 </span>
-            </span>  
-        </td>
-    </tr>
-    <tr class="10.03">
-        <td> text-decoration-thickness </td>
-        <td>  
-            auto <span class="cssAV">(Default)</span><br>
-            from-font <span class="cssAV">(font defined thickness, if the font file doesn't have this information = <mark>auto</mark>) </span> <br>
-            <strong>cssLength</strong>
-        </td>
-        <td> 
-            - sets the stroke thickness of the decoration line (<mark>text-decoration-line</mark> propety must be declared first) 
-            <span id="browserSupport" title="Update: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 89 </span>
-                <span><i class="fab fa-firefox"></i> 70 </span>
-                <span><i class="fab fa-opera"></i> 75 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 89 </span>
-                <span><i class="fab fa-safari"></i> 12.1 </span>
-            </span>  
-        </td>
-    </tr>
-    <tr class="35.01">
-        <td> text-indent </td>
-        <td> 
-            <strong>cssLength</strong>  <span class="cssAV">(Default <mark>0</mark>)</span>
-        </td>
-        <td> 
-            - defines the indentitation of the <u>first line</u> in a text-box (negative values allowed) 
-            <span id="browserSupport" title="Update: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="55.03">
-        <td> text-justify </td>
-        <td> 
-            auto <span class="cssAV">(browser choses the algorithm)</span><br>
-            inter-word <span class="cssAV">(increase/decreas the space between words to justify the text)</span><br>
-            inter-character <span class="cssAV">(increase/decreas the space between characters to justify the text)</span><br>
-            none <span class="cssAV">(disables the justification method)</span>
-        </td>
-        <td> 
-            - defines the text justification type 
-            <span id="browserSupport" title="Update: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> NO </span>
-                <span><i class="fab fa-firefox"></i> 55 </span>
-                <span><i class="fab fa-opera"></i> NO </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
-                <span><i class="fab fa-safari"></i> NO </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="35.02">
-        <td> text-overflow </td>
-        <td> 
-            clip <span class="cssAV">((Default) text clipped when reaches the border)</span><br>
-            ellipsis <span class="cssAV">(<mark>...</mark> represents the clipped text)</span><br>
-            <strong>text</strong> <span class="cssAV">(set the given text to represent clipping)
-        </td>
-        <td> 
-            - specifies how the overflowed content is signaled to the user 
-            <span id="browserSupport" title="Updated: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 7 </span>
-                <span><i class="fab fa-opera"></i> 11/9 -o- </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span>
-                <span><i class="fab fa-safari"></i> 1.3 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="05.02">
-        <td> text-transform </td>
-        <td>  
-            none <span class="cssAV">([default] no effect)</span><br>
-            capitalize <span class="cssAV">(first character of each word capitalized)</span><br>
-            uppercase <span class="cssAV">(all characters transformed to uppercase)</span><br>
-            lowercase <span class="cssAV">(all characters transformed to lowercase)</span>
-        </td>
-        <td> 
-            - controls the capitalisation of text
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 7 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="50.04">
-        <td> unicode-bidi </td>
-        <td>  
-            normal <span class="cssAV">((Default) doesn't offer additional element embeding) </span><br>
-            embed <span class="cssAV">(for inline elements opens an additional level of embeding so the text direction is defined by the <mark>direction</mark> property)</span><br>
-            bidi-override <span class="cssAV">(for inline elements this creates and overrides, for block elements this creates an override for inline-level descendants)</span><br>
-            isolate <span class="cssAV">(the element is isolated from its siblings)</span> <br>
-            isolate-override <span class="cssAV">(the element is isolated from its siblings and the override behaviour of the <mark>bidi-override</mark> keyword to the inner content)</span> <br>
-            plaintext <span class="cssAV">(the element is isolated from its parent)</span>
-        </td>
-        <td> 
-            - used with the <mark>direction</mark> property to determine how <span class="openable">bidirectional text in a document is handled<div>
-                <p> - the user agent uses complex Unicode algorithms to decide how to display text, this property overrides this algorithm and allows the developer to control the text embeding </p>
+                <span><i class="fab fa-safari"></i> 8 implemented with vendor prefix <mark>-webkit-</mark> </span>
+              </span>
             </div></span>
-            <span id="browserSupport" title="Updated: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 2 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 9.2 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
-                <span><i class="fab fa-safari"></i> 1.3 </span>
-            </span>
-        </td>
+        </span>
+      </td>
     </tr>
-    <tr class="60.02">
-        <td> vertical-align </td>
-        <td>  
-            baseline <span class="cssAV">(Default)</span><br>
-            <strong>cssLength</strong>  <span class="cssAV">(fixed value compared to the baseline (Default 0))</span><br>
-            <strong>nr</strong>% <span class="cssAV">(value compared to the <mark>line-height</mark> (Default 0)</span><br>
-            sub <span class="cssAV">(subscript baseline)</span><br>
-            super <span class="cssAV">(superscript baseline)</span><br>
-            top <span class="cssAV">(top of the tallest element on the line)</span><br>
-            text-top <span class="cssAV">(top of the parent element's font)</span><br> 
-            bottom <span class="cssAV">(bottom of the lowest element on the line)</span><br>
-            text-bottom <span class="cssAV">(bottom of the parent element's font)</span>
-        </td>
-        <td> 
-            - sets the vertical alignement of an inline, inline-bloc or a table-cell element (negative values allowed) 
-            <span id="browserSupport" title="Updated: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 4 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
+    <tr>
+      <td> text-underline-position </td>
+      <td>
+        auto <span class="cssAV">(Default)</span><br>
+        under <span class="cssAV">(under the alphabetic baseline)</span><br>
+        <a href="https://www.w3schools.com/cssref/css3_pr_text-underline-position.php" target="_blank">other...</a>
+      </td>
+      <td>
+        - defines the underline position (for <mark>text-decoration: underline</mark>)
+        <span id="browserSupport" title="Update: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 33 </span>
+          <span><i class="fab fa-firefox"></i> 74 </span>
+          <span><i class="fab fa-opera"></i> 20 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 12.1 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="40.3">
-        <td> word-break </td>
-        <td>  
-            normal <span class="cssAV">(Default) no word break)</span><br>
-            break-all <span class="cssAV">(break word between <u>any two</u> characters <u>(Prevents Overflow)</u>)</span><br>
-            keep-all <span class="cssAV">(word break is allowed at <mark>-</mark> hyphens only (for Chinese/Japanese/Korean characters is the same as <mark>normal</mark> value) <u>(Does NOT Prevent Overflow)</u>)</span>
-                <span id="browserSupport">
-                    <span><i class="fab fa-chrome"></i> 44 </span>
-                    <span><i class="fab fa-firefox"></i> 15 </span>
-                    <span><i class="fab fa-opera"></i> 31 </span>
-                    <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
-                    <span><i class="fab fa-safari"></i> 9 </span>
-                </span><br>
-            break-word <span class="cssAV">(wraps the word onto a new live if is possible otherwise breaks it <u>(Prevents Overflow)</u></span>      <span id="browserSupport">
-                    <span><i class="fab fa-chrome"></i> 1 </span>
-                    <span><i class="fab fa-firefox"></i> 67 </span>
-                    <span><i class="fab fa-opera"></i> 15 </span>
-                    <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                    <span><i class="fab fa-safari"></i> 3 </span>
-                </span>
-        </td>
-        <td> 
-            - specifies how words should break when reaching the end of a line 
-            <span id="browserSupport" title="Updated: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 15 </span>
-                <span><i class="fab fa-opera"></i> 15 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
-                <span><i class="fab fa-safari"></i> 3.1 </span>
-            </span>
-        </td>
+    <tr>
+      <td> text-underline-offset </td>
+      <td>
+        auto <span class="cssAV">(Default)</span><br>
+        <reqval>cssLength</reqval>
+        <a href="https://www.w3schools.com/cssref/css3_pr_text-underline-position.php" target="_blank">other...</a>
+      </td>
+      <td>
+        - sets the offset distance of the underline (for <mark>text-decoration: underline</mark>)
+        <span id="browserSupport" title="Update: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 87 </span>
+          <span><i class="fab fa-firefox"></i> 70 </span>
+          <span><i class="fab fa-opera"></i> 73 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 87 </span>
+          <span><i class="fab fa-safari"></i> 12.1 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="20.01">
-        <td> word-spacing </td>
-        <td>  
-            normal <span class="cssAV">(Default)</span><br>
-            <strong>cssLength</strong>  <span class="cssAV">(Default <mark>0</mark>)</span>
-        </td>
-        <td> 
-            - increases or decreases the space between words (negative values allowed) 
-            <span id="browserSupport" title='Update: 2021-05-24'>
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span>
-                <span><i class="fab fa-safari"></i> 6 </span>
-            </span>
-        </td>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr class="40.02">
-        <td> word-wrap </td>
-        <td>  
-            normal <span class="cssAV">(Default) no word break)</span><br>
-            break-word <span class="cssAV">(allows unbreakable words to be broken)</span><br>
-        </td>
-        <td> 
-            - long words <u>(longer the the parent element)</u> to be broken and wrap onto the next line (newer version alias <mark>overflow-wrap</mark>)
-            <span id="browserSupport" title="Updated: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 10.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
+    <tr>
+      <td>
+        text-emphasis-style
+      </td>
+      <td>
+        solid <span class="cssAV">(Default)</span><br>
+        double<br>
+        dotted<br>
+        dashed<br>
+        wavy
+      </td>
+      <td>
+        - sets the text emphasis style (marks on characters)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 57 </span>
+          <span><i class="fab fa-firefox"></i> 36 / 6 -moz- </span>
+          <span><i class="fab fa-opera"></i> 44 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 12 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="51.01">
-        <td> writing-mode </td>
-        <td>  
-            horizontal-tb <span class="cssAV">((Default) horizontal, starts from the top, new lines are inserted under)</span><br>
-            vertical-lr <span class="cssAV">(vertical, starts from the left new lines are inserted to right)</span><br>
-            vertical-rl <span class="cssAV">(vertical, starts from the right new lines are inserted to left)</span>
-        </td>
-        <td> 
-            - specifies which direction the text lines are laid out 
-            <span id="browserSupport" title="Updated: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 8 -webkit- / 48 </span>
-                <span><i class="fab fa-firefox"></i> 41 </span>
-                <span><i class="fab fa-opera"></i> 15 -webkit- / 35 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5.1 -webkit- / 10.1 </span>
-            </span>
-        </td>
+    <tr>
+      <td>
+        text-emphasis-color
+      </td>
+      <td>
+        <reqval>cssColor</reqval>
+      </td>
+      <td>
+        - sets the text emphasis color (marks on characters)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 99 </span>
+          <span><i class="fab fa-firefox"></i> 46 </span>
+          <span><i class="fab fa-opera"></i> 85 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 99 </span>
+          <span><i class="fab fa-safari"></i> 7 </span>
+        </span>
+      </td>
     </tr>
-</table>   
-<br>  
-<table class="table">
-<caption>
-    Handling white space with the <mark>white-space</mark> property 
-    <span id="browserSupport" title="Updated: 2021-05-24">
+    <tr>
+      <td>
+        text-emphasis-position
+      </td>
+      <td>
+        over <span class="cssAV">(Default)</span><br>
+        under<br>
+        left<br>
+        right<br>
+      </td>
+      <td>
+        - sets the text emphasis position (marks on characters)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 99 </span>
+          <span><i class="fab fa-firefox"></i> 46 </span>
+          <span><i class="fab fa-opera"></i> 85 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 99 </span>
+          <span><i class="fab fa-safari"></i> 7 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        text-emphasis
+      </td>
+      <td>
+        <reqval>text-emphasis-style</reqval> <optval>text-emphasis-color</optval>
+      </td>
+      <td>
+        - shorthand property for <mark>text-emphasis-style</mark> <mark>text-emphasis-color</mark>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 99 </span>
+          <span><i class="fab fa-firefox"></i> 46 </span>
+          <span><i class="fab fa-opera"></i> 85 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 99 </span>
+          <span><i class="fab fa-safari"></i> 7 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> word-spacing </td>
+      <td>
+        normal <span class="cssAV">(Default)</span><br>
+        <strong>cssLength</strong> <span class="cssAV">(Default <mark>0</mark>)</span>
+      </td>
+      <td>
+        - increases or decreases the space between words (negative values allowed)
+        <span id="browserSupport" title='Update: 2021-05-24'>
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span>
+          <span><i class="fab fa-safari"></i> 6 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> letter-spacing </td>
+      <td>
+        normal <span class="cssAV">(Default)</span><br>
+        <strong>cssLength</strong> <span class="cssAV">(default value 0)</span>
+      </td>
+      <td>
+        - increases or decreases the space between characters (negative values allowed)
+        <span id="browserSupport" title="Updated: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> text-indent </td>
+      <td>
+        <strong>cssLength</strong> <span class="cssAV">(Default <mark>0</mark>)</span>
+      </td>
+      <td>
+        - defines the indentitation of the <u>first line</u> in a text-box (negative values allowed)
+        <span id="browserSupport" title="Update: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> text-overflow </td>
+      <td>
+        clip <span class="cssAV">((Default) text clipped when reaches the border)</span><br>
+        ellipsis <span class="cssAV">(<mark>...</mark> represents the clipped text)</span><br>
+        <strong>text</strong> <span class="cssAV">(set the given text to represent clipping)
+      </td>
+      <td>
+        - specifies how the overflowed content is signaled to the user
+        <span id="browserSupport" title="Updated: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 7 </span>
+          <span><i class="fab fa-opera"></i> 11/9 -o- </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span>
+          <span><i class="fab fa-safari"></i> 1.3 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> overflow-wrap </td>
+      <td>
+        normal <span class="cssAV">(Default) no word break)</span><br>
+        break-word <span class="cssAV">(allows unbreakable words to be broken)</span><br>
+        anywhere <span class="cssAV">(allows unbreakable words to be broken)</span>
+        <span id="browserSupport" title="Updated: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 80 </span>
+          <span><i class="fab fa-firefox"></i> 65 </span>
+          <span><i class="fab fa-opera"></i> 67 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 80 </span>
+          <span><i class="fab fa-safari"></i> NO </span>
+        </span>
+      </td>
+      <td>
+        - long words <u>(longer the the parent element)</u> to be broken and wrap onto the next line (newer version of <mark>word-wrap</mark> property)
+        <span id="browserSupport" title="Updated: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 23 </span>
+          <span><i class="fab fa-firefox"></i> 49 </span>
+          <span><i class="fab fa-opera"></i> 12.1 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
+          <span><i class="fab fa-safari"></i> 6.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> word-wrap </td>
+      <td>
+        normal <span class="cssAV">(Default) no word break)</span><br>
+        break-word <span class="cssAV">(allows unbreakable words to be broken)</span><br>
+      </td>
+      <td>
+        - long words <u>(longer the the parent element)</u> to be broken and wrap onto the next line (newer version alias <mark>overflow-wrap</mark>)
+        <span id="browserSupport" title="Updated: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 10.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> word-break </td>
+      <td>
+        normal <span class="cssAV">(Default) no word break)</span><br>
+        break-all <span class="cssAV">(break word between <u>any two</u> characters <u>(Prevents Overflow)</u>)</span><br>
+        keep-all <span class="cssAV">(word break is allowed at <mark>-</mark> hyphens only (for Chinese/Japanese/Korean characters is the same as <mark>normal</mark> value) <u>(Does NOT Prevent Overflow)</u>)</span>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 44 </span>
+          <span><i class="fab fa-firefox"></i> 15 </span>
+          <span><i class="fab fa-opera"></i> 31 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
+          <span><i class="fab fa-safari"></i> 9 </span>
+        </span><br>
+        break-word <span class="cssAV">(wraps the word onto a new live if is possible otherwise breaks it <u>(Prevents Overflow)</u></span> <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 67 </span>
+          <span><i class="fab fa-opera"></i> 15 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 3 </span>
+        </span>
+      </td>
+      <td>
+        - specifies how words should break when reaching the end of a line
+        <span id="browserSupport" title="Updated: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 15 </span>
+          <span><i class="fab fa-opera"></i> 15 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
+          <span><i class="fab fa-safari"></i> 3.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> hyphens </td>
+      <td>
+        none <span class="cssAV">(no hyphenation)</span><br>
+        manual <span class="cssAV">((Default) words are hyphenated at <mark>-</mark>(hyphen characters))</span><br>
+        auto <span class="cssAV">(browser hyphenate when algorithm is deciding (depending on the set language))</span>
+      </td>
+      <td>
+        - controls the text hyphenation (hyphen used when the text reaches the end of the line)
+        <span id="browserSupport" title="Updated: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 55 </span>
+          <span><i class="fab fa-firefox"></i> 43 </span>
+          <span><i class="fab fa-opera"></i> 44 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 -ms- </span>
+          <span><i class="fab fa-safari"></i> 5.1 -webkit- </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> direction </td>
+      <td>
+        ltr <span class="cssAV">((Default) left-to-right)</span><br>
+        rtl <span class="cssAV">(right-to-left)</span>
+      </td>
+      <td>
+        - defines the writing direction in a <u>block level</u> element
+        <span id="browserSupport" title="Updated: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 2 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 9.2 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> unicode-bidi </td>
+      <td>
+        normal <span class="cssAV">((Default) doesn't offer additional element embeding) </span><br>
+        embed <span class="cssAV">(for inline elements opens an additional level of embeding so the text direction is defined by the <mark>direction</mark> property)</span><br>
+        bidi-override <span class="cssAV">(for inline elements this creates and overrides, for block elements this creates an override for inline-level descendants)</span><br>
+        isolate <span class="cssAV">(the element is isolated from its siblings)</span> <br>
+        isolate-override <span class="cssAV">(the element is isolated from its siblings and the override behaviour of the <mark>bidi-override</mark> keyword to the inner content)</span> <br>
+        plaintext <span class="cssAV">(the element is isolated from its parent)</span>
+      </td>
+      <td>
+        - used with the <mark>direction</mark> property to determine how <span class="openable">bidirectional text in a document is handled<div>
+            <p> - the user agent uses complex Unicode algorithms to decide how to display text, this property overrides this algorithm and allows the developer to control the text embeding </p>
+          </div></span>
+        <span id="browserSupport" title="Updated: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 2 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 9.2 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
+          <span><i class="fab fa-safari"></i> 1.3 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> writing-mode </td>
+      <td>
+        horizontal-tb <span class="cssAV">((Default) horizontal, starts from the top, new lines are inserted under)</span><br>
+        vertical-lr <span class="cssAV">(vertical, starts from the left new lines are inserted to right)</span><br>
+        vertical-rl <span class="cssAV">(vertical, starts from the right new lines are inserted to left)</span>
+      </td>
+      <td>
+        - specifies which direction the text lines are laid out
+        <span id="browserSupport" title="Updated: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 8 -webkit- / 48 </span>
+          <span><i class="fab fa-firefox"></i> 41 </span>
+          <span><i class="fab fa-opera"></i> 15 -webkit- / 35 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 5.1 -webkit- / 10.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> text-align </td>
+      <td>
+        left <span class="cssAV">((Default) left align)</span><br>
+        right <span class="cssAV">(right align)</span><br>
+        center <span class="cssAV">(center align)</span><br>
+        justify <span class="cssAV">(stretches the lines so that each line has the same width)</span>
+      </td>
+      <td>
+        - specifies the horizontal alignement of text in an element
+        <span id="browserSupport" title="Update: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 3 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> text-align-last </td>
+      <td>
+        auto <span class="cssAV">(last line justified and aligned left)</span><br>
+        left <span class="cssAV">(left)</span><br>
+        right <span class="cssAV">(right)</span><br>
+        center <span class="cssAV">(centered)</span><br>
+        start <span class="cssAV">(last line is aligned at the beginning of the line (right if <mark>direction:rtl</mark>))</span><br>
+        end <span class="cssAV">(last line is aligned at the end of the line (left if <mark>direction:rtl</mark>))</span>
+      </td>
+      <td>
+        - specifies how the last line of the text is aligned
+        <span id="browserSupport" title="Update: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 47 </span>
+          <span><i class="fab fa-firefox"></i> 12 -moz- / 46 </span>
+          <span><i class="fab fa-opera"></i> 34 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
+          <span><i class="fab fa-safari"></i> NO </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> text-justify </td>
+      <td>
+        auto <span class="cssAV">(browser choses the algorithm)</span><br>
+        inter-word <span class="cssAV">(increase/decreas the space between words to justify the text)</span><br>
+        inter-character <span class="cssAV">(increase/decreas the space between characters to justify the text)</span><br>
+        none <span class="cssAV">(disables the justification method)</span>
+      </td>
+      <td>
+        - defines the text justification type
+        <span id="browserSupport" title="Update: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> NO </span>
+          <span><i class="fab fa-firefox"></i> 55 </span>
+          <span><i class="fab fa-opera"></i> NO </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
+          <span><i class="fab fa-safari"></i> NO </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> line-height </td>
+      <td>
+        normal <span class="cssAV">((Default) font size height)</span><br>
+        <strong>nr</strong> <span class="cssAV">(compared the current font size (Default <mark>0</mark>))</span><br>
+        <strong>cssLength</strong> <span class="cssAV">(fixed value)</span><br>
+      </td>
+      <td>
+        - sets the text line height
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 7 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> vertical-align </td>
+      <td>
+        baseline <span class="cssAV">(Default)</span><br>
+        <strong>cssLength</strong> <span class="cssAV">(fixed value compared to the baseline (Default 0))</span><br>
+        <strong>nr</strong>% <span class="cssAV">(value compared to the <mark>line-height</mark> (Default 0)</span><br>
+        sub <span class="cssAV">(subscript baseline)</span><br>
+        super <span class="cssAV">(superscript baseline)</span><br>
+        top <span class="cssAV">(top of the tallest element on the line)</span><br>
+        text-top <span class="cssAV">(top of the parent element's font)</span><br>
+        bottom <span class="cssAV">(bottom of the lowest element on the line)</span><br>
+        text-bottom <span class="cssAV">(bottom of the parent element's font)</span>
+      </td>
+      <td>
+        - sets the vertical alignement of an inline, inline-block or a table-cell element (negative values allowed)
+        <span id="browserSupport" title="Updated: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 4 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> tab-size </td>
+      <td>
+        <strong>nr</strong> <span class="cssAV">(number of characters (Default <mark>8</mark>))</span><br>
+        <strong>cssLength</strong>
+        <span id="browserSupport" title="Updated: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 42 </span>
+          <span><i class="fab fa-firefox"></i> 53 </span>
+          <span><i class="fab fa-opera"></i> 29 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> NO </span>
+        </span>
+      </td>
+      <td>
+        - specifies the width of the "tab" character </span>
+        <span id="browserSupport" title="Updated: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 21 </span>
+          <span><i class="fab fa-firefox"></i> 4 -moz- </span>
+          <span><i class="fab fa-opera"></i> 10.5 -o- / 15 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 6.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> quotes </td>
+      <td>
+        none <span class="cssAV">(no quotation)</span><br>
+        <i>"stQuteLv1" "endQuteLv1" "stQuteLv2" "endQuteLv2" ...</i> <br>
+        auto <span class="cssAV">(quotation according to the elemnt's <mark>lang</mark> attribute)</span>
+        <span id="browserSupport" title="Updated: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 87 </span>
+          <span><i class="fab fa-firefox"></i> 70 </span>
+          <span><i class="fab fa-opera"></i> 73 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 87 </span>
+          <span><i class="fab fa-safari"></i> NO </span>
+        </span>
+      </td>
+      <td>
+        - defines the quotation character for the <mark>&lt;q&gt;</mark> tag
+        <span id="browserSupport" title="Updated: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 11 </span>
+          <span><i class="fab fa-firefox"></i> 1.5 </span>
+          <span><i class="fab fa-opera"></i> 4 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
+          <span><i class="fab fa-safari"></i> 9 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      Handling white space with the <mark>white-space</mark> property
+      <span id="browserSupport" title="Updated: 2021-05-24">
         <span><i class="fab fa-chrome"></i> 1 </span>
         <span><i class="fab fa-firefox"></i> 1 </span>
         <span><i class="fab fa-opera"></i> 4 </span>
         <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
         <span><i class="fab fa-safari"></i> 1 </span>
-    </span>
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+      </span>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
     <tr>
-        <th> <mark>white-pace:</mark><strong style="color:lightcoral;">value</strong></th>
-        <th> New Line Character <mark>&crarr;</mark> <br>
-            <span style="color:skyblue;">(when carriage return encountered)</span>
-        
-        </th>
-        <th> Spaces and Tabs<br>
-            <span style="color:skyblue;">(extra space between words)</span>
-        </th>
-        <th> Text Wrap<br>
-            <span style="color:skyblue;">(text wraps when necessary)</span>
-        </th>
-        <th> 
-            End-of-line spaces  
-        </th>
-        <th> 
-            End-of-line other space separators
-        </th>
+      <th> <mark>white-pace:</mark><strong style="color:lightcoral;">value</strong></th>
+      <th> New Line Character <mark>&crarr;</mark> <br>
+        <span style="color:skyblue;">(when carriage return encountered)</span>
+
+      </th>
+      <th> Spaces and Tabs<br>
+        <span style="color:skyblue;">(extra space between words)</span>
+      </th>
+      <th> Text Wrap<br>
+        <span style="color:skyblue;">(text wraps when necessary)</span>
+      </th>
+      <th>
+        End-of-line spaces
+      </th>
+      <th>
+        End-of-line other space separators
+      </th>
     </tr>
     <tr>
-        <td> normal (Default) </td>
-        <td> Ignored </td>
-        <td> Collapse </td>
-        <td> Wrap </td>
-        <td> Remove </td>
-        <td> Hang </td>
+      <td> normal (Default) </td>
+      <td> Ignored </td>
+      <td> Collapse </td>
+      <td> Wrap </td>
+      <td> Remove </td>
+      <td> Hang </td>
     </tr>
     <tr>
-        <td> nowrap </td>
-        <td> Ignored </td>
-        <td> Collapse </td>
-        <td> No Wrap </td>
-        <td> Remove </td>
-        <td> Hang </td>
+      <td> nowrap </td>
+      <td> Ignored </td>
+      <td> Collapse </td>
+      <td> No Wrap </td>
+      <td> Remove </td>
+      <td> Hang </td>
     </tr>
     <tr>
-        <td> pre (like the <mark>&lt;pre&gt;</mark> tag) </td>
-        <td> New Line </td>
-        <td> Preserve </td>
-        <td> No Wrap </td>
-        <td> Preserve </td>
-        <td> No Wrap </td>
+      <td> pre (like the <mark>&lt;pre&gt;</mark> tag) </td>
+      <td> New Line </td>
+      <td> Preserve </td>
+      <td> No Wrap </td>
+      <td> Preserve </td>
+      <td> No Wrap </td>
     </tr>
     <tr>
-        <td> pre-wrap </td>
-        <td> New Line </td>
-        <td> Preserve </td>
-        <td> Wrap </td>
-        <td> Hang </td>
-        <td> Hang </td>
+      <td> pre-wrap </td>
+      <td> New Line </td>
+      <td> Preserve </td>
+      <td> Wrap </td>
+      <td> Hang </td>
+      <td> Hang </td>
     </tr>
     <tr>
-        <td> pre-line </td>
-        <td> New Line </td>
-        <td> Collapse </td>
-        <td> Wrap </td>
-        <td> Remove </td>
-        <td> Hang </td>
+      <td> pre-line </td>
+      <td> New Line </td>
+      <td> Collapse </td>
+      <td> Wrap </td>
+      <td> Remove </td>
+      <td> Hang </td>
     </tr>
     <tr>
-        <td> break-spaces 
-            <span id="browserSupport" title="Updated: 2021-05-24">
-                <span><i class="fab fa-chrome"></i> 79 </span>
-                <span><i class="fab fa-firefox"></i> 69 </span>
-                <span><i class="fab fa-opera"></i> 62 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                <span><i class="fab fa-safari"></i> 13.1 </span>
-            </span>
-        </td>
-        <td> Preserve </td>
-        <td> Preserve </td>
-        <td> Wrap </td>
-        <td> Wrap </td>
-        <td> Wrap </td>
+      <td> break-spaces
+        <span id="browserSupport" title="Updated: 2021-05-24">
+          <span><i class="fab fa-chrome"></i> 79 </span>
+          <span><i class="fab fa-firefox"></i> 69 </span>
+          <span><i class="fab fa-opera"></i> 62 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 13.1 </span>
+        </span>
+      </td>
+      <td> Preserve </td>
+      <td> Preserve </td>
+      <td> Wrap </td>
+      <td> Wrap </td>
+      <td> Wrap </td>
     </tr>
-</table> 
-    <br>
-    <details class="example" id="notes">
+  </table>
+  <br>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="http://www.w3schools.com/css/css_text.asp" title="W3School's text formating" target="_blank"> Go To W3S Formating Text site </a></p>
-    <p><a href="http://www.w3schools.com/css/css3_text_effects.asp" title="W3School's CSS3 text formating" target="_blank"> Go to W3School's CSS3 text site!</a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    <p> - <mark>word-wrap</mark> and <mark>word-break</mark> properties seems to be dooing the same thing but the <mark>word-break</mark> property gives more control about word breaking (tested 2018-11-01) </p>
-    <p> - the <mark>dir</mark> attribute can be set in the <mark>&lt;html&gt;</mark> tag to change the writing direction for the whole page </p>
-    <p> - each browser calcuates their own baseline, there is no standard for this but they seems to be the same </p>
-<h2 style="color:green;"><u> Description and Demonstration </u></h2>    
-    <p> - in CSS we have multiple awesome ways to style text </p>
-<h2 style="color:darkblue;"><u> The <mark>color</mark> / <mark>text-transform</mark> properties </u></h2>  
-<details class="example">
-<summary> DEMO </summary>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="http://www.w3schools.com/css/css_text.asp" title="W3School's text formating" target="_blank"> Go To W3S Formating Text site </a></p>
+  <p><a href="http://www.w3schools.com/css/css3_text_effects.asp" title="W3School's CSS3 text formating" target="_blank"> Go to W3School's CSS3 text site!</a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - <mark>word-wrap</mark> and <mark>word-break</mark> properties seems to be dooing the same thing but the <mark>word-break</mark> property gives more control about word breaking (tested 2018-11-01) </p>
+  <h2 style="color:green;"><u> Description and Demonstration </u></h2>
+  <img src="Text Baseline.jpg" alt="Text Baseline" height="80">
+  <h2 style="color:darkblue;"><u> The <mark>color</mark> / <mark>text-transform</mark> properties </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     .myElement {
         color: red;                                    // red text
         text-transfomr: capitalize;                    // first character capitalized of each word 
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> <mark>color</mark> and <mark>text-transform</mark> property test </u></h4>    
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> <mark>color</mark> and <mark>text-transform</mark> property test </u></h4>
     <p class="colorTest"> colored and capitalized paragraph </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="colorTest"&gt; colored and capitalized paragraph &lt;/p&gt;
     
@@ -673,26 +816,26 @@
         text-transform: capitalize;
     } 
         </pre>
-        </details>
-<h4><u> <mark>text-transform</mark> property </u></h4>
+    </details>
+    <h4><u> <mark>text-transform</mark> property </u></h4>
     <p style="text-transform:uppercase;"> This text is uses uppercases.</p>
     <p style="text-transform:lowercase;"> This text is wrietten with lowercases </p>
     <p style="text-transform:capitalize;"> This text is capitalized. </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
  -- CODE (HTML) --
     &lt;p style="text-transform:uppercase;"&gt; This text is uses uppercases.&lt;/p&gt;
     &lt;p style="text-transform:lowercase;"&gt; This text is wrietten with lowercases &lt;/p&gt;
     &lt;p style="text-transform:capitalize;"&gt; This text is capitalized. &lt;/p&gt;
         </pre>
-        </details>    
-</details>   
-<!------------------------------------------------------------------------------------------------------------------------>
-<hr>    
-<h2 style="color:darkblue;"><u> The <mark>text-decoration-line</mark> / <mark>text-decoration-color</mark> / <mark>text-decoration-style</mark> / <mark>text-decoration-thickness</mark> / <mark>text-decoration</mark> / <mark>text-decoration-skip</mark>  properties </u></h2>   
-<details class="example" >
-<summary> DEMO </summary>
+    </details>
+  </details>
+  <!------------------------------------------------------------------------------------------------------------------------>
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>text-decoration-line</mark> / <mark>text-decoration-color</mark> / <mark>text-decoration-style</mark> / <mark>text-decoration-thickness</mark> / <mark>text-decoration</mark> / <mark>text-decoration-skip</mark> properties </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     .myElement {
         text-decoration-line: underline overline;                   // multiple decoration lines used 
@@ -706,14 +849,14 @@
         text-decoration: underline overline wavy green 5px;
     }
     </pre>
-</details>
-<details class="example" >
-<summary> Example : </summary>
-<h4><u> <mark>text-docoration-line</mark> / <mark>text-docoration-color</mark> / <mark>text-docoration-style</mark> TEST </u></h4>    
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> <mark>text-docoration-line</mark> / <mark>text-docoration-color</mark> / <mark>text-docoration-style</mark> TEST </u></h4>
     <p class="textDeco"> Decorated Text </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="textDeco"&gt; Decorated Text &lt;/p&gt;
     
@@ -724,15 +867,15 @@
         text-decoration-style: wavy;
     }
         </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------------------------>
-<hr>    
-<h4><u> <mark>text-decoration</mark> and <mark>text-docoration-skip</mark> TEST </u></h4>
+    </details>
+    <!------------------------------------------------------------------------------------------------------------------------>
+    <hr>
+    <h4><u> <mark>text-decoration</mark> and <mark>text-docoration-skip</mark> TEST </u></h4>
     <p style="color:yellow;"> - the <mark>text-decoration-skip</mark> has no effect here (tested 2018-10-31 Chrome)</p>
     <p class="skipDeco1"> Hey grab a cup of coffe </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="skipDeco1"&gt; Hey grab a cup of coffe &lt;/p&gt;
     
@@ -743,69 +886,94 @@
         -webkit-text-decoration-skip: spaces;
     }
         </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------------------------>
-<hr>    
-<h4><u> multipe line decoration test</u></h4>
+    </details>
+    <!------------------------------------------------------------------------------------------------------------------------>
+    <hr>
+    <h4><u> multipe line decoration test</u></h4>
     <p style="text-decoration-line:underline line-through overline;"> Multiple decoration line used </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p style="text-decoration-line:underline line-through overline;"&gt; Multiple decoration line used &lt;/p&gt;
         </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------------------------>
-<hr>    
-<h4><u> <mark>text-decoration-thickness</mark> property TEST</u></h4>
+    </details>
+    <!------------------------------------------------------------------------------------------------------------------------>
+    <hr>
+    <h4><u> <mark>text-decoration-thickness</mark> property TEST</u></h4>
     <p style="text-decoration:underline; text-decoration-thickness:7px;"> Decoration thickness demo </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- DODE (HTML) --
     &lt;p style="text-decoration:underline; text-decoration-thickness:7px;"&gt; Decoration thickness demo &lt;/p&gt;
         </pre>
-        </details>
-</details>  
-<!------------------------------------------------------------------------------------------------------------------------>
-<hr>    
-<h2 style="color:darkblue;"><u> The <mark>word-spacing</mark> / <mark>letter-spacing</mark> properties </u></h2>  
-<details class="example">
-<summary> DEMO </summary>    
+    </details>
+  </details>
+  <h2 class="header"> The <mark>text-emphasis-style</mark> / <mark>text-emphasis-color</mark> / <mark>text-emphasis-position</mark> / <mark>text-emphasis</mark> properties </h2>
+  <details class="example">
+    <summary> DEMO </summary>
+  <p class="emphasis-test"> This is an empasised text </p>
+  <p class="emphasis-test-2"> This is another empasised text </p>
+  <details>
+    <pre>
+// HTML --
+    &lt;p class="emphasis-test"&gt; This is an empasised text &lt;/p&gt;
+    &lt;p class="emphasis-test-2"&gt; This is another empasised text &lt;/p&gt;
+    
+    
+// CSS ---
+    .emphasis-test {
+        text-emphasis-style: filled;
+        text-emphasis-color: red;
+        text-emphasis-position: under;
+    }
+    
+    .emphasis-test-2 {
+        text-emphasis: sesame red;
+    }
+    </pre>
+  </details>
+  </details>
+  <!------------------------------------------------------------------------------------------------------------------------>
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>word-spacing</mark> / <mark>letter-spacing</mark> properties </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     .myElement {
         letter-spacing: 1em;                                        // space between letters are doubled
         word-spacing: 0.5;                                          // space betewen words are rised to 1/2
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> <mark>letter-spacing</mark> property TEST </u> </h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> <mark>letter-spacing</mark> property TEST </u> </h4>
     <p style="letter-spacing: 1.1em;"> This text is letter spaced with the "letter-spacing" propriety </p>
     <details>
-    <summary> CODE : </summary>
-        <pre>
+      <summary> CODE : </summary>
+      <pre>
         -- CODE (HTML) --
         &lt;p style="letter-spacing: 1.1em;"&gt; This text is letter spaced with the "letter-spacing" propriety &lt;/p&gt;
         </pre>
     </details>
-<hr>
-<h4><u> <mark>word-spacing</mark> property TEST </u> </h4>
+    <hr>
+    <h4><u> <mark>word-spacing</mark> property TEST </u> </h4>
     <p style="word-spacing: 1.4em;"> This text is formated with the "word-spacing" property!</p>
     <details>
-    <summary> CODE : </summary>
-        <pre>
+      <summary> CODE : </summary>
+      <pre>
         -- CODE (HTML) --
         &lt;p style="word-spacing: 1.4em;"&gt; This text is formated with the "word-spacing" property!&lt;/p&gt;
         </pre>
-    </details>    
-</details>   
-<!------------------------------------------------------------------------------------------------------------------------>
-<hr>    
-<h2 style="color:darkblue;"><u> The <mark>text-indent</mark> / <mark>text-overflow</mark> / <mark>word-wrap</mark> / <mark>overflow-wrap</mark> / <mark>word-break</mark> / <mark>hyphens</mark> properties </u></h2>  
-<details class="example">
-<summary> DEMO </summary>
+    </details>
+  </details>
+  <!------------------------------------------------------------------------------------------------------------------------>
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>text-indent</mark> / <mark>text-overflow</mark> / <mark>word-wrap</mark> / <mark>overflow-wrap</mark> / <mark>word-break</mark> / <mark>hyphens</mark> properties </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
 // text-indent / text-overflow -------------------------------------------------
     .myElement {
@@ -823,18 +991,18 @@
       // ----------------------------------
         hyphens: auto;                                              // browser alogrithm manages the hyphenation of the text (language specific) (text is broken at manually set hyphen characters for now [TESTED 2019-04-10])   
     }
-    </pre> 
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> <mark>text-indent</mark> property </u></h4>
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> <mark>text-indent</mark> property </u></h4>
     <p style="text-indent:50px; max-width:700px;"> This text has a "text-indent" propriety used
-    it is an interesting tool, I write some more text to demonstrate the effect what it does! Some text Some text 
-    Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text 
-    Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text  </p>
+      it is an interesting tool, I write some more text to demonstrate the effect what it does! Some text Some text
+      Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text
+      Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </p>
     <details>
-    <summary> CODE : </summary>
-        <pre>
+      <summary> CODE : </summary>
+      <pre>
         -- CODE (HTML) --
         &lt;p style="text-indent:50px; max-width:700px;"&gt; This text has a "text-indent" propriety used
         it is an interesting tool, I write some more text to demonstrate the effect what it does! Some text Some text 
@@ -842,47 +1010,47 @@
         Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text  &lt;/p&gt;
         </pre>
     </details>
-<!------------------------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>text-indent</mark> property inverted (technique) </u></h4>
+    <!------------------------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>text-indent</mark> property inverted (technique) </u></h4>
     <p style="padding-left:50px; text-indent:-50px; max-width:650px;"> This text has a "text-indent" propriety used
-    it is an interesting tool, I write some more text to demonstrate the effect what it does! Some text Some text 
-    Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text 
-    Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </p>
+      it is an interesting tool, I write some more text to demonstrate the effect what it does! Some text Some text
+      Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text
+      Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </p>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p style="padding-left:50px; text-indent:-50px; max-width:650px;"&gt; This text has a "text-indent" propriety used
     it is an interesting tool, I write some more text to demonstrate the effect what it does! Some text Some text 
     Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text 
     Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text &lt;/p&gt;
     </pre>
-    </details>    
-<!------------------------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>text-indent</mark> property (indent relative to the parent element <mark>%</mark>) </u></h4>    
+    </details>
+    <!------------------------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>text-indent</mark> property (indent relative to the parent element <mark>%</mark>) </u></h4>
     <p style="text-indent:25%; max-width:650px; border:solid 1px green;"> This text has a "text-indent" propriety used
-    it is an interesting tool, I write some more text to demonstrate the effect what it does! Some text Some text 
-    Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text 
-    Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </p>
+      it is an interesting tool, I write some more text to demonstrate the effect what it does! Some text Some text
+      Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text
+      Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </p>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p style="text-indent:25%; max-width:650px; border:solid 1px green;"&gt; This text has a "text-indent" propriety used
     it is an interesting tool, I write some more text to demonstrate the effect what it does! Some text Some text 
     Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text 
     Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text &lt;/p&gt;
     </pre>
-    </details> 
-<!------------------------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>text-overflow</mark> property TEST </u></h4>
+    </details>
+    <!------------------------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>text-overflow</mark> property TEST </u></h4>
     <p><mark>text-overflow:clip</mark> (This is the default value) - Hidden text overflow simply clipped </p>
-        <p class="overflow clip"> This text is too big to fit. This text is too big to fit. This text is too big to fit. </p>
+    <p class="overflow clip"> This text is too big to fit. This text is too big to fit. This text is too big to fit. </p>
     <p><mark>text-overflow:ellipsis</mark> - Hidden text overflow rendered as an ellipsis (...)</p>
-        <p class="overflow ellipsis"> This text is too big to fit. This text is too big to fit. This text is too big to fit. </p> 
+    <p class="overflow ellipsis"> This text is too big to fit. This text is too big to fit. This text is too big to fit. </p>
     <p><mark>text-overflow:<span style="color:lightcoral;">text</span></mark> - Specified text when text overflows <u style="color:yellow;">(Mozilla Support Only! [2018-11-01])</u></p>
-        <p class="overflow string"> This text is too big to fit. This text is too big to fit. This text is too big to fit. </p>
+    <p class="overflow string"> This text is too big to fit. This text is too big to fit. This text is too big to fit. </p>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="overflow clip"&gt; This text is too big to fit. This text is too big to fit. This text is too big to fit. &lt;/p&gt;
     &lt;p class="overflow ellipsis"&gt; This text is too big to fit. This text is too big to fit. This text is too big to fit. &lt;/p&gt; 
@@ -904,16 +1072,16 @@
         text-overflow: " -- Custom Stuff --";                   // Mozilla Support ONLY! (2018-11-01)
     }
     </pre>
-    </details>    
-<!------------------------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>word-wrap</mark> </u></h4>   
+    </details>
+    <!------------------------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>word-wrap</mark> </u></h4>
     <p><mark>word-wrap:normal;</mark> - Default value!, - Long words overflow</p>
-        <p id="word-wrap-normal">This paragraph contains longlonglonglonglonglonglonglonglonglongwords and they overflowflowflowflowflowflowflow </p>
+    <p id="word-wrap-normal">This paragraph contains longlonglonglonglonglonglonglonglonglongwords and they overflowflowflowflowflowflowflow </p>
     <p><mark>word-wrap:break-word;</mark> - Long words are broken onto a new line</p>
-        <p id="word-wrap-break-word">This paragraph also contains veryveryveryveryveryveryveryveryvery long words but they are wrapedwrapedwrapedwrapedwrapedwrapedwraped onto a new line</p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <p id="word-wrap-break-word">This paragraph also contains veryveryveryveryveryveryveryveryvery long words but they are wrapedwrapedwrapedwrapedwrapedwrapedwraped onto a new line</p>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p id="word-wrap-normal"&gt;This paragraph contains longlonglonglonglonglonglonglonglonglongwords and they overflowflowflowflowflowflowflow &lt;/p&gt;
     &lt;p id="word-wrap-break-word"&gt;This paragraph also contains veryveryveryveryveryvery long words but they are wrapedwrapedwrapedwrapedwraped onto a new line&lt;/p&gt;
@@ -929,21 +1097,21 @@
         word-wrap: break-word;  
     }
         </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>word-break</mark> property TEST </u></h4>
+    </details>
+    <!------------------------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>word-break</mark> property TEST </u></h4>
     <p> - resize the window to see the effect on all examples </p>
     <p><mark>word-break:normal;</mark> - Uses normal line break roules (now word break) <b>Does not prevent Overflow!</b> </p>
-        <p class="word-break-normal"> The Nomrmal default walue DOES NOT break word it keeps them thogether, LongWordLongWordLongWordLongWordLongWordLongWordLongWord </p>
+    <p class="word-break-normal"> The Nomrmal default walue DOES NOT break word it keeps them thogether, LongWordLongWordLongWordLongWordLongWordLongWordLongWord </p>
     <p><mark>word-break:brake-all;</mark> - Breaks line between any two letters <b>Prevents Overflow!</b></p>
-        <p class="word-break-brake-all"> This paragraph's words are broken between any letters in order to prevent overflow, LongWordLongWordLongWordLongWordLongWordLongWordLongWord </p>
+    <p class="word-break-brake-all"> This paragraph's words are broken between any letters in order to prevent overflow, LongWordLongWordLongWordLongWordLongWordLongWordLongWord </p>
     <p><mark>word-break:keep-all;</mark> - Word break is allowes at hyphes only (<mark>-</mark>) <b>Does not prevent Overflow!</b> </p>
-        <p class="word-break-keep-all"> This paragraph's words are perserved the break only at hyp-hes-hyp-hes-hyp-hes-hyp-hes-hyp-hes-hyp-hes-hyp-hes-hyp-hes, LongWordLongWordLongWordLongWordLongWordLongWordLongWord </p>
+    <p class="word-break-keep-all"> This paragraph's words are perserved the break only at hyp-hes-hyp-hes-hyp-hes-hyp-hes-hyp-hes-hyp-hes-hyp-hes-hyp-hes, LongWordLongWordLongWordLongWordLongWordLongWordLongWord </p>
     <p><mark>word-break:break-word;</mark> - Words are broken at <u>arbitary points</u> only (words are broken only if it is necessary) <b>Prevents Overflow!</b> </p>
-        <p class="word-break-break-word"> DemoText Demo Text DemoText Demo Text DemoText Demo Text DemoText Demo Text DemoText Demo Text DemoText Demo Text DemoText Demo Text DemoText Demo Text, LongWordLongWordLongWordLongWordLongWordLongWordLongWord </p>
+    <p class="word-break-break-word"> DemoText Demo Text DemoText Demo Text DemoText Demo Text DemoText Demo Text DemoText Demo Text DemoText Demo Text DemoText Demo Text DemoText Demo Text, LongWordLongWordLongWordLongWordLongWordLongWordLongWord </p>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="word-break-normal"&gt; The Nomrmal default walue DOES NOT break word it keeps them thogether, LongWordLongWordLongWordLongWordLongWordLongWordLongWord &lt;/p&gt;
     &lt;p class="word-break-brake-all"&gt; This paragraph's words are broken between any letters in order to prevent overflow, LongWordLongWordLongWordLongWordLongWordLongWordLongWord&lt;/p&gt;
@@ -971,40 +1139,40 @@
     }
     </pre>
     </details>
-<!------------------------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>word-wrap</mark> VS <mark>overflow-wrap</mark> VS <mark>word-break</mark> </u></h4>
+    <!------------------------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>word-wrap</mark> VS <mark>overflow-wrap</mark> VS <mark>word-break</mark> </u></h4>
     <p> they seems to be doing the same shit but the <mark>word-break</mark> property has more control <u style="color:yellow;">(Check for Browser Support!)</u></p>
     <p style="width:200px; border:solid black 1px; word-wrap:break-word;"> WrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrap WrapWrodWrapWrapWrodWrap</p>
     <p style="width:200px; border:solid black 1px; overflow-wrap:break-word;"> WrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrap WrapWrodWrapWrapWrodWrap</p>
     <p style="width:200px; border:solid black 1px; word-break:break-word;"> WrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrap WrapWrodWrapWrapWrodWrap</p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p style="width:200px; border:solid black 1px; word-wrap:break-word;"&gt; WrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrap WrapWrodWrapWrapWrodWrap&lt;/p&gt;
     &lt;p style="width:200px; border:solid black 1px; overflow-wrap:break-word;"&gt; WrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrap WrapWrodWrapWrapWrodWrap&lt;/p&gt;
     &lt;p style="width:200px; border:solid black 1px; word-break:break-word;"&gt; WrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrapWrodWrap WrapWrodWrapWrapWrodWrap&lt;/p&gt;
         </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------------------------>
-<hr>    
-<h4 style="color:darkblue;"><u> the <mark>hyphens</mark> property </u></h4> 
+    </details>
+    <!------------------------------------------------------------------------------------------------------------------------>
+    <hr>
+    <h4 style="color:darkblue;"><u> the <mark>hyphens</mark> property </u></h4>
     <p style="color:yellow;"> - resize to see the effect </p>
     <p> - <mark>hyphens:none;</mark> no hyphenation allowed (text never broken at hyphen points) </p>
     <div class="hyph noneH">
-        Lorem Ipsum is simply dum&shy;my text of the prin&shy;ting and type&shy;setting industry. Lorem Ips&shy;um has been the in&shy;dustry's stan&shy;dard dummy text ever since the 1500s
+      Lorem Ipsum is simply dum&shy;my text of the prin&shy;ting and type&shy;setting industry. Lorem Ips&shy;um has been the in&shy;dustry's stan&shy;dard dummy text ever since the 1500s
     </div>
     <p> - <mark>hyphens:manual;</mark> text will be broken where we manually placed the <mark>-</mark> (hyphen characters) </p>
-    <div class="hyph manualH" >
-        Lorem Ipsum is simply dum&shy;my text of the prin&shy;ting and type&shy;setting industry. Lorem Ips&shy;um has been the in&shy;dustry's stan&shy;dard dummy text ever since the 1500s
+    <div class="hyph manualH">
+      Lorem Ipsum is simply dum&shy;my text of the prin&shy;ting and type&shy;setting industry. Lorem Ips&shy;um has been the in&shy;dustry's stan&shy;dard dummy text ever since the 1500s
     </div>
     <p> - <mark>hyphens:auto;</mark> browser algorithm decides how to hyphenate the text <u>(when I'm testing this it seems to break words at the <mark>-</mark> (hyphen) characters only, maybe it is not yet implemented [2019-04-09])</u> </p>
     <div class="hyph autoH">
-        Lorem Ipsum is simply dum&shy;my text of the prin&shy;ting and type&shy;setting industry. Lorem Ips&shy;um has been the in&shy;dustry's stan&shy;dard dummy text ever since the 1500s
+      Lorem Ipsum is simply dum&shy;my text of the prin&shy;ting and type&shy;setting industry. Lorem Ips&shy;um has been the in&shy;dustry's stan&shy;dard dummy text ever since the 1500s
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;div class="hyph noneH"&gt;
         Lorem Ipsum is simply dum&amp;shy;my text of the prin&amp;shy;ting and type&amp;shy;setting industry. Lorem Ips&amp;shy;um has been the in&amp;shy;dustry's stan&amp;shy;dard dummy text ever since the 1500s
@@ -1029,13 +1197,13 @@
     .manualH { hyphens: manual; }
     .autoH { hyphens: auto; }
         </pre>
-        </details>
-</details> 
-<!------------------------------------------------------------------------------------------------------------------------>
-<hr>    
-<h2 style="color:darkblue;"><u> The <mark>direction</mark> / <mark>unicode-bidi</mark> / <mark>writing-mode</mark> properties </u></h2>
-<details class="example">
-<summary> DEMO </summary>
+    </details>
+  </details>
+  <!------------------------------------------------------------------------------------------------------------------------>
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>direction</mark> / <mark>unicode-bidi</mark> / <mark>writing-mode</mark> properties </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
 // HTML
     &lt;html lang="en" dir="rtl"&gt;                                      // the whole page's elements are rendered from right-to-left
@@ -1047,46 +1215,46 @@
         writing-mode: vertical-rl;                                  // text inserted vertically from right-to-left
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> <mark>direction</mark> property TEST </u></h4>     
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> <mark>direction</mark> property TEST </u></h4>
     <p style="direction:rtl;"> This text is writen from right-to-left </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p style="direction:rtl;"&gt; This text is writen from right-to-left &lt;/p&gt;    
         </pre>
-        </details>
-<h4><u> <mark>dir</mark> attribute test </u></h4>
+    </details>
+    <h4><u> <mark>dir</mark> attribute test </u></h4>
     <p dir="rtl"> Text Direction Right-to-left </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p dir="rtl"&gt; Text Direction Right-to-left &lt;/p&gt;   
         </pre>
-        </details>
-<h4><u> <mark>unicode-bidi</mark> property TEST </u></h4> 
+    </details>
+    <h4><u> <mark>unicode-bidi</mark> property TEST </u></h4>
     <p> - TEST (2018-11-02) : this property is designed for (<b>D</b>ocument <b>T</b>ype <b>D</b>efinition) designers, <u>the only useful stuff I could get out is the <mark>unicode-bidi:bidi-override;</mark> which flips the text direction!</u></p>
     <p style="direction:rtl; unicode-bidi:embed;"> Block Level Text Block Level Text Block Level Text Block Level Text Block Level Text Block Level Text </p>
     <p style="direction:rtl; unicode-bidi:bidi-override;"> Block Level Text Block Level Text Block Level Text Block Level Text Block Level Text Block Level Text </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 // apparently this creates an additional embeding scope for this element (WTF)   
     &lt;p style="direction:rtl; unicode-bidi:embed;"&gt; Block Level Text Block Level Text Block Level Text Block Level Text Block Level Text Block Level Text &lt;/p&gt;
     
 // that's the only useful thing that I could dig out from this property
     &lt;p style="direction:rtl; unicode-bidi:bidi-override;"&gt; Block Level Text Block Level Text Block Level Text Block Level Text Block Level Text Block Level Text &lt;/p&gt;
         </pre>
-        </details>
-<h4><u> <mark>writing-mode</mark> property TEST </u></h4>   
+    </details>
+    <h4><u> <mark>writing-mode</mark> property TEST </u></h4>
     <div class="writing-Mode tb"> Kicsi Kutya tarka se fule se farka, Micsa Duma <mark>writing-mode: horizontal-tb;</mark> </div>
     <div class="writing-Mode lt"> Kicsi Kutya tarka se fule se farka, Micsa Duma <mark>writing-mode: vertical-lr;</mark> </div>
     <div class="writing-Mode rl"> Kicsi Kutya tarka se fule se farka, Micsa Duma <mark>writing-mode: vertical-rt;</mark></div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --        
     &lt;div class="writing-Mode tb"&gt; Kicsi Kutya tarka se fule se farka, Micsa Duma &lt;mark&gt;writing-mode: horizontal-tb;&lt;/mark&gt; &lt;/div&gt;
     &lt;div class="writing-Mode lt"&gt; Kicsi Kutya tarka se fule se farka, Micsa Duma &lt;mark&gt;writing-mode: vertical-lr;&lt;/mark&gt; &lt;/div&gt;
@@ -1111,13 +1279,13 @@
         writing-mode: vertical-rl;
     }
         </pre>
-        </details>
-</details>
-<!------------------------------------------------------------------------------------------------------------------------>
-<hr style="clear:left;">    
-<h2 style="color:darkblue;"><u> The <mark>text-aling</mark> / <mark>text-align-last</mark> / <mark>text-justify</mark> properties </u></h2> 
-<details class="example">
-<summary> DEMO </summary>
+    </details>
+  </details>
+  <!------------------------------------------------------------------------------------------------------------------------>
+  <hr style="clear:left;">
+  <h2 style="color:darkblue;"><u> The <mark>text-aling</mark> / <mark>text-align-last</mark> / <mark>text-justify</mark> properties </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     .myElement {
         direction: rtl;
@@ -1130,54 +1298,54 @@
         text-justify: inter-character;      // spaces stretched between characters to justify text
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> <mark>text-align</mark> property TEST</u></h4>    
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> <mark>text-align</mark> property TEST</u></h4>
     <p style="text-align:center; width:500px; border:solid black 1px;"> Centered Text </p>
     <p style="text-align:right; width:500px; border:solid black 1px;"> Right Aligned Text </p>
     <p style="text-align:justify; width:500px; border:solid black 1px;"> Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p style="text-align:center; width:500px; border:solid black 1px;"&gt; Centered Text &lt;/p&gt;
     &lt;p style="text-align:right; width:500px; border:solid black 1px;"&gt; Right Aligned Text &lt;/p&gt;
     &lt;p style="text-align:justify; width:500px; border:solid black 1px;"&gt; Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text &lt;/p&gt;    
         </pre>
-        </details>
-<h4><u> <mark>text-align-last</mark> property TEST </u></h4>  
+    </details>
+    <h4><u> <mark>text-align-last</mark> property TEST </u></h4>
     <p style="color:yellow;"> - now working with EDGE (because there is no <mark>text-align:justify;</mark> is declared) </p>
     <p style="text-align-last:justify; width:500px; border:solid black 1px;"> Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text </p>
     <p style="text-align:justify; text-align-last:center; width:500px; border:solid black 1px;"> Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text </p>
     <p style="text-align:justify; text-align-last:right; width:500px; border:solid black 1px;"> Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text </p>
     <p style="color:yellow;"> - text direction set to right, the last line is aligned at the end of this text (left) in this case) </p>
     <p style="direction:rtl; text-align-last:end; width:500px; border:solid black 1px;"> Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p style="text-align-last:justify; width:500px; border:solid black 1px;"&gt; Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text &lt;/p&gt;
     &lt;p style="text-align:justify; text-align-last:center; width:500px; border:solid black 1px;"&gt; Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text &lt;/p&gt;
     &lt;p style="text-align:justify; text-align-last:right; width:500px; border:solid black 1px;"&gt; Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text &lt;/p&gt;
     &lt;p style="direction:rtl; text-align-last:end; width:500px; border:solid black 1px;"&gt; Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text &lt;/p&gt;    
         </pre>
-        </details>
-<h4><u> <mark>text-justify</mark> property TEST </u></h4> 
+    </details>
+    <h4><u> <mark>text-justify</mark> property TEST </u></h4>
     <p> - work property in Mozilla Only, Chrome need some kind of Enabeling (TESTED 2018-11-03) seems like useless crap for now :P </p>
     <p style="text-align:justify; text-justify:inter-character; max-width:500px; border:solid black 1px;"> Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text </p>
     <p style="text-align:justify; text-justify:inter-word; max-width:500px; border:solid black 1px;"> Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p style="text-align:justify; text-justify:inter-character; max-width:500px; border:solid black 1px;"&gt; Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text &lt;/p&gt;
     &lt;p style="text-align:justify; text-justify:inter-word; max-width:500px; border:solid black 1px;"&gt; Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text Justified text &lt;/p&gt;    
         </pre>
-        </details>
-</details>  
-<!------------------------------------------------------------------------------------------------------------------------>
-<hr>    
-<h2 style="color:darkblue;"><u> The <mark>vertical-align</mark> / <mark>line-height</mark> properties </u></h2> 
-<details class="example">
-<summary> DEMO </summary>
+    </details>
+  </details>
+  <!------------------------------------------------------------------------------------------------------------------------>
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>vertical-align</mark> / <mark>line-height</mark> properties </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     .myElement {
         line-height: 1.5;                   // line height is 1 and a half size compared to the set font-size
@@ -1195,48 +1363,48 @@
         vertical-align: bottom;             // table cell content aligned to the bottom
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> <mark>line-height</mark> property TEST </u></h4>  
-    <p style="border:solid 1px black; width:200px; line-height:10px;"> line-height:10px; /  line-height:10px; / line-height:10px; </p>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> <mark>line-height</mark> property TEST </u></h4>
+    <p style="border:solid 1px black; width:200px; line-height:10px;"> line-height:10px; / line-height:10px; / line-height:10px; </p>
     <p style="border:solid 1px black; width:200px; line-height:1.5;"> line-height:1.5; (compared to the current font size) / line-height:1.5; (compared to the current font size) </p>
     <p style="border:solid 1px black; width:200px; line-height:150%;"> line-height:150%; (compared to the current font size) / line-height:150%; (compared to the current font size) </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p style="border:solid 1px black; width:200px; line-height:10px;"&gt; line-height:10px; /  line-height:10px; / line-height:10px; &lt;/p&gt;
     &lt;p style="border:solid 1px black; width:200px; line-height:1.5;"&gt; line-height:1.5; (compared to the current font size) / line-height:1.5; (compared to the current font size) &lt;/p&gt;
     &lt;p style="border:solid 1px black; width:200px; line-height:150%;"&gt; line-height:150%; (compared to the current font size) / line-height:150%; (compared to the current font size) &lt;/p&gt;    
         </pre>
-        </details>
-<h4><u> <mark>vertical-align</mark> property TEST [01] </u></h4>
+    </details>
+    <h4><u> <mark>vertical-align</mark> property TEST [01] </u></h4>
     <p> In this sentece <mark style="vertical-align:super;">this part is superscript</mark> and here it is <mark style="vertical-align:sub;">a subscript part text</mark> for demo</p>
     <details>
-        <summary> CODE : </summary>
-        <pre>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p&gt; In this sentece &lt;mark style="vertical-align:super;"&gt;this part is superscript&lt;/mark&gt; and here it is &lt;mark style="vertical-align:sub;"&gt;a subscript part text&lt;/mark&gt; for demo&lt;/p&gt;
         </pre>
     </details>
-<h4><u> <mark>vertical-align</mark> property TEST [02] </u></h4>
+    <h4><u> <mark>vertical-align</mark> property TEST [02] </u></h4>
     <ul type="circle">
-        <li> 1st Image set to <mark>vertical-align:middle;</mark> (placed in the middle of the parent element) </li>
-        <li> 2nd Image set to <mark>vertical-align:top;</mark> (aligned with the to of the <u>tallest element in the ligne)</u></li>
-        <li> 3rd Image set to <mark>vertical-align:text-top</mark> (aligns with the top of the parent element's fonts </li>
-        <li> 4th Image set to <mark>vertical-align:bottom;</mark> (aligns with the bottom of the <u>lowest element in the ligne)</u></li>
-        <li> 5th Image set to <mark>vertical-align:text-bottom;</mark> (aligns with the bottom of the parent element's fonts</li>
+      <li> 1st Image set to <mark>vertical-align:middle;</mark> (placed in the middle of the parent element) </li>
+      <li> 2nd Image set to <mark>vertical-align:top;</mark> (aligned with the to of the <u>tallest element in the ligne)</u></li>
+      <li> 3rd Image set to <mark>vertical-align:text-top</mark> (aligns with the top of the parent element's fonts </li>
+      <li> 4th Image set to <mark>vertical-align:bottom;</mark> (aligns with the bottom of the <u>lowest element in the ligne)</u></li>
+      <li> 5th Image set to <mark>vertical-align:text-bottom;</mark> (aligns with the bottom of the parent element's fonts</li>
     </ul>
-    <p style="border-top:solid red 1px; border-bottom:solid red 1px;"> 
-        1st Image (middle) <img src="../../Assets/Pictures/Smilie.jpg" style="height:50px; vertical-align:middle;">
-        2nd Image (top)<img src="../../Assets/Pictures/Smilie.jpg" style="height:40px; vertical-align:top;">
-        3rd Image (text-top)<img src="../../Assets/Pictures/Smilie.jpg" style="height:50px; vertical-align:text-top;">
-        4th Image (bottom)<img src="../../Assets/Pictures/Smilie.jpg" style="height:40px; vertical-align:bottom;">
-        5th Image (text-bottom)<img src="../../Assets/Pictures/Smilie.jpg" style="height:50px; vertical-align:text-bottom;">
+    <p style="border-top:solid red 1px; border-bottom:solid red 1px;">
+      1st Image (middle) <img src="../../Assets/Pictures/Smilie.jpg" style="height:50px; vertical-align:middle;">
+      2nd Image (top)<img src="../../Assets/Pictures/Smilie.jpg" style="height:40px; vertical-align:top;">
+      3rd Image (text-top)<img src="../../Assets/Pictures/Smilie.jpg" style="height:50px; vertical-align:text-top;">
+      4th Image (bottom)<img src="../../Assets/Pictures/Smilie.jpg" style="height:40px; vertical-align:bottom;">
+      5th Image (text-bottom)<img src="../../Assets/Pictures/Smilie.jpg" style="height:50px; vertical-align:text-bottom;">
     </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p style="border-top:solid black 1px; border-bottom:solid black 1px;"&gt; 
         1st Image (middle) &lt;img src="../../../../Pictures/Smilie.jpg" style="height:50px; vertical-align:middle;"&gt;
@@ -1246,36 +1414,36 @@
         5th Image (text-bottom) &lt;img src="../../../../Pictures/Smilie.jpg" style="height:50px; vertical-align:text-bottom;"&gt;
     &lt;/p&gt;
         </pre>
-        </details>
-<h4><u> <mark>vertical-align</mark> property TEST [03] </u></h4>    
+    </details>
+    <h4><u> <mark>vertical-align</mark> property TEST [03] </u></h4>
     <p style="border:solid 1px black;"> parent element content <mark style="vertical-align:-15px;">inline element vertical-align set to (-15px)</mark> parent element content <mark style="vertical-align:50%;">inline element vertical-align set to (50%)</mark></p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p style="border:solid 1px black;"&gt; parent element content &lt;mark style="vertical-align:-15px;"&gt;inline element vertical-align set to (-15px)&lt;/mark&gt; parent element content &lt;mark style="vertical-align:50%;"&gt;inline element vertical-align set to (50%)&lt;/mark&gt;&lt;/p&gt;    
         </pre>
-        </details>
-<h4><u> <mark>vertical-align</mark> elemets in tabel cells  TEST </u></h4> 
+    </details>
+    <h4><u> <mark>vertical-align</mark> elemets in tabel cells TEST </u></h4>
     <table class="testTable">
-        <tr>
-            <th> A </th>
-            <th> B </th>
-            <th> C </th>
-        </tr>
-        <tr>
-            <td> 1 </td>
-            <td> 2 </td>
-            <td> 3 </td>
-        </tr>
-        <tr>
-            <td> 1 </td>
-            <td> 2 </td>
-            <td> 3 </td>
-        </tr>
+      <tr>
+        <th> A </th>
+        <th> B </th>
+        <th> C </th>
+      </tr>
+      <tr>
+        <td> 1 </td>
+        <td> 2 </td>
+        <td> 3 </td>
+      </tr>
+      <tr>
+        <td> 1 </td>
+        <td> 2 </td>
+        <td> 3 </td>
+      </tr>
     </table>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --        
     &lt;table class="testTable"&gt;
         &lt;tr&gt;
@@ -1307,13 +1475,13 @@
         vertical-align: top;
     }
         </pre>
-        </details>
-</details>  
-<!------------------------------------------------------------------------------------------------------------------------>
-<hr>    
-<h2 style="color:darkblue;"><u> The <mark>white-space</mark> / <mark>tab-size</mark> / <mark>quotes</mark> properties </u></h2> 
-<details class="example">
-<summary> DEMO </summary>
+    </details>
+  </details>
+  <!------------------------------------------------------------------------------------------------------------------------>
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>white-space</mark> / <mark>tab-size</mark> / <mark>quotes</mark> properties </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     .myElement {
         white-space: normal;                // carriage return ignored           /  extra white space collapsed  /  text wraps when it hits the end of the element 
@@ -1340,10 +1508,10 @@
         -o-tab-size: 16;
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> <mark>white-space</mark> prperty TEST </u></h4> 
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> <mark>white-space</mark> prperty TEST </u></h4>
     <pre>
 // Original Text
     line1 line1 line1 line1 * 
@@ -1353,42 +1521,42 @@
     </pre>
     <p> - <mark>white-space:normal;</mark> (<mark>&crarr;</mark> carriage returns are ignored / extra white spaces are collapsed / text wrapped when it hits the border)</p>
     <div class="whiteSpace">
-        <p style="background-color:white;"> line1 line1 line1 line1 * 
-                line2 line2 line2 line2 line2 line2 *
-            line3 line3 line3 line3 *
-                        line4 line4 line4 line4 </p>
+      <p style="background-color:white;"> line1 line1 line1 line1 *
+        line2 line2 line2 line2 line2 line2 *
+        line3 line3 line3 line3 *
+        line4 line4 line4 line4 </p>
     </div>
     <p> - <mark>white-space:nowrap;</mark> (<mark>&crarr;</mark> carriage returns are ignored / extra white spaces are collapsed / text is NOT wrapped when it hits the border)</p>
     <div class="whiteSpace">
-        <p style="background-color:white; white-space:nowrap;"> line1 line1 line1 line1 * 
-                line2 line2 line2 line2 line2 line2 *
-            line3 line3 line3 line3 *
-                        line4 line4 line4 line4 </p>
+      <p style="background-color:white; white-space:nowrap;"> line1 line1 line1 line1 *
+        line2 line2 line2 line2 line2 line2 *
+        line3 line3 line3 line3 *
+        line4 line4 line4 line4 </p>
     </div>
     <p> - <mark>white-space:pre;</mark> (<mark>&crarr;</mark> carriage returns create new line / extra white spaces are preserved / text is NOT wrapped when it hits the border) </p>
     <div class="whiteSpace">
-        <p style="background-color:white; white-space:pre;"> line1 line1 line1 line1 * 
-                line2 line2 line2 line2 line2 line2 *
-            line3 line3 line3 line3 *
-                        line4 line4 line4 line4 </p>
+      <p style="background-color:white; white-space:pre;"> line1 line1 line1 line1 *
+        line2 line2 line2 line2 line2 line2 *
+        line3 line3 line3 line3 *
+        line4 line4 line4 line4 </p>
     </div>
     <p> - <mark>white-space:pre-wrap;</mark> (<mark>&crarr;</mark> carriage returns create new line / extra white spaces are preserved / text wrapped when it hits the border)</p>
     <div class="whiteSpace">
-        <p style="background-color:white; white-space:pre-wrap;"> line1 line1 line1 line1 * 
-                line2 line2 line2 line2 line2 line2 *
-            line3 line3 line3 line3 *
-                        line4 line4 line4 line4 </p>
+      <p style="background-color:white; white-space:pre-wrap;"> line1 line1 line1 line1 *
+        line2 line2 line2 line2 line2 line2 *
+        line3 line3 line3 line3 *
+        line4 line4 line4 line4 </p>
     </div>
     <p> - <mark>white-space:pre-line;</mark> (<mark>&crarr;</mark> carriage returns create new line / extra white spaces are collapsed / text wrapped when it hits the border)</p>
     <div class="whiteSpace">
-        <p style="background-color:white; white-space:pre-line;"> line1 line1 line1 line1 * 
-                line2 line2 line2 line2 line2 line2 *
-            line3 line3 line3 line3 *
-                        line4 line4 line4 line4 </p>
+      <p style="background-color:white; white-space:pre-line;"> line1 line1 line1 line1 *
+        line2 line2 line2 line2 line2 line2 *
+        line3 line3 line3 line3 *
+        line4 line4 line4 line4 </p>
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;div class="whiteSpace"&gt;
         &lt;p style="background-color:white;"&gt; line1 line1 line1 line1 * 
                 line2 line2 line2 line2 line2 line2 *
@@ -1428,18 +1596,18 @@
         background-color: green;
     }    
         </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------------------------>
-<hr>    
-<h4 style="color:darkblue;"><u> <mark>quotes</mark> property TEST </u></h4> 
+    </details>
+    <!------------------------------------------------------------------------------------------------------------------------>
+    <hr>
+    <h4 style="color:darkblue;"><u> <mark>quotes</mark> property TEST </u></h4>
     <p class="qouoteTest_1"> <q>Text between quotation</q> </p>
     <p class="qouoteTest_2"> <q>Text between quotation</q> </p>
     <p class="qouoteTest_3"> <q>Text between quotation <q>NESTED QUOTATION</q> Text between quotation</q> </p>
     <p class="qouoteTest_4"> <q>Text between quotation <q>NESTED QUOTATION</q> Text between quotation</q> </p>
     <p class="qouoteTest_5"> <q>Text between quotation (quotation value removed) </q> </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) -- 
     &lt;p class="qouoteTest_1"&gt; &lt;q&gt;Text between quotation&lt;/q&gt; &lt;/p&gt;
     &lt;p class="qouoteTest_2"&gt; &lt;q&gt;Text between quotation&lt;/q&gt; &lt;/p&gt;
@@ -1454,10 +1622,10 @@
     .qouoteTest_4 { quotes: "\2192" "\2190" "\2937" "\2936"; }
     .qouoteTest_5 { quotes: none; }
         </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>tab-size</mark> property TEST </u></h4>
-    <p> - HTML collapses white spacec by default so we use "pre" elements to display them property </p> 
+    </details>
+    <!------------------------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>tab-size</mark> property TEST </u></h4>
+    <p> - HTML collapses white spacec by default so we use "pre" elements to display them property </p>
     <p style="color:yellow;"> - produces some unexpected results when using numbers as values see below [TESTED 2019-04-09]</p>
     <pre id="tbSize2">
 tab2	tab2	tab2	tab2	tab2
@@ -1477,9 +1645,9 @@ test13	test13	test13	test13	test13
     <pre id="tbSize13em">
 test13em	test13em	test13em	test13em	test13em
     </pre>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) -- 
    &lt;pre id="tbSize2"&gt;
 tab2	tab2	tab2	tab2	tab2
@@ -1532,10 +1700,11 @@ test13em	test13em	test13em	test13em	test13em
         -o-tab-size: 13em;
     }
         </pre>
-        </details>
-</details>  
-    
-    
-    <br><br>
+    </details>
+  </details>
+
+
+  <br><br>
 </body>
+
 </html>

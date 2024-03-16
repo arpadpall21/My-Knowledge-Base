@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title> List Styling </title> 
+    <title> List </title> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
+    <link rel="stylesheet" href="../../Assets/stylesPages.css">
     <script src="../../Assets/scriptPages.js"></script>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-<h1> List Styling (ver 3.4.1) </h1>
-    <p> Updated ( 2018-12-18 )</p>
+<h1> List </h1>
+    <p> Updated ( 2018-12-18 / 2024-03-16 )</p>
     <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html" title="CSS">CSS></a> List Styling 
+        <a href="../index.html" title="CSS">CSS></a> List
     </p>
 <table class="table">
     <tr>
@@ -21,15 +22,20 @@
         <th> Description </th>
     </tr>
     <tr>
-        <td> list-style </td>
-        <td> <i> list-style-type / list-style-position / list-style-image </i> </td>
+        <td> list-style-type </td>
+        <td>  
+            disc <span style="color:#7f85a3;">(default)</span><br>
+            circle<br>
+            none <span style="color:#7f85a3;">(no marker displayed)</span><br>
+            <a href="https://www.w3schools.com/cssref/playdemo.php?filename=playcss_list-style-type&preval=lower-roman" target="_blank">more...</a>
+        </td>
         <td> 
-            shorthand property<br> 
+            - list item marker type <br> 
             <span style="color:#7f85a3;"> &nbsp; - used by <mark>&lt;ol&gt;</mark>, <mark>&lt;ul&gt;</mark> and <mark>&lt;li&gt;</mark> elements and applied to <mark>&lt;li&gt;</mark> element </span>
             <span id="browserSupport" title="updated: 2020-07-24">
                 <span><i class="fab fa-chrome"></i> 1 </span>
                 <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 7 </span>
+                <span><i class="fab fa-opera"></i> 3.5 </span>
                 <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
                 <span><i class="fab fa-safari"></i> 1 </span>
             </span>
@@ -40,11 +46,9 @@
         <td>  
             none <span style="color:#7f85a3;">(default, no image inserted)</span><br>
             url("<strong>url</strong>") <span style="color:#7f85a3;">(path to the image to insert)</span><br>
-            initial <span style="color:#7f85a3;">(sets to default)</span><br>
-            inherit <span style="color:#7f85a3;">(inherits form its parent)</span>
         </td>
         <td> 
-            replaces the list marker with an image<br>
+            - replaces the list marker with an image <br>
             <span style="color:#7f85a3;"> &nbsp; - used by <mark>&lt;ol&gt;</mark>, <mark>&lt;ul&gt;</mark> and <mark>&lt;li&gt;</mark> elements and applied to <mark>&lt;li&gt;</mark> element </span>
             <span id="browserSupport" title="updated: 2020-07-24">
                 <span><i class="fab fa-chrome"></i> 1 </span>
@@ -59,12 +63,10 @@
         <td> list-style-position </td>
         <td>  
             outside <span style="color:#7f85a3;">(defaul, markers placed outised)</span><br>
-            inside <span style="color:#7f85a3;">(markers placed inside)</span><br>
-            initial <span style="color:#7f85a3;">(sets to default)</span><br>
-            inherit <span style="color:#7f85a3;">(inherits form its parent)</span>
+            inside <span style="color:#7f85a3;">(markers placed inside the list item element)</span><br>
         </td>
         <td> 
-            defines the position of the list markers<br> 
+            - sets the position of the list markers<br> 
             <span style="color:#7f85a3;"> &nbsp; - used by <mark>&lt;ol&gt;</mark>, <mark>&lt;ul&gt;</mark> and <mark>&lt;li&gt;</mark> elements and applied to <mark>&lt;li&gt;</mark> element </span>
             <span id="browserSupport" title="updated: 2020-07-24">
                 <span><i class="fab fa-chrome"></i> 1 </span>
@@ -76,21 +78,15 @@
         </td>
     </tr>
     <tr>
-        <td> list-style-type </td>
-        <td>  
-            disc <span style="color:#7f85a3;">(default)</span><br>
-            none <span style="color:#7f85a3;">(no marker displayed)</span><br>
-            initial <span style="color:#7f85a3;">(sets to default)</span><br>
-            inherit <span style="color:#7f85a3;">(inherits form its parent)</span><br>
-            <a href="https://www.w3schools.com/cssref/tryit.asp?filename=trycss_list-style-type_all" target="_blank" style="color:blueviolet;"> --> and many more... (W3C) </a>
-        </td>
+        <td> list-style </td>
+        <td> <i> list-style-type / list-style-position / list-style-image </i> </td>
         <td> 
-            defines list item marker types<br> 
+            - shorthand property<br>
             <span style="color:#7f85a3;"> &nbsp; - used by <mark>&lt;ol&gt;</mark>, <mark>&lt;ul&gt;</mark> and <mark>&lt;li&gt;</mark> elements and applied to <mark>&lt;li&gt;</mark> element </span>
             <span id="browserSupport" title="updated: 2020-07-24">
                 <span><i class="fab fa-chrome"></i> 1 </span>
                 <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
+                <span><i class="fab fa-opera"></i> 7 </span>
                 <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
                 <span><i class="fab fa-safari"></i> 1 </span>
             </span>
@@ -108,6 +104,67 @@
     
 <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
 
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 class="header"> The <mark>disk-style-type</mark> / <mark>disk-style-position</mark> properties </h4>
+    <ul class="list-style-test">
+      <li> test 1 </li>
+      <li> test 2 </li>
+      <li> test 3 </li>
+    </ul>
+    <details>
+      <summary> CODE: </summary>
+      <pre>
+// HTML ------------
+    &lt;ul class="list-style-test"&gt;
+      &lt;li&gt; test 1 &gt;/li&gt;
+      &lt;li&gt; test 2 &gt;/li&gt;
+      &lt;li&gt; test 3 &gt;/li&gt;
+    &lt;/ul&gt;
+    
+    
+// CSS ------------
+    .list-style-test li {
+        border: solid 1px black;
+    }
+    
+    .list-style-test {
+        list-style-type: circle;
+        list-style-position: inside;
+    }
+      </pre>
+    </details>
+    <hr>
+    <!---------------------------------------------------------------------------->
+    <h4> The <mark>disk-style-image</mark> property </h4>
+    <ul class="list-style-test-2">
+      <li> test 1 </li>
+      <li> test 2 </li>
+      <li> test 3 </li>
+    </ul>
+    <details>
+      <summary> CODE: </summary>
+      <pre>
+// HTML ------------
+    &lt;ul class="list-style-test"&gt;
+      &lt;li&gt; test 1 &gt;/li&gt;
+      &lt;li&gt; test 2 &gt;/li&gt;
+      &lt;li&gt; test 3 &gt;/li&gt;
+    &lt;/ul&gt;
+    
+    
+// CSS ------------
+    .list-style-test li {
+        border: solid 1px black;
+    }
+    
+    .list-style-test {
+        list-style-type: circle;
+        list-style-position: inside;
+    }
+      </pre>
+    </details>
+  </details>
 
 
 

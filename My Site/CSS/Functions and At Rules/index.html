@@ -10,8 +10,8 @@
     <script src="../../Assets/scriptPages.js"></script>
 </head>
 <body>
-<h1> Functions / @ Rules (ver 4.0.0) </h1>
-    <p> Updated ( 2019-01-12 / 2019-04-09 / 2020-01-17 / 2021-06-11)</p>
+<h1> Functions / @ Rules </h1>
+    <p> Updated ( 2019-01-12 / 2019-04-09 / 2020-01-17 / 2021-06-11 / 2024-03-15 )</p>
     <p class="sitenav"> <a href="../../index.html">MySite></a>
         <a href="../index.html" title="CSS">CSS></a>  Functions / @ Rules 
     </p>
@@ -38,7 +38,7 @@
     </tr>
     <tr class="10.01">
         <td> min(<strong>cssLength</strong><i>, ...</i>) </td>
-        <td> - <i class="fab fa-css3-alt"></i> returns the smallest value (especially useful with mixed units (ex:<mark>min(100%, 10px)</mark>))
+        <td> - <i class="fab fa-css3-alt"></i> returns the smallest value (especially useful with mixed units (ex: <mark>min(100%, 10px)</mark>))
             <span id="browserSupport">
                 <span><i class="fab fa-chrome"></i> 79 </span>
                 <span><i class="fab fa-firefox"></i> 75 </span>
@@ -50,49 +50,13 @@
     </tr>
     <tr class="10.02">
         <td> max(<strong>cssLength</strong><i>, ...</i>) </td>
-        <td> - <i class="fab fa-css3-alt"></i> returns the largest value (especially useful with mixed units (ex:<mark>max(100%, 10px)</mark>))
+        <td> - <i class="fab fa-css3-alt"></i> returns the largest value (especially useful with mixed units (ex: <mark>max(100%, 10px)</mark>))
             <span id="browserSupport">
                 <span><i class="fab fa-chrome"></i> 79 </span>
                 <span><i class="fab fa-firefox"></i> 75 </span>
                 <span><i class="fab fa-opera"></i> 66 </span>
                 <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
                 <span><i class="fab fa-safari"></i> 11.1 </span>
-            </span>
-        </td>
-    </tr>
-
-    <tr class="50.01">
-        <td colspan="2"> Variable (custom property) </td>
-    </tr>
-    <tr class="50.02">
-        <td>
-            <strong>parentElement</strong> { --<strong>varId</strong>: <strong>val</strong>; } <br>
-        </td>
-        <td> 
-            - <i class="fab fa-css3-alt"></i> declares a variable <u>(available only on the <strong>parentElement</strong>'s children (scoped) )</u> <br>
-            - the assigned value should be a CSS property value  
-            <span id="browserSupport" title="updated: 2020-01-18">
-                <span><i class="fab fa-chrome"></i> 49 </span>
-                <span><i class="fab fa-firefox"></i> 31 </span>
-                <span><i class="fab fa-opera"></i> 36 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 15 </span>
-                <span><i class="fab fa-safari"></i> 9.1 </span>
-            </span>
-        </td>
-    </tr>
-        <tr class="50.03"><td></td><td></td></tr>
-    <tr class="50.04">
-        <td>  
-            <strong>childElement</strong> { <strong>prop</strong>: var(--<strong>varId</strong>, <i>fallbackVal</i>); }
-        </td>
-        <td> 
-            - <i class="fab fa-css3-alt"></i> using the variable as property value <u>(the <strong>childElement</strong> must be a child element of the <strong>parentElement</strong>)</u>
-            <span id="browserSupport" title="updated: 2020-01-18">
-                <span><i class="fab fa-chrome"></i> 49 </span>
-                <span><i class="fab fa-firefox"></i> 31 </span>
-                <span><i class="fab fa-opera"></i> 36 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 15 </span>
-                <span><i class="fab fa-safari"></i> 9.1 </span>
             </span>
         </td>
     </tr>
@@ -246,28 +210,6 @@
     <p> - CSS variables are scoped (available only on the declared element and on all its nested child elements) </p>
 <details class="example">
 <summary> DEMO </summary>
-    <pre>
-    &lt;div&gt;
-      &lt;div class="demo"&gt;
-        &lt;p&gt; my element &lt;span&gt;child element&lt;/span&gt;&lt;/p&gt;  
-      &lt;/div&gt;
-    &lt;/div&gt;
-    
--- CSS --
-    .demo {
-      --myColor: red;                           // custom values declared in the parent element
-      --myBorder: solid 2px blue;
-      border: var(--myBorder);                  // custom value used on the element itself
-    }
-    .demo p {
-      color: var(--myColor);                    // custom value used on the child element <b>(custom properties inherit just like normal properties (the &lt;span&gt; child element inherit this color automatically)</b> 
-      border: var(--myBorder);                  // the &lt;span&gt; child element does NOT inherit this property because the "border" property <b>non-inheritable</b> 
-      font-size: var(--myFontSize, 2em);        // fallback value is used because the "--myFontSize" identifier is undefined
-    }
-    div {
-      border: var(--myBorder);                  // ancestors do not inherit custom properties (because of the scoping mechanism)
-    }
-    </pre>
 </details>
 <details class="example">
 <summary> Example : </summary>

@@ -161,7 +161,16 @@
     -o-tab-size: 13em;
 }
 
+        /*-- text-emphasis properties TEST --*/
+.emphasis-test {
+    text-emphasis-style: filled;
+    text-emphasis-color: red;
+    text-emphasis-position: under;
+}
 
+.emphasis-test-2 {
+    text-emphasis: sesame red;
+}
 
 
 

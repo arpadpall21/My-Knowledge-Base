@@ -1,202 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Lists </title>    
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="../../Assets/stylesPages.css">
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Lists </title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Lists (ver 2.9) </h1>
-<p> Updated (2016-06-01 / 2018-08-17 / 2018-12-06 / 2018-12-18) </p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html">HTML></a> Lists  
-    </p>
-<table class="table">
-<caption> TAG's </caption>
+  <h1> Lists </h1>
+  <p> Updated ( 2016-06-01 / 2018-12-18 / 2024-03-16 ) </p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html">HTML></a> Lists
+  </p>
+  <table class="table">
     <tr>
-        <th> Tag </th>
-        <th> Attribute </th>
-        <th> Description </th>
+      <th style="width: 15%"> Tag </th>
+      <th style="width: 40%"> Attribute </th>
+      <th> Description </th>
     </tr>
     <tr>
-        <td> &lt;datalist&gt; </td>
-        <td> </td>
-        <td> 
-            creates a pre-defined list for an "input" element (sort of autocomplete list) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 20 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 9 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> NO </span>
-            </span>
-        </td>
+      <td colspan="3"> Ordered & Unordered List </td>
     </tr>
     <tr>
-        <td> &lt;dd&gt; </td>
-        <td>  </td>
-        <td>  
-            defines a data in the description list<br>
-            <span style="color:#7f85a3;"> &nbsp; - used by in conjonction with <mark>&lt;dl&gt;</mark> and <mark>&lt;dt&gt;</mark> elements </span>
-        </td>
+      <td> &lt;ol&gt; </td>
+      <td>
+        reversed <span style="color:#7f85a3;">(<i class="fab fa-html5"></i> reverses the order of the markers)</span> <br>
+        start="<strong>nr</strong>" <span style="color:#7f85a3;">(defines the starting value)</span><br>
+        type="<mark>1|A|a|I|i</mark>" <span style="color:#7f85a3;">(marked style)</span>
+      </td>
+      <td> 
+        - ordered list
+        <span id="browserSupport">
+            <span><i class="fab fa-chrome"></i> yes </span>
+            <span><i class="fab fa-firefox"></i> yes </span>
+            <span><i class="fab fa-opera"></i> yes </span>
+            <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+            <span><i class="fab fa-safari"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> &lt;dl&gt; </td>
-        <td>  </td>
-        <td> 
-            defines a description list<br> 
-            <span style="color:#7f85a3;"> &nbsp; - used by in conjonction with <mark>&lt;dt&gt;</mark> and <mark>&lt;dd&gt;</mark> elements </span>
-        </td>
+      <td> &lt;ul&gt; </td>
+      <td>
+        type="<mark>disc|square|circle </mark>" <span style="color:#7f85a3;">(marker style)</span>
+      </td>
+      <td>
+        - unordered list
+        <span id="browserSupport">
+            <span><i class="fab fa-chrome"></i> yes </span>
+            <span><i class="fab fa-firefox"></i> yes </span>
+            <span><i class="fab fa-opera"></i> yes </span>
+            <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+            <span><i class="fab fa-safari"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> &lt;dt&gt; </td>
-        <td>  </td>
-        <td> 
-            defines a term/name in the description list<br>
-            <span style="color:#7f85a3;"> &nbsp; - used by in conjonction with <mark>&lt;dl&gt;</mark> and <mark>&lt;dd&gt;</mark> elements </span>
-        </td>
+      <td> &lt;li&gt; </td>
+      <td> value="<strong>val</strong>" <span style="color:#7f85a3;">(<mark>&lt;ol&gt;</mark> will start with this value)</span></td>
+      <td>
+        - defines a list item
+        <span id="browserSupport">
+            <span><i class="fab fa-chrome"></i> yes </span>
+            <span><i class="fab fa-firefox"></i> yes </span>
+            <span><i class="fab fa-opera"></i> yes </span>
+            <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+            <span><i class="fab fa-safari"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> &lt;li&gt; </td>
-        <td> value="<strong>nr</strong>" <span style="color:#7f85a3;">(<mark>&lt;ol&gt;</mark> will start from this value)</span></td>
-        <td> 
-            defines a list item<br>
-            <span style="color:#7f85a3;"> &nbsp; - used by <mark>&lt;ol&gt;</mark> and <mark>&lt;or&gt;</mark> elements </span>
-        </td>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
-        <td> &lt;ol&gt; </td>
-        <td>  
-            reversed <span style="color:#7f85a3;">(<i class="fab fa-html5"></i> reverses the order of the markers)</span> <span style="color:orangered;">(No EDGE support)</span><br>
-            start="<strong>nr</strong>" <span style="color:#7f85a3;">(defines the starting value)</span><br>
-            type="<mark>1 / A / a / I / i</mark>" <span style="color:#7f85a3;">(specifies the marked style)</span>
-        </td>
-        <td> defines an ordered list </td>
+      <td colspan="3"> Description List </td>
     </tr>
     <tr>
-        <td> &lt;optgroup&gt; </td>     
-        <td>  
-            disabled <span style="color:#7f85a3;">((boolean) disables the option group)</span><br>
-            label="<strong>text</strong>" <span style="color:#7f85a3;">(defines the optiongroup's label)</span> 
-        </td>
-        <td> 
-            groups options in a drop-down list 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-            </span>
-        </td>
+      <td> &lt;dl&gt; </td>
+      <td> </td>
+      <td>
+        - description list
+        <span id="browserSupport">
+            <span><i class="fab fa-chrome"></i> yes </span>
+            <span><i class="fab fa-firefox"></i> yes </span>
+            <span><i class="fab fa-opera"></i> yes </span>
+            <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+            <span><i class="fab fa-safari"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> &lt;option&gt; </td>
-        <td>
-            disabled <span style="color:#7f85a3;">(disables the item)</span> <br>
-            label="<strong>text</strong>" <span style="color:#7f85a3;">(label to be printed instead of the typed value)</span> <span style="color:orangered;">(no Mozilla support)</span> <br>
-            selected <span style="color:#7f85a3;">(preselet item)</span> <br>
-            value="<strong>text</strong>" <span style="color:#7f85a3;">(value sent to the server)</span> <br>
-        </td>
-        <td> 
-            defines an option (item) in a drop-down list <mark>&lt;select&gt;</mark> or in a datalist <mark>&lt;datalist&gt;</mark> 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-            </span>
-        </td>
+      <td> &lt;dt&gt; </td>
+      <td> </td>
+      <td>
+        - describes a term/name in the description list
+        <span id="browserSupport">
+            <span><i class="fab fa-chrome"></i> yes </span>
+            <span><i class="fab fa-firefox"></i> yes </span>
+            <span><i class="fab fa-opera"></i> yes </span>
+            <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+            <span><i class="fab fa-safari"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> &lt;select&gt;</td>
-        <td>
-            autofocus <span style="color:#7f85a3;">(<i class="fab fa-html5"></i> gets focus automatically when page loads)</span><br>
-            disabled <span style="color:#7f85a3;">(disables the drop-down list)</span> <br>
-            form="<strong>form_id</strong>" <span style="color:#7f85a3;">(<i class="fab fa-html5"></i> defines one or more forms the list belongs to)</span><br> 
-            multiple <span style="color:#7f85a3;">(multiple options can be selected (hold ctrl+click))</span> <br>
-            name <span style="color:#7f85a3;">(defines a name for the drop-down list)</span> <br>
-            required <span style="color:#7f85a3;">(<i class="fab fa-html5"></i> an item with a valid value must be selected before submitting)</span> <span style="color:orangered;">(No Safari support)</span> <br>
-            size <span style="color:#7f85a3;">(defines how many items (options) should be visible)</span>
-        </td>
-        <td> 
-            creates a drop-down list 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-            </span>
-        </td>
+      <td> &lt;dd&gt; </td>
+      <td> </td>
+      <td>
+        - defines the data in the description list
+        <span id="browserSupport">
+            <span><i class="fab fa-chrome"></i> yes </span>
+            <span><i class="fab fa-firefox"></i> yes </span>
+            <span><i class="fab fa-opera"></i> yes </span>
+            <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+            <span><i class="fab fa-safari"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> &lt;ul&gt; </td>
-        <td>  
-            type="<mark>disc / square / circle </mark>" <span style="color:#7f85a3;">(specifies the marker style)</span> <span style="color:orangered;">(no HTML5 support)</span><br>
-        </td>
-        <td> defines an unordered list </td>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
-</table>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="http://www.w3schools.com/html/html_lists.asp" target="_blank"> W3Schools HTML Lists! </a></p>
-    <p><a href="http://www.w3schools.com/css/css_list.asp" target="_blank"> W3Schools CSS Lists! </a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-<h2 style="color:green;"><u> Description and Demonstration: </u></h2>
-<h2 class="headerExtra"><u> Unordered list <mark>&lt;ul&gt;</mark></u></h2>   
-    <p> - the <mark>&lt;ul&gt;</mark> defines an unordered (bulleted) list along with the <mark>&lt;li&gt;</mark> (item) tag </p>
-    <pre class="syntax">
-SYNTAX :    &lt;ul&gt;
-                &lt;li&gt; <i>text</i> &lt;/li&gt;
-                &lt;li&gt; <i>text</i> &lt;/li&gt;
-                &lt;li&gt; <i>text</i> &lt;/li&gt;
-            &lt;/ul&gt;
-            
-    <span style="color:skyblue;">// <mark>&lt;ul&gt;</mark> element attributes - - - - -</span>
-        type="<mark>disc</mark>/<mark>square</mark>/<mark>circle</mark>           <span style="color:skyblue;">// specifies the marker type</span><span style="color:orange;">(no HTML5 support)</span>
-    </pre>
-    <pre>
+    <tr>
+      <td colspan="3"> Drop-Down & Data List </td>
+    </tr>
+    <tr>
+      <td> &lt;select&gt;</td>
+      <td>
+        autofocus <span style="color:#7f85a3;">(<i class="fab fa-html5"></i> gets focus automatically when page loads)</span><br>
+        disabled <span style="color:#7f85a3;">(disables the drop-down list)</span> <br>
+        form="<strong>form_id</strong>" <span style="color:#7f85a3;">(<i class="fab fa-html5"></i> defines one or more forms the list belongs to)</span><br>
+        multiple <span style="color:#7f85a3;">(multiple options can be selected (hold ctrl+click))</span> <br>
+        name <span style="color:#7f85a3;">(defines a name for the drop-down list)</span> <br>
+        required <span style="color:#7f85a3;">(<i class="fab fa-html5"></i> an item with a valid value must be selected before submitting)</span> <br>
+        size <span style="color:#7f85a3;">(defines how many items (options) should be visible)</span>
+      </td>
+      <td>
+        - drop-down list
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> &lt;optgroup&gt; </td>
+      <td>
+        disabled <span style="color:#7f85a3;">((boolean) disables the option group)</span><br>
+        label="<strong>text</strong>" <span style="color:#7f85a3;">(defines the optiongroup's label)</span>
+      </td>
+      <td>
+        - groups options (items) in the drop-down list
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> &lt;datalist&gt; </td>
+      <td> </td>
+      <td>
+        - creates a pre-defined list for an <mark>&lt;input&gt;</mark> element
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 20 </span>
+          <span><i class="fab fa-firefox"></i> 4 </span>
+          <span><i class="fab fa-opera"></i> 9 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 12.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> &lt;option&gt; </td>
+      <td>
+        disabled <span style="color:#7f85a3;">(disables the item)</span> <br>
+        label="<strong>text</strong>" <span style="color:#7f85a3;">(label to be printed instead of the typed value)</span> <br>
+        selected <span style="color:#7f85a3;">(preselet item)</span> <br>
+        value="<strong>text</strong>" <span style="color:#7f85a3;">(value sent to the server)</span> <br>
+      </td>
+      <td>
+        - option (item) in a drop-down or data list
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="http://www.w3schools.com/html/html_lists.asp" target="_blank"> W3Schools HTML Lists! </a></p>
+  <p><a href="http://www.w3schools.com/css/css_list.asp" target="_blank"> W3Schools CSS Lists! </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration: </u></h2>
+  <h2 class="header"> Ordered and Unordered Lists <mark>&lt;ol&gt;</mark> / <mark>&lt;ul&gt;</mark> / <mark>&lt;li&gt;</mark> </h2>
+  <pre class="syntax">
+// ordered list (list items are sequence number prefixed) --
+    &lt;ol&gt;
+        &lt;li&gt; <i>content</i> &lt;/li&gt;
+        &lt;li&gt; <i>content</i> &lt;/li&gt;
+        &lt;li&gt; <i>content</i> &lt;/li&gt;
+    &lt;/ol&gt;
+    
+    
+// unordered list (list items are marker prefixed) --
     &lt;ul&gt;
-        &lt;li&gt; Samsung &lt;/li&gt;
-        &lt;li&gt; Sony &lt;/li&gt;
-        &lt;li&gt; Apple &lt;/li&gt;
+        &lt;li&gt; <i>content</i> &lt;/li&gt;
+        &lt;li&gt; <i>content</i> &lt;/li&gt;
+        &lt;li&gt; <i>content</i> &lt;/li&gt;
     &lt;/ul&gt;
-    </pre>
-<details class="example">
-    <summary> Example : </summary>   
-<h4><u> styled lists </u></h4>
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 class="header"> Ordered List Types </h4>
+    <ol type="1">
+      <li>Lisa</li>
+      <li>Bart</li>
+      <li>Maggie</li>
+    </ol>
+    <ol type="A" start="3">
+      <li>Lisa</li>
+      <li>Bart</li>
+      <li>Maggie</li>
+    </ol>
+    <ol type="a" reversed>
+      <li>Lisa</li>
+      <li>Bart</li>
+      <li>Maggie</li>
+    </ol>
+    <ol type="I" start="50" reversed>
+      <li>Lisa</li>
+      <li>Bart</li>
+      <li>Maggie</li>
+    </ol>
+    <ol type="i">
+      <li>Lisa</li>
+      <li>Bart</li>
+      <li>Maggie</li>
+    </ol>
+    <details>
+      <summary>CODE :</summary>
+      <pre>
+    &lt;ol type="1"&gt;
+      &lt;li&gt;Lisa&lt;/li&gt;
+      &lt;li&gt;Bart&lt;/li&gt;
+      &lt;li&gt;Maggie&lt;/li&gt;
+    &lt;/ol&gt;
+    
+    &lt;ol type="A" start="3"&gt;
+      &lt;li&gt;Lisa&lt;/li&gt;
+      &lt;li&gt;Bart&lt;/li&gt;
+      &lt;li&gt;Maggie&lt;/li&gt;
+    &lt;/ol&gt;
+    
+    &lt;ol type="a" reversed&gt;
+      &lt;li&gt;Lisa&lt;/li&gt;
+      &lt;li&gt;Bart&lt;/li&gt;
+      &lt;li&gt;Maggie&lt;/li&gt;
+    &lt;/ol&gt;
+    
+    &lt;ol type="I" start="50" reversed&gt;
+      &lt;li&gt;Lisa&lt;/li&gt;
+      &lt;li&gt;Bart&lt;/li&gt;
+      &lt;li&gt;Maggie&lt;/li&gt;
+    &lt;/ol&gt;
+    
+    &lt;ol type="i"&gt;
+      &lt;li&gt;Lisa&lt;/li&gt;
+      &lt;li&gt;Bart&lt;/li&gt;
+      &lt;li&gt;Maggie&lt;/li&gt;
+    &lt;/ol&gt;
+        </pre>
+    </details>
+    <!------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Reversed ordered list </h4>
+    <ol reversed>
+      <li> 1 </li>
+      <li> 2 </li>
+      <li> 3 </li>
+    </ol>
+    <details>
+      <summary> CODE: </summary>
+      <pre>
+    &lt;ol reversed&gt;
+        &lt;li&gt; 1 &lt;/li&gt;
+        &lt;li&gt; 2 &lt;/li&gt;
+        &lt;li&gt; 3 &lt;/li&gt;
+    &lt;ol&gt;
+      </pre>
+    </details>
+    <!------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Unordered styled lists </h4>
     <ul class="pink">
-        <li> Lisa Sparx </li>
-        <li> Phoenix </li>
-        <li> Gre y</li>
+      <li>Lisa</li>
+      <li>Bart</li>
+      <li>Maggie</li>
     </ul>
     <ul class="blue">
-        <li> Lisa Sparx </li>
-        <li> Phoenix </li>
-        <li> Grey </li>
+      <li>Lisa</li>
+      <li>Bart</li>
+      <li>Maggie</li>
     </ul>
     <details>
-    <summary>CODE :</summary>
-        <pre>
--- CODE (HTML) --
+      <summary>CODE :</summary>
+      <pre>
+// HTML --
     &lt;ul class="pink"&gt;
-        &lt;li&gt; Lisa Sparx &lt;/li&gt;
-        &lt;li&gt; Phoenix &lt;/li&gt;
-        &lt;li&gt; Grey &lt;/li&gt;
+      &lt;li&gt;Lisa&lt;/li&gt;
+      &lt;li&gt;Bart&lt;/li&gt;
+      &lt;li&gt;Maggie&lt;/li&gt;
     &lt;/ul&gt;
     &lt;ul class="blue"&gt;
-        &lt;li&gt; Lisa Sparx &lt;/li&gt;
-        &lt;li&gt; Phoenix &lt;/li&gt;
-        &lt;li&gt; Grey &lt;/li&gt;
+      &lt;li&gt;Lisa&lt;/li&gt;
+      &lt;li&gt;Bart&lt;/li&gt;
+      &lt;li&gt;Maggie&lt;/li&gt;
     &lt;/ul&gt;
-        
--- CODE (CSS) --
+    
+    
+// CSS --
     .pink {
         background-color:pink;
         padding:20px;
@@ -217,60 +369,66 @@ SYNTAX :    &lt;ul&gt;
         margin:5px;
         padding:20px;
     }
-        
         </pre>
     </details>
-<h4><u> Remove marker </u></h4>
+    <!------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Unordered List marker removed </h4>
     <ul style="list-style-type:none;">
-        <li> Lisa Sparx</li>
-        <li> Phoenix</li>
-        <li> Grey</li>
+      <li>Lisa</li>
+      <li>Bart</li>
+      <li>Maggie</li>
     </ul>
-        <details>
-        <summary>CODE :</summary>
-        <pre>
--- CODE (HTML) --
-    &lt;ul style="list-style-type:none;"&gt;        // -> marker removed!
-        &lt;li&gt; Lisa Sparx&lt;/li&gt;
-        &lt;li&gt; Phoenix&lt;/li&gt;
-        &lt;li&gt; Grey&lt;/li&gt;
+    <details>
+      <summary>CODE :</summary>
+      <pre>
+// HTML --
+    &lt;ul style="list-style-type:none;"&gt;          // -> marker removed!
+        &lt;li&gt;Lisa&lt;/li&gt;
+        &lt;li&gt;Bart&lt;/li&gt;
+        &lt;li&gt;Maggie&lt;/li&gt;
     &lt;/ul&gt;
         </pre>
-        </details>
-<h4><u> Image markers </u></h4>
-    <ul style="list-style-image: url(Button.jpg)">      
-        <li> Lisa Sparx</li>
-        <li> Phoenix</li>
-        <li> Grey</li>
-    </ul>
-        <details>
-        <summary>CODE :</summary>
-        <pre>
-        -- CODE (HTML) --
-        &lt;ul style="list-style-image: url(Button.jpg)"&gt;    // -> image added as markers for this list
-            &lt;li&gt; Lisa Sparx&lt;/li&gt;
-            &lt;li&gt; Phoenix&lt;/li&gt;
-            &lt;li&gt; Grey&lt;/li&gt;
-        &lt;/ul&gt;
-        </pre>
     </details>
-<h4><u> Image markers set inside </u></h4>    
-    <ul class="setInside">
-        <li> egy </li>
-        <li> ketto </li>
-        <li> harom </li>
+    <!------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Unordered List Image markers </h4>
+    <ul style="list-style-image: url(Button.jpg)">
+      <li>Lisa</li>
+      <li>Bart</li>
+      <li>Maggie</li>
     </ul>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- CODE (HTML) --
+    <details>
+      <summary>CODE :</summary>
+      <pre>
+// HTML --
+    &lt;ul style="list-style-image: url(Button.jpg)"&gt;    // -> image added as markers for this list
+        &lt;li&gt;Lisa&lt;/li&gt;
+        &lt;li&gt;Bart&lt;/li&gt;
+        &lt;li&gt;Maggie&lt;/li&gt;
+    &lt;/ul&gt;
+      </pre>
+    </details>
+    <!------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Unordered markers set inside </h4>
+    <ul class="setInside">
+      <li> egy </li>
+      <li> ketto </li>
+      <li> harom </li>
+    </ul>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML --
     &lt;ul class="setInside"&gt;
         &lt;li&gt; egy &lt;/li&gt;
         &lt;li&gt; ketto &lt;/li&gt;
         &lt;li&gt; harom &lt;/li&gt;
     &lt;/ul&gt;
     
--- CODE (CSS) --        
+    
+// CSS --   
     .setInside {
         border: solid black 1px;
         list-style-position: inside;        // -> markers set inside list items
@@ -278,24 +436,25 @@ SYNTAX :    &lt;ul&gt;
     .setInside li {
         border: solid black 1px;
     }
-        </pre>
-        </details>
-<h4><u> Nested lists </u></h4> 
+      </pre>
+    </details>
+    <!------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Nested Lists </h4>
     <ul>
-        <li> spoon</li>
-        <li> fork</li>
-        <li> Coffee </li>
-            <ul>
-                <li> Sugar </li>
-                <li> Milk </li>
-                <li> Hmmm ;) </li>
-            </ul>
-        <li> nape</li>
+      <li> spoon</li>
+      <li> fork</li>
+      <li> Coffee </li>
+      <ul>
+        <li> Sugar </li>
+        <li> Milk </li>
+      </ul>
+      <li> nape</li>
     </ul>
     <details>
-    <summary>CODE :</summary>
-        <pre>
--- CODE (HTML) --
+      <summary>CODE :</summary>
+      <pre>
+// HTML ----
     &lt;ul>
         &lt;li&gt; spoon &lt;/li&gt;
         &lt;li&gt; fork &lt;/li&gt;
@@ -303,237 +462,104 @@ SYNTAX :    &lt;ul&gt;
             &lt;ul&gt;                          // -> nested list inserted
                 &lt;li&gt; Sugar &lt;/li&gt;
                 &lt;li&gt; Milk &lt;/li&gt;
-                &lt;li&gt; Hmmm ;) &lt;/li&gt;
             &lt;/ul&gt;
         &lt;li&gt; nape &lt;/li&gt;
     &lt;/ul&gt;
-        </pre>
+      </pre>
     </details>
-<h4><u> Horisontal List </u></h4>
+    <!------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Horizontal List </h4>
     <ul class="horizontal">
-        <li> /fist item/ </li>
-        <li> /second item/ </li>
-        <li> /third item/</li>
-        <li> /fourth item/ </li>
+      <li> /fist item/ </li>
+      <li> /second item/ </li>
+      <li> /third item/</li>
+      <li> /fourth item/ </li>
     </ul>
     <details>
-    <summary>CODE :</summary>
-        <pre>
--- CODE (HTML) --
+      <summary>CODE :</summary>
+      <pre>
+// HTML -----
     &lt;ul id="horizontal"&gt;
         &lt;li&lt; /fist item/ &lt;/li&gt;
         &lt;li&lt; /second item/ &lt;/li&gt;
         &lt;li&lt; /third item/ &lt;/li&gt;
         &lt;li&lt; /fourth item/ &lt;/li&gt;
     &lt;/ul&gt;
-        
--- CODE (CSS) --
+    
+// CSS ---
     .horizontal li{
-        display:inline;                 // -> horizontally displayed
+        display:inline;
     }
-        </pre>
+    </pre>
     </details>
-</details>    
-<!-------------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="headerExtra"><u> Ordered list <mark>&lt;ol&gt;</mark></u></h2>       
-    <p> - the <mark>&lt;ul&gt;</mark> defines an ordered (numerical or alphabetical) list along with the <mark>&lt;li&gt;</mark> (item) tag </p>
-    <pre class="syntax">
-SYNTAX :    &lt;ol&gt;         
-                &lt;li&gt; <i>text</i> &lt;/li&gt;                           
-                &lt;li&gt; <i>text</i> &lt;/li&gt;                         
-                &lt;li&gt; <i>text</i> &lt;/li&gt;
-            &lt;/ol&gt;
-            
-    <span style="color:skyblue;">// <mark>&lt;ol&gt;</mark> element attributes - - - - -</span>            
-            reversed <span style="color:skyblue;">(boolean)             // <i class="fab fa-html5"></i> reverses the order of the markers </span> <span style="color:orange;">(No EDGE support)</span>
-            start="<strong>nr</strong>"                     <span style="color:skyblue;">// defines where the marker count start from </span>    
-            type="<mark>1</mark>/<mark>A</mark>/<mark>a</mark>/<mark>I</mark>/<mark>i</mark>"               <span style="color:skyblue;">// specifies the marker style </span>
-    </pre>
-    <pre>
-    &lt;ol type="1" reversed &gt;                              // count reversed (does not revers list items) 
-        &lt;li&gt; Samsung &lt;/li&gt;
-        &lt;li&gt; Sony &lt;/li&gt;
-        &lt;li&gt; Apple &lt;/li&gt;
-    &lt;/ol&gt;
-    </pre>
-<details class="example">    
-    <summary> Example : </summary>
-<h4><u> Ordered List </u></h4>
-<p> - ordered list type management </p>
-    <ol type="1">
-        <li> Lisa Sparx</li>
-        <li> Phoenix</li>
-        <li> Grey</li>
-    </ol>
-    <ol type="A" start="3">         
-        <li> Lisa Sparx</li>
-        <li> Phoenix</li>
-        <li> Grey</li>
-    </ol>
-    <ol type="a" reversed>
-        <li> Lisa Sparx</li>
-        <li> Phoenix</li>
-        <li> Grey</li>
-    </ol>
-    <ol type="I" start="50" reversed>
-        <li> Lisa Sparx</li>
-        <li> Phoenix</li>
-        <li> Grey</li>
-    </ol>
-    <ol type="i">
-        <li> Lisa Sparx</li>
-        <li> Phoenix</li>
-        <li> Grey</li>
-    </ol>
-    <details>
-    <summary>CODE :</summary>
-        <pre>
-        -- CODE (HTML) --
-        &lt;ol type="1"&gt;
-            &lt;li&gt; Lisa Sparx&lt;/li&gt;
-            &lt;li&gt; Phoenix&lt;/li&gt;
-            &lt;li&gt; Grey&lt;/li&gt;
-        &lt;/ol&gt;
-        &lt;ol type="A" start="3"&gt;           // -> start value modified
-            &lt;li&gt; Lisa Sparx&lt;/li&gt;
-            &lt;li&gt; Phoenix&lt;/li&gt;
-            &lt;li&gt; Grey&lt;/li&gt;
-        &lt;/ol&gt;
-        &lt;ol type="a" reversed&gt;            // -> list items are reversed
-            &lt;li&gt; Lisa Sparx&lt;/li&gt;
-            &lt;li&gt; Phoenix&lt;/li&gt;
-            &lt;li&gt; Grey&lt;/li&gt;
-        &lt;/ol&gt;
-        &lt;ol type="I" start="50" reversed&gt; // -> start value modified and reversed
-            &lt;li&gt; Lisa Sparx&lt;/li&gt;
-            &lt;li&gt; Phoenix&lt;/li&gt;
-            &lt;li&gt; Grey&lt;/li&gt;
-        &lt;/ol&gt;
-        &lt;ol type="i"&gt;
-            &lt;li&gt; Lisa Sparx&lt;/li&gt;
-            &lt;li&gt; Phoenix&lt;/li&gt;
-            &lt;li&gt; Grey&lt;/li&gt;
-        &lt;/ol&gt;
-        </pre>
-    </details>
-<h4><u> <mark>reverse</mark> TEST </u></h4>
-    <ol reversed>
-        <li> 1 </li>
-        <li> 2 </li>
-        <li> 3 </li>
-    </ol>
-</details>        
-<!-------------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="headerExtra"><u> Description List <mark>&lt;dl&gt;</mark> / <mark>&lt;dt&gt;</mark> / <mark>&lt;dd&gt;</mark> </u></h2>   
-    <p> - the <mark>&lt;dl&gt;</mark> defines a description list with the <mark>&lt;dt&gt;</mark> (define term) and <mark>&lt;dd&gt;</mark> (define data) tag </p>
-    <pre class="syntax">
-SYNTAX :    &lt;dl&gt;
-                &lt;dt&gt; <i>text</i> &lt;/dt&gt;
-                    &lt;dd&gt; <i>text</i> &lt;/dd&gt;
-                    &lt;dd&gt; <i>text</i> &lt;/dd&gt;
-                &lt;dt&gt; <i>text</i> &lt;/dt&gt;
-                    &lt;dd&gt; <i>text</i> &lt;/dd&gt;
-            &lt;/dl&gt;
-    </pre>
-    <pre>
+  </details>
+  <!-------------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Description List <mark>&lt;dl&gt;</mark> / <mark>&lt;dt&gt;</mark> / <mark>&lt;dd&gt;</mark> </h2>
+  <p> - hierarchy arranged list </p>
+  <pre class="syntax">
     &lt;dl&gt;
-        &lt;dt&gt; Samsung &lt;/dt&gt;
-            &lt;dd&gt; Galaxy S &lt;/dd&gt;
-            &lt;dd&gt; Note &lt;/dd&gt;
-        &lt;dt&gt; Apple &lt;/dt&gt;
-            &lt;dd> Iphone &lt;/dd&gt;
-            &lt;dd> IphoneXS &lt;/dd&gt;
+        &lt;dt&gt; <i>content</i> &lt;/dt&gt;
+            &lt;dd&gt; <i>content</i> &lt;/dd&gt;
+            &lt;dd&gt; <i>content</i> &lt;/dd&gt;
+        &lt;dt&gt; <i>content</i> &lt;/dt&gt;
+            &lt;dd&gt; <i>content</i> &lt;/dd&gt;
     &lt;/dl&gt;
     </pre>
-<details class="example">     
+  <details class="example">
     <summary> Example : </summary>
-<h4><u> Description List </u></h4>
     <dl>
-        <dt>Lisa Sparx<dt>
-            <dd>Chupy</dd>
-        <dt>Phoenix Marie</dt>
-            <dd>Sexy</dd>
-            <dd>Big Blond</dd>
-        <dt> Grey </dt>
-            <dd> Mouth </dd>
-            <dd> go go </dd>
+      <dt>Lisa<dt>
+        <dd>Daughter</dd>
+      <dt>Bart</dt>
+        <dd>Son</dd>
+        <dd>Bad Behaviour</dd>
+      <dt>Maggie</dt>
+        <dd>Daugter</dd>
+        <dd>Baby</dd>
     </dl>
-        <details>
-        <summary>CODE :</summary>
-        <pre>
--- CODE (HTML) --
+    <details>
+      <summary>CODE :</summary>
+      <pre>
     &lt;dl&gt;
-        &lt;dt&gt; Lisa Sparx &lt;dt&gt;
-            &lt;dd&gt; Chupy &lt;/dd&gt;
-        &lt;dt&gt; Phoenix Marie &lt;/dt&gt;
-            &lt;dd&gt; Sexy &lt;/dd&gt;
-            &lt;dd&gt; Big Blond &lt;/dd&gt;
-        &lt;dt&gt; Grey &lt;/dt&gt;
-            &lt;dd&gt; Mouth &lt;/dd&gt;
-            &lt;dd&gt; go go &lt;/dd&gt;
+      &lt;dt&gt;Lisa&lt;dt&gt;
+        &lt;dd&gt;Daughter&lt;/dd&gt;
+      &lt;dt&gt;Bart&lt;/dt&gt;
+        &lt;dd&gt;Son&lt;/dd&gt;
+        &lt;dd&gt;Bad Behaviour&lt;/dd&gt;
+      &lt;dt&gt;Maggie&lt;/dt&gt;
+        &lt;dd&gt;Daugter&lt;/dd&gt;
+        &lt;dd&gt;Baby&lt;/dd&gt;
     &lt;/dl&gt;
         </pre>
-        </details>
-</details>    
-<!-------------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="headerExtra"><u> Drop-Down List <mark>&lt;select&gt;</mark> / <mark>&lt;option&gt;</mark> / <mark>&lt;optgroup&gt;</mark></u></h2>    
-    <pre class="syntax">
-SYNTAX :    &lt;select&gt;                                     // creates a drop-down list
-                &lt;optgroup lable="myLabel"&gt;               // defines an group for the options
-                    &lt;option&gt; <i>text</i> &lt;option&gt;               // option list
-                    &lt;option&gt; <i>text</i> &lt;option&gt;
-                    &lt;option&gt; <i>text</i> &lt;option&gt;
-                &lt;/optgroup&gt;    
-            &lt;/select&gt;
-            
-    <span style="color:skyblue;">// <mark>&lt;select&gt;</mark> element attributes - - - - -</span>      
-        autofocus                          <span style="color:skyblue;">// <i class="fab fa-html5"></i> gets focus automatically when page loads</span> 
-        disabled                           <span style="color:skyblue;">// disables the drop-down list</span>
-        form="<strong>form_id</strong>"                     <span style="color:skyblue;">// <i class="fab fa-html5"></i> defines one or more forms the list belongs to</span> 
-        multiple                           <span style="color:skyblue;">// multiple options can be selected (hold ctrl+click)</span>
-        name                               <span style="color:skyblue;">// defines a name for the drop-down list</span>
-        required                           <span style="color:skyblue;">// <i class="fab fa-html5"></i> an item with a valid value must be selected before submitting </span> <span style="color:orange;">(No Safari support)</span>  
-        size                               <span style="color:skyblue;">// defines how many items (options) should be visible </span>
-          
-    <span style="color:skyblue;">// <mark>&lt;option&gt;</mark> element attributes - - - - -</span>
-        disabled                           <span style="color:skyblue;">// (boolean) disables the list item </span>
-        label="<strong>text</strong>"                       <span style="color:skyblue;">// label to be printed instead of the typed value</span> <span style="color:orange;">(no Mozilla support)</span> 
-        selected                           <span style="color:skyblue;">// (boolean) preselects the item </span>               
-        value="<strong>text</strong>"                       <span style="color:skyblue;">// value sent to the server </span>  
-        
-    <span style="color:skyblue;">// <mark>&lt;optgroup&gt;</mark> element attributes - - - - -</span>  
-        disabled                           <span style="color:skyblue;">// (boolean) disables the option group </span>
-        label="<strong>text</strong>"                       <span style="color:skyblue;">// defines an optiongroup label </span>
-    </pre>
-    <pre>
-    &lt;select required form="myForm" autofocus&gt; 
-        &lt;optgroup label="germanCars" &gt;                               // option group defined
-            &lt;option value="audi"&gt; Audi &lt;/option&gt;
-            &lt;option value="bmw" selected&gt; BMW &lt;/option&gt;              // preselected item
-            &lt;option value="mercedess" disabled&gt; Mecedess &lt;/option&gt;   // disabled item
-        &lt;/optgroup&gt;
-        &lt;optgroup label="other Cars" disabled&gt;                       // option group disabled                      
-            &lt;option value="volga" &gt; Volga &lt;/option&gt;
-        &lt;/optgroup&gt;    
+    </details>
+  </details>
+  <!-------------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Drop-Down List <mark>&lt;select&gt;</mark> / <mark>&lt;option&gt;</mark> / <mark>&lt;optgroup&gt;</mark> </h2>
+  <pre class="syntax">
+    &lt;select&gt;
+        <opt>&lt;optgroup lable="<reqval>label</reqval>"&gt;</opt>    // (optional) groups list items
+            &lt;option&gt; <i>content</i> &lt;option&gt;
+            &lt;option&gt; <i>content</i> &lt;option&gt;
+            &lt;option&gt; <i>content</i> &lt;option&gt;
+        <opt>&lt;/optgroup&gt;</opt>
     &lt;/select&gt;
     </pre>
-<details class="example">
-<summary> Example : </summary>    
-<h4><u> TEST 1 </u></h4>    
+  <details class="example">
+    <summary> Example : </summary>
     <select>
-        <option value="bmw"> BMW </option>
-        <option value="audi" selected> Audi </option>
-        <option value="mercedess" disabled> Mercedess </option>
-        <option value="opel"> Opel </option>
-        <option value="renault"> Renault </option>
-        <option value="peugeot" label="Peugeot vaze"> Peugeot </option>
+      <option value="bmw"> BMW </option>
+      <option value="audi" selected> Audi </option>
+      <option value="mercedess" disabled> Mercedess </option>
+      <option value="opel"> Opel </option>
+      <option value="renault"> Renault </option>
+      <option value="peugeot" label="Peugeot vaze"> Peugeot </option>
     </select>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;select&gt;
         &lt;option value="bmw"&gt; BMW &lt;/option&gt;
         &lt;option value="audi" selected&gt; Audi &lt;/option&gt;
@@ -543,28 +569,30 @@ SYNTAX :    &lt;select&gt;                                     // creates a drop
         &lt;option value="peugeot" label="Peugeot vaze"&gt; Peugeot &lt;/option&gt;
     &lt;/select&gt;    
         </pre>
-        </details>
-<h4><u> <mark>optgroup</mark> TEST </u></h4>
+    </details>
+    <!-------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Grouping list items <mark>&lt;optgroup&gt;</mark></h4>
     <select>
-        <optgroup label="USA">
-            <option> California </option>
-            <option> Washington </option>
-            <option> Detroit </option>
-            <option> San Diego </option>
-        </optgroup>
-        <optgroup label="EUROE">
-            <option> Germany </option>
-            <option> France </option>
-            <option> UK </option>
-        </optgroup>
-        <optgroup label="ASIA" disabled>
-            <option> Russia </option>
-            <option> Chine </option>
-        </optgroup>
+      <optgroup label="USA">
+        <option> California </option>
+        <option> Washington </option>
+        <option> Detroit </option>
+        <option> San Diego </option>
+      </optgroup>
+      <optgroup label="EUROE">
+        <option> Germany </option>
+        <option> France </option>
+        <option> UK </option>
+      </optgroup>
+      <optgroup label="ASIA" disabled>
+        <option> Russia </option>
+        <option> Chine </option>
+      </optgroup>
     </select>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;select&gt;
         &lt;optgroup label="USA"&gt;
             &lt;option&gt; California &lt;/option&gt;
@@ -583,41 +611,34 @@ SYNTAX :    &lt;select&gt;                                     // creates a drop
         &lt;/optgroup&gt;
     &lt;/select&gt;   
         </pre>
-        </details>
-</details>   
-<!-------------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="headerExtra"><u>Datalist <mark>&lt;datalist&gt;</mark> </u></h2>     
-    <pre class="syntax">
-SYNTAX :    &lt;datalist id="<strong>target_input</strong>" &gt;                // creates a pre-defined list for an "input" element (sort of autocomplete list) <span style="color:orange;">(no Safari support)</span>
-                &lt;option value="<strong>text</strong>"&gt;
-                &lt;option value="<strong>text</strong>"&gt;
-                &lt;option value="<strong>text</strong>"&gt;
-            &lt;/datalist&gt;
-    </pre>
-    <pre>
-    &lt;input type="text" list="numbers"&gt;                   // the datalist submits through the "list" attribute  
-    &lt;input text="number" list="numbers"&gt;                 <span style="color:orangered;">&lt;-- Firefox datalist does not support numbers!</span>
+    </details>
+  </details>
+  <!-------------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Datalist <mark>&lt;datalist&gt;</mark> </h2>
+  <p> - creates a list for an <mark>&lt;input&gt;</mark> element 
+  <pre class="syntax">
+    &lt;input list="<reqval>listId</reqval>"&gt;      // list displayed to the user when clicked
     
-    &lt;datalist id="numbers"&gt;                              // same list used for to different inputs
-        &lt;option value="111"&gt;
-        &lt;option value="112"&gt;                             // closing tag not required
-        &lt;option value="112"&gt;
-    &lt;/datalist&gt;      
+    
+    &lt;datalist id="<strong>listId</strong>" &gt;
+        &lt;option value="<strong>val</strong>"&gt;
+        &lt;option value="<strong>val</strong>"&gt;
+        &lt;option value="<strong>val</strong>"&gt;
+    &lt;/datalist&gt;
     </pre>
-<details class="example">
-<summary> Example : </summary>    
-<h4><u> TEST 1 </u></h4>    
-    <input type="text" list="numbers"> 
+  <details class="example">
+    <summary> Example : </summary>
+    <input type="text" list="numbers">
     <input type="number" list="numbers">
     <datalist id="numbers">
-        <option value="1">
-        <option value="2">
-        <option value="3">
+      <option value="1">
+      <option value="2">
+      <option value="3">
     </datalist>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;input type="text" list="numbers"&gt; 
     &lt;input type="number" list="numbers"&gt;
     
@@ -627,9 +648,10 @@ SYNTAX :    &lt;datalist id="<strong>target_input</strong>" &gt;                
         &lt;option value="3"&gt;
     &lt;/datalist&gt;
         </pre>
-        </details>
-</details>    
-    
-    <br><br>
+    </details>
+  </details>
+
+  <br><br>
 </body>
+
 </html>

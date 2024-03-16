@@ -1,61 +1,75 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
-    <meta charset="utf-8">
-    <title> CSS</title>    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../Assets/styles.css">
-    <script src="../Assets/script.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+  <meta charset="utf-8">
+  <title> CSS</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../Assets/styles.css">
+  <script src="../Assets/script.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+
 <body>
-<h1> CSS </h1>
-    <p id="sitenav"> <a href="../index.html">MySite></a> CSS </p>
-    <h2><a class="ver-live" href="Basics/index.html"> Basics (4.0.0) </a></h2>
-<hr>
-<div class="content">    
-    <h2><a class="ver-live" href="Animation/index.html"> Animations (4.0.0) </a></h2>
+  <h1> CSS </h1>
+  <p id="sitenav"> <a href="../index.html">MySite></a> CSS </p>
+  <hr> <span> Basics </span>
+  <div class="content">
+    <h2><a class="ver-live" href="Basics/index.html"> Basics </a></h2>
+    <h2><a class="ver-live" href="Colors/index.html"> Colors </a></h2>
+    <h2><a class="ver-live" href="Functions and At Rules/index.html"> Functions / @ Rules </a></h2>
+    <h2><a class="ver-live" href="Size Units/index.html"> Size Units </a></h2>
+  </div>
+  <hr> <span> Selectors </span>
+  <div class="content">
+    <h2><a class="ver-live" href="Pseudo Selectors/index.html"> Pseudo Selectors </a></h2>
+    <h2><a class="ver-live" href="Selectors/index.html"> Selectors </a></h2>
+    <h2><a class="ver-live" href="Specificity/index.html"> Specificity </a></h2>
+  </div>
+  <hr> <span> Layout </span>
+  <div class="content">
+    <h2><a class="ver-live" href="Box Model/index.html" title="calc() function / "> Box Model (sizing and placing) (3.0) </a></h2>
+    <h2 style="background-color: cyan;"><a class="ver-live" href="Flexbox/index.html"> Flexbox (4.0.0) </a></h2>
+    <h2><a class="ver-live" href="Grid/index.html"> Grid (4.0.0) </a></h2>
+    <h2 style="background-color: cyan;"><a class="ver-live" href="Media Queries/index.html"> Media Queries (4.0.0) </a></h2>
+    <h2><a class="ver-live" href="Multiple Columns/index.html"> Multiple Columns (3.1) </a></h2>
+    <h2><a class="ver-live" href="Overlapping and Overflow/index.html"> Overlapping and Overflow (3.1) </a></h2>
+    <h2><a class="ver-live" href="Rendering Elements/index.html"> Rendering Elements (3.1) </a></h2>
+  </div>
+  <hr> <span> Styling </span>
+  <div class="content">
     <h2><a class="ver-live" href="Background/index.html" title="gradient /"> Background (4.0.0) </a></h2>
     <h2><a class="ver-live" href="Border and Outline/index.html"> Border and Outline (2.9) </a></h2>
-    <h2><a class="ver-live" href="Box Model/index.html" title="calc() function / "> Box Model (sizing and placing) (3.0) </a></h2>   
-    <h2><a class="ver-live" href="Colors/index.html"> Colors (4.0.0) </a></h2>
     <h2><a class="ver-live" href="Content Counters/index.html" title="content property /"> Content / Counters (3.0) </a></h2>
     <h2><a class="ver-live" href="Cursor and Clip/index.html"> Cursor and Clip (3.1) </a></h2>
     <h2><a class="ver-live" href="Effect and Blend/index.html"> Effect and Blend (3.1) </a></h2>
-    <h2><a class="ver-live" href="Flexbox/index.html"> Flexbox (4.0.0) </a></h2>  
-    <h2><a class="ver-live" href="Fonts/index.html"> Fonts / Icon Libraries (3.1) </a></h2>    
-    <h2><a class="ver-live" href="Grid/index.html"> Grid (4.0.0) </a></h2>
-    <h2><a class="ver-live" href="Margin Padding/index.html"> Margin and Padding (3.1) </a></h2>
-    <h2><a class="ver-live" href="Media Queries/index.html"> Media Queries (4.0.0) </a></h2>
-    <h2><a class="ver-live" href="Multiple Columns/index.html"> Multiple Columns (3.1) </a></h2>       
-    <h2><a class="ver-live" href="Overlapping and Overflow/index.html"> Overlapping and Overflow (3.1) </a></h2>
-    <h2><a class="ver-live" href="Pseudo Selectors/index.html"> Pseudo Selectors </a></h2>
-    <h2><a class="ver-live" href="Rendering Elements/index.html" title="display VS visibility / block VS inline / position / float "> Rendering Elements (3.1) </a></h2>   
-    <h2><a class="ver-live" href="Selectors/index.html"> Selectors </a></h2>
-    <h2><a class="ver-live" href="Shadow/index.html"> Shadow (4.0.0) </a></h2>
-    <h2><a class="ver-live" href="Functions and At Rules/index.html"> Functions / @ Rules (4.0.0) </a></h2>
-    <h2><a class="ver-live" href="Size Units/index.html"> Size Units (4.0.0) </a></h2>
-    <h2><a class="ver-live" href="Specificity/index.html"> Specificity CSS (3.0) </a></h2>
-    <h2><a class="ver-live" href="Text Formating/index.html"> Text Formating (4.0.0) </a></h2>    
-    <h2><a class="ver-live" href="Transforming Elements/index.html"> Transforming Elements (3.1) </a></h2>
-    <h2><a class="ver-live" href="Transition/index.html"> Transition (4.0.0) </a></h2>    
-</div>
-<hr><span> HTML Element Styling </span>
-<div class="content">    
-    <h2><a class="ver-live" href="Form/index.html"> Form (3.4.1) </a></h2> 
-    <h2><a class="ver-live" href="Image and Image Sprite/index.html"> Image / Image Sprite (3.4.1) </a></h2> 
-    <h2><a class="ver-live" href="Link/index.html"> Link (3.4.1) </a></h2>
-    <h2><a class="ver-live" href="List/index.html"> List (3.4.1) </a></h2>
+    <h2><a class="ver-live" href="Fonts/index.html"> Fonts / Icon Libraries (3.1) </a></h2>
+    <h2><a class="ver-live" href="Margin Padding/index.html"> Margin and Padding </a></h2>
+    <h2><a class="ver-live" href="Shadow/index.html"> Shadow </a></h2>
+    <h2><a class="ver-live" href="Text Formating/index.html"> Text Formating </a></h2>
+  </div>
+  <hr> <span> Animation </span>
+  <div class="content">
+    <h2 style="background-color: cyan;"><a class="ver-live" href="Animation/index.html"> Animations (4.0.0) </a></h2>
+    <h2 style="background-color: cyan;"><a class="ver-live" href="Transition/index.html"> Transition (4.0.0) </a></h2>
+    <h2><a class="ver-live" href="Transform/index.html"> Transform (3.1) </a></h2>
+  </div>
+  <hr><span> HTML Element Styling </span>
+  <div class="content">
+    <h2><a class="ver-live" href="Form/index.html"> Form </a></h2>
+    <h2><a class="ver-live" href="Image and Image Sprite/index.html"> Image / Image Sprite (3.4.1) </a></h2>
+    <h2><a class="ver-live" href="List/index.html"> List </a></h2>
     <h2><a class="ver-live" href="Table/index.html"> Table </a></h2>
-</div>    
-    
-    
-<hr style="clear:left;">
-<p><a href="https://www.w3schools.com/cssref/css_default_values.asp" target="_blank"> W3School default CSS values fot HTML elements </a></p>
-<p><a href="https://www.w3schools.com/cssref/css3_browsersupport.asp" target="_blank"> W3School CSS property Reference </a></p>
-    
-    
-    
-    
+  </div>
+
+
+  <hr style="clear:left;">
+  <p><a href="https://www.w3schools.com/cssref/css_default_values.asp" target="_blank"> W3School default CSS values fot HTML elements </a></p>
+  <p><a href="https://www.w3schools.com/cssref/css3_browsersupport.asp" target="_blank"> W3School CSS property Reference </a></p>
+
+
+
+
 </body>
+
 </html>

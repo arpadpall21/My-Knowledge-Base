@@ -156,6 +156,7 @@ caption{
     text-align: left;
     padding-left: 3px;
     font-size: 1.2em;
+    border: solid 1px #3b3a3a;
 }
  
 .table th{

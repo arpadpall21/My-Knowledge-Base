@@ -14,8 +14,8 @@
     <noscript>Browser does not support JavaScript!</noscript>
 </head>
 <body>
-<h1> Head Elements (4.0.0) </h1>
-    <p> Updated (27-05-2016 / 2018-12-17 / 2021-01-30) </p>
+<h1> Head Elements </h1>
+    <p> Updated ( 2016-05-27 / 2018-12-17 / 2021-01-30 / 2024-03-16 ) </p>
     <p class="sitenav"> <a href="../../index.html">MySite></a>  
         <a href="../index.html">HTML></a> Head Elements
     </p>
@@ -28,7 +28,82 @@
         <th style="width:40%"> Attribute </th>
         <th> Description </th>
     </tr>
-    <tr class="02.02">
+    <tr>
+        <td> &lt;title&gt;&lt;/title&gt; </td>
+        <td>  </td>
+        <td> 
+            - defines the title of the document (required in a webpage) 
+            <span class="browserSupport" title="updated : 2021-01-30">
+                <span><i class="fab fa-chrome"></i> 1 </span>
+                <span><i class="fab fa-firefox"></i> 1 </span>
+                <span><i class="fab fa-opera"></i> 1 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 1 </span>
+                <span><i class="fab fa-safari"></i> 1 </span>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td> &lt;meta&gt; </td>
+        <td> 
+            charset="<strong>charset</strong>" <span class="cssAV">(<i class="fab fa-html5"></i> document character encoding)</span><br>
+            name="<strong class="openable">key<div>
+                <p><b><u> the value of these names (keys) are specified in the <mark>content</mark> attribute</u></b></p>
+                <p> application-name - application name (shouldn't be used for simple web pages) </p>
+                <p> author - document author </p>
+                <p> description - short and accurate summary of the content of the page </p>
+                <p> generator - identifier of the software that generated the page </p>
+                <p> keywords - words relevant to the page's content separated by commas </p>
+                <hr>
+                <p> referrer - controls the HTTP <mark>Referer</mark> header for the requests sent from the document </p> 
+                <p><u>possible values:</u></p>
+                <p> <mark>no-referrer</mark> - Do not sent the <mark>Referer</mark> header </p>
+                <p> <mark>origin</mark> - Send the origin of the document </p>
+                <p> <mark>no-referrer-when-downgrade</mark> - Send full URL that must be at least as secure as this page </p>
+                <p> <mark>origin-when-cross-origin</mark> - Send the full URL for same-origin but for cross-origin only the origin is sent </p>
+                <p> <mark>same-origin</mark> - Send the full URL for same-origin but no Rererer header for cross-origin </p>
+                <p> <mark>strict-origin</mark> - Send the origin when the destination is at least as secure as the current page, for less secure destinations do not send the Referer header </p>
+                <p> <mark>strict-origin-when-cross-origin</mark> = Send full URL for same-origin, send full URL when the destination is at least as secure as the current document but do not send the Referer header for other destinations </p>
+                <p> <mark>unsafe-URL</mark> - Send the full URL for both same-origin and cross-origin </p>
+                <hr>
+                <p> viewport - hint about the size of the initian size of the viewport (for mobile devices) </p>
+                <p><u>possible values:</u></p>
+                <p> <mark>width=<strong>nr</strong>|device-width</mark> - defines the pixel width of the viewport </p>
+                <p> <mark>width=<strong>nr</strong>|device-height</mark> - defines the pixel height of the viewport (not used by the browser)) </p>
+                <p> <mark>initial-scale=0.0-10.0</mark> - defines the ratio between the device width and the viewport </p>
+                <p> <mark>maximum-scale=0.0-10.0</mark> - defines the maximum zoom level </p>
+                <p> <mark>mainimum-scale=0.0-10.0</mark> - defines the minimum zoom level </p>
+                <p> <mark>user-scalable=yes|no</mark> - defines if the user is able to zoom in the page (default yes)) </p>
+                <p> <mark>viewport-fit=auto|contain|cover</mark> - 'auto' - the value doesn't affect the layout viewport / 'containt' - viewport is scaled to fit the largest rectangle inscribied within the display / 'cover' - viewport is scaled to fill the device display) </p>
+            </div></strong>" <span class="cssAV">(defines the name (key) when providing name-value metadata for the HTML document (<mark>content</mark> attribute defines the value))</span> <br>
+            http-equiv="<strong class="openable">key<div>
+                <p><b><u> the value of these names (keys) are specified in the <mark>content</mark> attribute</u></b></p>
+                <p> content-security-policy - settings against XSS <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy" target="_blank">content-security-policy</a> </p>
+                <p> content-type - MIME type character encoding of the document (if specified the <mark>content</mark> attribute must have <mark>text/html; charset=utf-8</mark>) </p>
+                <p> default-style - name of the default CSS style sheet </p>
+                <p> refresh - number of second the page reload (content attribute contain a positive integer which defiens the refresh delay or can redirect the page with the syntax: <mark><strong>nr</strong>;url=<strong>url</strong></mark>) </p>
+            </div></strong>" <span class="cssAV">(http-equiv(alent), allowed values are named of HTTP headers(<mark>content</mark>) attribute defines the value)</span><br> 
+            content="<strong>val</strong>" <span class="cssAV">(values for the <mark>name</mark> or the <mark>http-equiv</mark> attributes)</span>  
+        </td>
+        <td> 
+            - provides metadata about the document in terms of name-value pair (uses the <mark>name|http-equiv</mark> attribute (as key) and <mark>content</mark> attribute (as value))  
+            <span class="browserSupport" title="updated : 2021-01-31">
+                <span><i class="fab fa-chrome"></i> 1 </span>
+                <span><i class="fab fa-firefox"></i> 1 </span>
+                <span><i class="fab fa-opera"></i> 1 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 1 </span>
+                <span><i class="fab fa-safari"></i> 1 </span>
+                <span class="openable">more...<div>
+                    <span><i class="fab fa-chrome"></i> 1 </span>
+                    <span><i class="fab fa-firefox"></i> 1 </span>
+                    <span><i class="fab fa-opera"></i> 12.1 </span>
+                    <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span>
+                    <span><i class="fab fa-safari"></i> 4 </span>
+                    <p> - <mark>content</mark> / <mark>http-equiv</mark> / <mark>name</mark> attribute support </p>
+                </div></span>
+            </span>
+        </td>
+    </tr>
+    <tr>
         <td> &lt;base&gt; </td>
         <td> 
             href="<strong>URL</strong>" <span style="color:bdue;">(sets the base URL for <u>all relative URLs</u> in the page)</span><br>
@@ -51,11 +126,19 @@
             </span>
         </td>
     </tr>
-    <tr class="01.04">
-        <td> &lt;body&gt;&lt;/body&gt; </td>
-        <td>  </td>
-        <td>
-            - defines the document's body (visible part of the webpage) 
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+        <td> &lt;style&gt; <i>cssCode</i> &lt;/script&gt; </td>
+        <td> 
+            media="<strong>mediaQuery</strong>" <span class="cssAV">(fires the style if the media query condition is true)</span><br> 
+            type="<strong>mimeType</strong>" <span class="cssAV">(defines the MIME type (Default: <mark>text/css</mark>) <u>no reason to declare</u>)</span>
+        </td>
+        <td> 
+            - contains CSS code which styles the document 
             <span class="browserSupport" title="updated : 2021-02-19">
                 <span><i class="fab fa-chrome"></i> 1 </span>
                 <span><i class="fab fa-firefox"></i> 1 </span>
@@ -65,18 +148,84 @@
             </span>
         </td>
     </tr>
-    <tr class="01.01">
-        <td> &lt;!DOCTYPE html&gt; </td>
-        <td>  </td>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
         <td> 
-            - first information to the browser parser that identifies the document as HTML5 <u>(not an actual html tag)</u> 
+            &lt;script&gt; <i>jsCode</i> &lt;/script&gt; <br>
+        </td>
+        <td> 
+            async <span class="cssAV">(boolean) (<i class="fab fa-html5"></i> the external file is fetchend in parallel and evaluated as soon as possible)</span><br>
+            crossorigin="<strong class="openable">mode"<div>
+                <p> (completely omitting this attribute) - Default: entiery skips CORS </p>
+                <p> anonymus|"" - CORS mode set to "same-origin" (same-origin request only, for cross-origin requests throws an error) </p>
+                <p> use-credentials - CORS mode set to "cors" (for cross-origin requests CORS protocol is used) </p>
+            </div></strong> <span class="cssAV">(specifies how the browser handles cross-origin requests (CORS))</span> <br>
+            defer <span class="cssAV">(boolean)</span> <span class="cssAV">(script fires when document has been parsed, but before the <mark>DOMContentLoaded</mark> event (external files ONLY))</span><br>
+            integrity="<strong class="openable">fileHash<div>
+                <p> - the file hash of the requested file (ex: <mark>sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM</mark>)</p>
+                <p> - this file hash is is generated with the source file, so when we request the file with the file has the server sends the source file and the user agent (browser) can check with the file hash that the source file is not modified </p>
+            </div></strong>" <span class="cssAV">(uses the requested file's file hash in order to verify that the requested file has not been modified between the client and server)</span><br>
+            nomodule <span class="cssAV">(boolean) (this script should not be executed in modern browsers that has the ability to run ECMAScrpt modules (should be used for old browsers for fallback)</span><br>
+            referrerpolicy="<strong class="openable">ref<div>
+                <p> "" - (Default) the higher level of referrer policy </p>
+                <p> no-referrer - the <mark>Referer</mark> header excluded in the request </p>
+                <p> no-referrer-when-downgrade - the <mark>Referrer</mark> header excluded in non TLS (HTTPS) requests </p>
+                <p> origin - only the origin (scheme, host, port) is included in the <mark>Referrer</mark> header in the request </p>
+                <p> origin-when-cross-origin - for cross-origin request only the origin (scheme, host, port) is included in the <mark>Referrer</mark> header, for same-site request the <mark>Referrer</mark> header contains the full referrer</p>
+                <p> same-origin - the <mark>Referer</mark> header is included only in same-origin requests (omitted for cross-origin requests) </p>
+                <p> strict-origin - the <mark>Referer</mark> header is included in the request if the security level stays the same (included in HTTPS -> HTTPS, excluded in HTTPS -> HTTP) </p>
+                <p> strict-origin-when-corss-origin - the <mark>Referer</mark> header is included in the request for same-site request, for cross-origin requests include only if the security level stays the same (included in HTTPS -> HTTPS, excluded in HTTPS -> HTTP) </p>
+                <p> unsafe-url - the <mark>Referer</mark> header includes only the origin and the path (but not the document fragment, password, username) </p>
+            </div></strong>" <span class="cssAV">(controls the <mark>Referer</mark> header for this request, or resources requested by this script)</span><br>   
+            src="<strong>url</strong>" <span class="cssAV">(location of an external file)</span><br>
+            type="<strong class="openable">type<div>
+                <p> <strong>mimeType</strong> - specified the JavaScript MIME type </p>
+                <p> module - the file is treated as JavaScrpt (top-level) module by the browser </p>
+            </div></strong>" <span class="cssAV">(script type, ES module?)</span><br>
+        </td>
+        <td> 
+            - defines JavaScript code <u>in the header or body of the document</u> <br>
+            - it can contain JavaScript code (between tags) or references an external JavaScript file 
+            <span class="browserSupport" title="updated : 2021-02-19">
+                <span><i class="fab fa-chrome"></i> 1 </span>
+                <span><i class="fab fa-firefox"></i> 1 </span>
+                <span><i class="fab fa-opera"></i> 1 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 1 </span>
+                <span><i class="fab fa-safari"></i> 1 </span>
+                <span class="openable">more...<div>
+                    <p> - <mark>crossorigin</mark> attribute support </p>
+                    <span><i class="fab fa-chrome"></i> 30 </span>
+                    <span><i class="fab fa-firefox"></i> 13 </span>
+                    <span><i class="fab fa-opera"></i> 12 </span>
+                    <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 18 </span>
+                    <span><i class="fab fa-safari"></i> yes but buggy </span>
+                        <hr>
+                    <p> - <mark>integrity</mark> attribute support </p>
+                    <span><i class="fab fa-chrome"></i> 45 </span>
+                    <span><i class="fab fa-firefox"></i> 43 </span>
+                    <span><i class="fab fa-opera"></i> yes </span>
+                    <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 17 </span>
+                    <span><i class="fab fa-safari"></i> 11.1 </span>
+                        <hr>
+                    <p> - <mark>referrerpolicy</mark> attribute support </p>
+                    <span><i class="fab fa-chrome"></i> 70 </span>
+                    <span><i class="fab fa-firefox"></i> 65 </span>
+                    <span><i class="fab fa-opera"></i> yes </span>
+                    <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+                    <span><i class="fab fa-safari"></i> NO </span>
+                </div></span>
+            </span>
         </td>
     </tr>
-    <tr class="01.03">
-        <td> &lt;head&gt;&lt;/head&gt; </td>
+    <tr>
+        <td> &lt;noscript&gt;&lt;/noscript&gt;</td>
         <td>  </td>
         <td> 
-            - container for the head elements of the document (metadata container) 
+            - the enclosed HTML code is executed if the browser does not support scripting or the scripting is disabled 
             <span class="browserSupport" title="updated : 2021-02-19">
                 <span><i class="fab fa-chrome"></i> 1 </span>
                 <span><i class="fab fa-firefox"></i> 1 </span>
@@ -86,21 +235,12 @@
             </span>
         </td>
     </tr>
-    <tr class="01.02">
-        <td> &lt;html&gt;&lt;/html&gt; </td>
-        <td> xmlns="<strong>nameSpaceURI</strong>" <span class="cssAV">(namespace attribute for XML)</span> </td>
-        <td> 
-            - root element of the document 
-            <span class="browserSupport" title="updated : 2021-02-19">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 1 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr class="05">
+    <tr>
         <td> &lt;link&gt; </td>
         <td>  
             as="<strong class="openable">val<div> 
@@ -233,180 +373,6 @@
             </span>
         </td>
     </tr>
-    <tr class="02.01">
-        <td> &lt;meta&gt; </td>
-        <td> 
-            charset="<strong>charset</strong>" <span class="cssAV">(<i class="fab fa-html5"></i> document character encoding)</span><br>
-            name="<strong class="openable">key<div>
-                <p><b><u> the value of these names (keys) are specified in the <mark>content</mark> attribute</u></b></p>
-                <p> application-name - application name (shouldn't be used for simple web pages) </p>
-                <p> author - document author </p>
-                <p> description - short and accurate summary of the content of the page </p>
-                <p> generator - identifier of the software that generated the page </p>
-                <p> keywords - words relevant to the page's content separated by commas </p>
-                <hr>
-                <p> referrer - controls the HTTP <mark>Referer</mark> header for the requests sent from the document </p> 
-                <p><u>possible values:</u></p>
-                <p> <mark>no-referrer</mark> - Do not sent the <mark>Referer</mark> header </p>
-                <p> <mark>origin</mark> - Send the origin of the document </p>
-                <p> <mark>no-referrer-when-downgrade</mark> - Send full URL that must be at least as secure as this page </p>
-                <p> <mark>origin-when-cross-origin</mark> - Send the full URL for same-origin but for cross-origin only the origin is sent </p>
-                <p> <mark>same-origin</mark> - Send the full URL for same-origin but no Rererer header for cross-origin </p>
-                <p> <mark>strict-origin</mark> - Send the origin when the destination is at least as secure as the current page, for less secure destinations do not send the Referer header </p>
-                <p> <mark>strict-origin-when-cross-origin</mark> = Send full URL for same-origin, send full URL when the destination is at least as secure as the current document but do not send the Referer header for other destinations </p>
-                <p> <mark>unsafe-URL</mark> - Send the full URL for both same-origin and cross-origin </p>
-                <hr>
-                <p> viewport - hint about the size of the initian size of the viewport (for mobile devices) </p>
-                <p><u>possible values:</u></p>
-                <p> <mark>width=<strong>nr</strong>|device-width</mark> - defines the pixel width of the viewport </p>
-                <p> <mark>width=<strong>nr</strong>|device-height</mark> - defines the pixel height of the viewport (not used by the browser)) </p>
-                <p> <mark>initial-scale=0.0-10.0</mark> - defines the ratio between the device width and the viewport </p>
-                <p> <mark>maximum-scale=0.0-10.0</mark> - defines the maximum zoom level </p>
-                <p> <mark>mainimum-scale=0.0-10.0</mark> - defines the minimum zoom level </p>
-                <p> <mark>user-scalable=yes|no</mark> - defines if the user is able to zoom in the page (default yes)) </p>
-                <p> <mark>viewport-fit=auto|contain|cover</mark> - 'auto' - the value doesn't affect the layout viewport / 'containt' - viewport is scaled to fit the largest rectangle inscribied within the display / 'cover' - viewport is scaled to fill the device display) </p>
-            </div></strong>" <span class="cssAV">(defines the name (key) when providing name-value metadata for the HTML document (<mark>content</mark> attribute defines the value))</span> <br>
-            http-equiv="<strong class="openable">key<div>
-                <p><b><u> the value of these names (keys) are specified in the <mark>content</mark> attribute</u></b></p>
-                <p> content-security-policy - settings against XSS <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy" target="_blank">content-security-policy</a> </p>
-                <p> content-type - MIME type character encoding of the document (if specified the <mark>content</mark> attribute must have <mark>text/html; charset=utf-8</mark>) </p>
-                <p> default-style - name of the default CSS style sheet </p>
-                <p> refresh - number of second the page reload (content attribute contain a positive integer which defiens the refresh delay or can redirect the page with the syntax: <mark><strong>nr</strong>;url=<strong>url</strong></mark>) </p>
-            </div></strong>" <span class="cssAV">(http-equiv(alent), allowed values are named of HTTP headers(<mark>content</mark>) attribute defines the value)</span><br> 
-            content="<strong>val</strong>" <span class="cssAV">(values for the <mark>name</mark> or the <mark>http-equiv</mark> attributes)</span>  
-        </td>
-        <td> 
-            - provides metadata about the document in terms of name-value pair (uses the <mark>name|http-equiv</mark> attribute (as key) and <mark>content</mark> attribute (as value))  
-            <span class="browserSupport" title="updated : 2021-01-31">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 1 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-                <span class="openable">more...<div>
-                    <span><i class="fab fa-chrome"></i> 1 </span>
-                    <span><i class="fab fa-firefox"></i> 1 </span>
-                    <span><i class="fab fa-opera"></i> 12.1 </span>
-                    <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span>
-                    <span><i class="fab fa-safari"></i> 4 </span>
-                    <p> - <mark>content</mark> / <mark>http-equiv</mark> / <mark>name</mark> attribute support </p>
-                </div></span>
-            </span>
-        </td>
-    </tr>
-    <tr class="04.02">
-        <td> &lt;noscript&gt;&lt;/noscript&gt;</td>
-        <td>  </td>
-        <td> 
-            - the enclosed HTML code is executed if the browser does not support scripting or the scripting is disabled 
-            <span class="browserSupport" title="updated : 2021-02-19">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 1 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="03">
-        <td> &lt;style&gt; <i>cssCode</i> &lt;/script&gt; </td>
-        <td> 
-            media="<strong>mediaQuery</strong>" <span class="cssAV">(fires the style if the media query condition is true)</span><br> 
-            type="<strong>mimeType</strong>" <span class="cssAV">(defines the MIME type (Default: <mark>text/css</mark>) <u>no reason to declare</u>)</span>
-        </td>
-        <td> 
-            - contains CSS code which styles the document 
-            <span class="browserSupport" title="updated : 2021-02-19">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 1 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
-    <tr class="04.01">
-        <td> 
-            &lt;script&gt; <i>jsCode</i> &lt;/script&gt; <br>
-        </td>
-        <td> 
-            async <span class="cssAV">(boolean) (<i class="fab fa-html5"></i> the external file is fetchend in parallel and evaluated as soon as possible)</span><br>
-            crossorigin="<strong class="openable">mode"<div>
-                <p> (completely omitting this attribute) - Default: entiery skips CORS </p>
-                <p> anonymus|"" - CORS mode set to "same-origin" (same-origin request only, for cross-origin requests throws an error) </p>
-                <p> use-credentials - CORS mode set to "cors" (for cross-origin requests CORS protocol is used) </p>
-            </div></strong> <span class="cssAV">(specifies how the browser handles cross-origin requests (CORS))</span> <br>
-            defer <span class="cssAV">(boolean)</span> <span class="cssAV">(script fires when document has been parsed, but before the <mark>DOMContentLoaded</mark> event (external files ONLY))</span><br>
-            integrity="<strong class="openable">fileHash<div>
-                <p> - the file hash of the requested file (ex: <mark>sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM</mark>)</p>
-                <p> - this file hash is is generated with the source file, so when we request the file with the file has the server sends the source file and the user agent (browser) can check with the file hash that the source file is not modified </p>
-            </div></strong>" <span class="cssAV">(uses the requested file's file hash in order to verify that the requested file has not been modified between the client and server)</span><br>
-            nomodule <span class="cssAV">(boolean) (this script should not be executed in modern browsers that has the ability to run ECMAScrpt modules (should be used for old browsers for fallback)</span><br>
-            referrerpolicy="<strong class="openable">ref<div>
-                <p> "" - (Default) the higher level of referrer policy </p>
-                <p> no-referrer - the <mark>Referer</mark> header excluded in the request </p>
-                <p> no-referrer-when-downgrade - the <mark>Referrer</mark> header excluded in non TLS (HTTPS) requests </p>
-                <p> origin - only the origin (scheme, host, port) is included in the <mark>Referrer</mark> header in the request </p>
-                <p> origin-when-cross-origin - for cross-origin request only the origin (scheme, host, port) is included in the <mark>Referrer</mark> header, for same-site request the <mark>Referrer</mark> header contains the full referrer</p>
-                <p> same-origin - the <mark>Referer</mark> header is included only in same-origin requests (omitted for cross-origin requests) </p>
-                <p> strict-origin - the <mark>Referer</mark> header is included in the request if the security level stays the same (included in HTTPS -> HTTPS, excluded in HTTPS -> HTTP) </p>
-                <p> strict-origin-when-corss-origin - the <mark>Referer</mark> header is included in the request for same-site request, for cross-origin requests include only if the security level stays the same (included in HTTPS -> HTTPS, excluded in HTTPS -> HTTP) </p>
-                <p> unsafe-url - the <mark>Referer</mark> header includes only the origin and the path (but not the document fragment, password, username) </p>
-            </div></strong>" <span class="cssAV">(controls the <mark>Referer</mark> header for this request, or resources requested by this script)</span><br>   
-            src="<strong>url</strong>" <span class="cssAV">(location of an external file)</span><br>
-            type="<strong class="openable">type<div>
-                <p> <strong>mimeType</strong> - specified the JavaScript MIME type </p>
-                <p> module - the file is treated as JavaScrpt (top-level) module by the browser </p>
-            </div></strong>" <span class="cssAV">(script type, ES module?)</span><br>
-        </td>
-        <td> 
-            - defines JavaScript code <u>in the header or body of the document</u> <br>
-            - it can contain JavaScript code (between tags) or references an external JavaScript file 
-            <span class="browserSupport" title="updated : 2021-02-19">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 1 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-                <span class="openable">more...<div>
-                    <p> - <mark>crossorigin</mark> attribute support </p>
-                    <span><i class="fab fa-chrome"></i> 30 </span>
-                    <span><i class="fab fa-firefox"></i> 13 </span>
-                    <span><i class="fab fa-opera"></i> 12 </span>
-                    <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 18 </span>
-                    <span><i class="fab fa-safari"></i> yes but buggy </span>
-                        <hr>
-                    <p> - <mark>integrity</mark> attribute support </p>
-                    <span><i class="fab fa-chrome"></i> 45 </span>
-                    <span><i class="fab fa-firefox"></i> 43 </span>
-                    <span><i class="fab fa-opera"></i> yes </span>
-                    <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 17 </span>
-                    <span><i class="fab fa-safari"></i> 11.1 </span>
-                        <hr>
-                    <p> - <mark>referrerpolicy</mark> attribute support </p>
-                    <span><i class="fab fa-chrome"></i> 70 </span>
-                    <span><i class="fab fa-firefox"></i> 65 </span>
-                    <span><i class="fab fa-opera"></i> yes </span>
-                    <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                    <span><i class="fab fa-safari"></i> NO </span>
-                </div></span>
-            </span>
-        </td>
-    </tr>
-    <tr class="01.06">
-        <td> &lt;title&gt;&lt;/title&gt; </td>
-        <td>  </td>
-        <td> 
-            - defines the title of the document (required in a webpage) 
-            <span class="browserSupport" title="updated : 2021-01-30">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 1 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
-    </tr>
 </table>
 <br>
     <details class="example" id="notes">
@@ -425,14 +391,16 @@
     &lt;!DOCTYPE html&gt;
     &lt;head&gt;
         &lt;title&gt; Basics and Elements &lt;/title&gt;
-// meta ---------    
+// meta --------- 
         &lt;meta charset="utf-8"&gt;                                                         // document encoding specified
         &lt;meta name="author" content="Pall Arpad"&gt;                                      // author of the document
         &lt;meta name="keywords" content="HTML basics, head elements"&gt;                    // keywords for search engines
         &lt;meta http-equiv="refresh" content="120"&gt;                                      // -! this page refreshes every 2 minutes
+    
 // link ---------        
         &lt;link rel="stylesheet" href="stylesPages.css"&gt;                                 // link to the stylesheet 
-        &lt;link rel="icon" href="favicon.png" sizes="any"&gt;                               // tab icon set ("sizes" has no effect)     
+        &lt;link rel="icon" href="favicon.png" sizes="any"&gt;                               // tab icon set ("sizes" has no effect)
+    
 // base --------- not in the headd section but it is tested [2018-12-18] ---        
         &lt;base href="../../../.." target="_blank" &gt;                                     // sets the root for <u>all</u> links in this page (all links will be opened in a new window)
         &lt;link rel="stylesheet" href="stylesPages.css"&gt;                                 // target stylesheet (this is basically "../../../../stylesPages.css")

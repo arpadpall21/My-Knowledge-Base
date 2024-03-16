@@ -1,134 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Basics </title> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Basics </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Basics (ver 4.0.0) </h1>
-    <p> Updated ( 2019-01-12 / 2019-04-09 / 2021-06-11)</p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html" title="CSS">CSS></a> Basics
-    </p>
-<table class="table"> 
-<caption>
-    Global Property Values  
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  <h1> Basics </h1>
+  <p> Updated ( 2019-01-12 / 2019-04-09 / 2021-06-11 / 2024-03-15 )</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Basics
+  </p>
+  <table class="table">
+    <caption>
+      Global Property Values
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
     <tr>
-        <th style="width:30%;"> Value </th>
-        <th> Description </th>
+      <th style="width:30%;"> Value </th>
+      <th> Description </th>
     </tr>
     <tr class="10.01">
-        <td> <strong>prop</strong>: inherit; </td>
-        <td>  
-            - takes the computed value of the parent property 
-            <span id="browserSupport" title="Updated: 2021-06-11"> 
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 4 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
+      <td> <strong>prop</strong>: inherit; </td>
+      <td>
+        - takes the computed value of the parent property
+        <span id="browserSupport" title="Updated: 2021-06-11">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 4 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
     <tr class="05.01">
-        <td> <strong>prop</strong>: initial; </td>
-        <td>  
-            - sets the default value of the <u>property</u> 
-            <span id="browserSupport" title="Updated: 2021-06-11"> 
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 19 </span>
-                <span><i class="fab fa-opera"></i> 15 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 13 </span>
-                <span><i class="fab fa-safari"></i> 1.2 </span>
-            </span>
-        </td>
+      <td> <strong>prop</strong>: initial; </td>
+      <td>
+        - sets the default value of the <u>property</u>
+        <span id="browserSupport" title="Updated: 2021-06-11">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 19 </span>
+          <span><i class="fab fa-opera"></i> 15 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 13 </span>
+          <span><i class="fab fa-safari"></i> 1.2 </span>
+        </span>
+      </td>
     </tr>
     <tr class="05.02">
-        <td> <strong>prop</strong>: revert; </td>
-        <td>  
-            - inheritable properties are set to <mark>inherit</mark> <br>
-            - non inheraible properties are set to the default value of the <u>browser</u> (User Agent)
-            <span id="browserSupport" title="Updated: 2021-06-11"> 
-                <span><i class="fab fa-chrome"></i> 84 </span>
-                <span><i class="fab fa-firefox"></i> 67 </span>
-                <span><i class="fab fa-opera"></i> 70 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 84 </span>
-                <span><i class="fab fa-safari"></i> 9.1 </span>
-            </span>  
-        </td>
+      <td> <strong>prop</strong>: revert; </td>
+      <td>
+        - inheritable properties are set to <mark>inherit</mark> <br>
+        - non inheraible properties are set to the default value of the <u>browser</u> (User Agent)
+        <span id="browserSupport" title="Updated: 2021-06-11">
+          <span><i class="fab fa-chrome"></i> 84 </span>
+          <span><i class="fab fa-firefox"></i> 67 </span>
+          <span><i class="fab fa-opera"></i> 70 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 84 </span>
+          <span><i class="fab fa-safari"></i> 9.1 </span>
+        </span>
+      </td>
     </tr>
     <tr class="15.01">
-        <td> <strong>prop</strong>: unset; </td>
-        <td>  
-            - inheritable properties are set to <mark>inherit</mark> <br>
-            - non inheritable properties are set to <mark>initial</mark> 
-            <span id="browserSupport" title="Updated: 2021-06-11"> 
-                <span><i class="fab fa-chrome"></i> 41 </span>
-                <span><i class="fab fa-firefox"></i> 27 </span>
-                <span><i class="fab fa-opera"></i> 28 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 13 </span>
-                <span><i class="fab fa-safari"></i> 9.1 </span>
-            </span>
-        </td>
+      <td> <strong>prop</strong>: unset; </td>
+      <td>
+        - inheritable properties are set to <mark>inherit</mark> <br>
+        - non inheritable properties are set to <mark>initial</mark>
+        <span id="browserSupport" title="Updated: 2021-06-11">
+          <span><i class="fab fa-chrome"></i> 41 </span>
+          <span><i class="fab fa-firefox"></i> 27 </span>
+          <span><i class="fab fa-opera"></i> 28 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 13 </span>
+          <span><i class="fab fa-safari"></i> 9.1 </span>
+        </span>
+      </td>
     </tr>
-</table>
-    <br>
-<table class="table">   
-<caption>
-    Properties 
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      Properties
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
     <tr>
-        <th style="width:20%;"> Property</th>
-        <th style="width:30%;"> Value </th>
-        <th> Description </th>
+      <th style="width:20%;"> Property</th>
+      <th style="width:30%;"> Value </th>
+      <th> Description </th>
     </tr>
     <tr>
-        <td> all </td>
-        <td>  
-            initial <span class="cssAV">(sets the default <u>property value</u> for all properties)</span><br>     
-            inherit <span class="cssAV">(inherit all properties from the parent element</span><br>
-            unset <span class="cssAV">(inherit inheritalbe properties from the parent / non-inheritable properties are set to <mark>initial</mark>)</span>
-            revert <span class="cssAV">(inherit inheritalbe properties from the parent / non-inheritable properties are set according to the browser's defaykt stylesheet)</span>
-                <span id="browserSupport" title="updated: 2021-06-14">
-                    <span><i class="fab fa-chrome"></i> 84 </span>
-                    <span><i class="fab fa-firefox"></i> 67 </span>
-                    <span><i class="fab fa-opera"></i> 70 </span>
-                    <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 84 </span>
-                    <span><i class="fab fa-safari"></i> 9.1 </span>
-                </span>
-        </td>
-        <td> - <i class="fab fa-css3-alt"></i> resets <u>all properties</u> of the element (except <mark>unicode-bidi</mark> and <mark>direction</mark>)    
-            <span id="browserSupport" title="updated: 2021-06-14">
-                <span><i class="fab fa-chrome"></i> 37 </span>
-                <span><i class="fab fa-firefox"></i> 27 </span>
-                <span><i class="fab fa-opera"></i> 24 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                <span><i class="fab fa-safari"></i> 9.1 </span>
-            </span>
-        </td>
+      <td> all </td>
+      <td>
+        initial <span class="cssAV">(default value for all properties (Default))</span><br>
+        inherit <span class="cssAV">(inherit all properties from the parent element</span><br>
+        unset <span class="cssAV">(inherit inheritalbe properties from the parent / non-inheritable properties are set to <mark>initial</mark>)</span><br>
+        revert <span class="cssAV">(inherit inheritalbe properties from the parent / non-inheritable properties are set according to the browser's default)</span>
+        <span id="browserSupport" title="updated: 2021-06-14">
+          <span><i class="fab fa-chrome"></i> 84 </span>
+          <span><i class="fab fa-firefox"></i> 67 </span>
+          <span><i class="fab fa-opera"></i> 70 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 84 </span>
+          <span><i class="fab fa-safari"></i> 9.1 </span>
+        </span>
+      </td>
+      <td> - affects <u>all properties</u> of the selected element (except <mark>unicode-bidi</mark> and <mark>direction</mark>)
+        <span id="browserSupport" title="updated: 2021-06-14">
+          <span><i class="fab fa-chrome"></i> 37 </span>
+          <span><i class="fab fa-firefox"></i> 27 </span>
+          <span><i class="fab fa-opera"></i> 24 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 9.1 </span>
+        </span>
+      </td>
     </tr>
-</table>
-<h2 style="color:green;"><u> Notes : </u></h2>
-    <details class="example" id="notes">
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
 
-<h2 style="color:green;"><u> Remember This : </u></h2>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
 
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-<h2 style="color:darkblue;"><u> CSS property inheritance </u></h2>    
-    <p> - CSS inheritance defines what happens when no value is specified for a property of a child element </p>
-    <p> - depending on the property some are inherit their value from their parent automatically some don't</p> 
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - there are 2 ways css can be used in a HTML document: </p>
+  <p class="indent-lv1"> - in the html document <mark>&lt;head&gt;</mark> </p>
+  <p class="indent-lv1"> - as inline style directly on the element (<mark>style</mark> attribute) </p>
+  <pre class="syntax">
+    &lt;html&gt;
+      &lt;head&gt;
+        // ...
+        &lt;style&gt;
+          // css styles...
+        &lt;style&gt;
+      &lt;/head&gt;
+      
+      &lt;body&gt;
+        // ...
+        &lt;<reqval>htmlTag</reqval> style="<reqval>css stylees..."</reqval>&gt; &lt;<reqval>htmlTag</reqval>&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+  </pre>
+  <!--------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Properties </h2>
+  <h2 class="header"> CSS custom properties (variables)
+    <span id="browserSupport">
+      <span><i class="fab fa-chrome"></i> 49 </span>
+      <span><i class="fab fa-firefox"></i> 31 </span>
+      <span><i class="fab fa-opera"></i> 36 </span>
+      <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 15 </span>
+      <span><i class="fab fa-safari"></i> 9.1 </span>
+    </span>
+  </h2>
+  <pre class="syntax">
+    <reqval>parentElement</reqval> {
+        --<reqval>var</reqval>: <reqval>val</reqval>;           // declared variable available only in the parent scope
+    }
+    
+    
+    <reqval>childElement</reqval> {       // the selected element must be a child of <reqval>parentElement</reqval>
+        <reqval>prop</reqval>: var(--<reqval>var</reqval>, <optval>fallbackVal</optval>);       // using <reqval>var</reqval>'s value
+    }
+    </pre>
+  <details class="example">
+    <summary> Example : </summary>
     <pre>
+// HTML ---
+    &lt;div&gt;
+      &lt;div class="demo"&gt;
+        &lt;p&gt; my element &lt;span&gt;child element&lt;/span&gt;&lt;/p&gt;  
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+// CSS -----
+    .demo {
+      --myColor: red;                           // custom values declared in the parent element
+      --myBorder: solid 2px blue;
+      border: var(--myBorder);                  // custom value used on the element itself
+    }
+    .demo p {
+      color: var(--myColor);                    // custom value used on the child element <b>(custom properties inherit just like normal properties (the &lt;span&gt; child element inherit this color automatically)</b> 
+      border: var(--myBorder);                  // the &lt;span&gt; child element does NOT inherit this property because the "border" property <b>non-inheritable</b> 
+      font-size: var(--myFontSize, 2em);        // fallback value is used because the "--myFontSize" identifier is undefined
+    }
+    div {
+      border: var(--myBorder);                  // ancestors do not inherit custom properties (because of the scoping mechanism)
+    }
+    </pre>
+  </details>
+  <!--------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> CSS property inheritance </u></h2>
+  <p> - some CSS property inherit values from their parent some don't! (check docs) </p>
+  <pre>
 // HTML ---------------------------------------------
     &lt;p&gt;parent&lt;span&gt;child&lt;/span&gt;&lt;/p&gt;
         
@@ -138,14 +208,14 @@
         border: solid 2px yellow;               // the border property is not inherited so the child element (&lt;span&gt;child&lt;/span&gt;) has no border 
     }
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> CSS property inheritage TEST </u></h4>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> CSS property inheritage TEST </u></h4>
     <p> - the child element automatically inherit the <mark>color</mark> property value but not the <mark>border</mark> property value, this is because the <mark>color</mark> property inherited but the <mark>border</mark> property does NOT! </p>
     <p id="inheritage"> paragraph <span>span child element</span></p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p id="inheritage"&gt; paragraph &lt;span&gt;span child element&lt;/span&gt;&lt;/p&gt;
     
@@ -155,14 +225,14 @@
         border: solid 2px black;
     }
         </pre>
-        </details>
-</details>    
-<!--------------------------------------------------------------------------------------------------------->
-<hr> 
-<h2 style="color:darkblue;"><u> Global property values <mark>initial</mark> / <mark>revert</mark> / <mark>inherit</mark> / <mark>unset</mark> </u></h2> 
-    <p> - these property values are available on all CSS properties </p>
-<details class="example">
-<summary> DEMO </summary>
+    </details>
+  </details>
+  <!--------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> Global property values <mark>initial</mark> / <mark>revert</mark> / <mark>inherit</mark> / <mark>unset</mark> </u></h2>
+  <p> - these property values are available on all CSS properties </p>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
 // HTML -------------------------------------------------------------------------------
     &lt;div class="d1"&gt; &lt;/div&gt;
@@ -199,15 +269,15 @@
         color: unset;                                                                  // 'unset' = 'inherit' because the color property value is inherited from the parent     
     }    
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> <mark>initial</mark> / <mark>revert</mark> TEST </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> <mark>initial</mark> / <mark>revert</mark> TEST </u></h4>
     <div class="div_1"> DIV-1 </div>
     <div class="div_2"> DIV-2 </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 // HTML -------------------------------------------------------------------------------
     &lt;div class="div_1"&gt; DIV-1 &lt;/div&gt;
     &lt;div class="div_2"&gt; DIV-2 &lt;/div&gt;
@@ -226,16 +296,16 @@
         display: revert;                                                               // according to the browser's (User Agent) stylesheet the display's propertiy value for div elements is 'block'    
     }                                                                                  // the 'revert' keyword resets the default value for the property according to the browser's stylesheet    
         </pre>
-        </details>
-<hr>
-<!--------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>inherit</mark> TEST </u></h4>
-    <div class="div_3">  DIV
-        <div></div>
+    </details>
+    <hr>
+    <!--------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>inherit</mark> TEST </u></h4>
+    <div class="div_3"> DIV
+      <div></div>
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 // HTML -------------------------------------------------------------------------------
     &lt;div class="div_3"&gt;  DIV-3
         &lt;div&gt;&lt;/div&gt;
@@ -252,17 +322,17 @@
         background-color: green;
     }
         </pre>
-        </details>
-<hr>
-<!--------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>unset</mark> TEST </u></h4>
+    </details>
+    <hr>
+    <!--------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>unset</mark> TEST </u></h4>
     <div class="div_4"> DIV </div>
-    <div class="div_5">  DIV
-        <div></div>
+    <div class="div_5"> DIV
+      <div></div>
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 // HTML -------------------------------------------------------------------------------
     &lt;div class="div_4"&gt; DIV &lt;/div&gt;
     &lt;div class="div_5"&gt;  DIV
@@ -288,11 +358,11 @@
         background-color: unset;                                                       // the 'unset' is 'inherit' in this case  
     }
         </pre>
-        </details>
-</details>
-<h2 style="color:darkblue;"><u> The <mark>all</mark> property </u></h2> 
-<details class="example">
-<summary> DEMO </summary>
+    </details>
+  </details>
+  <h2 style="color:darkblue;"><u> The <mark>all</mark> property </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
 // HTML -------------------------------------------------------------------------------
     &lt;div class="demoParent"&gt; parentElement 
@@ -331,20 +401,20 @@
         all: revert;                                                                   // reverts all property values according to the browser's default stylesheet     
     }                                                                                  // inheritable properties are inherited from the parent ('color')     
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> <mark>all</mark> property TEST </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> <mark>all</mark> property TEST </u></h4>
     <p id="setInitial"> myElement (set initial) </p>
     <div class="parentInherit">
-        <p id="setInherit"> myElement (set inherit) </p>
+      <p id="setInherit"> myElement (set inherit) </p>
     </div>
-    <p class="inheritIt"> my Child inherit my border 
-        <span>ta Daaa! (because every property is inherited by this child element the <mark>display:block;</mark> is inherited too!)</span>
+    <p class="inheritIt"> my Child inherit my border
+      <span>ta Daaa! (because every property is inherited by this child element the <mark>display:block;</mark> is inherited too!)</span>
     </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p id="setInitial"&gt; myElement (set initial) &lt;/p&gt;
     
@@ -389,14 +459,14 @@
         all: inherit;                               // even non-inheritable properties are inherited (border in this example)
     }
         </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------>
-<hr>
-<h4><u> - <mark>all:unset;</mark> TEST </u></h4>    
+    </details>
+    <!------------------------------------------------------------------------------------------------------>
+    <hr>
+    <h4><u> - <mark>all:unset;</mark> TEST </u></h4>
     <p class="unsetPar"> parent element <span>child element</span> </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="unsetPar"&gt; parent element &lt;span&gt;child element&lt;/span&gt; &lt;/p&gt;
     
@@ -413,9 +483,10 @@
         all: unset;                         // inheritable property is inherited from the parent "color"
     }                                       // not-inheritable property is set to initial
         </pre>
-        </details>
-</details>
-    
-    <br><br>
+    </details>
+  </details>
+
+  <br><br>
 </body>
+
 </html>

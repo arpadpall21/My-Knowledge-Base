@@ -1,212 +1,225 @@
 <!DOCTYPE html>
-<html lang="en" dir="r">    
+<html lang="en" dir="r">
+
 <head>
-	<meta charset="utf-8">
-	<title> HTML5 Semantic Elements </title>    
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-	<link rel="stylesheet" href="../../Assets/stylesPages.css">
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> HTML5 Semantic Elements </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> HTML5 Semantic Elements (ver 4.0.0) </h1>
-    <p> Updated ( 2018-05-24 / 2018-08-08 / 2019-01-24 / 2021-06-15)</p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html">HTML></a> HTML5 Semantic Elements  
-    </p>
-<table class="table">
-<caption>
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  <h1> HTML5 Semantic Elements </h1>
+  <p> Updated ( 2018-05-24 / 2018-08-08 / 2019-01-24 / 2021-06-15 / 2024-03-16 )</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html">HTML></a> HTML5 Semantic Elements
+  </p>
+  <table class="table">
     <tr>
-        <th style="width:15%"> Tag </th>
-        <th style="width:40%"> Attribute </th>
-        <th> Description </th>
+      <th style="width:15%"> Tag </th>
+      <th style="width:40%"> Attribute </th>
+      <th> Description </th>
     </tr>
-    <tr class="05.04">
-        <td> &lt;article&gt;&lt;/article&gt; </td>
-        <td>  </td>
-        <td> 
-            - separable content <u>possible to distribute independently</u> from the page (Forum / Blog / News) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 6 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 11.1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-            </span>
-        </td>
+    <tr>
+      <td> &lt;header&gt;&lt;/header&gt; </td>
+      <td> </td>
+      <td>
+        - header, introductory content (multiple allowed within content scope)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 6 </span>
+          <span><i class="fab fa-firefox"></i> 4 </span>
+          <span><i class="fab fa-opera"></i> 11.1 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 5 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="05.06">
-        <td> &lt;aside&gt;&lt;/aside&gt; </td>
-        <td>  </td>
-        <td> 
-            - portion of the document which is <u>indirectly related</u> (side-bars, call-out boxes) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 6 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 11.1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-            </span>
-        </td>
+    <tr>
+      <td> &lt;footer&gt;&lt;/footer&gt; </td>
+      <td> </td>
+      <td>
+        - holds footer informations (copyright, contant, sitemap informations, etc...) (multiple allowed within content scope)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 6 </span>
+          <span><i class="fab fa-firefox"></i> 4 </span>
+          <span><i class="fab fa-opera"></i> 11.1 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 5 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="10.01">
-        <td> &lt;details&gt;&lt;/details&gt; </td>
-        <td> open <span class="cssAV">((Boolean) opens/closes the element)</span> </td>
-        <td> - additional details that the user can view or hide 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 12 </span>
-                <span><i class="fab fa-firefox"></i> 49 </span>
-                <span><i class="fab fa-opera"></i> 15 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> NO </span>
-                <span><i class="fab fa-safari"></i> 6 </span>
-            </span>
-        </td>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr class="10.04">
-        <td> &lt;figcaption&gt;&lt;/figcaption&gt; </td>
-        <td>  </td>
-        <td> 
-            - specifies a caption for the <mark>&lt;figure&gt;</mark> element (can be placed as first or as last child of the <mark>&lt;figure&gt;</mark> element) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 6 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 11.1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-            </span>
-        </td>
+    <tr>
+      <td> &lt;nav&gt;&lt;/nav&gt; </td>
+      <td> </td>
+      <td>
+        - specifies the navigation within the current document (wrap major navigation blocks)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 6 </span>
+          <span><i class="fab fa-firefox"></i> 4 </span>
+          <span><i class="fab fa-opera"></i> 11.1 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 5 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="10.03">
-        <td> &lt;figure&gt;&lt;/figure&gt; </td>
-        <td>  </td>
-        <td> 
-            - self-contained content which should not affect the flow if it is removed from the document (like illustration, diamgram, photos, code list, ect... ) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 6 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 11.1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-            </span>
-        </td>
+    <tr>
+      <td> &lt;section&gt;&lt;/section&gt; </td>
+      <td> </td>
+      <td>
+        - thematic content grouping (chapters, sections, etc...)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 6 </span>
+          <span><i class="fab fa-firefox"></i> 4 </span>
+          <span><i class="fab fa-opera"></i> 11.1 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 5 </span>
+        </span><br>
+        &nbsp; &nbsp; - it has typically a heading
+      </td>
     </tr>
-    <tr class="05.07">
-        <td> &lt;footer&gt;&lt;/footer&gt; </td>
-        <td>  </td>
-        <td> 
-            - represents a footer to the <u>document or the nearest section content</u> (copyright, contant, sitemap informations)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 6 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 11.1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-            </span><br>
-            &nbsp; &nbsp; - multiple allowed on a page 
-            
-        </td>
+    <tr>
+      <td> &lt;aside&gt;&lt;/aside&gt; </td>
+      <td> </td>
+      <td>
+        - indirectly related document portion (side-bar, call-out boxes, etc...)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 6 </span>
+          <span><i class="fab fa-firefox"></i> 4 </span>
+          <span><i class="fab fa-opera"></i> 11.1 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 5 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="05.01">
-        <td>  &lt;header&gt;&lt;/header&gt; </td>
-        <td>  </td>
-        <td> 
-            - specifies a header (introductory content) for the <u>document or article</u>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 6 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 11.1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-            </span><br>
-            &nbsp; &nbsp; - multiple allowed on a page  
-        </td>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr class="05.03">
-        <td> &lt;main&gt;&lt;/main&gt; </td>
-        <td>  </td>
-        <td> 
-            - describes the main content of the page
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 6 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 11.1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-            </span><br>
-            &nbsp; &nbsp; - only one "main" element is allowed on a page<br>
-            &nbsp; &nbsp; - it should NOT contain "repeated content" such as navigation bar, copyright info, logos ect..<br>
-            &nbsp; &nbsp; - in must NOT be a descendent of <mark>&lt;article&gt;</mark> / <mark>&lt;aside&gt;</mark> / <mark>&lt;footer&gt;</mark> / <mark>&lt;header&gt;</mark> / <mark>&lt;nav&gt;</mark> elements 
-        </td>
+    <tr>
+      <td> &lt;main&gt;&lt;/main&gt; </td>
+      <td> </td>
+      <td>
+        - main page content (only one in a document) <br>
+        - should not contain repeated content (like navigation bar, copyright info, logos ect...) <br>
+        - should not be the descendent of <mark>&lt;article&gt;</mark> / <mark>&lt;aside&gt;</mark> / <mark>&lt;footer&gt;</mark> / <mark>&lt;header&gt;</mark> / <mark>&lt;nav&gt;</mark> elements
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 6 </span>
+          <span><i class="fab fa-firefox"></i> 4 </span>
+          <span><i class="fab fa-opera"></i> 11.1 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
+          <span><i class="fab fa-safari"></i> 5 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="05.02">
-        <td> &lt;nav&gt;&lt;/nav&gt; </td>
-        <td>  </td>
-        <td> 
-            - specifies a <u>navigation block</u> within the current document or other documents
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 6 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 11.1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-            </span><br> 
-            &nbsp; &nbsp; - intended to wrap <u>major navigation blocks</u><br>
-            &nbsp; &nbsp; - random links on the page are not necessarily wrapped  
-        </td>
+    <tr>
+      <td> &lt;article&gt;&lt;/article&gt; </td>
+      <td> </td>
+      <td>
+        - independent content from the main page that could be individually distributed (forum, blog, news, etc...)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 6 </span>
+          <span><i class="fab fa-firefox"></i> 4 </span>
+          <span><i class="fab fa-opera"></i> 11.1 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 5 </span>
+        </span>
+      </td>
     </tr>
-    <tr class="05.05">
-        <td> &lt;section&gt;&lt;/section&gt; </td>
-        <td>  </td>
-        <td> 
-            - <u>thematic grouping</u> of content (like Chapters)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 6 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 11.1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-            </span><br>
-            &nbsp; &nbsp; - it has typically a heading 
-        </td>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr class="10.02">
-        <td> &lt;summary&gt;&lt;/summary&gt; </td>
-        <td>  </td>
-        <td> 
-            - specifies a visible heading for the <mark>&lt;details&gt;</mark> element 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 12 </span>
-                <span><i class="fab fa-firefox"></i> 48 </span>
-                <span><i class="fab fa-opera"></i> 15 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> NO </span>
-                <span><i class="fab fa-safari"></i> 6 </span>
-            </span>
-        </td>
+    <tr>
+      <td> &lt;details&gt;&lt;/details&gt; </td>
+      <td> open <span class="cssAV">((Boolean) opens/closes the element)</span> </td>
+      <td> - additional details that the user can view or hide
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 12 </span>
+          <span><i class="fab fa-firefox"></i> 49 </span>
+          <span><i class="fab fa-opera"></i> 15 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 6 </span>
+        </span>
+      </td>
     </tr>
-</table>
-<h2 style="color:green;"><u> Notes : </u></h2>
-    <details class="example" id="notes">
+    <tr>
+      <td> &lt;summary&gt;&lt;/summary&gt; </td>
+      <td> </td>
+      <td>
+        - specifies a visible heading for the <mark>&lt;details&gt;</mark> element
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 12 </span>
+          <span><i class="fab fa-firefox"></i> 48 </span>
+          <span><i class="fab fa-opera"></i> 15 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 6 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> &lt;figure&gt;&lt;/figure&gt; </td>
+      <td> </td>
+      <td>
+        - self-contained content not affecting the flow (like illustration, diamgram, photos, code list, ect... )
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 6 </span>
+          <span><i class="fab fa-firefox"></i> 4 </span>
+          <span><i class="fab fa-opera"></i> 11.1 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 5 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> &lt;figcaption&gt;&lt;/figcaption&gt; </td>
+      <td> </td>
+      <td>
+        - caption for <mark>&lt;figure&gt;</mark>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 6 </span>
+          <span><i class="fab fa-firefox"></i> 4 </span>
+          <span><i class="fab fa-opera"></i> 11.1 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 5 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-        <p> - Untested HTML element: <mark>&lt;ruby&gt;&lt;/ruby&gt;</mark> - for East-Asian typography </p>
-        <p> - Untested HTML element: <mark>&lt;rt&gt;&lt;/rt&gt;</mark> - for East-Asian typography </p>
-        <p> - Untested HTML element: <mark>&lt;rp&gt;&lt;/rp&gt;</mark> - for East-Asian typography </p>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="http://www.w3schools.com/html/html5_semantic_elements.asp" target="_blank"> W3Schools HTML5 Semantic Elements </a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - Semantic elements are <u>elements with meaning</u> (describles its meaing both for the browser and for the devloper (like : <mark>&lt;form&gt;</mark> / <mark>&lt;table&gt;</mark>) </p>
-<h2 style="color:darkblue;"><u> The <mark>&lt;header&gt;</mark> / <mark>&lt;nav&gt;</mark> / <mark>&lt;main&gt;</mark> / <mark>&lt;article&gt;</mark> / <mark>&lt;section&gt;</mark> / <mark>&lt;aside&gt;</mark> / <mark>&lt;footer&gt;</mark> tags </u></h2>    
-    <p> - there is no rule or definition how these elements nest each other, it is up to the developer and the current page structure how we use them (like the "article" element can nest "section" elements or vice versa)</p>
-    <img src="Semantic Elements HTML5.png" alt="Semantic Elements HTML5" height="300">
-<!--------------------------------------------------------------------------------------------------------------------------->
-<hr>    
-<h2 style="color:darkblue;"><u> The <mark>&lt;details&gt;</mark> / <mark>&lt;summary&gt;</mark> / <mark>&lt;figure&gt;</mark> / <mark>&lt;figcaption&gt;</mark> tags </u></h2>
-<details class="example">
-<summary> DEMO </summary>
+    <p> - Untested HTML element: <mark>&lt;ruby&gt;&lt;/ruby&gt;</mark> - for East-Asian typography </p>
+    <p> - Untested HTML element: <mark>&lt;rt&gt;&lt;/rt&gt;</mark> - for East-Asian typography </p>
+    <p> - Untested HTML element: <mark>&lt;rp&gt;&lt;/rp&gt;</mark> - for East-Asian typography </p>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="http://www.w3schools.com/html/html5_semantic_elements.asp" target="_blank"> W3Schools HTML5 Semantic Elements </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - Semantic elements are <u>elements with meaning</u> (describles its meaing both for the browser and for the devloper (like : <mark>&lt;form&gt;</mark> / <mark>&lt;table&gt;</mark>) </p>
+  <h2 style="color:darkblue;"><u> The <mark>&lt;header&gt;</mark> / <mark>&lt;nav&gt;</mark> / <mark>&lt;main&gt;</mark> / <mark>&lt;article&gt;</mark> / <mark>&lt;section&gt;</mark> / <mark>&lt;aside&gt;</mark> / <mark>&lt;footer&gt;</mark> tags </u></h2>
+  <p> - there is no rule or definition how these elements nest each other, it is up to the developer and the current page structure how we use them (like the "article" element can nest "section" elements or vice versa)</p>
+  <img src="Semantic Elements HTML5.png" alt="Semantic Elements HTML5" height="300">
+  <!--------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>&lt;details&gt;</mark> / <mark>&lt;summary&gt;</mark> / <mark>&lt;figure&gt;</mark> / <mark>&lt;figcaption&gt;</mark> tags </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
 // &lt;details&gt; / &lt;summary&gt; -------------------
     &lt;details&gt;
@@ -227,48 +240,49 @@
 // &lt;mark&gt; ----------------------------------------
     &lt;p&gt; This is a &lt;mark&gt;highlighted text&lt;/mark&gt; &lt;/p&gt;
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> <mark>&lt;figure&gt;</mark> / <mark>&lt;figcaption&gt;</mark> TEST </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> <mark>&lt;figure&gt;</mark> / <mark>&lt;figcaption&gt;</mark> TEST </u></h4>
     <figure>
-        <figcaption> Camaro </figcaption>
-            <img src="camaro.jpg" alt="camaro">
-        <figcaption> American Car </figcaption>
+      <figcaption> Camaro </figcaption>
+      <img src="camaro.jpg" alt="camaro">
+      <figcaption> American Car </figcaption>
     </figure>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;figure&gt;
     &lt;figcaption&gt; Camaro &lt;/figcaption&gt;
         &lt;img src="camaro.jpg" alt="camaro"&gt;
     &lt;figcaption&gt; American Car &lt;/figcaption&gt;
     &lt;/figure&gt;
         </pre>
-        </details>
-<!---------------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h4><u> <mark>&lt;data&gt;</mark> TEST </u></h4>  
+    </details>
+    <!---------------------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4><u> <mark>&lt;data&gt;</mark> TEST </u></h4>
     <p> I have a <data value="143hp">143 horsepower</data> engine </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p&gt; I have a &lt;data value="143hp"&gt;143 horsepower&lt;/data&gt; engine &lt;/p&gt;    
         </pre>
-        </details>
-<!---------------------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h4><u> <mark>&lt;time&gt;</mark> TEST </u></h4>
+    </details>
+    <!---------------------------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4><u> <mark>&lt;time&gt;</mark> TEST </u></h4>
     <p> Today is <time datetime="2019-01-25T16:25">2018 january the 25th, 4PM 25 minutes</time> </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p&gt;Today is &lt;time datetime="2019-01-25T16:25"&gt;2018 january the 25th, 4PM 25 minutes&lt;/time&gt;&lt;/p&gt;
         </pre>
-        </details>
-</details>
-    
-    
-    <br><br>
-</body>    
+    </details>
+  </details>
+
+
+  <br><br>
+</body>
+
 </html>

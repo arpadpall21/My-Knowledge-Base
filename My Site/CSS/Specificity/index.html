@@ -1,302 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8">
-	<title> Specificity CSS </title> 
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Specificity </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Specificity CSS (ver 3.0) </h1>
-	<p> Updated ( 2019-01-12 )</p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html" title="CSS">CSS></a> CSS Specificity
-    </p>
-<table class="table">    
-<caption> CSS Element Specificity Values </caption>
-    <tr>
-        <th> Specificity Value </th>
-        <th> Selector/Expression </th>
-        <th> Syntax </th>
-    </tr>
-    <tr>
-        <td> 1|0|0|0|0 </td>
-        <td> the <mark>!important</mark> expression overrides any css rules </td>
-        <td> <strong>property:value</strong> !important; </td>
-    </tr>
-    <tr>
-        <td> 1|0|0|0 </td>
-        <td> inline element ("style" attribute) </td>
-        <td> &lt;<strong>tagName</strong> style="<strong>cssStyle</strong>"&gt; </td>
-    </tr>
-    <tr>
-        <td> 0|1|0|0 </td>
-        <td> id-selector </td>
-        <td> #<strong>idName</strong> </td>
-    </tr>
-    <tr>
-        <td> 0|0|1|0 </td>
-        <td> class-selector | attribute-selector | pseudo-class </td>
-        <td> .<strong>className</strong> | [<strong>attrId</strong><i>filter="val"</i>] | :<strong>pseudoClassSelector</strong> </td>
-    </tr>
-    <tr>
-        <td> 0|0|0|1 </td>
-        <td> element | pseudo-element </td>
-        <td> <strong>tagName</strong> | ::<strong>pseudoElementSelector</strong> </td>
-    </tr>
-    <tr>
-        <td> 0|0|0|0 </td>
-        <td> universal selector </td>
-        <td> * </td>
-    </tr>
-</table>  
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="https://www.w3schools.com/css/css_specificity.asp" target="_blank"> W3Schools CSS Specifisity </a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    <p> - CSS specificity is NOT a 10-base system (values do NOT add up (<mark>0|0|13|0 !== 0|1|3|0</mark>)</p>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - unlike in programing languages in CSS later declarations do not override precedent ones <u style="background-color:yellow;">except if they have the same Specificity value</u> </p>
-    <p> - in CSS every selector has a specificity value, if we target an element with multiple css declarations <u>the one with the highest specificity value wins</u> ("it is more specific") </p>
-    <pre class="syntax">
-SYNTAX :    <u>Specificity Value</u>              <u>Selectors</u>                                       <u>SYNTAX</u>                 
-           <mark>1|0|0|0|0</mark>                       (expression overrides any css rules)            <strong>property:value</strong> !important;
-             <mark>1|0|0|0</mark>                       inline element ("style" attribute)              &lt;<strong>tagName</strong> style="<strong>cssStyle</strong>"&gt;
-             <mark>0|1|0|0</mark>                       id                                              #<strong>idName</strong>
-             <mark>0|0|1|0</mark>                       class | attribute-selector | pseudo-class       .<strong>className</strong> | [<strong>attrId</strong><i>filter="val"</i>] | :<strong>pseudoClassSelector</strong> 
-             <mark>0|0|0|1</mark>                       element | pseudo-element                        <strong>tagName</strong> | ::<strong>pseudoElementSelector</strong>
-             <mark>0|0|0|0</mark>                       universal selector                              *
-    </pre>
-    <pre>
-  // Secificity value = 1|0|0|0 (inline element)            <span style="color:orangered;">&lt;-- this wins</span>    
-    &lt;p id="myElement_1" style="color:green;"&gt; myElement &lt;/p&gt;
+  <h1> Specificity </h1>
+  <p> Updated ( 2019-01-12 / 2024-03-15 )</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Specificity
+  </p>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - CSS specificity is a value of a css selector </p>
+  <p> - an element can be selected with a combination of css selectors, these combination add up (ex: <mark>p.someClass</mark> = precedence value <mark>11</mark>) </p>
+  <p> - if an element is targeted with multiple selectors the one with the highest specivicity value takes precedence (the more specific one) </p>
+  <p> - 2 important things about specivicity order: </p>
+  <p class="indent-lv1"> - style declaration or the file import order doen't matter (except when selectors have the same specificity) </p>
+  <p class="indent-lv1"> - specificity levels cannot be overspecified (ex: one class selector (specificity value <mark>10</mark>) is more specific than 11 element selectors (specificity value <mark>11</mark>)) </p>
+  <pre class="syntax">
+    <u>Selectors</u>                                                                <u>Specificity Value</u>
+                                                                                                                        
+    &lt;<strong>htmlTag</strong> style="<strong>cssStyle</strong>"&gt;       (inline)                                1000
+    #<strong>id</strong>                              (id)                                    100
+    .<strong>class</strong> | [<strong>attr</strong>] | :<strong>pseudoClass</strong>   (class | attribute | pseudo-class)      10
+    <strong>htmlTag</strong> | ::<strong>pseudoElement</strong>        (element | pseudo-element)              1
+    *                                (universal selector)                    0
     
--- CSS --
-  // Specificity value = 0|1|0|0  (id selector)
-    #myElement { color: red; }
-    </pre>
-    <p> - <mark>!important</mark> expression and <u>same specificity value</u> </p>
-    <pre>
-    &lt;p class="myElement" id="myElement"&gt; myElement &lt;/p&gt;
     
--- CSS  --
-  // Specificity value = 0|0|1|3  (1 class selector and 3 element selectors)
-    html body p.myElement { 
-        color: red; 
-        font-weight: normal;
+// <mark>!important</mark> property --
+    - <mark>!important</mark> property                always take effect regardless of selector specificity
+    </pre>
+  <pre>
+  &lt;p id="myElement_1" style="color:green;"&gt; myElement &lt;/p&gt;    // specificity value <mark>1000</mark> (inline selector)
+  
+  
+  #myElement { }                    // specificity value <mark>100</mark> (1 id selector)
+  
+  html body p.myElement { }       // specificity value <mark>13</mark> (3 element / 1 class selectors)
+  
+  body [id] { }                     // specificity value <mark>11</mark> (1 element / 1 atribute selectors)
+  
+  body p[id] { }                       // specificity value <mark>12</mark> (2 element / 1 attribute selectors)
+  
+  p#myElement { }                       // specificity value <mark>101</mark> (1 element / 1 id selectors)   
+  
+  *[data]                              // specificity value <mark>10</mark> (1 universal / 1 attribute selectors)
+  
+  
+// sepcivicity level cannot be outspecified ------------
+  p > span > span > span > span > span > 
+  span > span > span > span > span > span { }     // specivicity value <mark>12</mark> (12 element selectors)
+  
+  .myElement { }                        // -! more specific because the class selector is a higher level selector (even if in this case sepcificity value is <mark>10</mark>)
+  
+  
+// <mark>!important</mark> property ----------
+    p#test-test {
+        color: blue;
     }
-  // Specificity value = 0|0|1|1  (1 attribute selector and 1 element selector)
-    body [id] { 
-        color: yellow; 
-        font-weight: bold !important;                       // -! this css selector declaration has the lowest specificity but this value has a specificity value of 1|0|0|0|0 because of the "!important" declaration   
-    }
-  // Specificity value = 0|0|1|2  (1 attribute selector and 2 element selectors)
-    body p[id] {
-        color: white; 
-        font-weight: normal;
-    }
-  // Specificity value = 0|1|0|0  (1 id selector)
-    #myelement { 
-        color: blue; 
-        font-weight: normal;
-    }
-  // Specificity value = 0|1|0|1  (1 id selector and 1 element selector)
-    p#myElement {                                           // this has the same specificity value as below  
-        color: green; 
-        font-weight: normal;
-    }
-  // Specificity value = 0|1|0|1  (1 id selector and 1 element selector)
-    p#myElement {                                           // this wins (it has the same specificity value as above but this comes later in the stylesheet
-        color: lightgreen; 
-        font-weight: normal;
+    
+    #test-test {
+        color: red !important;            // takes precedence (no matter if the selector has lower specificity)
     }
     </pre>
-    <p> - <mark>*</mark>(universal) selector </p>
-    <p style="color:yellow;"> - the <mark>not()</mark> pseudo-class specificity value is/are the selector(s) in its parantheses </p>
-    <pre>
-    &lt;div class="demo"&gt;
-        &lt;p&gt; item-1 &lt;/p&gt;
-        &lt;p&gt; item-2 &lt;/p&gt;
-        &lt;p id="demoChild"&gt; item-3 &lt;/p&gt;
-        &lt;p&gt; item-4 &lt;/p&gt;
-    &lt;/div&gt;
+
+  <p> - css file import order or declaration import order doesn't matter </p>
+  <pre>
+    p#test-test { }   // style used because it has highest specivicity value <mark>101</mark> (declaration order doesn't matter)
     
--- CSS --
-  // Specificity value = 0|0|1|0  (1 class selector but the <mark>*</mark>(universal) selector has <mark>0</mark>) specificity value
-    .demo * {
-        color: red;
-    }
-  // Specificity value = 0|0|1|1  (1 class selector and 1 element selector)
-    .demo p {                                               <span style="color:orangered;">&lt;-- this wins</span>
-        color: green;
-    }
+    #test-tesst { }
     
-// not() specificity value --------------
-  // Specificity value = 0|0|2|1  (1 class selector, 1 element selector and 1 attribute selector (within the ":not()" pseudo-class))
-    .demo p:not([id="demoChild"]) {
-        font-size: 0.7em;
-    }
-  // Specificity value = 0|1|1|1  (1 class selector, 1 element selector and 1 id selector (within the ":not()" pseudo-class))   
-    .demo p:not(#demoChild) {                               <span style="color:orangered;">&lt;-- this wins</span>
-        font-size: 1.5em;
-    }
-    </pre>
-    <p style="color:yellow;"> - the CSS specificity declaration is NOT a 10-base system (values do NOT add up (<mark>0|0|13|0 !== 0|1|3|0</mark>)</p>
-    <pre>
-    &lt;p&gt;
-        &lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;&lt;span&gt;
-            &lt;span class="myElement"&gt; myElement &lt;/span&gt;
-        &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-    &lt;/p&gt; 
+// same specificity --
+    #test-test { }
     
--- CSS --
-  // Specificity value = 0|0|0|12  (12 element selectors) <b>(NOT equal with 0|0|1|2)</b>
-    p span span span span span span span span span span span {
-        color: red;
-    }
-  // Specificity value = 0|0|1|0  (1 class selector)    
-    .myElement {                                            <span style="color:orangered;">&lt;-- this wins</span>
-        color: green;
-    }
-    </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> CSS <mark>!important</mark> declaration TEST </u></h4>
-    <p style="color:red;"> Inline Style (overriden by the <mark>!important</mark> declaration) </p>
-    <p id="idTarg"> id targeted Style (overriden by the <mark>!important</mark> declaration) </p>
-    <details>
-    <summary> CODE : </summary>
-    <pre>
--- CODE (HTML) --
-    &lt;p style="color:red;"&gt; Inline Style (overriden by the &lt;mark&gt;!important&lt;/mark&gt; declaration) &lt;/p&gt;
-    &lt;p id="idTarg"&gt; id targeted Style (overriden by the &lt;mark&gt;!important&lt;/mark&gt; declaration) &lt;/p&gt;
-    
--- CODE (CSS) --
-    #idTarg {
-        color: red;
-    }
-    p[style="color:red;"] {
-        color: green !important;
-    }
-    p[id="idTarg"] {
-        color: green !important;
-    }
-    </pre>
-    </details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>    
-<h4><u> CSS Specificity adding up TEST </u></h4>    
-    <p style="background-color:yellow;"> - specificity values do NOT add up </p>
-    <p> - below the element is targeted in 2 ways </p>
-    <p> -- 1) has <u>11 class</u> and <u>1 element</u> targeted, Specificity value <mark>0|0|11|1</mark> <u style="color:yellow;">(this is NOT "0111", values do NOT add up)</u></p>
-    <p> -- 2) has <u>1 id</u> targeted, Specificity value <mark>0|1|0|0</mark> <u style="color:yellow;">(&lt;-- this wins because it is more "specific")</u></p>
-    <div class="par-1">
-        <div class="par-2">
-            <div class="par-3">
-                <div class="par-4">
-                    <div class="par-5">
-                        <div class="par-6">
-                            <div class="par-7">
-                                <div class="par-8">
-                                    <div class="par-9">
-                                        <div class="par-10">
-                                            <div class="par-11">   
-                                                <p id="idTarget"> id targeted </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>      
-                    </div>          
-                </div>
-            </div>
-        </div>
-    </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- CODE (HTML) --
-    &lt;div class="par-1"&gt;
-        &lt;div class="par-2"&gt;
-            &lt;div class="par-3"&gt;
-                &lt;div class="par-4"&gt;
-                    &lt;div class="par-5"&gt;
-                        &lt;div class="par-6"&gt;
-                            &lt;div class="par-7"&gt;
-                                &lt;div class="par-8"&gt;
-                                    &lt;div class="par-9"&gt;
-                                        &lt;div class="par-10"&gt;
-                                            &lt;div class="par-11"&gt;  
-                                                &lt;p id="idTarget"&gt; id targeted &lt;/p&gt;
-                                            &lt;/div&gt;
-                                        &lt;/div&gt;
-                                    &lt;/div&gt;
-                                &lt;/div&gt;
-                            &lt;/div&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;   
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
--- CODE (CSS) --
-    [class|="par"] {
-        border: solid 1px black;
-    }
-        /* Specificity value "0|1|0|0" */        
-    #idTarget {     
-        color: green;
-    }
-        /* Specificity value 0|0|11|1*/
-    .par-1 .par-2 .par-3 .par-4 .par-5 .par-6 .par-7 .par-8 .par-9 .par-10 .par-11 p  {
-        color: red;
-    }
-        </pre>
-        </details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h4><u> test <mark>:not()</mark> pseudo-class specificity value</u></h4>    
-    <p> - the <mark>:not()</mark> pseudo-class specificity is related what is in between its parantheses <u>(its Specificity value is NOT <mark>0|0|1|0</mark>)</u> </p>
-    <div class="not_Spec_Test">
-        <p> targeted </p>
-        <p> targeted </p>
-        <p class="target" id="target"> not targeted </p>
-        <p> targeted </p>
-        <p> targeted </p>
-        <p> targeted </p>
-    </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- CODE (HTML) --
-    &lt;div class="not_Spec_Test"&gt;
-        &lt;p&gt; targeted &lt;/p&gt;
-        &lt;p&gt; targeted &lt;/p&gt;
-        &gt;p class="target" id="target"&gt; not targeted &lt;/p&gt;
-        &lt;p&gt; targeted &lt;/p&gt;
-        &lt;p&gt; targeted &lt;/p&gt;
-        &lt;p&gt; targeted &lt;/p&gt;
-    &lt;/div&gt;
-    
--- CODE (CSS) --
-    .not_Spec_Test {
-        border: double 3px blue;
-    }
-        /* Specificity value 0|0|2|1 */
-    .not_Spec_Test p:not(.target) {
-        color: red;
-    }
-        /* Specificity value 0|1|1|1 */
-    .not_Spec_Test p:not(#target) {
-        color: green;
-    }
-        </pre>
-        </details>
-</details>
-    
-    <br><br>
+    #test-test { }                          // style used because both declaration has the same specificity value <mark>100</mark>
+  </pre>
+  
+  
+  <br><br>
 </body>
+
 </html>

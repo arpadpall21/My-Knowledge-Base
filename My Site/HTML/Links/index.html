@@ -1,143 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Links </title>   
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" type="text/css" href="../../Assets/stylesPages.css">
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Links </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1 id="home">Links (ver 4.0.0)</h1>
-    <p> Updated ( 2016-06-08 / 2018-06-21 / 2021-05-22)</p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html">HTML></a> Links
-    </p>
-    
-<table class="table">
-<caption>
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  <h1 id="home">Links </h1>
+  <p> Updated ( 2016-06-08 / 2018-06-21 / 2021-05-22 / 2024-03-16 )</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html">HTML></a> Links
+  </p>
+  <table class="table">
+    <caption>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
     <tr>
-        <th style="width:15%"> Tag </th>
-        <th style="width:40%"> Attribute </th>
-        <th> Description </th>
+      <th style="width:15%"> Tag </th>
+      <th style="width:40%"> Attribute </th>
+      <th> Description </th>
     </tr>
     <tr>
-        <td> &lt;a&gt;&lt;/a&gt; </td>
-        <td> 
-            download <i>fileName</i> <span class="cssAV">(donwloads the content instead of navigating to it, optionally we can rename the downloading content with <i>filename</i>)</span> 
-            <span class="browserSupport" title="updated : 2021-05-22">
-                <span><i class="fab fa-chrome"></i> 14 </span>
-                <span><i class="fab fa-firefox"></i> 20 </span>
-                <span><i class="fab fa-opera"></i> 15 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 18 </span>
-                <span><i class="fab fa-safari"></i> 10.1 </span>
-            </span> <br>
-            href="<strong class="openable">URL<div>
-                <p> <strong>url</strong> - url of the targeted resource </p>
-                <p> #<strong>id</strong> - targets a document fragment on the local page [bookmark] <br></p>
-                <p> javascript:<strong>JS code</strong> - executes a javaScript code) </p>
-            </div></strong>" <span class="cssAV">(url of the targeted resource)</span> <br>
-            hreflang="<strong>langCode</strong>" <span class="cssAV">(specifies the language of the targeted page)</span> <br>
-            ping="<strong>URL</strong> <i>URL</i>" <span class="cssAV">(a list of URL's to which ping bodies are sent (for tracking))</span> 
-            <span class="browserSupport" title="updated : 2021-05-22">
-                <span><i class="fab fa-chrome"></i> 12 </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> 15 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 17 </span>
-                <span><i class="fab fa-safari"></i> 6 </span>
-            </span> <br>
-            referrerpolicy="<strong class="openable">ref<div>
-                <p> "" - (Default) the higher level of referrer policy </p>
-                <p> no-referrer - the <mark>Referer</mark> header excluded in the request </p>
-                <p> no-referrer-when-downgrade - the <mark>Referrer</mark> header excluded in non TLS (HTTPS) requests </p>
-                <p> origin - only the origin (scheme, host, port) is included in the <mark>Referrer</mark> header in the request </p>
-                <p> origin-when-cross-origin - for cross-origin request only the origin (scheme, host, port) is included in the <mark>Referrer</mark> header, for same-site request the <mark>Referrer</mark> header contains the full referrer</p>
-                <p> same-origin - the <mark>Referer</mark> header is included only in same-origin requests (omitted for cross-origin requests) </p>
-                <p> strict-origin - the <mark>Referer</mark> header is included in the request if the security level stays the same (included in HTTPS -> HTTPS, excluded in HTTPS -> HTTP) </p>
-                <p> strict-origin-when-corss-origin - the <mark>Referer</mark> header is included in the request for same-site request, for cross-origin requests include only if the security level stays the same (included in HTTPS -> HTTPS, excluded in HTTPS -> HTTP) </p>
-                <p> unsafe-url - the <mark>Referer</mark> header includes only the origin and the path (but not the document fragment, password, username) </p>
-            </div></strong>" <span class="cssAV">(controls the <mark>Referer</mark> header for this request)</span> 
-            <span class="browserSupport" title="updated : 2021-05-22">
-                <span><i class="fab fa-chrome"></i> 51 </span>
-                <span><i class="fab fa-firefox"></i> 50 </span>
-                <span><i class="fab fa-opera"></i> 38 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                <span><i class="fab fa-safari"></i> 11.1 </span>
-            </span> <br>
-            rel="<strong class="openable">relation<div>
-                <p> alternative - alternative page </p>
-                <p> author - link to the document's author </p>
-                <p> dns-prefetch - hint the browser that the resource is needed, so the browser can make a pre dns lookup so when the client click the resource is ready </p>
-                <p> help - help about this page </p>
-                <p> icon - 'favicon' represents the page (auditory or visual) (page icon usually) </p>
-                <p> license - links to licensing informations </p>
-                <p> manifest - link is a Web App Manifest </p>
-                <p> module-preload - high priority loading module scripts </p>
-                <p> next - leads to the next resource </p>
-                <p> pingback - link to make comments or citation about the page </p>
-                <p> prefetch - suggest that the browser fetch the linked resource in advance </p>
-                <p> prerender - suggests the browser to fetch the linke resource in advance and render the pre-fetched content </p>
-                <p> prev - leads to the previous resource </p>
-                <p> search - specially designed for searching this document </p>
-                <p> stylesheet - stylesheet </p>
-                <p> tag - refers to a tag that applices to this document </p>
-            </div></strong>" <span class="cssAV">(describes the relation between the document and the linked file)</span><br>
-            target="<strong class="openable">trg<div>
-                <p> _blank - new window or tab) </p>
-                <p> _self - same frame the link is on </p>
-                <p> _parent - parent frame </p>
-                <p> _top - in the full body of the window </p>
-                <p> <strong>frame_name</strong> - in the targeted frame </p>
-            </div></strong>" <span class="cssAV">(where (which frame) to open the linked file)</span> <br>
-            type="<strong>mimeType</strong>" <span class="cssAV">specifies the media type (advisory only)</span>
-        </td>
-        <td> 
-            - anchor element, creates a hyperlink to another web page  
-            <span class="browserSupport" title="updated : 2021-05-22">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 1 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
+      <td> &lt;a&gt;&lt;/a&gt; </td>
+      <td>
+        download <i>fileName</i> <span class="cssAV">(donwloads the content instead of navigating to it, optionally we can rename the downloading content with <i>filename</i>)</span>
+        <span class="browserSupport" title="updated : 2021-05-22">
+          <span><i class="fab fa-chrome"></i> 14 </span>
+          <span><i class="fab fa-firefox"></i> 20 </span>
+          <span><i class="fab fa-opera"></i> 15 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 18 </span>
+          <span><i class="fab fa-safari"></i> 10.1 </span>
+        </span> <br>
+        href="<strong class="openable">URL<div>
+            <p> <strong>url</strong> - url of the targeted resource </p>
+            <p> #<strong>id</strong> - targets a document fragment on the local page [bookmark] <br></p>
+            <p> javascript:<strong>JS code</strong> - executes a javaScript code) </p>
+          </div></strong>" <span class="cssAV">(url of the targeted resource)</span> <br>
+        hreflang="<strong>langCode</strong>" <span class="cssAV">(specifies the language of the targeted page)</span> <br>
+        ping="<strong>URL</strong> <i>URL</i>" <span class="cssAV">(a list of URL's to which ping bodies are sent (for tracking))</span>
+        <span class="browserSupport" title="updated : 2021-05-22">
+          <span><i class="fab fa-chrome"></i> 12 </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> 15 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 17 </span>
+          <span><i class="fab fa-safari"></i> 6 </span>
+        </span> <br>
+        referrerpolicy="<strong class="openable">ref<div>
+            <p> "" - (Default) the higher level of referrer policy </p>
+            <p> no-referrer - the <mark>Referer</mark> header excluded in the request </p>
+            <p> no-referrer-when-downgrade - the <mark>Referrer</mark> header excluded in non TLS (HTTPS) requests </p>
+            <p> origin - only the origin (scheme, host, port) is included in the <mark>Referrer</mark> header in the request </p>
+            <p> origin-when-cross-origin - for cross-origin request only the origin (scheme, host, port) is included in the <mark>Referrer</mark> header, for same-site request the <mark>Referrer</mark> header contains the full referrer</p>
+            <p> same-origin - the <mark>Referer</mark> header is included only in same-origin requests (omitted for cross-origin requests) </p>
+            <p> strict-origin - the <mark>Referer</mark> header is included in the request if the security level stays the same (included in HTTPS -> HTTPS, excluded in HTTPS -> HTTP) </p>
+            <p> strict-origin-when-corss-origin - the <mark>Referer</mark> header is included in the request for same-site request, for cross-origin requests include only if the security level stays the same (included in HTTPS -> HTTPS, excluded in HTTPS -> HTTP) </p>
+            <p> unsafe-url - the <mark>Referer</mark> header includes only the origin and the path (but not the document fragment, password, username) </p>
+          </div></strong>" <span class="cssAV">(controls the <mark>Referer</mark> header for this request)</span>
+        <span class="browserSupport" title="updated : 2021-05-22">
+          <span><i class="fab fa-chrome"></i> 51 </span>
+          <span><i class="fab fa-firefox"></i> 50 </span>
+          <span><i class="fab fa-opera"></i> 38 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 11.1 </span>
+        </span> <br>
+        rel="<strong class="openable">relation<div>
+            <p> alternative - alternative page </p>
+            <p> author - link to the document's author </p>
+            <p> dns-prefetch - hint the browser that the resource is needed, so the browser can make a pre dns lookup so when the client click the resource is ready </p>
+            <p> help - help about this page </p>
+            <p> icon - 'favicon' represents the page (auditory or visual) (page icon usually) </p>
+            <p> license - links to licensing informations </p>
+            <p> manifest - link is a Web App Manifest </p>
+            <p> module-preload - high priority loading module scripts </p>
+            <p> next - leads to the next resource </p>
+            <p> pingback - link to make comments or citation about the page </p>
+            <p> prefetch - suggest that the browser fetch the linked resource in advance </p>
+            <p> prerender - suggests the browser to fetch the linke resource in advance and render the pre-fetched content </p>
+            <p> prev - leads to the previous resource </p>
+            <p> search - specially designed for searching this document </p>
+            <p> stylesheet - stylesheet </p>
+            <p> tag - refers to a tag that applices to this document </p>
+          </div></strong>" <span class="cssAV">(describes the relation between the document and the linked file)</span><br>
+        target="<strong class="openable">trg<div>
+            <p> _blank - new window or tab) </p>
+            <p> _self - same frame the link is on </p>
+            <p> _parent - parent frame </p>
+            <p> _top - in the full body of the window </p>
+            <p> <strong>frame_name</strong> - in the targeted frame </p>
+          </div></strong>" <span class="cssAV">(where (which frame) to open the linked file)</span> <br>
+        type="<strong>mimeType</strong>" <span class="cssAV">specifies the media type (advisory only)</span>
+      </td>
+      <td>
+        - anchor element, creates a hyperlink to another web page
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 1 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 1 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
-</table>
-<br>
-    <details class="example" id="notes">
+  </table>
+  <br>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="http://www.w3schools.com/html/html_links.asp" title="Go To W3Schools HTML Links site!" target="_blank">Go To W3Schools HTML Links site!</a></p>
-    <p><a href="http://www.w3schools.com/css/css_link.asp" title="Go To W3Schools CSS Links site!" target="_blank">Go To W3Schools CSS Links site!</a></p>
-    <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types" rel="external"> possible <mark>rel</mark> attribute values MDN </a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    
-<h2 style="color:green;"><u> Description and Demonstration: </u></h2>
-    <p> - the <mark>&lt;a&gt;&lt;/a&gt;</mark> (anchor) tag creates a hyperlink which allowes the user to navigate from a page to another </p>
-    <p> - hyperlinks can be used as bookmarks or can target documents to open within the browser window or download them (like .pdf files) </p>
-    <p> - ancors can also execute JavaScript code </p>
-<details class="example">    
-<summary> DEMO </summary>    
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="http://www.w3schools.com/html/html_links.asp" title="Go To W3Schools HTML Links site!" target="_blank">Go To W3Schools HTML Links site!</a></p>
+  <p><a href="http://www.w3schools.com/css/css_link.asp" title="Go To W3Schools CSS Links site!" target="_blank">Go To W3Schools CSS Links site!</a></p>
+  <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types" rel="external"> possible <mark>rel</mark> attribute values MDN </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration: </u></h2>
+  <p> - an <mark>&lt;a&gt;</mark> (anchor) element can: </p>
+  <p class="indent-lv1"> - lead the user to another page </p>
+  <p class="indent-lv1"> - download content from the server </p>
+  <p class="indent-lv1"> - used as bookmark within the page (jumps to the bookmarked <mark class="mark">id</mark>) </p>
+  <p class="indent-lv1"> - execute JavaScript code </p>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     &lt;a href="https://developer.mozilla.org/en-US/" target="_blank" title="Mozilla Developer Network"&gt; MDN &lt;/a&gt;      // opens MDN site
     
     &lt;a href="javascript:void(document.body.style.backgroundColor='red')"&gt; RED &lt;/a&gt;                                  // executes a javaScript code
                                                                                                                     // "void" operator used to make sure the returned value is "undefined"
     </pre>
-</details>
-<details class="example">    
-<summary> Example : </summary>    
-<h4><u> simple example </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> simple example </u></h4>
     <p> - This link goes to the W3Schools site (also styled)</p>
     <a id="link" href="http://www.w3schools.com" title="W3Schools" target="_blanc"> W3SCHOOLS.COM </a>
-        <details>
-        <summary> CODE : </summary>
-    <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     -- CODE (HTML) --
     &lt;a id="link" href="http://www.w3schools.com" title="W3Schools" target="_blanc"&gt; W3SCHOOLS.COM &lt;/a&gt;
     
@@ -153,13 +156,13 @@
         text-decoration: underline;                                 text-decoration: underline;
     }                                                           }
     </pre>
-        </details>
-<h4><u> image link </u></h4>
-<p> - This image is a link it leads to Youtube (changes when hover, it needs a fancy code for achive this)</p>
+    </details>
+    <h4><u> image link </u></h4>
+    <p> - This image is a link it leads to Youtube (changes when hover, it needs a fancy code for achive this)</p>
     <p align="center"><a id="link_image" href="https://www.youtube.com" target="_blank" title="Youtube"></a></p>
-        <details>
-        <summary> CODE : </summary>
-    <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     -- CODE (HTML) --
     &lt;p align="center"&gt;&lt;a id="link_image" href="https://www.youtube.com" target="_blanc" title="Youtube"&gt;&lt;/a&gt;&lt;/p&gt;
     
@@ -177,27 +180,27 @@
         background-image: url(../../../../Pictures/Youtube-hover.png);
     }
     </pre>
-        </details>
-<h4><u> bookmark </u></h4>
-    <p> 1- <a href="#home" title="home"> Jump to the top of the page </a>(this link navigates on the top of this page just use the "id" attribute)</p> 
+    </details>
+    <h4><u> bookmark </u></h4>
+    <p> 1- <a href="#home" title="home"> Jump to the top of the page </a>(this link navigates on the top of this page just use the "id" attribute)</p>
     <p> 2- <a href="../Tables/index.html" title="Jump To Tables!"> Jump To Tables!</a> (this link targets a specific area on a different page) </p>
-        <details>
-        <summary> CODE : </summary>
-    <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;h1 id="home"&gt;Links&lt;/h1&gt;
     
     &lt;p&gt; 1- &lt;a href="#home" title="home"&gt; Jump to the top of the page &lt;/a&gt;(this link navigates on the top of this page just use the "id" attribute)&lt;/p&gt; 
     &lt;p&gt; 3- &lt;a href="../Tables/index.html" title="Jump To Tables!"&gt; Jump To Tables! &lt;/a&gt;(this link targets a specific area on a different page)&lt;/p&gt;
     </pre>
-        </details>
-<h4> <mark>download</mark> attribute demo </h4>
+    </details>
+    <h4> <mark>download</mark> attribute demo </h4>
     <p> - When you target a file the browser will download it unles it is displayable in the browser like "pdf" files </p>
-        <p> 1 - Open <a href="../../../../Pictures/A Sarga Kapszula (Drugs Bunny).pdf" title="Sarga Kapszula" target="_blank"> Sarga Kapszula.pdf</a> (this is a "pdf" displayable file so it will be open in the Browser window)</p>
-        <p> 2 - Download <a href="../../../../Pictures/A Sarga Kapszula (Drugs Bunny).pdf" title="Sarga Kapszula" download> Sarga Kapszula.pdf</a> (this is the same file as above but it is forced to download by the browser using the <mark>download</mark> boolean atribute)</p>
-        <p> 3 - Download and Rename fiel <a href="../../../../Pictures/A Sarga Kapszula (Drugs Bunny).pdf" title="Sarga Kapszula" download="Yellow Pill"> Sarga Kapszula.pdf</a> (this downloads and renames the downloaded file) </p>
-        <details>
-        <summary> CODE : </summary>
-    <pre>
+    <p> 1 - Open <a href="../../../../Pictures/A Sarga Kapszula (Drugs Bunny).pdf" title="Sarga Kapszula" target="_blank"> Sarga Kapszula.pdf</a> (this is a "pdf" displayable file so it will be open in the Browser window)</p>
+    <p> 2 - Download <a href="../../../../Pictures/A Sarga Kapszula (Drugs Bunny).pdf" title="Sarga Kapszula" download> Sarga Kapszula.pdf</a> (this is the same file as above but it is forced to download by the browser using the <mark>download</mark> boolean atribute)</p>
+    <p> 3 - Download and Rename fiel <a href="../../../../Pictures/A Sarga Kapszula (Drugs Bunny).pdf" title="Sarga Kapszula" download="Yellow Pill"> Sarga Kapszula.pdf</a> (this downloads and renames the downloaded file) </p>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p&gt; 1 - Open &lt;a href="../../../../Pictures/A Sarga Kapszula (Drugs Bunny).pdf" title="Sarga Kapszula" target="_blank"&gt; Sarga Kapszula.pdf&lt;/a&gt; 
         (this is a "pdf" displayable file so it will be open in the Browser window)&lt;/p&gt;
     &lt;p&gt; 2 - Download &lt;a href="../../../../Pictures/A Sarga Kapszula (Drugs Bunny).pdf" title="Sarga Kapszula" download&gt; Sarga Kapszula.pdf&lt;/a&gt; 
@@ -205,12 +208,12 @@
     &lt;p&gt; 3 - Download and Rename fiel &lt;a href="../../../../Pictures/A Sarga Kapszula (Drugs Bunny).pdf" 
         title="Sarga Kapszula" download="Yellow Pill"> Sarga Kapszula.pdf&lt;/a&gt; (this downloads and renames the downloaded file) &lt;/p&gt;
     </pre>
-        </details>
-<h4> style link with CSS </h4>
+    </details>
+    <h4> style link with CSS </h4>
     <p><a id="button" href="https://fr.yahoo.com" title="Yahoo-English" target="_blanc"> YAHOO </a></p>
-        <details>
-        <summary> CODE : </summary>
-    <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     -- CODE (HTML) --
     &lt;a id="button" href="https://fr.yahoo.com" title="Yahoo-English" target="_blanc"&gt;YAHOO&lt;/a&gt;
     
@@ -226,17 +229,18 @@
         background-color:red;
     }	
     </pre>
-        </details>
-<h4><u> execute javascript in <mark>"href"</mark> attribute TEST </u></h4>    
+    </details>
+    <h4><u> execute javascript in <mark>"href"</mark> attribute TEST </u></h4>
     <a href="javascript: void(alert('javaScript Executed!'))"> Execute JS in a link </a>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;a href="javascript: void(alert('javaScript Executed!'))"&gt; Execute JS in a link &lt;/a&gt;    
         </pre>
-        </details>    
-</details>    
-    
-    <br><br>
+    </details>
+  </details>
+
+  <br><br>
 </body>
+
 </html>
