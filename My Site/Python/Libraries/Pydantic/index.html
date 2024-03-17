@@ -32,11 +32,7 @@
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
   <p> - <mark>pydantic</mark> is a widely used data validation tool (it's awesome for server data validation, see
     FastAPI) (run <mark>pip install pydantic</mark> to install) </p>
-  <p> - pydantic uses normal python type annotations syntax supporting all Python types (including types in
-    <mark>typing</mark> lib), but it has its own types for a more fine grained type validation like (ex:
-    <mark>PositiveInt</mark> etc...) <a href="https://docs.pydantic.dev/1.10/usage/types/#pydantic-types"
-      target="_blank">[pydantic types]</a>
-  </p>
+  <p> - pydantic uses normal python type annotations syntax supporting all Python types (including types in <mark>typing</mark> lib), but it has its own types for a more fine grained type validation like (ex: <mark>PositiveInt</mark> etc...) <a href="https://docs.pydantic.dev/1.10/usage/types/#pydantic-types" target="_blank">[pydantic types]</a> </p>
   <pre class="syntax">
     from pydantic import BaseModel, Field, <strong class="openable">pydanticType<div>
         <p> - pydantic type for a more fine grained type validation <a href="https://docs.pydantic.dev/1.10/usage/types/#pydantic-types" target="_blank">[pydantic types]</a> </p>
@@ -46,7 +42,7 @@
     class <strong>PydanticModel</strong>(BaseModel):                    // <strong>PydanticModel</strong> is used by tools (like FastAPI) to validate the data flowing through
         <strong>field</strong>: <strong>type|pydanticType</strong> <small>[= <i>def:val</i>]</small>           // defining field/value (if the default value is omitted the field is required)
         <strong>field</strong>: <strong>PydanticModel</strong>                           // field value can be <strong>PydanticModel</strong> to build further graph
-        <strong>field</strong>: <strong>type</strong> = Field(<a href="https://docs.pydantic.dev/latest/usage/fields/#numeric-constraints" target="_blank">args</a>)                      // fine grained field validation (like text length, value upper/lower limit, etc...)
+        <strong>field</strong>: <strong>type</strong> = Field(<a href="https:\/\/docs.pydantic.dev/latest/usage/fields/#numeric-constraints" target="_blank">args</a>)                      // fine grained field validation (like text length, value upper/lower limit, etc...)
         <i>...</i>
     
     

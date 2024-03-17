@@ -1,155 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Functions / @ Rules </title> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Functions / @ Rules </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Functions / @ Rules </h1>
-    <p> Updated ( 2019-01-12 / 2019-04-09 / 2020-01-17 / 2021-06-11 / 2024-03-15 )</p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html" title="CSS">CSS></a>  Functions / @ Rules 
-    </p>
-<table class="table">
-<caption> 
-    CSS Functions 
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  <h1> Functions / @ Rules </h1>
+  <p> Updated ( 2019-01-12 / 2019-04-09 / 2020-01-17 / 2021-06-11 / 2024-03-15 )</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Functions / @ Rules
+  </p>
+  <table class="table">
+    <caption>
+      CSS Functions
+    </caption>
     <tr>
-        <th style="width:30%;"> Unit </th>
-        <th> Description </th>
+      <th style="width:30%;"> Unit </th>
+      <th> Description </th>
     </tr>
     <tr class="05.01">
-        <td> calc(<strong>cssLength</strong> +|-|*|/ <i>cssLength ...</i>) </td>
-        <td> - <i class="fab fa-css3-alt"></i> performs a calculation and returns the result 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 26/19 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 16/4 -moz- </span>
-                <span><i class="fab fa-opera"></i> 15 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 7/6 -webkit- </span>
-            </span>
-        </td>
+      <td> calc(<strong>cssLength</strong> +|-|*|/ <i>cssLength ...</i>) </td>
+      <td> - <i class="fab fa-css3-alt"></i> performs a calculation and returns the result
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 26/19 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 16/4 -moz- </span>
+          <span><i class="fab fa-opera"></i> 15 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 7/6 -webkit- </span>
+        </span>
+      </td>
     </tr>
     <tr class="10.01">
-        <td> min(<strong>cssLength</strong><i>, ...</i>) </td>
-        <td> - <i class="fab fa-css3-alt"></i> returns the smallest value (especially useful with mixed units (ex: <mark>min(100%, 10px)</mark>))
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 79 </span>
-                <span><i class="fab fa-firefox"></i> 75 </span>
-                <span><i class="fab fa-opera"></i> 66 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                <span><i class="fab fa-safari"></i> 11.1 </span>
-            </span>
-        </td>
+      <td> min(<strong>cssLength</strong><i>, ...</i>) </td>
+      <td> - <i class="fab fa-css3-alt"></i> returns the smallest value (especially useful with mixed units (ex: <mark>min(100%, 10px)</mark>))
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 79 </span>
+          <span><i class="fab fa-firefox"></i> 75 </span>
+          <span><i class="fab fa-opera"></i> 66 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 11.1 </span>
+        </span>
+      </td>
     </tr>
     <tr class="10.02">
-        <td> max(<strong>cssLength</strong><i>, ...</i>) </td>
-        <td> - <i class="fab fa-css3-alt"></i> returns the largest value (especially useful with mixed units (ex: <mark>max(100%, 10px)</mark>))
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 79 </span>
-                <span><i class="fab fa-firefox"></i> 75 </span>
-                <span><i class="fab fa-opera"></i> 66 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                <span><i class="fab fa-safari"></i> 11.1 </span>
-            </span>
-        </td>
+      <td> max(<strong>cssLength</strong><i>, ...</i>) </td>
+      <td> - <i class="fab fa-css3-alt"></i> returns the largest value (especially useful with mixed units (ex: <mark>max(100%, 10px)</mark>))
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 79 </span>
+          <span><i class="fab fa-firefox"></i> 75 </span>
+          <span><i class="fab fa-opera"></i> 66 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 11.1 </span>
+        </span>
+      </td>
     </tr>
-</table>
-    <br>
-<table class="table">   
-<caption> 
-    @ Rules 
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      @ Rules
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
     <tr>
-        <th style="width:30%;"> @ rule </th>
-        <th> Description </th>
+      <th style="width:30%;"> @ rule </th>
+      <th> Description </th>
     </tr>
     <tr class="05.01">
-        <td> @charset "<strong>charset</strong>" </td>
-        <td> 
-            - specifies the character encoding for the CSS document <br>
-            - must be the 1st declaration in the CSS document <br>
-            - HTTP header overrides it <br>
-            - cannot be placed as inline style or between the <mark>&lt;style&gt;</mark> tags in the head of the HTML document 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 2 </span>
-                <span><i class="fab fa-firefox"></i> 1.5 </span>
-                <span><i class="fab fa-opera"></i> 9 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5/ NO EDGE </span>
-                <span><i class="fab fa-safari"></i> 4 </span>
-            </span>
-        </td>
+      <td> @charset "<strong>charset</strong>" </td>
+      <td>
+        - specifies the character encoding for the CSS document <br>
+        - must be the 1st declaration in the CSS document <br>
+        - HTTP header overrides it <br>
+        - cannot be placed as inline style or between the <mark>&lt;style&gt;</mark> tags in the head of the HTML document
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 2 </span>
+          <span><i class="fab fa-firefox"></i> 1.5 </span>
+          <span><i class="fab fa-opera"></i> 9 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5/ NO EDGE </span>
+          <span><i class="fab fa-safari"></i> 4 </span>
+        </span>
+      </td>
     </tr>
     <tr class="05.02">
-        <td> @import "<strong>URL</strong>" <i>mediaQueryCondition</i>|url("<strong>URL</strong>") <i>mediaQueryCondition</i>
-            </td>
-        <td> 
-            - imports a stylesheet in the current stylesheet <br>
-            - must be the first declaration after <mark>@charset</mark> 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-            </span>
-        </td>
+      <td> @import <strong>filePath:str</strong>|url(<strong>filePath:str</strong>) <i>mediaQueryCondition</i>
+      </td>
+      <td>
+        - imports a stylesheet in the current stylesheet <br>
+        - must be the first declaration after <mark>@charset</mark>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+        </span>
+      </td>
     </tr>
     <tr class="10.01">
-        <td> @supports <small>not</small> (<strong>prop</strong>:<strong>val</strong>) <small>not|and|or</small> <i>(prop:val) ...</i> { }</td>
-        <td> 
-            - executes the code block if the <strong>prop</strong>:<strong>val</strong> (property and value) is supported by the browser <br>
-            - multiple logical conditions can be specified <br>
-            - if the <strong>prop</strong>:<strong>val</strong> is not supported the code block is ignored 
-            <span id="browserSupport" title="updated : 2019-05-24">
-                <span><i class="fab fa-chrome"></i> 28 </span>
-                <span><i class="fab fa-firefox"></i> 22 </span>
-                <span><i class="fab fa-opera"></i> 12.1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
-                <span><i class="fab fa-safari"></i> 9 </span>
-            </span>
-        </td>
+      <td> @supports <small>not</small> (<strong>prop</strong>:<strong>val</strong>) <small>not|and|or</small> <i>(prop:val) ...</i> { }</td>
+      <td>
+        - executes the code block if the <strong>prop</strong>:<strong>val</strong> (property and value) is supported by the browser <br>
+        - multiple logical conditions can be specified <br>
+        - if the <strong>prop</strong>:<strong>val</strong> is not supported the code block is ignored
+        <span id="browserSupport" title="updated : 2019-05-24">
+          <span><i class="fab fa-chrome"></i> 28 </span>
+          <span><i class="fab fa-firefox"></i> 22 </span>
+          <span><i class="fab fa-opera"></i> 12.1 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
+          <span><i class="fab fa-safari"></i> 9 </span>
+        </span>
+      </td>
     </tr>
-</table>   
-    <br>
-    <details class="example" id="notes">
+  </table>
+  <br>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
     <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href='https://www.w3schools.com/css/css_units.asp' target="_blank"> W3Schools CSS Units </a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href='https://www.w3schools.com/css/css_units.asp' target="_blank"> W3Schools CSS Units </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
 
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-<h2 class="headerExtra"><u> CSS Functions </u></h2>
-<h2 style="color:darkblue;"><u> The <mark>calc()</mark> function </u></h2>
-<details class="example">
-<summary> DEMO </summary>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <h2 class="headerExtra"><u> CSS Functions </u></h2>
+  <h2 style="color:darkblue;"><u> The <mark>calc()</mark> function </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     .myElement {
         width: 25%;                                                                    // fallback for browsers not supporting calc() function
         width: calc(25% + 65px);                            
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> <mark>calc()</mark> function TEST </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> <mark>calc()</mark> function TEST </u></h4>
     <div class="calc_1"> Width (100% - 180px)</div>
     <div class="calc_2"> Width (50% + 150px)</div>
     <div class="calc_3"> Width (100% / 3)</div>
     <div class="calc_4"> Width (15% * 4)</div>
     <div class="calc_5"> Width (((10% * 4) / 2) + 35 - 5)</div>
-        <details>
-        <summary> CODE:</summary>
-        <pre>
+    <details>
+      <summary> CODE:</summary>
+      <pre>
 -- CODE (HTML) --
     &lt;div class="calc_1"&gt; Width (100% - 180px)&lt;/div&gt;
     &lt;div class="calc_2"&gt; Width (50% + 150px)&lt;/div&gt;
@@ -186,13 +187,13 @@
         width: calc(((10% * 4) / 2) + 135px - 25px);
     }
         </pre>
-        </details>    
-</details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> The <mark>mix()</mark> / <mark>max()</mark> functions </u></h2>
-<details class="example">
-<summary> DEMO </summary>
+    </details>
+  </details>
+  <!--------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>mix()</mark> / <mark>max()</mark> functions </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     .test {
       min(100%, 55px);                    // takes the smallest value 
@@ -202,28 +203,28 @@
       min(100%, 55px);                    // takes the largest value 
     }
     </pre>
-</details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> The <mark>var()</mark> function CSS custom properties </u></h2>
-    <p> - <i class="fab fa-css3-alt"></i> CSS custom properties are "sort-of" variables in CSS, they are used to <u>insert property values</u> </p>
-    <p> - CSS variables are scoped (available only on the declared element and on all its nested child elements) </p>
-<details class="example">
-<summary> DEMO </summary>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> <mark>var()</mark> TEST </u></h4>
+  </details>
+  <!--------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>var()</mark> function CSS custom properties </u></h2>
+  <p> - <i class="fab fa-css3-alt"></i> CSS custom properties are "sort-of" variables in CSS, they are used to <u>insert property values</u> </p>
+  <p> - CSS variables are scoped (available only on the declared element and on all its nested child elements) </p>
+  <details class="example">
+    <summary> DEMO </summary>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> <mark>var()</mark> TEST </u></h4>
     <p> - inheritable properties are inherited normally </p>
     <div class="greatParentCssVar">
-        <div class="parentCssVar">
-            <p class="childVar"> CSS variable test paragraph <span>(deep children inherit too)</span></p>
-        </div>    
-        <p class="neighbourVar"> sibling element do not inherit </p>
+      <div class="parentCssVar">
+        <p class="childVar"> CSS variable test paragraph <span>(deep children inherit too)</span></p>
+      </div>
+      <p class="neighbourVar"> sibling element do not inherit </p>
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;div class="greatParentCssVar"&gt;
         &lt;div class="parentCssVar"&gt;
@@ -254,14 +255,14 @@
         font-family: var(--myFont);
     }
         </pre>
-        </details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>    
-<h4><u> <mark>var()</mark> fallback value TEST </u></h4>    
+    </details>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4><u> <mark>var()</mark> fallback value TEST </u></h4>
     <p class="varFallback_test"> myParagraph</p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="varFallback_test"&gt; myParagraph&lt;/p&gt;
 
@@ -275,15 +276,15 @@
         border: var(--myBorder, double 3px blue);   // variable value does not exist, fallback value used
     }
         </pre>
-        </details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h4><u> <mark>var()</mark> multiple fallback values TEST </u></h4>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4><u> <mark>var()</mark> multiple fallback values TEST </u></h4>
     <p> - multiple values separated with commas after the variable identifier works as 1 single value </p>
     <div class="multipleFallback_test"></div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;div class="multipleFallback_test"&gt;&lt;/div&gt;
     
@@ -295,27 +296,27 @@
         background: var(--undefinedBcg, url(bush2.png) no-repeat, url(bush1.png) no-repeat);
     }
         </pre>
-        </details>
-</details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="headerExtra"><u> @ Rules </u></h2>
-<h2 style="color:darkblue;"><u> The <mark>@charset</mark> / <mark>@import</mark> rule </u></h2>
-<details class="example">
-<summary> DEMO </summary>
+    </details>
+  </details>
+  <!--------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"><u> @ Rules </u></h2>
+  <h2 style="color:darkblue;"><u> The <mark>@charset</mark> / <mark>@import</mark> rule </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
 // -- css document ---
     @charset "utf-8";                           // character encoding set   // -! first declaration in the css file 
     @inport url("other Stylesheet.css") screen and (min-width:800px);       // css file from another source imported to the current css file with a media query condition 
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> <mark>@charset</mark> / <mark>@import</mark> rule TEST </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> <mark>@charset</mark> / <mark>@import</mark> rule TEST </u></h4>
     <p class="importedCss"> styled by imported CSS code </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="importedCss"&gt; styled by imported CSS code &lt;/p&gt;
     
@@ -335,13 +336,13 @@
         font-size: 2em;   
     }
         </pre>
-        </details>
-</details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr> 
-<h2 style="color:darkblue;"><u> The <mark>@supports</mark> rule </u></h2>
-<details class="example">
-<summary> DEMO </summary>
+    </details>
+  </details>
+  <!--------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>@supports</mark> rule </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
 // (CSS) @supports rule ------------------------
     @supports(cursor:zoom-in) {                 // if the browser supports the 'cursor:zoom-in' property-value pair the code block is executed   
@@ -352,14 +353,14 @@
         .demo:hover { cursor:zoom-in }                                                                      // if all the above conditions are supported by the browser this code runs
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> <mark>@supports()</mark> TEST-1 </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> <mark>@supports()</mark> TEST-1 </u></h4>
     <p class="support1"> test paragraph </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="support1"&gt; test paragraph &lt;/p&gt;
     
@@ -377,14 +378,14 @@
         }
     }
         </pre>
-        </details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr> 
-<h4 style="color:darkblue;"><u> <mark>@supports()</mark> with <mark>not</mark> operator TEST </u></h4>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 style="color:darkblue;"><u> <mark>@supports()</mark> with <mark>not</mark> operator TEST </u></h4>
     <p class="support2"> text paragraph </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="support2"&gt; text paragraph &lt;/p&gt;
     
@@ -396,14 +397,14 @@
         .support2 { font-size: 2rem }
     }
         </pre>
-        </details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr> 
-<h4 style="color:darkblue;"><u> <mark>@supports()</mark> with <mark>and</mark> and <mark>or</mark> operators TEST </u></h4>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 style="color:darkblue;"><u> <mark>@supports()</mark> with <mark>and</mark> and <mark>or</mark> operators TEST </u></h4>
     <p class="support3"> test paragraph </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="support3"&gt; test paragraph &lt;/p&gt;
     
@@ -415,14 +416,14 @@
         .support3 { font-family: monospace }
     }
         </pre>
-        </details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr> 
-<h4 style="color:darkblue;"><u> <mark>@supports()</mark> nested conditions TEST </u></h4>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 style="color:darkblue;"><u> <mark>@supports()</mark> nested conditions TEST </u></h4>
     <p class="support4"> test paragraph </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="support4"&gt; test paragraph &lt;/p&gt;
     
@@ -431,27 +432,28 @@
         .support4 { color: green }
     }
         </pre>
-        </details>
-<!--------------------------------------------------------------------------------------------------------->
-<hr> 
-<h4 style="color:darkblue;"><u> <mark>CSS.supports</mark> TEST </u></h4>
-<script>
-    var support1 = CSS.supports('-webkit-animation-name', 'myAnim');                    // -> true          
-    var support2 = CSS.supports('(not (pageY:bottom)) and (clip-path:inset(22%)');      // -> true      // (false in EDGE)
-    var support3 = CSS.supports('not (color:orange)');                                  // -> false 
-</script>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 style="color:darkblue;"><u> <mark>CSS.supports</mark> TEST </u></h4>
+    <script>
+      var support1 = CSS.supports('-webkit-animation-name', 'myAnim');                    // -> true          
+      var support2 = CSS.supports('(not (pageY:bottom)) and (clip-path:inset(22%)');      // -> true      // (false in EDGE)
+      var support3 = CSS.supports('not (color:orange)');                                  // -> false 
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 &lt;script&gt;
     var support1 = CSS.supports('-webkit-animation-name', 'myAnim');                    // -> true          
     var support2 = CSS.supports('(not (pageY:bottom)) and (clip-path:inset(22%)');      // -> true      // (false in EDGE)
     var support3 = CSS.supports('not (color:orange)');                                  // -> false 
 &lt;/script&gt;
         </pre>
-        </details>
-</details>    
-    
-    <br><br>
+    </details>
+  </details>
+
+  <br><br>
 </body>
+
 </html>

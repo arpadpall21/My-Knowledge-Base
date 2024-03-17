@@ -4,8 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title> Pytest </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../../../Assets/stylesPages.css">
   <script src="../../../Assets/scriptPages.js"></script>
@@ -25,7 +24,7 @@
       <th style="width:30%;"> CMD </th>
       <th> Description </th>
     </tr>
-    <tr class="0">
+    <tr>
       <td>
         pytest <small>[options]</small> <strong class="openable">path<i>::test::test::...</i>
           <div>
@@ -69,36 +68,36 @@
   <p style='text-indent:30px'> - fixtures and parametrize </p>
   <p> - just like with unittest, test files must be prefixed with <mark>test_</mark> (ex: <mark>test_request.py</mark>)</p>
   <pre class='syntax'>
-    def setup_module(module):                 # runs before all tests in this module (the <mark>module</mark> argument references this module)   
-        <span style='color:darkgrey;'>// some setup logic...</span>
-
-    def teardown_module(module):              # runs after all tests in this module 
-        <span style='color:darkgrey;'>// some teardown logic...</span>
+    def setup_module(module):                // runs before all tests in this module (the <mark>module</mark> argument references this module)   
+        // some setup logic...
+    
+    def teardown_module(module):              // runs after all tests in this module 
+        // some teardown logic...
     
     
     
-    def test_<strong>testCaseName</strong>():                  # test cases (function prefixed with <mark>test_</mark>) can be declared in module level (no need to embed them in a class)
-        <span style='color:darkgrey;'>// some test case...</span>
+    def test_<strong>testCaseName</strong>():                  // test cases (function prefixed with <mark>test_</mark>) can be declared in module level (no need to embed them in a class)
+        // some test case...
     
     
     
-    class Test<strong>TestSuiteName</strong>:                  # test class must be prefixed with <mark>Test</mark>    
-        def setup_method(self, method):       # runs before each test case in this class (the <mark>method</mark> argument is the current test case function)   
-            <span style='color:darkgrey;'>// some setup logic...</span>
+    class Test<strong>TestSuiteName</strong>:                  // test class must be prefixed with <mark>Test</mark>    
+        def setup_method(self, method):       // runs before each test case in this class (the <mark>method</mark> argument is the current test case function)   
+            // some setup logic...
         
-        def teardown_method(self, method):    # runs after each test case in this class 
-            <span style='color:darkgrey;'>// some teardown logic...</span>
-        
-        @classmethod
-        def setup_class(cls):                 # runs before all test cases in this class 
-            <span style='color:darkgrey;'>// some setup logic...</span>
+        def teardown_method(self, method):    // runs after each test case in this class 
+            // some teardown logic...
         
         @classmethod
-        def teardown_class(cls):              # runs after all test cases in this class 
-            <span style='color:darkgrey;'>// some teardown logic...</span>
+        def setup_class(cls):                 // runs before all test cases in this class 
+            // some setup logic...
         
-        def test_<strong>testCaseName</strong>(self):          # test cases within test class (function prefixed with <mark>test_</mark>)
-            <span style='color:darkgrey;'>// some test case...</span>
+        @classmethod
+        def teardown_class(cls):              // runs after all test cases in this class 
+            // some teardown logic...
+        
+        def test_<strong>testCaseName</strong>(self):          // test cases within test class (function prefixed with <mark>test_</mark>)
+            // some test case...
   </pre>
   <details class="example">
     <summary> Example : </summary>
@@ -179,22 +178,21 @@
   <hr>
   <h2 class="header"> Fixtures <mark>@pytest.fixture</mark> </h2>
   <p> - pytes fixtures are functions that are recognized in test cases as arguments, we can write our own custom fixtures
-    but there are a lot of cool built-in fixtures (like: <mark class='mark'>monkeypatch</mark>, <mark
-      class='mark'>caplog</mark>, etc...) </p>
+    but there are a lot of cool built-in fixtures (like: <mark class='mark'>monkeypatch</mark>, <mark class='mark'>caplog</mark>, etc...) </p>
   <p> - <a href="https://docs.pytest.org/en/7.2.x/reference/fixtures.html" target="_blank">Pytest built-in Fixture
       Reference </a></p>
   <pre class='syntax'>
     import pytest
     
     @pytest.fixture
-    def <strong>fixture_1</strong>():
-        <span style='color:darkgray;'>// setup logic...</span>             // we can simply return some value but it's more common to use some kind of setup/teardown logic in fixtures like this   
+    def <strong>fixture_1</strong>():         // we can simply return some value but it's more common to use some kind of setup/teardown logic in fixtures like this   
+        // setup logic...                   
         yield <strong>fixtureResult</strong>
-        <span style='color:darkgray;'>// teardown logic...</span>
+        // teardown logic...
     
     
     def test_<strong>testName</strong>(<strong>fixture_1</strong>):     // the fixture is automatically recognized in test cases (as argument)
-        <strong>fixture_1</strong>   <span style='color:darkgray;'>// using the fixture in test case...</span>
+        <strong>fixture_1</strong>   // using the fixture in test case...
   </pre>
   <details class="example">
     <summary> Example : </summary>
@@ -204,17 +202,17 @@
     
     
     @pytest.fixture
-    def fixture_1():              # usually we use a setup/teardown approach like this
-        # setup logic
+    def fixture_1():                // usually we use a setup/teardown approach like this
+        // setup logic
         yield 1
-        #teardown logic
+        // teardown logic
     
     @pytest.fixture
     def fixture_2():
         yield 2
     
     
-    def test_one(fixture_2):      # the fixture is automatically recognized by the right argument name
+    def test_one(fixture_2):          // the fixture is automatically recognized by the right argument name
         assert fixture_2 == 2
     
     def test_two(fixture_1):
@@ -255,19 +253,19 @@
     import pytest
     
     from person import Person
-    from name_concatenator import NameConcatenator      # must be imported for object monkeypatch
+    from name_concatenator import NameConcatenator        // must be imported for object monkeypatch
     
     
     adam = Person('Adam', 'Szelid')
     
     
     def test_get_name(monkeypatch):
-        monkeypatch.setattr('person.NameConcatenator.concat_names', lambda name, surname : 'mocked value!')   # mocking where the function is used
+        monkeypatch.setattr('person.NameConcatenator.concat_names', lambda name, surname : 'mocked value!')   // mocking where the function is used
         assert adam.get_full_name() == 'mocked value!'
     
     
     def test_get_name2(monkeypatch):
-        monkeypatch.setattr(NameConcatenator, 'concat_names', lambda name, surname : 'mocked value!')         # like this we have to import the object 
+        monkeypatch.setattr(NameConcatenator, 'concat_names', lambda name, surname : 'mocked value!')         // like this we have to import the object 
         assert adam.get_full_name() == 'mocked value!'
     
     
@@ -322,12 +320,12 @@
   <h2 class="header"> Parametrize <mark>@pytest.mark.parametrize()</mark> </h2>
   <p> - with parametrize we can control how many times the test case should run with different values (passed as parameters) </p>
   <pre class='syntax'>
-  # @pytest.mark.parametrize(<strong>arg<i>,...</i>:str</strong>, [<strong class='openable'>tuple<div>
+  @pytest.mark.parametrize(<strong>arg<i>,...</i>:str</strong>, [<strong class='openable'>tuple<div>
       <p> ex: <mark>@pytest.mark.parametrize('arg1,arg2', [(1, 2), (11, 22)])</mark> </p>
       <p> - the decorated test will run twice, arg1 and arg2 arguments will get <mark>1</mark> and <mark>2</mark> on the first pass and <mark>11</mark> and <mark>22</mark> on the second </p>
   </div></strong><i>, ...</i>])
   def test_<strong>testName</strong>(<strong>arg</strong><i>, ...</i>):
-      <span style='color:darkgray;'>// test case...</span>
+      // test case...
   </pre>
   <details class="example">
     <summary> Example : </summary>
@@ -350,20 +348,20 @@
     import pytest
     
     
-    @pytest.mark.asyncio                 # allows async logic testing
+    @pytest.mark.asyncio                    // allows async logic testing
     async def test_<strong>testSuite</strong>():
-        await <strong>awaitable()</strong>                # awaitables can be tested 
+        await <strong>awaitable()</strong>                // awaitables can be tested 
     
     
-    @pytest.mark.asyncio                 # can be used in class level (all class methods can async test now)
+    @pytest.mark.asyncio                 // can be used in class level (all class methods can async test now)
     class Test<strong>TestSuiteName</strong>:
         async def test_<strong>testSuite</strong>():
             await <strong>awaitable()</strong>
         
         <i>...</i>
   </pre>
-  
-  
+
+
   <br><br>
 </body>
 

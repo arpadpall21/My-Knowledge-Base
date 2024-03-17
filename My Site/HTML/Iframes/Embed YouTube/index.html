@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Embed YouTube in Iframe </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Embed YouTube in Iframe </h1>
+  <p> Updated ( 2016-06-01 / 2018-06-17 / 2019-03-28 / 2024-03-17 ) </p>
+  <p class="sitenav"> <a href="../../../index.html">MySite></a>
+    <a href="../../index.html">HTML></a>
+    <a href="../index.html">Iframes></a> Embed YouTube in Iframe
+  </p>
+  <p> - we can embed Youtube videos in iFrames just like it was a video player (we can upload a video on Youtube then embed it our page, this will solve a lot of format compatibility problems) </p>
+  <p> - the Youtube video's id is in the query-string after the <mark>v=</mark> key, and the playlist id is after the <mark>list=</mark> key [2019-03-29] </p>
+  <pre class="syntax">
+SYNTAX :    <em>&lt;iframe src="</em>https://www.youtube.com/embed/<strong>videoId</strong><i>?queryString_Youtube</i><em>"&gt;&lt;/iframe&gt; </em>  
+            <em>&lt;iframe src="</em>https://www.youtube.com/embed/<strong>?queryString_Youtube</strong><em>"&gt;&lt;/iframe&gt;</em>
+            
+                - <strong>videoId</strong> : youtube video id reference (first in the list (if a list is specified in the query string) or the only video)
+                - <i>?queryString_Youtube</i>|<strong>?queryString_Youtube</strong> : paramters to embed and control Youtube video sources   
+                    - playlist=<strong>videoId</strong><i>,videoId,...</i> : custom playlist composed of chosen videos 
+                    - list=<strong>listId</strong> : youtube playlist 
+                    - autoplay=0|1 : start the video when the page is loaded automatically (default <mark>0</mark>)
+                    - controls=0|1|2 : show/hide video controls (default <mark>1</mark>) (apparently the <mark>2</mark> has better performance?)
+                    - loop=0|1 : loop playlist <u>(custom or youtube playlist only!)</u> <u>(does not work with a single video)</u>
+                    - color=white|red : progress bar color (elapsed part) (default <mark>red</mark>)
+                    - disablekb=0|1 : enable disable keyboard shortcuts (default <mark>1</mark>)
+                    - start=<strong>nrSeconds</strong> : sets the start time of the video 
+                    - end=<strong>nrSeconds</strong> : sets the ending time of the video 
+                    - fs=0|1 : show/hide fullscreen button (default <mark>1</mark>)
+                    - hl=<strong>langCode</strong> : sets the language of the interface 
+                    - modestbranding=0|1 : show/hide the "Youtube" logo on the interface (default <mark>1</mark>)
+                    - rel=0|1 : display similar videos at the end of the video (default <mark>1</mark>)
+                    - showinfo=0|1 : show/hide video informations (like title, ect...) (default <mark>1</mark>)
+                    -> <u>il y a quelques plus de parametres, tu peux les retrouver <a href="https://developers.google.com/youtube/player_parameters" target="_blank">(ici [link])</a></u> 
+    
+    // -- the <mark>&lt;object&gt;</mark> and <mark>&lt;embed&gt;</mark> elements also can be used to embed Youtube videos <u style="color:orange;">but it is deprecated form January 2015</u>
+            <em>&lt;object data="</em>https://www.youtube.com/embed/<strong>?queryString_Youtube</strong><em>"&gt;&lt;/object&gt;</em>
+            <em>&lt;embed src="</em>https://www.youtube.com/embed/<strong>?queryString_Youtube</strong><em>"&gt;</em>
+    </pre>
+  <pre>
+// embed one single video ---------------------------------------------------
+    &lt;iframe width="500" height="330" allowfullscreen src="https://www.youtube.com/embed/ehw_T27YEbQ"&gt;&lt;/iframe&gt;              // -! without the "allowfullscreen" attribute full-screen mode is not allowed    
+                                                                         // the "ehw_T27YEbQ" is the video id from youtube 
+                                                                         
+// embed multiple videos (create custom playlist) ---------------------------
+    &lt;iframe width="500" height="330" allowfullscreen src="https://www.youtube.com/embed/?playlist=ehw_T27YEbQ,MkNeIUgNPQ8,tDexBj46oNI"&gt;&lt;/iframe&gt;
+                                                                         // video list created ("ehw_T27YEbQ" / "MkNeIUgNPQ8" / "tDexBj46oNI" are individual videoId's) 
+    
+// embed Youtube playlist ---------------------------------------------------
+    &lt;iframe width="500" height="330" allowfullscreen src="https://www.youtube.com/embed/?list=PLkVbIsAWN2lvpys3pHlAHXGEamiDEWiRN"&gt;&lt;/iframe&gt;
+                                                                         // the "PLkVbIsAWN2lvpys3pHlAHXGEamiDEWiRN" is the Youtube playlist id 
+    
+// set player parameters ---------------------------------------------------- 
+    &lt;iframe width="500" height="300" allowfullscreen src="https://www.youtube.com/embed/?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U&autoplay=1&loop=1&fs=0&hl=hu&start=10"&gt;&lt;/iframe&gt;
+                                                                         // the "list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U" is the youtube video list id
+                                                                         // the "autoplay=1" plays the video when the page is loaded automatically 
+                                                                         // the "loop=1" loops the playlist 
+                                                                         // the "fs=0" removes the full-screen button 
+                                                                         // the "hl=hu" sents the video interface to hungarian language 
+                                                                         // the "start=10" starts the video at 10 seconds
+                                                                         // -! the "&" separates these parameters in the query-string 
+    </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> embed 1 singel video TEST </u></h4>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/9gk_rl3y_SU"></iframe>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/TI4PXFUOPR8"></iframe>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// for one single video we do not need a query string 
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/9gk_rl3y_SU"></iframe>
+    <iframe width="400" height="200"" src="https://www.youtube.com/embed/TI4PXFUOPR8"></iframe>
+        </pre>
+    </details>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> embed multiple videos (embed custom video list) TEST </u></h4>
+    <p> - the iFrame below has a list of 4 videos (custom play list) </p>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/?playlist=9gk_rl3y_SU,TI4PXFUOPR8,ojiGKxIKrWw,MkNeIUgNPQ8"></iframe>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// the "9gk_rl3y_SU" / "TI4PXFUOPR8" / "ojiGKxIKrWw" / "MkNeIUgNPQ8" are indivudual videos chosen for this playlist 
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/?playlist=9gk_rl3y_SU,TI4PXFUOPR8,ojiGKxIKrWw,MkNeIUgNPQ8"></iframe>
+        </pre>
+    </details>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> embed Youtube playlist TEST </u></h4>
+    <p> - we added one video at the beginning of the list </p>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/B9pkdtplToM?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U"></iframe>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// at the beginning of the list we added a video ("B9pkdtplToM")
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/B9pkdtplToM?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U"></iframe>
+        </pre>
+    </details>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> control tools <mark>autoplay</mark> / <mark>loop</mark> / <mark>controls</mark> </u></h4>
+    <p> - <mark>autoplay</mark> (tested it is working) <span style="color:yellow;">disabled on purpose</span> </p>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/KB4_WIPE7vo?autoplay=0&controls=2&"></iframe>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    <iframe width="500" height="300" src="https://www.youtube.com/embed/KB4_WIPE7vo?autoplay=0&controls=2&"></iframe>       // "autoplay=1" tested working (disabled on purpose)
+        </pre>
+    </details>
+    <p> - <mark>controls</mark> video control disabled </p>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/KB4_WIPE7vo?controls=0"></iframe>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    <iframe width="500" height="300" src="https://www.youtube.com/embed/KB4_WIPE7vo?controls=0"></iframe>
+        </pre>
+    </details>
+    <p> - <mark>loop</mark> works only with video a video list (does now work with a single video [first frame]) </p>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/6ZzwrO71BAc?loop=1"></iframe>
+    <iframe width="400" height="200"" src=" https://www.youtube.com/embed/?playlist=JFTr5oRvbtg,MkNeIUgNPQ8,ojiGKxIKrWw&loop=1"></iframe>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/?list=PLj8xiTIFL1M012_Y9cdTAeo9U5psJkZmn&loop=1"></iframe>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    <iframe width="500" height="300" src="https://www.youtube.com/embed/6ZzwrO71BAc?loop=1"></iframe>                   // does not loop because there is only one video 
+    <iframe width="500" height="300" src="https://www.youtube.com/embed/?playlist=JFTr5oRvbtg,MkNeIUgNPQ8,ojiGKxIKrWw&loop=1"></iframe>
+    <iframe width="500" height="300" src="https://www.youtube.com/embed/?list=PLj8xiTIFL1M012_Y9cdTAeo9U5psJkZmn&loop=1"></iframe>
+        </pre>
+    </details>
+    <p> - <mark>color</mark> progress bar color changed to white (elapsed time) </p>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/6ZzwrO71BAc?color=white"></iframe>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    <iframe width="500" height="300" src="https://www.youtube.com/embed/6ZzwrO71BAc?color=white"></iframe>
+        </pre>
+    </details>
+    <p> - <mark>disablekb</mark> keyboard shortcuts disabled </p>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?disablekb=1"></iframe>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?disablekb=1"></iframe>
+        </pre>
+    </details>
+    <p> - <mark>start</mark> / <mark>end</mark> set the start and the ending time of the video (start 15 seconds / end 120 seconds) </p>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?start=15&end=120"></iframe>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?start=15&end=120"></iframe>
+        </pre>
+    </details>
+    <p> - <mark>fs</mark> full-screen button (removed)</p>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?fs=0"></iframe>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?fs=0"></iframe>
+        </pre>
+    </details>
+    <p> - <mark>hl</mark> interface language changed to hungarian </p>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?hl=hu"></iframe>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?hl=hu"></iframe>
+        </pre>
+    </details>
+    <p> - <mark>modestbranding</mark> Youtube logo removed from the video </p>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?modestbranding=1"></iframe>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?modestbranding=1"></iframe>
+        </pre>
+    </details>
+    <p> - <mark>rel</mark> remove displaying similar videos at the end of the video </p>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?rel=0"></iframe>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?rel=0"></iframe>
+        </pre>
+    </details>
+    <p> - <mark>showinfo</mark> hide video informations (not working [2019-03-29]) </p>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?showinfo=0"></iframe>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U&showinfo=0"></iframe>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?showinfo=0"></iframe>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U&showinfo=0"></iframe>
+        </pre>
+    </details>
+    <!-------------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"> using <mark>&lt;object&gt;</mark> / <mark>&lt;embed&gt;</mark> elements to embed Yutube videos TEST </h4>
+    <p> - <mark>&lt;object&gt;</mark> </p>
+    <object width="400" height="200" data="https://www.youtube.com/embed/?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U&showinfo=0"></object>
+    <p> - <mark>&lt;embed&gt;</mark></p>
+    <embed width="400" height="200" src="https://www.youtube.com/embed/?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U&showinfo=0">
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    <object width="400" height="200" data="https://www.youtube.com/embed/?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U&showinfo=0"></object>
+    
+    <embed width="400" height="200" src="https://www.youtube.com/embed/?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U&showinfo=0">
+        </pre>
+    </details>
+  </details>
+
+  <br><br>
+</body>
+
+</html>

@@ -1,392 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Flexbox </title>    
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Flexbox </title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Flexbox (ver 4.0.0)</h1>
-	<p> Updated ( 2017-02-05 / 2017-02-12 / 2019-03-13 / 2019-05-30)</p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html" title="CSS">CSS></a> Flexbox  
-    </p>
-<table class="table">
-<caption>
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  <h1> Flexbox </h1>
+  <p> Updated ( 2017-02-05 / 2019-05-30 / 2024-03-17 )</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Flexbox
+  </p>
+  <table class="table">
+    <caption>
+      Flex Container Properties
+    </caption>
     <tr>
-        <th style="width:15%"> Property </th>
-        <th style="width:40%;"> Value </th>
-        <th> Description </th>
+      <th style="width:15%"> Property </th>
+      <th style="width:40%;"> Value </th>
+      <th> Description </th>
     </tr>
-    <tr class="20.02">
-        <td> align-content </td>
-        <td>  
-            stretch <span class="cssAV">(Default: the "main-flex-axis" placed at the beginning of the "cross-flex-axis" and wraps (if necessary) evenly)</span><br> 
-            center <span class="cssAV">(the "main-flex-axis" placed in the center of the "cross-flex-axis" and if it is wraped it is disptributed around the center)</span><br>	
-            flex-start <span class="cssAV">(the "main-flex-axis" is placed at the beginning of the "cross-flex-axis" and wraps (if necessary) at the start)</span><br>	
-            flex-end <span class="cssAV">(the "main-flex-axis" is placed at the end of the "cross-flex-axis" and wraps (if necessary) at the end)</span><br>	
-            space-between <span class="cssAV">(the "main-flex-axis" is placed at the beginning of the "cross-flex-axis", when it wraps (if necessary) evenly distribute the space between them <u>but the first an the last line will stay at the start and at the end</u>)</span><br>	
-            space-around <span class="cssAV">(the "main-flex-axis" is placed in the center of the "cross-flex-axis", when it wraps (if necessary) the space is evenly distributed around items)</span><br>
-            space-evenly     <span class="cssAV">(the "main-flex-axis" is placed in the center of the "cross-flex-axis", when it wraps (if necessary) the space is evenly distributed between the elements)</span>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 60 </span>
-                <span><i class="fab fa-firefox"></i> 52 </span>
-                <span><i class="fab fa-opera"></i> 47 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> NO </span>
-                <span><i class="fab fa-safari"></i> 11 </span>
-            </span>        
-        </td>
-        <td> 
-            - <i class="fab fa-css3-alt"></i> set the position of the "main-flex-axis" along the "cross-flex-axis" and defines how the "main-flex-axis" wraps if necessary <u>(only when the <mark>flex-wrap</mark> property is set)</u> (set on the flex container)  
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 21 </span>
-                <span><i class="fab fa-firefox"></i> 28 </span>
-                <span><i class="fab fa-opera"></i> 12.1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
-                <span><i class="fab fa-safari"></i> 9/7 -webkit- </span>
-            </span>        
-        </td>
+    <tr>
+      <td> display </td>
+      <td> flex <span class="cssAV">(<i class="fab fa-css3-alt"></i> block-level flex element)</span><br>
+        inline-flex <span class="cssAV">(<i class="fab fa-css3-alt"></i> inline flex element)</span>
+      </td>
+      <td>
+        - display element as flex container
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 20 </span>
+          <span><i class="fab fa-opera"></i> 16/15 -webkit- </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
+          <span><i class="fab fa-safari"></i> 9/6.4 -webkit- </span>
+        </span>
+      </td>
     </tr>
-    <tr class="21.01">
-        <td> align-items </td>
-        <td>  
-            stretch <span class="cssAV">(Default: stretched along the "cross-flex-axis" <u>(works only if the element has no height set)</u>)</span><br>	
-            center <span class="cssAV">(centered along the "cross-flex-axis")</span><br>	
-            flex-start  <span class="cssAV">(placed at the start of the "cross-flex-axis")</span><br>
-            flex-end  <span class="cssAV">(placed at the end of the "cross-flex-axis")</span><br>
-            baseline  <span class="cssAV">(positioned at the baseline (text line) of the container)</span><br>
-        </td>
-        <td> 
-            - <i class="fab fa-css3-alt"></i> defines the alignement of flex items along the "cross-flex-axis" <u>(the <mark>align-content</mark> and <mark>align-self</mark> properties override this property)</u> (set on the flex container)   
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 21 </span>
-                <span><i class="fab fa-firefox"></i> 20 </span>
-                <span><i class="fab fa-opera"></i> 12.1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
-                <span><i class="fab fa-safari"></i> 9/7 -webkit- </span>
-            </span> 
-        </td>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr class="21.02">
-        <td> align-self </td>
-        <td>  
-            auto <span class="cssAV">(Default: inherits the <mark>align-itmes</mark> property value from the parent element or "stretch" if there is no parent element)</span><br>
-            stretch <span class="cssAV">(stretched along the "cross-flex-axis" <u>(works only if the element has no height set)</u>)</span><br>	
-            center <span class="cssAV">(centered on the 'flex-line")</span><br>	
-            flex-start <span class="cssAV">(placed at the beginning of the "cross-flex-axis")</span><br>
-            flex-end <span class="cssAV">(placed at the end of the "cross-flex-axis")</span><br>
-            baseline <span class="cssAV">(positioned at the baseline (text line) of the container)</span><br>
-        </td>
-        <td> 
-            - <i class="fab fa-css3-alt"></i> defines the alignement of the flex item along the "cross-flex-axis" (overrides the <mark>align-items</mark> property but it is overriden by the <mark>align-content</mark> property) (set on the flex item)  
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 21 </span>
-                <span><i class="fab fa-firefox"></i> 20 </span>
-                <span><i class="fab fa-opera"></i> 12.1 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
-                <span><i class="fab fa-safari"></i> 9/7 -webkit- </span>
-            </span> 
-        </td>
-    </tr> 
-    <tr class="05.01">
-        <td> display </td>
-        <td> flex <span class="cssAV">(<i class="fab fa-css3-alt"></i> block-level flex element)</span><br>
-            inline-flex <span class="cssAV">(<i class="fab fa-css3-alt"></i> inline flex element)</span>
-        </td>
-        <td> 
-            - <i class="fab fa-css3-alt"></i> specifies the display behavior of the element 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 20 </span>
-                <span><i class="fab fa-opera"></i> 16/15 -webkit- </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
-                <span><i class="fab fa-safari"></i> 9/6.4 -webkit- </span>
-            </span>        
-        </td>
+    <tr>
+      <td> flex-direction </td>
+      <td>
+        row <span class="cssAV">(default, left-to-righ)</span><br>
+        row-reverse <span class="cssAV">(right-to-left)</span><br>
+        column <span class="cssAV">(top-to-bottom)</span><br>
+        column-reverse <span class="cssAV">(bottom-to-top)</span><br>
+      </td>
+      <td>
+        - sets the "main-flex-axis" direction
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
+          <span><i class="fab fa-opera"></i> 17 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
+          <span><i class="fab fa-safari"></i> 9/6.4 -webkit- </span>
+        </span>
+      </td>
     </tr>
-    <tr class="15.04">
-        <td> flex </td>
-        <td> 
-            <strong>flex-grow flex-shrink flex-basis</strong> <span class="cssAV">(Default: <mark>0</mark> <mark>1</mark> <mark>auto</mark>)</mark></span> 
-        </td>
-        <td> 
-            - <i class="fab fa-css3-alt"></i> shrothand property for <mark>flex-grow</mark>, <mark>flex-shrink</mark> and <mark>flex-basis</mark> (set on the flex item)   
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
-                <span><i class="fab fa-opera"></i> 17 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11/10 -ms- </span>
-                <span><i class="fab fa-safari"></i> 9/6.1 -webkit- </span>
-            </span>    
-        </td>
-    </tr>    
-    <tr class="15.01">
-        <td> flex-basis </td>
-        <td>  
-            auto <span class="cssAV">(Default: equals to the element's current size (width or height depending on the flex-line direction))</span><br>
-            <strong>cssLength</strong><br>
-        </td>
-        <td>
-            - sets the initial length of the element <u>along the "main-flex-axis</u> (set on the flex item)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
-                <span><i class="fab fa-opera"></i> 17 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
-                <span><i class="fab fa-safari"></i> 9/6.1 -webkit- </span>
-            </span> 
-        </td>
-    </tr>    
-    <tr class="10.01">
-        <td> flex-direction </td>
-        <td> 
-            row <span class="cssAV">(default, left-to-righ)</span><br>	
-            row-reverse <span class="cssAV">(right-to-left)</span><br>	
-            column <span class="cssAV">(top-to-bottom)</span><br>	
-            column-reverse <span class="cssAV">(bottom-to-top)</span><br>
-        </td>
-        <td> 
-            - <i class="fab fa-css3-alt"></i> sets the "main-flex-axis" direction (set on the flex container)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
-                <span><i class="fab fa-opera"></i> 17 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
-                <span><i class="fab fa-safari"></i> 9/6.4 -webkit- </span>
-            </span>  
-        </td>
+    <tr>
+      <td> flex-wrap </td>
+      <td>
+        nowrap <span class="cssAV">(Default: flex-line doesn't wrap)</span><br>
+        wrap <span class="cssAV">(wraps the flex-line when necessary)</span><br>
+        wrap-reverse <span class="cssAV">(wraps the flex-line when necessary in inverse order)</span><br>
+      </td>
+      <td>
+        - sets if/how the "main-flex-axis" is wrappwed when flex children have no more space along the "main-flex-axis"
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
+          <span><i class="fab fa-opera"></i> 17 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
+          <span><i class="fab fa-safari"></i> 9/6.4 -webkit- </span>
+        </span>
+      </td>
     </tr>
-    <tr class="10.03">
-        <td> flex-flow </td>
-        <td> <strong>flex-direction flex-wrap</strong> </td>
-        <td> 
-            - <i class="fab fa-css3-alt"></i> shorthand property for the <mark>flex-direction</mark> and <mark>flex-wrap</mark> properties  (set on the flex container)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
-                <span><i class="fab fa-opera"></i> 17 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
-                <span><i class="fab fa-safari"></i> 9/6.4 -webkit- </span>
-            </span>  
-        </td>
-    </tr>    
-    <tr class="15.02">
-        <td> flex-grow </td>
-        <td> 
-            <strong>nr</strong>  <span class="cssAV">(Default: <mark>0</mark> <u>not growing</u>)</span> <br>
-        </td>
-        <td> 
-            - <i class="fab fa-css3-alt"></i> specifies how much the flex item grows <u>(along the "main-flex-axis)</u> relative to other elements in the container (set on the flex item) <br>
-            - Ex: if we have 3 elements with each flex-flow set to 1 they will grow equaly <br>
-            - Ex: if we have 3 elements that the flex-flow value set to 2 elements to 1 and one element to 3 the last element will take up 3 out of 5 space 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
-                <span><i class="fab fa-opera"></i> 17 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
-                <span><i class="fab fa-safari"></i> 9/6.1 -webkit- </span>
-            </span> 
-        </td>
-    </tr>    
-    <tr class="15.03">
-        <td> flex-shrink </td>
-        <td> 
-            <strong>nr</strong>  <span class="cssAV">(Default: <mark>1</mark>) <mark>0</mark> means no shrink)</span> <br>
-        </td>
-        <td> 
-            - <i class="fab fa-css3-alt"></i> specifies how much the flex item shrinks <u>(along the "main-flex-axis)</u> relative to other elements in the container (set on the flex item) <br>
-            - Ex: if we have 3 elements with each flex-shrink set to 1 they will shrink equaly <br>
-            - Ex: if we have 3 elements that the flex-shrink value set to 2 elements to 1 and one element to 3 the last element will whrink 3 times faster than the other 2   
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
-                <span><i class="fab fa-opera"></i> 17 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
-                <span><i class="fab fa-safari"></i> 9/6.1 -webkit- </span>
-            </span>  
-        </td>
-    </tr>    
-    <tr class="10.02">
-        <td> flex-wrap </td>
-        <td>  
-            nowrap <span class="cssAV">(Default: flex-line doesn't wrap)</span><br>
-            wrap <span class="cssAV">(wraps the flex-line when necessary)</span><br>	
-            wrap-reverse  <span class="cssAV">(wraps the flex-line when necessary in inverse order)</span><br>
-        </td>
-        <td> 
-            - <i class="fab fa-css3-alt"></i> specifies if/how the "main-flex-axis" is wrappwed when the flex children have no more space along the "main-flex-axis" (set on the flex container)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
-                <span><i class="fab fa-opera"></i> 17 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
-                <span><i class="fab fa-safari"></i> 9/6.4 -webkit- </span>
-            </span>        
-        </td>
+    <tr>
+      <td> flex-flow </td>
+      <td> <strong>flex-direction flex-wrap</strong> </td>
+      <td>
+        - shorthand for <mark>flex-direction</mark> and <mark>flex-wrap</mark> properties
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
+          <span><i class="fab fa-opera"></i> 17 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
+          <span><i class="fab fa-safari"></i> 9/6.4 -webkit- </span>
+        </span>
+      </td>
     </tr>
-    <tr class="20.01">
-        <td> justify-content </td>
-        <td> 
-            flex-start  <span class="cssAV">(Default: at the start of the "main-flex-axis")</span><br>
-            flex-end  <span class="cssAV">(at the end of the "main-flex-axis")</span><br>	
-            center  <span class="cssAV">(centered on the "main-flex-axis")</span><br>
-            space-between  <span class="cssAV">(space envely distributed between the elements <u>(first and last element stays at the start and end on the "main-flex-axis")</u>)</span><br>
-            space-around  <span class="cssAV">(space evenly distributed around each element along the "main-flex-axis")</span><br>
-            space-evenly    <span class="cssAV">(space evenly distributed between elements along the "main-flex-axis")</span>
-            <span id="browserSupport" title="upated: 2019-05-30">
-                <span><i class="fab fa-chrome"></i> 60 </span>
-                <span><i class="fab fa-firefox"></i> 52 </span>
-                <span><i class="fab fa-opera"></i> 47 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> NO </span>
-                <span><i class="fab fa-safari"></i> 11 </span>
-            </span>  
-        </td>
-        <td> 
-            - <i class="fab fa-css3-alt"></i> specifies the flex items alignement on the "main-flex-axis" (set on the flex container)  
-            <span id="browserSupport" title="upated: 2019-05-30">
-                <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
-                <span><i class="fab fa-opera"></i> 17 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
-                <span><i class="fab fa-safari"></i> 9/6.1 -webkit- </span>
-            </span>  
-        </td>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr class="16.01">
-        <td> order </td>
-        <td>  
-            <strong>nr</strong>  <span class="cssAV">((Default: <mark>0</mark>) defines the element order)</span><br>
-        </td>
-        <td> 
-            - <i class="fab fa-css3-alt"></i> specifies the flex item order relative to each other (set on the flex item) <br>
-            - flex items having this property will be placed <u>after</u> flex items not having this property 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
-                <span><i class="fab fa-opera"></i> 17 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
-                <span><i class="fab fa-safari"></i> 9/6.1 -webkit- </span>
-            </span>  
-        </td>
+    <tr>
+      <td> justify-content </td>
+      <td>
+        flex-start <span class="cssAV">(Default: at the start of the "main-flex-axis")</span><br>
+        flex-end <span class="cssAV">(at the end of the "main-flex-axis")</span><br>
+        center <span class="cssAV">(centered on the "main-flex-axis")</span><br>
+        space-between <span class="cssAV">(space envely distributed between the elements <u>(first and last element stays at the start and end on the "main-flex-axis")</u>)</span><br>
+        space-around <span class="cssAV">(space evenly distributed around each element along the "main-flex-axis")</span><br>
+        space-evenly <span class="cssAV">(space evenly distributed between elements along the "main-flex-axis")</span>
+        <span id="browserSupport" title="upated: 2019-05-30">
+          <span><i class="fab fa-chrome"></i> 60 </span>
+          <span><i class="fab fa-firefox"></i> 52 </span>
+          <span><i class="fab fa-opera"></i> 47 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> NO </span>
+          <span><i class="fab fa-safari"></i> 11 </span>
+        </span>
+      </td>
+      <td>
+        - specifies the flex items alignement on the "main-flex-axis"
+        <span id="browserSupport" title="upated: 2019-05-30">
+          <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
+          <span><i class="fab fa-opera"></i> 17 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
+          <span><i class="fab fa-safari"></i> 9/6.1 -webkit- </span>
+        </span>
+      </td>
     </tr>
-    <tr class="20.03">
-        <td> place-content </td>
-        <td>  
-            <strong>align-content justify-content</strong><br>
-            <strong>align-content/justify-content</strong> <span class="cssAV">(one value applies for both properties)</span>
-            <span id="browserSupport" title="updated: 2019-05-30">
-                <span><i class="fab fa-firefox"></i> 60 </span>
-            </span>  
-        </td>
-        <td> 
-            - shorthand property for <mark>align-content</mark> and <mark>justify-content</mark> (set on the flex container)  
-            <span id="browserSupport" title="updated: 2021-05-21">
-                <span><i class="fab fa-chrome"></i> 59 </span>
-                <span><i class="fab fa-firefox"></i> 45 </span>
-                <span><i class="fab fa-opera"></i> 46 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                <span><i class="fab fa-safari"></i> 9 </span>
-            </span>  
-        </td>
+    <tr>
+      <td> align-items </td>
+      <td>
+        stretch <span class="cssAV">(Default: stretched along the "cross-flex-axis" <u>(works only if the element has no height set)</u>)</span><br>
+        center <span class="cssAV">(centered along the "cross-flex-axis")</span><br>
+        flex-start <span class="cssAV">(placed at the start of the "cross-flex-axis")</span><br>
+        flex-end <span class="cssAV">(placed at the end of the "cross-flex-axis")</span><br>
+        baseline <span class="cssAV">(positioned at the baseline (text line) of the container)</span><br>
+      </td>
+      <td>
+        - sets the alignement of flex items along the "cross-flex-axis" <br>
+        - the <mark>align-content</mark> and <mark>align-self</mark> properties override this one
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 21 </span>
+          <span><i class="fab fa-firefox"></i> 20 </span>
+          <span><i class="fab fa-opera"></i> 12.1 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
+          <span><i class="fab fa-safari"></i> 9/7 -webkit- </span>
+        </span>
+      </td>
     </tr>
-    
-</table>   
-<br>    
-    <details class="example" id="notes">
+    <tr>
+      <td> align-content </td>
+      <td>
+        stretch <span class="cssAV">(Default: the "main-flex-axis" placed at the beginning of the "cross-flex-axis" and wraps (if necessary) evenly)</span><br>
+        center <span class="cssAV">(the "main-flex-axis" placed in the center of the "cross-flex-axis" and if it is wraped it is disptributed around the center)</span><br>
+        flex-start <span class="cssAV">(the "main-flex-axis" is placed at the beginning of the "cross-flex-axis" and wraps (if necessary) at the start)</span><br>
+        flex-end <span class="cssAV">(the "main-flex-axis" is placed at the end of the "cross-flex-axis" and wraps (if necessary) at the end)</span><br>
+        space-between <span class="cssAV">(the "main-flex-axis" is placed at the beginning of the "cross-flex-axis", when it wraps (if necessary) evenly distribute the space between them <u>but the first an the last line will stay at the start and at the end</u>)</span><br>
+        space-around <span class="cssAV">(the "main-flex-axis" is placed in the center of the "cross-flex-axis", when it wraps (if necessary) the space is evenly distributed around items)</span><br>
+        space-evenly <span class="cssAV">(the "main-flex-axis" is placed in the center of the "cross-flex-axis", when it wraps (if necessary) the space is evenly distributed between the elements)</span>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 60 </span>
+          <span><i class="fab fa-firefox"></i> 52 </span>
+          <span><i class="fab fa-opera"></i> 47 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> NO </span>
+          <span><i class="fab fa-safari"></i> 11 </span>
+        </span>
+      </td>
+      <td>
+        - controls how flex lines are distributed along the "cross-flex-axis" (on <mark>flex-wrap</mark>)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 21 </span>
+          <span><i class="fab fa-firefox"></i> 28 </span>
+          <span><i class="fab fa-opera"></i> 12.1 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
+          <span><i class="fab fa-safari"></i> 9/7 -webkit- </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> place-content </td>
+      <td>
+        <strong>align-content justify-content</strong><br>
+        <strong>align-content/justify-content</strong> <span class="cssAV">(one value applies for both properties)</span>
+        <span id="browserSupport" title="updated: 2019-05-30">
+          <span><i class="fab fa-firefox"></i> 60 </span>
+        </span>
+      </td>
+      <td>
+        - shorthand for <mark>align-content</mark> and <mark>justify-content</mark>
+        <span id="browserSupport" title="updated: 2021-05-21">
+          <span><i class="fab fa-chrome"></i> 59 </span>
+          <span><i class="fab fa-firefox"></i> 45 </span>
+          <span><i class="fab fa-opera"></i> 46 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 9 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      Flex Item Properties
+    </caption>
+    <tr>
+      <th style="width:15%"> Property </th>
+      <th style="width:40%;"> Value </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td> flex-basis </td>
+      <td>
+        auto <span class="cssAV">(Default: equals to the element's current size (width or height depending on the flex-line direction))</span><br>
+        <strong>cssLength</strong><br>
+      </td>
+      <td>
+        - sets the initial length of the element along the "main-flex-axis
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
+          <span><i class="fab fa-opera"></i> 17 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
+          <span><i class="fab fa-safari"></i> 9/6.1 -webkit- </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> flex-grow </td>
+      <td>
+        <strong>nr</strong> <span class="cssAV">(Default: <mark>0</mark> <u>not growing</u>)</span> <br>
+      </td>
+      <td>
+        - - specifies how much the flex item grows along the "main-flex-axis relative to other elements in the container <br>
+        - ex: if we have 3 elements with each flex-flow set to 1 they will grow equaly <br>
+        - ex: if we have 3 elements that the flex-flow value set to 2 elements to 1 and one element to 3 the last element will take up 3 out of 5 space
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
+          <span><i class="fab fa-opera"></i> 17 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
+          <span><i class="fab fa-safari"></i> 9/6.1 -webkit- </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> flex-shrink </td>
+      <td>
+        <strong>nr</strong> <span class="cssAV">(Default: <mark>1</mark>) <mark>0</mark> means no shrink)</span> <br>
+      </td>
+      <td>
+        - specifies how much the flex item shrinks along the "main-flex-axis relative to other elements in the container <br>
+        - Ex: if we have 3 elements with each flex-shrink set to 1 they will shrink equaly <br>
+        - Ex: if we have 3 elements that the flex-shrink value set to 2 elements to 1 and one element to 3 the last element will whrink 3 times faster than the other 2
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
+          <span><i class="fab fa-opera"></i> 17 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
+          <span><i class="fab fa-safari"></i> 9/6.1 -webkit- </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> flex </td>
+      <td>
+        <strong>flex-grow flex-shrink flex-basis</strong> <span class="cssAV">(Default: <mark>0</mark> <mark>1</mark> <mark>auto</mark>)</mark></span>
+      </td>
+      <td>
+        - shrothand for <mark>flex-grow</mark>, <mark>flex-shrink</mark> and <mark>flex-basis</mark>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
+          <span><i class="fab fa-opera"></i> 17 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11/10 -ms- </span>
+          <span><i class="fab fa-safari"></i> 9/6.1 -webkit- </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> order </td>
+      <td>
+        <strong>nr</strong> <span class="cssAV">((Default: <mark>0</mark>) defines the element order)</span><br>
+      </td>
+      <td>
+        - sets the flex item order relative to each other <br>
+        - items having this property set are placed <u>after</u> items that do not have this property set
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 29/21 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 28/18 -moz- </span>
+          <span><i class="fab fa-opera"></i> 17 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
+          <span><i class="fab fa-safari"></i> 9/6.1 -webkit- </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> align-self </td>
+      <td>
+        auto <span class="cssAV">(Default: inherits the <mark>align-itmes</mark> property value from the parent element or "stretch" if there is no parent element)</span><br>
+        stretch <span class="cssAV">(stretched along the "cross-flex-axis" <u>(works only if the element has no height set)</u>)</span><br>
+        center <span class="cssAV">(centered on the 'flex-line")</span><br>
+        flex-start <span class="cssAV">(placed at the beginning of the "cross-flex-axis")</span><br>
+        flex-end <span class="cssAV">(placed at the end of the "cross-flex-axis")</span><br>
+        baseline <span class="cssAV">(positioned at the baseline (text line) of the container)</span><br>
+      </td>
+      <td>
+        - sets the item alignement along the "cross-flex-axis" <br>
+        - overrides the <mark>align-items</mark> property but it is overriden by the <mark>align-content</mark> property
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 21 </span>
+          <span><i class="fab fa-firefox"></i> 20 </span>
+          <span><i class="fab fa-opera"></i> 12.1 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 </span>
+          <span><i class="fab fa-safari"></i> 9/7 -webkit- </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="http://www.w3schools.com/css/css3_flexbox.asp" target="_blank"> W3Schools Flexbox </a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    <p> - the <mark>align-items: stretch;</mark> and <mark>align-content: stretch;</mark> works only if the element does not have the size set in that direction (depending on the "main-flex-axis" current direction) </p>
-    <p> - <mark>float</mark> , <mark>clear</mark> and <mark>vertical-align</mark> does not have any effent on felxbox items!</p>
-    <p> - <mark>flex-wrap:wrap</mark> overwrites the <mark>flex-shrink</mark> property</p>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - Flex boxes provide a very efficient way to distribute AVAILABLE space among items in a container, (flex-box is CSS level 3)</p>
-    <p> - The flex container is declared by <mark>display:flex;</mark> or <mark>display:inline-flex;</mark> properties </p>
-    <p> - Everything <u>outside a flex container</u> and <u>inside a flex item</u> are not affected by any of the flex properties </p>
-    <p> - The flex-box layout is "flex-line" oriented design, all elements are positioned relative to this line </p>
-    <p><img src="flexbox.png" alt="flexbox" width="500px"></p>
-<h2 style="color:darkblue;"><u> The <mark>display</mark> / <mark>flex-direction</mark> / <mark>flex-wrap</mark> / <mark>flex-flow</mark> / <mark>order</mark> / <mark>flex-basis</mark> / <mark>flex-grow</mark> / <mark>flex-shrink</mark> / <mark>flex</mark> properties </u></h2>
-<details class="example">
-<summary> DEMO </summary>
-    <pre>
-    &lt;div class="myElement"&gt;
-        &lt;div&gt;1&lt;/div&gt;
-        &lt;div&gt;2&lt;/div&gt;
-        &lt;div&gt;3&lt;/div&gt;
-        &lt;div&gt;4&lt;/div&gt;
-    &lt;/div&gt;
-        
--- CSS --
-// perfectly centered element -----------------------------------------------------
-    .myElement { display: flex; }
-    .myElement > childElement { margin:auto; }                                     // child element perfectly centered
-        
-// flex-direction / flex-wrap / flex-flow / --------------------------------------- 
-    .myElement {
-        display: flex;
-        fext-direction: row-reverse;                                               // element order (main-flex-axis) goes from right-to-left
-        flex-wrap: wrap;                                                           // flex line is wrapped if the box is not large enough (along the "main-flex-axis") to the children elements
-  // -> flex-flow: row-revers wrap;                                                   does the same as the two properties above (shorthand property)
-    }
-    
-// order --------------------------------------------------------------------------  
-// -! the "order" property must be set on ALL the elements otherwise the "counted elements" will be placed AFTER the uncounted ones (in this case "&lt;div&gt;3&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;1&lt;/div&gt;")     
-    .myElement div:first-child { order: 2; }                                       // element placed as 2nd in the element order 
-    .myElement div:nth-child(2) { order: 1; }                                      // element placed as 1st in the element order 
-                                                                                   // the "order" property works only on flex-container children elements
-    
-// flex-basis / flex-shrink / flex-grow / flex ------------------------------------ 
-// -! "flex-grow" distributes the available space only! (space distribution is calucated above the original size)
-// -! "flex-shrink" fires only if the flex-container forces its children elements to shrink but elements never get smaller than its content + padding
-// !! if "flex-wrap" property is set elements never shrink because the flex-container will wrap the "main-flex-line" instead of shrinking elements 
-    .myElement div:first-child {
-        flex-basis: 50px;                                                          // element size along the "main-flex-axis" is set (in this case the width because the "main-flex-axis" goes from left-to-right)
-        flex-grow: 0;                                                              // (default value) element is not growing (never gets bigger than 20px;)
-        flex-shrink: 0;                                                            // element is not shrinking (never gets smallert than 20px;)
-    }                                   
-    .myElement div:nth-child(2) {       
-        flex-basis: 60px;               
-        flex-grow: 1;                                                              // element grow values is 1/6    // !! takes 1 part out of 6 from the available space
-        flex-shrink: 2;                                                            // element shrinks 2 times faster relative to other elements 
-    }
-    .myElement div:nth-child(3) {
-        flex-basis: 70px;                                                          // -! element sizes are not the same (for the demo sake)
-        flex-grow: 3;                                                              // element grow values is 3/6    // !! takes 3 parts out of 6 from the available space
-        flex-shrink: 1;                                                            // element shrinks 1 time faster relative to other elements (default value)
-    }
-    .myElement div:last-child {
-        flex-basis: 50px;
-        flex-grow: 2;                                                              // element grow values is 2/6    // !! takes 2 parts out of 6 from the available space
-        flex-shrink: 4;                                                            // element shrniks 4 times faster than relative to other elements 
-  // -> flex: 2 4 50px;                                                               does the same as the 3 properties above (shorthand property)   
-    }
-    // -! this is how the above "flex-grow" is calculated, (0+1+3+2=6) the available space is slit up to 6 pieces than the "flex-grow" property defines how much of this shared space is distributed to each individual element  
-    </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> - Perfect Centering : </u></h4>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="http://www.w3schools.com/css/css3_flexbox.asp" target="_blank"> W3Schools Flexbox </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - the <mark>align-items: stretch;</mark> and <mark>align-content: stretch;</mark> works only if the element does not have the size set in that direction (depending on the "main-flex-axis" current direction) </p>
+  <p> - <mark>flex-wrap:wrap</mark> overwrites the <mark>flex-shrink</mark> property</p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - Flex boxes provide a very efficient way to distribute AVAILABLE space among items in a container, (flex-box is CSS level 3)</p>
+  <p> - The flex container is declared by <mark>display:flex;</mark> or <mark>display:inline-flex;</mark> properties </p>
+  <p> - Everything <u>outside a flex container</u> and <u>inside a flex item</u> are not affected by any of the flex properties </p>
+  <p> - The flex-box layout is "flex-line" oriented design, all elements are positioned relative to this line </p>
+  <p><img src="flexbox.png" alt="flexbox" width="500px"></p>
+  <h2 style="color:darkblue;"><u> The <mark>display</mark> / <mark>flex-direction</mark> / <mark>flex-wrap</mark> / <mark>flex-flow</mark> / <mark>order</mark> / <mark>flex-basis</mark> / <mark>flex-grow</mark> / <mark>flex-shrink</mark> / <mark>flex</mark> properties </u></h2>
+  <details class="example">
+    <summary> Example (can be pseudo code): </summary>
+    <h4 style="color:darkblue;"><u> Perfect Centering with flex and <mark>margin:auto</mark> </u></h4>
     <p> - Flexbox perfectly center items with an easy <mark>margin:auto;</mark> declaration</p>
     <div class="perfect-centering">
-        <div> Perfectly centered</div>
+      <div> Perfectly centered</div>
     </div>
     <div class="perfect-centering">
-        <div> Perfectly centered</div>
-        <div> Perfectly centered</div>
+      <div> Perfectly centered</div>
+      <div> Perfectly centered</div>
     </div>
-        <details style="clear:left;">
-        <summary> CODE </summary>
-        <pre>
--- CODE (HTML) --
+    <details style="clear:left;">
+      <summary> CODE </summary>
+      <pre>
+// HTML ---
     &lt;div class="perfect-centering"&gt;
         &lt;div&gt; Perfectly centered&lt;/div&gt;
     &lt;/div&gt;
@@ -395,51 +371,45 @@
         &lt;div&gt; Perfectly centered &lt;/div&gt;
     &lt;/div&gt;
     
--- CODE (CSS) --
+    
+// CSS --
     .perfect-centering{
-        float: left;
         display: flex;
-        box-sizing: border-box;
-        margin: 1%;
-        width: 30%;
-        height: 270px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
+    
     .perfect-centering div{
-        padding: 5px;
         margin: auto;
-        background-color: orange;
     }
         </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> - <mark>flex-direction</mark> TEST </u></h4>
+    </details>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> The <mark>flex-direction</mark> property </u></h4>
     <p> - here are 4 flexboxes with 4 different directions</p>
-    <div class="flex-direction-1"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
+    <div class="flex-direction-1">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
     </div>
     <div class="flex-direction-2">
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
     </div>
     <div class="flex-direction-3">
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
     </div>
     <div class="flex-direction-4">
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
     </div>
-        <details style="clear:left;">
-        <summary> CODE </summary>
-        <pre>
--- CODE (HTML) --
+    <details style="clear:left;">
+      <summary> CODE </summary>
+      <pre>
+// HTML ---
     &lt;div class="flex-direction-1"&gt;
         &lt;div&gt; Item 1&lt;/div&gt;
         &lt;div&gt; Item 2&lt;/div&gt;
@@ -461,89 +431,59 @@
         &lt;div&gt; Item 3&lt;/div&gt;
     &lt;/div&gt;
     
--- CODE (CSS) --
-    [class|=flex-direction] div{
-        width: 50px;
-        height: 50px;
-        margin: 7px;
-        background-color: orange;
-    }
+// CSS ---
     .flex-direction-1{
-        float: left;
         display: flex;
-        box-sizing: border-box;
-        margin: 10px;
-        width: 250px;
-        height: 250px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
+    
     .flex-direction-2{
-        float: left;
         display: flex;
         flex-direction: row-reverse;                // fliex line direction reversed 
-        box-sizing: border-box;
-        margin: 10px;
-        width: 250px;
-        height: 250px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
+    
     .flex-direction-3{
-        float: left;
         display: flex;
         flex-direction: column;                     // flex line from top to bottom 
-        box-sizing: border-box;
-        margin: 10px;
-        width: 250px;
-        height: 250px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
+    
     .flex-direction-4{
-        float: left;
         display: flex;
         flex-direction: column-reverse;             // flex line from bottom to top 
-        box-sizing: border-box;
-        margin: 10px;
-        width: 250px;
-        height: 250px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
-                </pre>
-                </details>
-<!------------------------------------------------------------------------------------------------------------------>        
-<h4 style="color:darkblue;"><u> - <mark>flex-wrap</mark> TEST </u></h4>
+    </pre>
+    </details>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> The <mark>flex-wrap</mark> property </u></h4>
     <p> - flex line break if necessary (resize the browser width to see the effect) </p>
-    <div class="flex-wrap-1"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
-        (nowrap)
+    <div class="flex-wrap-1">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
+      (nowrap)
     </div>
-    <div class="flex-wrap-2"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
-        (wrap)
+    <div class="flex-wrap-2">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
+      (wrap)
     </div>
-    <div class="flex-wrap-3"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
-        (wrap-reverse)
+    <div class="flex-wrap-3">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
+      (wrap-reverse)
     </div>
-        <details style="clear:left;">
-        <summary> CODE </summary>
-        <pre>
--- CODE (HTML) --
+    <details style="clear:left;">
+      <summary> CODE </summary>
+      <pre>
+// HTML ---
     &lt;div class="flex-wrap-1"&gt; 
         &lt;div&gt;  Item 1&lt;/div&gt; 
         &lt;div&gt; Item 2&lt;/div&gt; 
@@ -566,69 +506,40 @@
         &lt;div&gt; Item 5&lt;/div&gt; 
     &lt;/div&gt; 
     
--- CODE (CSS) --
-    [class|=flex-wrap] > div{
-        width: 50px;
-        height: 50px;
-        margin: 7px;
-        background-color: orange;
-    }
+    
+// CSS --
     .flex-wrap-1{
-        float: left;
-        display: block;
         display: flex;
-        flex-wrap: nowrap;
-        box-sizing: border-box;
-        margin: 10px;
-        width: 30%;
-        max-width: 400px;
-        height: 150px;
-        border: 2px solid black;
-        background-color: lightgreen;
+        flex-wrap: nowrap;              // default
     }
+    
     .flex-wrap-2{
-        float: left;
-        display: block;
         display: flex;
         flex-wrap: wrap;
-        box-sizing: border-box;
-        margin: 10px;
-        width: 30%;
-        max-width: 400px;
-        height: 150px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
+    
     .flex-wrap-3{
-        float: left;
-        display: block;
         display: flex;
         flex-wrap: wrap-reverse;
-        box-sizing: border-box;
-        margin: 10px;
-        width: 30%;
-        max-width: 400px;
-        height: 150px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
-        </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------------------>        
-<h4 style="color:darkblue;"><u> - <mark>order</mark> TEST </u></h4>
+    </pre>
+    </details>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> The <mark>order</mark> property </u></h4>
     <p> - all items must have the "order" property declared to be able to place element arround, (undeclared items doesn't take place in the order line!)</p>
-    <div class="flex-order-1"> 
-        <div class="flex-order-item orderitem1"> Item 1</div>
-        <div class="flex-order-item orderitem2"> Item 2</div>
-        <div class="flex-order-item orderitem3"> Item 3</div>
-        <div class="flex-order-item orderitem4"> Item 4</div>
-        <div class="flex-order-item orderitem5"> Item 5</div>
+    <div class="flex-order-1">
+      <div class="flex-order-item orderitem1"> Item 1</div>
+      <div class="flex-order-item orderitem2"> Item 2</div>
+      <div class="flex-order-item orderitem3"> Item 3</div>
+      <div class="flex-order-item orderitem4"> Item 4</div>
+      <div class="flex-order-item orderitem5"> Item 5</div>
     </div>
-        <details>
-        <summary> CODE :</summary>
-        <pre>
--- CODE (HTML) --
-    &lt;div class="flex-order-1"&gt;
+    <details>
+      <summary> CODE :</summary>
+      <pre>
+// HTML --
+    &lt;div class="flex-order-container"&gt;
         &lt;div class="flex-order-item orderitem1"&gt; Item 1&lt;/div&gt;
         &lt;div class="flex-order-item orderitem2"&gt; Item 2&lt;/div&gt;
         &lt;div class="flex-order-item orderitem3"&gt; Item 3&lt;/div&gt;
@@ -636,734 +547,573 @@
         &lt;div class="flex-order-item orderitem5"&gt; Item 5&lt;/div&gt;
     &lt;/div&gt;
     
--- CODE (CSS) --
-    .flex-order-1{
+    
+// CSS --
+    .flex-order-container {
         display: flex;
-        box-sizing: border-box;
-        margin: 10px;
-        width: 30%;
-        height: 150px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
-    .flex-order-item{
-        height: 50px;
-        width: 50px;
-        margin: 7px;
-        background-color: orange;
-    }
-    .orderitem1{
+    
+    .orderitem1 {
         order: 2; 
     }
-    .orderitem2{
+    
+    .orderitem2 {
         order: 5; 
     }
-    .orderitem3{
+    
+    .orderitem3 {
         order: 1; 
     }
-    .orderitem4{
+    
+    .orderitem4 {
         order: 3; 
     }
-    .orderitem5{
+    
+    .orderitem5 {
         order: 4; 
     }
         </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------------------>        
-<h4 style="color:darkblue;"><u> - <mark>flex-grow</mark> / <mark>flex-shrink</mark> / <mark>flex-basis</mark> / <mark>flex</mark> TEST </u></h4>
-    <p> - here is the trick the main "flex" container is not visible but it is actualy there ;)</p>
+    </details>
+    <!------------------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> The <mark>flex-grow</mark> / <mark>flex-shrink</mark> / <mark>flex-basis</mark> / <mark>flex</mark> properties </u></h4>
     <p> - resize the browser to see the effect! </p>
     <p> ---- Same sizes does not grow and not shrink when browser window size change! (goes out)</p>
-    <div class="flex-property-1"> 
-        <div>(grow-value = "0") (shrink-value = "0") (base-width = "300px")</div>
-        <div>(grow-value = "0") (shrink-value = "0") (base-width = "300px")</div>
-        <div>(grow-value = "0") (shrink-value = "0") (base-width = "300px")</div>
+    <div class="flex-property-1">
+      <div>(grow-value = "0") (shrink-value = "0") (base-width = "300px")</div>
+      <div>(grow-value = "0") (shrink-value = "0") (base-width = "300px")</div>
+      <div>(grow-value = "0") (shrink-value = "0") (base-width = "300px")</div>
     </div>
-    <p> ---- Same sizes does not grow but shrink not equaly because the "shrink" value difference when browser window size change! (goes out)</p>
-    <div class="flex-property-2"> 
-        <div>(grow-value = "0") (shrink-value = "1") (base-width = "300px")</div>
-        <div>(grow-value = "0") (shrink-value = "2") (base-width = "300px")</div>
-        <div>(grow-value = "0") (shrink-value = "3") (base-width = "300px")</div>
-    </div>
-    <p> ---- the first and last elements takes the available space because of "grow" value set to "1"</p>
-    <div class="flex-property-3"> 
-        <div>(grow-value = "1") (shrink-value = "0") (base-width = "300px")</div>
-        <div>(grow-value = "0") (shrink-value = "0") (base-width = "200px")</div>
-        <div>(grow-value = "1") (shrink-value = "0") (base-width = "300px")</div>
-    </div>
-    <p> ---- all items grow and shrink equaly</p>
-    <div class="flex-property-4"> 
-        <div>(grow-value = "1") (shrink-value = "1") (base-width = "300px")</div>
-        <div>(grow-value = "1") (shrink-value = "1") (base-width = "300px")</div>
-        <div>(grow-value = "1") (shrink-value = "1") (base-width = "300px")</div>
-    </div>
-    <p> ---- <mark>flex-wrap:wrap</mark> takes action before the <mark>flex-shrink:n</mark> trigers, once all lines are wrapped then the <mark>fles-shrink:n</mark> takes action </p>
-    <div class="flex-combined-flex-wrap"> 
-        <div>(grow-value = "1") (shrink-value = "1") (base-width = "300px")</div>
-        <div>(grow-value = "1") (shrink-value = "1") (base-width = "300px")</div>
-        <div>(grow-value = "1") (shrink-value = "1") (base-width = "300px")</div>
-    </div>
-        <details>
-        <summary> CODE</summary>
-        <pre>
--- CODE (HTML) --
+    <details>
+      <summary> CODE</summary>
+      <pre>
+// HTML ---
     &lt;div class="flex-property-1"&gt;
         &lt;div&gt;(grow-value = "0") (shrink-value = "0") (base-width = "300px")&lt;/div&gt;
         &lt;div&gt;(grow-value = "0") (shrink-value = "0") (base-width = "300px")&lt;/div&gt;
         &lt;div&gt;(grow-value = "0") (shrink-value = "0") (base-width = "300px")&lt;/div&gt;
     &lt;/div&gt;
+    
+    
+// CSS ----
+    [class|=flex-property]{
+        display:flex;
+    }
+    
+    .flex-property-1 div:first-child{
+        flex: 0 0 300px;
+    }
+    
+    .flex-property-1 div:nth-child(2){
+        flex: 0 0 300px;
+    }
+    
+    .flex-property-1 div:last-child{
+        flex: 0 0 300px;
+    }
+    </pre>
+    </details>
+    <p> ---- Same sizes does not grow but shrink not equaly because the "shrink" value difference when browser window size change! (goes out)</p>
+    <div class="flex-property-2">
+      <div>(grow-value = "0") (shrink-value = "1") (base-width = "300px")</div>
+      <div>(grow-value = "0") (shrink-value = "2") (base-width = "300px")</div>
+      <div>(grow-value = "0") (shrink-value = "3") (base-width = "300px")</div>
+    </div>
+    <details>
+      <summary> CODE</summary>
+      <pre>
+// HTML ---
     &lt;div class="flex-property-2"&gt;
         &lt;div&gt;(grow-value = "0") (shrink-value = "1") (base-width = "300px")&lt;/div&gt;
         &lt;div&gt;(grow-value = "0") (shrink-value = "2") (base-width = "300px")&lt;/div&gt;
         &lt;div&gt;(grow-value = "0") (shrink-value = "3") (base-width = "300px")&lt;/div&gt;
     &lt;/div&gt;
+    
+    
+// CSS ----
+    .flex-property-2 div:first-child{
+        flex: 0 1 300px;
+    }
+    
+    .flex-property-2 div:nth-child(2){
+        flex: 0 2 300px;
+    }
+    
+    .flex-property-2 div:last-child{
+        flex: 0 3 300px;
+    }
+    </pre>
+    </details>
+    <p> ---- the first and last elements takes the available space because of "grow" value set to "1"</p>
+    <div class="flex-property-3">
+      <div>(grow-value = "1") (shrink-value = "0") (base-width = "300px")</div>
+      <div>(grow-value = "0") (shrink-value = "0") (base-width = "200px")</div>
+      <div>(grow-value = "1") (shrink-value = "0") (base-width = "300px")</div>
+    </div>
+    <details>
+      <summary> CODE</summary>
+      <pre>
+// HTML ---
     &lt;div class="flex-property-3"&gt;
         &lt;div&gt;(grow-value = "1") (shrink-value = "0") (base-width = "300px")&lt;/div&gt;
         &lt;div&gt;(grow-value = "0") (shrink-value = "0") (base-width = "200px")&lt;/div&gt;
         &lt;div&gt;(grow-value = "1") (shrink-value = "0") (base-width = "300px")&lt;/div&gt;
     &lt;/div&gt;
+    
+    
+// CSS ----
+    .flex-property-3 div:first-child{
+        flex: 1 0 300px;
+    }
+    
+    .flex-property-3 div:nth-child(2){
+        flex: 0 0 200px;
+    }
+    
+    .flex-property-3 div:last-child{
+        flex: 1 0 300px;
+    }
+    </pre>
+    </details>
+    <p> ---- all items grow and shrink equaly</p>
+    <div class="flex-property-4">
+      <div>(default)</div>
+      <div>(default)</div>
+      <div>(default)</div>
+    </div>
+    <details>
+      <summary> CODE</summary>
+      <pre>
+// HTML ---
     &lt;div class="flex-property-4"&gt;
-        &lt;div&gt;(grow-value = "1") (shrink-value = "1") (base-width = "300px")&lt;/div&gt;
-        &lt;div&gt;(grow-value = "1") (shrink-value = "1") (base-width = "300px")&lt;/div&gt;
-        &lt;div&gt;(grow-value = "1") (shrink-value = "1") (base-width = "300px")&lt;/div&gt;
+        &lt;div&gt;(default)&lt;/div&gt;
+        &lt;div&gt;(default)&lt;/div&gt;
+        &lt;div&gt;(default)&lt;/div&gt;
     &lt;/div&gt;
+    
+    
+// CSS ----
+    [class|=flex-property]{
+        display:flex;
+    }
+    </pre>
+    </details>
+    <p> ---- <mark>flex-wrap:wrap</mark> takes action before the <mark>flex-shrink:n</mark> trigers, once all lines are wrapped then the <mark>fles-shrink:n</mark> takes action </p>
+    <div class="flex-combined-flex-wrap">
+      <div>(grow-value = "1") (shrink-value = "1") (base-width = "300px")</div>
+      <div>(grow-value = "1") (shrink-value = "1") (base-width = "300px")</div>
+      <div>(grow-value = "1") (shrink-value = "1") (base-width = "300px")</div>
+    </div>
+    <details>
+      <summary> CODE</summary>
+      <pre>
+// HTML ---
     &lt;div class="flex-combined-flex-wrap"> 
         &lt;div&gt;(grow-value = "1") (shrink-value = "1") (base-width = "300px")&lt;/div&gt;
         &lt;div&gt;(grow-value = "1") (shrink-value = "1") (base-width = "300px")&lt;/div&gt;
         &lt;div&gt;(grow-value = "1") (shrink-value = "1") (base-width = "300px")&lt;/div&gt;
     &lt;/div&gt;
     
--- CODE (CSS) --
-    [class|=flex-property]{            
-        display:flex;                  
-    }                                  
-    [class|=flex-property] div{        
-        height: 70px;                  
-        background-color: orange;      
-        border: 4px solid red;         
-        margin: 2px;                   
-    }                                  
-    .flex-property-1 div:first-child{  
-        flex: 0 0 300px;               
-    }                                  
-    .flex-property-1 div:nth-child(2){ 
-        flex: 0 0 300px;                  
-    }                                  
-    .flex-property-1 div:last-child{   
-        flex: 0 0 300px;               
-    }                                  
-    /*---------------------*/          
-    .flex-property-2 div:first-child{  
-        flex: 0 1 300px;               
-    }                                  
-    .flex-property-2 div:nth-child(2){ 
-        flex: 0 2 300px;               
-    }                                  
-    .flex-property-2 div:last-child{   
-        flex: 0 3 300px;               
-    }                                  
-    /*---------------------*/          
-    .flex-property-3 div:first-child{  
-        flex: 1 0 300px;               
-    }                                  
-    .flex-property-3 div:nth-child(2){ 
-        flex: 0 0 200px                
-    }                                  
-    .flex-property-3 div:last-child{   
-        flex: 1 0 300px;               
-    }                                  
-    /*---------------------*/          
-    flex-combined-flex-wrap div:first-child{
-        flex-grow: 1;                                   // individual flex properties
-        flex-shrink: 1;
-        flex-basis: 300px;
-    }
-    .flex-combined-flex-wrap div:nth-child(2){
-        flex-grow: 1;
-        flex-shrink: 1;
-        flex-basis: 300px;
-    }
-    .flex-combined-flex-wrap div:last-child{
-        flex-grow: 1;
-        flex-shrink: 1;
-        flex-basis: 300px;
-    }
-    /*---------------------*/
+    
+// CSS ----
     .flex-combined-flex-wrap{
         display: flex;
         flex-wrap: wrap;
     }
     
+    flex-combined-flex-wrap div:first-child{
+        flex-grow: 1;                                   // individual flex properties
+        flex-shrink: 1;
+        flex-basis: 300px;
+    }
+    
+    .flex-combined-flex-wrap div:nth-child(2){
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 300px;
+    }
+    
+    .flex-combined-flex-wrap div:last-child{
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 300px;
+    }
     </pre>
     </details>
-</details>
-<!------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> The <mark>justify-content</mark> / <mark>align-content</mark> / <mark>place-content</mark> / <mark>justify-items</mark> / <mark>align-itmes</mark> / <mark>place-items</mark> / <mark>justify-self</mark> / <mark>align-self</mark> / <mark>place-self</mark> properties </u></h2>
-<details class="example">
-<summary> DEMO </summary>
-    <pre>
-// align-content / justify-content / place-content --------------------------------
-    .myElement {
-        display: flex;
-        align-content: center;                                                     // the"main-flex-axis" is placed in the center of the "cross-flex-axis", when the it wraps the "main-flex-axes" are centered evenly   
-        justify-content: space-evenly;                                             // space distributed evenly between the elements along the "main-flex-axis"  
-    // ------------------------------------
-        place-content: center space-evenly;                                        // does the same as the 2 properties above 
-        
-// align-items --------------------------------------------------------------------
-        align-items: center;                                                       // all flex items are centered on the "main-flex-line"  
-    }
-    
-// align-self ---------------------------------------------------------------------
-    .myElement > chld {                                                            // -! property is set on the flex item 
-        align-self: flex-start;                                                    // places this element at the start along the "cross-flex-axis"   
-    }
-    </pre>
-</details>
-<details class="example">
-<summary> Example </summary>
-<h4 style="color:darkblue;"><u> - <mark>justify-content</mark> TEST </u></h4>
+  </details>
+  <!------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>justify-content</mark> / <mark>align-content</mark> / <mark>place-content</mark> / <mark>justify-items</mark> / <mark>align-itmes</mark> / <mark>place-items</mark> / <mark>justify-self</mark> / <mark>align-self</mark> / <mark>place-self</mark> properties </u></h2>
+  <details class="example">
+    <summary> Example </summary>
+    <h4 style="color:darkblue;"><u> The <mark>justify-content</mark> property </u></h4>
     <p> - distribute space between elements on the main-axis</p>
-<p style="font-weight:bold;"> - <mark>justify-content:flext-start</mark> (default) </p>
-    <div class="flex-justify-content-1"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
+    <p> - <mark>justify-content:flext-start</mark> (default) </p>
+    <div class="flex-justify-content-1">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
     </div>
-<p style="font-weight:bold;"> - <mark>justify-content:flex-end</mark> </p>
-    <div class="flex-justify-content-2"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
+    <p> - <mark>justify-content:flex-end</mark> </p>
+    <div class="flex-justify-content-2">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
     </div>
-<p style="font-weight:bold;"> - <mark>justify-content:center</mark> </p>
-    <div class="flex-justify-content-3"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
+    <p> - <mark>justify-content:center</mark> </p>
+    <div class="flex-justify-content-3">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
     </div>
-<p style="font-weight:bold;"> - <mark>justify-content:space-between</mark> </p>
-    <div class="flex-justify-content-4"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
+    <p> - <mark>justify-content:space-between</mark> </p>
+    <div class="flex-justify-content-4">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
     </div>
-<p style="font-weight:bold;"> - <mark>justify-content:space-around</mark> </p>
-    <div class="flex-justify-content-5"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
+    <p> - <mark>justify-content:space-around</mark> </p>
+    <div class="flex-justify-content-5">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
     </div>
-<p style="font-weight:bold;"> - <mark>justify-content:space-evenly</mark> </p>
-    <div class="flex-justify-content-6"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
+    <p> - <mark>justify-content:space-evenly</mark> </p>
+    <div class="flex-justify-content-6">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
     </div>
-        <details style="clear:left;">
-        <summary> CODE </summary>
-        <pre>
--- CODE (HTML) --
+    <details style="clear:left;">
+      <summary> CODE </summary>
+      <pre>
+// HTML ---
     &lt;div class="flex-justify-content-1"&gt;
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="flex-justify-content-2"&gt;
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="flex-justify-content-3"&gt;
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="flex-justify-content-4"&gt;
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="flex-justify-content-5"&gt; 
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="flex-justify-content-6"&gt; 
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
     
--- CODE (CSS) --
-    [class|=flex-justify-content] div{
-        width: 50px;
-        height: 50px;
-        margin: 7px;
-        background-color: orange;
-    }
+    
+// CSS --
     .flex-justify-content-1{
         display: flex;
-        box-sizing: border-box;
-        width: 1000px;
-        height: 100px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
+    
     .flex-justify-content-2{
         display: flex;
         justify-content: flex-end;
-        box-sizing: border-box;
-        width: 1000px;
-        height: 100px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
+    
     .flex-justify-content-3{
         display: flex;
         justify-content: center;
-        box-sizing: border-box;
-        width: 1000px;
-        height: 100px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
+    
     .flex-justify-content-4{
         display: flex;
         justify-content: space-between;
-        box-sizing: border-box;
-        width: 1000px;
-        height: 100px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
+    
     .flex-justify-content-5{
         display: flex;
         justify-content: space-around;
-        box-sizing: border-box;
-        width: 1000px;
-        height: 100px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
+    
     .flex-justify-content-6{
         display: flex;
         justify-content: space-evenly;
-        box-sizing: border-box;
-        width: 1000px;
-        height: 100px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
         </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------------------>        
-<h4 style="color:darkblue;"><u> - <mark>align-content</mark> TEST </u></h4> 
-    <p> - this property vertically aligns (on the "Y" axis") flex lines </p>
-    <p> - same thing here with the <mark>content-align: stretch;</mark> declaration box children Must has no height declared otherwise it won't work (see code below)</p>
-<p style="font-weight:bold;"> - <mark>align-content:stretch;</mark> </p>
-    <div class="stretch-flex-content-align-1"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
+    </details>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> The <mark>align-content</mark> property </u></h4>
+    <p> - if items have height set this porperty would not work! </p>
+    <p> - <mark>align-content:stretch;</mark> </p>
+    <div class="stretch-flex-content-align-1">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
     </div>
-<p style="font-weight:bold;"> - <mark>align-content:flex-start;</mark> </p>    
-    <div class="flex-content-align-2"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
+    <p> - <mark>align-content:flex-start;</mark> </p>
+    <div class="flex-content-align-2">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
     </div>
-<p style="font-weight:bold;"> - <mark>align-content:flex-end;</mark> </p>    
-    <div class="flex-content-align-3"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
+    <p> - <mark>align-content:flex-end;</mark> </p>
+    <div class="flex-content-align-3">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
     </div>
-<p style="font-weight:bold;"> - <mark>align-content:center;</mark> </p>    
-    <div class="flex-content-align-4"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
+    <p> - <mark>align-content:center;</mark> </p>
+    <div class="flex-content-align-4">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
     </div>
-<p style="font-weight:bold;"> - <mark>align-content:space-between;</mark> </p>    
-    <div class="flex-content-align-5"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
+    <p> - <mark>align-content:space-between;</mark> </p>
+    <div class="flex-content-align-5">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
     </div>
-<p style="font-weight:bold;"> - <mark>align-content:space-around;</mark> </p>    
-    <div class="flex-content-align-6"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
+    <p> - <mark>align-content:space-around;</mark> </p>
+    <div class="flex-content-align-6">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
     </div>
-<p style="font-weight:bold;"> - <mark>align-content:space-evenly;</mark> </p>    
-    <div class="flex-content-align-7"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
+    <p> - <mark>align-content:space-evenly;</mark> </p>
+    <div class="flex-content-align-7">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
     </div>
-        <details style="clear:left;">
-        <summary> CODE </summary>
-        <pre>
--- CODE (HTML) --
+    <details style="clear:left;">
+      <summary> CODE </summary>
+      <pre>
+// HTML ------
     &lt;div class="stretch-flex-content-align-1"&gt;
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="flex-content-align-2"&gt;
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="flex-content-align-3"&gt;
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="flex-content-align-4"&gt;
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="flex-content-align-5"&gt;
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="flex-content-align-6"&gt;
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="flex-content-align-7"&gt; 
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
         (space-evenly)
     &lt;/div&gt;
     
--- CODE (CSS) --
-    [class|=flex-content-align] div{
-        width: 100px;
-        height: 50px;
-        margin: 7px;
-        background-color: orange;
-    }
-    [class|=stretch-flex-content-align] div{
-        width: 100px;
-        margin: 7px;
-        background-color: orange;
-    }
-    [class|=flex-content-align], [class|=stretch-flex-content-align]{
-        box-sizing: border-box;
-        margin: 10px;
-        width: 30%;
-        height: 300px;
-        border: 2px solid black;
-        background-color: lightgreen;
-    }
+    
+// CSS --
     [class|=stretch-flex]{
         display: flex;
         flex-wrap: wrap;
         align-content: stretch;
     }
+    
     [class$=align-2]{
         display: flex;
         flex-wrap: wrap;
         align-content: flex-start;
     }
+    
     [class$=align-3]{
         display: flex;
         flex-wrap: wrap;
         align-content: flex-end;
     }
+    
     [class$=align-4]{
         display: flex;
         flex-wrap: wrap;
         align-content: center;
     }
+    
     [class$=align-5]{
         display: flex;
         flex-wrap: wrap;
         align-content: space-between;
     }
+    
     [class$=align-6]{
         display: flex;
         flex-wrap: wrap;
         align-content: space-around;
     }
+    
     [class$=align-7]{
         display: flex;
         flex-wrap: wrap;
         align-content: space-evenly;
     }
         </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------------------>        
-<h4 style="color:darkblue;"><u> - <mark>place-content</mark> TEST </u></h4> 
-    <div class="placeCont"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
+    </details>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> The <mark>place-content</mark> property </u></h4>
+    <div class="placeCont">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
     </div>
-        <details style="clear:left;">
-        <summary> CODE </summary>
-        <pre>
--- CODE (HTML) --
+    <details style="clear:left;">
+      <summary> CODE </summary>
+      <pre>
+// HTML ---
     &lt;div class="placeCont"&gt; 
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
-
--- CODE (CSS) --
+    
+    
+// CSS ---
     .placeCont {
         display: flex;
         flex-wrap: wrap;
-        width: 30%;
-        height: 200px;
-        border: 2px solid black;
-        background-color: lightgreen;
         place-content: center space-evenly; 
     }
-    .placeCont div{
-        width: 120px;
-        height: 50px;
-        background-color: orange;
-        border: solid 1px black;
-    }
         </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------------------>        
-<h4 style="color:darkblue;"><u> - <mark>align-items</mark> TEST </u></h4>
-    <p> - Verticaly align items when there is available space</p>
-    <p style="background-color:yellow;"> - the <mark>align-items: stretch;</mark> of flexbox does not work if items height is set! (see below)</p>
-    <div class="align-items-1"> 
-        <div> Item 1 </div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
-        (stretch)
+    </details>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> The <mark>align-items</mark> property </u></h4>
+    <div class="align-items-1">
+      <div> Item 1 </div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
+      (stretch)
     </div>
-    <div class="flex-align-items-2"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
-        (flex-start (on "Y" axis))
+    <div class="flex-align-items-2">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
+      (flex-start (on "Y" axis))
     </div>
-    <div class="flex-align-items-3"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
-        (flex-end (on "Y" axis))
+    <div class="flex-align-items-3">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
+      (flex-end (on "Y" axis))
     </div>
-    <div class="flex-align-items-4"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
-        (center)
+    <div class="flex-align-items-4">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
+      (center)
     </div>
-    <div class="flex-align-items-5"> 
-        <div> Item 1</div>
-        <div> Item 2</div>
-        <div> Item 3</div>
-        <div> Item 4</div>
-        <div> Item 5</div>
-        (baseline (relative to the font "baseline"))
+    <div class="flex-align-items-5">
+      <div> Item 1</div>
+      <div> Item 2</div>
+      <div> Item 3</div>
+      <div> Item 4</div>
+      <div> Item 5</div>
+      (baseline (relative to the font "baseline"))
     </div>
-        <details style="clear:left;">
-        <summary> CODE </summary>
-        <pre>
--- CODE (HTML) --
+    <details style="clear:left;">
+      <summary> CODE </summary>
+      <pre>
+// HTML --
     &lt;div class="align-items-1"&gt;
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="flex-align-items-2"&gt;
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="flex-align-items-3"&gt;
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="flex-align-items-4"&gt;
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="flex-align-items-5"&gt;
-        &lt;div&gt; Item 1&lt;/div&gt;
-        &lt;div&gt; Item 2&lt;/div&gt;
-        &lt;div&gt; Item 3&lt;/div&gt;
-        &lt;div&gt; Item 4&lt;/div&gt;
-        &lt;div&gt; Item 5&lt;/div&gt;
+        &lt;div&gt;Item 1&lt;/div&gt; &lt;div&gt;Item 2&lt;/div&gt; &lt;div&gt;Item 3&lt;/div&gt; &lt;div&gt;Item 4&lt;/div&gt; &lt;div&gt;Item 5&lt;/div&gt;
     &lt;/div&gt;
     
--- CODE (CSS) --
-    [class|=flex-align-items] > div{
-        width: 50px;
-        height: 50px;
-        margin: 7px;
-        background-color: orange;
-    }
-    [class|=flex-align] > div:nth-child(even){
-        height: 120px;
-        font-size:1.5em;
-    }
-    .align-items-1 div{
-        width: 50px;
-        margin: 7px;
-        background-color: orange;
-    }
+    
+// CSS ----
     .align-items-1{
-        float: left;
         display: flex;
         align-items: stretch;
-        box-sizing: border-box;
-        margin: 10px;
-        width: 600px;
-        height: 200px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
+    
     .flex-align-items-2{
-        float: left;
         display: flex;
         align-items: flex-start;
-        box-sizing: border-box;
-        margin: 10px;
-        width: 600px;
-        height: 200px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
+    
     .flex-align-items-3{
-        float: left;
         display: flex;
         align-items: flex-end;
-        box-sizing: border-box;
-        margin: 10px;
-        width: 600px;
-        height: 200px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
+    
     .flex-align-items-4{
-        float: left;
         display: flex;
         align-items: center;
-        box-sizing: border-box;
-        margin: 10px;
-        width: 600px;
-        height: 200px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
+    
     .flex-align-items-5{
-        float: left;
         display: flex;
         align-items: baseline;
-        box-sizing: border-box;
-        margin: 10px;
-        width: 600px;
-        height: 200px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
         </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------------------>        
-<h4 style="color:darkblue;"><u> - <mark>align-self</mark></u></h4>
-    <p> - container's children aligned on the "Y flex-axis" individually </p>
-    <div class="flex-self-align"> 
-        <div id="stretch"> stretched (deffault)</div>
-        <div> flex-start</div>
-        <div> flex-end 3</div>
-        <div> baseline</div>
-        <div> center</div>
+    </details>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> The <mark>align-self</mark> property</u></h4>
+    <div class="flex-self-align">
+      <div id="stretch"> stretched (deffault)</div>
+      <div> flex-start</div>
+      <div> flex-end 3</div>
+      <div> baseline</div>
+      <div> center</div>
     </div>
-        <details>
-        <summary> CODE</summary>
-        <pre>
--- CODE (HTML) --
+    <details>
+      <summary> CODE</summary>
+      <pre>
+// HTML --
     &lt;div class="flex-self-align"&gt; 
         &lt;div id="stretch"&gt;  stretched (deffault)&lt;/div&gt; 
         &lt;div&gt;  flex-start&lt;/div&gt; 
@@ -1372,44 +1122,37 @@
         &lt;div&gt;  center&lt;/div&gt; 
     &lt;/div&gt; 
     
--- CODE (CSS) --
+    
+// CSS --
     .flex-self-align{
         display: flex;
         justify-content: space-between;
-        box-sizing: border-box;
-        width: 40%;
-        height: 200px;
-        border: 2px solid black;
-        background-color: lightgreen;
     }
-    .flex-self-align div:not(#stretch){
-        height:70px;
-        width: 100px;
-        margin: 10px;
-        background-color: orange;
-    }
+    
     .flex-self-align #stretch{
-        width: 100px;
-        margin: 10px;
-        background-color: orange;
         align-self: stretch;
     }
-    .flex-self-align div:nth-child(2){          // property set on the flex container's children!
-        align-self: flex-start;         
+    
+    .flex-self-align div:nth-child(2){
+        align-self: flex-start;
     }
+    
     .flex-self-align div:nth-child(3){
         align-self: flex-end;
     }
+    
     .flex-self-align div:nth-child(4){
         align-self: baseline;
     }
+    
     .flex-self-align div:nth-child(5){
         align-self: center;
     }
     </pre>
     </details>
-</details>
-    
-    <br><br>
+  </details>
+
+  <br><br>
 </body>
+
 </html>

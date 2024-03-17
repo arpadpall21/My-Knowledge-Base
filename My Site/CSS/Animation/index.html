@@ -1,225 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Animation </title>  
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-	<link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Animation </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Animation (4.0.0) </h1>
-    <p> Updated (2017-01-15 / 2017-01-21 / 2019-01-06 / 2021-06-01)</p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html" title="CSS">CSS></a> Animation
-    </p>
-<table class="table">    
-<caption> 
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  <h1> Animation </h1>
+  <p> Updated ( 2017-01-15 / 2019-01-06 / 2021-06-01 / 2024-03-17 )</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Animation
+  </p>
+  <table class="table">
+    <caption>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
     <tr>
-        <th style="width:15%"> Property </th>
-        <th style="width:40%"> Value </th>
-        <th> Description </th>
+      <th style="width:15%"> Property </th>
+      <th style="width:40%"> Value </th>
+      <th> Description </th>
     </tr>
-    <tr class="25.01">
-        <td> animation </td>
-        <td> 
-            <i>name duration timing-function delay iteration-count direction fill-mode play-state</i><br>
-        </td>
-        <td> 
-            - animation shorthand property 
-            <span id="browserSupport" title="Updated: 2021-06-01">
-                <span><i class="fab fa-chrome"></i> 4 -webkit- / 43 </span>
-                <span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span>
-                <span><i class="fab fa-opera"></i> 12 -o- / 15 -webkit- / 30 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 4 -webkit- / 9 </span>
-            </span>
-        </td>
-    </tr>    
-    <tr class="05.04">
-        <td> animation-delay </td>
-        <td>  
-            <strong>nr</strong>s|ms<i>, ...</i> <span class="cssAV">(Default <mark>0</mark>, <span class="openable">negative values<div>
-                <p> - negative values starts the animation immediately and makes the animation already playing before 0 time </p>
-                <p> ex: (<mark>-2</mark> = starts the animation immediately but makes it as it was already playing for 2 seconds </p>
+    <tr>
+      <td> animation-name </td>
+      <td>
+        none <span class="cssAV">((Default) no animation bound)</span><br>
+        <strong>animName</strong><i>, ...</i><br>
+      </td>
+      <td>
+        - references the <strong>animName</strong> <mark>@keyframes</mark> animation(s) for the element
+        <span id="browserSupport" title="Updated: 2021-06-01">
+          <span><i class="fab fa-chrome"></i> 4 -webkit- / 43 </span>
+          <span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span>
+          <span><i class="fab fa-opera"></i> 12 -o- / 15 -webkit- / 30 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 4 -webkit- / 9 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> animation-duration </td>
+      <td>
+        <strong>nr</strong>s|ms<i>, ...</i> <span class="cssAV">(Default <mark>0</mark>)</span>
+      </td>
+      <td>
+        - specifies the duration of one animation cycle (iteration)
+        <span id="browserSupport" title="Updated: 2021-06-01">
+          <span><i class="fab fa-chrome"></i> 3 -webkit- / 43 </span>
+          <span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span>
+          <span><i class="fab fa-opera"></i> 12 -o- / 15 -webkit- / 30 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 4 -webkit- / 9 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> animation-iteration-count </td>
+      <td>
+        <strong>nr</strong><i>, ...</i> <span class="cssAV">(Default <mark>1</mark>)</span> <br>
+        infinite
+      </td>
+      <td>
+        - specifies the number of cycles (iteration) the animation is played
+        <span id="browserSupport" title="Updated: 2021-06-01">
+          <span><i class="fab fa-chrome"></i> 4 -webkit- / 43 </span>
+          <span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span>
+          <span><i class="fab fa-opera"></i> 12 -o- / 15 -webkit- / 30</span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 4 -webkit- / 9</span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> animation-delay </td>
+      <td>
+        <strong>nr</strong>s|ms<i>, ...</i> <span class="cssAV">(Default <mark>0</mark>, <span class="openable">negative values<div>
+              <p> - negative values starts the animation immediately and makes the animation already playing before 0 time </p>
+              <p> ex: (<mark>-2</mark> = starts the animation immediately but makes it as it was already playing for 2 seconds </p>
             </div></span> allowed)</span>
-        </td>
-        <td> - delay before the animation starts  
-            <span id="browserSupport" title="Updated: 2021-06-01">
-                <span><i class="fab fa-chrome"></i> 43/4 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 16/5 -moz- </span>
-                <span><i class="fab fa-opera"></i> 30/15 -webkit- /12 -o- </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 9/4 -webkit- </span>
-            </span>
-        </td>
-    </tr> 
-    <tr class="10.02">
-        <td> animation-direction </td>
-        <td>  
-            normal<i>, ...</i> <span class="cssAV">((Default) start-end)</span><br>
-            reverse <span class="cssAV">(end-start)</span><br>
-            alternate <span class="cssAV">(start-end-start)</span><br>
-            alternate-reverse <span class="cssAV">(end-start-end)</span><br>
-        </td>
-        <td> 
-            - specifies the animation direction 
-            <span id="browserSupport" title="Updated: 2021-06-01">
-                <span><i class="fab fa-chrome"></i> 4 -webkit- / 43</span>
-                <span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span>
-                <span><i class="fab fa-opera"></i> 12 -o- / 15 -webkit- / 30 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 4 -webkit- / 9 </span>
-            </span>
-        </td>
-    </tr>      
-    <tr class="05.02">
-        <td> animation-duration </td>
-        <td>  
-            <strong>nr</strong>s|ms<i>, ...</i> <span class="cssAV">(Default <mark>0</mark>)</span>
-        </td>
-        <td> 
-            - specifies the duration of one animation cycle (iteration) 
-            <span id="browserSupport" title="Updated: 2021-06-01">
-                <span><i class="fab fa-chrome"></i> 3 -webkit- / 43 </span>
-                <span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span>
-                <span><i class="fab fa-opera"></i> 12 -o- / 15 -webkit- / 30 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 4 -webkit- / 9 </span>
-            </span>
-        </td>
-    </tr>  
-    <tr class="20.01">
-        <td> animation-fill-mode </td>
-        <td>  
-            none<i>, ...</i> <span class="cssAV">((Default) no animation style applied)</span><br>
-            forwards <span class="cssAV">(the <u>last</u> <mark>@keyframes</mark> style is preserved when animation is finished)</span><br>
-            backwards <span class="cssAV">(the <u>first</u> <mark>@keyframes</mark> style is preserved when animation starts (delayed period))</span><br> 
-            both <span class="cssAV">(both the <u>first and last</u> <mark>@keyframes</mark> style are preserved (animation start (delayed period) / animation finished))</span><br>
-        </td>
-        <td> 
-            - specifies the CSS style for the element when the animation not playing (delayed of finished)
-            <span id="browserSupport" title="Updated: 2021-06-01">
-                <span><i class="fab fa-chrome"></i> 4 -webkit- / 43</span>
-                <span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span>
-                <span><i class="fab fa-opera"></i> 12 -o- / 15 -webkit- / 30 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 4 -webkit- / 9 </span>
-            </span>
-        </td>
-    </tr>    
-    <tr class="05.03">
-        <td> animation-iteration-count </td>
-        <td>  
-            <strong>nr</strong><i>, ...</i> <span class="cssAV">(Default <mark>1</mark>)</span> <br>
-            infinite
-        </td>
-        <td> 
-            - specifies the number of cycles (iteration) the animation is played 
-            <span id="browserSupport" title="Updated: 2021-06-01">
-                <span><i class="fab fa-chrome"></i> 4 -webkit- / 43 </span>
-                <span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span>
-                <span><i class="fab fa-opera"></i> 12 -o- / 15 -webkit- / 30</span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 4 -webkit- / 9</span>
-            </span>
-        </td>
-    </tr>    
-    <tr class="05.01">
-        <td> animation-name </td>
-        <td>  
-            none <span class="cssAV">((Default) no animation bound)</span><br>
-            <strong>animName</strong><i>, ...</i><br>
-        </td>
-        <td> 
-            - references the <strong>animName</strong> <mark>@keyframes</mark> animation(s) for the element 
-            <span id="browserSupport" title="Updated: 2021-06-01">
-                <span><i class="fab fa-chrome"></i> 4 -webkit- / 43  </span>
-                <span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span>
-                <span><i class="fab fa-opera"></i> 12 -o- / 15 -webkit- / 30 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 4 -webkit- / 9 </span>
-            </span>
-        </td>
+      </td>
+      <td> 
+        - delay before the animation starts <br>
+        - this delay is technically part of the animation 
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 43/4 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 16/5 -moz- </span>
+          <span><i class="fab fa-opera"></i> 30/15 -webkit- /12 -o- </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 9/4 -webkit- </span>
+        </span>
+      </td>
     </tr>
-    <tr class="10.01">
-        <td> animation-play-state </td>
-        <td>  
-            running<i>, ...</i> <span class="cssAV">(Default)</span><br>
-            paused 
-        </td>
-        <td> 
-            - plays / pauses the animation 
-            <span id="browserSupport" title="Updated: 2021-06-01">
-                <span><i class="fab fa-chrome"></i> 4 -webkit- / 43 </span>
-                <span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span>
-                <span><i class="fab fa-opera"></i> 12 -o- / 15 -webkit- / 30 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 4 -webkit- / 9 </span>
-            </span>
-        </td>
-    </tr> 
-    <tr class="15.01">
-        <td> animation-timing-function </td>
-        <td>  
-            ease<i>, ...</i> <span class="cssAV">(Default)</span><br>
-            linear<br>
-            ease-in<br>
-            ease-out<br>
-            ease-in-out<br>
-            step-start <span class="cssAV">(same as <mark>step(1, start)</mark>)</span><br>
-            step-end <span class="cssAV">(same as <mark>step(1, end)</mark>)</span><br>
-            steps(<strong>nr</strong>, <strong class="openable">jumpterm<div>
-                <p> - <mark>jump-start|start</mark> - denotes a left-continuous function, so that the first jump happens when the animation begins </p>
-                <p> - <mark>jump-end|end</mark> - denotes a right-continuous function, so that the last jump happens when the animation ends </p>
-                <p> - <mark>jump-none</mark> - there is no jump on either end. Instead, holding at both the 0% mark and the 100% mark, each for 1/n of the duration </p>
-                <p> - <mark>jump-both</mark> - includes pauses at both the 0% and 100% marks, effectively adding a step during the animation iteration </p>
-            </div></strong> ) <span class="cssAV">(breaks the fluid animation into steps)</span> <br>
-            cubic-bezier(<strong>nr</strong>, <strong>nr</strong>, <strong>nr</strong>,<strong>nr</strong>) <span class="cssAV">(sets a custom animation speed curve <a href="http://cubic-bezier.com/#1,.19,0,.81" target="_blank">cubic-bezier generator [link]</a>)</span>
-        </td>
-        <td> 
-            - specifies the speed curve of the animation 
-            <span id="browserSupport" title="Updated: 2021-06-01">
-                <span><i class="fab fa-chrome"></i> 4 -webkit- / 43 </span>
-                <span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span>
-                <span><i class="fab fa-opera"></i> 12 -o- / 15 -webkit- / 30 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 4 -webkit- / 9 </span>
-            </span>
-        </td>
-    </tr>       
-</table>
-    <br>
-    <details class="example" id="notes">
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> animation-play-state </td>
+      <td>
+        running<i>, ...</i> <span class="cssAV">(Default)</span><br>
+        paused
+      </td>
+      <td>
+        - plays / pauses the animation
+        <span id="browserSupport" title="Updated: 2021-06-01">
+          <span><i class="fab fa-chrome"></i> 4 -webkit- / 43 </span>
+          <span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span>
+          <span><i class="fab fa-opera"></i> 12 -o- / 15 -webkit- / 30 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 4 -webkit- / 9 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> animation-direction </td>
+      <td>
+        normal<i>, ...</i> <span class="cssAV">((Default) start-end)</span><br>
+        reverse <span class="cssAV">(end-start)</span><br>
+        alternate <span class="cssAV">(start-end-start)</span><br>
+        alternate-reverse <span class="cssAV">(end-start-end)</span><br>
+      </td>
+      <td>
+        - specifies the animation direction
+        <span id="browserSupport" title="Updated: 2021-06-01">
+          <span><i class="fab fa-chrome"></i> 4 -webkit- / 43</span>
+          <span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span>
+          <span><i class="fab fa-opera"></i> 12 -o- / 15 -webkit- / 30 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 4 -webkit- / 9 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> animation-timing-function </td>
+      <td>
+        ease<i>, ...</i> <span class="cssAV">(Default)</span><br>
+        linear<br>
+        ease-in<br>
+        ease-out<br>
+        ease-in-out<br>
+        step-start <span class="cssAV">(same as <mark>step(1, start)</mark>)</span><br>
+        step-end <span class="cssAV">(same as <mark>step(1, end)</mark>)</span><br>
+        steps(<strong>nr</strong>, <strong class="openable">jumpterm<div>
+            <p> - <mark>jump-start|start</mark> - denotes a left-continuous function, so that the first jump happens when the animation begins </p>
+            <p> - <mark>jump-end|end</mark> - denotes a right-continuous function, so that the last jump happens when the animation ends </p>
+            <p> - <mark>jump-none</mark> - there is no jump on either end. Instead, holding at both the 0% mark and the 100% mark, each for 1/n of the duration </p>
+            <p> - <mark>jump-both</mark> - includes pauses at both the 0% and 100% marks, effectively adding a step during the animation iteration </p>
+          </div></strong> ) <span class="cssAV">(breaks the fluid animation into steps)</span> <br>
+        cubic-bezier(<strong>nr</strong>, <strong>nr</strong>, <strong>nr</strong>,<strong>nr</strong>) <span class="cssAV">(sets a custom animation speed curve <a href="http://cubic-bezier.com/#1,.19,0,.81" target="_blank">cubic-bezier generator [link]</a>)</span>
+      </td>
+      <td>
+        - specifies the speed curve of the animation
+        <span id="browserSupport" title="Updated: 2021-06-01">
+          <span><i class="fab fa-chrome"></i> 4 -webkit- / 43 </span>
+          <span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span>
+          <span><i class="fab fa-opera"></i> 12 -o- / 15 -webkit- / 30 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 4 -webkit- / 9 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> animation-fill-mode </td>
+      <td>
+        none<i>, ...</i> <span class="cssAV">((Default) no animation style applied)</span><br>
+        forwards <span class="cssAV">(the <u>last</u> <mark>@keyframes</mark> style is preserved when animation is finished)</span><br>
+        backwards <span class="cssAV">(the <u>first</u> <mark>@keyframes</mark> style is preserved when animation starts (delayed period))</span><br>
+        both <span class="cssAV">(both the <u>first and last</u> <mark>@keyframes</mark> style are preserved (animation start (delayed period) / animation finished))</span><br>
+      </td>
+      <td>
+        - specifies the CSS style for the element when the animation not playing (delayed of finished)
+        <span id="browserSupport" title="Updated: 2021-06-01">
+          <span><i class="fab fa-chrome"></i> 4 -webkit- / 43</span>
+          <span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span>
+          <span><i class="fab fa-opera"></i> 12 -o- / 15 -webkit- / 30 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 4 -webkit- / 9 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> animation </td>
+      <td>
+        <i>name duration timing-function delay iteration-count direction fill-mode play-state</i><br>
+      </td>
+      <td>
+        - animation shorthand property
+        <span id="browserSupport" title="Updated: 2021-06-01">
+          <span><i class="fab fa-chrome"></i> 4 -webkit- / 43 </span>
+          <span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span>
+          <span><i class="fab fa-opera"></i> 12 -o- / 15 -webkit- / 30 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 4 -webkit- / 9 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-<h2 style="color:darkblue;"><u> <mark>timing-function</mark> other step parameters </u></h2>
+    <h2 style="color:darkblue;"><u> <mark>timing-function</mark> other step parameters </u></h2>
     <p> - for the <mark>animation-timing-function</mark> and <mark>transition-timing-function</mark> step function we have some other paramters (<mark>jump-start</mark> / <mark>jump-end</mark> / <mark>jump-both</mark> / <mark>jump-none</mark>) but they are supported only in Firefox 65 [2019-05-17] </p>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="http://www.w3schools.com/css/css3_animations.asp" target="_blank"> W3Schools CSS Animation </a></p>
-    <p><a href="http://cubic-bezier.com/#1,.19,0,.81" target="_blank">Awesome Cubic-Bezier Generator</a></p>
-<h2 style="color:green;"><ins> Remember This : </ins></h2>
-    <p> - an animation can run only once, there is no way to reset it in CSS (solution: replace the element by script [TESTED on the test page here])</p>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - CSS allows us to animate most of the HTML elements </p>
-<h2 style="color:darkblue;"><u> The <mark>@keyframes</mark> roule and <mark>animation-name</mark> property </u></h2>
-    <p> - The <mark>@keyframes</mark> rule describes the animation step by step </p>
-        <pre class="syntax">
-SYNTAX :                                                                                 <span id="browserSupport" title="updated: 2021-06-01" style="color:yellow;"><span><i class="fab fa-chrome"></i> 43 -webkit- / 45 </span><span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span><span><i class="fab fa-opera"></i> 15 -webkit- / 30 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span><span><i class="fab fa-safari"></i> 4 -webkit- / 9 </span></span>
-            @keyframes <i>animName</i> {                                                      // describes an animation step by step 
-                from|0% { <i>cssStyles</i> }                                                  // describes the start animation states  
-                
-                <small>1%-99%{ <i>cssStyles</i> }</small>                                                    // describes the animation at the <small>1%-99%</small> stage    
-                  
-                to|100% { <i>cssStyles</i> }                                                  // describes the end animation states 
-            }  
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="http://www.w3schools.com/css/css3_animations.asp" target="_blank"> W3Schools CSS Animation </a></p>
+  <p><a href="http://cubic-bezier.com/#1,.19,0,.81" target="_blank">Awesome Cubic-Bezier Generator</a></p>
+  <h2 style="color:green;"><ins> Remember This : </ins></h2>
+  <p> - an animation can run only once, there is no way to reset it in CSS (solution: replace the element by script [TESTED on the test page here])</p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - CSS allows us to animate most of the HTML elements <span id="browserSupport"><span><i class="fab fa-chrome"></i> 43 -webkit- / 45 </span><span><i class="fab fa-firefox"></i> 5 -moz- / 16 </span><span><i class="fab fa-opera"></i> 15 -webkit- / 30 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span><span><i class="fab fa-safari"></i> 4 -webkit- / 9 </span></span></p>
+  <h2 style="color:darkblue;"><u> The <mark>@keyframes</mark> roule and <mark>animation-name</mark> property </u></h2>
+  <p> - The <mark>@keyframes</mark> rule describes the animation step by step </p>
+  <pre class="syntax">
+    @keyframes <i>animName</i> {                                                      // describes an animation step by step 
+        from|0% { <i>cssStyles</i> }                                                  // describes the start animation states  
+        <small>1%-99%{ <i>cssStyles</i> }</small>                                                    // describes the animation at the <small>1%-99%</small> stage    
+        to|100% { <i>cssStyles</i> }                                                  // describes the end animation states 
+    }  
     </pre>
-<details class="example">
-<summary> DEMO </summary>    
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
 // HTML -------------------------------------------------------------------------------
     &lt;p class="myClass" &gt; myParagraph &lt;/p&gt;
@@ -237,14 +258,14 @@ SYNTAX :                                                                        
         to {color: red;}
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>    
-<h4><u> TEST 1 </u></h4>    
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> TEST 1 </u></h4>
     <p class="animColor"> I Change my color </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="animColor"&gt; I Change my color &lt;/p&gt;
         
@@ -261,13 +282,13 @@ SYNTAX :                                                                        
         to {color: black;}
     }
         </pre>
-        </details>
-</details> 
-<!---------------------------------------------------------------------------------------------------------->    
-<hr>
-<h2 style="color:darkblue;"><u> The <mark>animation-name</mark> / <mark>animation-duration</mark> / <mark>animation-delay</mark> / <mark>animation-iteration-count</mark> properties </u></h2>
-<details class="example">
-<summary> DEMO </summary>    
+    </details>
+  </details>
+  <!---------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>animation-name</mark> / <mark>animation-duration</mark> / <mark>animation-delay</mark> / <mark>animation-iteration-count</mark> properties </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
 // HTML -------------------------------------------------------------------------------
     &lt;p class="myElement"&gt; myParagraph &lt;/p&gt;
@@ -286,17 +307,17 @@ SYNTAX :                                                                        
         to {left: 200px;}
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>    
-<h4><u> Simple animation + Delay </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> Simple animation + Delay </u></h4>
     <div class="simple-animation">
-        <p> This Box changes color</p>
-        <p> The animation delay is 1 second </p>
+      <p> This Box changes color</p>
+      <p> The animation delay is 1 second </p>
     </div>
-	<details>
-	<summary> CODE : </summary>
-    <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     -- CODE (HTML) --
     &lt;div class="simple-animation" &gt;
          &lt;p style="color:white; font-weight:bold;"> This Box changes color &lt;/p&gt;
@@ -316,15 +337,15 @@ SYNTAX :                                                                        
         to {background-color:red;}
     }
     </pre>
-	</details>
-<h4><u> Multiple animation + interaction-count</u></h4>
+    </details>
+    <h4><u> Multiple animation + interaction-count</u></h4>
     <div class="multiple-animation">
-        <p style="color:white; font-weight:bold;"> This boxe's background-color and postion changes 6 times</p>
-        <p style="color:white; font-weight:bold;"> This animation will repeat 4 times</p>
+      <p style="color:white; font-weight:bold;"> This boxe's background-color and postion changes 6 times</p>
+      <p style="color:white; font-weight:bold;"> This animation will repeat 4 times</p>
     </div>
-	<details>
-	<summary> CODE : </summary>
-    <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     -- CODE (HTML) --
     &lt;div class="multiple-animation"&gt;
         &lt;p style="color:white; font-weight:bold;"&gt; This boxe's background-color and postion changes 6 times&lt;/p&gt;
@@ -342,13 +363,13 @@ SYNTAX :                                                                        
         animation-iteration-count: 4;                                   }
     }
     </pre>
-	</details>
-<h4><u> <mark>animation-delay</mark> value set to <mark>0</mark> TEST </u></h4> 
+    </details>
+    <h4><u> <mark>animation-delay</mark> value set to <mark>0</mark> TEST </u></h4>
     <p> - if the animation duration is set to a minus value the browser handles the animation like it was already playing form that time (refresh the page to see the effect) </p>
     <p class="minusDelay"> Moved Already </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --        
     &lt;p class="minusDelay"&gt; Moved Already &lt;/p&gt;    
         
@@ -365,13 +386,13 @@ SYNTAX :                                                                        
         to {left: 200px;}
     }
         </pre>
-        </details>
-</details> 
-<!---------------------------------------------------------------------------------------------------------->    
-<hr>
-<h2 style="color:darkblue;"><u> The <mark>animation-play-state</mark> / <mark>animation-direction</mark> properties </u></h2>    
-<details class="example">
-<summary> DEMO </summary>    
+    </details>
+  </details>
+  <!---------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>animation-play-state</mark> / <mark>animation-direction</mark> properties </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
 // HTML -------------------------------------------------------------------------------
     &lt;p class="demo"&gt; myParagraph &lt;/p&gt;
@@ -390,25 +411,25 @@ SYNTAX :                                                                        
         to {left: 150px;}
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>    
-<h4><u> Animation Directions </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> Animation Directions </u></h4>
     <div class="normal-cycle">
-        <p> This box has a normal forward cycle animation </p>
+      <p> This box has a normal forward cycle animation </p>
     </div>
     <div class="reverse-cycle">
-        <p> This box has reverse cycle animation </p>
+      <p> This box has reverse cycle animation </p>
     </div>
     <div class="alternation-cycle">
-        <p> This box has an alternate cycle (forward then backward and so on) animation </p>
+      <p> This box has an alternate cycle (forward then backward and so on) animation </p>
     </div>
     <div class="alternation-reverse-cycle">
-        <p> This box has an alternate-reverse cycle animation </p>
+      <p> This box has an alternate-reverse cycle animation </p>
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;div class="normal-cycle"&gt;
         &lt;p> This box has a normal forward cycle animation &lt;/p&gt;
@@ -457,26 +478,26 @@ SYNTAX :                                                                        
     }                                                                       100% {width: 100%;} 
                                                                         }
         </pre>
-        </details>
-<h4><u> Play / Pause control with JS TEST </u></h4>    
+    </details>
+    <h4><u> Play / Pause control with JS TEST </u></h4>
     <p class="rotateControl"> Click to Stop/Play the rotation </p>
-<script>
-    document.getElementsByClassName("rotateControl")[0].style.animation = "rotateIt 5s linear infinite";
-    
-    var rotateControl = function(e) {
+    <script>
+      document.getElementsByClassName("rotateControl")[0].style.animation = "rotateIt 5s linear infinite";
+
+      var rotateControl = function (e) {
         if (this.style.animationPlayState == "running") {
-            this.style.animationPlayState = "paused";
+          this.style.animationPlayState = "paused";
         } else {
-            this.style.animationPlayState = "running";
-            console.log(2)
+          this.style.animationPlayState = "running";
+          console.log(2)
         }
-    }
-    
-    document.getElementsByClassName("rotateControl")[0].addEventListener("click", rotateControl);
-</script>    
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+      }
+
+      document.getElementsByClassName("rotateControl")[0].addEventListener("click", rotateControl);
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --        
     &lt;p class="rotateControl"&gt; Click to Stop/Play the rotation &lt;/p&gt;
 &lt;script&gt;
@@ -507,13 +528,13 @@ SYNTAX :                                                                        
         to {transform: rotateY(360deg);}
     }
         </pre>
-        </details>
-</details>    
-<!---------------------------------------------------------------------------------------------------------->    
-<hr>
-<h2 style="color:darkblue;"><u> The <mark>animation-timing-function</mark> property </u></h2>  
-<details class="example">
-<summary> DEMO </summary>    
+    </details>
+  </details>
+  <!---------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>animation-timing-function</mark> property </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
 // HTML -------------------------------------------------------------------------------
     &lt;p class="demo"&gt; I rotate&lt;/p&gt;
@@ -533,35 +554,35 @@ SYNTAX :                                                                        
         to {transform:rotateZ(75deg)}
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>    
-<h4><u> Animation speed curves </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> Animation speed curves </u></h4>
     <p> - for this I used shorthand property (and fancy CSS code as well ;))</p>
     <div class="curve-ease">
-        <p> Ease - Curve (Default)</p>
+      <p> Ease - Curve (Default)</p>
     </div>
     <div class="curve-linear">
-        <p> Linear - Curve</p>
+      <p> Linear - Curve</p>
     </div>
     <div class="curve-ease-in">
-        <p> Ease-in Curve</p>
+      <p> Ease-in Curve</p>
     </div>
     <div class="curve-ease-out">
-        <p> Ease-out Curve</p>
+      <p> Ease-out Curve</p>
     </div>
     <div class="curve-ease-in-out">
-        <p> Ease-in-out Curve</p>
+      <p> Ease-in-out Curve</p>
     </div>
     <div class="curve-cubic-bezier">
-        <p> Cubic-Bezier(Custom) Curve</p>
+      <p> Cubic-Bezier(Custom) Curve</p>
     </div>
     <div class="curve-step">
-        <p> Steps Curve</p>
+      <p> Steps Curve</p>
     </div>
-        <details>
-        <summary> CODE : </summary>
-    <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     -- CODE (HTML) --
     &lt;div class="curve-ease"&gt;
         &lt;p&gt; Ease - Curve (Default)&lt;/p&gt;
@@ -614,13 +635,13 @@ SYNTAX :                                                                        
                                                                                     animation-timing-function: steps(5);
                                                                                 }
     </pre>
-	   </details>
-<h4><u> step function speed curve TEST  </u></h4>    
+    </details>
+    <h4><u> step function speed curve TEST </u></h4>
     <p class="stepTest1"> step (start) / first step is completed as soon as the animation starts </p>
     <p class="stepTest2"> step (end) </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="stepTest1"&gt; step (start) / first step is completed as soon as the animation starts &lt;/p&gt;
     &lt;p class="stepTest2"> step (end) &lt;/p&gt;
@@ -651,14 +672,13 @@ SYNTAX :                                                                        
         to {left: 100px;}
     }
         </pre>
-        </details>
-</details>   
-<!---------------------------------------------------------------------------------------------------------->    
-<hr>    
-<h2 style="color:darkblue;"><u> The <mark>animation-fill-mode</mark> property </u></h2>  
-    <p style="color:yellow;"> - the <mark>animation-delay</mark> is technically already animationy </p>
-<details class="example">
-<summary> DEMO </summary>    
+    </details>
+  </details>
+  <!---------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>animation-fill-mode</mark> property </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
 // HTML -------------------------------------------------------------------------------
     &lt;p class="fillMode"&gt; Fill Moded &lt;/p&gt;
@@ -678,30 +698,30 @@ SYNTAX :                                                                        
         100% {left: 300px;}                                                            // at the end of the animation this style is preserved because of the "animation-fill-mode: both;"
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>    
-<h4><u> TEST </u></h4>
-  <u style="color:yellow;"> - note that : the animation has a 2 seconds delay before it starts, that is technically a <b>running animation</b> </u>
-  <p> - elements are set to <mark>left:50px;</mark> / animation start at <mark>left:0;</mark> finished <mark>left:500px;</mark></p>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> TEST </u></h4>
+    <u style="color:yellow;"> - note that : the animation has a 2 seconds delay before it starts, that is technically a <b>running animation</b> </u>
+    <p> - elements are set to <mark>left:50px;</mark> / animation start at <mark>left:0;</mark> finished <mark>left:500px;</mark></p>
     <div class=timing-forwards>
-        <p> animation-fill-mode: <b>forwards</b></p>
-        <p> - first keyframe style is NOT applied, during the animation delay period the element stays on its original position <mark>left:50px;</mark></p>
-        <p> - last keyframe <mark>left:500px;</mark> is applied when animation is finished </p>
+      <p> animation-fill-mode: <b>forwards</b></p>
+      <p> - first keyframe style is NOT applied, during the animation delay period the element stays on its original position <mark>left:50px;</mark></p>
+      <p> - last keyframe <mark>left:500px;</mark> is applied when animation is finished </p>
     </div>
     <div class=timing-delay-backwards>
-        <p> animation-fill-mode: <b>backwards</b></p>
-        <p> - first keyframe <mark>left:0;</mark> is applided <u>during the animation delay</u> period</p>
-        <p> - the last keyframe style is NOT applied, when animation is finished (element jumps to its original position <mark>left:50px;</mark>) </p>
+      <p> animation-fill-mode: <b>backwards</b></p>
+      <p> - first keyframe <mark>left:0;</mark> is applided <u>during the animation delay</u> period</p>
+      <p> - the last keyframe style is NOT applied, when animation is finished (element jumps to its original position <mark>left:50px;</mark>) </p>
     </div>
     <div class=timing-both>
-        <p><u> animation-fill-mode: <b>both</b> </u></p>
-        <p> - first keyframe <mark>left:0;</mark> is applided <u>during the animation delay</u> period</p>
-        <p> - last keyframe <mark>left:500px;</mark> is applied when animation is finished </p>
+      <p><u> animation-fill-mode: <b>both</b> </u></p>
+      <p> - first keyframe <mark>left:0;</mark> is applided <u>during the animation delay</u> period</p>
+      <p> - last keyframe <mark>left:500px;</mark> is applied when animation is finished </p>
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;div class=timing-forwards&gt;
         &lt;p&lt; animation-fill-mode: &lt;b&gt;forwards&lt;/b&gt;&lt;/p&gt;
@@ -740,13 +760,13 @@ SYNTAX :                                                                        
         to {left: 500px;}
     }
         </pre>
-        </details>
-</details>  
-<!---------------------------------------------------------------------------------------------------------->    
-<hr>    
-<h2 style="color:darkblue;"><u> The <mark>animation</mark> shorthand property </u></h2>  
-<details class="example">
-<summary> DEMO </summary>    
+    </details>
+  </details>
+  <!---------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> The <mark>animation</mark> shorthand property </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
 // HTML -------------------------------------------------------------------------------
     &lt;p class="demo"&gt; I Skew &lt;/p&gt;
@@ -761,14 +781,14 @@ SYNTAX :                                                                        
         to {transform: skew(45deg, 0)}
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>    
-<h4><u> TEST </u></h4>    
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> TEST </u></h4>
     <p class="shortHand_animate"> I rotate </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;p class="shortHand_animate"&gt; I rotate &lt;/p&gt;   
     
 -- CSS --
@@ -786,10 +806,11 @@ SYNTAX :                                                                        
         to {transform: rotateZ(-360deg)}
     }
         </pre>
-        </details>
-</details>     
-    
-    
-<h2 class="test" style=""><a href="TEST/index.html"> TEST > </a></h2>    
+    </details>
+  </details>
+
+
+  <h2 class="test" style=""><a href="TEST/index.html"> TEST > </a></h2>
 </body>
+
 </html>

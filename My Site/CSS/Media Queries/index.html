@@ -1,311 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Media Queries </title>    
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" media="only print" href="styles-media.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../Assets/stylesPages.css">
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Media Queries </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" media="only print" href="styles-media.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Media Queries (ver 4.0.0) </h1>
-    <p> Updated (2017-02-25 / 2017-06-14 / 2018-03-16 / 2021-06-14)</p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html" title="CSS">CSS></a> Media Queries  
-    </p>
-    <details class="example" id="notes">
+  <h1> Media Queries </h1>
+  <p> Updated (2017-02-25 / 2017-06-14 / 2018-03-16 / 2021-06-14 / 2024-03-17 )</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Media Queries
+  </p>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-    </details>
-<h2 style="color:green;"><ins> Useful Links : </ins></h2>
-    <p><a href="https://www.w3schools.com/css/css3_mediaqueries.asp" title="Go to W3School Media Queries site!" target="_blank"> Go to W3School Media Queries site! </a></p>
-    <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries" title="Go To MDN @media queries site!" target="_blank">Go To MDN @media queries site!</a></p>
-<h2 style="color:green;"><ins> Remember This : </ins></h2>
-<h2 style="color:green;"><ins> Description and Demonstration : </ins></h2>
-    <p> - Media Queries are an efficient technique for delivering tailored styles for different media types and screen sizes</p>
-    <p> - There are 2 ways to implement media queries </p>
-    <p style="text-indent:25px;"> 1) we can implement media queries on the stylesheet with the <mark>@media</mark> at rule </p>
-    <p style="text-indent:25px;"> 2) media query conditions can be passed as <mark>media</mark> attribute in the stylesheet link element (so the stylesheet is applied only if the media query conditions passes) </p>
-    <pre>
-// in head link 'media' attribute -----------------------------------------------------
+  </details>
+  <h2 style="color:green;"><ins> Useful Links : </ins></h2>
+  <p><a href="https://www.w3schools.com/css/css3_mediaqueries.asp" title="Go to W3School Media Queries site!" target="_blank"> W3School Media Queries </a></p>
+  <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries" title="Go To MDN @media queries site!" target="_blank"> MDN Media Queries </a></p>
+  <h2 style="color:green;"><ins> Remember This : </ins></h2>
+  <h2 style="color:green;"><ins> Description and Demonstration : </ins></h2>
+  <p> - Media Queries are used to deliver different styles for different devices and screen sizes <span id="browserSupport"><span><i class="fab fa-chrome"></i> 1 </span><span><i class="fab fa-firefox"></i> 1 </span><span><i class="fab fa-opera"></i> 9.2 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span><span><i class="fab fa-safari"></i> 1.3 </span></span> </p>
+  <p> - There are 3 ways to use media queries: </p>
+  <p class="indent-lv1"> - using the <mark>@media</mark> at rule in <mark>*.css</mark> file </p>
+  <p class="indent-lv1"> - in <mark>*.css</mark> file at importing css file (<mark>@import</mark> at rule) </p>
+  <p class="indent-lv1"> - passing a media query conditions on the stylesheet import </p>
+  <pre class="syntax">
+    <small class="openable">not|only<div>
+                <p> <mark>not</mark> - negates this query condition </p>
+                <p> <mark>only</mark> - prevents older browsers from using this media query condition </p>
+            </div></small> <reqval class="openable">mediaType<div>
+                <p> <mark>all</mark> - all media devices </p>
+                <p> <mark>print</mark> - for print view mode </p>
+                <p> <mark>screen</mark> - for screens </p>
+                <p> <mark>speech</mark> - speech synthesizers </p>
+            </div></reqval> <opt>[and (<optval class="openable">condition <div>
+                <p> <mark>orientation</mark> - landscape or portrait </p>
+                <p> <mark>height</mark> - height of the viewport (including scrollbar) </p>
+                <p> <mark>width</mark> - width of the viewport (including scrollbar) </p>
+                <p> <mark>max-height</mark> - max height of the viewport </p>
+                <p> <mark>min-height</mark> - minimum height of the viewport </p>
+                <p> <mark>max-width</mark> -  maximum width of the viewport </p>
+                <p> <mark>min-width</mark> - min width of the viewport </p>
+                <p> <a href="https:\/\/developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries" target="_blank">[more...]</a> </p>
+            </div></optval>)]<optval>, ...</optval></opt>     // media quiery condition (styles kick in if all media query conditions are true)
+    
+    
+// applying media quier condtion on stylesheet import --
+    <lit>&lt;head&gt;</lit>
+        &lt;link rel="stylesheet" media="<reqval>mediaQueryCondition</reqval>" href="<reqval>cssFilePath</reqval>"&gt;
+    <lit>&lt;head&gt;</lit>
+    
+    
+// media query condition in stylesheet --
+    @import <reqval>filePath:str</reqval>|url(<reqval>filePath:str</reqval>) <reqval>mediaQueryCondition</reqval>;    // styles imported if <reqval>mediaQueryCondition</reqval> are true
+    
+    
+    @media <reqval>mediaQueryCondition</reqval> {   // styles applied if <reqval>mediaQueryCondition</reqval> are true
+        // css styles...
+    }
+    </pre>
+  <details class="example">
+    <summary> DEMO: </summary>
+  <pre>
     &lt;head&gt;
         &lt;link rel="stylesheet" media="only print" href="print.css"&gt;                    // sheet only implemented on print view     
         &lt;link rel="stylesheet" media="(max-width: 800px)" href="max800.css"&gt;           // sheet only implemented on devices less than 800 pixels
     &lt;/head&gt;
     
-// @media (in CSS stylesheet) ---------------------------------------------------------
+    
+// css file -------------------------------------
+    @import './mobileStyles.css' screen and (max-width:500px)                 // import css rules if the media is screen and less than 500px width
+    
+    
     @media screen and (max-width:500px) {                                              // applies styles to screens that are less than 500px width    
         // CSS code....
     }
     </pre>
-    <pre class="syntax">
-                                                                                              <span id="browserSupport" style="color:yellow;" title="updated : 2021-05-15"><span><i class="fab fa-chrome"></i> 1 </span><span><i class="fab fa-firefox"></i> 1 </span><span><i class="fab fa-opera"></i> 9.2 </span><span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 6 </span><span><i class="fab fa-safari"></i> 1.3 </span></span>    
-SYNTAX:     @media <small class="openable">not|only<div>
-                <p> <mark>not</mark> - negates this query condition, (valid till the next comma) (if this condition is <mark>false</mark> returns <mark>true</mark>) </p>
-                <p> <mark>only</mark> - [Sort of deprecated (used by older browsers)] only applies the following <i>mediaType</i> (ignores features) </p>
-            </div></small> <i class="openable">mediaType<div>
-                <p> <mark>all</mark> - all media devices </p>
-                <p> <mark>print</mark> - for print view mode </p>
-                <p> <mark>screen</mark> - for screens </p>
-                <p> <mark>speech</mark> - speech synthesizers </p>
-            </div></i> <small>and (<i class="openable">features<div>
-                <p> - the <mark>min-</mark> and <mark>max-</mark> prefixes can used to specify minimal or maximal conditions (ex: <mark>min-width: 250px</mark>) </p>
-                <hr> 
-                <p> <mark>any-hover: <strong>val</strong></mark> - any available mechanism can hover over elements 
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 41 </span>
-                        <span><i class="fab fa-firefox"></i> 64 </span>
-                        <span><i class="fab fa-opera"></i> 28 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 16 </span>
-                        <span><i class="fab fa-safari"></i> 9 </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark>none</mark> - no input mechanism can hover or ther's no pointing input mechanism </p>
-                    <p style="text-indent: 5px;"> <mark>hover</mark> - the input mechanism can conveniently hover over elements </p>
-                <hr>
-                <p> <mark>any-pointer: <strong>val</strong></mark> - any available pointing device (like the mouse) 
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 41 </span>
-                        <span><i class="fab fa-firefox"></i> 64 </span>
-                        <span><i class="fab fa-opera"></i> 28 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
-                        <span><i class="fab fa-safari"></i> 9 </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark>none</mark> - no pointing device </p>
-                    <p style="text-indent: 5px;"> <mark>coarse</mark> - at least one pointing device with limited accuracy </p>
-                    <p style="text-indent: 5px;"> <mark>fine</mark> - at least one pointing device with accurate accuracy </p>
-                <hr>
-                <p> <mark>aspect-ratio: <strong>val</strong></mark> - aspect ratio of the viewport  
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 3 </span>
-                        <span><i class="fab fa-firefox"></i> 3.5 </span>
-                        <span><i class="fab fa-opera"></i> 10 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                        <span><i class="fab fa-safari"></i> 5 </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark><strong>nr</strong>/<strong>nr</strong></mark> - viewport aspect ratio (ex: <mark>8/5</mark>) </p>
-                <hr>
-                <p> <mark>color: <strong>val</strong></mark> - number of bits per color 
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 1 </span>
-                        <span><i class="fab fa-firefox"></i> 2 </span>
-                        <span><i class="fab fa-opera"></i> 10 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                        <span><i class="fab fa-safari"></i> 3 </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark><strong>nr</strong></mark> - nr of bits per color component </p>
-                <hr>
-                <p> <mark>color-gramut: <strong>val</strong></mark> - aproximate range of colors supported by the User Agent 
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 58 </span>
-                        <span><i class="fab fa-firefox"></i> NO </span>
-                        <span><i class="fab fa-opera"></i> 45 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                        <span><i class="fab fa-safari"></i> 10 </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark>srgb</mark> - srgb (includes the vast majority of color displays) </p>
-                    <p style="text-indent: 5px;"> <mark>p3</mark> - <a href="https://en.wikipedia.org/wiki/DCI-P3" target="_blank">DCI P3 Color Space</a> </p>
-                    <p style="text-indent: 5px;"> <mark>rec2020</mark> - <a href="https://en.wikipedia.org/wiki/Rec._2020" target="_blank">ITU-R Recommendation BT.2020 Color Space</a> </p>
-                <hr>
-                <p> <mark>color-index: <strong>val</strong></mark> - number of colors supported by the device 
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 29 </span>
-                        <span><i class="fab fa-firefox"></i> NO </span>
-                        <span><i class="fab fa-opera"></i> 16 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                        <span><i class="fab fa-safari"></i> 8 </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark>nr</mark> - number of colors (ex: <mark>15000</mark>) </p>
-                <hr>
-                <p> <mark>display-mode: <strong>val</strong></mark> - display mode of the application 
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 45 </span>
-                        <span><i class="fab fa-firefox"></i> 47 </span>
-                        <span><i class="fab fa-opera"></i> 32 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                        <span><i class="fab fa-safari"></i> 13 </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark>fullscreen</mark> - the app takes up the full screen (fallback <mark>standalone</mark>) </p>
-                    <p style="text-indent: 5px;"> <mark>standalone</mark> - the app feels like a standalone application (fallback <mark>minimal-ui</mark>) </p>
-                    <p style="text-indent: 5px;"> <mark>minimal-ui</mark> - the app feels like a standalone application with minimal set of UI elements (fallback <mark>browser</mark>) </p>
-                    <p style="text-indent: 5px;"> <mark>browser</mark> - the app opens in a conventional browser tab </p>
-                <hr>
-                <p> <mark>forced-colors: <strong>val</strong></mark> - used to detect if the User Agent has a forced color mode enabled (like Windows High Contrast Mode) 
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 89 </span>
-                        <span><i class="fab fa-firefox"></i> 89 </span>
-                        <span><i class="fab fa-opera"></i> NO </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                        <span><i class="fab fa-safari"></i> NO </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark>none</mark> - no forced color mode is enabled </p>
-                    <p style="text-indent: 5px;"> <mark>active</mark> - forced color mode is active </p>
-                <hr>
-                <p> <mark>grid: <strong>val</strong></mark> - the output device uses a grid-basec screen (we have bitmap-based screens so this is not really relevant) 
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 1 </span>
-                        <span><i class="fab fa-firefox"></i> 2 </span>
-                        <span><i class="fab fa-opera"></i> 10 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
-                        <span><i class="fab fa-safari"></i> 3 </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark>1</mark> - output device is grid based </p>
-                    <p style="text-indent: 5px;"> <mark>0</mark> - output device is not grid based </p>
-                <hr>
-                <p> <mark>height: <strong>val</strong></mark> - height of the viewport (can be applied with <mark>min-</mark> / <mark>max-</mark>)
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 1 </span>
-                        <span><i class="fab fa-firefox"></i> 2 </span>
-                        <span><i class="fab fa-opera"></i> 10 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                        <span><i class="fab fa-safari"></i> 3 </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark><strong>cssLength</strong></mark> - viewport height </p>
-                <hr>
-                <p> <mark>hover: <strong>val</strong></mark> - any available mechanism can hover over elements 
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 41 </span>
-                        <span><i class="fab fa-firefox"></i> 64 </span>
-                        <span><i class="fab fa-opera"></i> 28 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
-                        <span><i class="fab fa-safari"></i> 9 </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark>none</mark> - no input mechanism can hover or ther's no pointing input mechanism </p>
-                    <p style="text-indent: 5px;"> <mark>hover</mark> - the input mechanism can conveniently hover over elements </p>
-                <hr>
-                <p> <mark>inverted-colors: <strong>val</strong></mark> - tests if the User Agent or the underlying OS inverts colors 
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> NO </span>
-                        <span><i class="fab fa-firefox"></i> NO </span>
-                        <span><i class="fab fa-opera"></i> NO </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> NO </span>
-                        <span><i class="fab fa-safari"></i> 9.1 </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark>none</mark> - no color inversion </p>
-                    <p style="text-indent: 5px;"> <mark>inverted</mark> - colors are inverted </p>
-                <hr>
-                <p> <mark>monochrome: <strong>val</strong></mark> - number of bits per pixel in the monochrome frame buffer  
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 1 </span>
-                        <span><i class="fab fa-firefox"></i> 2 </span>
-                        <span><i class="fab fa-opera"></i> 10 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                        <span><i class="fab fa-safari"></i> 3 </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark><strong>nr</strong></mark> - number of bits per pixel in the monochrome fram buffer </p>
-                <hr>
-                <p> <mark>orientation: <strong>val</strong></mark> - orientation of the viewport 
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 3 </span>
-                        <span><i class="fab fa-firefox"></i> 2 </span>
-                        <span><i class="fab fa-opera"></i> 10.6 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                        <span><i class="fab fa-safari"></i> 5 </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark>portrait</mark> - portrait </p>
-                    <p style="text-indent: 5px;"> <mark>landscape</mark> - landscape </p>
-                <hr>
-                <p> <mark>pointer: <strong>val</strong></mark> - any available pointing device (like the mouse) 
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 41 </span>
-                        <span><i class="fab fa-firefox"></i> 64 </span>
-                        <span><i class="fab fa-opera"></i> 28 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
-                        <span><i class="fab fa-safari"></i> 9 </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark>none</mark> - no pointing device </p>
-                    <p style="text-indent: 5px;"> <mark>coarse</mark> - at least one pointing device with limited accuracy </p>
-                    <p style="text-indent: 5px;"> <mark>fine</mark> - at least one pointing device with accurate accuracy </p>
-                <hr>
-                <p> <mark>prefers-color-scheme: <strong>val</strong></mark> - detects if the user request a dark or light color theme  
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 76 </span>
-                        <span><i class="fab fa-firefox"></i> 67 </span>
-                        <span><i class="fab fa-opera"></i> 62 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                        <span><i class="fab fa-safari"></i> 12.1 </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark>ligth</mark> - light scheme or not requested any active preference </p>
-                    <p style="text-indent: 5px;"> <mark>dark</mark> - dark scheme prefered </p>
-                <hr>
-                <p> <mark>prefers-reduced-motion: <strong>val</strong></mark> - detects if the user requested to minimize the amount of non-essential motions (ARIA)
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 74 </span>
-                        <span><i class="fab fa-firefox"></i> 63 </span>
-                        <span><i class="fab fa-opera"></i> 62 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
-                        <span><i class="fab fa-safari"></i> 10.1 </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark>no-preference</mark> - used did not requested the animation slowdown </p>
-                    <p style="text-indent: 5px;"> <mark>reduce</mark> - used requested the animation slowdown </p>
-                <hr>
-                <p> <mark>resolution: <strong>val</strong></mark> - pixel density of the output (DPI)
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 29 </span>
-                        <span><i class="fab fa-firefox"></i> 8 </span>
-                        <span><i class="fab fa-opera"></i> 16 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                        <span><i class="fab fa-safari"></i> NO </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark><strong>nr</strong>dpi</mark> - pixel dot per inch </p>
-                <hr>
-                <p> <mark>width: <strong>val</strong></mark> - width of the viewport (can be applied with <mark>min-</mark> / <mark>max-</mark>)
-                    <span id="browserSupport" title="Updated: 2021-06-14">
-                        <span><i class="fab fa-chrome"></i> 1 </span>
-                        <span><i class="fab fa-firefox"></i> 2 </span>
-                        <span><i class="fab fa-opera"></i> 10 </span>
-                        <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                        <span><i class="fab fa-safari"></i> 3 </span>
-                    </span>  
-                </p>
-                    <p style="text-indent: 5px;"> <mark><strong>cssLength</strong></mark> - viewport width </p>
-            </div></i>)</small> <small class="openable">and (<i>features</i>) and</i><i> ...</i><div>
-                <p> - the <mark>and</mark> keyword combines multiple features togehter (logical AND) </p>
-                <p> - the <mark>and</mark> also combines the <i>mediaType</i> and features </p> 
-            </div></small> <i class="openable"><small>,</small> ...<div>
-                <p> - conditions are separated by commas which is equivalent to the <mark>OR</mark> logical operator </p>
-                <p> - if any of the comma separated condition is <mark>true</mark> the query conditon is <mark>true</mark> </p>
-            </div></i> {}    // if media query condition is true the CSS code in the block will be executed 
-                                                                                              // query conditions are separated by commas, if one of them is true the block is executed   
-    </pre>
-<details class="example">
-<summary> DEMO </summary>
     <pre>
-    @media print { ... }                                                               // runs the block if the view is in print mode 
-    @media screen, print {}                                                            // multiple query conditions (only one of the must be true)
+    @media print {  }                                                               // runs the block if the view is in print mode 
+    @media screen, print {  }                                                            // multiple query conditions (only one of the must be true)
     
-    @media screen and (max-width: 12450px) { ... }  
-    @media screen and (min-width: 30em) and (orientation: landscape) { ... }  
-    @media (min-height: 680px), screen and (orientation: portrait) { ... }             // multiple query conditions (only one of the must be true)
+    @media screen and (max-width: 12450px) {  }  
+    @media screen and (min-width: 30em) and (orientation: landscape) {  }  
+    @media (min-height: 680px), screen and (orientation: portrait) {  }             // multiple query conditions (only one of the must be true)
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> try to print this page </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> try to print this page </u></h4>
     <p> - Display the printing screen for this page, fonts will be green italic and bold, the media type changes the printing style</p>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
 -- HTML --
     (stylesheet exclusive for pirnting)
     &lt;link rel="stylesheet" media="only print" href="styles-media.css"&gt;
@@ -318,12 +112,12 @@ SYNTAX:     @media <small class="openable">not|only<div>
     }
     </pre>
     </details>
-<h4><u> simple example </u></h4>
+    <h4><u> simple example </u></h4>
     <div class="media-one"> (width=1000px) Background Color is green between 500px and 800px </div>
     <div class="media-two"> (width=1000px) Background Color is green below 500px and above 800px </div>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
 -- HTML --
     &lt;div class="media-one"&gt; (width=1000px) Background Color is green between 500px and 800px &lt;/div&gt;
     &lt;div class="media-two"&gt; (width=1000px) Background Color is green below 500px and above 800px &lt;/div&gt;
@@ -349,9 +143,10 @@ SYNTAX:     @media <small class="openable">not|only<div>
     }
     </pre>
     </details>
-</details>
-    
-    
-    <br><br>
+  </details>
+
+
+  <br><br>
 </body>
+
 </html>

@@ -228,16 +228,12 @@ details.example {
 
 /*-----------------------------------------------------------*/
 /*-- link styling -------------------------------------------*/
-pre a:link, pre a:visited {
-    color: rgb(79, 133, 212);
+pre a:any-link, .table a:any-link {
+    color: lightseagreen;
 }
 
 a:hover {
-    background-color: rgb(166, 223, 62);
-}
-
-a {
-    transition: background-color .1s;
+    background-color: yellow;
 }
 
 /*-----------------------------------------------------------*/

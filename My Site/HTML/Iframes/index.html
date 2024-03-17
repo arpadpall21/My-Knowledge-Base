@@ -1,316 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title> Iframes </title>    
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
-</head>
-<body>
-<h1> Iframes (ver 3.1) </h1>
-    <p> Updated ( 2016-06-01 / 2018-06-17 / 2019-03-28 ) </p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html">HTML></a> Iframes  
-    </p>
-<table class="table">
-    <tr>
-        <th> Attribute </th>
-        <th> Values </th>
-        <th> Description </th>
-    </tr>
-    <tr>
-        <td colspan="3"> <mark>&lt;iframe&gt;&lt;/iframe&gt;</mark> element </td>
-    </tr>
-    <tr>
-        <td colspan="2" style="background-color:inherit; text-align:inherit;"> 
-            <prot>EventTarget.Node.Element.HTMLElement.HTMLIFrameElement</prot>
-        </td>
-        <td> element inheritance </td>
-    </tr>
-    <tr>
-        <td colspan="2" style="background-color:inherit; text-align:inherit;"> <em>document</em>.exitFullscreen() </td>
-        <td> 
-            closes the element on the page what is currently in full-screen mode 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 45/1 webkit </span>
-                <span><i class="fab fa-firefox"></i> 64/9 moz </span>
-                <span><i class="fab fa-opera"></i> 15 webkit </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12/11 ms </span>
-                <span><i class="fab fa-safari"></i> 5.1 webkit </span>
-            </span>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" style="background-color:inherit; text-align:inherit;"> 
-              <prot>HTMLIFrameElement.prototype</prot>.requestFullscreen()
-        </td>
-        <td> 
-            displays the iFrame in full-screen mode (inherited method) <u>(user invocation ONLY!)</u>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 15 webkit </span>
-                <span><i class="fab fa-firefox"></i> 64/9 moz </span>
-                <span><i class="fab fa-opera"></i> 12.1 webkit </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 11 ms </span>
-                <span><i class="fab fa-safari"></i> 5.1 webkit </span>
-            </span>
-        </td>
-    </tr>
-    <tr>
-        <td> allowfullscreen </td>
-        <td> <span style="color:#7f85a3;">(boolean)</span> </td>
-        <td> 
-            allows the iFrame to activate full-screen mode (has effect only on Youtube embeded videos [TESTED 2019-03-29]) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 27/17 webkit </span>
-                <span><i class="fab fa-firefox"></i> 18/9 moz </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12/11 ms </span>
-                <span><i class="fab fa-safari"></i> 7/1 webkit </span>
-            </span>
-        </td>
-    </tr>    
-    <tr>
-        <td> height </td>
-        <td> <strong>px</strong> </td>
-        <td> 
-            sets the height for the iFrame (default <mark>150</mark>) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-            </span>
-        </td>
-    </tr>
-    
-    <tr>
-        <td> name </td>
-        <td> <strong>name</strong> </td>
-        <td> 
-            specifies a name for the iFrame 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-            </span>
-        </td>
-    </tr>
-    <tr>
-        <td> sandbox </td>
-        <td> <span style="color:#7f85a3;">(no value = all restriction)</span><br>
-            allow-forms <span style="color:#7f85a3;">(allows form submission)</span>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> ? </span>
-                <span><i class="fab fa-firefox"></i> ? </span>
-                <span><i class="fab fa-opera"></i> ? </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> ? </span>
-                <span><i class="fab fa-safari"></i> ? </span>
-            </span><br>
-            allow-modals <span style="color:#7f85a3;">(allows modal windows)</span>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> ? </span>
-                <span><i class="fab fa-firefox"></i> 49 </span>
-                <span><i class="fab fa-opera"></i> ? </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> NO </span>
-                <span><i class="fab fa-safari"></i> ? </span>
-            </span><br>
-            allow-pointer-lock <span style="color:#7f85a3;">(allows pointer lock)</span>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> ? </span>
-                <span><i class="fab fa-firefox"></i> ? </span>
-                <span><i class="fab fa-opera"></i> ? </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> ? </span>
-                <span><i class="fab fa-safari"></i> ? </span>
-            </span><br>
-            allow-popups <span style="color:#7f85a3;">(allows popus)</span>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> 28 </span>
-                <span><i class="fab fa-opera"></i> ? </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> ? </span>
-            </span><br>
-            allow-same-origin <span style="color:#7f85a3;">(allows the Iframed document threated as the main page's origin (same origin policy)</span>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> ? </span>
-                <span><i class="fab fa-firefox"></i> ? </span>
-                <span><i class="fab fa-opera"></i> ? </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> ? </span>
-                <span><i class="fab fa-safari"></i> ? </span>
-            </span><br>
-            allow-scripts <span style="color:#7f85a3;">(allows script execution (an therefore automatic tasks)</span>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> ? </span>
-                <span><i class="fab fa-firefox"></i> ? </span>
-                <span><i class="fab fa-opera"></i> ? </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> ? </span>
-                <span><i class="fab fa-safari"></i> ? </span>
-            </span><br>
-            allow-top-navigation <span style="color:#7f85a3;">(allows to Iframed document to break out form the Iframe and navigate to the top level)</span>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 58 </span>
-                <span><i class="fab fa-firefox"></i> ? </span>
-                <span><i class="fab fa-opera"></i> 45 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> ? </span>
-                <span><i class="fab fa-safari"></i> ? </span>
-            </span>
-        </td>
-        <td> <i class="fab fa-html5"></i> restricts the iFrame to perform the following tasks (when no value is set) &nbsp; / &nbsp; <u>threats the content as unique origin (meaning all same origin cheks will fail, like it has no access to the main page's cookies storage ect..)</u> &nbsp; / &nbsp; <u>form submittion is prevented</u> &nbsp; / &nbsp; <u>script execution is blocked</u> &nbsp; / &nbsp; <u>API's are blocked</u> &nbsp; / &nbsp; <u>links are prevented to targeting other content</u> &nbsp; / &nbsp; <u>using plug-ins <mark>&lt;emberd&gt;</mark> <mark>&lt;object&gt;</mark> <mark>&lt;applet&gt;</mark> and others</u>  &nbsp; / &nbsp; <u>automatically trigered freatures (like playing a video) are blocked</u> &nbsp; / &nbsp; <u>pop-up's are blocked</u> &nbsp; / &nbsp; <u>document in the Iframe cannot navigate to it's top level</u> &nbsp; / &nbsp; <u>pointer lock cannot be obtained</u>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 17 </span>
-                <span><i class="fab fa-opera"></i> 15 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-            </span>
-        </td>
-    </tr>
-    <tr>
-        <td> src </td>
-        <td> 
-            <strong>URL</strong><br>
-            https://www.youtube.com/embed/<strong>videoId</strong><i>?queryString_Youtube</i> <span style="color:#7f85a3;">(embed youtube video)</span><br>
-            https://www.youtube.com/embed/<strong>?queryString_Youtube</strong> <span style="color:#7f85a3;">(embed youtube videos)</span><br>
-        </td>
-        <td> 
-            URL of the embeded document 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-            </span>
-        </td>
-    </tr>
-    <tr>
-        <td> srcdoc </td>
-        <td> <strong>HTML_markup</strong> </td>
-        <td> 
-            <i class="fab fa-html5"></i> HTML content to display in the iFrame (overrides the "src" attribute) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 20 </span>
-                <span><i class="fab fa-firefox"></i> 25 </span>
-                <span><i class="fab fa-opera"></i> 15 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> NO </span>
-                <span><i class="fab fa-safari"></i> 6 </span>
-            </span>
-        </td>
-    </tr>
-    <tr>
-        <td> width </td>
-        <td> <strong>px</strong> </td>
-        <td> 
-            sets the width for the iFrame (default <mark>300</mark>) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> yes </span>
-                <span><i class="fab fa-firefox"></i> yes </span>
-                <span><i class="fab fa-opera"></i> yes </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
-                <span><i class="fab fa-safari"></i> yes </span>
-            </span>
-        </td>
-    </tr>
-</table>
-<h2 style="color:green;"><u> Notes : </u></h2>
-    <details class="example" id="notes">
-    <summary> Notes :</summary>
-        <p> - there are a bunch of other <u>not very clear or unsopported</u> attributes what I did not Tested [2019-03-27] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe" target="_blank"> MDN Iframe [link]</a> </p>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="http://www.w3schools.com/html/html_iframe.asp" target="_blank"> W3Schools Iframe </a></p>
-    <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe" target="_blank"> MDN Iframe </a></p>
-    <p><a href="https://www.w3schools.com/html/html_youtube.asp" target="_blank"> W3Schools embed Youtube in Iframe </a></p>
-    <p><a href="https://developers.google.com/youtube/player_parameters" target="_blank"> Youtube API Iframe </a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    <p> - "sandbox" attribute values' browser support is pretty messy (check before using them) <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe" target="_blank"> MDN Iframe [link]</a> </p>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - iFrames are used to embed another HTML page into the current one (they nest browsing content) </p>
-    <pre class="syntax">
-SYNTAX :    &lt;iframe <i>attribute="value"</i>&gt;&lt;/iframe&gt;    
 
-    <span style="color:skyblue;">// <mark>&lt;iframe&gt;</mark> element attributes - - - - - </span>
-        allowfullscreen                <span style="color:skyblue;">// (boolean)        // allows the iFrame to activate full-screen mode (has effect only on Youtube embeded videos [TESTED 2019-03-29]) </span>
-        height="<strong>px</strong>"                                        <span style="color:skyblue;">// sets the height for the iFrame (default <mark>150</mark>)</span>
-        name="<strong>name</strong>"                                        <span style="color:skyblue;">// specifies a name for the iFrame </span>
-        sandbox                        <span style="color:skyblue;">// (no value = all restrictions) </span>             <span style="color:skyblue;">// <i class="fab fa-html5"></i> restrict specific tasks (listed below) </span>
-               allow-forms             <span style="color:skyblue;">// allows form submission </span>
-               allow-modals            <span style="color:skyblue;">// allows modal windows </span>
-               allow-pointer-lock      <span style="color:skyblue;">// allows pointer lock </span>
-               allow-popups            <span style="color:skyblue;">// allows popus </span>
-               allow-same-origin       <span style="color:skyblue;">// allows the Iframed document threated as the main page's origin (same origin policy) </span>
-               allow-scripts           <span style="color:skyblue;">// allows script execution (an therefore automatic tasks) </span>
-               allow-top-navigation    <span style="color:skyblue;">// allows to Iframed document to break out form the Iframe and navigate to the top level </span>
-        src="<strong>URL</strong>"                                          <span style="color:skyblue;">// URL of the embeded document </span>
-        srcdoc="<strong>HTML_markup</strong>"                               <span style="color:skyblue;">// <i class="fab fa-html5"></i> HTML content to display in the iFrame (overrides the "src" attribute) </span>
-        width="<strong>px</strong>"                                         <span style="color:skyblue;">// sets the width for the iFrame (default <mark>300</mark>)</span>
-        
-        <prot>EventTarget.Node.Element.HTMLElement.HTMLIFrameElement</prot>           // element inheritance 
-        <prot>HTMLIFrameElement.prototype</prot>.requestFullscreen()                  // displays the iFrame in full-screen mode (inherited method) <u>(user invocation ONLY!)</u>
-        <em>document</em>.exitFullscreen()                                        // closes the element on the page what is currently in full-screen mode  
-    </pre>  
-    <pre>
-    <iframe width="500" height="400" src="mySite.html" name="myIframe"></iframe>
-        
-// srcdoc ------------------------------------------------------------------------  
-    // the srcdoc attribute overrides the src attribute 
-    <iframe width="500" height="400" src="mySite.html" srcdoc="<p> HTML markup overrides</p>"></iframe>     // iFrame displays the passed HTML markup    // -> HTML markup overrides
-    
-// display link content in an iFrame --------------------------------------------- 
-    <iframe width="500" height="400" src="mySite.html" name="myIframe"></iframe>                            // iFrame is targeted by its "name" attribute 
-    <a href="anotherPage.html" target="myIframe"> display page </a>                                         // when the user click on the link the URL will be displayed in the above iFrame 
-    
-// iFrame full-screen ------------------------------------------------------------  
-    <iframe width="500" height="400" src="mySite.html" id="myIframe"></iframe>
-        <button onmouseup="iFrameFull_screen()"> full-screen </button>
-&lt;script&gt;
-    var iFrame = document.getElementById("myIframe");
-    
-    iFrame.requestFullscreen();                                          // -! this is blocked by the browser (only the user can call for the full-screen mode)
-    
-    var iFrameFull_screen = function() {                                 
-        if(iFrame.requestFullscreen) iFrame.requestFullscreen();         // open full-screen mode by the user 
-        else iFrame.webkitRequestFullscreen();                           // fallback for other browser support 
-        
-        window.setTimeout(() => {document.exitFullscreen();}, 3000);     // exit full-screen mode (3 seconds after)
-    }
-&lt;/script&gt;
-    </pre>
-<!--------------------------------------------------------------------------------------------------------------------------------> 
-<hr>
-<h2 style="color:darkblue;"><u> <i class="fab fa-html5"></i>the <mark>sandbox</mark> attribute </u></h2>
-    <p> - the <mark>sandbox</mark> attribute is designed to restrict the following tasks for the iFrame to perform <u style="color:yellow;">when it is set without any value</u> </p>
-    <ul>
-        <li> threats the content as <u>unique origin</u> (meaning all same origin cheks will fail, like it has no access to the main page's cookies storage ect..) </li>
-        <li> form submittion is prevented </li>
-        <li> script execution is blocked </li>
-        <li> API's are blocked </li>
-        <li> links are prevented to targeting other content </li>
-        <li> plug-ins using <mark>&lt;emberd&gt;</mark>, <mark>&lt;object&gt;</mark>, <mark>&lt;applet&gt;</mark> and other tags</li>
-        <li> automatically trigered freatures (like playing a video) are blocked </li>
-        <li> pop-up's are blocked </li>
-        <li> document in the Iframe cannot navigate to it's top level </li>
-        <li> pointer lock cannot be obtained </li>
-    </ul>
-    <p style="color:yellow;"> - you can remove the targeted restrictions by setting values to the <mark>sandbox</mark> attribute, <u style="background-color:yellow; color:black;">however the browser support for these values are pretty unclear for now [2019-03-27]</u> </p>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> Simple Iframe </u></h4>
-    <p> - This Iframe displays the Entities page from a different locaton! </p> 
-    <iframe id="iframe1" src="../Encoded Data in HTML/index.html"></iframe>
+<head>
+  <meta charset="utf-8">
+  <title> Iframes </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Iframes </h1>
+  <p> Updated ( 2016-06-01 / 2018-06-17 / 2019-03-28 / 2024-03-17 ) </p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html">HTML></a> Iframes
+  </p>
+  <p class="subSite"><a href="./Embed YouTube/index.html"> Embeding YouTube in iframe (archived 2024-03-17) > </a></p>
+  <br>
+  <table class="table">
+    <tr>
+      <th style="width:15%"> Tag </th>
+      <th style="width:40%"> Attribute </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td>
+        &lt;iframe&gt;&lt;/iframe&gt;
+      </td>
+      <td>
+        allowfullscreen <br>
+        name="<reqval>name</reqval>"<br>
+        height="<reqval>px</reqval>"<br>
+        width="<reqval>px</reqval>"<br>
+        src="<reqval>url</reqval>"<br>
+        srcdoc="<reqval>htmlMarkup</reqval>" <span class="cssAV">(html code to display in the iframe (overrides <mark>src</mark>))</span><br>
+        loading="eager|lazy" <span class="cssAV">(<mark>eager</mark> = immediately loads (Default) / <mark>lazy</mark> = defered loading handled by the browser)</span><br>
+        sandbox="<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox" target="_blank">directives</a>" <span class="cssAV">((Default: all disabled) allows the iframe to perform different tasks in the browser)</span> <br>
+        referrerpolicy="<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox" target="_blank">directives</a>" <span class="cssAV">((Default: no referrer sent with the request) controls which referrer (origins) to send with requests)</span><br>
+        allow="<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#allow" target="_blank">directives</a>" <span class="cssAV">((Default: all allowed) defines what features are available to the iframe (for example, access to the microphone, camera, battery, web-share, etc...)</span> 
+      </td>
+      <td>
+        - specifies an inline iframe 
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="http://www.w3schools.com/html/html_iframe.asp" target="_blank"> W3Schools Iframe </a></p>
+  <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe" target="_blank"> MDN Iframe </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - an iframe embends another document in the main document </p>
+  <p> - technically we can embed as many iframes as we want, but iframes eat up resources (since they are individual pages) </p>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 class="header"> Simple Iframe </h4>
+    <iframe id="iframe1" src="../Basics/index.html"></iframe>
     <details>
-    <summary> CODE </summary>
-    <pre>
--- CODE (HTML) --
-    <iframe id="iframe1" src="../Encoded Data in HTML/index.html"></iframe>
+      <summary> CODE </summary>
+      <pre>
+// HTML ---
+    &lt;iframe id="iframe1" src="../Basics/index.html"&gt;&lt;/iframe&gt;
     
--- CODE (CSS) --
+    
+// CSS --
     #iframe1{
         border: 3px double black; 
         width: 80%; 
@@ -319,310 +78,60 @@ SYNTAX :    &lt;iframe <i>attribute="value"</i>&gt;&lt;/iframe&gt;
     }
     </pre>
     </details>
-<!--------------------------------------------------------------------------------------------------------------->
-<h4><u> target iFrames by links </u></h4>
-    <p> - the links below target the iFrame in order to display their content </p>
-    <iframe id="iframe2" 
-        srcdoc="<h1 style='color:green; font-family:monospace; text-decoration:underline;'> Chose a link below ! </h1>" 
-        name="displayIframe">
-    </iframe>
-    <p><a href="../../03.1 jQuery/03. Effects/index.html" target="displayIframe"> jQuery Effects </a></p>
-    <p><a href="../../03.4 XML/index.html" target="displayIframe"> XML </a></p>
-    <p><a href="../../03.3 Canvas/Styling/index.html" target="displayIframe"> Canvas Styling </a></p>
+    <hr>
+    <!--------------------------------------------------------------------------------------------------------------->
+    <h4 class="header"> The <mark>srcdoc</mark> attribute </h4>
+    <iframe style="margin-left:10%;" width="80%" height="150px" src="../HTML Entities/index.html" srcdoc="<p>src attribute overwritten by srcdoc's HTML code (except Edge 2018-06-21) </p>"></iframe>
     <details>
-    <summary> CODE </summary>
-    <pre>
--- CODE (HTML) --
-    <iframe id="iframe2" 
-        srcdoc="<h1 style='color:green; font-family:monospace; text-decoration:underline;'> Chose a link below ! </h1>" 
-        name="displayIframe">
+      <summary> CODE : </summary>
+      <pre>
+    &lt;iframe 
+        style="margin-left:10%;"
+        width="80%"
+        height="150px"
+        src="../HTML Entities/index.html"
+        srcdoc="&lt;p&gt;src attribute overwritten by srcdoc's HTML code (except Edge 2018-06-21) &lt;/p>"    // the "srcdoc" attribute overrides the "src" attribute here
+      &gt;
+      &lt;/iframe&gt;
+        </pre>
+    </details>
+  </details>
+  <!-------------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Display linkend content in iframe (link <mark>target</mark> attribute) </h2>
+  <pre class="syntax">
+  &lt;iframe name="<reqval>iframeName</reqval>"&gt;&lt;/iframe&gt;
+  
+  &lt;a href="<reqval>url</reqval>" target="<reqval>iframeName</reqval>"&gt; &lt;/a&gt;   // the link content will be displayed in the iframe
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <iframe id="iframe2" srcdoc="<h1 style='color:green; font-family:monospace; text-decoration:underline;'> Chose a link below ! </h1>" name="displayIframe">
     </iframe>
-    <p><a href="../../03.1 jQuery/03. Effects/index.html" target="displayIframe"> jQuery Effects </a></p>
-    <p><a href="../../03.4 XML/index.html" target="displayIframe"> XML </a></p>
-    <p><a href="../../03.3 Canvas/Styling/index.html" target="displayIframe"> Canvas Styling </a></p>
-    
--- CODE (CSS) --
-    #iframe2{
-        width: 80%;
-        height: 150px;
-        margin-left: 10%;
-        border: 3px double black;
-    }
+    <p>
+      <a href="../../JavaScript/index.html" target="displayIframe"> Python </a> / 
+      <a href="../../Python/index.html" target="displayIframe"> JavaScript </a> / 
+      <a href="../../TypeScript/index.html" target="displayIframe"> TypeScript </a> 
+    </p>
+    <details>
+      <summary> CODE </summary>
+      <pre>
+    &lt;iframe 
+        id="iframe2" 
+        srcdoc="&lt;h1 style='color:green; font-family:monospace; text-decoration:underline;'&gt; Chose a link below ! &lt;/h1&gt;" 
+        name="displayIframe"
+    &gt;&lt;/iframe&gt;
+    &lt;p&gt;
+      &lt;a href="../../JavaScript/index.html" target="displayIframe"&gt; Python &lt;/a&gt; / 
+      &lt;a href="../../Python/index.html" target="displayIframe"&gt; JavaScript &lt;/a&gt; / 
+      &lt;a href="../../TypeScript/index.html" target="displayIframe"&gt; TypeScript &lt;/a&gt; 
+    &lt;/p&gt;
     </pre>
     </details>
-<!--------------------------------------------------------------------------------------------------------------->
-<h4><u> <mark>srcdoc</mark> attribute TEST </u></h4>
-    <iframe style="margin-left:10%;" width="80%" height="150px" src="../HTML Entities/index.html" srcdoc="<p>src attribute overwritten by srcdoc's HTML code (except Edge 2018-06-21) </p>"></iframe>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-    &lt;iframe style="margin-left:10%;" width="80%" height="150px" src="../HTML Entities/index.html" srcdoc="&lt;p&gt;src attribute overwritten by srcdoc's HTML code (except Edge 2018-06-21) &lt;/p>"&gt;&lt;/iframe&gt;
-    
-    // the "srcdoc" attribute overrides the "src" attribute here 
-        </pre>
-        </details>
-<!--------------------------------------------------------------------------------------------------------------->
-<h4><u> <mark>requestFullscreen</mark> / <mark>exitFullscreen()</mark>  TEST </u></h4>
-    <p> - after 5 seconds firing up the full-screen mode it will return in normal screen mod automatically </p> 
-    <button onmouseup="runFullScreen(event)"> FullScreen </button><br>
-    <iframe src="https://www.json.org/" width="800" height="300" style="text-align:center;" id="fullScreen_iFrame" allowfullscreen="false"></iframe>
-<script>
-    var frame = document.getElementById("fullScreen_iFrame")
-    
-    function runFullScreen(e) {
-        frame.requestFullscreen();
-        window.setTimeout(closeFullScreen, 5000);
-    }
-    var closeFullScreen = function() {
-        document.exitFullscreen();
-    }
-</script>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-    <iframe src="https://www.json.org/" width="800" height="300" style="text-align:center;" id="fullScreen_iFrame" allowfullscreen="false"></iframe>
-&lt;script&gt;
-    var frame = document.getElementById("fullScreen_iFrame")
-    
-    function runFullScreen(e) {
-        frame.requestFullscreen();
-        window.setTimeout(closeFullScreen, 5000);
-    }
-    var closeFullScreen = function() {
-        document.exitFullscreen();  
-    }
-&lt;/script&gt;
-        </pre> 
-        </details>
-<!--------------------------------------------------------------------------------------------------------------->
-<h4><u> <mark>sandbox</mark> attribute TEST </u></h4>
-    <p> - open the console window you'll see a bunch of sandbox restrictions </p>
-    <iframe style="margin-left:10%" width="80%" height="150px" src="../Form/index.html" sandbox="allow-scripts"></iframe>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-    <iframe style="margin-left:10%" width="80%" height="150px" src="../Form/index.html" sandbox="allow-scripts"></iframe>
-    
-    // -! only scripts are allowed  
-        </pre>
-        </details>
-<!--------------------------------------------------------------------------------------------------------------->
-<h4><u> <mark>allowfullscreen</mark> attribute TEST </u></h4>
-    <p style="color:yellow;"> - the <mark>allowfullscreen</mark> attribute effect only Youtube embeded iframes :/ </p>
-    <p> - the below iFrame fires its fullscreen mode by the linked page, yet no <mark>allowscreen</mark> atribute is et</p>
-    <iframe style="margin-left:10%" width="80%" height="150" src="TEST/index.html"></iframe>
-    <p> - this Youtube embeded iframe is not allowed to fire full-screen mode because of no <mark>allowfullscreen</mark> attribue is set </p>
-    <iframe style="margin-left:10%" width="80%" height="150" src="https://www.youtube.com/embed/Yx0y4zsND6Y"></iframe> 
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-    <iframe style="margin-left:10%" width="80%" height="150" src="TEST/index.html"></iframe>
-    
-    <iframe style="margin-left:10%" width="80%" height="150" src="https://www.youtube.com/embed/Yx0y4zsND6Y"></iframe> 
-        </pre>
-        </details>
-</details>
-<!--------------------------------------------------------------------------------------------------------------------------------> 
-<hr>
-<h2 class="headerExtra"><u> Embed youtube videos in iFrames </u></h2>    
-    <p> - we can embed Youtube videos in iFrames just like it was a video player (we can upload a video on Youtube then embed it our page, this will solve a lot of format compatibility problems) </p>
-    <p> - the Youtube video's id is in the query-string after the <mark>v=</mark> key, and the playlist id is after the <mark>list=</mark> key [2019-03-29] </p>
-    <pre class="syntax">
-SYNTAX :    <em>&lt;iframe src="</em>https://www.youtube.com/embed/<strong>videoId</strong><i>?queryString_Youtube</i><em>"&gt;&lt;/iframe&gt; </em>  
-            <em>&lt;iframe src="</em>https://www.youtube.com/embed/<strong>?queryString_Youtube</strong><em>"&gt;&lt;/iframe&gt;</em>
-            
-                - <strong>videoId</strong> : youtube video id reference (first in the list (if a list is specified in the query string) or the only video)
-                - <i>?queryString_Youtube</i>|<strong>?queryString_Youtube</strong> : paramters to embed and control Youtube video sources   
-                    - playlist=<strong>videoId</strong><i>,videoId,...</i> : custom playlist composed of chosen videos 
-                    - list=<strong>listId</strong> : youtube playlist 
-                    - autoplay=0|1 : start the video when the page is loaded automatically (default <mark>0</mark>)
-                    - controls=0|1|2 : show/hide video controls (default <mark>1</mark>) (apparently the <mark>2</mark> has better performance?)
-                    - loop=0|1 : loop playlist <u>(custom or youtube playlist only!)</u> <u>(does not work with a single video)</u>
-                    - color=white|red : progress bar color (elapsed part) (default <mark>red</mark>)
-                    - disablekb=0|1 : enable disable keyboard shortcuts (default <mark>1</mark>)
-                    - start=<strong>nrSeconds</strong> : sets the start time of the video 
-                    - end=<strong>nrSeconds</strong> : sets the ending time of the video 
-                    - fs=0|1 : show/hide fullscreen button (default <mark>1</mark>)
-                    - hl=<strong>langCode</strong> : sets the language of the interface 
-                    - modestbranding=0|1 : show/hide the "Youtube" logo on the interface (default <mark>1</mark>)
-                    - rel=0|1 : display similar videos at the end of the video (default <mark>1</mark>)
-                    - showinfo=0|1 : show/hide video informations (like title, ect...) (default <mark>1</mark>)
-                    -> <u>il y a quelques plus de parametres, tu peux les retrouver <a href="https://developers.google.com/youtube/player_parameters" target="_blank">(ici [link])</a></u> 
-    
-    // -- the <mark>&lt;object&gt;</mark> and <mark>&lt;embed&gt;</mark> elements also can be used to embed Youtube videos <u style="color:orange;">but it is deprecated form January 2015</u>
-            <em>&lt;object data="</em>https://www.youtube.com/embed/<strong>?queryString_Youtube</strong><em>"&gt;&lt;/object&gt;</em>
-            <em>&lt;embed src="</em>https://www.youtube.com/embed/<strong>?queryString_Youtube</strong><em>"&gt;</em>
-    </pre>
-    <pre>
-// embed one single video ---------------------------------------------------
-    &lt;iframe width="500" height="330" allowfullscreen src="https://www.youtube.com/embed/ehw_T27YEbQ"&gt;&lt;/iframe&gt;              // -! without the "allowfullscreen" attribute full-screen mode is not allowed    
-                                                                         // the "ehw_T27YEbQ" is the video id from youtube 
-                                                                         
-// embed multiple videos (create custom playlist) ---------------------------
-    &lt;iframe width="500" height="330" allowfullscreen src="https://www.youtube.com/embed/?playlist=ehw_T27YEbQ,MkNeIUgNPQ8,tDexBj46oNI"&gt;&lt;/iframe&gt;
-                                                                         // video list created ("ehw_T27YEbQ" / "MkNeIUgNPQ8" / "tDexBj46oNI" are individual videoId's) 
-    
-// embed Youtube playlist ---------------------------------------------------
-    &lt;iframe width="500" height="330" allowfullscreen src="https://www.youtube.com/embed/?list=PLkVbIsAWN2lvpys3pHlAHXGEamiDEWiRN"&gt;&lt;/iframe&gt;
-                                                                         // the "PLkVbIsAWN2lvpys3pHlAHXGEamiDEWiRN" is the Youtube playlist id 
-    
-// set player parameters ---------------------------------------------------- 
-    &lt;iframe width="500" height="300" allowfullscreen src="https://www.youtube.com/embed/?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U&autoplay=1&loop=1&fs=0&hl=hu&start=10"&gt;&lt;/iframe&gt;
-                                                                         // the "list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U" is the youtube video list id
-                                                                         // the "autoplay=1" plays the video when the page is loaded automatically 
-                                                                         // the "loop=1" loops the playlist 
-                                                                         // the "fs=0" removes the full-screen button 
-                                                                         // the "hl=hu" sents the video interface to hungarian language 
-                                                                         // the "start=10" starts the video at 10 seconds
-                                                                         // -! the "&" separates these parameters in the query-string 
-    </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> embed 1 singel video TEST </u></h4>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/9gk_rl3y_SU"></iframe>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/TI4PXFUOPR8"></iframe>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-// for one single video we do not need a query string 
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/9gk_rl3y_SU"></iframe>
-    <iframe width="400" height="200"" src="https://www.youtube.com/embed/TI4PXFUOPR8"></iframe>
-        </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> embed multiple videos (embed custom video list) TEST </u></h4>
-    <p> - the iFrame below has a list of 4 videos (custom play list) </p>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/?playlist=9gk_rl3y_SU,TI4PXFUOPR8,ojiGKxIKrWw,MkNeIUgNPQ8"></iframe>  
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-// the "9gk_rl3y_SU" / "TI4PXFUOPR8" / "ojiGKxIKrWw" / "MkNeIUgNPQ8" are indivudual videos chosen for this playlist 
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/?playlist=9gk_rl3y_SU,TI4PXFUOPR8,ojiGKxIKrWw,MkNeIUgNPQ8"></iframe>
-        </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> embed Youtube playlist TEST </u></h4>
-    <p> - we added one video at the beginning of the list </p>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/B9pkdtplToM?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U"></iframe>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-// at the beginning of the list we added a video ("B9pkdtplToM")
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/B9pkdtplToM?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U"></iframe>
-        </pre>
-        </details>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> control tools <mark>autoplay</mark> / <mark>loop</mark> / <mark>controls</mark> </u></h4>
-<p> - <mark>autoplay</mark> (tested it is working) <span style="color:yellow;">disabled on purpose</span> </p>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/KB4_WIPE7vo?autoplay=0&controls=2&"></iframe>
-    <details>
-        <summary> CODE : </summary>
-        <pre>
-    <iframe width="500" height="300" src="https://www.youtube.com/embed/KB4_WIPE7vo?autoplay=0&controls=2&"></iframe>       // "autoplay=1" tested working (disabled on purpose)
-        </pre>
-        </details>
-<p> - <mark>controls</mark> video control disabled </p>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/KB4_WIPE7vo?controls=0"></iframe>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-    <iframe width="500" height="300" src="https://www.youtube.com/embed/KB4_WIPE7vo?controls=0"></iframe>
-        </pre>
-        </details>
-<p> - <mark>loop</mark> works only with video a video list (does now work with a single video [first frame]) </p>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/6ZzwrO71BAc?loop=1"></iframe>
-    <iframe width="400" height="200"" src="https://www.youtube.com/embed/?playlist=JFTr5oRvbtg,MkNeIUgNPQ8,ojiGKxIKrWw&loop=1"></iframe>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/?list=PLj8xiTIFL1M012_Y9cdTAeo9U5psJkZmn&loop=1"></iframe>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-    <iframe width="500" height="300" src="https://www.youtube.com/embed/6ZzwrO71BAc?loop=1"></iframe>                   // does not loop because there is only one video 
-    <iframe width="500" height="300" src="https://www.youtube.com/embed/?playlist=JFTr5oRvbtg,MkNeIUgNPQ8,ojiGKxIKrWw&loop=1"></iframe>
-    <iframe width="500" height="300" src="https://www.youtube.com/embed/?list=PLj8xiTIFL1M012_Y9cdTAeo9U5psJkZmn&loop=1"></iframe>
-        </pre>
-        </details>
-<p> - <mark>color</mark> progress bar color changed to white (elapsed time) </p>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/6ZzwrO71BAc?color=white"></iframe>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-    <iframe width="500" height="300" src="https://www.youtube.com/embed/6ZzwrO71BAc?color=white"></iframe>
-        </pre>
-        </details>
-<p> - <mark>disablekb</mark> keyboard shortcuts disabled </p>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?disablekb=1"></iframe>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?disablekb=1"></iframe>
-        </pre>
-        </details>    
-<p> - <mark>start</mark> / <mark>end</mark> set the start and the ending time of the video (start 15 seconds / end 120 seconds) </p>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?start=15&end=120"></iframe>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?start=15&end=120"></iframe>
-        </pre>
-        </details>
-<p> - <mark>fs</mark> full-screen button (removed)</p>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?fs=0"></iframe>
-            <details>
-        <summary> CODE : </summary>
-        <pre>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?fs=0"></iframe>
-        </pre>
-        </details>
-<p> - <mark>hl</mark> interface language changed to hungarian </p>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?hl=hu"></iframe>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?hl=hu"></iframe>
-        </pre>
-        </details>
-<p> - <mark>modestbranding</mark> Youtube logo removed from the video  </p>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?modestbranding=1"></iframe>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?modestbranding=1"></iframe>
-        </pre>
-        </details>
-<p> - <mark>rel</mark> remove displaying similar videos at the end of the video </p> 
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?rel=0"></iframe>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?rel=0"></iframe>
-        </pre>
-        </details>
-<p> - <mark>showinfo</mark> hide video informations (not working [2019-03-29]) </p>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?showinfo=0"></iframe>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U&showinfo=0"></iframe>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/r8AsQ9TVKuA?showinfo=0"></iframe>
-    <iframe width="400" height="200" src="https://www.youtube.com/embed/?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U&showinfo=0"></iframe>
-        </pre>
-        </details>
-<!-------------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"> using <mark>&lt;object&gt;</mark> / <mark>&lt;embed&gt;</mark> elements to embed Yutube videos TEST </h4>
-<p> - <mark>&lt;object&gt;</mark> </p>
-    <object width="400" height="200" data="https://www.youtube.com/embed/?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U&showinfo=0"></object>
-<p> - <mark>&lt;embed&gt;</mark></p>
-    <embed width="400" height="200" src="https://www.youtube.com/embed/?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U&showinfo=0">
-        <details>
-        <summary> CODE : </summary>
-        <pre>
-    <object width="400" height="200" data="https://www.youtube.com/embed/?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U&showinfo=0"></object>
-    
-    <embed width="400" height="200" src="https://www.youtube.com/embed/?list=PLHQyGGzRHYIYF7BElCgZzxv4w4KS9g_1U&showinfo=0">
-        </pre>
-        </details>
-</details>
-    
-    <br><br>
+  </details>
+
+
+  <br><br>
 </body>
+
 </html>

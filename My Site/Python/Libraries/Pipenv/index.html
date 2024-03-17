@@ -27,16 +27,7 @@
       <th style="width:30%;"> Command </th>
       <th> Description </th>
     </tr>
-    <tr class="05.02">
-      <td>
-        <em>pipenv</em> run <strong>cmd</strong>
-      </td>
-      <td>
-        - executes the command in the pipenv virtual environment shell of this project (creates the pipenv virutal
-        environment if not exist)
-      </td>
-    </tr>
-    <tr class="05.01">
+    <tr>
       <td>
         <em>pipenv</em> shell
       </td>
@@ -52,7 +43,28 @@
           in this virtual environment (and the <mark>Pipfile</mark> is updated) </p>
       </td>
     </tr>
-    <tr class="15.01">
+    <tr>
+      <td>
+        <em>pipenv</em> run <strong>cmd</strong>
+      </td>
+      <td>
+        - executes the command in the pipenv virtual environment shell of this project (creates the pipenv virutal
+        environment if not exist)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <em>pipenv</em> --venv
+      </td>
+      <td>
+        - prints this projects virtual environmen location (if exist)
+      </td>
+    </tr>
+    <tr>
       <td>
         <em>pipenv</em> --rm
       </td>
@@ -61,28 +73,16 @@
         <mark>Pipfile.lock</mark>) (of this directory)
       </td>
     </tr>
-    <tr class="10.01">
-      <td>
-        <em>pipenv</em> --venv
-      </td>
-      <td>
-        - prints this projects virtual environmen location (if exist)
-      </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="20.01">
+    <tr>
       <td colspan="2">
         insidie <mark>pipenv</mark> shell
       </td>
     </tr>
-    <tr class="35.01">
-      <td>
-        <em>pipenv</em> check
-      </td>
-      <td>
-        - check for security vulnerabilities in all installed packages
-      </td>
-    </tr>
-    <tr class="20.02">
+    <tr>
       <td>
         <em>pipenv</em> exit
       </td>
@@ -90,17 +90,23 @@
         - exits from the <mark>pipenv</mark> shell
       </td>
     </tr>
-    <tr class="40.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
-        <em>pipenv</em> graph <small>[--reverse]</small>
+        <em>pipenv</em> --where
       </td>
       <td>
-        - lists all installed packages and their sub-packages in graph format (does not list basic packages used by
-        <mark>pip</mark>, use <mark>pip list</mark> for that)<br>
-        - (<small>--reverse</small>) sub-packages with their dependenvies
+        - prints the project folder path of this pipenv virtual environmen
       </td>
     </tr>
-    <tr class="30.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <em>pipenv</em> install <small>[--dev]</small>
       </td>
@@ -111,11 +117,7 @@
         <br>
       </td>
     </tr>
-    <tr class="30.02">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="30.03">
+    <tr>
       <td>
         <em>pipenv</em> install -r <strong>requirementsFilePath</strong>
       </td>
@@ -124,11 +126,7 @@
         <mark>Pipfile.lock</mark> (overrides already installed packages in this venv)
       </td>
     </tr>
-    <tr class="30.04">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="30.05">
+    <tr>
       <td>
         <em>pipenv</em> install --ignore-pipfile <small>[--dev]</small>
       </td>
@@ -138,11 +136,7 @@
         - (<small>--dev</small>) also installs dev packages
       </td>
     </tr>
-    <tr class="30.06">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="30.07">
+    <tr>
       <td>
         <em>pipenv</em> install <strong>package</strong><i>semVer</i> <i>...</i> <small>[--dev]</small>
       </td>
@@ -154,17 +148,11 @@
         - (<small>--dev</small>) installs as dev packages
       </td>
     </tr>
-    <tr class="45.01">
-      <td>
-        <em>pipenv</em> lock <small>[-r]</small>
-      </td>
-      <td>
-        - creates or updates the <mark>Pipfile.lock</mark> (check the <mark>Pipfile</mark> not the installed packages)
-        <br>
-        - (<small>-r</small>) prints packages in pip requirement format
-      </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="30.08">
+    <tr>
       <td>
         <em>pipenv</em> uninstall --all
       </td>
@@ -173,11 +161,7 @@
           <mark>Pipfile.lock</mark>)</u>
       </td>
     </tr>
-    <tr class="30.09">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="30.10">
+    <tr>
       <td>
         <em>pipenv</em> uninstall --all-dev
       </td>
@@ -186,11 +170,7 @@
         <mark>Pipfile</mark> <u>(modifies the <mark>Pipfile</mark> and <mark>Pipfile.lock</mark>)</u>
       </td>
     </tr>
-    <tr class="30.11">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="30.12">
+    <tr>
       <td>
         <em>pipenv</em> uninstall <strong>package</strong> <i>...</i>
       </td>
@@ -200,12 +180,44 @@
           their sub-dependencies (what a crap!)</u>
       </td>
     </tr>
-    <tr class="25.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
-        <em>pipenv</em> --where
+        <em>pipenv</em> check
       </td>
       <td>
-        - prints the project folder path of this pipenv virtual environmen
+        - check for security vulnerabilities in all installed packages
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <em>pipenv</em> graph <small>[--reverse]</small>
+      </td>
+      <td>
+        - lists all installed packages and their sub-packages in graph format (does not list basic packages used by
+        <mark>pip</mark>, use <mark>pip list</mark> for that)<br>
+        - (<small>--reverse</small>) sub-packages with their dependenvies
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <em>pipenv</em> lock <small>[-r]</small>
+      </td>
+      <td>
+        - creates or updates the <mark>Pipfile.lock</mark> (check the <mark>Pipfile</mark> not the installed packages)
+        <br>
+        - (<small>-r</small>) prints packages in pip requirement format
       </td>
     </tr>
   </table>
@@ -219,7 +231,7 @@
       <th style="width:30%;"> Versioning </th>
       <th> Description </th>
     </tr>
-    <tr class="05.01">
+    <tr>
       <td>
         (nothing)
       </td>
@@ -227,11 +239,7 @@
         - (no version specified) = latest version on CMD and in <mark>requirements.txt</mark>
       </td>
     </tr>
-    <tr class="05.02">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="05.03">
+    <tr>
       <td>
         *
       </td>
@@ -239,7 +247,11 @@
         - latest version in <mark>Pipfile</mark>
       </td>
     </tr>
-    <tr class="10.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         ==
       </td>
@@ -247,7 +259,7 @@
         - pinned version
       </td>
     </tr>
-    <tr class="10.02">
+    <tr>
       <td>
         &lt; | &lt;= | > | >=
       </td>
@@ -255,7 +267,7 @@
         - lower | lower or equal | higher | higher or equal version
       </td>
     </tr>
-    <tr class="10.03">
+    <tr>
       <td>
         !=
       </td>
@@ -263,7 +275,11 @@
         - excluded version
       </td>
     </tr>
-    <tr class="15.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>semVer</strong>,<i>...</i>
       </td>
@@ -282,13 +298,8 @@
   <h2 style="color:green;"><u> Remember This : </u></h2>
 
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-  <p> - pipenv provides isolated local environments for Python projects, this way each project can have its own
-    libraries and binaries (even isolated python interpreter) </p>
-  <p> - pipenv creates a virtual environment for the project folder, the virtual environment itself is created in a
-    different location (<mark>/root/.local/share/virtualenvs/<strong>venv</strong></mark> in my case) which is linked to
-    the project folder </p>
-  <p> - pipenv is a shell in which the virtual environment runs, so each environment has its own binaries and libraries
-    stored separately </p>
+  <p> - pipenv provides isolated local environments for Python projects, each environment has its own Python interpreted, binaries and libraries </p>
+  <p> - pipenv creates a virtual environment for the project folder, the virtual environment itself is created in a different location (<mark>/root/.local/share/virtualenvs/<strong>venv</strong></mark> in my case) which is linked to the project folder </p>
   <pre class="syntax">
     /workspace/projectA                                                                 // starting pipenv shell from this folder will start the <mark>/root/.local/share/virtualenvs/<strong>projectA-venv</strong></mark> venv    
     /workspace/projectB                                                                 // starting pipenv shell from this folder will start the <mark>/root/.local/share/virtualenvs/<strong>projectB-venv</strong></mark> venv    
@@ -364,29 +375,26 @@
   <hr>
   <!------------------------------------------------------------------------------------->
   <h2 class="header"> The <mark>Pipfile</mark> / <mark>Pipfile.lock</mark> / <mark>.env</mark> files </h2>
-  <p> - the <mark class="mark">Pipfile</mark> is used by pipenv to log packages, we can also modify it manually if we
-    want, the <mark class="mark">Pipenv</mark> file is formated in TOML format </p>
-  <p> - the <mark class="mark">Pipfile.lock</mark> is used to lock an environment for deterministic builds, <u>should
-      never be modified manually</u>, the <mark class="mark">Pipfile.lock</mark> in formated in JSON format </p>
-  <p> - the <mark class="mark">.env</mark> file is used to specify environment variables for pipenv, the pipenv shell
-    will start environment variables specified in this file </p>
+  <p> - the <mark class="mark">Pipfile</mark> is used by pipenv to log packages, we can also modify it manually if we want, the <mark class="mark">Pipenv</mark> file is formated in TOML format </p>
+  <p> - the <mark class="mark">Pipfile.lock</mark> is used to lock an environment for deterministic builds, <u>should never be modified manually</u>, the <mark class="mark">Pipfile.lock</mark> in formated in JSON format </p>
+  <p> - the <mark class="mark">.env</mark> file is used to specify environment variables for pipenv, the pipenv shell will start environment variables specified in this file </p>
   <pre class="syntax">
-<span style="color:darkgray">// <mark>Pipfile</mark> file ------------------------------------------------------------------------</span>
+// <mark>Pipfile</mark> file ------------------------
     [[source]]
-    <span style="color:darkgray;">// source informations...</span>
+    // source informations...
     
     [packages]                                                                          // packages 
     <strong>package</strong> = "<strong>semVer</strong>"
     
     [dev-packages]                                                                      // developement packages
-    <strong>package</strong> = "<strong>semVer</strong>"                        
+    <strong>package</strong> = "<strong>semVer</strong>"
     
     [requires]
-    <span style="color:darkgray;">// requirements...</span>
+    // requirements...
     
     
-<span style="color:darkgray">// <mark>.env</mark> file ---------------------------------------------------------------------------</span>
-    <strong>KEY=VAL</strong>                                                                             // environment key value pairs  
+// <mark>.env</mark> file -----------------
+    <strong>KEY=VAL</strong>                                          // environment key value pairs  
     <i>...</i>
     </pre>
   <details class="example">
@@ -415,7 +423,6 @@
     TESTENV3=321
     </pre>
   </details>
-
 
 
   <br><br>
