@@ -19,13 +19,39 @@
   <table class="table">
     <caption>
       NPM
-      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
     </caption>
     <tr>
       <th style="width:30%;"> Comand Line Syntax </th>
       <th> Description </th>
     </tr>
-    <tr class="06.02">
+    <tr>
+      <td> <em>npm</em> --version | -v </td>
+      <td> - prints the NPM version </td>
+    </tr>
+    <tr>
+      <td> <em>npm</em> view <reqval>package</reqval>
+      </td>
+      <td> - prints verbose information about the <reqval>package</reqval> (version, author, license, dependencies, etc...) </td>
+    </tr>
+    <tr>
+      <td> <em>npm</em> help <i>cmd</i> </td>
+      <td>
+        - help log in general or for <i>cmd</i>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <em>npm</em> root <small>[options]</small> </td>
+      <td>
+        - prints the directory path where local packages (libraries) are/will be installed <br>
+        <small>[options]</small> <br>
+        - (<small>-g|--global</small>) global libraries
+      </td>
+    </tr>
+    <tr>
       <td> <em>npm</em> bin <small>[options]</small> </td>
       <td>
         - prints the local directory path (where binaries are/will be installed) <br>
@@ -33,36 +59,21 @@
         - (<small>-g|--global</small>) global binary directory path
       </td>
     </tr>
-    <tr class="15.02">
-      <td> <em>npm</em> cache clean --force </td>
-      <td> - purges the npm cache </td>
-    </tr>
-    <tr class="15.01">
-      <td> <em>npm</em> cache verify </td>
-      <td> - check the npm cache state </td>
-    </tr>
-    <tr class="06.03">
+    <tr>
       <td> <em>npm</em> config get prefix </td>
       <td>
         - prints the location where npm installs <u>global</u> binaries and libraries
       </td>
     </tr>
-    <tr class="06.04">
+    <tr>
       <td> <em>npm</em> config set prefix <strong>dirPath</strong> </td>
       <td> - sets the directory where npm will install <u>global</u> binaries and libraries
     </tr>
-    <tr class="05.02">
-      <td> <em>npm</em> help <i>cmd</i> </td>
-      <td>
-        - help log in general or for <i>cmd</i>
-      </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="09.01">
-      <td> <em>npm</em> prune </td>
-      <td>
-        - removes 'extraneous' packages (packages not registered in the <mark>package.json</mark> file) </td>
-    </tr>
-    <tr class="07.01">
+    <tr>
       <td> <em>npm</em> install | i | add <small>[options]</small></td>
       <td> - installs all packages listend in the <mark>package.json</mark> (install the locked environment if there's <mark>package-lock.json</mark>, if there's no <mark>package-lock.json</mark> then creates one -> locks the environment) <br>
         <small>[options]</small> <br>
@@ -74,15 +85,49 @@
         - (<small>--no-save</small>) does not update the <mark>package.json</mark> file (after v5 the <mark>package.json</mark> is automatically updated)
       </td>
     </tr>
-    <tr class="12.01">
-      <td> <em>npm</em> init <small>[options]</small> </td>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <em>npm</em> uninstall | remove | r | rm | un | unlink <strong>package</strong> <i>...</i> <small>[options]</small> </td>
       <td>
-        - initializes the local npm package by walking you through to create a <mark>package.json</mark> file <br>
+        - uninstalls the specified package(s) <u>and all its (their) dependencies</u> <br>
         <small>[options]</small> <br>
-        - (<small>-y|--yes</small>) creates a <mark>package.json</mark> file with default settings
+        - (<small>-g|--global</small>) global specified package(s) <br>
+        - (<small>--no-save</small>) does not update the <mark>package.json</mark> file (after NPM v5 the <mark>package.json</mark> is automatically updated)
       </td>
     </tr>
-    <tr class="11.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <em>npm</em> prune </td>
+      <td>
+        - removes 'extraneous' packages (packages not registered in the <mark>package.json</mark> file) </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <em>npm</em> update | up | upgrade <small>[options]</small> </td>
+      <td>
+        - updates (installs missing) prod packages (<mark>dependencies</mark> in <mark>package.json</mark>) <br>
+        <small>[options]</small> <br>
+        - (<i>package ...</i>) specified package only <br>
+        - (<small>--depth</small> <i>nr</i>) dependency depth level to update (after v2.6.1 only tge top level packages are updated) <br>
+        - (<small>--no-save</small>) does not update the <mark>package.json</mark> file (after v5 the <mark>package.json</mark> is automatically updated) <br>
+        - (<small>-g|--global</small>) global packages <br>
+        - (<small>-D</small>) dev dependencies only (<mark>devDependencies</mark> in <mark>package.json</mark>) <br>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <em>npm</em> list | ll | la <small>[options]</small>
       </td>
@@ -95,62 +140,65 @@
         - (<small>--depth <i>nr</i></small>) print depth
       </td>
     </tr>
-    <tr class="06.01">
-      <td> <em>npm</em> root <small>[options]</small> </td>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <em>npm</em> init <small>[options]</small> </td>
       <td>
-        - prints the directory path where local packages (libraries) are/will be installed <br>
+        - initializes the local npm package by walking you through to create a <mark>package.json</mark> file <br>
         <small>[options]</small> <br>
-        - (<small>-g|--global</small>) global libraries
+        - (<small>-y|--yes</small>) creates a <mark>package.json</mark> file with default settings
       </td>
     </tr>
-    <tr class="13.03">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> <em>npm</em> test </td>
+      <td> - executes the <mark>scripts.test</mark> in <mark>package.json</mark> (can be any shell command or <span class="openable">node executable<div>
+        <p> - binary in the <mark>node_modules</mark> folder </p>
+        <p> - ex: <mark>vite --3000</mark> -> will start a vite dev server for react </p>
+      </div></span>) </td>
+    </tr>
+    <tr>
+      <td> <em>npm</em> start </td>
+      <td> - executes the <mark>scripts.start</mark> in <mark>package.json</mark> (can be any shell command or <span class="openable">node executable<div>
+        <p> - binary in the <mark>node_modules</mark> folder </p>
+        <p> - ex: <mark>vite --3000</mark> -> will start a vite dev server for react </p>
+      </div></span>) </td>
+    </tr>
+    <tr>
       <td> <em>npm</em> run | run-script <strong>cmd</strong> </td>
       <td>
-        - runs the <mark>scripts.<strong>cmd</strong></mark> in <mark>package.json</mark>
+        - runs the <mark>scripts.<strong>cmd</strong></mark> in <mark>package.json</mark> (can be any shell command or <span class="openable">node executable<div>
+        <p> - binary in the <mark>node_modules</mark> folder </p>
+        <p> - ex: <mark>vite --3000</mark> -> will start a vite dev server for react </p>
+      </div></span>)
       </td>
     </tr>
-    <tr class="13.02">
-      <td> <em>npm</em> start </td>
-      <td> - executes the <mark>scripts.start</mark> in <mark>package.json</mark> </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="13.01">
-      <td> <em>npm</em> test </td>
-      <td> - executes the <mark>scripts.test</mark> in <mark>package.json</mark> </td>
+    <tr>
+      <td> <em>npm</em> cache verify </td>
+      <td> - check the npm cache state </td>
     </tr>
-    <tr class="08.01">
-      <td> <em>npm</em> uninstall | remove | r | rm | un | unlink <strong>package</strong> <i>...</i> <small>[options]</small> </td>
-      <td>
-        - uninstalls the specified package(s) <u>and all its (their) dependencies</u> <br>
-        <small>[options]</small> <br>
-        - (<small>-g|--global</small>) global specified package(s) <br>
-        - (<small>--no-save</small>) does not update the <mark>package.json</mark> file (after NPM v5 the <mark>package.json</mark> is automatically updated)
-      </td>
+    <tr>
+      <td> <em>npm</em> cache clean --force </td>
+      <td> - purges the npm cache </td>
     </tr>
-    <tr class="10.01">
-      <td> <em>npm</em> update | up | upgrade <small>[options]</small> </td>
-      <td>
-        - updates (installs missing) prod packages (<mark>dependencies</mark> in <mark>package.json</mark>) <br>
-        <small>[options]</small> <br>
-        - (<i>package ...</i>) specified package only <br>
-        - (<small>--depth</small> <i>nr</i>) dependency depth level to update (after v2.6.1 only tge top level packages are updated) <br>
-        - (<small>--no-save</small>) does not update the <mark>package.json</mark> file (after v5 the <mark>package.json</mark> is automatically updated) <br>
-        - (<small>-g|--global</small>) global packages <br>
-        - (<small>-D</small>) dev dependencies only (<mark>devDependencies</mark> in <mark>package.json</mark>) <br>
-      </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="05.03">
-      <td> <em>npm</em> view <reqval>package</reqval>
-      </td>
-      <td> - prints verbose information about the <reqval>package</reqval> (version, author, license, dependencies, etc...) </td>
-    </tr>
-    <tr class="05.01">
-      <td> <em>npm</em> --version | -v </td>
-      <td> - prints the NPM version </td>
-    </tr>
-    <tr class="50.01">
+    <tr>
       <td colspan="2"> NPX (Node Package Runner) (<mark>N</mark>ode <mark>P</mark>ackage E<mark>x</mark>ecute) </td>
     </tr>
-    <tr class="50.02">
+    <tr>
       <td> <em>npx</em> <strong>command</strong><small>@<i>version</i></small> </td>
       <td> - 1) checks the specified command if it's available globally (if available runs it as a normal global command) <br>
         - 2) if it's not a global command checks if it's insalled locally (in <mark>./node_modules/.bin</mark>) (if the package is locally found runs the module) <br>
@@ -171,7 +219,7 @@
       <th width="30%"> Version </th>
       <th> Description </th>
     </tr>
-    <tr class="05.01">
+    <tr>
       <td>
         x <br>
         * <br>
@@ -179,7 +227,11 @@
       </td>
       <td> - latest stable version </td>
     </tr>
-    <tr class="06.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         ^<strong>nr</strong>.<strong>nr</strong>.<strong>nr</strong> <br>
         <strong>nr</strong>.x <br>
@@ -189,7 +241,11 @@
         - the specified version with the latest minor version and patches
       </td>
     </tr>
-    <tr class="07.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         ~<strong>nr</strong>.<strong>nr</strong>.<strong>nr</strong> <br>
         <strong>nr</strong>.<strong>nr</strong>.x <br>
@@ -199,7 +255,11 @@
         - the specified main and minor version with the latest patch
       </td>
     </tr>
-    <tr class="08.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         =<strong>version</strong> <br>
         <strong>nr</strong>.<strong>nr</strong>.<strong>nr</strong>
@@ -208,27 +268,35 @@
         - the exact specified version
       </td>
     </tr>
-    <tr class="09.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td> ><strong>version</strong> </td>
       <td> - higher than the specified version numbers </td>
     </tr>
-    <tr class="09.02">
+    <tr>
       <td> >=<strong>version</strong> </td>
       <td> - higher or equal than the specified version numbers </td>
     </tr>
-    <tr class="09.03">
+    <tr>
       <td> &lt;<strong>version</strong> </td>
       <td> - lower than the specified version numbers </td>
     </tr>
-    <tr class="09.04">
+    <tr>
       <td> &lt;=<strong>version</strong> </td>
       <td> - lower or equal than the specified version numbers </td>
     </tr>
-    <tr class="10.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td> <strong>version</strong> - <strong>version</strong> </td>
       <td> - latest version between the specified range (ex: <mark>2.1 - 2.6</mark>) </td>
     </tr>
-    <tr class="10.02">
+    <tr>
       <td> <strong>versionSet</strong> || <strong>versionSet</strong> </td>
       <td> - combine sets (like the <mark>and</mark> logical operator (ex: <mark>&lt;2.1 || &gt;2.6</mark>)) </td>
     </tr>

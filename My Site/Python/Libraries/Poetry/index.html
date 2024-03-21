@@ -16,36 +16,233 @@
   <p class="sitenav"> <a href="../../../index.html">MySite></a>
     <a href="../../index.html">Python></a> Poetry
   </p>
-
-
-  <p class="subSite"><a href=""> SubSite > </a></p>
-
-
   <table class="table">
     <tr>
-      <th style="width:30%;"> Method / Property / statement ect... </th>
+      <th style="width:30%;"> Command </th>
       <th> Description </th>
     </tr>
     <tr>
       <td>
-        demo prop
+        <lit>poetry</lit> init
       </td>
       <td>
-        - demo description
-        <span class="browserSupport">
-          <span><i class="fab fa-chrome"></i> 0/0 -webkit- </span>
-          <span><i class="fab fa-firefox"></i> </span>
-          <span><i class="fab fa-opera"></i> </span>
-          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> </span>
-          <span><i class="fab fa-safari"></i> </span>
-          <span><i class="fab fa-node-js"></i> </span>
-        </span>
+        - creates a <mark>project.toml</mark> file by walking you through a creation wizzard
       </td>
     </tr>
-
-
-
-
+    <tr>
+      <td>
+        <lit>poetry</lit> new <reqval>projectName</reqval>
+      </td>
+      <td>
+        - creates a new poetry project skeleton (folder with all the basic poetry stuff)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <lit>poetry</lit> install <opt>[options]</opt>
+      </td>
+      <td>
+        - creates a virtual environment (if not exist) for the current folder (based on the <mark>python</mark> command executable) <br>
+        - from the current folder's <mark>project.toml</mark> file install all libraries in the project's (folder) virtual environment <br>
+        <opt>[options]</opt><br>
+        - (<opt>--sync</opt>) synchronizes the virtual environment packages with the <mark>project.toml</mark> and <mark>poetry.lock</mark> files (removes unused packages)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <lit>poetry</lit> shell
+      </td>
+      <td>
+        - enters the virtual environment in the current project (folder) <br>
+        - creates the virtual environment (if not exist) for the current folder (based on the <mark>python</mark> command executable) <br>
+        - requires <mark>project.toml</mark> file in the current directory
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>poetry</lit> env use python|<reqval>pathToPythonExecutable</reqval>
+      </td>
+      <td>
+        - creates the virtual environmentfor the current folder (based on the <mark>python</mark> command or the passed executable) <br>
+        - requires <mark>project.toml</mark> file in the current directory
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>poetry</lit> env remove <reqval>venv</reqval>|--all
+      </td>
+      <td>
+        - removes the specified virtual environment or all environments from the current project (folder)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>poetry</lit> env info <opt>[options]</opt>
+      </td>
+      <td>
+        - current project (folder) virtual environment general info<br>
+        <opt>[options]</opt><br>
+        - (<opt>-p</opt>) print only the virtual environment's executable path
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>poetry</lit> env list
+      </td>
+      <td>
+        - list all virtual environments in the current project (file)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <lit>poetry</lit> run <reqval>cmd|projectTomlScript</reqval>
+      </td>
+      <td>
+        - runs <reqval>cmd</reqval> in the project's (folder) virtual environment (any shell command) <br>
+        - runs the specified <span class="openable">script listed in <mark>project.toml</mark> <mark>[tool.poetry.scripts]</mark><div>
+          <p> requirements: </p>
+          <p> - script must be installed <u>without error</u> <mark>poetry install</mark> (FYI: because of a missing README.md file this did not worked when I tested it (2024-03-21), so any error migth be a problem) </p>
+        </div></span> table
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <lit>poetry</lit> add <opt>[options]</opt> <reqval>package</reqval><optval>, ...</optval>
+      </td>
+      <td>
+        - installs the listed packages in the current project's (file) virtual environment<br>
+        <opt>[options]</opt><br>
+        - (<opt>--group</opt>) installs the package in the targeted <span class="openable">group<div>
+          <p> - <mark>project.toml</mark> table for a group of dependencies </p>
+          <p> - syntax: <mark>[tool.poetry.group.<reqval>groupName</reqval>.dependencies]</mark> </p>
+          <p> - created if not exist </p>
+        </div></span><br>
+        <u>working with <mark>requiremets.txt</mark></u><br>
+        - <mark>poetry add $(cat requirements.txt)</mark> -> install packages from <mark>requiremets.txt</mark> <br>
+        - <mark>poetry run python -m pip freeze > requirements.txt</mark> -> updates the <mark>requiremets.txt</mark> file with poetry packages
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>poetry</lit> remove <opt>[options]</opt> <reqval>package</reqval><optval>, ...</optval>
+      </td>
+      <td>
+        - uninstalls the listed packages in the current project's (file) virtual environment<br>
+        <opt>[options]</opt><br>
+        - (<opt>--group</opt>) from the specified dependency group <br>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>poetry</lit> update <opt>[options]</opt> <optval>package, ...</optval>
+      </td>
+      <td>
+        - updates the specified packages or all packages to the latest allowed version <br>
+        - updates the <mark>poetry.lock</mark> file, <u>but not the <mark>project.toml</mark> file</u> <br>
+        <opt>[options]</opt><br>
+        - (<opt>--dry-run</opt>) displays what would be updated without actural updating packages <br>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>poetry</lit> lock <opt>[options]</opt>
+      </td>
+      <td>
+        - updates the <mark>poetry.lock</mark> file to match the <mark>project.toml</mark> (performs dependency resolution) <br>
+        - used when we manually change the <mark>project.toml</mark> and we want to update the <mark>poetry.lock</mark> to match the changes<br>
+        <opt>[options]</opt><br>
+        - (<opt>--no-update</opt>) does not update already locked dependencies <br>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <lit>poetry</lit> show <opt>[options]</opt>
+      </td>
+      <td>
+        - displays a general info about installed packages in the current project's (folder) virtual environment <br>
+        <opt>[options]</opt><br>
+        - (<reqval>package</reqval>) info about the package <br>
+        - (<opt>--tree</opt>) displays the dependency tree
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>poetry</lit> check
+      </td>
+      <td>
+        - checks if <mark>project.toml</mark> is consistent with <mark>poetry.lock</mark> file (prints detailed report)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <lit>poetry</lit> config --list
+      </td>
+      <td>
+        - prints poetry configuration
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>poetry</lit> config <reqval>config</reqval>
+      </td>
+      <td>
+        - sets poetry configurations (check available configs with <mark>poetry config --list</mark>) <br>
+        - (ex: <mark>poetry config virtualenvs.in-porject true</mark> -> virtual environment folders are created in the project's folder)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://python-poetry.org/docs/cli" target="_blank">poetryCommand</a>
+      </td>
+      <td>
+        - other commands 
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        in poetry virtual environment
+      </td>
+    </tr>
+    <tr>
+      <td>
+        exit
+      </td>
+      <td>
+        - exit from poetry virtual environment
+      </td>
+    </tr>
   </table>
   <br>
   <details class="example" id="notes">
@@ -57,109 +254,155 @@
   <h2 style="color:green;"><u> Remember This : </u></h2>
 
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-
-
-
-
-
-  <!--
----------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------
-stage 1: high level overview 
-    - read through 
-    - create notes 
-    - deciede what exactly will you document down 
-    - UNDERSTAND ANT WRITE DOWN THE CONCEPTS!!!
-    
-stage 2:  low level overview
-    - deeper understanding of all what you've taken down in stage 1
-    
-stage 3 : 
-    - organize and document down everything 
----------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------
-    
-    
-    
-    
-?????????????????????????????????????????????????????????????????????????????????????????????
-WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
-?????????????????????????????????????????????????????????????????????????????????????????????
-    
-    
--->
-
-
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <p> - Poetry is a powerfull dependency management tool but it also has built-in virtual environment support, this combo makes it great for managing Python projects </p>
+  <p> - Poetry is supported from Python v.3.8 and makes use of the standardized <mark>project.toml</mark> file for managing Python projects </p>
+  <p> - at any dependency operation (install, remove, update) poetry performs a comprehensive dependency resolution in order to check dependency compabilitity </p>
   <hr>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-
-
-  <h2 class="headerExtra"><u> Title 1 </u></h2>
-  <h2 class="header"> Title 1.1 </h2>
-  <h3 class="header"> Title 1.1.1 </h3>
-  <h4 class="header"> Title 1.1.1.1 </h4>
-  <p> - stuff to learn <mark>syntax or command (or some tchnical stuff)</mark> bla bla bla </p>
-  <p> - stuff to learn <mark class="mark">highlights like file names and other things</mark> bla bla bla </p>
-  <p style="text-decoration:underline;"> - important information is underlined </p>
-  <p style="color:yellow;"> - very important information is written with yellow colors </p>
-  <p style="background-color:yellow;"> - highly important information has yellow background color </p>
-  <div style="background-color:red;">
-    <p> - red background block means not learned or not tested information! </p>
-    <p> - </p>
-  </div>
-
-  <pre class="syntax">
-    <reqval>required value </reqval>
-    <optval>optional value </optval>
-    <lit>literally used </lit>
-    <opt>optionally used </opt>
-  
-    <prot style="color:#049500;">prototype chain</prot>
-        
-    <span class="openable"> this is an openable element<div>
-        <p> - openable elements listed here in paragraphs </p>
-        <p> - </p>
-    </div></span>
-    </pre>
-
   <details class="example">
     <summary> DEMO (can be pseudocode) </summary>
-    <pre>
-    examples of the current lessons 
+    <h4 class="header"> Installing packages to a specified dependency group (<mark>poetry install --group <reqval>dependencyGroup</reqval></mark>) </h4>
+    <pre class="cmd">
+    $ poetry install requests --group dev
+    // ...
     
-// -----------------------------------------
-
-// -----------------------------------------
+    $ poetry install pytest --group test
+    // ...
+    </pre>
+    <p> <mark>project.toml</mark> file</p>
+    <pre>
+    [tool.poetry]
+    name = "test"
+    version = "0.1.0"
+    description = ""
+    authors = ["Arpad"]
+    readme = "README.md"
+    
+    [tool.poetry.dependencies]
+    python = "^3.11"
+    
+    
+    [tool.poetry.group.dev.dependencies]            // dev group created 
+    requests = "^2.31.0"
+    
+    
+    [tool.poetry.group.test.dependencies]           // test group created 
+    pytest = "^8.1.1"
+    
+    [build-system]
+    requires = ["poetry-core"]
+    build-backend = "poetry.core.masonry.api"
     </pre>
   </details>
-
-  <pre class="cmd">
-    command line demo 
-    </pre>
-  <pre class="formula">
-    formula code (like conversion meter...)
-    </pre>
-  <details class="example">
-    <summary> Example : </summary>
-    <h4 style="color:darkblue;"><u> example title </u></h4>
-    <p> - live tests will come here </p>
-    <details>
-      <summary> CODE : </summary>
-      <pre>
-    copy of the exaple code 
-        </pre>
-    </details>
-  </details>
-  <!---------------------------------------------------------------------------------------------------------------------------------->
+  <!----------------------------------------------------------------------------->
   <hr>
-
-  <h2 class="test" style=""><a href="TEST/index.html"> TEST > </a></h2>
-
-
+  <h2 class="header"> Runing <mark>project.toml</mark> scripts (<mark>poetry run <reqval>scriptName</reqval></mark>) </h2>
+  <p> - we can run scripts in the project's (folder) virtual environment, the script will be executed with the venv's <mark>python</mark> command </p>
+  <pre class="syntax">
+    [tool.poetry]
+    // ...
+    packages = [
+        include = {"<reqval>entryDir</reqval>"},                       // package entry directory path
+    ]
+    
+    
+    // ...
+    
+    
+    [tool.poetry.scripts]
+    <reqval>scriptName</reqval> = "<reqval>entryDir</reqval>.<reqval>pathToPythonFile<opt>[:<optval>fn</optval>]</opt></reqval>"  // path to python file (within the packages)
+    // ...
+  </pre>
+  <pre class="cmd">
+    $ poetry run <reqval>scriptName</reqval>    // run script 
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <p> - directory structure
+    <pre>
+    ├── project.toml
+    ├── poetry.lock
+    ├── README.md            // if you forget, <mark>poetry install</mark> will complain and the scirtp might not be executed 
+    └── server
+      └── main
+        └── start.py
+    </pre>
+    <p> - <mark>project.toml</mark> file </p>
+    <pre>
+    [tool.poetry]
+    name = "some-project"
+    version = "0.1.0"
+    description = ""
+    authors = ["Arpad"]
+    readme = "README.md"
+    packages = [
+        {include = "server"},     // script entry folder marked as package
+    ]
+    
+    
+    [tool.poetry.dependencies]
+    python = "^3.11"
+    
+    
+    [build-system]
+    requires = ["poetry-core"]
+    build-backend = "poetry.core.masonry.api"
+    
+    
+    [tool.poetry.scripts]
+    say_hi = "server.main.start:hello"    // path to python file and function 
+  </pre>
+  <p> - <mark>start.py</mark> file </p>
+  <pre>
+    
+    def hello():
+        print('Hello World!')           // function executed by script
+  </pre>
+  <pre class="cmd">
+  $ poetry install                    // script must be installed without errors
+  // ...
+  
+  $ poetry run say_hi                 // executes the script (with in the project's virntual environment's <mark>python</mark> executable)
+  </pre>
+  </details>
+  <!----------------------------------------------------------------------------->
+  <h2 class="headerExtra"> The <mark>project.toml</mark> and <mark>poetry.lock</mark> files </h2>
+  <h2 class="header"> The <mark>project.toml</mark> file </h2>
+  <p> - <mark>project.toml</mark> is a standardized configuration file for all sorts of Python projects (PEP 518 specification) </p>
+  <p> - <mark>toml</mark> stands for <mark>T</mark>om's <mark>O</mark>bvious, <mark>M</mark>inimal <mark>L</mark>anguage </p>
+  <pre>
+  [tool.poetry]                       // these sections are called table 
+  name = "hello-word"
+  version = "0.1.0"
+  
+  [tool.poetry.dependencies]
+  python = ">=3.11"
+  fastapi = "^0.109.0"
+  </pre>
+  <p> - the above simplified example in JSON reads as: </p>
+  <pre>
+  {
+    "tool": {
+      "poetry": {
+        "name": "hello-word",
+        "version": "0.1.0"
+      }
+    },
+    "tool": {
+      "poetry": {
+        "dependencies": {
+          "python": ">=3.11",
+          "fastapi": "^0.109.0"
+        }
+      }
+    }
+  }
+  </pre>
+  <hr>
+  <!----------------------------------------------------------------------------->
+  <h2 class="header"> The <mark>poetry.lock</mark> file </h2>
+  <p> - this is a usual lock file where poetry locks the project's dependency tree (should not be editted by hand) </p>
+  
+  
   <br><br>
 </body>
 
