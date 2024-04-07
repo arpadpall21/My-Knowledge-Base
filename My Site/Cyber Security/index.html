@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Cyber Security </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../Assets/stylesPages.css">
+  <script src="../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Cyber Security </h1>
+  <p> Updated ( 2024-03-24 ) </p>
+  <p class="sitenav"> <a href="../index.html">MySite></a> Cyber Security </p>
+
+  <table class="table">
+    <caption>
+      Cyber Attack Types
+    </caption>
+    <tr>
+      <th style="width:20%"> Cyber Attack </th>
+      <th style="width:30%;"> Description </th>
+      <th> Prevention </th>
+    </tr>
+    <tr>
+      <td>
+        man-in-the-middle attack
+      </td>
+      <td>
+        - a hacker evasdropping between to pairs on the network
+      </td>
+      <td>
+        - use secure encryption techniques like HTTPS <br>
+        - use VPN <br>
+        - be wary of using public WiFI
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        (Distributed) Denial Of Service ((D)DOS)
+      </td>
+      <td>
+        - Overloading a system on the network with large amounts of request until it stops working <br>
+        - DDOS (Distributed) means using different (lots of) network nodes to overload a targeted system
+      </td>
+      <td>
+        - use CDN, distribute your service, it's harder to target sevaral distributed services <br>
+        - use DDOS anti softwares, these softwares can recognize and block traffic from malicious sources <br>
+        - use load balancers, these guys distribute traffic between servers and can be configured to filter out thse types of attacks <br>
+        - use firewalls, to monitor and blacklist these type of sources <br>
+        - use rate limiting, this technique limits the number of request from a single client <br>
+        - have an incident response plan, plan what to do in case of a DDOS attack
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        SQL injection
+      </td>
+      <td>
+        - injectin SQL script in the input field what the sql server execute as SQL command
+      </td>
+      <td>
+        - parametrize SQL queries, provide the user with interfaces where sql parameters can be configured instead of sql commands <br>
+        - imput validation, implement input validation on both client & server side (ex: allow only non comand characters) <br>
+        - use least privilege access, so the user have access only what it needs <br>
+        - setup security measures on DB side like instruction detection, firewall ect...
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        cross-site scripting (XSS)
+      </td>
+      <td>
+        - injecting malitious javascript code into another website (the injected code can steal sensitive informations) <br>
+        - ex: <span class="openable">injecting script through comments<div>
+            <p> - a website allows users to post comments on articles, the comment section allows users to enter text, which is then displayed on the web page for other users to see </p>
+            <p> - the attacker injects the following script on the comment section <mark>&lt;script&gt;alert('Your account has been hacked!');&lt;/script&gt;</mark> </p>
+            <p> - when another user views the comments, the script is execute in his browser the 'Your account has been hacked!' message is displayed </p>
+          </div></span>
+      </td>
+      <td>
+        - imput validation, implement input validation on both client & server side (ex: allow only alphanumerical characters) <br>
+        - output encoding, making sure that the content is not interpreted as HTML or JavaScript code <br>
+        - HTTPOnly cookies, cookies are accessible through HTTP request only (not accessed by client side scripting) <br>
+        - using sanitization libraries, the libs sanitize user input and filter out XSS attacks (DOMPurify, OWASP Java Encoder) <br>
+        - implementing CSP (content security policies), implement CORS policies
+      </td>
+    </tr>
+    <tr>
+      <td>
+        cross-site request forgery (CSRF)
+      </td>
+      <td>
+        - attacker sends a malicious form request in order to change the server content <br>
+        - we assume that the attacker cracked the session token for this attack
+      </td>
+      <td>
+        - implement <span class="openable">CSRF protection<div>
+          <p> - the server generates a CSRF token and sends it to the client </p>
+          <p> - the client indludes the CSRF token in all form request (as hidden form field) </p>
+          <p> - with all form requests the server verifies the CSRF token along with the session token </p>
+        </div></span> (we usually include CSRF protection in form requests where the client modifies the server content (ex: for getting data no CSRF protection needed))
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        phising
+      </td>
+      <td>
+        - getting the user's credentials by some soft hacking way (like fake emails, phone calls, etc..)
+      </td>
+      <td>
+        - educate your staff (like sending tricky mails so they are awaire of this) <br>
+        - enable spam filter <br>
+        - enable 2 factor authentication
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        malware
+      </td>
+      <td>
+        - malicious software in the system
+      </td>
+      <td>
+        - use antivirus <br>
+        - be cautious of emails and downloads <br>
+        - backup your data
+      </td>
+    </tr>
+    <tr>
+      <td>
+        randsomware
+      </td>
+      <td>
+        - malicious software that lock the user's computer, the hacker asks for money to unlock it (asks for randsom)
+      </td>
+      <td>
+        - use antivirus <br>
+        - be cautious of emails and downloads <br>
+        - backup your data
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        password attack
+      </td>
+      <td>
+        - cracking the user's password with different malicious techniques <br>
+        - brute forcing / dictionary (trying out common passwords) / social engineering
+      </td>
+      <td>
+        - use strong password (combination of letter, numbers, symbol characters, etc...) <br>
+        - use password manager <br>
+        - enable 2 factor authentication <br>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        insider attack
+      </td>
+      <td>
+        an emloyee (insider) uses its credentials for malicious activites
+      </td>
+      <td>
+        - use least privilege access, so the user have access only what it needs <br>
+        - monitor (suspicious) activity <br>
+        - educate your staff about regulations and consequences <br>
+        - conduct background check on employees <br>
+        - have an incident response plan, plan what to do in case of a DDOS attack
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        zero-day attack
+      </td>
+      <td>
+        - exploiting previously unknown vulnerabilities before it was patched (can occure the same day the vulnerability is discovered 'zero day')
+      </td>
+      <td>
+        - update your software to the latest version <br>
+        - implement network segmentation (segment your system) <br>
+        - conduct regular security assesment
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        rogue software
+      </td>
+      <td>
+        - malicious software disguised as legitimate application <br>
+        - does malicious actions on the background <br>
+        - tricks the user into believing that their computer is infected with malware and offer to sell solutions
+      </td>
+      <td>
+        - use antivirus <br>
+        - be cautious of emails and downloads <br>
+        - enable pop-up blocker <br>
+        - educate your staff
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        crypto jacking
+      </td>
+      <td>
+        - the hacker uses the victims computing resources to mine cryptocurrencies
+      </td>
+      <td>
+        - use antivirus <br>
+        - monitor the system performance for unusual CPU usage
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        Advance Persistance Threat (APT)
+      </td>
+      <td>
+        - malware that infiltrates a system and stay undetected over a long period of time <br>
+        - tyipcally a large scale attack
+      </td>
+      <td>
+        - implement network segmentation (segment your system) <br>
+        - conduct regular security audits <br>
+        - implement strong access control (2 factor authentication, strong password policies) <br>
+        - backup your data <br>
+        - have an incident response plan
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        IoT attack (Internet of Things)
+      </td>
+      <td>
+        - gaining unauthorized access into a device connected to the internet (ex: home camera)
+      </td>
+      <td>
+        - implement strong access control (2 factor authentication, strong password policies) <br>
+        - secure your home network <br>
+        - never use public WiFi to connect these type of devices
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        botnet attack
+      </td>
+      <td>
+        - a group of compromized diveces (bots) are used to carry out malicious activities
+      </td>
+      <td>
+        - monitor network activities
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        drive by (download) attack
+      </td>
+      <td>
+        - malicious script that downloads and installs itself on the user's computer <br>
+        - occures when the user visits a website that is compromized with malicious code
+      </td>
+      <td>
+        - disable plugins, such as Java or Flash <br>
+        - look out for suspicious downloads
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+
+
+  <br><br>
+</body>
+
+</html>

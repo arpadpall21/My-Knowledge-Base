@@ -107,6 +107,111 @@
         </span>
       </td>
     </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="3"> Image Map </td>
+    </tr>
+    <tr>
+      <td> &lt;area&gt; </td>
+      <td>
+        alt="<strong>txt</strong>" <span class="cssAV">(message in case the image is not reachable)</span><br>
+        coords="<strong class="openable">cords<div>
+            <p> <strong>x1,y1,x2,y2</strong> - rectangle shape (values are in pixels) </p>
+            <p> <strong>x1,y1,radius</strong> - circle shape (values are in pixels) </p>
+            <p> <strong>x1,y1,x2,y2,x3,y3,...</strong> - polygon shape (values are in pixels) </p>
+          </div></strong>" <span class="cssAV">(coordinates of the shape set by the <mark>shape</mark> attribute)</span>
+        download="<i>fileName</i>" <span class="cssAV">(donwloads the content instead of navigating to it, optionally we can rename the downloading content with <i>filename</i>)</span>
+        href="<strong>URL</strong>" <span class="cssAV">(url of the targeted space)</span> <br>
+        hreflang="<strong>langCode</strong>" <span class="cssAV">(specifies the language of the targeted page)</span> <br>
+        ping="<strong>URL</strong> <i>URL</i>" <span class="cssAV">(a list of URL's to which ping bodies are sent (for tracking))</span>
+        <span id="browserSupport" title="Updated: 2021-05-22">
+          <span><i class="fab fa-chrome"></i> 12 </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> 15 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 17 </span>
+          <span><i class="fab fa-safari"></i> 6 </span>
+        </span><br>
+        referrerpolicy="<strong class="openable">ref<div>
+            <p> "" - (Default) the higher level of referrer policy </p>
+            <p> no-referrer - the <mark>Referer</mark> header excluded in the request </p>
+            <p> no-referrer-when-downgrade - the <mark>Referrer</mark> header excluded in non TLS (HTTPS) requests </p>
+            <p> origin - only the origin (scheme, host, port) is included in the <mark>Referrer</mark> header in the request </p>
+            <p> origin-when-cross-origin - for cross-origin request only the origin (scheme, host, port) is included in the <mark>Referrer</mark> header, for same-site request the <mark>Referrer</mark> header contains the full referrer</p>
+            <p> same-origin - the <mark>Referer</mark> header is included only in same-origin requests (omitted for cross-origin requests) </p>
+            <p> strict-origin - the <mark>Referer</mark> header is included in the request if the security level stays the same (included in HTTPS -> HTTPS, excluded in HTTPS -> HTTP) </p>
+            <p> strict-origin-when-corss-origin - the <mark>Referer</mark> header is included in the request for same-site request, for cross-origin requests include only if the security level stays the same (included in HTTPS -> HTTPS, excluded in HTTPS -> HTTP) </p>
+            <p> unsafe-url - the <mark>Referer</mark> header includes only the origin and the path (but not the document fragment, password, username) </p>
+          </div></strong>" <span class="cssAV">(controls the <mark>Referer</mark> header for this request)</span>
+        <span id="browserSupport" title="Updated: 2021-05-22">
+          <span><i class="fab fa-chrome"></i> 51 </span>
+          <span><i class="fab fa-firefox"></i> 50 </span>
+          <span><i class="fab fa-opera"></i> 38 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 11.1 </span>
+        </span><br>
+        rel="<strong class="openable">relation<div>
+            <p> alternative - alternative page </p>
+            <p> author - link to the document's author </p>
+            <p> dns-prefetch - hint the browser that the resource is needed, so the browser can make a pre dns lookup so when the client click the resource is ready </p>
+            <p> help - help about this page </p>
+            <p> icon - 'favicon' represents the page (auditory or visual) (page icon usually) </p>
+            <p> license - links to licensing informations </p>
+            <p> manifest - link is a Web App Manifest </p>
+            <p> module-preload - high priority loading module scripts </p>
+            <p> next - leads to the next resource </p>
+            <p> pingback - link to make comments or citation about the page </p>
+            <p> prefetch - suggest that the browser fetch the linked resource in advance </p>
+            <p> prerender - suggests the browser to fetch the linke resource in advance and render the pre-fetched content </p>
+            <p> prev - leads to the previous resource </p>
+            <p> search - specially designed for searching this document </p>
+            <p> stylesheet - stylesheet </p>
+            <p> tag - refers to a tag that applices to this document </p>
+          </div></strong>" <span class="cssAV">(describes the relation between the document and the linked file)</span><br>
+        shape="<strong class="openable">shape<div>
+            <p> default - the entire region </p>
+            <p> rect - rectangle </p>
+            <p> circle - circle </p>
+            <p> poly - polygon </p>
+          </div></strong>" <span class="cssAV">(the shape of the targeted area)</span> <br>
+        target="<strong class="openable">trg<div>
+            <p> _blank - new window or tab) </p>
+            <p> _self - same frame the link is on </p>
+            <p> _parent - parent frame </p>
+            <p> _top - in the full body of the window </p>
+            <p> <strong>frame_name</strong> - in the targeted frame </p>
+          </div></strong>" <span class="cssAV">(where (which frame) to open the linked file)</span> <br>
+      </td>
+      <td>
+        - describes a clickable area within the image
+        <span id="browserSupport" title="Updated: 2021-05-22">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> &lt;map&gt;&lt;/map&gt; </td>
+      <td>
+        name="<strong>mapName</strong>" <span class="cssAV">(links the image to this map, links the <mark>&lt;img usemap="<strong>mapName</strong>"</mark> as target for this map)
+      </td>
+      <td>
+        - defines an image map (image with clickable areas)
+        <span id="browserSupport" title="Updated: 2021-05-22">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+        </span>
+      </td>
+    </tr>
   </table>
   <br>
   <details class="example" id="notes">
@@ -236,6 +341,65 @@
       <summary> CODE : </summary>
       <pre>
     &lt;a href="javascript: void(alert('javaScript Executed!'))"&gt; Execute JS in a link &lt;/a&gt;    
+        </pre>
+    </details>
+  </details>
+  <!------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Image Map </h2>
+  <p> - an image map is basically an image where we can define clickable areas for different links </p>
+  <pre class="syntax">
+  &lt;img src="<reqval>url</reqval>" usemap="#<reqval>mapName</reqval>"&gt;
+  &lt;map name="<reqval>mapName</reqval>"&gt;
+      &lt;area shape="<reqval>shape</reqval>" coords="<reqval>coordinates</reqval>" href="<reqval>url</reqval>"&gt;   // describes an area on the image and a destination when clicked on the area  
+      // ...
+  &lt;/map&gt;
+  </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
+    &lt;img src="myImage.jpg" alt="image-map" usemap="#angryBirds"&gt; 
+    &lt;map name="angryBirds"&gt;
+        &lt;area shape="rect" coords="2,2,100,100" href="demoSite.html" alt="demoTarget"&gt;
+        &lt;area shape="circle" coords="75,75,20" href="demoSite.html" alt="demoTarget"&gt;
+        &lt;area shape="poly" coords="2,2,40,40,45,100,20,75" href="Images/angry_birds.png" alt="angryBirds" download="CusomImageName"&gt;  // "downloaded and renamed  
+    &lt;/map&gt;                                                                                    
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 class="header"> circle / rectangle / polygon shaped image maps </h4>
+    <p> - This image has 3 different shape targeted areas, the food stick with rectangle, the cookie with circle and the McFlury with polygon, each leads to a page TRY IT!</p>
+    <img id="img" src="Food animo.png" alt="Animatied Foods" usemap="#animofood" width="484px" height="185px">
+    <map name="animofood">
+      <area shape="rect" coords="45,30,130,160" alt="food stick" title="food stick" href="http://www.cookinglight.com/food/recipe-finder/food-on-stick-recipes" target="_blank">
+      <area shape="circle" coords="240,100,68" alt="cookie" title="cookie" href="https://en.wikipedia.org/wiki/Cookie" target="_blank">
+      <area shape="poly" coords="390,20,450,90,430,160,370,160,340,90" alt="McFlury" title="McFlury" href="http://www.mcdonalds.co.uk/ukhome/promotions/mcflurry-malteaser.html" target="_blank">
+    </map>
+    <details>
+      <summary> CODE: </summary>
+      <pre>
+    &lt;img id="img" src="Food animo.png" alt="Animatied Foods" usemap="#animofood" width="484px" height="185px"&gt;
+    &lt;map name="animofood"&gt;
+        &lt;area shape="rect" coords="45,30,130,160" alt="food stick" title="food stick" href="http://www.cookinglight.com/food/recipe-finder/food-on-stick-recipes" target="_blank"&gt;
+        &lt;area shape="circle" coords="240,100,68" alt="cookie" title="cookie" href="https://en.wikipedia.org/wiki/Cookie" target="_blank"&gt;
+        &lt;area shape="poly" coords="390,20,450,90,430,160,370,160,340,90" alt="McFlury" title="McFlury" href="http://www.mcdonalds.co.uk/ukhome/promotions/mcflurry-malteaser.html" target="_blank"&gt; 
+    &lt;/map&gt;
+        </pre>
+    </details>
+    <h4 class="header"> <mark>shape="default"</mark> </h4>
+    <p> - the entire area is clickable </p>
+    <img src="lightning.jpg" height="100" usemap="#lightningMap">
+    <map name="lightningMap">
+      <area shape="default" href="https://www.w3schools.com/tags/att_area_type.asp" target="_parent">
+    </map>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    &lt;img src="Images/lightning.jpg" height="100" usemap="#lightningMap"&gt;
+    &lt;map name="lightningMap"&gt;
+        &lt;area shape="default" href="https://www.w3schools.com/tags/att_area_type.asp" target="_parent"&gt;
+    &lt;/map&gt;    
         </pre>
     </details>
   </details>

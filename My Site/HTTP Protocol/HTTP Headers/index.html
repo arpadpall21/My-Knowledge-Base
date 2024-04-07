@@ -37,18 +37,17 @@
   <p class="subSite"> <a href="#other">Other</a> </p>
   <p class="subSite"> <a href="#http/2">HTTP/2 Pseudo Header Fields</a> </p>
   <pre class="syntax">
-    req             = Request Header Fields
-    res             = Response Header Fields 
-    gen             = General Header Fields (both Request and Response headers)
-    ent             = Entity Headers (metadata about the body or resource both Request and Response)
+    req             // request
+    res             // response 
+    gen             // reqeust & response 
+    ent             // entity header (metadata about the body or resource) reqeust & response 
     
-    <span style="color:orange">colored orange</span>  = Forbidden Header Name = header cannot be modified programatically
-    <span style="color:lightgreen">colored green</span>   = Not-Forbidden Headers Name = can be modified programatically  
+    <span style="color:lightgreen">colored green</span>   // can be modified programatically
+    <span style="color:orange">colored orange</span>  // cannot be modified programatically (Forbidden header)
     </pre>
   <table class="table">
     <caption>
-      HTTP Headers <span style="color:orangered;" title="cannot be modified programatically">(Forbidden)</span> <span style="color:green;" title="can be modified programatically">(Modifiable)</span>
-      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+      HTTP Headers
     </caption>
     <tr>
       <th style="width:3%;"> Type </th>
@@ -565,7 +564,7 @@
       <td colspan="3" id="connection_management"> Connection Management </td>
     </tr>
     <tr class="20.02">
-      <td> <span style="color:orangered;">gen</span> </td>
+      <td> <span style="color:orange;">gen</span> </td>
       <td>
         Connection: <span class="openable">close|keep-alive<div>
             <p> <mark>close</mark> - closes the connection after the current transaction is finished <u>(Default on
@@ -587,7 +586,7 @@
       </td>
     </tr>
     <tr class="20.03">
-      <td> <span style="color:orangered;">gen</span> </td>
+      <td> <span style="color:orange;">gen</span> </td>
       <td>
         Keep-Alive: <span class="openable"><strong>param</strong><i>, ...</i>
           <div>
@@ -643,7 +642,7 @@
       </td>
     </tr>
     <tr class="25.03">
-      <td> <span style="color:orangered;">req</span> </td>
+      <td> <span style="color:orange;">req</span> </td>
       <td>
         Accept-Charset: <span class="openable"><strong>charSet</strong><i>, ...</i>
           <div>
@@ -669,7 +668,7 @@
       </td>
     </tr>
     <tr class="25.04">
-      <td> <span style="color:orangered;">req</span> </td>
+      <td> <span style="color:orange;">req</span> </td>
       <td>
         Accept-Encoding: <span class="openable"><strong>compress</strong><i>, ...</i>
           <div>
@@ -729,7 +728,7 @@
       <td colspan="3" id="controls"> Controls </td>
     </tr>
     <tr class="30.02">
-      <td> <span style="color:orangered;">req</span> </td>
+      <td> <span style="color:orange;">req</span> </td>
       <td> Expect: 100-continue </td>
       <td>
         - client indicates that the server should continue responding (respond with <mark>100 Continue</mark> or
@@ -764,7 +763,7 @@
       <td colspan="3" id="cookies"> Cookies </td>
     </tr>
     <tr class="35.02">
-      <td> <span style="color:orangered;">req</span> </td>
+      <td> <span style="color:orange;">req</span> </td>
       <td> Cookie: <strong>key=val</strong>; <i>...</i> </td>
       <td>
         - client sends cookies to the server (previously received by the <mark>Set-Cookie</mark> response header) <br>
@@ -779,41 +778,32 @@
       </td>
     </tr>
     <tr class="36">
-      <td> <span style="color:orangered;">res</span> </td>
+      <td> <span style="color:orange;">res</span> </td>
       <td>
         Set-Cookie: <span class="openable"><strong>cookie</strong>
           <div>
-            <p> <mark><strong>key=val</strong></mark> - the cookie key can contain ASCII characters except control
-              characters (space, tab) and <mark>( ) &lt; &gt; @ , ; : \ " / [ ] ? = { } .</mark>, the cookie value can
-              contain ASCII characters except control characters (space, tab, etc...), <mark>__Secure-</mark> cookie
-              names must be set with the <mark>Secure</mark> attribute from a secure page (<mark>HTTPS</mark>),
-              <mark>__Host-</mark> cookie names must be set with the <mark>Secure</mark> attribute from a secure page
-              (<mark>HTTPS</mark>) must not have <mark>Domain</mark> specified and path must be <mark>/</mark>
-            </p>
-            <p> <mark><strong>key=val</strong>; Expires=<strong>date</strong></mark> - lifetime of the cookie (if not
-              specified = session cookie) </p>
-            <p> <mark><strong>key=val</strong>; Max-Age=<strong>nr:sec</strong></mark> - lifetime of the cookie (in
-              seconds) <u>(has precedence over <mark>Expires</mark>)</u> </p>
-            <p> <mark><strong>key=val</strong>; Domain=<strong>domain</strong></mark> - host to which the cookie will be
-              sent (if omitted = current domain not including subdomains) </p>
-            <p> <mark><strong>key=val</strong>; Path=<strong>path</strong></mark> - path in URL </p>
-            <p> <mark><strong>key=val</strong>; Secure</mark> - secure cookie (<mark>https</mark> must be used) </p>
-            <p> <mark><strong>key=val</strong>; HttpOnly</mark> - JavaScript cannot access to cookies through the
-              <mark>document.cookie</mark> property
-            </p>
-            <p> <mark><strong>key=val</strong>; SameSite=Lax|Strict|None</mark> - (<mark>Lax</mark> = cookie is allowed
-              to be sent with top-level navigations and with <mark>GET</mark> request initiated by third party sites
-              <u>(Default usually)</u>) (<mark>Strict</mark> = cookie only sent to the site which set it 'same-site')
-              (<mark>None</mark> = the browser sends the cookie with both cross-site and same-site requests)
-            </p>
-            <p> - multiple attributes can be used (ex: <mark>Set-Cookie: key=val; Domain=myDomain.com; Secure;
-                HttpOnly</mark>) </p>
+            <p> Allowed characters <mark>A-Z</mark> <mark>a-z</mark> <mark>0-9</mark> <mark>-</mark> <mark>_</mark> <mark>.</mark> <mark>@</mark> </p>
+            <br>
+            <p> Syntax: </p>
+            <p> <mark><strong>key=val</strong>; <opt>[<optval>options</optval>;<optval>...</optval>]</opt> </mark></p>
+            <br>
+            <p> options: </p>
+            <p class="indent-lv1"> <mark>Expires=<strong>date</strong></mark> - lifetime (browser deletes on expiration)</p>
+            <p class="indent-lv1"> <mark>Max-Age=<strong>nr:sec</strong></mark> - lifetime (in seconds) (browser deletes on expiration) <u>(has precedence over <mark>Expires</mark>)</u> </p>
+            <p class="indent-lv1"> <mark>Domain=<strong>domain</strong></mark> - host to which the cookie will be sent (Default current domain) </p>
+            <p class="indent-lv1"> <mark>Path=<strong>path</strong></mark> - path in URL to set the cookie </p>
+            <p class="indent-lv1"> <mark>Secure</mark> - requires https </p>
+            <p class="indent-lv1"> <mark>HttpOnly</mark> - browser JavaScript cannot access this cookies (on <mark>document.cookie</mark>) </p>
+            <p class="indent-lv1"> <mark>SameSite=Lax|Strict|None</mark> - controls cross site requests (for CSRF protection) </p>
+            <p class="indent-lv2"> - <mark>Lax</mark> - included in cross site requests (Default) </p>
+            <p class="indent-lv2"> - <mark>Strict</mark> - included in 'same-site' requests only (to its own domain)</p>
+            <p class="indent-lv2"> - <mark>None</mark> - <mark>Lax</mark> and <mark>Strict</mark> </p>
           </div>
         </span>
       </td>
       <td>
-        - server send a cookie to the user-agent (browser), so the user-agent can send it back to the server later <br>
-        - multiple fields are allowed in a response header
+        - server sends a cookie to the user-agent (browser) (multiple allowed) <br>
+        - it's basically a way for the server to 'set' values (cookies) on client side 
         <span class="browserSupport" title="updated : 2020-07-18">
           <span><i class="fab fa-chrome"></i> yes </span>
           <span><i class="fab fa-firefox"></i> yes </span>
@@ -1020,7 +1010,7 @@
       </td>
     </tr>
     <tr class="40.02">
-      <td> <span style="color:orangered;">req</span> </td>
+      <td> <span style="color:orange;">req</span> </td>
       <td> Access-Control-Request-Headers: <strong>headerName</strong><i>, ...</i> </td>
       <td>
         - preflight request <br>
@@ -1035,7 +1025,7 @@
       </td>
     </tr>
     <tr class="40.03">
-      <td> <span style="color:orangered;">req</span> </td>
+      <td> <span style="color:orange;">req</span> </td>
       <td> Access-Control-Request-Method: <strong>reqMethod</strong> </td>
       <td>
         - preflight request <br>
@@ -1050,7 +1040,7 @@
       </td>
     </tr>
     <tr class="40.04">
-      <td> <span style="color:orangered;">req</span> </td>
+      <td> <span style="color:orange;">req</span> </td>
       <td>
         Origin: <strong class="openable">origin<div>
             <p> SYNTAX: <strong>scheme</strong>://<strong>hostName</strong><small>[:<i>port</i>]</small> </p>
@@ -1095,7 +1085,7 @@
       <td colspan="3" id="do_not_track"> Do Not Track </td>
     </tr>
     <tr class="45.02">
-      <td> <span style="color:orangered;">req</span> </td>
+      <td> <span style="color:orange;">req</span> </td>
       <td>
         DNT: <span class="openable">0|1|null<div>
             <p> <mark>0</mark> - allow tracking </p>
@@ -1225,7 +1215,7 @@
       </td>
     </tr>
     <tr class="55.02">
-      <td> <span style="color:orangered;">ent</span> </td>
+      <td> <span style="color:orange;">ent</span> </td>
       <td> Content-Length: <strong>nr:byte</strong> </td>
       <td>
         - size of the resource in bytes
@@ -1384,7 +1374,7 @@
       </td>
     </tr>
     <tr class="61">
-      <td> <span style="color:orangered;">gen</span> </td>
+      <td> <span style="color:orange;">gen</span> </td>
       <td> Via: <small>[<i>httpProtocolName</i>/]</small><strong>httpProtocolVersion host</strong>
         <small>[:<i>port</i>]</small>
       </td>
@@ -1435,7 +1425,7 @@
       </td>
     </tr>
     <tr class="70.03">
-      <td> <span style="color:orangered;">req</span> </td>
+      <td> <span style="color:orange;">req</span> </td>
       <td> Host: <strong>host</strong>:<strong>port</strong> </td>
       <td>
         - specifies the host and port number to which the reqest is being sent (required in all <mark>HTTP/1.1</mark>
@@ -1450,7 +1440,7 @@
       </td>
     </tr>
     <tr class="70.04">
-      <td> <span style="color:orangered;">req</span> </td>
+      <td> <span style="color:orange;">req</span> </td>
       <td> Referer: <strong>url</strong> </td>
       <td>
         - contains the address of the previous page from which a link to the current requested page was followed
@@ -1771,7 +1761,7 @@
       <td colspan="3" id="transfer_coding"> Transfer Coding </td>
     </tr>
     <tr class="90.02">
-      <td> <span style="color:orangered;">req</span> </td>
+      <td> <span style="color:orange;">req</span> </td>
       <td>
         TE: <span class="openable"><strong>directive</strong><i>, ...</i>
           <div>
@@ -1800,7 +1790,7 @@
       </td>
     </tr>
     <tr class="91.02">
-      <td> <span style="color:orangered;">res</span> </td>
+      <td> <span style="color:orange;">res</span> </td>
       <td> Trailer: <strong>httpHeader</strong><i>, ...</i> </td>
       <td>
         - the server allows the sender to send trailers (<mark>TE: trailers</mark> request header is required)
@@ -1814,7 +1804,7 @@
       </td>
     </tr>
     <tr class="91.01">
-      <td> <span style="color:orangered;">res</span> </td>
+      <td> <span style="color:orange;">res</span> </td>
       <td>
         Transfer-Encoding: <span class="openable"><strong>compress</strong><i>, ...</i>
           <div>
@@ -1874,7 +1864,7 @@
       </td>
     </tr>
     <tr class="96">
-      <td> <span style="color:orangered;">gen</span> </td>
+      <td> <span style="color:orange;">gen</span> </td>
       <td>
         Date: <span class="openable"><strong>httpDate</strong>
           <div>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> JWT Token </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> JWT Token </h1>
+  <p> Updated ( 2024-02-26 ) </p>
+  <nav class="sitenav"> <a href="../../index.html" title="home">MySite></a>
+    <a href="../index.html">Authentication></a> JWT Token
+  </nav>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://jwt.io/" target="_blank">jwt.io </a></p>
+  <p><a href="https://jwt.io/libraries" target="_blank">recommended JWT libraries (jwt.io) </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  
+  <p> - a JSON Web Token (JWT) is an open standard (RFC 7519) for securely transmit information between parties as JSON </p>
+  <p> - the held information can trusted because of the digital signature (supports HMAC or public/private key RSA or ECDSA) </p>
+  <p> - there is a good official JWT library support <a href="https://jwt.io/libraries" target="_blank">here...</a> </p>
+  <pre class="syntax">
+    <reqval>header</reqval>.<reqval>body</reqval>.<reqval>signature</reqval>      // encoded token format
+    
+    
+// decoded token ---
+    {                                               // header
+      "alg": "<reqval>alg</reqval>",
+      "typ": "JWT"
+    }
+    {                                                 // body 
+      "sub": "<reqval>subject</reqval>",
+      <a href="https:\/\/www.iana.org/assignments/jwt/jwt.xhtml">all body fields...</a>
+    }
+    <reqval>alg</reqval>(<reqval>header:base64UrlEnc</reqval>.<reqval>body:base64UrlEnc</reqval>, <reqval>secret</reqval>)   // <a href="https://jwt.io/#debugger-io" target="_blank">supported algorithms</a>
+  </pre>
+  <pre>
+    {
+      "alg": "HS256",
+      "typ": "JWT"
+    }
+    {
+      "sub": "123",         // subject 
+      "name": "John Doe",
+      "iat": 1516239022     // issued at
+    }
+    DyEjM2PvKj5GjvGQXJ0jMwQzTJUfj9vK9JlQd0LZv6I
+  </pre>
+
+
+  <br><br>
+</body>
+
+</html>

@@ -1,398 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Box Model </title>    
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
-    <style>
-        i.fab {
-            color: inherit;
-        }
-    </style>
+  <meta charset="utf-8">
+  <title> Box Model </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+  <style>
+    i.fab {
+      color: inherit;
+    }
+  </style>
 </head>
+
 <body>
-<h1> Box Model (sizing an placing) (3.0) </h1>
-    <p>Updated ( 2016-05-25 / 2019-01-10)</p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html" title="CSS">CSS></a> Box Model  
-    </p>
-<table class="table">    
+  <h1> Box Model (sizing and positioning) </h1>
+  <p>Updated ( 2016-05-25 / 2019-01-10 / 2024-04-04 )</p>
+  <nav class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Box Model
+  </nav>
+  <br>
+  <table class="table">
+    <caption>
+      Sizing Elements
+    </caption>
     <tr>
-        <th style="width:150px;"> Property </th>
-        <th style="width:25%;"> Value </th>
-        <th> Description </th>
+      <th style="width:15%;"> Property </th>
+      <th style="width:40%;"> Value </th>
+      <th> Description </th>
     </tr>
     <tr>
-        <td> box-sizing </td>
-        <td>  
-            content-box <span style="color:blue">((default) content)</span><br>
-            border-box <span style="color:blue">(content + padding + border)</span><br>
-        </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> defines what parts of the box-model include when we set the element's size 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 10.0/4.0 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 29/2.0 -moz- </span>
-                <span><i class="fab fa-opera"></i> 9.5 </span>
-                <span><i class="fab fa-edge"></i> 8.0 </span>
-                <span><i class="fab fa-internet-explorer"></i> 8 </span>
-                <span><i class="fab fa-safari"></i> 5.1/3.2 -webkit- </span>
-            </span>
-        </td>
+      <td> box-sizing </td>
+      <td>
+        content-box <span class="cssAV">((Default) content)</span><br>
+        border-box <span class="cssAV">(content + padding + border)</span><br>
+      </td>
+      <td>
+        - sets which parts of an element are includeed when setting element's size
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 10.0/4.0 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 29/2.0 -moz- </span>
+          <span><i class="fab fa-opera"></i> 9.5 </span>
+          <span><i class="fab fa-edge"></i> 8.0 </span>
+          <span><i class="fab fa-internet-explorer"></i> 8 </span>
+          <span><i class="fab fa-safari"></i> 5.1/3.2 -webkit- </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td colspan="3"> Sizing Elements </td>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
-        <td> height </td>
-        <td>  
-            auto <span style="color:#7f85a3;">((default) browser handles the height)</span><br>
-            <strong>ccsLength</strong><br>
-            <strong>nr</strong>% <span style="color:#7f85a3;">(relative to the parent element)</span><br>
-        </td>
-        <td> 
-            sets a fixed-height for the element 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1.0  </span>
-                <span><i class="fab fa-firefox"></i> 1.0 </span>
-                <span><i class="fab fa-opera"></i> 7.0 </span>
-                <span><i class="fab fa-edge"></i> 4.0 </span>
-                <span><i class="fab fa-internet-explorer"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 1.0 </span>
-            </span>
-        </td>
+      <td> width </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default)</span><br>
+        <strong>ccsLength</strong><br>
+        <strong>nr</strong>% <span class="cssAV">(relative to the parent element)</span><br>
+      </td>
+      <td>
+        - sets a fixed-width
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1.0 </span>
+          <span><i class="fab fa-firefox"></i> 1.0 </span>
+          <span><i class="fab fa-opera"></i> 3.5 </span>
+          <span><i class="fab fa-edge"></i> 6.0 </span>
+          <span><i class="fab fa-internet-explorer"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 1.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> max-height </td>
-        <td>  
-            <strong>ccsLength</strong> <span style="color:#7f85a3;">(default 0) </span><br>
-            <strong>nr</strong>% <span style="color:#7f85a3;">(relative to the parent element)</span><br>
-        </td>
-        <td> 
-            defines the maximal height of an element (element can be shorter if nothing forces it (like content))
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 4 </span>
-                <span><i class="fab fa-edge"></i> 7 </span>
-                <span><i class="fab fa-internet-explorer"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 2 </span>
-            </span>
-        </td>
+      <td> min-width </td>
+      <td>
+        <strong>ccsLength</strong> <span class="cssAV">(default <mark>0</mark>) </span><br>
+        <strong>nr</strong>% <span class="cssAV">(relative to the parent element)</span><br>
+      </td>
+      <td> - sets the minimal width (element can be wider if something forces it (like block-level behaviour or content))
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 4 </span>
+          <span><i class="fab fa-edge"></i> 7 </span>
+          <span><i class="fab fa-internet-explorer"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 2 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> max-width </td>
-        <td>  
-            <strong>ccsLength</strong> <span style="color:#7f85a3;">(default 0) </span><br>
-            <strong>nr</strong>% <span style="color:#7f85a3;">(relative to the parent element)</span><br>
-        </td>
-        <td> defines the maximal width of an element (element can be smaller if nothing forces it (like block-level behaviour or content)) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 4 </span>
-                <span><i class="fab fa-edge"></i> 7 </span>
-                <span><i class="fab fa-internet-explorer"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 2 </span>
-            </span>
-        </td>
+      <td> max-width </td>
+      <td>
+        <strong>ccsLength</strong> <span class="cssAV">(default <mark>0</mark>) </span><br>
+        <strong>nr</strong>% <span class="cssAV">(relative to the parent element)</span><br>
+      </td>
+      <td> - sets the maximal width (element can be smaller if nothing forces it (like block-level behaviour or content))
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 4 </span>
+          <span><i class="fab fa-edge"></i> 7 </span>
+          <span><i class="fab fa-internet-explorer"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 2 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> min-height </td>
-        <td>  
-            <strong>ccsLength</strong> <span style="color:#7f85a3;">(default 0) </span><br>
-            <strong>nr</strong>% <span style="color:#7f85a3;">(relative to the parent element)</span><br>
-        </td>
-        <td> defines the minimal height of an element (element can be higher if something forces it (like content)) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 4 </span>
-                <span><i class="fab fa-edge"></i> 7 </span>
-                <span><i class="fab fa-internet-explorer"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 2 </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
-        <td> min-width </td>
-        <td>  
-            <strong>ccsLength</strong> <span style="color:#7f85a3;">(default 0) </span><br>
-            <strong>nr</strong>% <span style="color:#7f85a3;">(relative to the parent element)</span><br>
-        </td>
-        <td> defines the minimal width of an element (element can be wider if something forces it (like block-level behaviour or content)) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 4 </span>
-                <span><i class="fab fa-edge"></i> 7 </span>
-                <span><i class="fab fa-internet-explorer"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 2 </span>
-            </span>
-        </td>
+      <td> height </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default)</span><br>
+        <strong>ccsLength</strong><br>
+        <strong>nr</strong>% <span class="cssAV">(relative to the parent element)</span><br>
+      </td>
+      <td>
+        - sets a fixed-height
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1.0 </span>
+          <span><i class="fab fa-firefox"></i> 1.0 </span>
+          <span><i class="fab fa-opera"></i> 7.0 </span>
+          <span><i class="fab fa-edge"></i> 4.0 </span>
+          <span><i class="fab fa-internet-explorer"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 1.0 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> resize </td>
-        <td>  
-            none <span style="color:#7f85a3;">(default)</span><br>                                 vertical<br>
-            horizontal<br>
-            both <span style="color:#7f85a3;">(vertical and horizontal)</span><br>
-        </td>
-        <td> <i class="fab fa-css3-alt"></i> allows and defines how the user can resize the element (<mark>overflow:auto|scroll|hidden;</mark> must be declared)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 5/4 -moz- </span>
-                <span><i class="fab fa-opera"></i> 15 </span>
-                <span><i class="fab fa-edge"></i> NO </span>
-                <span><i class="fab fa-internet-explorer"></i> NO </span>
-                <span><i class="fab fa-safari"></i> 4 </span>
-            </span>
-        </td>
+      <td> min-height </td>
+      <td>
+        <strong>ccsLength</strong> <span class="cssAV">(default <mark>0</mark>) </span><br>
+        <strong>nr</strong>% <span class="cssAV">(relative to the parent element)</span><br>
+      </td>
+      <td> 
+        - sets the minimal height (element can be higher if something forces it (like content))
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 4 </span>
+          <span><i class="fab fa-edge"></i> 7 </span>
+          <span><i class="fab fa-internet-explorer"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 2 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> width </td>
-        <td>  
-            auto <span style="color:#7f85a3;">((default) browser handles the width)</span><br>
-            <strong>ccsLength</strong><br>
-            <strong>nr</strong>% <span style="color:#7f85a3;">(relative to the parent element)</span><br>
-        </td>
-        <td> 
-            sets a fixed-width for the element 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1.0  </span>
-                <span><i class="fab fa-firefox"></i> 1.0 </span>
-                <span><i class="fab fa-opera"></i> 3.5 </span>
-                <span><i class="fab fa-edge"></i> 6.0 </span>
-                <span><i class="fab fa-internet-explorer"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 1.0 </span>
-            </span>
-        </td>
+      <td> max-height </td>
+      <td>
+        <strong>ccsLength</strong> <span class="cssAV">(default <mark>0</mark>) </span><br>
+        <strong>nr</strong>% <span class="cssAV">(relative to the parent element)</span><br>
+      </td>
+      <td>
+        - sets the maximal height (element can be shorter if nothing forces it (like content))
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 4 </span>
+          <span><i class="fab fa-edge"></i> 7 </span>
+          <span><i class="fab fa-internet-explorer"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 2 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td colspan="3"> Placing Elements </td>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
-        <td> top </td>
-        <td>  
-            auto <span style="color:#7f85a3;">((default) browser calculates the position)</span><br>
-            <strong>cssLength</strong><br>
-            <strong>nr</strong>% <span style="color:#7f85a3;">(relative to the parent element)</span><br>
-        </td>
-        <td> sets the top edge position of the element (<mark>position:static</mark> = has no effect / <mark>position:relative</mark> = relative to its static position / <mark>position:absolute</mark> = relative to its parent / <mark>position:fixed</mark> = relative to the viewport) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 6 </span>
-                <span><i class="fab fa-edge"></i> 5 </span>
-                <span><i class="fab fa-internet-explorer"></i> 5 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
+      <td> resize </td>
+      <td>
+        none <span class="cssAV">(Default)</span><br> 
+        vertical<br>
+        horizontal<br>
+        both <span class="cssAV">(vertical and horizontal)</span><br>
+      </td>
+      <td> 
+        - allows the user to resize the element<br>
+        - requires <mark>overflow:auto|scroll|hidden;</mark> property set
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 5/4 -moz- </span>
+          <span><i class="fab fa-opera"></i> 15 </span>
+          <span><i class="fab fa-edge"></i> NO </span>
+          <span><i class="fab fa-internet-explorer"></i> NO </span>
+          <span><i class="fab fa-safari"></i> 4 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+    <br>
+  <table class="table">
+    <caption>
+      Position Element
+    </caption>
+    <tr>
+      <th style="width:15%;"> Property </th>
+      <th style="width:40%;"> Value </th>
+      <th> Description </th>
     </tr>
     <tr>
-        <td> right </td>
-        <td>  
-            auto <span style="color:#7f85a3;">((default) browser calculates the position)</span><br>
-            <strong>cssLength</strong><br>
-            <strong>nr</strong>% <span style="color:#7f85a3;">(relative to the parent element)</span><br>
-        </td>
-        <td> sets the right edge position of the element (<mark>position:static</mark> = has no effect / <mark>position:relative</mark> = relative to its static position / <mark>position:absolute</mark> = relative to its parent / <mark>position:fixed</mark> = relative to the viewport)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 5 </span>
-                <span><i class="fab fa-edge"></i> 5.5 </span>
-                <span><i class="fab fa-internet-explorer"></i> 5.5 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
+      <td> top </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default)</span><br>
+        <strong>cssLength</strong><br>
+        <strong>nr</strong>% <span class="cssAV">(relative to the parent element)</span><br>
+      </td>
+      <td> 
+        - sets the top element position <br>
+        - <mark>position:static</mark> = no effect <br>
+        - <mark>position:relative</mark> = relative to the original static position <br>
+        - <mark>position:absolute</mark> = relative to its parent (parent element must be positioned <mark>relative|absoute|fixed</mark>) <br>
+        - <mark>position:fixed</mark> = relative to the viewport
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 6 </span>
+          <span><i class="fab fa-edge"></i> 5 </span>
+          <span><i class="fab fa-internet-explorer"></i> 5 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> bottom </td>
-        <td>  
-            auto <span style="color:#7f85a3;">((default) browser calculates the position)</span><br>
-            <strong>cssLength</strong><br>
-            <strong>nr</strong>% <span style="color:#7f85a3;">(relative to the parent element)</span><br>
-        </td>
-        <td> sets the bottom edge position of the element (<mark>position:static</mark> = has no effect / <mark>position:relative</mark> = relative to its static position / <mark>position:absolute</mark> = relative to its parent / <mark>position:fixed</mark> = relative to the viewport)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 6 </span>
-                <span><i class="fab fa-edge"></i> 5 </span>
-                <span><i class="fab fa-internet-explorer"></i> 5 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
+      <td> right </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default)</span><br>
+        <strong>cssLength</strong><br>
+        <strong>nr</strong>% <span class="cssAV">(relative to the parent element)</span><br>
+      </td>
+      <td> 
+        - sets the right element position <br>
+        - <mark>position:static</mark> = no effect <br>
+        - <mark>position:relative</mark> = relative to the original static position <br>
+        - <mark>position:absolute</mark> = relative to its parent (parent element must be positioned <mark>relative|absoute|fixed</mark>) <br>
+        - <mark>position:fixed</mark> = relative to the viewport
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 5 </span>
+          <span><i class="fab fa-edge"></i> 5.5 </span>
+          <span><i class="fab fa-internet-explorer"></i> 5.5 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> left </td>
-        <td>  
-            auto <span style="color:#7f85a3;">((default) browser calculates the position)</span><br>
-            <strong>cssLength</strong><br>
-            <strong>nr</strong>% <span style="color:#7f85a3;">(relative to the parent element)</span><br>
-        </td>
-        <td> sets the left edge position of the element (<mark>position:static</mark> = has no effect / <mark>position:relative</mark> = relative to its static position / <mark>position:absolute</mark> = relative to its parent / <mark>position:fixed</mark> = relative to the viewport)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 5 </span>
-                <span><i class="fab fa-edge"></i> 5.5 </span>
-                <span><i class="fab fa-internet-explorer"></i> 5.5 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
+      <td> bottom </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default)</span><br>
+        <strong>cssLength</strong><br>
+        <strong>nr</strong>% <span class="cssAV">(relative to the parent element)</span><br>
+      </td>
+      <td> 
+        - sets the bottom element position <br>
+        - <mark>position:static</mark> = no effect <br>
+        - <mark>position:relative</mark> = relative to the original static position <br>
+        - <mark>position:absolute</mark> = relative to its parent (parent element must be positioned <mark>relative|absoute|fixed</mark>) <br>
+        - <mark>position:fixed</mark> = relative to the viewport
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 6 </span>
+          <span><i class="fab fa-edge"></i> 5 </span>
+          <span><i class="fab fa-internet-explorer"></i> 5 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
-</table>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="http://www.w3schools.com/css/css_boxmodel.asp" target="_blank">W3Schools Box Model </a></p>
-    <p><a href="http://www.w3schools.com/css/css3_user_interface.asp" target="_blank">W3Schools User Interface ("resize" property) </a></p>
-    <p><a href="http://www.w3schools.com/css/css3_box-sizing.asp" target="_blank"> W3Schools Box-Sizing ("box-sizing" property)</a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    <p> - an element <u>cannot be smaller than its padding + border</u>, the <mark>box-sizing:border-box</mark> manages the available space of the content part only </p>
-    <p> - because block-level elements take as much space as they can horizontally the <mark>min-width</mark> and <mark>max-width</mark> properties affected by that behaviour right away </p>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-<h2 class="headerExtra"><u> Box Model and its dimension <mark>box-sizing</mark> </u></h2>
-    <p> - All HTML elements considered as boxes, in CSS we call this "box-model" </p>
-    <p> - the "box-model" is composed of <b>content</b> / <b>padding</b> / <b>border</b> / <b>margin</b> </p>
-    <img src="Box-Model.jpg" alt="Box Model" height="150">
-    <p> - when we set the size of an element by default we set the size of the <u>content only</u> (padding and border adds up to calculate the element's real size) </p>
-    <p> - the <mark>box-sizing</mark> property gives us the "power" to define which parts of the box-model are included when we calculate the elemnt's size </p>
-    <p style="color:yellow;"> - an element <u>cannot be smaller than its padding + border</u>, the <mark>box-sizing:border-box</mark> manages the available space of the content part </p>
-    <pre class="syntax">
-SYNTAX :    box-sizing: content-box         <span style="color:skyblue">// (default) content </span>                            // <i class="fab fa-css3-alt"></i> defines what parts of the box-model include when we set the element's size
-                      : border-box          <span style="color:skyblue">// content + padding + border </span>
-    </pre>
-    <pre>
-    &lt;div class="demo d1"&gt;&lt;/div&gt;
-    &lt;div class="demo d2"&gt;&lt;/div&gt;
+    <tr>
+      <td> left </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default)</span><br>
+        <strong>cssLength</strong><br>
+        <strong>nr</strong>% <span class="cssAV">(relative to the parent element)</span><br>
+      </td>
+      <td>
+        - sets the left element position <br>
+        - <mark>position:static</mark> = no effect <br>
+        - <mark>position:relative</mark> = relative to the original static position <br>
+        - <mark>position:absolute</mark> = relative to its parent (parent element must be positioned <mark>relative|absoute|fixed</mark>) <br>
+        - <mark>position:fixed</mark> = relative to the viewport
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 5 </span>
+          <span><i class="fab fa-edge"></i> 5.5 </span>
+          <span><i class="fab fa-internet-explorer"></i> 5.5 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="http://www.w3schools.com/css/css_boxmodel.asp" target="_blank">W3Schools Box Model </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <h2 class="headerExtra"> The Box Model </h2>
+  <p> - from CSS prespective all HTML elements are considered as 'boxes' (hence the name 'box model') </p>
+  <p> - a "box-model" is composed of a <mark class="mark">content</mark> a <mark class="mark">padding</mark> a <mark class="mark">border</mark> and a <mark class="mark">margin</mark> </p>
+  <img src="Box-Model.jpg" alt="Box Model" height="200">
+  <!----------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"><u> Sizing elements </u></h2>
+  <h3 class="header"> The <mark>box-sizing</mark> / <mark>width</mark> / <mark>min-width</mark> / <mark>max-width</mark> / <mark>height</mark> / <mark>min-height</mark> / <mark>max-height</mark> properties </h3>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 class="header"> The <mark>box-sizing</mark> property </h4>
+    <div class="boxSizing bs1">
+      This is the content (<mark>box-sizing:content-box;</mark>)
+    </div>
+    <div class="boxSizing bs2">
+      This is the content (<mark>box-sizing:border-box;</mark>)
+    </div>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML ---
+    &lt;div class="boxSizing bs1"&gt;
+      This is the content (&lt;mark&gt;box-sizing:content-box;&lt;/mark&gt;)
+    &lt;/div&gt;
+    &lt;div class="boxSizing bs2"&gt;
+      This is the content (&lt;mark&gt;box-sizing:border-box;&lt;/mark&gt;)
+    &lt;/div&gt;
     
--- CSS --
-    .demo {
+    
+// CSS ---
+    .boxSizing {
+        background-color: lightskyblue;
         padding: 20px;
-        border: solid black 30px;
-        width: 200px;                       
+        margin: 20px;
+        border: solid 20px black;
+        width: 400px;
         height: 100px;
     }
     
-// -> <b>d1</b> element's width : 200px + (2x20px) + (2x30px) = 300px
-// -> <b>d1</b> element's height : 100px + (2x20px) + (2x30px) = 200px
-    .d1 {
-        box-sizing: content-box;            // (default value) "width" and "height" properties sets the dimensions for the content area
+    .bs1 {
+        box-sizing: content-box;
     }
     
-// -> <b>d2</b> element's width: 200px
-// -> <b>d2</b> element's height : 100px
-    .d2 {
-        box-sizing: border-box;             // padding + border are included in the size (manages the space of the content)
+    .bs2 {
+        box-sizing: border-box;
     }
-    </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> <mark>box-sizing</mark> TEST </u></h4> 
-    <p> - both boxes are set to <mark>800px</mark> width </p>
-    <div class="boxSizing bs1"> 
-        - <mark>box-sizing:content-box;</mark><br>
-        - content width = <mark>800px</mark> (this is the dimension what we define here)<br>
-        - padding added = <mark>2x10px</mark><br>
-        - border added = <mark>2x10px</mark><br>
-        - total width is <mark>840px</mark>
-    </div>
-    <div class="boxSizing bs2">
-        - <mark>box-sizing:border-box;</mark><br>
-        - content + padding + border (this is how the <mark>border-box</mark> value calculates the width)<br>
-        - total width is <mark>800px</mark>
-    </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- CODE (HTML) --
-    &lt;div class="boxSizing bs1"&gt; 
-        - &lt;mark&gt;box-sizing:content-box;&lt;/mark&gt;&lt;br&gt;
-        - content width = &lt;mark&gt;800px&lt;/mark&gt; (this is the dimension what we define here)&lt;br&gt;
-        - padding added = &lt;mark&gt;2x10px&lt;/mark&gt;&lt;br&gt;
-        - border added = &lt;mark&gt;2x10px&lt;/mark&gt;&lt;br&gt;
-        - total width is &lt;mark&gt;840px&lt;/mark&gt;
-    &lt;/div&gt;
-    &lt;div class="boxSizing bs2"&gt;
-        - &lt;mark&gt;box-sizing:border-box;&lt;/mark&gt;&lt;br&gt;
-        - content + padding + border (this is how the &lt;mark&gt;border-box&lt;/mark&gt; value calculates the width)&lt;br&gt;
-        - total width is &lt;mark&gt;800px&lt;/mark&gt;
-    &lt;/div&gt;
-    
--- CODE (CSS) -- 
-    .boxSizing {                                        .bs1 {
-        background-color: lightskyblue;                     box-sizing: content-box;
-        padding: 10px;                                  }
-        margin: 5px;                                    .bs2 {
-        border: solid 10px black;                           box-sizing: border-box;
-        width: 800px;                                   }
-        height: 200px;
-    }
-        </pre>
-        </details>
-</details>    
-<!----------------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 class="headerExtra"><u> Sizing elements </u></h2>    
-<h2 style="color:darkblue;"><u> <mark>width</mark> / <mark>min-width</mark> / <mark>max-width</mark> / <mark>height</mark> / <mark>min-height</mark> / <mark>max-height</mark> </u></h2> 
-    <pre class="syntax">
-SYNTAX :    width: auto                     <span style="color:skyblue;">// (default) browser handles the width </span>        // sets a fixed-width for the element
-                 : <strong>ccsLength</strong>
-                 : <strong>nr</strong>%                      <span style="color:skyblue;">// relative to the parent element </span>
-                 
-            min-width: <strong>ccsLength</strong>            <span style="color:skyblue;">// (default 0) </span>                                // defines the minimal width of an element (element can be wider if something forces it (like block-level behaviour or content))  
-                     : <strong>nr</strong>%                  <span style="color:skyblue;">// relative to the parent element </span>
-
-            max-width: <strong>ccsLength</strong>            <span style="color:skyblue;">// (default 0) </span>                                // defines the maximal width of an element (element can be smaller if nothing forces it (like block-level behaviour or content))  
-                     : <strong>nr</strong>%                  <span style="color:skyblue;">// relative to the parent element </span>
-
-            height: auto                    <span style="color:skyblue;">// (default) browser handles the height </span>       // sets a fixed-height for the element
-                  : <strong>ccsLength</strong>
-                  : <strong>nr</strong>%                     <span style="color:skyblue;">// relative to the parent element </span>
-                  
-            min-height: <strong>ccsLength</strong>           <span style="color:skyblue;">// (default 0) </span>                                // defines the minimal height of an element (element can be higher if something forces it (like content))  
-                     : <strong>nr</strong>%                  <span style="color:skyblue;">// relative to the parent element </span>
-
-            max-height: <strong>ccsLength</strong>           <span style="color:skyblue;">// (default 0) </span>                                // defines the maximal height of an element (element can be shorter if nothing forces it (like content))  
-                     : <strong>nr</strong>%                  <span style="color:skyblue;">// relative to the parent element </span>      
-    </pre>
-    <pre>
-    &lt;p class="mins"&gt; TEST &lt;/p&gt;
-    &lt;p class="maxs"&gt; TEST &lt;/p&gt;
-    
--- CSS  --
-    .mins {
-        background-color: darkorchid;
-        min-width: 500px;                   // <u>because this is a block-level element</u> it takes up the full width of the screen <b>but never gets narrower than 500px</b>  
-        min-height: 500px;                  // element height is 500px <b> but it would get higher automatically if we had a large content what forced it </b>
-    }
-    .maxs {
-        background-color: darkorchid;
-        max-width: 500px;                   // <u>because this is a block-level element</u> (it takes as much width as it can) this elemet is 500px wide <b>but it gets narrower if the screen becomes narrower than 500px</b>  
-        max-height: 500px;                  // element height is 1em <b> but its height could be up to 500px if we would had a large content </b>
-    }
-    </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> <mark>width</mark> / <mark>min-width</mark> / <mark>max-width</mark> TEST </u></h4>
+      </pre>
+    </details>
+    <!----------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>width</mark> / <mark>min-width</mark> / <mark>max-width</mark> properties </h4>
     <p> - resize the red containers to see the effects </p>
     <p style="color:yellow;"> - because <u>block level elements</u> get as wide as possible, <mark>width-*</mark> properties work differently on them as <mark>height-*</mark> properties (explanaition below!) </p>
     <div class="widthModif">
-        <p> <mark>width:400px;</mark> (solid size) </p>
-        <p> <mark>min-width:400px;</mark> (minimum width presered (if parent element gets narrower than this element) but element will extend as much as possible) </p>
-        <p> <mark>min-width:400px;</mark> (without content) </p>
-        <p> <mark>max-width:400px;</mark> (element never gets wider but narrows down if parent gets narrower) </p>
-        <p> <mark>max-width:400px;</mark> (without content) </p>
-        <p> horizontal resize <i class="fas fa-arrow-right"></i> </p>
+      <p> <mark>width:400px;</mark> (solid size) </p>
+      <p> <mark>min-width:400px;</mark> (minimum width presered (if parent element gets narrower than this element) but element will extend as much as possible) </p>
+      <p> <mark>min-width:400px;</mark> (without content) </p>
+      <p> <mark>max-width:400px;</mark> (element never gets wider but narrows down if parent gets narrower) </p>
+      <p> <mark>max-width:400px;</mark> (without content) </p>
+      <p> horizontal resize <i class="fas fa-arrow-right"></i> </p>
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;div class="widthModif"&gt;
         &lt;p&gt; &lt;mark&gt;width:400px;&lt;/mark&gt; (solid size) &lt;/p&gt;
@@ -441,32 +415,34 @@ SYNTAX :    width: auto                     <span style="color:skyblue;">// (def
         z-index: 1;
     }
         </pre>
-        </details>
-<h4><u> <mark>height</mark> / <mark>min-height</mark> / <mark>max-height</mark></u></h4> 
+    </details>
+    <!----------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>height</mark> / <mark>min-height</mark> / <mark>max-height</mark> properties </h4>
     <div class="heightModif">
-        <p> <mark>height:200px;</mark> (solid size) </p>
-        <p> 
-            <mark>min-height:200px;</mark> (at least 200px or larger) <br>
-            - this container is minimum 200px, if its content gets larger the height will be rised <br>
-            ------------------- <br>
-            ------------------- <br>
-            ------------------- <br>
-            ------------------- <br>
-        </p>
-        <p> <mark>min-height:200px;</mark> (without content) </p>
-        <p> 
-            <mark>max-height:200px;</mark> (maximum 200px or smaller) <br>
-            - this container gets maximum 200px or smaller <br>
-            - the text overflows because the container cannot get higher <br>
-            ------------------- <br>
-            ------------------- <br>
-            ------------------- <br>
-            </p>
-        <p> <mark>max-height:200px;</mark> (without content) </p>
+      <p> <mark>height:200px;</mark> (solid size) </p>
+      <p>
+        <mark>min-height:200px;</mark> (at least 200px or larger) <br>
+        - this container is minimum 200px, if its content gets larger the height will be rised <br>
+        ------------------- <br>
+        ------------------- <br>
+        ------------------- <br>
+        ------------------- <br>
+      </p>
+      <p> <mark>min-height:200px;</mark> (without content) </p>
+      <p>
+        <mark>max-height:200px;</mark> (maximum 200px or smaller) <br>
+        - this container gets maximum 200px or smaller <br>
+        - the text overflows because the container cannot get higher <br>
+        ------------------- <br>
+        ------------------- <br>
+        ------------------- <br>
+      </p>
+      <p> <mark>max-height:200px;</mark> (without content) </p>
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) -- 
     &lt;div class="heightModif"&gt;
         &lt;p&gt; &lt;mark&gt;height:200px;&lt;/mark&gt; (solid size) &lt;/p&gt;
@@ -524,22 +500,24 @@ SYNTAX :    width: auto                     <span style="color:skyblue;">// (def
         max-height: 75px;
     }
         </pre>
-        </details>
-<h4><u> explanation why the <mark>*-width</mark> properties work differently than the  <mark>*-height</mark> properties on block level elements </u></h4> 
+    </details>
+    <!----------------------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> explanation why the <mark>*-width</mark> properties work differently than the <mark>*-height</mark> properties on block level elements </u></h4>
     <p> - this block level elemet gets as wide as it can but gets as height as its content, this is the reason why the <mark>min-width</mark> takes the full width but the <mark>min-height</mark> takes only the necessary space for its content! </p>
     <p id="blockT">
-        - <b>BLOCK LEVEL ELEMENT</b><br>
-        - <mark>min-width:1000px;</mark> (element takes the full available width because of the block level behaviour) <br>
-        - <mark>min-height:100px;</mark> (element is 100px height, because the content does not forces it to get heigher)
+      - <b>BLOCK LEVEL ELEMENT</b><br>
+      - <mark>min-width:1000px;</mark> (element takes the full available width because of the block level behaviour) <br>
+      - <mark>min-height:100px;</mark> (element is 100px height, because the content does not forces it to get heigher)
     </p>
     <p id="inline_bT">
-        - <b>INLINE-BLOCK ELEMENT</b><br>
-        - <mark>min-width:1000px;</mark> (element is 1000px wide because the inline-block element does take only the necessary width) <br>
-        - <mark>min-height:100px;</mark> (element is 100px height, because the content does not forces it to get heigher)
+      - <b>INLINE-BLOCK ELEMENT</b><br>
+      - <mark>min-width:1000px;</mark> (element is 1000px wide because the inline-block element does take only the necessary width) <br>
+      - <mark>min-height:100px;</mark> (element is 100px height, because the content does not forces it to get heigher)
     </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p id="blockT"&gt;
         - &lt;b&gt;BLOCK LEVEL ELEMENT&lt;/b&gt;&lt;br&gt;
@@ -569,137 +547,89 @@ SYNTAX :    width: auto                     <span style="color:skyblue;">// (def
         min-height: 100px;
     }
         </pre>
-        </details>
-</details>  
-<!----------------------------------------------------------------------------------------------------------------->
-<hr>    
-<h2 style="color:darkblue;"><u> <mark>resize</mark> </u></h2>
-    <pre class="syntax">
-SYNTAX :    resize: none                    <span style="color:skyblue;">// default </span>                                    // <i class="fab fa-css3-alt"></i> allows and defines how the user can resize the element (<mark>overflow:auto|scroll|hidden</mark> must be declared <span style="color:orange;">(no EDGE / IE support)</span>)    
-                  : vertical
-                  : horizontal
-                  : both                    <span style="color:skyblue;">// vertical and horizontal </span>
-    </pre>
-    <pre>
-    &lt;div class="demo"&gt; myContent &lt;/div&gt;
-    
--- CSS --
-    .demo {
-        width: 100px;
-        height: 100px;
-        border: solid 1px black;
-        overflow: auto;                     <span style="color:orangered;">&lt; -- required in order to resize </span>
-        resize: both;                       // element resizable both vertical and horizontally
-    }
-    </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> resize TEST </u></h4>
+    </details>
+  </details>
+  <!----------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h3 class="header"> The <mark>resize</mark> property </h3>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> resize TEST </u></h4>
     <div class="resize-H">
-        This box is resizable horizontaly
+      This box is resizable horizontaly
     </div>
     <div class="resize-V">
-        This box is resizable verticaly
+      This box is resizable verticaly
     </div>
     <div class="resize-HandV">
-        This box is resizable both horizontaly and verticaly
+      This box is resizable both horizontaly and verticaly
     </div>
-	<details style="clear: left;">
-	<summary> CODE : </summary>
-		<pre>
--- CODE (HTML) --
-        &lt;div class="resize-H"&gt;
-            This box is resizable horizontaly
-        &lt;/div&gt;
-        &lt;div class="resize-V"&gt;
-            This box is resizable verticaly
-        &lt;/div&gt;
-        &lt;div class="resize-HandV"&gt;
-            This box is resizable both horizontaly and verticaly
-        &lt;/div&gt;
-		
--- CODE (CSS) --
-        [class|=resize]{                                            .resize-H{
-            float: left;                                                resize: horizontal;
-            border: solid 2px black;                                    overflow: auto;
-            background-color: yellowgreen;                          }
-            font-weight: bold;                                      .resize-V{
-            padding: 30px;                                              resize: vertical;
-            margin: 20px;                                               overflow: scroll;
-        }                                                           }
-                                                                    .resize-HandV{
-                                                                        resize: both;
-                                                                        overflow: hidden;
-                                                                    }
+    <details style="clear: left;">
+      <summary> CODE : </summary>
+      <pre>
+// HTML ----
+    &lt;div class="resize-H"&gt;
+        This box is resizable horizontaly
+    &lt;/div&gt;
+    &lt;div class="resize-V"&gt;
+        This box is resizable verticaly
+    &lt;/div&gt;
+    &lt;div class="resize-HandV"&gt;
+        This box is resizable both horizontaly and verticaly
+    &lt;/div&gt;
+    
+    
+// CSS ---
+    [class|=resize]{                  
+        float: left;                  
+        border: solid 2px black;      
+        background-color: yellowgreen;
+        font-weight: bold;            
+        padding: 30px;                
+        margin: 20px;                 
+    }                                 
+                
+    .resize-H{
+        resize: horizontal;
+        overflow: auto;
+    }
+    .resize-V{
+        resize: vertical;
+        overflow: scroll;
+    }
+    .resize-HandV{
+        resize: both;
+        overflow: hidden;
+    }                
 		</pre>
-	</details>
+    </details>
 
-    
-    
-    
-    
-    
-    
-    
-</details>        
-<!----------------------------------------------------------------------------------------------------------------->
-<hr>    
-<h2 class="headerExtra"><u> Placing Elements </u></h2> 
-<h2 style="color:darkblue;"><u> <mark>top</mark> / <mark>right</mark> / <mark>bottom</mark> / <mark>left</mark> </u></h2>    
-    <pre class="syntax">
-SYNTAX :    top: auto                       <span style="color:skyblue;">// (default) browser calculates the position </span>  // sets the top edge position of the element ("position:static" = has no effect / "position:relative" = relative to its static position / "position:absolute" = relative to its parent / "position:fixed" = relative to the viewport)  
-               : <strong>cssLength</strong>
-               : <strong>nr</strong>%                        <span style="color:skyblue;">// relative to the parent element </span>
-        
-            right: auto                     <span style="color:skyblue;">// (default) browser calculates the position </span>  // sets the right edge position of the element ("position:static" = has no effect / "position:relative" = relative to its static position / "position:absolute" = relative to its parent / "position:fixed" = relative to the viewport)  
-                 : <strong>cssLength</strong>
-                 : <strong>nr</strong>%                      <span style="color:skyblue;">// relative to the parent element </span>
-                 
-            bottom: auto                    <span style="color:skyblue;">// (default) browser calculates the position </span>  // sets the bottom edge position of the element ("position:static" = has no effect / "position:relative" = relative to its static position / "position:absolute" = relative to its parent / "position:fixed" = relative to the viewport)  
-                  : <strong>cssLength</strong>
-                  : <strong>nr</strong>%                     <span style="color:skyblue;">// relative to the parent element </span>
-                  
-            left: auto                      <span style="color:skyblue;">// (default) browser calculates the position </span>  // sets the left edge position of the element ("position:static" = has no effect / "position:relative" = relative to its static position / "position:absolute" = relative to its parent / "position:fixed" = relative to the viewport)  
-                : <strong>cssLength</strong>
-                : <strong>nr</strong>%                       <span style="color:skyblue;">// relative to the parent element </span>      
-    </pre>
-    <pre>
-    &lt;p class="demo1"&gt; static &lt;/p&gt;
-    &lt;p class="demo2"&gt; relative &lt;/p&gt;
-    &lt;p class="demo2"&gt; absolute &lt;/p&gt;
-    &lt;p class="demo4"&gt; fixed  &lt;/p&gt;
--- CSS  --
-    .demo1 {
-        position: absolute;
-        top: 100px;                         // placement has no effect because element is NOT poistioned (position:absolute)
-    }
-    .demo2 {
-        position: relative;
-        left: 100px;                        // placed 100px left to its "static" position
-    }
-    .demo3 {
-        position: absolute; 
-        right: 100px;                       // placed 100px right to its parent's right border (in this situation relative to the document (no parent element with "relative" position))
-    }
-    .demo4 {
-        position: fixed;
-        bottom: 100px;                      // placed 100px bottom relative the the viewport
-    }
-    </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> <mark>top</mark> / <mark>right</mark> / <mark>bottom</mark> / <mark>left</mark> TEST </u></h4>  
+
+
+
+
+
+
+
+  </details>
+  <!----------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Position Elements </h2>
+  <h3 class="header"> The <mark>top</mark> / <mark>right</mark> / <mark>bottom</mark> / <mark>left</mark> properties </h3>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> <mark>top</mark> / <mark>right</mark> / <mark>bottom</mark> / <mark>left</mark> TEST </u></h4>
     <p> - every element has <mark>left:20px;</mark> and <mark>top:20px;</mark>set </p>
     <p class="positioned"> <mark>position:static;</mark> (default value) NOT AFFECTED! </p>
     <p class="positioned pos_rel"> <mark>position:relative;</mark> placed relative to its original "static" position </p>
     <div style="width:90%; height:150px; border:solid black 5px; position:relative; box-sizing: border-box; margin:25px 30px;">
-        <p class="positioned pos_abs"> <mark>position:absolute;</mark> placed relative to its parent </p>
+      <p class="positioned pos_abs"> <mark>position:absolute;</mark> placed relative to its parent </p>
     </div>
     <p class="positioned pos_st"> <mark>position:fixed;</mark> placed relative to the viewport </p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- CODE (HTML) --
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML ----
     &lt;p class="positioned"&gt; &lt;mark&gt;position:static;&lt;/mark&gt; (default value) NOT AFFECTED! &lt;/p&gt;
     &lt;p class="positioned pos_rel"&gt; &lt;mark>position:relative;&lt;/mark&gt; placed relative to its original "static" position &lt;/p&gt;
     &lt;div style="width:90%; height:150px; border:solid black 5px; position:relative; box-sizing: border-box; margin:25px 30px;"&gt;
@@ -707,7 +637,8 @@ SYNTAX :    top: auto                       <span style="color:skyblue;">// (def
     &lt;/div&gt;
     &lt;p class="positioned pos_st"&gt; &lt;mark&gt;position:fixed;&lt;/mark&gt; placed relative to the viewport &lt;/p&gt;
     
--- CODE (CSS) --
+    
+// CSS ----
     .positioned {
         background-color: yellow;
         width: 700px;
@@ -717,20 +648,24 @@ SYNTAX :    top: auto                       <span style="color:skyblue;">// (def
         left: 20px;
         top: 20px;
     }
+    
     .pos_rel {
         position: relative;
     }
+    
     .pos_abs {
         position: absolute;
     }
+    
     .pos_st {
         position: fixed;
         left: 20px;
     }
-        </pre>
-        </details>
-</details>        
-    
-    <br><br>
+    </pre>
+    </details>
+  </details>
+
+  <br><br>
 </body>
+
 </html>

@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> Response API </title> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../../Assets/stylesPages.css"> 
+    <script src="../../../../Assets/scriptPages.js"></script>
+</head>
+<body>
+<h1> Response API </h1>
+    <p> Updated ( 2021-01-28 / 2024-02-25 )</p>
+  <nav class="sitenav"> 
+    <a href="../../../../index.html" title="home">MySite></a>
+    <a href="../../../index.html">Node.js></a>
+    <a href="../index.html">Express JS></a> Response API
+  </nav>
+  <br>
+<table class="table">
+<caption> Response Object  
+        <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+</caption>
+    <tr>
+        <th style="width:30%;"> Property / Method </th>
+        <th> Description </th>
+    </tr>
+    <tr class="01">
+        <td> <strong>res</strong>.app </td>
+        <td> 
+            - returns the <strong>app</strong> object that uses this middleware
+        </td>
+    </tr>
+    <tr class="02.01">
+        <td> <strong>res</strong>.append(<strong>headerName:str</strong>, <i>val:any</i>) </td>
+        <td> 
+            - appends a new header to the response <u>every time it's called (even with the same header name)</u> 
+        </td>
+    </tr>
+    <tr class="03.02">
+        <td> <strong>res</strong>.attachment(<i>fileName.ext:str</i>) </td>
+        <td> 
+            - sets a <mark>Content-Disposition:attachment</mark> header to the response (the browser should download the response) <br>
+            - if the <i>fileName</i> argument is passed sets a <mark>Content-Disposition:attachment; filename="<strong>fileName.ext</strong>"</mark> header to the respone (proposes the browser to download the file with this file name) <br>
+            - if the <i>fileName</i> argument is passed also sets a <mark>Content-Type:<strong>mimeType</strong>"</mark> header to the response (the MIME type is computed based on the passed file extension (<i>.ext</i>)) 
+        </td>
+    </tr>
+    <tr class="04.02">
+        <td>  
+            <strong>res</strong>.clearCookie(<strong>key:str</strong>, <i class="openable">option:obj<div>
+                <p> domain: <strong>domain:str</strong> - domain name for the cookie (adds <mark>; Domain=<strong>domain</strong></mark> to the cookie) (no Default) </p>
+                <p> encode: <strong>fn</strong> - function to encode cookie values (Default: <mark>encodeURIComponent</mark>) </p> 
+                <p> httpOnly: <strong>bol</strong> - flags the cookie to be accessible only by the web server (front-end JavaScript cannot access this cookie through <mark>document.cookie</mark>) (adds <mark>; HttpOnly</mark> to the cookie) (Default: <mark>false</mark> </p>
+                <p> expires: <strong>date:obj</strong> - expiration date of the cookie in GMT (adds <mark>; Expires=<strong>date:str</strong></mark> to the cookie) (Default: <mark>0</mark> = session cookie) </p>
+                <p> maxAge: <strong>ms:nr</strong> - sets the expiry time (in milliseconds) relative to the current time (adds <mark>; Expires=<strong>date:str</strong></mark> to the cookie) (convenient method to set the expiry date) </p>
+                <p> path: <strong>path:str</strong> - cookie path (adds <mark>; Path=<strong>path</strong></mark> to the cookie)  (Default: <mark>;Path=/</mark> is included in every cookie) </p>
+                <p> secure: <strong>bol</strong> - marks the cookie to be used with <mark>HTTPS</mark> only (adds <mark>; Secure</mark> to the cookie) (Default: <mark>false</mark>) </p>
+                <p> signed: <strong>bol</strong> - signs the cookie value <u>(requires the <mark>cookie-parser</mark> module's <mark>cookieParser()</mark> middleware to be mounted before</u></p>
+                <p> sameSite: <strong>str|bol</strong> - specifies the cookie protection when the server sends the cookie to cross-origin (<mark>true</mark> = <mark>; SameSite=Strict</mark> - cookie never sent to cross-origin) (<mark>false</mark> = no SameSite parameer specified in the cookie) (<mark>'Strict'</mark> = <mark>; SameSite=Strict</mark> - cookie never sent to cross-origin) (<mark>'Lax'</mark> = <mark>; SameSite=Lax</mark> - similar to Strict except the cookies are sent when the user navigates to the cookie's origin site by following a link from an external site) (<mark>'None'</mark> = <mark>; SameSite=None</mark> - also sent to cross-origin requests) </p>
+            </div></i>)  
+        </td>
+        <td> 
+            - sets a <mark>Set-Cookie:<strong>key</strong>=;<i> options</i>;Expires=Thu, 01 Jan 1970 00:00:00 GMT</mark> header to the request <br>
+            - esentially requests the client to delete this cookie (by setting a past expiration date)
+        </td>
+    </tr>    
+    <tr class="04.01">
+        <td>  
+            <strong>res</strong>.cookie(<strong>key:str</strong>, <strong>val:str|jsonObj</strong>, <i class="openable">option:obj<div>
+                <p> domain: <strong>domain:str</strong> - domain name for the cookie (adds <mark>; Domain=<strong>domain</strong></mark> to the cookie) (no Default) </p>
+                <p> encode: <strong>fn</strong> - function to encode cookie values (Default: <mark>encodeURIComponent</mark>) </p> 
+                <p> httpOnly: <strong>bol</strong> - flags the cookie to be accessible only by the web server (front-end JavaScript cannot access this cookie through <mark>document.cookie</mark>) (adds <mark>; HttpOnly</mark> to the cookie) (Default: <mark>false</mark> </p>
+                <p> expires: <strong>date:obj</strong> - expiration date of the cookie in GMT (adds <mark>; Expires=<strong>date:str</strong></mark> to the cookie) (Default: <mark>0</mark> = session cookie) </p>
+                <p> maxAge: <strong>ms:nr</strong> - sets the expiry time (in milliseconds) relative to the current time (adds <mark>; Expires=<strong>date:str</strong></mark> to the cookie) (convenient method to set the expiry date) </p>
+                <p> path: <strong>path:str</strong> - cookie path (adds <mark>; Path=<strong>path</strong></mark> to the cookie)  (Default: <mark>;Path=/</mark> is included in every cookie) </p>
+                <p> secure: <strong>bol</strong> - marks the cookie to be used with <mark>HTTPS</mark> only (adds <mark>; Secure</mark> to the cookie) (Default: <mark>false</mark>) </p>
+                <p> signed: <strong>bol</strong> - signs the cookie value <u>(requires the <mark>cookie-parser</mark> module's <mark>cookieParser()</mark> middleware to be mounted before</u></p>
+                <p> sameSite: <strong>str|bol</strong> - specifies the cookie protection when the server sends the cookie to cross-origin (<mark>true</mark> = <mark>; SameSite=Strict</mark> - cookie never sent to cross-origin) (<mark>false</mark> = no SameSite parameer specified in the cookie) (<mark>'Strict'</mark> = <mark>; SameSite=Strict</mark> - cookie never sent to cross-origin) (<mark>'Lax'</mark> = <mark>; SameSite=Lax</mark> - similar to Strict except the cookies are sent when the user navigates to the cookie's origin site by following a link from an external site) (<mark>'None'</mark> = <mark>; SameSite=None</mark> - also sent to cross-origin requests) </p>
+            </div></i>)   
+        </td>
+        <td> 
+            - sets a <mark>Set-Cookie:<strong>key</strong>=<strong>val</strong>; <i>options</i></mark> header to the request 
+        </td>
+    </tr>
+    <tr class="05.04">
+        <td>  
+            <strong>res</strong>.download(<strong>filePath:str</strong>, <i class="openable">fileName:str<div>
+                <p> - specifies the file name the browser download this file </p>
+            </div></i>, <i class="openable">option:obj<div>
+                <p> maxAge: <strong>ms:nr</strong> - sets the <mark>max-age</mark> property value (as milliseconds) in the <mark>Cache-Control</mark> header (Default: <mark>0</mark>) </p>
+                <p> root: <strong>path:str</strong> - root directory for the <strong>path</strong> (1st) argument (if set the <strong>path</strong> can be a relative path </p>
+                <p> lastModified: <strong>bol</strong> - includes a <mark>Last-Modified</mark> header in the response as the file's last modified date as directive (Default: <mark>true</mark>) </p>
+                <p> headers: <strong>obj</strong> - object containing HTTP headers served with the file </p>
+                <p> dotfiles: <strong>str</strong> - dotfile sending setting (ex: <mark>.testFile.txt</mark>) (Default: <mark>'ignore'</mark> - seems to not send when I'm testing it) (<mark>'allow'</mark> - allows to send dotfiles) (<mark>'deny'</mark> - does not allow to send dotfiles) </p>
+                <p> acceptRanges: <strong>bol</strong> - enables/disables ranged requests (Default: <mark>true</mark>) </p>
+                <p> cacheControl: <strong>bol</strong> - enables/disables the <mark>Cache-Control</mark> header (Default: <mark>true</mark>) </p>
+                <p> immutable: <strong>bol</strong> - enable/disable the <mark>immutable</mark> directive in the <mark>Cache-Control</mark> header (Default: <mark>false</mark>) </p>
+            </div></i>, <i>fn(err)</i>)  
+        </td>
+        <td> 
+            - sends the file for download to the client and ends the request/response life cycle <br>
+            - sets a <mark>Content-Disposition:attachment; filenme=<strong>file</strong></mark> header to the message so the browser will download the file <br>
+            - automatically sets <span class="openable">headers<div>
+                        <p> - <mark>Content-Length</mark> automatically computed </p>
+                        <p> - <mark>Accept-Range:bytes</mark> (by Default) </p>
+                        <p> - <mark>Content-Type</mark> based on the passed file's extension </p>
+                        <p> - <mark>Cache-Control:public, max-age=0</mark> (be Default) </p>
+                        <p> - <mark>Last-Modified</mark> - the passed file's last modified date </p>
+                    </div></span> to the response <br>
+            - callback fires when the file is successfully sent or an error occurs <br>
+            - on error the callback blocks further code execution <u>so we manually have to handle the error in the callback or call the next middleware with <mark>next()</mark></u>             
+            <span id="browserSupport" title="updated: 2021-01-30">
+                <span>Express v4.8.0 (tested on v4.16.0 works fine) </span>
+                <span class="openable">more... <div>
+                    <p><b><u> v.4.14.0</u></b></p>
+                    <p> - options <mark>acceptRanges</mark> and <mark>cacheControl</mark> supported </p>
+                    <hr>
+                    <p><b><u> v.4.16.0</u></b></p>
+                    <p> - options <mark>immutable</mark> supported </p>
+                    <hr>
+                    <p><b><u> v.4.9.0</u></b></p>
+                    <p> - options <mark>lastModified</mark> supported </p>
+                </div></span>
+            </span>
+        </td>
+    </tr>
+    <tr class="05.01">
+        <td> <strong>res</strong>.end(<i>data:str</i>, <i>encode:str</i>) </td>
+        <td> 
+            - ends the request/response cycle (optionally sends a last pece of data to the client) (Node core method) 
+        </td>
+    </tr>
+    <tr class="07.01">
+        <td>  
+            <strong>res</strong>.format(<strong class="openable">option:obj<div>
+                <p> <strong>key</strong>: <strong>fn</strong> - if the request <mark>Accapt</mark> directive matches <strong>key</strong> the function is executed </p>
+                <p> default: <strong>fn</strong> - default function executed in case the request <mark>Accept</mark> directive has not matching values </p>
+            </div></strong>)  
+        </td>
+        <td> 
+            - performs a content negotiation based on the request <mark>Accept</mark> directives <br>
+            - we can set key:function pairs, in <strong>option</strong> object, when a key matches the request <mark>Accept</mark> directive that function executes <br>
+            - if no match is found the server will respond with <mark>406 Not Acceptable</mark> (if not default key is specified in the <strong>option</strong> object) <br>
+            - the <mark>Content-Type</mark> header is automaticaly computed and set based on the mimeType match 
+        </td>
+    </tr>
+    <tr class="02.01">
+        <td> <strong>res</strong>.get(<strong>headerName:str</strong>) </td>
+        <td> 
+            - returns the specified header value (case insensitive)
+        </td>
+    </tr>
+    <tr class="02.03">
+        <td> <strong>res</strong>.headersSent </td>
+        <td> 
+            - returns <mark>true</mark> if the headers are sent to the client, otherwise <mark>false</mark>    
+        </td>
+    </tr>
+    <tr class="05.05">
+        <td> <strong>res</strong>.json(<strong>val:any</strong>) </td>
+        <td> 
+            - converts the passed data to JSON (internally calls <mark>JSON.stringify()</mark>) and sends the JSON data to the client (ends the request/response life cycle) <br>
+            - set <mark>Content-Type:application/json</mark> and <mark>Content-Length:<strong>computedLength</strong></mark> headers to the response    
+        </td>
+    </tr>
+    <tr class="05.06">
+        <td> <strong>res</strong>.jsonp(<strong>val:any</strong>) </td>
+        <td> 
+            - converts the passed data to JSON (internally calls <mark>JSON.stringify()</mark>) and sends the JSON data to the client with JSONP support (ends the request/response life cycle) <br>
+            - set <mark>Content-Type:application/json</mark>, <mark>Content-Length:<strong>computedLength</strong></mark> and <mark>X-Content-Type-Options:nosniff</mark> headers to the response 
+        </td>
+    </tr>
+    <tr class="03.03">
+        <td>  
+            <strong>res</strong>.links(<strong class="openable">links:obj<div>
+                <p> - object keys will be the <mark>rel</mark> attribute values </p>
+                <p> - object values will be the link URL </p>
+                <p> ex: </p>
+                <p> <mark>res.links({fr:'http://google.fr', com:'http://google.com'})</mark> will generate a <mark>Link:&lt;http://google.fr&gt;; rel="fr", &lt;http://google.com&gt;; rel="en"</mark> haeder </p>
+            </div></strong>)                                                
+        </td>
+        <td> 
+            - sets a <mark>Link</mark> header to the response based on the passed object (used with <mark>103 Early Hints</mark>)  
+        </td>
+    </tr>
+    <tr class="06.01">
+        <td> <strong>res</strong>.locals </td>
+        <td> 
+            - contains (get or sets) response scoped local variables, available only for the current request/response life cycle <br>
+            - these local values are available to the template engine (when <mark><strong>res</strong>.render()</mark> is used) 
+        </td>
+    </tr>
+    <tr class="03.04">
+        <td>  
+            <strong>res</strong>.location(<strong class="openable">URL:str<div>
+                <p> - passing <mark>'back'</mark> will set the <mark>Referer</mark> header directive, if there's no <mark>Referer</mark> header the <mark>Link</mark> header directive will be set to <mark>/</mark>  </p>
+            </div></strong>)      
+        </td>
+        <td> 
+            - sets a <mark>Location</mark> header to the response with the <strong>URL</strong> as header directive (for <mark>3**</mark> Redirects)    
+        </td>
+    </tr>
+    <tr class="07.02">
+        <td>  
+            <strong>res</strong>.redirect(<i>statuCode:nr</i>, <strong class="openable">url:str<div>
+                <p><u> Can be </u></p>
+                <p> - fully-qualified URL (ex: <mark>http://google.com</mark>) </p>
+                <p> - relative to the root of the hostname (ex: <mark>/admin</mark>) </p>
+                <p> - relative to the current URL (ex: <mark>post/new</mark>) </p>
+            </div></strong>)   
+        </td>
+        <td> 
+            - redirects the request to the specified <strong>url</strong> <br>
+            - respond with <mark>302 Found</mark> (by default) and a <mark>Location:<strong>path</strong></mark> header (so the client can follow the new path)  
+        </td>
+    </tr>
+    <tr class="06.02">
+        <td>  
+            <strong>res</strong>.render(<strong class="openable">viewPath:str<div>
+                <p> - the source of the view file for the template engine (ex: <mark>index.pug</mark>) </p>
+                <p> - relative to the <mark>views</mark> application setting </p>
+            </div></strong>, <i class="openable">locals:obj<div>
+                <p> - values passed to the template engine as an object </p>
+            </div></i>, <i class="openable">fn(err, html)<div>
+                <p> - callback is triggered when the template engine responds </p>
+                <p> <mark>err</mark> - Error </p>
+                <p> <mark>html</mark> - the generated HTML page by the template engine </p>
+            </div></i>)      
+        </td>
+        <td> 
+            - <span class="openable">the set template engine<div>
+                <p> - template engine is set by the <mark>view engine</mark> application setting (ex: <mark>app.set('view engine', 'pug')</mark>) </p>
+            </div></span> renders the targeted view and sends it to the client (ends the request/response life cycle) <br>
+            - basically values from the <mark><strong>res</strong>.locals</mark> and from the 2nd argument (<i>locals</i>) are passed to the set template engine which computes and returns the HTML and then express sends it to the client <br>
+            - if the callback is provided the computed HTML is not sent to the client (returned in the callback)    
+        </td>
+    </tr>
+    <tr class="05.02">
+        <td>  
+            <strong>res</strong>.send(<i class="openable">data:str|buf|obj|arr<div>
+                <p> if the data is string sets the <mark>Content-Type:text/html</mark> header to the response </p>
+                <p> if the data is a Buffer sets the <mark>Content-Type:application/octet-stream</mark> header to the response </p>
+                <p> if the data is an Object or Array sets the <mark>Content-Type:application/json</mark> header to the response </p>
+            </div></i>)  
+        </td>
+        <td> 
+            - sends the passed data to the client and ends the request/response life cycle <br>
+            - used for simple non-streaming responses, automatically computes and assigns the <mark>Content-Length</mark> and <mark>Content-Type</mark> headers <u>unless they previously defined</u>  
+        </td>
+    </tr>
+    <tr class="05.03">
+        <td> 
+            <strong>res</strong>.sendFile(<strong class="openable">path<div>
+                <p> - must be an absolute path unless the <mark>root</mark> option is specified </p>
+            </div></strong>, <i class="openable">option:obj<div>
+                <p> maxAge: <strong>ms:nr</strong> - sets the <mark>max-age</mark> property value (as milliseconds) in the <mark>Cache-Control</mark> header (Default: <mark>0</mark>) </p>
+                <p> root: <strong>path:str</strong> - root directory for the <strong>path</strong> (1st) argument (if set the <strong>path</strong> can be a relative path </p>
+                <p> lastModified: <strong>bol</strong> - includes a <mark>Last-Modified</mark> header in the response as the file's last modified date as directive (Default: <mark>true</mark>) </p>
+                <p> headers: <strong>obj</strong> - object containing HTTP headers served with the file </p>
+                <p> dotfiles: <strong>str</strong> - dotfile sending setting (ex: <mark>.testFile.txt</mark>) (Default: <mark>'ignore'</mark> - seems to not send when I'm testing it) (<mark>'allow'</mark> - allows to send dotfiles) (<mark>'deny'</mark> - does not allow to send dotfiles) </p>
+                <p> acceptRanges: <strong>bol</strong> - enables/disables ranged requests (Default: <mark>true</mark>) </p>
+                <p> cacheControl: <strong>bol</strong> - enables/disables the <mark>Cache-Control</mark> header (Default: <mark>true</mark>) </p>
+                <p> immutable: <strong>bol</strong> - enable/disable the <mark>immutable</mark> directive in the <mark>Cache-Control</mark> header (Default: <mark>false</mark>) </p>
+            </div></i>, <i>fn(err)</i>)          
+        </td>
+        <td> 
+            -sends the specified file as message body to the client and ends the request/response life cycle (apparently streams the data) <br>
+            - automatically sets <span class="openable">headers<div>
+                        <p> - <mark>Content-Length</mark> automatically computed </p>
+                        <p> - <mark>Accept-Range:bytes</mark> (by Default) </p>
+                        <p> - <mark>Content-Type</mark> based on the passed file's extension </p>
+                        <p> - <mark>Cache-Control:public, max-age=0</mark> (be Default) </p>
+                        <p> - <mark>Last-Modified</mark> - the passed file's last modified date </p>
+                    </div></span> to the response <br>
+            - callback fires when the file is successfully sent or an error occurs <br>
+            - on error the callback blocks further code execution <u>so we manually have to handle the error in the callback or call the next middleware with <mark>next()</mark></u>             
+            <span id="browserSupport" title="updated: 2021-01-30">
+                <span>Express v4.8.0 (tested on v4.17.0 works fine) </span>
+                <span class="openable">more... <div>
+                    <p><b><u> v.4.14.0</u></b></p>
+                    <p> - options <mark>acceptRanges</mark> and <mark>cacheControl</mark> supported </p>
+                    <hr>
+                    <p><b><u> v.4.16.0</u></b></p>
+                    <p> - options <mark>immutable</mark> supported </p>
+                    <hr>
+                    <p><b><u> v.4.9.0</u></b></p>
+                    <p> - options <mark>lastModified</mark> supported </p>
+                </div></span>
+            </span>
+        </td>
+    </tr>
+    <tr class="05.07">
+        <td> <strong>res</strong>.sendStatus(<strong>statusCode:nr</strong>) </td>
+        <td> 
+            - sets the response status code and sends it (ends the request/response life cycle) 
+        </td>
+    </tr>
+    <tr class="02.02">
+        <td>  
+            <strong>res</strong>.set(<strong>headerName:str|</strong><strong class="openable">headerObj:obj<div>
+                <p> - a plain object can be passed to set multiple header values (ex: <mark>{'Content-Type':'text/plain', 'Content-Length':'123', ETag:'12345'}</mark>) </p>
+            </div></strong>, <i>val:any</i>) 
+        </td>
+        <td> 
+            - sets the specified header(s) (if the header already set resets its value)
+        </td>
+    </tr>
+    <tr class="03.01">
+        <td> <strong>res</strong>.status(<strong>statusCode:nr</strong>) </td>
+        <td> 
+            - sets the response status code
+        </td>
+    </tr>
+    <tr class="03.05">
+        <td>  
+            <strong>res</strong>.type(<strong class="openable">mimeType:str<div>
+                <p> - we can alose pass a best match like <mark>'html'</mark>, <mark>'json'</mark>, <mark>'png'</mark> (will be set as <mark>text/html</mark>, <mark>application/json</mark>, <mark>image/png</mark>) </p>
+            </div></strong>)  
+        </td>
+        <td> 
+            - sets a <mark>Content-Type</mark> header to the response with the <strong>mimeType</strong> as header directive    
+        </td>
+    </tr>
+    <tr class="03.06">
+        <td> <strong>res</strong>.vary(<strong>headerName:str|[headerName:str, ...]</strong>) </td>
+        <td> 
+            - sets a <mark>Vary</mark> header to the response with the <strong>headerName</strong>(s) as header directive(s) 
+        </td>
+    </tr>
+</table>
+<h2 style="color:green;"><u> Notes : </u></h2>
+    <details class="example" id="notes">
+    <summary> Notes :</summary>
+        <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+    </details>
+<h2 style="color:green;"><u> Useful Links : </u></h2>
+    <p><a href="https://expressjs.com/en/4x/api.html#res" target="_blank"> Response API (expressjs.com)</a></p>
+<h2 style="color:green;"><u> Remember This : </u></h2>
+    
+<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+    <pre class="syntax">
+    
+    function <reqval>middleware</reqval>(req, res, next) {
+        res                                 // response object 
+    }
+    </pre>
+<details class="example">
+<summary> DEMO </summary>
+    <h4 class="header"> <mark>app</mark> / <mark>get()</mark> / <mark>set()</mark> / <mark>append()</mark> / <mark>headersSent</mark> methods and property </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+    app.all('/', function(req, res, next) {
+    
+// app --------------------------------------------------------------------------------
+        res.app;                                                                       // -> returns the app object itself 
+        
+// get() / set() / append() -----------------------------------------------------------
+        res.get('X-Powered-By');                                                       // -> 'Express'   
+        res.get('x-poWEreD-BY');                                                       // -> 'Express'     // case insensitive 
+        
+        res.set('myHeader', 20);
+        res.set('myHeader', 21); 
+        res.set('myHeader', 22);                                                       // resets the header directive (every time called)
+        res.get('myHeader');                                                           // -> 22 
+        
+        res.append('myHeader2', 30);
+        res.append('myHeader2', 31); 
+        res.append('myHeader2', 32);                                                   // appends 3 headers (with the same name 'myHeader2') in the response  
+        res.get('myHeader2');                                                          // -> [30, 31, 32]  // all appended values returned here (but the response will have 3 headers)    
+        
+        res.set({                                                                      // sets multiple headers
+            pallHeader1:'kicsi, kutya',
+            pallHeader2:'nagy, kutya'
+        })
+        res.get('pallHeader1');                                                        // -> 'kicsi, kutya'
+        res.get('pallHeader2');                                                        // -> 'nagy, kutya'
+        
+// headersSent ------------------------------------------------------------------------
+        res.headersSent;                                                               // -> false 
+        
+        res.end('OK_');
+        
+        res.headersSent;                                                               // -> true
+    })
+    
+    app.listen(1000, () => { console.log('Express is Listening') })  
+    </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header">  <mark>status()</mark> / <mark>attachment()</mark> / <mark>links()</mark> / <mark>location()</mark> / <mark>type()</mark> / <mark>vary()</mark> methods </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+    app.all('/', function(req, res, next) {
+    
+// status() ---------------------------------------------------------------------------
+        res.status(202)                                                                // sets the response status code (server will respond with 202 status code when another method ends the request/response life cycle)    
+    
+// attachment() -----------------------------------------------------------------------
+        res.attachment();                                                              // adds a 'Content-Disposition:attachment' header to the response (so the browser will download this message's payload) 
+        
+    // -----------------------------------------
+        res.attachment('new file name.txt');                                           // add a "Content-Disposition:attachment: filename='new file name.txt"' header to the response 
+                                                                                       // also adds a "Content-Type:text/plain charset=utf-8" header 
+        
+    // -----------------------------------------
+        res.attachment('index.html');                                                  // add a "Content-Disposition:attachment: filename='index.html"' header to the response 
+                                                                                       // also adds a "Content-Type:text/html charset=utf-8" header 
+        
+// links() ----------------------------------------------------------------------------
+        res.links({                                                                    // sets a 'Link:&lt;http://google.fr&gt;; rel="fr", &lt;http://google.com&gt;; rel="en"' header to the response 
+            fr:'http://google.fr',
+            en:'http://google.com'
+        })
+        
+// location() -------------------------------------------------------------------------
+        res.location('http://localhost:1000')                                          // sets a 'Location:http://localhost:1000' header to the response     
+        
+    // -----------------------------------------
+        res.set('Referer', '/somePath/sub');
+        res.location('back');                                                          // sets a 'Location:/somePath/sub' header to the response (the 'back' references the 'Referer' header directive)
+        
+// type() -----------------------------------------------------------------------------
+        res.type('html');                                                              // sets a 'Content-Type:text/html; charset=utf-8' header to the response  
+        
+// vary() -----------------------------------------------------------------------------
+        res.vary('Content-Encoding');                                                  // sets a 'Vary:Content-Encoding' header to the response 
+    
+    // -----------------------------------------
+        res.vary(['Content-Encoding', 'Content-Location']);                            // sets a 'Vary:Content-Encoding, Cotent-Location' header to the response   
+        
+        res.end('OK_');
+    })
+    
+    app.listen(1000, () => { console.log('Express is Listening') })  
+    </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>cookie()</mark> / <mark>clearCookie()</mark> methods </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    const cookieParser = require('cookie-parser');
+    
+    app.all('/', 
+        cookieParser('mySecret'),                                                      // required if we want to sign cookie values    
+        function(req, res, next) {
+        
+// cookie() ---------------------------------------------------------------------------
+            res.cookie('pallCookie', '21', {                                           // every call sets a 'Set-Cookie' header to the response   
+                domain: 'localhost',
+                expires: new Date(Date.now() + 8 * 3600000),                           // expires 8 hours from now 
+                httpOnly: true,
+                // maxAge: 8 * 3600000                                                 // does the same as 'expires' but the time is calculated from now (convenient method)    
+                secure: true,                                                          // cookie sent only over TLS  
+                signed: true,                                                          // signs the cookie value with the 'mySecret' key
+                sameSite: true                                                         // cookie sent only to the origin client  
+            });                                                                        // this all sets a 'Set-Cookie:pallCookie=21; Domain=localhost; Path=/; Expires=Fri, 29 Jan 2021 20:59:10 GMT; HttpOnly; Secure; SameSite=None' header to the request    
+            
+// clearCookie() ----------------------------------------------------------------------
+        res.clearCookie('pallCookie');                                                 // sets a 'Set-Cookie:pallCookie=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT' header to the response   
+        
+        res.clearCookie('someOtherCookie', {                                           // sets a 'someOtherCookie=; Domain=localhost; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Strict' header to the response   
+            domain: 'localhost',
+            sameSite: true
+        }); 
+        
+        res.end('OK_');
+        }
+    )
+    
+    app.listen(1000, () => { console.log('Express is Listening') })  
+    </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>end()</mark> / <mark>send()</mark> / <mark>sendFile()</mark> / <mark>download()</mark> / <mark>json()</mark> / <mark>jsonp()</mark> / <mark>sendStatus()</mark>  methods </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+    app.all('/', function(req, res, next) {
+        
+// end() ------------------------------------------------------------------------------
+        res.end();                                                                     // ends the request/response cycle with no message payload
+        
+    // -----------------------------------------
+        res.end('end');                                                                // ends the request/response cycle with some data 
+        
+// send() -----------------------------------------------------------------------------
+        res.send({some:'data'});                                                       // sends the data to the client and end the request/response life cycle    
+        
+    // -----------------------------------------
+        res.send('some data');                                                         // sends the string to the client and end the request/response life cycle   
+        
+// sendFile() -------------------------------------------------------------------------
+        res.sendFile('/srv/someFile.txt', {root:__dirname});                           // sending a file to the client (absolute path required unless the 'root' option is specified)    
+        
+    // ----------------------------------------- 
+        res.sendFile('./myVideo.mp4', {root:__dirname});                               // large file streamed [TESTED on localhost]  
+        
+    // -----------------------------------------
+        res.sendFile('.testFile.txt',                                                  // sending files with some options 
+            {
+                root: __dirname,
+                maxAge: 3600000,                                                       // sets te max-age property in 'Cache-Control' header (in milliseconds counted from the current time)   
+                headers: {pallHeader1:21, pallHeader2:22},                             // sets custom headers to the response  
+                dotfiles:'allow',                                                      // allows to send files starting with a dot (ex: .testFile.txt)   
+                immutable: true                                                        // adds 'immutable' in 'Cache-Control' header  
+            }, 
+            function(err){                                                             // when the file is sent on an error occurs the callback fires 
+                err;                                                                   // -! we have to manually handle the error or call 'next()' (callback blocks further code execution)   
+            }
+        );   
+                
+// download() -------------------------------------------------------------------------
+        res.download('./testFile.txt');                                                // sends the file for download to the client   
+                                                                                         // also accepts a callback which works the same way as in the 'sendFile()' method   
+        
+// json() -----------------------------------------------------------------------------
+        res.json({p1:'val', p2:[false, 21]})                                           // converts the data to JSON and sends it to the client   
+        
+// sendStatus() -----------------------------------------------------------------------
+        res.sendStatus(201);                                                           // sets the response status to 201 and sends it to the client   
+        
+    }); 
+    
+    app.listen(1000, () => { console.log('Express is Listening') })  
+    </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>locals</mark> / <mark>render()</mark> property and method </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    const pug = require('pug');                                                        // pug render engine imported 
+    
+    app.set('view engine', 'pug');                                                     // express will use the 'pug' render engine 
+    
+    app.all('/', function(req, res, next) {        
+        res.locals.name = 'Pall';                                                      // some local variables set 
+        res.render('index.pug', {name2:'Bircsy'});                                     // renders the './views/index.pug' with the passed values and sends the result to the client    
+        
+    // -----------------------------------------
+        res.render('index.pug', {name2:'Bircsy'}, function(err, html){                 // this does not send the compute result to the client 
+            console.log( html );                                                       // -> compute HTML returned here 
+        });          
+    }); 
+    
+    app.listen(1000, () => { console.log('Express is Listening') })      
+    
+    
+// ------------------------------------------------------------------------------------
+// index.pug (file) -------------------------------------------------------------------
+    html
+      head
+        title= title
+      body
+        p #{name} paragraph
+        p #{name2} paragraph    
+    </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>format()</mark> / <mark>redirect()</mark> methods </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+    app.all('/', function(req, res, next) {                                            // content served based on the request Accept directive
+// format() ---------------------------------------------------------------------------
+        res.format({
+            'text/plain':function(){                                                   
+                res.send('Hey - text');                                                // served when the request has an 'Accept:text/plain' directive    
+            },
+            'text/html': function(){
+                res.send('Hey - html');                                                // served when the request has an 'Accept:text/html' directive    
+            },
+            'application/json':function(){
+                res.send('Hey - json');                                                // served when the request has an 'Accept:application/json' directive    
+            },
+            default:function(){                                                        // default in case all above condition fails     // -! without default the server will automatically responds with 406 Not Acceptable    
+                res.send('Hed - default');                                             // served when the request has an 'Accept:' with a non above matching directives  
+            }
+        })
+    })
+    
+// redirect() -------------------------------------------------------------------------
+        res.redirect('/sub')                                                           // request redirected to another directory (basically responds to the client with redirect and then the client makes another request to '/sub')    
+    
+    // -----------------------------------------
+        res.redirect('http://google.com');                                             // request redirected to google 
+    
+    app.listen(1000, () => { console.log('Express is Listening') })  
+    </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>app</mark> / <mark>get()</mark> / <mark>set()</mark> / <mark>append()</mark> / <mark>headersSent</mark> TEST </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+    app.all('/', function(req, res, next) {
+    
+// app --------------------------------------------------------------------------------
+        console.log( res.app );                                                        // -> returns the app object itself 
+        
+// get() / set() / append() -----------------------------------------------------------
+        console.log( res.get('X-Powered-By') );                                        // -> 'Express'   
+        console.log( res.get('x-poWEreD-BY') );                                        // -> 'Express'     // case insensitive 
+        
+        res.set('myHeader', 20);
+        res.set('myHeader', 21); 
+        res.set('myHeader', 22);                                                       // resets the header directive 
+        console.log( res.get('myHeader') );                                            // -> 22 
+        
+        res.append('myHeader2', 30);
+        res.append('myHeader2', 31); 
+        res.append('myHeader2', 32);                                                   // appends 3 headers (with the same name 'myHeader2') in the response  
+        console.log( res.get('myHeader2') );                                           // -> [30, 31, 32]  // all appended values returned here (but the response will have 3 headers)    
+        
+        res.set({                                                                      // sets multiple headers
+            pallHeader1:'kicsi, kutya',
+            pallHeader2:'nagy, kutya'
+        })
+        console.log( res.get('pallHeader1') );                                         // -> 'kicsi, kutya'
+        console.log( res.get('pallHeader2') );                                         // -> 'nagy, kutya'
+        
+// headersSent ------------------------------------------------------------------------
+        console.log( res.headersSent );                                                // -> false 
+        
+        res.end('OK_');
+        
+        console.log( res.headersSent );                                                // -> true
+    })
+    
+    app.listen(1000, () => { console.log('Express is Listening') })  
+    </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>attachment()</mark> / <mark>links()</mark> / <mark>location()</mark> / <mark>type()</mark> / <mark>vary()</mark> TEST </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+    app.all('/', function(req, res, next) {
+// attachment() -----------------------------------------------------------------------
+        res.attachment();                                                              // adds a 'Content-Disposition:attachment' header to the response 
+        
+    // --------------------------------------------------------------------------------
+        res.attachment('new file name.txt');                                           // add a "Content-Disposition:attachment: filename='new file name.txt"' header to the response 
+                                                                                       // also adds a "Content-Type:text/plain charset=utf-8" header 
+        
+    // --------------------------------------------------------------------------------
+        res.attachment('index.html');                                                  // add a "Content-Disposition:attachment: filename='index.html"' header to the response 
+                                                                                       // also adds a "Content-Type:text/html charset=utf-8" header 
+        
+// links() ----------------------------------------------------------------------------
+        res.links({                                                                    // sets a 'Link:&lt;http://google.fr&gt;; rel="fr", &lt;http://google.com&gt;; rel="en"' header to the response 
+            fr:'http://google.fr',
+            en:'http://google.com'
+        })
+        
+// location() -------------------------------------------------------------------------
+        res.location('http://localhost:1000')                                          // sets a 'Location:http://localhost:1000' header to the response     
+        
+    // --------------------------------------------------------------------------------
+        res.set('Referer', '/somePath/sub');
+        res.location('back');                                                          // sets a 'Location:/somePath/sub' header to the response (the 'back' references the 'Referer' header directive)
+        
+// type() -----------------------------------------------------------------------------
+        res.type('html');                                                              // sets a 'Content-Type:text/html; charset=utf-8' header to the response  
+        
+// vary() -----------------------------------------------------------------------------
+        res.vary('Content-Encoding');                                                  // sets a 'Vary:Content-Encoding' header to the response 
+    
+    // -------------------------------------------------------------------------------- 
+        res.vary(['Content-Encoding', 'Content-Location']);                            // sets a 'Vary:Content-Encoding, Cotent-Location' header to the response   
+        
+        res.end('OK_');
+    })
+    
+    app.listen(1000, () => { console.log('Express is Listening') })  
+    </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>cookie()</mark> / <mark>clearCookie()</mark> TEST </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    const cookieParser = require('cookie-parser');
+    
+    app.all('/', 
+        cookieParser('mySecret'),                                                      // required if we want to sign cookie values    
+        function(req, res, next) {
+        
+// cookie() ---------------------------------------------------------------------------
+            res.cookie('pallCookie', '21', {
+                domain: 'localhost',
+                expires: new Date(Date.now() + 8 * 3600000),                           // expires 8 hours from now 
+                httpOnly: true,
+                // maxAge: 8 * 3600000                                                 // this essentially odes the same as the above 'expires' but the time is calculated from now (convenient method)    
+                secure: true,
+                signed: true,                                                          // signs the cookie value with the 'mySecret' key
+                sameSite: true                                                         // cookie sent only to the origin client  
+            });                                                                        // this all sets a 'Set-Cookie:pallCookie=21; Domain=localhost; Path=/; Expires=Fri, 29 Jan 2021 20:59:10 GMT; HttpOnly; Secure; SameSite=None' header to the request  
+            
+// clearCookie() ----------------------------------------------------------------------
+        res.clearCookie('pallCookie');                                                 // sets a 'Set-Cookie:pallCookie=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT' header to the response   
+        
+        res.clearCookie('someOtherCookie', {                                           // sets a 'someOtherCookie=; Domain=localhost; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Strict' header to the response   
+            domain: 'localhost',
+            sameSite: true
+        }); 
+        
+        res.end('OK_');
+        }
+    )
+    
+    app.listen(1000, () => { console.log('Express is Listening') })  
+    </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>end()</mark> / <mark>send()</mark> / <mark>sendFile()</mark> / <mark>download()</mark> / <mark>json()</mark> / <mark>jsonp()</mark> / <mark>status()</mark> / <mark>sendStatus()</mark> TEST </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+    app.all('/', function(req, res, next) {
+        
+// end() ------------------------------------------------------------------------------
+        res.end();                                                                     // ends the request/response cycle with no message payload
+        
+    // --------------------------------------------------------------------------------
+        res.end('end');                                                                // ends the request/response cycle with some data 
+        
+// send() -----------------------------------------------------------------------------
+        res.send({some:'data'});                                                       // sends the data to the client and end the request/response life cycle    
+        
+    // --------------------------------------------------------------------------------
+        res.send('some data');                                                         // sends the string to the client and end the request/response life cycle   
+        
+// sendFile() -------------------------------------------------------------------------
+        res.sendFile('./testFile.txt', {root:__dirname});                              // sending a file to the client (absolute path required unless the 'root' option is specified)    
+        
+    // -------------------------------------------------------------------------------- 
+        res.sendFile('./VID_20201013_225751.mp4', {root:'/home/pall/Downloads'});      // large file (1GB) streamed [TESTED on localhost]  
+        
+    // --------------------------------------------------------------------------------
+        res.sendFile('.testFile.txt',                                                  // sending files with some options 
+            {
+                root: __dirname,
+                maxAge: 3600000,
+                headers: {pallHeader1:21, pallHeader2:22},
+                dotfiles:'allow',
+                immutable: true
+            }, 
+            function(err){
+                console.log('file sent')
+            }
+        );   
+        
+    // --------------------------------------------------------------------------------
+        res.sendFile('/nofile', function(err){ 
+            if(err){
+                console.log( err.message );                                            // on error we have to manually handle 
+                next();                                                                // next middleware is called 
+            } else {
+                console.log( 'file successfully sent' );
+            }
+        })
+        
+// download() -------------------------------------------------------------------------
+        res.download('./testFile.txt');                                                // sends the file for download  
+        
+    // --------------------------------------------------------------------------------
+        res.download('noFile', 'pallFile', function(err){
+            if(err){
+                console.log( err.message );                                            // on error we have to manually handle 
+                next();                                                                // next middleware is called 
+            } else {
+                console.log( 'file successfully sent' );
+            }
+        })
+        
+// json() -----------------------------------------------------------------------------
+        res.json({p1:'val', p2:[false, 21]})                                           // converts the data to JSON and sends it to the client   
+        
+// status() / sendStatus() ------------------------------------------------------------
+        res.status(201).end();                                                         // sets the response status code and sends it (equivalent with the below 'sendStatus())  
+        
+    // --------------------------------------------------------------------------------
+        res.sendStatus(201);                                                           // sets the response status code and sends it
+        
+    }, function(req, res, next){ res.end('OK_')});                                     // middleware called when the file reading fails 
+    
+    app.listen(1000, () => { console.log('Express is Listening') })  
+    </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>locals</mark> / <mark>render()</mark> TEST </h4>
+    <p> - <mark>./index.js</mark> (file) </p>
+    <pre>
+    const express = require('express');
+    const app = express();
+    const pug = require('pug');                                                        // pug render engine imported 
+    
+    app.set('view engine', 'pug');                                                     // express will use the 'pug' render engine 
+    
+    app.all('/', function(req, res, next) {
+        
+        res.locals.name = 'Pall';                                                      // some local variables set 
+        
+        res.render('index.pug', {name2:'Bircsy'});                                     // renders the './views/index.pug' with the passed values and sends the result to the client    
+        
+    // --------------------------------------------------------------------------------
+        res.render('index.pug', {name2:'Bircsy'}, function(err, html){                 // this does not send the compute result to the client 
+            console.log( html );                                                       // -> compute HTML returned here 
+        });          
+    }); 
+    
+    app.listen(1000, () => { console.log('Express is Listening') })      
+    </pre>
+    <p> - <mark>./views/index.pug</mark> (file) </p>
+    <pre>
+    html
+      head
+        title= title
+      body
+        p #{name} paragraph
+        p #{name2} paragraph    
+    </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>format()</mark> TEST </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+    app.all('/', function(req, res, next) {                                            // content served based on the request Accept directive
+        res.format({
+            'text/plain':function(){
+                res.send('Hey - text');
+            },
+            'text/html': function(){
+                res.send('Hey - html');
+            },
+            'application/json':function(){
+                res.send('Hey - json');
+            },
+            default:function(){                                                        // default if the Accept has any ohter directive then listed above 
+                res.send('Hed - default')
+            }
+        })
+    })
+    
+    app.listen(1000, () => { console.log('Express is Listening') })  
+    </pre>
+    <!----------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>redirect()</mark> TEST </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+    app.all('/', function(req, res, next) {  
+        res.redirect('/sub')                                                           // request redirected to another directory
+    })
+    
+    app.all('/sub', function(req, res, next){
+        res.send('OK');
+    })
+    
+    app.listen(1000, () => { console.log('Express is Listening') })      
+    </pre>
+</details>
+    
+    <br><br>
+</body>
+</html>

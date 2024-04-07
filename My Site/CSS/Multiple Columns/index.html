@@ -1,286 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Multiple Columns </title>    
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Multiple Columns </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Multiple Columns (3.1) </h1>
-    <p> Updated (2017-01-29 / 2019-04-06)</p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html" title="CSS">CSS></a> Multiple Columns  
-    </p>
-<table class="table">
+  <h1> Multiple Columns </h1>
+  <p> Updated ( 2017-01-29 / 2019-04-06 / 2024-04-04 )</p>
+  <nav class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Multiple Columns
+  </nav>
+  <br>
+  <table class="table">
     <tr>
-        <th width="10%"> Property </th>
-        <th> Value </th>
-        <th> Description </th>
+      <th width="15%"> Property </th>
+      <th width="40%"> Value </th>
+      <th> Description </th>
     </tr>
     <tr>
-        <td> columns </td>
-        <td>  
-            auto <span style='color:blue;'>(default)</span><br>
-            <strong>column-width column-count</strong><br>
-        </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> shorthand property for the "column-width" and "column-count" properties (sets the minimal column width and the maximal column numbers)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 52/9 -moz- </span>
-                <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
-            </span>
-        </td>
+      <td> column-count </td>
+      <td>
+        auto <span class="cssAV">((Default) determined by other properties)</span><br>
+        <strong>nr</strong>
+      </td>
+      <td>
+        - sets the maximum number of columns
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 52/2 -moz- </span>
+          <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> column-count </td>
-        <td> 
-            <strong>nr</strong><br>
-            auto <span style='color:blue;'>((default) determined by other properties)</span><br>
-        </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> specifies the number of columns the element should divided into (maximum number of columns) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 52/2 -moz- </span>
-                <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
-            </span>
-        </td>
+      <td> column-width </td>
+      <td>
+        auto <span class="cssAV">((Default) determined by the browser)</span><br>
+        <strong>cssLength</strong><br>
+      </td>
+      <td>
+        - sets the minimal column width
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 52/2 -moz- </span>
+          <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> column-fill </td>
-        <td>  
-            balance <span style='color:blue;'>((default) distributes the content among the columns evenly <u>(columns can be shorter than the element's height but NOT taller)</u>)</span><br>
-            auto <span style='color:blue;'>(fills each columns up to the element's height until it runs out of content)</span><br>
-        </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> how to distribute the content among columns 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 50 </span>
-                <span><i class="fab fa-firefox"></i> 52/13 -moz- </span>
-                <span><i class="fab fa-opera"></i> 37 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 10/7 -webkit- </span>
-            </span>
-        </td>
+      <td> columns </td>
+      <td>
+        auto <span class="cssAV">(Default)</span><br>
+        <strong>column-width column-count</strong><br>
+      </td>
+      <td>
+        - shorthand property for <mark>column-width</mark> and <mark>column-count</mark> 
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 52/9 -moz- </span>
+          <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> column-gap </td>
-        <td>  
-            <strong>cssLength</strong><br>
-            normal <span style='color:blue;'>((default) <mark>1em</mark> suggested by W3C)</span><br>
-        </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> specifies the gap size between columns 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 52/2 -moz- </span>
-                <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
-        <td> column-rule </td>
-        <td>  
-            <strong>column-rule-width column-rule-style column-rule-color</strong>
-        </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> shorthand property for the "column-rule-width", "column-rule-style" and "column-rule-color" properties 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 52/2 -moz- </span>
-                <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
-            </span>
-        </td>
+      <td> column-fill </td>
+      <td>
+        balance <span class="cssAV">((Default) distributes the content among the columns evenly <u>(columns can be shorter than the element's height but NOT taller)</u>)</span><br>
+        auto <span class="cssAV">(fills each columns up to the element's height until it runs out of content)</span>
+      </td>
+      <td>
+        - sets the content distribution among columns
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 50 </span>
+          <span><i class="fab fa-firefox"></i> 52/13 -moz- </span>
+          <span><i class="fab fa-opera"></i> 37 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 10/7 -webkit- </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> column-rule-color </td>
-        <td> <strong>cssColor</strong> </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> color of the rule between columns 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 52/2 -moz- </span>
-                <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
-        <td> column-rule-style </td>
-        <td>  
-            none <span style='color:blue;'>(default)</span><br> 
-            hidden<br>
-            dotted<br>
-            dashed<br>
-            solid<br>
-            double<br>
-            groove<br>
-            ridge<br>
-            inset<br>
-            outset<br>
-        </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> style of the rule between columns 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 52/2 -moz- </span>
-                <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
-            </span>
-        </td>
+      <td> column-gap </td>
+      <td>
+        normal <span class="cssAV">((Default) <mark>1em</mark> suggested by W3C)</span><br>
+        <strong>cssLength</strong><br>
+      </td>
+      <td>
+        - sests the gap size between columns
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 52/2 -moz- </span>
+          <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> column-rule-width </td>
-        <td>  
-            medium <span style='color:blue;'>(default)</span><br>
-            thin<br>
-            thick<br>
-            <strong>cssLength</strong>
-        </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> width of the rule between columns 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 52/2 -moz- </span>
-                <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
-            </span>
-        </td>
+      <td>|</td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
-        <td> column-span </td>
-        <td>  
-            none <span style='color:blue;'>(default)</span><br>
-            all <span style='color:blue;'>(span accross all columns)</span><br>
-        </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> specifies on the nested element how many columns should span across 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> NO </span>
-                <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
-            </span>
-        </td>
+      <td> column-rule-width </td>
+      <td>
+        medium <span class="cssAV">(default)</span><br>
+        thin<br>
+        thick<br>
+        <strong>cssLength</strong>
+      </td>
+      <td>
+        -sets the rule width between columns
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 52/2 -moz- </span>
+          <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> column-width </td>
-        <td>  
-            <strong>cssLength</strong><br>
-            auto <span style='color:blue;'>((default) determined by the browser)</span><br>
-        </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> specifies the minimum column width 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 52/2 -moz- </span>
-                <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
-                <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
-            </span>
-        </td>
+      <td> column-rule-style </td>
+      <td>
+        none <span class="cssAV">(Default)</span><br>
+        hidden<br>
+        dotted<br>
+        dashed<br>
+        solid<br>
+        double<br>
+        groove<br>
+        ridge<br>
+        inset<br>
+        outset<br>
+      </td>
+      <td>
+        -sets the rule style between columns
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 52/2 -moz- </span>
+          <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
+        </span>
+      </td>
     </tr>
-</table>    
-<h2 style="color:green;"><u> Notes : </u></h2>
-    <details class="example" id="notes">
+    <tr>
+      <td> column-rule-color </td>
+      <td> <strong>cssColor</strong> </td>
+      <td>
+        -sets the rule color between columns
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 52/2 -moz- </span>
+          <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> column-rule </td>
+      <td>
+        <strong>column-rule-width column-rule-style column-rule-color</strong>
+      </td>
+      <td>
+        - shorthand property for the <mark>column-rule-width</mark>, <mark>column-rule-style</mark> and <mark>column-rule-color</mark> properties
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 52/2 -moz- </span>
+          <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> column-span </td>
+      <td>
+        none <span class="cssAV">(Default: does not span accross any columns)</span><br>
+        all <span class="cssAV">(span accross all columns)</span><br>
+      </td>
+      <td>
+        - specifies if the element crosses all columns or not<br>
+        - set on an element which is part of a column (not on the multicolumn container)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 50/4 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> 71 </span>
+          <span><i class="fab fa-opera"></i> 37/15 -webkit- </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 9/3.1 -webkit- </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="http://www.w3schools.com/css/css3_multiple_columns.asp" title="Multiple Columns in CSS" target="_blank"> Go to Multiple Columns W3Schools site!</a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    <p> - </p>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <pre class="syntax">
-SYNTAX :    column-count: <strong>nr</strong>                                    // <i class="fab fa-css3-alt"></i> specifies the number of columns the element should divided into (maximum number of columns)  
-                          auto <span style='color:skyblue;'>((default) determined by other properties)</span>
-            
-            column-gap: <strong>cssLength</strong>                               // <i class="fab fa-css3-alt"></i> specifies the gap size between columns 
-                        normal <span style='color:skyblue;'>((default) <mark>1em</mark> suggested by W3C)</span>
-                        
-            column-width: <strong>cssLength</strong>                             // <i class="fab fa-css3-alt"></i> specifies the minimum column width  
-                          auto <span style='color:skyblue;'>((default) determined by the browser)</span>
-                        
-            columns: auto <span style='color:skyblue;'>(default)</span>                             // <i class="fab fa-css3-alt"></i> shorthand property for the "column-width" and "column-count" properties <u>(sets the minimal column width and the maximal column numbers)</u>     
-                     <strong>column-width column-count</strong>
-                        
-            column-span: none <span style='color:skyblue;'>(default)</span>                         // <i class="fab fa-css3-alt"></i> specifies on the nested element how many columns should span across 
-                         all <span style='color:skyblue;'>(span accross all columns)</span>
-                        
-            column-fill: balance <span style='color:skyblue;'>((default) distributes the content among the columns evenly <u>(columns can be shorter than the element's height but NOT taller)</u>)</span>  // <i class="fab fa-css3-alt"></i> how to distribute the content among columns   
-                         auto <span style='color:skyblue;'>(fills each columns up to the element's height until it runs out of content)</span>
-                        
-            column-rule-width: medium <span style='color:skyblue;'>(default)</span>                 // <i class="fab fa-css3-alt"></i> width of the rule between columns 
-                               thin
-                               thick
-                               <strong>cssLength</strong>
-                        
-            column-rule-color: <strong>cssColor</strong>                         // <i class="fab fa-css3-alt"></i> color of the rule between columns
-                        
-            column-rule-style: none <span style='color:skyblue;'>(default)</span>                   // <i class="fab fa-css3-alt"></i> style of the rule between columns 
-                               hidden
-                               dotted
-                               dashed
-                               solid
-                               double
-                               groove
-                               ridge
-                               inset
-                               outset
-            
-            column-rule: <strong>column-rule-width column-rule-style column-rule-color</strong>     // <i class="fab fa-css3-alt"></i> shorthand property for the "column-rule-width", "column-rule-style" and "column-rule-color" properties 
-    </pre>    
-    <pre>
-    #myElement {
-// column-width / column-count  --------------------------------- 
-        column-width: 200px;                                    // minimal column width (can be wider)
-        column-count: 4;                                        // no more than 4 columns (can be less)
-// columns ------------------------------------------------------ 
-        columns: 200px 4;                                       // does the same as the two properties above 
-        
-// column-rule-width / column-rule-style / column-rule-color ----  
-        column-rule-width: 5px;                                 // width of the rule between the columns 
-        column-rule-style: double;                              // style of the rule between the columns
-        column-rule-color: red;                                 // color of the rule between the columns
-// column-rule -------------------------------------------------- 
-        column-rule: 5px double red;                            // does the same as the three properties above 
-    
-// column-gap --------------------------------------------------- 
-        column-gap: 5px;                                        // gap between columns 
-    
-// column-fill -------------------------------------------------- 
-        column-fill: balance;                                   // content distributed evenly (can be shorter than the element's height in order to be distributed evenly)  
-                   : auto;                                      // content fills the element's height until it runs out 
-    }
-    
-// column-span -------------------------------------------------- 
-    #myElement > p {
-        column-span: all;                                       // children element crosses all the columns 
-    }
-    </pre>    
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> <mark>column-count</mark> / <mark>column-gap</mark> properties TEST </u></h4>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="http://www.w3schools.com/css/css3_multiple_columns.asp" title="Multiple Columns in CSS" target="_blank"> Go to Multiple Columns W3Schools site!</a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> <mark>column-count</mark> / <mark>column-gap</mark> properties TEST </u></h4>
     <p class="multiple_columns-basics1"> some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....</p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="multiple_columns-basics"&gt; some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....&lt;/p&gt;
     
@@ -291,13 +247,13 @@ SYNTAX :    column-count: <strong>nr</strong>                                   
         column-gap: 30px;
     }
         </pre>
-        </details>
-<!--------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>column-rule-style</mark> / <mark>column-rule-width</mark> / <mark>column-rule-color</mark> TEST </u></h4>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>column-rule-style</mark> / <mark>column-rule-width</mark> / <mark>column-rule-color</mark> TEST </u></h4>
     <p class="multiple_columns-line1"> some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....</p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="multiple_columns-line1"&gt; some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....&lt;/p&gt;
     
@@ -311,13 +267,13 @@ SYNTAX :    column-count: <strong>nr</strong>                                   
         column-rule-color: darkmagenta;
     }
         </pre>
-        </details>
-<!--------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>column-rule</mark> shorthand property TEST </u></h4>    
+    </details>
+    <!--------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>column-rule</mark> shorthand property TEST </u></h4>
     <p class="multiple_columns-line2"> some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....</p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="multiple_columns-line2"&gt; some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....&lt;/p&gt;
     
@@ -329,13 +285,13 @@ SYNTAX :    column-count: <strong>nr</strong>                                   
         column-rule: dotted 5px red;
     }
         </pre>
-        </details>
-<!--------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>column-width</mark> TEST </u></h4>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>column-width</mark> TEST </u></h4>
     <p class="multiple_columns-width"> some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....</p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="multiple_columns-width"&gt; some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....&lt;/p&gt;
     
@@ -346,14 +302,14 @@ SYNTAX :    column-count: <strong>nr</strong>                                   
         column-width: 200px;                    // automaticall split columns in order to fill the screen width 
     }
         </pre>
-        </details>
-<!--------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>columns</mark> property TEST </u></h4>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>columns</mark> property TEST </u></h4>
     <p> - the <mark>column-width</mark> part sets the minimal columnt width and the the <mark>column-count</mark> part specifies how many columns can be maximum </p>
     <p class="multiple_columns-colums"> some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....</p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;p class="multiple_columns-colums"&gt; some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....&lt;/p&gt;
     
@@ -365,18 +321,18 @@ SYNTAX :    column-count: <strong>nr</strong>                                   
         columns: 150px 3;                       // culumns at least 150px width but no more than 3 columns (can be 2 or 1)
     }
         </pre>
-        </details>
-<!--------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>column-span</mark> property TEST </u></h4>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>column-span</mark> property TEST </u></h4>
     <div class="multiple_columns-span">
-            <h3> This heading goes accross all columns / This heading goes accross all columns / This heading goes accross all columns </h3>
-        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... 
-            <h3> This heading also goes accross all columns / This heading also goes accross all columns / This heading also goes accross all columns</h3>
-        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....
+      <h3> This heading goes accross all columns / This heading goes accross all columns / This heading goes accross all columns </h3>
+      some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....
+      <h3> This heading also goes accross all columns / This heading also goes accross all columns / This heading also goes accross all columns</h3>
+      some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;div class="multiple_columns-span"&gt;
             &lt;h3&gt; This heading goes accross all columns / This heading goes accross all columns / This heading goes accross all columns &lt;/h3&gt;
@@ -396,27 +352,27 @@ SYNTAX :    column-count: <strong>nr</strong>                                   
         column-span: all;                   // property set on the nested element which should cross the columns 
     }
         </pre>
-        </details>
-<!--------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> Custom code for create column only background </u></h4>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> Custom code for create column only background </u></h4>
     <div class="wrapper">
       <div class="bgcolor"></div>
-        <div class="newspaper">
-        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... 
-        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... 
-        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... 
-        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... 
+      <div class="newspaper">
         some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....
-        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... 
-        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... 
-        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... 
-        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... 
         some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....
-        </div>
+        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....
+        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....
+        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....
+        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....
+        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....
+        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....
+        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....
+        some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....
+      </div>
     </div><br>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) --
     &lt;div class="wrapper"&gt;
       &lt;div class="bgcolor"&gt;&lt;/div&gt;
@@ -456,16 +412,16 @@ SYNTAX :    column-count: <strong>nr</strong>                                   
         z-index: -1;
     }
         </pre>
-        </details>
-<!--------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>column-fill</mark> property TEST </u></h4>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>column-fill</mark> property TEST </u></h4>
     <p> - <mark>columnt-fill:balance;</mark> (default) balances the content in order to create equal columns <u style='color:yellow;'>(content ignores element height)</u> </p>
     <p class="fillBalance"> some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....</p>
-    <p> - <mark>columnt-fill:auto;</mark> content fills the element's height first and after splits into columns  </p>
+    <p> - <mark>columnt-fill:auto;</mark> content fills the element's height first and after splits into columns </p>
     <p class="fillAuto"> some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....</p>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- CODE (HTML) -- 
     &lt;p class="fillBalance"&gt; some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text.... some text....&lt;/p&gt;
     
@@ -491,9 +447,10 @@ SYNTAX :    column-count: <strong>nr</strong>                                   
         column-fill: auto;
     }    
         </pre>
-        </details>
-</details>
-    
-    <br><br>
+    </details>
+  </details>
+
+  <br><br>
 </body>
+
 </html>

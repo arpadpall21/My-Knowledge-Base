@@ -10,40 +10,76 @@
 </head>
 <body>
 <h1> Object (ver 4.0.0) </h1>
-    <p> Updated ( 2017-07-17 / 2017-09-24 / 2018-01-17 / 2018-01-27 / 2018-03-14 / 2018-03-24 / 2018-07-10 / 2018-07-18 / 2021-05-25 )</p>
+    <p> Updated ( 2017-07-17 / 2017-09-24 / 2018-03-24 / 2018-07-18 / 2021-05-25 )</p>
     <p class="sitenav"> <a href="../../../index.html">MySite></a>
         <a href="../../index.html">JavaScript></a> 
-        <a href="../index.html">Objects></a> Object   
+        <a href="../index.html">Objects></a> Object
     </p>
 <table class="table">
-<caption>
-            Object methods and properties
-            <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+    <caption>
+        Object methods and properties
+    </caption>
     <tr>
         <th> Property / Method </th>
         <th> Description </th>
     </tr>
-<tr class="02.02">
-<td>        
-            <em>Object</em>.assign(<strong>targetObj</strong><i>, sourceObj, ...</i>) 
-</td>
-<td> 
-            - copies <u>native properties</u> form source objects (<i>sourceObj</i>) to the target object (<strong>targetObject</strong>) and returns the <strong>targetObj</strong> <br>
-            - only the  <strong>targetObj</strong> properties are overridden <br>
-            - rightmost object properties take precedence 
-            <span id="browserSupport" title="updated: 2021-02-12">
-                <span><i class="fab fa-chrome"></i> 45 </span>
-                <span><i class="fab fa-firefox"></i> 34 </span>
-                <span><i class="fab fa-opera"></i> 32 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
-                <span><i class="fab fa-safari"></i> 9 </span>
-                <span><i class="fab fa-node-js"></i> 4.0.0 </span>
+    <tr>
+        <td> 
+            <strong>key:str</strong> in <strong>obj</strong>
+        </td>
+        <td> 
+            - returns <mark>true</mark> if the property appears anywhere in the object's prototype chain, otherwise returns <mark>false</mark>
+            <span id="browserSupport" title="updated : 2021-07-06">
+                <span><i class="fab fa-chrome"></i> 1 </span>
+                <span><i class="fab fa-firefox"></i> 1 </span>
+                <span><i class="fab fa-opera"></i> 4 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
+                <span><i class="fab fa-safari"></i> 1 </span>
+                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
             </span>
-</td>
-</tr>
-<tr class="02.01">
-<td> 
+        </td>
+    </tr>
+    <tr>
+        <td> 
+            delete <strong>obj.property</strong> <br>
+            delete <strong>obj</strong>["<strong>property</strong>"]
+        </td>
+        <td>
+            - deletes an object's <u>native</u> property and returns a boolean <u>(which is not reliable!)</u> <br>
+            - cannot delete "non-configurable" properties or identifiers declared with <mark>var</mark> / <mark>let</mark> / <mark>const</mark>)  
+            <span id="browserSupport" title="updated: 2021-02-12">
+                <span><i class="fab fa-chrome"></i> 1 </span>
+                <span><i class="fab fa-firefox"></i> 1 </span>
+                <span><i class="fab fa-opera"></i> 9 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
+                <span><i class="fab fa-safari"></i> 1 </span>
+                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td> 
+            this
+        </td>
+        <td>
+            - references the object itself when used in the parent object's method <br>
+            - not reliable when used in some complicated nested achitectures 
+            <span id="browserSupport" title="updated: 2021-02-12">
+                <span><i class="fab fa-chrome"></i> 1 </span>
+                <span><i class="fab fa-firefox"></i> 1 </span>
+                <span><i class="fab fa-opera"></i> 9.5 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
+                <span><i class="fab fa-safari"></i> 1 </span>
+                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td>|</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td> 
             <em>Object</em>.create(<strong>protObj</strong>, <i class="openable">propDefiner:obj<div>
                 <p> <strong>prop</strong>: <strong>descriptor:obj</strong> </p>
                 <p> <i>...</i> </p>
@@ -56,8 +92,8 @@
                 <p> get: <strong>fn</strong> - runs this function when getting this property <u>(not allowed with the <mark>value</mark> property)</u> </p>
                 <p> set: <strong>fn(val)</strong> - runs this function when setting this property (the <strong>val</strong> argument is the received set value <u>(not allowed with the <mark>value</mark> property)</u> </p>
             </div></i>) 
-</td>
-<td> 
+        </td>
+        <td> 
             - creates and returns a new Object by setting the <strong>protObj</strong> (prototype object) as prototype of the newly created object <br>
             - the optional <i>propDefiner</i> (property definer) object can define new properties and set property descriptors    
             <span id="browserSupport" title="updated: 2021-02-12">
@@ -68,295 +104,51 @@
                 <span><i class="fab fa-safari"></i> 5 </span>
                 <span><i class="fab fa-node-js"></i> 0.10.0 </span>
             </span>
-</td>
-</tr>
-<tr class="04.01">
-<td> 
-            <em>Object</em>.defineProperty(<strong>targetObj</strong>, <strong>prop:str</strong>, <strong class="openable">descriptorObj:obj<div>
-                <p> value: <strong>val</strong> - property value (Default: <mark>undefined</mark> for existing properties) </p>
-                <p> writable: <strong>bol</strong> - property can be modified (Default: <mark>false</mark> for existing properties) </p>
-                <p> enumerable: <strong>bol</strong> - property visible when the parent object is iterated through (ex: for <mark>for... of</mark> loops) (Default: <mark>false</mark> for existing properties) </p>
-                <p> configurable: <strong>bol</strong> - property can be deleted with <mark>delete</mark> (Default: <mark>false</mark> for existing properties) </p>
-                <p> get: <strong>fn</strong> - runs this function when getting this property <u>(not allowed with the <mark>value</mark> property)</u> </p>
-                <p> set: <strong>fn(val)</strong> - runs this function when setting this property (the <strong>val</strong> argument is the received set value <u>(not allowed with the <mark>value</mark> property)</u> </p>
-            </div></strong>) 
-</td>
-<td> 
-            - sets an existing property (<strong>prop</strong>) descriptors and returns the <strong>targetObj</strong> <br>
-            - can set a new property  
-            <span id="browserSupport" title="updated: 2021-02-14">
-                <span><i class="fab fa-chrome"></i> 5 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 11.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5.1 </span>
-                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
-            </span>
-</td>
-</tr>
-<tr class="04.02">
-<td> 
-            <em>Object</em>.defineProperties(<strong>targetObj</strong>, <strong class="openable">propDefiner:obj<div>
-                <p> <strong>prop</strong>: <strong>descriptor:obj</strong> </p>
-                <p> <i>...</i> </p>
-                <hr>
-                <p><u> Descriptor Object (<strong>descriptor:obj</strong>) </u></p>
-                <p> value: <strong>val</strong> - property value (Default: <mark>undefined</mark>) </p>
-                <p> writable: <strong>bol</strong> - property can be modified (Default: <mark>false</mark>) </p>
-                <p> enumerable: <strong>bol</strong> - property visible when the parent object is iterated through (ex: for <mark>for... of</mark> loops) (Default: <mark>false</mark>) </p>
-                <p> configurable: <strong>bol</strong> - property can be deleted with <mark>delete</mark> (Default: <mark>false</mark>) </p>
-                <p> get: <strong>fn</strong> - runs this function when getting this property <u>(not allowed with the <mark>value</mark> property)</u> </p>
-                <p> set: <strong>fn(val)</strong> - runs this function when setting this property (the <strong>val</strong> argument is the received set value <u>(not allowed with the <mark>value</mark> property)</u> </p>
-            </div></strong>) 
-</td>
-<td> 
-            - sets existing properties's (<strong>prop</strong>) descriptors and returns the <strong>targetObj</strong> <br>
-            - can set new properties  
-            <span id="browserSupport" title="updated: 2021-02-14">
-                <span><i class="fab fa-chrome"></i> 5 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 11.6 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5.1 </span>
-                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
-            </span>
-</td>
-</tr>
-<tr class="06.03">
-<td> 
-            <em>Object</em>.entries(<strong>obj</strong>) 
-</td>
-<td> 
-            - returns the passed object's <u>own native enumerable</u> key-value pairs in an Array (like: <mark>[['prop', 'val'], ...]</mark>)  
-            <span id="browserSupport" title="updated : 2021-02-14">
-                <span><i class="fab fa-chrome"></i> 54 </span>
-                <span><i class="fab fa-firefox"></i> 47 </span>
-                <span><i class="fab fa-opera"></i> 41 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 14 </span>
-                <span><i class="fab fa-safari"></i> 10.1 </span>
-                <span><i class="fab fa-node-js"></i> 7.0.0 </span>
-            </span>
-</td>
-</tr>
-<tr class="04.03">
-<td> 
-            <em>Object</em>.getOwnPropertyDescriptor(<strong>targetObj</strong>, <strong>prop:str</strong>) 
-</td>
-<td> 
-            - returns the <strong>tagetObj</strong> <u>native</u> property (<strong>prop</strong>) descriptors in an object 
-            <span id="browserSupport" title="updated: 2021-02-14">
-                <span><i class="fab fa-chrome"></i> 5 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 12 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
-            </span>
-</td>
-</tr>
-<tr class="04.04">
-<td> 
-            <em>Object</em>.getOwnPropertyDescriptors(<strong>targetObj</strong>) 
-</td>
-<td> 
-            - returns the <strong>tagetObj</strong>'s all <u>native</u> properties and their property descriptors in an object 
-            <span id="browserSupport" title="updated: 2021-02-14">
-                <span><i class="fab fa-chrome"></i> 54 </span>
-                <span><i class="fab fa-firefox"></i> 50 </span>
-                <span><i class="fab fa-opera"></i> 41 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 15 </span>
-                <span><i class="fab fa-safari"></i> 10 </span>
-                <span><i class="fab fa-node-js"></i> 7.0.0 </span>
-            </span>
-</td>
-</tr>
-<tr class="05.02">
-<td> 
-            <em>Object</em>.getOwnPropertyNames(<strong>obj</strong>) 
-</td>
-<td> 
-            - returns the <strong>obj</strong> <u>own native enumerable and non-enumerable</u> properties in an Array 
-            <span id="browserSupport" title="updated : 2021-02-14">
-                <span><i class="fab fa-chrome"></i> 5 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 12 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
-            </span>
-</td>
-</tr>
-<tr class="01.01">
-<td> 
-            <strong>key:str</strong> in <strong>obj</strong>
-</td>
-<td> 
-            - returns <mark>true</mark> if the property appears anywhere in the object's prototype chain, otherwise returns <mark>false</mark>
-            <span id="browserSupport" title="updated : 2021-07-06">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 4 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
-            </span>
-</td>
-</tr>
-<tr class="01.02">
-<td> 
-            delete <strong>obj.property</strong> 
-</td>
-<td>        
-            - deletes an object's <u>native</u> property and returns a boolean <u>(which is not reliable!)</u> <br>
-            - cannot delete "non-configurable" properties or identifiers declared with <mark>var</mark> / <mark>let</mark> / <mark>const</mark>)  
-            <span id="browserSupport" title="updated: 2021-02-12">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 9 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
-            </span>
-</td>
-</tr>
-<tr class="01.02"><td></td><td></td>
-</tr>
-<tr class="01.03">
-<td> 
-            delete <strong>obj</strong>["<strong>property</strong>"]
-</td>
-<td>        
-</td>
-</tr>
-<tr class="03.03">
-<td>  
-            <em>Object</em>.freeze(<strong>targetObj</strong>) 
-</td>
-<td> 
-            - prevents any modification of the <strong>targetObj</strong> properties (properties cannot be added removed or modified) and returns the <strong>targetObj</strong> <br>
-            - this operation cannot be undone  
-            <span id="browserSupport" title="updated: 2021-02-14">
-                <span><i class="fab fa-chrome"></i> 6 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 12 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5.1 </span>
-                <span><i class="fab fa-node-js"></i> 0.1.0 </span>
-            </span>
-</td>
-</tr>
-<tr class="05.3">
-<td> 
-            <strong>obj</strong>.hasOwnProperty(<strong>prop:str</strong>) 
-</td>
-<td> 
-            - returns <mark>true</mark> if the passed property (<strong>prop</strong>) is a native (not inherited) property, otherwise <mark>false</mark> 
-            <span id="browserSupport" title="updated : 2021-02-14">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
-                <span><i class="fab fa-safari"></i> 3 </span>
-                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
-            </span>
-</td>
-</tr>
-<tr class="05.01">
-<td> 
-            <em>Object</em>.is(<strong>val1</strong>, <strong>val2</strong>) 
-</td>
-<td> 
-            - compares 2 values or references <br>
-            - does the same as the <mark>===</mark> <u>when comparing primitives</u> <u class="openable">with some exception<div>
-                <p> <mark>Object.is(-0, +0);</mark> is false </p>
-                <p> <mark>-0 === +0;</mark> is true </p>
-                <hr>
-                <p> <mark>Object.is(Number.NaN, NaN);</mark> is true </p>
-                <p> <mark>Number.NaN === NaN;</mark> is false </p>
-            </div></u> <br>
-            - can compare objects <u>check if variable reference <strong>val1</strong> and <strong>val2</strong> points to the same memory </u>
-            <span id="browserSupport" title="updated: 2021-02-14">
-                <span><i class="fab fa-chrome"></i> 30 </span>
-                <span><i class="fab fa-firefox"></i> 22 </span>
-                <span><i class="fab fa-opera"></i> 17 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
-                <span><i class="fab fa-safari"></i> 9 </span>
-                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
-            </span>
-</td>
-</tr>
-<tr class="03.04">
-<td> 
-            <em>Object</em>.isExtensible(<strong>targetObj</strong>) 
-</td>
-<td> 
-            - returns <mark>true</mark> if the <strong>targetObj</strong> is extensible, <mark>false</mark> otherwise <br>
-            - to a non-extensible object we cannot add new properties (existing once still can be modified or deleted)  
-            <span id="browserSupport" title="updated: 2021-02-14">
-                <span><i class="fab fa-chrome"></i> 6 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 12 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5.1 </span>
-                <span><i class="fab fa-node-js"></i> 0.1.0 </span>
-            </span>
-</td>
-</tr>
-<tr class="03.06">
-<td> 
-            <em>Object</em>.isFrozen(<strong>targetObj</strong>) 
-</td>
-<td> 
-            - returns <mark>true</mark> if the <strong>targetObj</strong> is froozen, <mark>false</mark> otherwise <br>
-            - to a frozen object we cannot add new or delete existing properties or changing property values 
-            <span id="browserSupport" title="updated: 2021-02-14">
-                <span><i class="fab fa-chrome"></i> 6 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 12 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5.1 </span>
-                <span><i class="fab fa-node-js"></i> 0.1.0 </span>
-            </span>
-</td>
-</tr>
-<tr class="03.05">
-<td> 
-            <em>Object</em>.isSealed(<strong>targetObj</strong>) 
-</td>
-<td> 
-            - returns <mark>false</mark> if the <strong>targetObj</strong> is sealed, <mark>false</mark> otherwise <br>
-            - to a sealed object we cannot add new properties or delete existing onces (existing property values can be modified)  
-            <span id="browserSupport" title="updated: 2021-02-14">
-                <span><i class="fab fa-chrome"></i> 6 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 12 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5.1 </span>
-                <span><i class="fab fa-node-js"></i> 0.1.0 </span>
-            </span>
-</td>
-</tr>
-<tr class="06.01">
-<td> 
-            <em>Object</em>.keys(<strong>obj</strong>) 
-</td>
-<td> 
-            - returns the passed object's <u>own native enumerable</u> properties in an Array as strings 
-            <span id="browserSupport" title="updated : 2021-02-14">
-                <span><i class="fab fa-chrome"></i> 5 </span>
-                <span><i class="fab fa-firefox"></i> 4 </span>
-                <span><i class="fab fa-opera"></i> 12 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
-                <span><i class="fab fa-safari"></i> 5 </span>
-                <span><i class="fab fa-node-js"></i> yes </span>
-            </span>
-</td>
-</tr>
-<tr class="03.01">
-<td> 
+        </td>
+    </tr>
+    <tr>
+      <td>  
+          <em>Object</em>.assign(<strong>targetObj</strong><i>, sourceObj, ...</i>) 
+      </td>
+      <td> 
+          - copies <u>native properties</u> form source objects (<i>sourceObj</i>) to the target object (<strong>targetObject</strong>) and returns the <strong>targetObj</strong> <br>
+          - only the  <strong>targetObj</strong> properties are overridden <br>
+          - rightmost object properties take precedence 
+          <span id="browserSupport">
+              <span><i class="fab fa-chrome"></i> 45 </span>
+              <span><i class="fab fa-firefox"></i> 34 </span>
+              <span><i class="fab fa-opera"></i> 32 </span>
+              <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
+              <span><i class="fab fa-safari"></i> 9 </span>
+              <span><i class="fab fa-node-js"></i> 4.0.0 </span>
+          </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+          <lit>Object</lit>.fromEntries([<opt>[<optval>key</optval>, <optval>val</optval>], ...</opt>])
+      </td>
+      <td>
+          - creates and returns a new object of the passed key/value pair Arrays
+          <span id="browserSupport">
+              <span><i class="fab fa-chrome"></i> 73 </span>
+              <span><i class="fab fa-firefox"></i> 63 </span>
+              <span><i class="fab fa-opera"></i> 60 </span>
+              <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+              <span><i class="fab fa-safari"></i> 12.1 </span>
+              <span><i class="fab fa-node-js"></i> 12.0.0 </span>
+          </span>
+      </td>
+    </tr>
+    <tr>
+        <td>|</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td> 
             <em>Object</em>.preventExtensions(<strong>targetObj</strong>) 
-</td>
-<td> 
+        </td>
+        <td> 
             - prevents adding new properties to the object and returns the <strong>targetObj</strong> <br>
             - existing properties can be deleted and their value can be changed <br>
             - this operation cannot be undone  
@@ -377,29 +169,13 @@
                     <span><i class="fab fa-node-js"></i> 0.1.0 </span>
                 </div></span>
             </span>
-</td>
-</tr>
-<tr class="04.05">
-<td> 
-            <strong>obj</strong>.propertyIsEnumerable(<strong>prop:str</strong>)  
-</td>
-<td> 
-            - returns <mark>true</mark> if the property (<strong>prop</strong>) is enumerable (visible in iterator tools like in <mark>for... of</mark> loop when the <strong>obj</strong> is iterated through)
-            <span id="browserSupport" title="updated: 2021-02-14">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 4 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
-                <span><i class="fab fa-safari"></i> 3 </span>
-                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
-            </span>
-</td>
-</tr>
-<tr class="03.02">
-<td> 
+        </td>
+    </tr>
+    <tr>
+        <td> 
             <em>Object</em>.seal(<strong>targetObj</strong>) 
-</td>
-<td> 
+        </td>
+        <td> 
             - prevents adding new properties and delete existing onces in the <strong>targetObj</strong> and returns the <strong>targetObj</strong> <br>
             - existing property values can be changed <br>
             - this operation cannot be undone  
@@ -411,30 +187,265 @@
                 <span><i class="fab fa-safari"></i> 5.1 </span>
                 <span><i class="fab fa-node-js"></i> 0.1.0 </span>
             </span>
-</td>
-</tr>
-<tr class="01.05">
-<td> 
-            this
-</td>
-<td>        
-            - references the object itself when used in the parent object's method <br>
-            - not reliable when used in some complicated nested achitectures 
-            <span id="browserSupport" title="updated: 2021-02-12">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 9.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
+        </td>
+    </tr>
+    <tr>
+        <td>  
+            <em>Object</em>.freeze(<strong>targetObj</strong>) 
+        </td>
+        <td> 
+            - prevents any modification of the <strong>targetObj</strong> properties (properties cannot be added removed or modified) and returns the <strong>targetObj</strong> <br>
+            - this operation cannot be undone  
+            <span id="browserSupport" title="updated: 2021-02-14">
+                <span><i class="fab fa-chrome"></i> 6 </span>
+                <span><i class="fab fa-firefox"></i> 4 </span>
+                <span><i class="fab fa-opera"></i> 12 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+                <span><i class="fab fa-safari"></i> 5.1 </span>
+                <span><i class="fab fa-node-js"></i> 0.1.0 </span>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td> 
+            <em>Object</em>.isExtensible(<strong>targetObj</strong>) 
+        </td>
+        <td> 
+            - returns <mark>true</mark> if the <strong>targetObj</strong> is extensible, <mark>false</mark> otherwise <br>
+            - to a non-extensible object we cannot add new properties (existing once still can be modified or deleted)  
+            <span id="browserSupport" title="updated: 2021-02-14">
+                <span><i class="fab fa-chrome"></i> 6 </span>
+                <span><i class="fab fa-firefox"></i> 4 </span>
+                <span><i class="fab fa-opera"></i> 12 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+                <span><i class="fab fa-safari"></i> 5.1 </span>
+                <span><i class="fab fa-node-js"></i> 0.1.0 </span>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td> 
+            <em>Object</em>.isSealed(<strong>targetObj</strong>) 
+        </td>
+        <td> 
+            - returns <mark>false</mark> if the <strong>targetObj</strong> is sealed, <mark>false</mark> otherwise <br>
+            - to a sealed object we cannot add new properties or delete existing onces (existing property values can be modified)  
+            <span id="browserSupport" title="updated: 2021-02-14">
+                <span><i class="fab fa-chrome"></i> 6 </span>
+                <span><i class="fab fa-firefox"></i> 4 </span>
+                <span><i class="fab fa-opera"></i> 12 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+                <span><i class="fab fa-safari"></i> 5.1 </span>
+                <span><i class="fab fa-node-js"></i> 0.1.0 </span>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td> 
+            <em>Object</em>.isFrozen(<strong>targetObj</strong>) 
+        </td>
+        <td> 
+            - returns <mark>true</mark> if the <strong>targetObj</strong> is froozen, <mark>false</mark> otherwise <br>
+            - to a frozen object we cannot add new or delete existing properties or changing property values 
+            <span id="browserSupport" title="updated: 2021-02-14">
+                <span><i class="fab fa-chrome"></i> 6 </span>
+                <span><i class="fab fa-firefox"></i> 4 </span>
+                <span><i class="fab fa-opera"></i> 12 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+                <span><i class="fab fa-safari"></i> 5.1 </span>
+                <span><i class="fab fa-node-js"></i> 0.1.0 </span>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td>|</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td> 
+            <em>Object</em>.defineProperty(<strong>targetObj</strong>, <strong>prop:str</strong>, <strong class="openable">descriptorObj:obj<div>
+                <p> value: <strong>val</strong> - property value (Default: <mark>undefined</mark> for existing properties) </p>
+                <p> writable: <strong>bol</strong> - property can be modified (Default: <mark>false</mark> for existing properties) </p>
+                <p> enumerable: <strong>bol</strong> - property visible when the parent object is iterated through (ex: for <mark>for... of</mark> loops) (Default: <mark>false</mark> for existing properties) </p>
+                <p> configurable: <strong>bol</strong> - property can be deleted with <mark>delete</mark> (Default: <mark>false</mark> for existing properties) </p>
+                <p> get: <strong>fn</strong> - runs this function when getting this property <u>(not allowed with the <mark>value</mark> property)</u> </p>
+                <p> set: <strong>fn(val)</strong> - runs this function when setting this property (the <strong>val</strong> argument is the received set value <u>(not allowed with the <mark>value</mark> property)</u> </p>
+            </div></strong>) 
+        </td>
+        <td> 
+            - sets an existing property (<strong>prop</strong>) descriptors and returns the <strong>targetObj</strong> <br>
+            - can set a new property  
+            <span id="browserSupport">
+                <span><i class="fab fa-chrome"></i> 5 </span>
+                <span><i class="fab fa-firefox"></i> 4 </span>
+                <span><i class="fab fa-opera"></i> 11.6 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+                <span><i class="fab fa-safari"></i> 5.1 </span>
                 <span><i class="fab fa-node-js"></i> 0.10.0 </span>
             </span>
-</td>
-</tr>
-<tr class="06.02">
-<td> 
+        </td>
+    </tr>
+    <tr>
+        <td> 
+            <em>Object</em>.defineProperties(<strong>targetObj</strong>, <strong class="openable">propDefiner:obj<div>
+                <p> <strong>prop</strong>: <strong>descriptor:obj</strong> </p>
+                <p> <i>...</i> </p>
+                <hr>
+                <p><u> Descriptor Object (<strong>descriptor:obj</strong>) </u></p>
+                <p> value: <strong>val</strong> - property value (Default: <mark>undefined</mark>) </p>
+                <p> writable: <strong>bol</strong> - property can be modified (Default: <mark>false</mark>) </p>
+                <p> enumerable: <strong>bol</strong> - property visible when the parent object is iterated through (ex: for <mark>for... of</mark> loops) (Default: <mark>false</mark>) </p>
+                <p> configurable: <strong>bol</strong> - property can be deleted with <mark>delete</mark> (Default: <mark>false</mark>) </p>
+                <p> get: <strong>fn</strong> - runs this function when getting this property <u>(not allowed with the <mark>value</mark> property)</u> </p>
+                <p> set: <strong>fn(val)</strong> - runs this function when setting this property (the <strong>val</strong> argument is the received set value <u>(not allowed with the <mark>value</mark> property)</u> </p>
+            </div></strong>) 
+        </td>
+        <td> 
+            - sets existing properties's (<strong>prop</strong>) descriptors and returns the <strong>targetObj</strong> <br>
+            - can set new properties  
+            <span id="browserSupport">
+                <span><i class="fab fa-chrome"></i> 5 </span>
+                <span><i class="fab fa-firefox"></i> 4 </span>
+                <span><i class="fab fa-opera"></i> 11.6 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+                <span><i class="fab fa-safari"></i> 5.1 </span>
+                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td> 
+            <em>Object</em>.getOwnPropertyDescriptor(<strong>targetObj</strong>, <strong>prop:str</strong>) 
+        </td>
+        <td> 
+            - returns the <strong>tagetObj</strong> <u>native</u> property (<strong>prop</strong>) descriptors in an object 
+            <span id="browserSupport" title="updated: 2021-02-14">
+                <span><i class="fab fa-chrome"></i> 5 </span>
+                <span><i class="fab fa-firefox"></i> 4 </span>
+                <span><i class="fab fa-opera"></i> 12 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+                <span><i class="fab fa-safari"></i> 5 </span>
+                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td> 
+            <em>Object</em>.getOwnPropertyDescriptors(<strong>targetObj</strong>) 
+        </td>
+        <td> 
+            - returns the <strong>tagetObj</strong>'s all <u>native</u> properties and their property descriptors in an object 
+            <span id="browserSupport" title="updated: 2021-02-14">
+                <span><i class="fab fa-chrome"></i> 54 </span>
+                <span><i class="fab fa-firefox"></i> 50 </span>
+                <span><i class="fab fa-opera"></i> 41 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 15 </span>
+                <span><i class="fab fa-safari"></i> 10 </span>
+                <span><i class="fab fa-node-js"></i> 7.0.0 </span>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td> 
+            <strong>obj</strong>.propertyIsEnumerable(<strong>prop:str</strong>)  
+        </td>
+        <td> 
+            - returns <mark>true</mark> if the property (<strong>prop</strong>) is enumerable (visible in iterator tools like in <mark>for... of</mark> loop when the <strong>obj</strong> is iterated through)
+            <span id="browserSupport" title="updated: 2021-02-14">
+                <span><i class="fab fa-chrome"></i> 1 </span>
+                <span><i class="fab fa-firefox"></i> 1 </span>
+                <span><i class="fab fa-opera"></i> 4 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
+                <span><i class="fab fa-safari"></i> 3 </span>
+                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td>|</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td> 
+            <em>Object</em>.is(<strong>val1</strong>, <strong>val2</strong>) 
+        </td>
+        <td> 
+            - compares 2 values or references <br>
+            - does the same as the <mark>===</mark> <u>when comparing primitives</u> <u class="openable">with some exception<div>
+                <p> <mark>Object.is(-0, +0);</mark> is false </p>
+                <p> <mark>-0 === +0;</mark> is true </p>
+                <hr>
+                <p> <mark>Object.is(Number.NaN, NaN);</mark> is true </p>
+                <p> <mark>Number.NaN === NaN;</mark> is false </p>
+            </div></u> <br>
+            - can compare objects <u>check if variable reference <strong>val1</strong> and <strong>val2</strong> points to the same memory </u>
+            <span id="browserSupport" title="updated: 2021-02-14">
+                <span><i class="fab fa-chrome"></i> 30 </span>
+                <span><i class="fab fa-firefox"></i> 22 </span>
+                <span><i class="fab fa-opera"></i> 17 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
+                <span><i class="fab fa-safari"></i> 9 </span>
+                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td> 
+            <em>Object</em>.getOwnPropertyNames(<strong>obj</strong>) 
+        </td>
+        <td> 
+            - returns the <strong>obj</strong> <u>own native enumerable and non-enumerable</u> properties in an Array 
+            <span id="browserSupport" title="updated : 2021-02-14">
+                <span><i class="fab fa-chrome"></i> 5 </span>
+                <span><i class="fab fa-firefox"></i> 4 </span>
+                <span><i class="fab fa-opera"></i> 12 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+                <span><i class="fab fa-safari"></i> 5 </span>
+                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td> 
+            <strong>obj</strong>.hasOwnProperty(<strong>prop:str</strong>) 
+        </td>
+        <td> 
+            - returns <mark>true</mark> if the passed property (<strong>prop</strong>) is a native (not inherited) property, otherwise <mark>false</mark> 
+            <span id="browserSupport" title="updated : 2021-02-14">
+                <span><i class="fab fa-chrome"></i> 1 </span>
+                <span><i class="fab fa-firefox"></i> 1 </span>
+                <span><i class="fab fa-opera"></i> 5 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 5.5 </span>
+                <span><i class="fab fa-safari"></i> 3 </span>
+                <span><i class="fab fa-node-js"></i> 0.10.0 </span>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td>|</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td> 
+            <em>Object</em>.keys(<strong>obj</strong>) 
+        </td>
+        <td> 
+            - returns the passed object's <u>own native enumerable</u> properties in an Array as strings 
+            <span id="browserSupport" title="updated : 2021-02-14">
+                <span><i class="fab fa-chrome"></i> 5 </span>
+                <span><i class="fab fa-firefox"></i> 4 </span>
+                <span><i class="fab fa-opera"></i> 12 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+                <span><i class="fab fa-safari"></i> 5 </span>
+                <span><i class="fab fa-node-js"></i> yes </span>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td> 
             <em>Object</em>.values(<strong>obj</strong>) 
-</td>
-<td> 
+        </td>
+        <td> 
             - returns the passed object's <u>own native enumerable</u> values in an Array 
             <span id="browserSupport" title="updated : 2019-09-17">
                 <span><i class="fab fa-chrome"></i> 54 </span>
@@ -444,8 +455,24 @@
                 <span><i class="fab fa-safari"></i> 10.0 </span>
                 <span><i class="fab fa-node-js"></i> 7.0.0 </span>
             </span>
-</td>
-</tr>
+        </td>
+    </tr>
+    <tr>
+        <td> 
+            <em>Object</em>.entries(<strong>obj</strong>) 
+        </td>
+        <td> 
+            - returns the passed object's <u>own native enumerable</u> key-value pairs in an Array (like: <mark>[['prop', 'val'], ...]</mark>)  
+            <span id="browserSupport" title="updated : 2021-02-14">
+                <span><i class="fab fa-chrome"></i> 54 </span>
+                <span><i class="fab fa-firefox"></i> 47 </span>
+                <span><i class="fab fa-opera"></i> 41 </span>
+                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 14 </span>
+                <span><i class="fab fa-safari"></i> 10.1 </span>
+                <span><i class="fab fa-node-js"></i> 7.0.0 </span>
+            </span>
+        </td>
+    </tr>
 </table>
 <h2 style="color:green;"><u> Notes : </u></h2>
     <details class="example" id="notes">

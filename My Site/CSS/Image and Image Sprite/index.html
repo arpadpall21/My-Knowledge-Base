@@ -1,558 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Image and Image Sprite </title> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Image and Image Sprite </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Image and Image Sprite (ver 3.4.1) </h1>
-    <p> Updated ( 2019-04-11 )</p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html" title="CSS">CSS></a> Image and Image Sprites 
-    </p>
-<table class="table">
+  <h1> Image and Image Sprite </h1>
+  <p> Updated ( 2019-04-11 / 2024-04-08 )</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Image and Image Sprites
+  </p>
+  <table class="table">
     <tr>
-        <th> Property </th>
-        <th> Value </th>
-        <th> Description </th>
+      <th style="width:15%"> Property </th>
+      <th style="width:40%"> Value </th>
+      <th> Description </th>
     </tr>
     <tr>
-        <td> filter </td>
-        <td>  
-            <strong>filterVal</strong> <i>filterVal ...</i><br>
-            none <span style='color:blue;'>((default) no effect)</span><br>
-            blur(<strong>nr</strong>px) <span style='color:blue;'>(0- [default 0])</span><br>
-            brightness(<strong>nr</strong>%) <span style='color:blue;'>(0-100 [default 100])</span><br>
-            contrast(<strong>nr</strong>%) <span style='color:blue;'>(0- [default 100])</span><br>
-            drop-shadow(<strong>hShadow</strong>px, <strong>vShadow</strong>px, <i>blur</i>px, <i>spread</i>px, <i>color</i>) <span style='color:blue;'>(drop shadow effect)</span><br>
-            greyscale(<strong>nr</strong>%) <span style='color:blue;'>(0-100 [default 0])</span><br>
-            hue-rotate(<strong>nr</strong>deg) <span style='color:blue;'>(color on the hue wheel (0-360 [default 0]))</span><br>
-            invert(<strong>nr</strong>%) <span style='color:blue;'>(sample invert (0-100 [default 0]))</span><br>
-            opacity(<strong>nr</strong>%) <span style='color:blue;'>(0-100 [default 100])</span><br>
-            saturate(<strong>nr</strong>%) <span style='color:blue;'>(0- [default 100])</span><br>
-            sepia(<strong>nr</strong>%) <span style='color:blue;'>(sepia conversion (0-100 [default 0]))</span><br>
-            url(<strong>URL</strong><i>#filter</i>) <span style='color:blue;'>(applies an SVG filter (url points to an SVG filter element))</span>
-        </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> defines the visual effect to the element  
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 53/18 -webkit- </span>
-                <span><i class="fab fa-firefox"></i> 35 </span>
-                <span><i class="fab fa-opera"></i> 40/15 -webkit- </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 13 </span>
-                <span><i class="fab fa-safari"></i> 9.1/6 -webkit- </span>
-            </span>
-        </td>
+      <td> object-fit </td>
+      <td>
+        fill <span class="cssAV">((Default) scaled to fill the content-box (stretched/squished to fit))</span><br>
+        contain <span class="cssAV">(maintains its aspect ratio and scaled to fit inside the container "letterboxed")</span><br>
+        cover <span class="cssAV">(maintains its aspect ratio and scaled to fill <u>whole area of the content-box</u>)</span><br>
+        none <span class="cssAV">(content not sized (keep its original size)</span><br>
+        scale-down <span class="cssAV">(<mark>none</mark> or <mark>contain</mark> whichever is the smallest)</span>
+      </td>
+      <td>
+        - sets how the content image/video is sized on it container <br>
+        - set on <mark>&lt;img&gt;</mark> or <mark>&lt;video&gt;</mark> elements
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 31 </span>
+          <span><i class="fab fa-firefox"></i> 36 </span>
+          <span><i class="fab fa-opera"></i> 19 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 16 </span>
+          <span><i class="fab fa-safari"></i> 7.1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> object-fit </td>
-        <td>  
-            fill <span style="color:#7f85a3;">((default) scaled to fill the content-box (stretched/squished to fit))</span><br> 
-            contain        <span style="color:#7f85a3;">(maintains its aspect ratio and scaled to fill t  content-box "letterboxed")</span><br> 
-            cover          <span style="color:#7f85a3;">(maintains its aspect ratio and scaled to fill t  <u>whole area of the content-box</u>  )</span><br>
-            none           <span style="color:#7f85a3;">(content not sized (keep its original size) )</span><br>
-            scale-down     <span style="color:#7f85a3;">(<mark>none</mark> or <mark>contain</mark> whichever giv  the smallest value )</span>
-        </td>
-        <td>  
-            <i class="fab fa-css3-alt"></i> specifies how an <mark>&lt;img&gt;</mark> or <mark>&lt;video&gt;</mark> "own content" is sized on its own container
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 31 </span>
-                <span><i class="fab fa-firefox"></i> 36 </span>
-                <span><i class="fab fa-opera"></i> 19 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 16 </span>
-                <span><i class="fab fa-safari"></i> 7.1 </span>
-            </span>
-        </td>
+      <td> object-position </td>
+      <td>
+        top|right|bottom|left|center<br>
+        <strong>cssLength:X YcssLength:Y</strong>
+      </td>
+      <td>
+        - positions the image/video content inside its own container <br>
+        - set on <mark>&lt;img&gt;</mark> or <mark>&lt;video&gt;</mark> elements
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 31 </span>
+          <span><i class="fab fa-firefox"></i> 36 </span>
+          <span><i class="fab fa-opera"></i> 19 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 16 </span>
+          <span><i class="fab fa-safari"></i> 10 </span>
+        </span>
+      </td>
     </tr>
-    <tr>
-        <td> object-position </td>
-        <td>  
-            top|right|bottom|left|center<br>
-            <strong>XcssLength YcssLength</strong>
-        </td>
-        <td> 
-            <i class="fab fa-css3-alt"></i> positions an <mark>&lt;img&gt;</mark> or <mark>&lt;video&gt;</mark> "own content box" inside its own container (used with the <mark>object-fill</mark> property) 
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 31 </span>
-                <span><i class="fab fa-firefox"></i> 36 </span>
-                <span><i class="fab fa-opera"></i> 19 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 16 </span>
-                <span><i class="fab fa-safari"></i> 10 </span>
-            </span>
-        </td>
-    </tr>
-</table>   
-<h2 style="color:green;"><u> Notes : </u></h2>
-    <details class="example" id="notes">
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-        <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-<h2 style="color:darkblue;"><u> Image Sprites </u></h2>    
-    <p> - an image sprite is a collection of images put into a single image </p>  
-    <p> - an image sprite is basically showing <u>one part</u> of an image as background in an element </p>
-    <pre>
--- HTML --    
-    &lt;span id="demo"&gt;&lt;/span&gt;
-    
--- CSS --    
-    #demo {
-        display: inline-block;
-        width: 200px;                                           // element's dimension set (background part is displayed at this size)
-        height: 200px;
-        background: url(Images/lightning.jpg) 100px 100px;      // background image and position set (the two coordonates define the background image top left hanging corner) 
-    }
-    </pre>
-<details class="example">    
-    <summary> Example : </summary>
-<h4><u> Images Sprites TEST </u></h4>
-    <img id="one" src="Images/transparent.png">	&nbsp;
-    <img id="two" src="Images/transparent.png">	&nbsp;
-    <img id="three" src="Images/transparent.png">	&nbsp;
-    <img id="four" src="Images/transparent.png">	&nbsp;
-    <img id="five" src="Images/transparent.png">
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- CODE (HTML) --
-    &lt;img id="one" src="transparent.png"&gt;	&nbsp;               // the "src" attribute must have a valid image otherwise the browser will display a broken image in the front panel!
-    &lt;img id="two" src="transparent.png"&gt;	&nbsp;
-    &lt;img id="three" src="transparent.png"&gt;	&nbsp;
-    &lt;img id="four" src="transparent.png"&gt;	&nbsp;
-    &lt;img id="five" src="transparent.png"&gt;
-    
--- CODE (CSS) --
-    #one{                                                           #two{
-        height: 100px;                                                  height: 68px;
-        width: 100px;                                                   width: 100px;
-        background: url(Images/angry_birds.png) -12px -14px;            background: url(Images/angry_birds.png) -323px -22px;
-    }                                                               }
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
 
-    #three{                                                         #four{
-        height: 90px;                                                   height: 60px;
-        width: 75px;                                                    width: 60px;
-        background: url(Images/angry_birds.png) -395px -508px;          background:url(Images/angry_birds.png) -1005px -1512px;
-    }                                                               }
+  <h2 style="color:green;"><u> Remember This : </u></h2>
 
-    #five{
-        height: 48px;
-        width: 48px;
-        background: url(Images/angry_birds.png) -1123px -1453px;
-    }
-    </pre>
-    </details>
-<h4><u> Image sprite on an Inline Element and hover effect </u></h4>    
-    <span id="elementSpriteImage"></span>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- CODE (HTML) --
-    &lt;span id="elementSpriteImage"&gt;&lt;/span&gt;
-    
--- CODE (CSS) --
-    #elementSpriteImage {                                                   #elementSpriteImage:hover {
-        display: inline-block;                                                  border: solid red 2px;
-        border: solid black 2px;                                                background: url(Images/angry_birds hover.png) 50px 80px;                                                                
-        background: url(Images/angry_birds.png) 50px 80px;                  }
-        padding: 20px;
-        height: 40px;
-        width: 100px;
-    }    
-        </pre>
-        </details>
-<h4><u> Horizontal menu with Image Sprite "awesome" technique </u></h4>
-    <ul id="menu">
-        <li id="home"><a href=""></a></li>
-        <li id="about"><a href=""></a></li>
-        <li id="contact"><a href=""></a></li>
-        <li id="services"><a href=""></a></li>
-    </ul>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- CODE (HTML) --
-    &lt;ul id="menu">
-        &lt;li id="home"&gt; &lt;a href="">&lt;/a&gt; &lt;/li&gt;
-        &lt;li id="about"&gt; &lt;a href="">&lt;/a&gt; &lt;/li&gt;
-        &lt;li id="contact"&gt; &lt;a href="">&lt;/a&gt; &lt;/li&gt;
-        &lt;li id="services"&gt; &lt;a href="">&lt;/a&gt; &lt;/li&gt;
-    &lt;/ul&gt;
-    
--- CODE (CSS) --
-    #menu {                                                     #about {
-    position: relative;                                             width: 100px;
-    }                                                               left: 100px;
-    #menu li {                                                      background: url(navBar_Bg.png) -100px 0;
-        list-style-type: none;                                  }
-        margin: 0;                                              #about:hover {
-        padding: 0;                                                 background: url(navBar_Bg.png) -100px 50px;
-        position: absolute;                                     }
-        top: 0;                                                 #contact {
-    }                                                               width: 100px;
-    #menu li, #menu a {                                             left: 198px;
-        display: block;                                             background: url(navBar_Bg.png) 200px 0;
-        height: 50px;                                           }
-    }                                                           #contact:hover {
-    #home {                                                         background: url(navBar_Bg.png) 200px 50px;
-        width: 100px;                                           }
-        left: 0;                                                #services{
-        background: url(navBar_Bg.png) 0 0;                         width: 100px;
-    }                                                               left: 290px;
-    #home:hover {                                                   background: url(navBar_Bg.png) -301px 0;
-        background: url(navBar_Bg.png) 0 50px;                  }
-    }                                                           #services:hover{
-                                                                    background: url(navBar_Bg.png) -301px 50px;
-                                                                }
-        </pre>
-        </details>
-</details>    
-<!--------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> the <mark>filter</mark> property </u></h2>    
-    <pre class="syntax">
-SYNTAX :    filter: <strong>filterVal</strong> <i>filterVal ...</i>                     // <i class="fab fa-css3-alt"></i> defines the visual effect to the element 
-                    none               <span style='color:skyblue;'>// (default) no effect</span>
-                    blur(<strong>nr</strong>px)         <span style='color:skyblue;'>// 0- [default 0]</span>
-                    brightness(<strong>nr</strong>%)    <span style='color:skyblue;'>// 0-100 [default 100]</span>
-                    contrast(<strong>nr</strong>%)      <span style='color:skyblue;'>// 0- [default 100]</span>
-                    drop-shadow(<strong>hShadow</strong>px, <strong>vShadow</strong>px, <i>blur</i>px, <i>spread</i>px, <i>color</i>)   <span style='color:skyblue;'>// drop shadow effect</span>
-                    greyscale(<strong>nr</strong>%)     <span style='color:skyblue;'>// 0-100 [default 0]</span>
-                    hue-rotate(<strong>nr</strong>deg)  <span style='color:skyblue;'>// color on the hue wheel (0-360 [default 0])</span>
-                    invert(<strong>nr</strong>%)        <span style='color:skyblue;'>// sample invert (0-100 [default 0])</span>
-                    opacity(<strong>nr</strong>%)       <span style='color:skyblue;'>// 0-100 [default 100]</span>
-                    saturate(<strong>nr</strong>%)      <span style='color:skyblue;'>// 0- [default 100]</span>
-                    sepia(<strong>nr</strong>%)         <span style='color:skyblue;'>// sepia conversion (0-100 [default 0])</span>
-                    url(<strong>URL</strong><i>#filter</i>)    <span style='color:skyblue;'>// applies an SVG filter (url points to an SVG filter element)</span>
-    </pre>
-<details class="example">
-<summary> DEMO </summary>    
-    <pre>    
-    #demo {
-        filter: opacity(50%) saturate(50%);                     // image half opaque and half desaturated
-    }
-    </pre>
-</details>
-<details class="example">
-    <summary> Example : </summary>    
-<h4><u> CSS Filters </u></h4>
-    <div id="filters">
-        <img id="fxnone" src="Images/lightning.jpg" alt="McQueen" title="none">
-        <img id="fxblur" src="Images/lightning.jpg" alt="McQueen" title="blur">
-        <img id="fxbrightness" src="Images/lightning.jpg" alt="McQueen" title="brightness">
-        <img id="fxcontrast" src="Images/lightning.jpg" alt="McQueen" title="contrast">
-        <img id="fxgreyscale" src="Images/lightning.jpg" alt="McQueen" title="greyscale">
-        <img id="fxhue-rotate" src="Images/lightning.jpg" alt="McQueen" title="hue-rotate">
-        <img id="fxinvert" src="Images/lightning.jpg" alt="McQueen" title="invert">
-        <img id="fxopacity" src="Images/lightning.jpg" alt="McQueen" title="opacity">
-        <img id="fxsaturate" src="Images/lightning.jpg" alt="McQueen" title="saturate">
-        <img id="fxsepia" src="Images/lightning.jpg" alt="McQueen" title="sepia">
-        <img id="fxdrop-shadow" src="Images/lightning.jpg" alt="McQueen" title="drop-shadow">
-        <img id="fxmix" src="Images/lightning.jpg" alt="McQueen" title="fxmix">
-    </div>
-    <details style="clear:left;">
-        <summary> CODE: </summary>
-        <pre>
--- CODE (HTML) --
-    &lt;img id="fxnone" src="Images/lightning.jpg" alt="McQueen" title="none"&gt;
-    &lt;img id="fxblur" src="Images/lightning.jpg" alt="McQueen" title="blur"&gt;
-    &lt;img id="fxbrightness" src="Images/lightning.jpg" alt="McQueen" title="brightness"&gt;
-    &lt;img id="fxcontrast" src="Images/lightning.jpg" alt="McQueen" title="contrast"&gt;
-    &lt;img id="fxgreyscale" src="Images/lightning.jpg" alt="McQueen" title="greyscale"&gt;
-    &lt;img id="fxhue-rotate" src="Images/lightning.jpg" alt="McQueen" title="hue-rotate"&gt;
-    &lt;img id="fxinvert" src="Images/lightning.jpg" alt="McQueen" title="invert"&gt;
-    &lt;img id="fxopacity" src="Images/lightning.jpg" alt="McQueen" title="opacity"&gt;
-    &lt;img id="fxsaturate" src="Images/lightning.jpg" alt="McQueen" title="saturate"&gt;
-    &lt;img id="fxsepia" src="Images/lightning.jpg" alt="McQueen" title="sepia"&gt;
-    &lt;img id="fxdrop-shadow" src="Images/lightning.jpg" alt="McQueen" title="drop-shadow"&gt;
-    &lt;img id="fxmix" src="Images/lightning.jpg" alt="McQueen" title="fxmix"&gt;
-    
--- CODE (CSS) --
-    #fxnone{                                    #fxblur{                                        #fxbrightness{                              
-        filter: none;                               filter: blur(7px);                              filter: brightness(1000%);                  
-        -webkit-filter: none;                       -webkit-filter: blur(7px);                      -webkit-filter: brightness(1000%);          
-    }                                           }                                               }                                           
-
-    #fxcontrast{                                #fxgreyscale{                                   #fxhue-rotate{
-        filter: contrast(500%);                     filter: grayscale(100%);                        filter: hue-rotate(180deg);
-        -webkit-filter: contrast(500%);             -webkit-filter: greyscale(100%);                -webkit-filter: hue-rotate(180deg);
-    }                                           }                                               }
-
-    #fxinvert{                                  #fxopacity{                                     #fxsaturate{
-        filter: invert(100%);                       filter:opacity(25%);                            filter: saturate(500%);
-        -webkit-filter: invert(100%);               -webkit-filter:opacity(25%);                    -webkit-filter: saturate(500%);
-    }                                           }                                               }
-
-    #fxsepia{                                   #fxdrop-shadow{                                             
-        filter: sepia(85%);                         filter: drop-shadow(12px 12px 8px green);
-        -webkit-filter: sepia(85%);                 -webkit-filter: drop-shadow(12px 12px 8px green);
-    }                                           }
-
-    #fxmix{
-        filter: drop-shadow(12px 12px 8px green) blur(2px) hue-rotate(180deg);
-        -webkit-filter: drop-shadow(12px 12px 8px green) blur(2px) hue-rotate(180deg);
-    }
-        </pre>
-    </details>
-<h4><u> Rounded Image  Corners </u></h4>
-    <p> 
-        <img src="Images/Loch Ness.jpg" alt="Loch Ness" width="250px" style="margin-left:40px; border-radius:20px;">
-        <img src="Images/Loch Ness.jpg" alt="Loch Ness" width="250px" style="margin-left:40px; border-radius:50%;">
-        <img src="Images/Loch Ness.jpg" alt="Loch Ness" width="250px" style="margin-left:40px; border-radius:20px 50px;">
-    </p>
-    <details>
-        <summary> CODE: </summary>
-        <pre>
-    &lt;p&gt; 
-        &lt;img src="Images/Loch Ness.jpg" alt="Loch Ness" width="250px" style="margin-left:40px; border-radius:20px;"&gt;
-        &lt;img src="Images/Loch Ness.jpg" alt="Loch Ness" width="250px" style="margin-left:40px; border-radius:50%;"&gt;
-        &lt;img src="Images/Loch Ness.jpg" alt="Loch Ness" width="250px" style="margin-left:40px; border-radius:20px 50px;"&gt;
-    &lt;/p&gt;
-        </pre>  
-    </details>
-<h4><u> Simple Responsive Image </u></h4>
-    <p> - resize the browser window to see this easy fancy technique </p>
-    <img id="resize" src="Images/Loch Ness.jpg" alt="Loch Ness">
-        <details>
-        <summary> CODE: </summary>
-        <pre>
--- CODE (HTML) --
-    &lt;img id="resize" src="Loch Ness.jpg" alt="Loch Ness"&gt;
-
--- CODE (CSS) --
-    #resize{
-        display:block;
-        margin:auto;
-        max-width: 60%;         // maximum 60 percent wide of the current viewport width
-        height: auto;
-    }
-        </pre>
-    </details>
-<h4><u> Text on Image </u></h4>  
-    <div id="imgcont">
-    <img src="Images/lightning.jpg" alt="McQueen">
-        <div id="imgtitle">McQueen</div>
-        <div id="imgtitle1">Super</div>
-        <div id="imgtitle2">Awesome</div>
-    </div>
-        <details>
-        <summary> CODE: </summary>
-        <pre>
--- CODE (HTML) --
-    &lt;div id="imgcont"&gt;
-    &lt;img src="lightning.jpg" alt="McQueen"&gt;
-        &lt;div id="imgtitle">McQueen&lt;/div&gt;
-        &lt;div id="imgtitle1">Super&lt;/div&gt;
-        &lt;div id="imgtitle2">Awesome&lt;/div&gt;
-    &lt;/div&gt;
-
--- CODE (CSS) --
-    #imgcont{                       #imgcont img{                   #imgtitle{
-        position: relative;             width: 600px;                   position: absolute;
-        margin: auto;                   height: auto;                   top: 9%;
-        width: 600px;               }                                   left: 50%;
-    }                                                                   transform: translate(-50%, -50%);
-                                                                        font-size: 2.0em;
-                                                                    }
-
-    #imgtitle1{                                 #imgtitle2{
-        position: absolute;                         position: absolute;
-        top: 100px;                                 bottom: 35px;
-        right: 70px;                                left: 35px;
-        font-size: 1.5em;                           font-size: 1.5em;
-        color: blueviolet;                          color: darkmagenta;
-    }                                           }
-        </pre>
-    </details>
-<h4><u> Polaroid Image/Card </u></h4>
-    <div class="polaroidbgd">
-        <div class="polaroid1">
-            <img src="Images/lights.jpg" alt="lights">
-            <p>Northern Lights in Norway </p>
-        </div>
-        <div class="polaroid2">
-            <img src="Images/rock.jpg" alt="rock">
-            <p> The Troll's tongue in Hardanger, Norway </p>
-        </div>
-    </div>
-        <details>
-        <summary> CODE: </summary>
-        <pre>
--- CODE (HTML) --
-    &lt;div class="polaroidbgd"&gt;
-        &lt;div class="polaroid1"&gt;
-            &lt;img src="lights.jpg" alt="lights"&gt;
-            &lt;p&gt;Northern Lights in Norway &lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div class="polaroid2"&gt;
-            &lt;img src="rock.jpg" alt="rock"&gt;
-            &lt;p&gt; The Troll's tongue in Hardanger, Norway &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
--- CODE (CSS) --
-    .polaroidbgd{                                                                           .polaroid1 img{
-        position: relative;                                                                     width: 100%;
-        background-color: white;                                                             }
-
-        width: 100%;                                                                        .polaroid1 p{
-        height: 500px;                                                                          text-align: center;
-    }                                                                                       }
-    .polaroid1{                                                                             .polaroid2{
-        position: absolute;                                                                     position: absolute;
-        top: 35px;                                                                              top: 35px;
-        left: 7%;                                                                               right: 7%;
-        background-color: white;                                                                background-color: white;
-        width: 40%;                                                                             width: 40%;
-        height: auto;                                                                           height: auto;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
-    }                                                                                       }
-                                                                                            .polaroid2 img{
-                                                                                                width: 100%;
-                                                                                            }
-                                                                                            .polaroid2 p{
-                                                                                                text-align: center;
-                                                                                            }
-        </pre>
-    </details>
-<h4><u> Hoverable User Profil Images </u></h4>
-    <div class="profile-01">
-        <img src="Images/Profile-01.png" alt="profile">
-        <div class="pro-01_cover">
-            <p class="text"> Profile No.1 </p>
-        </div>
-    </div>
-    <div class="profile-02">
-        <img src="Images/Profile-01.png" alt="profile">
-        <div class="pro-02_cover">
-            <p class="text"> Profile No.2 </p>
-        </div>
-    </div>
-    <div class="profile-03">
-        <img class="image" src="Images/Profile-01.png" alt="profile">
-        <div class="pro-03_cover">
-            <p class="text"> Profile No.3 </p>
-        </div>
-    </div>
-        <details style="clear:left">
-        <summary> CODE :</summary>
-        <pre>
--- CODE (HTML) --
-    &lt;div class="profile-01"&gt;
-        &lt;img src="Profile-01.png" alt="profile"&gt;
-        &lt;div class="pro-01_cover"&gt;
-            &lt;p class="text"&gt; Profile No.1 &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="profile-02"&gt;
-        &lt;img src="Profile-01.png" alt="profile"&gt;
-        &lt;div class="pro-02_cover"&gt;
-            &lt;p class="text"&gt; Profile No.2 &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="profile-03"&gt;
-        &lt;img class="image" src="Profile-01.png" alt="profile"&gt;
-        &lt;div class="pro-03_cover"&gt;
-            &lt;p class="text"&gt; Profile No.3 &lt;/p&gt;
-        &lt;/div&gt;
-        
--- CODE (CSS) --
-    div[class|=profile]{                                    .profile-03{
-        position: relative;                                     background-color: green;
-        float: left;                                        }
-        width: 200px;                                       .pro-03_cover{
-        height: 200px;                                          position: absolute;
-        margin: 10px;                                           width: 100%;
-        box-shadow: 5px 5px 2px grey;                           height: 100%;
-    }                                                           top: 0;
-    div[class|=profile] > img{                                  bottom: 0;
-        display: block;                                         left: 0;
-        width: 100%;                                            right: 0;
-        height: auto;                                           background-color: transparent;
-    }                                                       }
-    .profile-01{                                            .pro-03_cover > p{
-        background-color: red;                                  width: 50%;
-    }                                                           border-radius: 5px;
-    .pro-01_cover{                                              position: absolute;
-        position: absolute;                                     top: 50%;
-        width: 100%;                                            left: 50%;
-        height: 100%;                                           color: white;
-        top: 0;                                                 font-weight: bold;
-        left: 0;                                                font-size: 18px;
-        background-color: #008CBA;                              transform: translate(-50%,-100%);
-        opacity: 0;                                             background-color: #008CBA;
-        transition: .5s ease;                                   padding: 10px;
-    }                                                           transition: 0.7s;
-    .pro-01_cover > p{                                          opacity: 0;
-        position: absolute;                                 }
-        top: 50%;                                           .profile-03 > img{
-        left: 50%;                                              transition: 0.7s;
-        color: white;                                           opacity: 1;
-        font-weight: bold;                                  }
-        font-size: 18px;                                    .profile-03:hover .pro-03_cover > p{
-        transform: translate(-50%,-100%);                       cursor: pointer;
-    }                                                           opacity: 1;
-    .profile-01:hover .pro-01_cover{                        }
-        opacity: 1;                                         .profile-03:hover img{
-        cursor: pointer;                                        opacity: 0.5;
-    }                                                           cursor: pointer;
-                                                            }
-    .profile-02{
-        background-color: white;
-    }
-    .pro-02_cover{
-        position: absolute;
-        width: 100%;
-        height: 0;
-        top: 0;
-        bottom: 100%;
-        left: 0;
-        right: 0;
-        overflow: hidden;
-        background-color: #008CBA;
-        transition: .5s ease;
-    }
-    .pro-02_cover > p{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        color: white;
-        font-weight: bold;
-        font-size: 18px;
-        transform: translate(-50%,-100%);
-    }
-    .profile-02:hover .pro-02_cover{
-        bottom: 0;
-        height: 100%;
-        cursor: pointer;
-    }
-        </pre>
-        </details>
-</details>    
-<!--------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> the <mark>object-fit</mark> / <mark>object-position</mark> properties </u></h2>   
-    <img src="contain VS cover.jpg" alt="contain VS cover">
-    <pre class="syntax">
-SYNTAX :    object-fit: fill           <span style="color:skyblue;">// (default) scaled to fill the content-box (stretched/squished to fit)</span>   // <i class="fab fa-css3-alt"></i> specifies how an <mark>&lt;img&gt;</mark> or <mark>&lt;video&gt;</mark> "own content" is sized on its own container  
-                      : contain        <span style="color:skyblue;">// maintains its aspect ratio and scaled to fill the content-box "letterboxed"</span> 
-                      : cover          <span style="color:skyblue;">// maintains its aspect ratio and scaled to fill the <u>whole area of the content-box</u>  </span>
-                      : none           <span style="color:skyblue;">// content not sized (keep its original size) </span>
-                      : scale-down     <span style="color:skyblue;">// <mark>none</mark> or <mark>contain</mark> whichever gives the smallest value </span>
-                      
-            object-position: top|right|bottom|left|center       // <i class="fab fa-css3-alt"></i> positions an <mark>&lt;img&gt;</mark> or <mark>&lt;video&gt;</mark> "own content box" inside its own container (used with the <mark>object-fill</mark> property)  
-                           : <strong>XcssLength YcssLength</strong>
-    </pre>
-<details class="example">
-<summary> DEMO </summary>    
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <h2 class="header"> The <mark>object-fit</mark> / <mark>object-position</mark> properties </h2>
+  <img src="contain VS cover.jpg" alt="contain VS cover">
+  <details class="example">
+    <summary> DEMO </summary>
     <pre>
     img {
         width: 800px;                                           // we set the container size bigger than the original image 
@@ -561,27 +85,27 @@ SYNTAX :    object-fit: fill           <span style="color:skyblue;">// (default)
         object-position: top right;                             // the image itself (content-box) is positioned 
     }
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>    
-<h4 style="color:darkblue;"><u> <mark>object-fit</mark> property TEST </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> <mark>object-fit</mark> property TEST </u></h4>
     <p> - the red border is the original border of the image (scaled up) </p>
-        <p> - <mark>object-fit:fill</mark> (default) sized to fill the element's content </p>
+    <p> - <mark>object-fit:fill</mark> (default) sized to fill the element's content </p>
     <img class="objFit posFill" src="Images/orange_flowers.jpg" alt="orange flowers">
-        <p> - <mark>object-fit:contain</mark> image (own content) mantains its aspect ratio, scaled to fitt the elements content box "letterboxed" </p>
+    <p> - <mark>object-fit:contain</mark> image (own content) mantains its aspect ratio, scaled to fitt the elements content box "letterboxed" </p>
     <img class="objFit posContain" src="Images/orange_flowers.jpg" alt="orange flowers">
-        <p> - <mark>object-fit:cover</mark> image (own content) maintains its aspect ratio, scaled to fill to whole area of the content box </p>
+    <p> - <mark>object-fit:cover</mark> image (own content) maintains its aspect ratio, scaled to fill to whole area of the content box </p>
     <img class="objFit posCover" src="Images/orange_flowers.jpg" alt="orange flowers">
-        <p> - <mark>object-fit:none</mark> image (own content) is not sized  </p>
+    <p> - <mark>object-fit:none</mark> image (own content) is not sized </p>
     <img class="objFit posNone" src="Images/orange_flowers.jpg" alt="orange flowers">
-        <p> - <mark>object-fit:scale-down</mark> choses between the <mark>none</mark> and <mark>contain</mark> values whichever gives the smallest result </p>
-        <p> - on the first image it choses the value <mark>none</mark> because the image container is bigger than the image itself</p>
-        <p> - on the second image it choses the value <mark>contain</mark> because the image container is smaller the the image itself</p>
+    <p> - <mark>object-fit:scale-down</mark> choses between the <mark>none</mark> and <mark>contain</mark> values whichever gives the smallest result </p>
+    <p> - on the first image it choses the value <mark>none</mark> because the image container is bigger than the image itself</p>
+    <p> - on the second image it choses the value <mark>contain</mark> because the image container is smaller the the image itself</p>
     <img class="objFit posScaleDown" src="Images/orange_flowers.jpg" alt="orange flowers">
     <img class="posScaleDown_" src="Images/orange_flowers.jpg" alt="orange flowers">
-        <details style="position:relative;">
-        <summary> CODE : </summary>
-        <pre>
+    <details style="position:relative;">
+      <summary> CODE : </summary>
+      <pre>
 -- HTML -- 
     &lt;img class="objFit posFill" src="Images/orange_flowers.jpg" alt="orange flowers"&gt;
     
@@ -616,20 +140,20 @@ SYNTAX :    object-fit: fill           <span style="color:skyblue;">// (default)
         object-fit: scale-down;
     }
         </pre>
-        </details>
-<h4 style="color:darkblue;"><u> <mark>object-position</mark> property TEST </u></h4>
-<!--------------------------------------------------------------------------------------------------------------------->
-        <p> - <mark>object-position:top center</mark> placed </p> 
+    </details>
+    <h4 style="color:darkblue;"><u> <mark>object-position</mark> property TEST </u></h4>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <p> - <mark>object-position:top center</mark> placed </p>
     <img class="objPos pos1" src="Images/orange_flowers.jpg" alt="orange flowers">
-        <p> - <mark>object-position:bottom right</mark> placed </p> 
+    <p> - <mark>object-position:bottom right</mark> placed </p>
     <img class="objPos pos2" src="Images/orange_flowers.jpg" alt="orange flowers">
-            <p> - <mark>object-position:80% 5%</mark> placed </p> 
+    <p> - <mark>object-position:80% 5%</mark> placed </p>
     <img class="objPos pos3" src="Images/orange_flowers.jpg" alt="orange flowers">
-            <p> - <mark>object-position:148px -22px</mark> placed </p> 
+    <p> - <mark>object-position:148px -22px</mark> placed </p>
     <img class="objPos pos4" src="Images/orange_flowers.jpg" alt="orange flowers">
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
 -- HTML -- 
     &lt;img class="objPos pos1" src="Images/orange_flowers.jpg" alt="orange flowers"&gt;
     
@@ -651,9 +175,142 @@ SYNTAX :    object-fit: fill           <span style="color:skyblue;">// (default)
     .pos3 { object-position: 80% 5%; }
     .pos4 { object-position: 148px -22px; }
         </pre>
-        </details>
-</details>
+    </details>
+  </details>
+  <!------------------------------------------------------------------------------------>
+  <hr>
+  <h2 class="headerExtra"> Image Sprites </h2>
+  <p> - an image sprite is basically displaying one area of a larger image </p>
+  <img src="Images/angry_birds_sprite.png" alt="image sprite demo">
+  <details class="example">
+    <summary> DEMO : </summary>
+  <pre>
+// HTML ----
+    &lt;span id="demo"&gt;&lt;/span&gt;
+    
+    
+// CSS -----
+    #demo {
+        display: inline-block;
+        width: 200px;                                           // element's dimension set (background part is displayed at this size)
+        height: 200px;
+        background: url(Images/lightning.jpg) 100px 100px;      // background image and position set (the two coordonates define the background image top left hanging corner) 
+    }
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 class="header"> Images Sprites </h4>
+    <img id="one" src="Images/transparent.png"> &nbsp;
+    <img id="two" src="Images/transparent.png"> &nbsp;
+    <img id="three" src="Images/transparent.png"> &nbsp;
+    <img id="four" src="Images/transparent.png"> &nbsp;
+    <img id="five" src="Images/transparent.png">
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML ---------------------
+    &lt;img id="one" src="transparent.png"&gt;	&nbsp;               // the "src" attribute must have a valid image otherwise the browser will display a broken image in the front panel!
+    &lt;img id="two" src="transparent.png"&gt;	&nbsp;
+    &lt;img id="three" src="transparent.png"&gt;	&nbsp;
+    &lt;img id="four" src="transparent.png"&gt;	&nbsp;
+    &lt;img id="five" src="transparent.png"&gt;
+    
+    
+// CSS ----------------------------
+    #one{                                                           #two{
+        height: 100px;                                                  height: 68px;
+        width: 100px;                                                   width: 100px;
+        background: url(Images/angry_birds.png) -12px -14px;            background: url(Images/angry_birds.png) -323px -22px;
+    }                                                               }
 
-    <br><br>
+    #three{                                                         #four{
+        height: 90px;                                                   height: 60px;
+        width: 75px;                                                    width: 60px;
+        background: url(Images/angry_birds.png) -395px -508px;          background:url(Images/angry_birds.png) -1005px -1512px;
+    }                                                               }
+
+    #five{
+        height: 48px;
+        width: 48px;
+        background: url(Images/angry_birds.png) -1123px -1453px;
+    }
+    </pre>
+    </details>
+    <!--------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Image sprite on an Inline Element and hover effect </h4>
+    <span id="elementSpriteImage"></span>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML -------------------------
+    &lt;span id="elementSpriteImage"&gt;&lt;/span&gt;
+    
+    
+// CSS --------------------------
+    #elementSpriteImage {                                                   #elementSpriteImage:hover {
+        display: inline-block;                                                  border: solid red 2px;
+        border: solid black 2px;                                                background: url(Images/angry_birds hover.png) 50px 80px;                                                                
+        background: url(Images/angry_birds.png) 50px 80px;                  }
+        padding: 20px;
+        height: 40px;
+        width: 100px;
+    }    
+        </pre>
+    </details>
+    <!--------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Horizontal menu with Image Sprite "awesome" technique </h4>
+    <ul id="menu">
+      <li id="home"><a href=""></a></li>
+      <li id="about"><a href=""></a></li>
+      <li id="contact"><a href=""></a></li>
+      <li id="services"><a href=""></a></li>
+    </ul>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML ------------------
+    &lt;ul id="menu">
+        &lt;li id="home"&gt; &lt;a href="">&lt;/a&gt; &lt;/li&gt;
+        &lt;li id="about"&gt; &lt;a href="">&lt;/a&gt; &lt;/li&gt;
+        &lt;li id="contact"&gt; &lt;a href="">&lt;/a&gt; &lt;/li&gt;
+        &lt;li id="services"&gt; &lt;a href="">&lt;/a&gt; &lt;/li&gt;
+    &lt;/ul&gt;
+    
+    
+// CSS --------------
+    #menu {                                                     #about {
+    position: relative;                                             width: 100px;
+    }                                                               left: 100px;
+    #menu li {                                                      background: url(navBar_Bg.png) -100px 0;
+        list-style-type: none;                                  }
+        margin: 0;                                              #about:hover {
+        padding: 0;                                                 background: url(navBar_Bg.png) -100px 50px;
+        position: absolute;                                     }
+        top: 0;                                                 #contact {
+    }                                                               width: 100px;
+    #menu li, #menu a {                                             left: 198px;
+        display: block;                                             background: url(navBar_Bg.png) 200px 0;
+        height: 50px;                                           }
+    }                                                           #contact:hover {
+    #home {                                                         background: url(navBar_Bg.png) 200px 50px;
+        width: 100px;                                           }
+        left: 0;                                                #services{
+        background: url(navBar_Bg.png) 0 0;                         width: 100px;
+    }                                                               left: 290px;
+    #home:hover {                                                   background: url(navBar_Bg.png) -301px 0;
+        background: url(navBar_Bg.png) 0 50px;                  }
+    }                                                           #services:hover{
+                                                                    background: url(navBar_Bg.png) -301px 50px;
+                                                                }
+        </pre>
+    </details>
+  </details>
+
+
+  <br><br>
 </body>
+
 </html>

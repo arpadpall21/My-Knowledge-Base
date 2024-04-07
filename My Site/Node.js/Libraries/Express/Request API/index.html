@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> Request API </title> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../../Assets/stylesPages.css"> 
+    <script src="../../../../Assets/scriptPages.js"></script>
+</head>
+<body>
+<h1> Request API </h1>
+    <p> Updated ( 2021-01-27 / 2024-02-25 )</p>
+  <nav class="sitenav"> 
+    <a href="../../../../index.html" title="home">MySite></a>
+    <a href="../../../index.html">Node.js></a>
+    <a href="../index.html">Express JS></a> Request API
+  </nav>
+  <br>
+<table class="table">
+<caption> Request Object  
+    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+</caption>
+    <tr>
+        <th style="width:30%;"> Property / Method </th>
+        <th> Description </th>
+    </tr>
+    <tr class="08.01">
+        <td> 
+            <strong>req</strong>.accepts(<strong class="openable">mimeType:str|[mimeType:str, ...]<div>
+                <p> - we can also pass a best match like <mark>'html'</mark>, <mark>'json'</mark>, <mark>'png'</mark> (these will match <mark>'text/html'</mark>, <mark>'application/json'</mark>, <mark>'image/png'</mark>) </p>
+            </div></strong>) 
+        </td>
+        <td> 
+            - if the request has an <mark>Accept</mark> header with <strong>mimeType</strong> directive then the first matching <strong>mimeType</strong> is returned in the <mark>Accept</mark> header <br>
+            - if the request has an <mark>Accept</mark> header but the directive does not match <strong>mimeType</strong> returns <mark>false</mark> <br>
+            - if the request does not have <mark>Accept</mark> header returns the passed <strong>mimeType</strong> 
+        </td>
+    </tr>
+    <tr class="08.02">
+        <td> 
+            <strong>req</strong>.acceptsCharsets(<strong>charset:str, [charset:str, ...]</strong>) 
+        </td>
+        <td> 
+            - if the request has an <mark>Accept-Charset</mark> header with <strong>charset</strong> directive then the first matching <strong>charset</strong> is returned in the <mark>Accept-Charset</mark> header <br>
+            - if the request has an <mark>Accept-Charset</mark> header but the directive does not match <strong>charset</strong> returns <mark>false</mark> 
+            - if the request does not have <mark>Accept-Charset</mark> header returns the passed <strong>charset</strong> 
+        </td>
+    </tr>
+    <tr class="08.03">
+        <td> 
+            <strong>req</strong>.acceptsEncodings(<strong>compressAlg:str, [compressAlg:str, ...]</strong>)
+        </td>
+        <td> 
+            - if the request has an <mark>Accept-Encoding</mark> header with <strong>compressAlg</strong> directive then the first matching <strong>compressAlg</strong> is returned in the <mark>Accept-Encoding</mark> header <br>
+            - if the request has an <mark>Accept-Encoding</mark> header but the directive does not match <strong>compressAlg</strong> returns <mark>false</mark> <br>
+            - if the request does not have <mark>Accept-Encoding</mark> header returns <mark>false</mark>    
+        </td>
+    </tr>
+    <tr class="08.04">
+        <td> 
+            <strong>req</strong>.acceptsLanguages(<strong>lang:str, [lang:str, ...]</strong>)
+        </td>
+        <td> 
+            - if the request has an <mark>Accept-Language</mark> header with <strong>lang:str</strong> directive then first matching <strong>lang</strong> is returned in the <mark>Accept-Language</mark> header <br>
+            - if the request has an <mark>Accept-Language</mark> header but the directive does not match <strong>lang</strong> returns <mark>false</mark> <br>
+            - if the request does not have <mark>Accept-Language</mark> header returns the passed <strong>lang</strong> 
+        </td>
+    </tr>
+    <tr class="01">
+        <td> <strong>req</strong>.app </td>
+        <td> 
+            - returns the <strong>app</strong> object that uses this middleware
+        </td>
+    </tr>
+    <tr class="03.03">
+        <td> 
+            <strong>req</strong>.baseUrl
+        </td>
+        <td> 
+            - returns the base URL path (without querystring) <br>
+            - in non-nested <mark><strong>app</strong>.<strong>httpMethod</strong>()</mark> middlewares returns <mark>''</mark> (empty string) <br>
+            - in nested <mark><strong>app</strong>.<strong>httpMethod</strong>()</mark> and <mark><strong>router</strong>.<strong>httpMethod</strong>()</mark> middlewares returns the <strong>app|router</strong> mount path <br>
+            - should not be used in any <mark>use()</mark> middelwares 
+        </td>
+    </tr>
+    <tr class="10">
+        <td> 
+            <strong>req</strong>.body
+        </td>
+        <td> 
+            - returns the request body, requires a body parser middleware (like <mark>express.text()</mark>) to be used before on the route, otherwise returns <mark>undefined</mark>    
+        </td>
+    </tr>
+    <tr class="04.01">
+        <td> 
+            <strong>req</strong>.cookies
+        </td>
+        <td> 
+            - returns an object containing the request's (non-signed) cookies (as key/value pairs) <br>
+            - requires the <mark>cookie-parser</mark> module's <mark>cookieParser()</mark> middleware to be mounted before 
+        </td>
+    </tr>
+    <tr class="05.01">
+        <td> 
+            <strong>req</strong>.fresh
+        </td>
+        <td> 
+            - returns <mark>true</mark> if the client's request is still <span class="openable">'fresh'<div>
+                <p> The client Response considered 'fresh' if the response <mark>Cache-Control</mark> header doesn't have the <mark>no-cache</mark> directive (has some other directive(s) like <mark>max-age=60000</mark>) and any of the following are true </p>
+                <hr>
+                <p> 1) the <mark>If-None-Match</mark> request header has <mark>*</mark> directive [TESTED: 2021-01-25 = works] </p> 
+                <p> 2) the <mark>If-Modified-Since</mark> request header is specified and <mark>Last-Modified</mark> request header is equal to or earlier than the <mark>Modified</mark> request header [TESTED: 2021-01-25 = I don't understad this at all there's no <mark>Modified</mark> header at all (not worked)] </p>
+                <p> 3) the <mark>If-None-Match</mark> request header, after being parsed into its directives, doesn’t match the <mark>etag</mark> response header [TESTED: 2021-01-25 = I don't understad (not worked)] </p>
+            </div></span>, otherwise <mark>false</mark> 
+        </td>
+    </tr>
+    <tr class="09.02">
+        <td> 
+            <strong>req</strong>.get(<strong>headerName:str</strong>)
+        </td>
+        <td> 
+            - returns the specified header value (case insensitive)
+        </td>
+    </tr>
+    <tr class="09.01">
+        <td> 
+            <strong>req</strong>.headers
+        </td>
+        <td> 
+            - returns all request headers in an object (header fields are parsed to lowercase)
+        </td>
+    </tr>
+    <tr class="02.01">
+        <td> 
+            <strong>req</strong>.hostname
+        </td>
+        <td> 
+            - returns the request <mark>Host</mark> header directive <br>
+            - if the <strong>app</strong>'s 'trust proxy' setting is <mark>true</mark> then the (first) <mark>X-Forwarded-Host</mark> header value is returned instead 
+        </td>
+    </tr>
+    <tr class="02.02">
+        <td> 
+            <strong>req</strong>.ip
+        </td>
+        <td> 
+            - returns the remote client IP address in a string <br>
+            - if the <strong>app</strong>'s 'trust proxy' setting is <mark>true</mark> then the (first) <mark>X-Forwarded-For</mark> header value is returned instead 
+        </td>
+    </tr>
+    <tr class="02.03">
+        <td> 
+            <strong>req</strong>.ips
+        </td>
+        <td> 
+            - returns an Array which contains all <mark>X-Forwarded-For</mark> header values <u>when the <strong>app</strong>'s 'trust proxy' setting is <mark>true</mark></u> 
+        </td>
+    </tr>
+    <tr class="08.05">
+        <td> 
+            <strong>req</strong>.is(<strong class="openable">mimeType:str|[mimeType:str, ...]<div>
+                <p> - we can also pass a best match like <mark>'html'</mark>, <mark>'json'</mark>, <mark>'png'</mark> (these will match <mark>'text/html'</mark>, <mark>'application/json'</mark>, <mark>'image/png'</mark>) </p>
+            </div></strong>) 
+        </td>
+        <td> 
+            - if the request has a <mark>Content-Type</mark> header with <strong>mimeType</strong> directive then the matching <strong>mimeType</strong> is returned in the <mark>Content-Type</mark> header <br>
+            - if the request has a <mark>Content-Type</mark> header but the directive does not match <strong>mimeType</strong> returns <mark>false</mark> <br>
+            - if the request does not have <mark>Content-Type</mark> header returns <mark>false</mark> 
+        </td>
+    </tr>
+    <tr class="02.04">
+        <td> 
+            <strong>req</strong>.method
+        </td>
+        <td> 
+            - returns the HTTP request method
+        </td>
+    </tr>
+    <tr class="03.01">
+        <td> 
+            <strong>req</strong>.originalUrl
+        </td>
+        <td> 
+            - returns the originally requested URL by the client (path and querystring)  
+        </td>
+    </tr>
+    <tr class="06">
+        <td> 
+            <strong>req</strong>.params
+        </td>
+        <td> 
+            - returns the parameter values received from the <strong>routePath</strong> in an object 
+        </td>
+    </tr>
+    <tr class="03.04">
+        <td> 
+            <strong>req</strong>.path
+        </td>
+        <td> 
+            - returns the URL path (without querystring) <br>
+            - in non-nested <mark><strong>app</strong>.<strong>httpMethod</strong>()</mark> middlewares returns the requested URL path <br>
+            - in nested <mark><strong>app</strong>.<strong>httpMethod</strong>()</mark> and <mark><strong>router</strong>.<strong>httpMethod</strong>()</mark> middlewares the path is calculated from the <strong>app|router</strong> mount point <br>
+            - should not be used in any <mark>use()</mark> middelwares    
+        </td>
+    </tr>
+    <tr class="02.05">
+        <td> 
+            <strong>req</strong>.protocol
+        </td>
+        <td> 
+            - returns the request protocol (ex: <mark>http</mark>) <br>
+            - if the <strong>app</strong>'s 'trust proxy' setting is <mark>true</mark> then the <mark>X-Forwarded-Proto</mark> header value is returned   
+        </td>
+    </tr>
+    <tr class="07">
+        <td> 
+            <strong>req</strong>.query
+        </td>
+        <td> 
+            - parses the querystring part of the URL into an object 
+        </td>
+    </tr>
+    <tr class="08.06">
+        <td> 
+            <strong>req</strong>.range(<strong class="openable">maxSize(exc):nr<div>
+                <p> - the maximum satisfiable size (excluded) by the server  </p>
+                <p> - ex: if the client requests <mark>Range:bytes=10-500</mark> but this setting is <mark>400</mark> (<mark><strong>req</strong>.range(400</mark>) returns = <mark>[{start:10, end:399}, type:'bytes'] </p>
+            </div></strong>, <i class="openable">option:obj<div>
+                <p> combine: <strong>bol</strong> - combines request ranges into one range <u>if the values are overlapping</u> (ex: <mark>Range:bytes=10-1000, 255-500, 1000-</mark> returns <mark>[{start:10, end:1499}, type:'bytes'])</mark> (with <mark>1500</mark> maxRane) (Default: <mark>false</mark>) </p>
+            </div></i>) 
+        </td>
+        <td> 
+            - parses the <mark>Range</mark> header into an Array of objects (ex: <mark>[{start:10, end:499}, {start:255, end:499}, type:'bytes']</mark>) <br>
+            - the returned Array of objects basically indicates the satisfiable range(s) by the server <br>
+            - returns (<mark>-1</mark> = <span class="openable">range not satisfiable<div>
+                <p> - the server has a shorter content than the client minimum requested range (ex: request <mark>Range:10-50</mark> / <mark><strong>req</strong>.range(5)</mark> = the server has 5 bytes of content but the client request at least 10) </p>
+            </div></span>) (<mark>-2</mark> = incorrect <mark>Range</mark> directive)   
+        </td>
+    </tr>
+    <tr class="03.02">
+        <td> 
+            <strong>req</strong>.route
+        </td>
+        <td> 
+            - in any <mark><strong>app|router</strong>.<strong>httpMethod</strong>()</mark> middelware returns the 1st argument of the requesting <strong>httpMethod()</strong> in an object (<mark>{path:<strong>routePath:str</strong>, ...}</mark>) <br>
+            - in any <mark>use()</mark> middleware returns <mark>undeifned</mark> 
+        </td>
+    </tr>
+    <tr class="02.06">
+        <td> 
+            <strong>req</strong>.secure
+        </td>
+        <td> 
+            - returns <mark>true</mark> if the connection is estabilished over TLS, <mark>false</mark> otherwise   
+        </td>
+    </tr>
+    <tr class="04.02">
+        <td> 
+            <strong>req</strong>.signedCookies
+        </td>
+        <td> 
+            - returns an object containing the request's <span class="openable">signed cookies<div>
+                <p> - the basic concept of signed cookies is the server sends a cookie to the client and the signature makes sure that the cookie value cannot be changes </p> 
+                <p> - a signed cookie is a normal cookie with a signature added to the cookie's value (ex: <mark>Set-Cookie: pallCookie=s%3Amorgo.TjsXBTZzukdt%2BLhCUluinzzFY42g9KT4L%2B660gygK1s</mark>) (<mark>morgo</mark> is the value here) </p>
+                <p> - the value is <b>publicly visible</b> but cannot be changed, if any client changes the cookie value the server will notice this because of the signature </p>
+            </div></span> (as key/value pairs) <br>
+            - requires the <mark>cookie-parser</mark> module's <mark>cookieParser(<strong>secretKey:str</strong>)</mark> middleware to be mounted before 
+        </td>
+    </tr>
+    <tr class="05.02">
+        <td> 
+            <strong>req</strong>.stale
+        </td>
+        <td> 
+            - returns <mark>true</mark> if the client's request is <span class="openable">'stale'<div>
+                <p> The client Response considered 'fresh' if the response <mark>Cache-Control</mark> header doesn't have the <mark>no-cache</mark> directive (has some other directive(s) like <mark>max-age=60000</mark>) and any of the following are true </p>
+                <hr>
+                <p> 1) the <mark>If-None-Match</mark> request header has <mark>*</mark> directive [TESTED: 2021-01-25 = works] </p> 
+                <p> 2) the <mark>If-Modified-Since</mark> request header is specified and <mark>Last-Modified</mark> request header is equal to or earlier than the <mark>Modified</mark> request header [TESTED: 2021-01-25 = I don't understad this at all there's no <mark>Modified</mark> header at all (not worked)] </p>
+                <p> 3) the <mark>If-None-Match</mark> request header, after being parsed into its directives, doesn’t match the <mark>etag</mark> response header [TESTED: 2021-01-25 = I don't understad (not worked)] </p>
+            </div></span>, otherwise <mark>false</mark>    
+        </td>
+    </tr>
+    <tr class="02.07">
+        <td> 
+            <strong>req</strong>.subdomains
+        </td>
+        <td> 
+            - returns an Array containing the hostname's subdomains <span class="openable">(Default: hostname counted from right-to-left arter 2 dots)<div>
+                <p> - this setting can be modified by the <strong>app</strong>'s 'subdomain offset' setting </p>
+            </div></span>    
+        </td>
+    </tr>
+    <tr class="08.07">
+        <td> 
+            <strong>req</strong>.xhr
+        </td>
+        <td> 
+            - returns <mark>true</mark> if the request has a <mark>X-Requested-With:XMLHttpRequest</mark> header, otherwise <mark>false</mark>  
+        </td>
+    </tr>
+</table>
+<h2 style="color:green;"><u> Notes : </u></h2>
+    <details class="example" id="notes">
+    <summary> Notes :</summary>
+        <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+    </details>
+<h2 style="color:green;"><u> Useful Links : </u></h2>
+    <p><a href="https://expressjs.com/en/4x/api.html#req" target="_blank"> Request API (expressjs.com)</a></p>
+<h2 style="color:green;"><u> Remember This : </u></h2>
+    
+<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+    <pre class="syntax">
+    
+    function <reqval>middleware</reqval>(req, res, next) {
+        req                                 // request object 
+    }
+    </pre>
+<details class="example">
+<summary> DEMO </summary>
+    <pre>
+    const express = require('express');
+    const app = express();
+            
+    app.use('/', 
+        express.text(),                                                                // -! text body parser middleware used, otherwise the 'body' property would be 'undefined'    
+        function(req, res, next){
+    
+// app / hostname / ip / ips / method / protocol / secure / --------------------------- 
+        req.app;                                                                       // -> app               // returns the app object that uses this middleware 
+        
+        req.hostname;                                                                  // -> 'localhost'       // returns the request Host header directive     
+        
+        req.ip;                                                                        // -> '127.0.0.1'       // returns the remote client IP address 
+        req.ips;                                                                       // -> []                // empty Array because the app's 'trust proxy' setting is false    
+        
+        req.method;                                                                    // -> 'GET'             // request method 
+        req.protocol;                                                                  // -> 'http'            // request protocol  
+        req.secure;                                                                    // -> false             // connection is not over TLS  
+        
+// subdomains -------------------------------------------------------------------------
+        req.subdomains;                                                                // -> []                // no subdomains (by default subdomains are counted in the hostname from right-to-left after the 2nd point)   
+                                                                                       // ex: if the hosname is 'sub1.sub2.someSite.com' would return -> ['sub2', 'sub1']    
+        
+        app.get('subdomain offset')                                                    // -> 2                 // default subdomain count   
+        app.set('subdomain offset', 1)                                                 // this sets set the number of dots where to count the subdomains from in the hostname (after the 1st dot from right-to-left)    
+        
+// fresh / stale ----------------------------------------------------------------------
+        req.fresh;                                                                     // -> false             // the request is considered stale (server needs to respond with a fresh content)    
+        req.stale;                                                                     // -> true 
+        
+// query (URL = 'http://localhost/someSite?key1=1&key2=2&key3=3' ----------------------
+        req.query;                                                                     // -> {key1:'1', key2:'2', key3:'3'}     // parses the URL query string into an object 
+        
+// headers / get() --------------------------------------------------------------------
+        req.headers;                                                                   // -> {content-type:'text/plain', ...}    // returns all request headers in an object (header fields are lowercased)    
+        
+        req.get('Content-Type');                                                       // -> 'text/plain'       // returns the specified header field directive   
+        req.get('COntEnT-TyPE');                                                       // -> 'text/plain'       // case insensitive seach  
+        
+// body -------------------------------------------------------------------------------
+        req.body;                                                                      // -> 'response body'    // requires a body parser middleware to be used before on the route    
+                                                                                                                // -! without body parser middleware would return 'undefined'    
+    })    
+        
+    app.listen(1000, () => { console.log('Express is Listening') })      
+    </pre>
+    <!-------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>originalUrl</mark> / <mark>route</mark> / <mark>baseUrl</mark> / <mark>path</mark> properties </h4>
+    <p> - the test request URL is <mark>localhost:1000/pall?favCol=blue</mark> (for non-nested examples) </p>
+    <p> - the test request URL is <mark>localhost:1000/pall/21?favCol=blue</mark> (for nested examples) </p>
+    <pre>
+    const express = require('express');
+    const app = express();
+    const app2 = express();
+    const router = express.Router();
+    
+// in non-nested app.httpMethod() -----------------------------------------------------
+    app.all('/:user', function(req, res, next){
+        req.originalUrl;                                                               // -> '/pall?favCol=blue'            // returns the original path and query string    
+        req.route;                                                                     // -> {path:'/:user', stack[...]}    // the 1st argument of the method where this middleware is   
+        req.baseUrl;                                                                   // -> ''                             // empty string becasue the app is not nested    
+        req.path;                                                                      // -> '/pall'                        // returns the request URL path   
+        
+        res.end('OK');
+    });
+    
+// in nested app.httpMethod() ---------------------------------------------------------
+    app2.all('/:id', function(req, res, next){
+        req.originalUrl;                                                               // -> '/pall/21?favCol=blue'         // returns the original path and query string  
+        req.route;                                                                     // -> {path:'/:id', stack[...]}      // the 1st argument of the method where this middleware is    
+        req.baseUrl;                                                                   // -> '/pall'                        // the route where this app2 is mounted on   
+        req.path;                                                                      // -> '/21'                          // the path is calculated from this middleware   
+        
+        res.end('OK');
+    })
+    
+    app.use('/:user', app2)
+    
+// in router.httpMethod() -------------------------------------------------------------
+    router.all('/:id', function(req, res, next){
+        req.originalUrl;                                                               // -> '/pall/21?favCol=blue'         // returns the original path and query string    
+        req.route;                                                                     // -> {path:'/:id', stack[...]}      // the 1st argument of the method where this middleware is    
+        req.baseUrl;                                                                   // -> '/pall'                        // the route where this router is mounted on   
+        req.path;                                                                      // -> '/21'                          // the path is calculated from this middleware   
+        
+        res.end('OK');
+    })
+    
+    app.use('/:user', router)
+    
+// in any 'use()' method --------------------------------------------------------------
+    app2.use('/:id', function(req, res, next){
+        req.originalUrl;                                                               // -> '/pall/21?favCol=blue'         // returns the original path and query string    
+        req.route;                                                                     // -> undefined                      // in 'use()' methods is undefined  
+        req.baseUrl;                                                                   // -> '/pall/21'                     // -! should not be used here    
+        req.path;                                                                      // -> '/'                            // -! should not be used here    
+        
+        next();
+    })
+    
+    router.use('/:id', function(req, res, next){
+        req.originalUrl                                                                // -> '/pall/21?favCol=blue'         // returns the original path and query string    
+        req.route;                                                                     // -> undefined                      // in 'use()' methods is undefined  
+        req.baseUrl;                                                                   // -> '/pall/21'                     // -! should not be used here    
+        req.path;                                                                      // -> '/'                            // -! should not be used here    
+        
+        res.end('OK');
+    })
+    
+    app.use('/:user', function(req, res, next){
+        req.originalUrl                                                                // -> '/pall/21?favCol=blue'         // returns the original path and query string    
+        req.route;                                                                     // -> undefined                      // in 'use()' methods is undefined  
+        req.baseUrl;                                                                   // -> '/pall'                        // -! should not be used here    
+        req.path;                                                                      // -> '/21'                          // -! should not be used here    
+        
+        next();
+    }, app2, router);
+    
+    
+    app.listen(1000, () => { console.log('Express is Listening') });   
+    </pre>
+    <!-------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>cookies</mark> / <mark>signedCookies</mark> properties </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    const cookieParser = require('cookie-parser');                                     // the cookie-parser package is required 
+    
+    app.all('/', 
+        cookieParser('pallSecret'),                                                    // the 'pallSecret' is the secret key the server uses to sign cookie values    
+        function(req, res, next){
+            req.cookies;                                                               // -> {egy: 'one'}       // request cookies
+            req.signedCookies;                                                         // -> {ketto: 'two'}     // signed request cookies    
+                                                                                       // -> {ketto: false}     // -! if the signed cookie value is changed by any client
+            
+            res.cookie('egy', 'one');                                                  // sending cookies to the client 
+            res.cookie('ketto', 'two', {signed:true});                                 // sings the cookie value (with the 'pallSecret' key) and sends it to the client   
+            
+            res.end('OK');
+        }
+    );
+    
+    app.listen(1000, () => { console.log('Express is Listening') })      
+    </pre>
+    <!-------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>params</mark> property (the URL is <mark>http://localhost:1000/sub/nest/child</mark>) </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    const router = express.Router();
+    
+    router.all('/:test3', function(req, res, next){
+        req.params;                                                                    // -> {test3:'child'}            // the received URL parameter values are returned here    
+        
+        res.end('OK');
+    });
+    
+    app.use('/:test/:test2', 
+        function(req, res, next){
+            req.params;                                                                // -> {test:'sub', test2:'nest'} // the received URL parameter values are returned here    
+            
+            next();
+        }, 
+        router
+    ); 
+    
+    app.listen(1000, () => { console.log('Express is Listening') })  
+    </pre>
+    <!-------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>accept()</mark> / <mark>acceptsCharsets()</mark> / <mark>acceptsEncodings()</mark> / <mark>acceptsLanguages()</mark> / <mark>is()</mark> / <mark>range()</mark> / <mark>xhr</mark> methods and property </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+    app.all('/', 
+        function(req, res, next){
+    
+// accepts() --------------------------------------------------------------------------
+    // request with 'Accept:text/html, application/json' header -----------------------
+            req.accepts(['json', 'html'])                                              // -> 'html'         // the first accepted Accept header directive is returned   
+            req.accepts('jpeg');                                                       // -> false          // the Accept header doesn't have such directive   
+            
+    // request without 'Accept' header ------------------------------------------------
+            req.accepts(['json', 'html'])                                              // -> 'json'         // client without Accept header accepts any response type   
+            
+// acceptsCharsets() ------------------------------------------------------------------
+    // request with 'Accept-Charset:utf-8' header -------------------------------------
+            req.acceptsCharsets(['latin-1', 'utf-8']);                                 // -> 'utf-8'        // the first accepted Accept header directive is returned    
+            req.acceptsCharsets('iso-8859-1');                                         // -> false          // the Accept header doesn't have such directive   
+            
+    // request without 'Accept-Charset' header ----------------------------------------
+            req.acceptsCharsets('iso-8859-1');                                         // -> 'iso-8859-1'   // client without Accept-Charset header accepts any character encodings    
+            
+// acceptsEncodings() -----------------------------------------------------------------
+    // request with 'Accept-Encoding:gzip, deflate' header ----------------------------
+            req.acceptsEncodings('deflate')                                            // -> 'deflate'      // the first accepted Accept-Encoding header directive is returned     
+            req.acceptsEncodings('br');                                                // -> false          // the Accept-Encoding header doesn't have such directive    
+            
+    // request without 'Accept-Encoding' header ---------------------------------------
+            req.acceptsEncodings(['br', 'deflate']);                                   // -> false          // client doesns't suport compression if the 'Accept-Encoding' header is not populated    
+            
+// acceptsLanguages() -----------------------------------------------------------------
+    // request with 'Accept-Language:fr-FR, de-DE, en-US' header ----------------------
+            req.acceptsLanguages(['jp-JP', 'hu-HU', 'fr'])                             // -> 'de'           // the first accepted Accept-Langauge header directive is returned   
+            req.acceptsLanguages(['jp-JP', 'hu-HU', 'ro-RO'])                          // -> false          // the Accept-Langauge header doesn't have such directive    
+                
+    // request without 'Accept-Language' header ---------------------------------------
+            req.acceptsLanguages(['jp-JP', 'hu-HU', 'ro-RO'])                          // -> 'jp-JP'        // client without Accept-Language header accepts any languages     
+            
+// is() -------------------------------------------------------------------------------
+    // request with 'Content-Type:text/html, text/plain' header -----------------------
+            req.is(['application/json', 'text', 'html']);                              // -> 'html'         // the accepted Content-Type directive is returned   
+            req.is(['application/json', 'text']);                                      // -> false          // the Content-Type header doesn't have such directive    
+        
+    // request without 'Content-Type' header ------------------------------------------
+            req.is(['application/json', 'text']);                                      // -> false          // no Content-Type header is populated    
+    
+// range() ----------------------------------------------------------------------------
+    // request with 'Range:bytes=25-126, 250-500, 1000-' header -----------------------
+            req.range(1801)                                                            // -> [{start:25, end:126}, {start:250, end:1001}, {start:1000, end:1800}, type:'bytes']   // parses the 'Range' directive into an object  
+                                                                                         // the passed value '1801' is the highest accepted byte range (excluded) so the parsed ranges can be processed and returned to the client    
+            
+            req.range(1801, {combine:true})                                            // -> [{start:25, end:126}, {start:250, end:1800}, type:'bytes']   
+                                                                                         // overlapping ranges are combined   
+                                                                                       
+    // request with 'Range:bytes=100-1000' header -------------------------------------
+            req.range(90);                                                             // -> -1
+                                                                                         // the server has shorter content than the client requests 
+            
+    // request with 'Range:100-1000' header -------------------------------------------
+            req.range(90);                                                             // -> -2
+                                                                                         // incorrect 'Range' directive   
+            
+    // request without 'Range' header -------------------------------------------------
+            req.range(90)                                                              // -> undefined  
+            
+// xhr --------------------------------------------------------------------------------
+    // request with 'X-Request-With:XMLHttpRequest' header ----------------------------
+            req.xhr;                                                                   // -> true
+            
+    // request without 'X-Request-With' header ----------------------------------------
+            req.xhr;                                                                   // -> false 
+        }
+    );    
+    
+    app.listen(1000, () => { console.log('Express is Listening') })      
+    </pre>
+    <!-------------------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header" <mark>app</mark> / <mark>hostname</mark> / <mark>ip</mark> / <mark>ips</mark> / <mark>method</mark> / <mark>protocol</mark> / <mark>secure</mark> TEST </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+            
+    app.use('/', function(req, res, next){
+        console.log( req.app );                                                        // -> app               // returns the app object that uses this middleware 
+        
+        console.log( req.hostname );                                                   // -> 'localhost'       // returns the response Host header value 
+        console.log( req.ip );                                                         // -> '127.0.0.1'       // the remote client IP address 
+        console.log( req.ips );                                                        // -> []                // empty Array because the app's 'trust proxy' setting is false 
+        console.log( req.method );                                                     // -> 'GET'             // request method 
+        console.log( req.protocol );                                                   // -> 'http'            // request protocol  
+        console.log( req.secure );                                                     // -> false             // connection is not over TLS  
+        console.log( req.subdomains );                                                 // -> []                // no subdomains 
+        
+        res.end('OK');
+    })    
+        
+    app.listen({
+        port: 1000,
+        host: 'localhost',
+    }, () => { console.log('Express is Listening') })      
+    </pre>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 class="header"> <mark>subdomains</mark> TEST </h4>
+    <p> - the request URL is <mark>sub1.sub2.testSite.com:1000</mark> </p>
+    <pre>
+    const express = require('express');
+    const app = express();
+            
+    console.log( app.get('subdomain offset') );                                        // -> 2      // in hostname subdomains are counted from 2 dots (right-to-left)    
+            
+    app.use('/', function(req, res, next){
+        console.log( req.subdomains );                                                 // -> ['sub2', 'sub1']   
+        
+        res.end('OK');
+    })    
+        
+    app.listen({
+        port: 1000,
+        host: 'localhost',
+    }, () => { console.log('Express is Listening') })      
+    </pre>
+<hr>
+<!---------------------------------------------------------------------------------------------------->
+<h4 class="header"> <mark>hostname</mark> / <mark>ip</mark> / <mark>ips</mark> / <mark>protocol</mark> with 'trust proxy' settings TEST </h4>
+    <p> - request header <mark>X-Forwarded-Host:forwHost1, forwHost2, forwHost3</mark> is set </p>
+    <p> - request header <mark>X-Forwarded-For:1.1.1.1, 2.2.2.2, 3.3.3.3</mark> is set </p>
+    <p> - request header <mark>X-Forwarded-Proto:httpH</mark> is set </p>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+    app.enable('trust proxy');  
+    console.log( app.get('trust proxy') );                                             // -> true          // trust proxy enabled   
+    
+    app.use('/', function(req, res, next){
+    
+        console.log( req.hostname );                                                   // -> 'forwHost1'
+        console.log( req.ip );                                                         // -> '1.1.1.1'
+        console.log( req.ips );                                                        // -> ['1.1.1.1', '2.2.2.2', '3.3.3.3']
+        console.log( req.protocol );                                                   // -> 'httpH
+        
+        res.end('OK');
+    })    
+    
+    app.listen({
+        port: 1000,
+        host: 'localhost',
+    }, () => { console.log('Express is Listening') })      
+    </pre>
+<hr>
+<!---------------------------------------------------------------------------------------------------->
+<h4 class="header"> <mark>baseUrl</mark> TEST </h4>
+    <pre>
+    const router = express.Router();
+        
+// request URL 'localhost:1000/test/somethin?one=1&two=2' -----------------------------
+    app.all('/:test/:test2', function(req, res, next){  
+        console.log( req.baseUrl );                                                    // -> ''                              // app is not mounted so empty string returned   
+        res.end('OK');
+    });
+    
+// request URL 'localhost:1000/test/somethin/other?one=1&two=2' -----------------------
+    app2.all('/:test3', function (req, res, next){
+        console.log( req.baseUrl );                                                    // -> '/test/something'               // the mount path of app2
+        res.end('OK'); 
+    })
+    
+    app.use('/:test/:test2', app2);
+    
+// request URL 'localhost:1000/test/somethin/other?one=1&two=2' -----------------------
+    router.all('/:test3', function (req, res, next){
+        console.log( req.baseUrl );                                                    // -> '/test/something'               // the mount path of the router 
+        res.end('OK'); 
+    })
+    
+    app.use('/:test/:test2', router);
+        
+    app.listen(1000, () => { console.log('Express is Listening') })      
+    </pre>
+<hr>
+<!---------------------------------------------------------------------------------------------------->
+<h4 class="header"> <mark>originalUrl</mark> TEST </h4>
+    <p> - the request URL is <mark>localhost:1000/test/sub/nest/child?egy=1&ketto=2&harom=3#</mark> </p>
+    <pre>
+    const express = require('express');
+    const app = express();
+    const router = express.Router();
+        
+    router.use('/sub', function(req, res, next){
+        console.log( req.originalUrl );                                                // -> '/test/sub/nest/child?egy=1&ketto=2&harom=3'
+        res.end('OK');
+    });
+    
+    app.use('/test', function(req, res, next){
+        console.log( req.originalUrl );                                                // -> '/test/sub/nest/child?egy=1&ketto=2&harom=3'
+        next();
+    }, router); 
+        
+        
+    app.listen(1000, () => { console.log('Express is Listening') })      
+    </pre>
+<hr>
+<!---------------------------------------------------------------------------------------------------->
+<h4 class="header"> <mark>path</mark> TEST </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    const app2 = express();
+    const router = express.Router();
+    
+// request URL 'localhost:1000/test/somethin?one=1' -----------------------------------
+    app.all('/:test/:test2', function(req, res, next){
+        console.log( req.path );                                                       // -> '/test/somethin'     // returns the request URL path 
+        res.end('OK');
+    });
+
+// request URL 'localhost:1000/test/somethin?one=1' -----------------------------------
+    app.use('/:test/:test2', function(req, res, next){
+        console.log( req.path );                                                       // -> '/'                  // in 'use()' middleware it's always '/'    
+        res.end('OK');
+    });
+
+// request URL 'localhost:1000/test/somethin/other?one=1' -----------------------------
+    app2.all('/:test3', function (req, res, next){
+        console.log( req.path );                                                       // -> '/other'            // path is calculated from the app mount point    
+        res.end('OK'); 
+    })
+    
+    app.use('/:test/:test2', app2);
+    
+// request URL 'localhost:1000/test/somethin/other?one=1' -----------------------------
+    router.all('/:test3', function (req, res, next){
+        console.log( req.path );                                                       // -> '/other'            // path is calculated from the router mount point   
+        res.end('OK'); 
+    })
+    
+    app.use('/:test/:test2', router);
+    
+// request URL 'localhost:1000/test/somethin/other/another?one=1' ---------------------
+    app2.use('/:test3/:test4', function (req, res, next){
+        console.log( req.path );                                                       // -> '/'                  // in 'use()' middleware it's always '/'    
+        next();
+    })
+    
+    router.use('/:test3/:test4', function (req, res, next){
+        console.log( req.path );                                                       // -> '/'                  // in 'use()' middleware it's always '/'    
+        res.end('OK'); 
+    })  
+    
+    app.use('/:test/:test2', app2, router);
+    
+    
+    app.listen(1000, () => { console.log('Express is Listening') })  
+    </pre>
+<hr>
+<!---------------------------------------------------------------------------------------------------->
+<h4 class="header"> <mark>route</mark> TEST </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    const app2 = express();
+    const router = express.Router();
+    
+// request URL 'localhost:1000/test/somethin?one=1' -----------------------------------
+    app.all('/:test/:test2', function(req, res, next){
+        console.log( req.route );                                                      // -> {path:'/:test/:test2, ...}     // 1st argument of app.all()   
+        res.end('OK');
+    });
+    
+// request URL 'localhost:1000/test/somethin?one=1' -----------------------------------
+    app.use('/:test/:test2', function(req, res, next){
+        console.log( req.route );                                                      // -> undefined                      // in 'use()' methods alwasy returns undefined    
+        res.end('OK');
+    });
+    
+// request URL 'localhost:1000/test/somethin/other?one=1' -----------------------------
+    app2.all('/:test3', function (req, res, next){
+        console.log( req.route );                                                      // -> {path:'/:test3, ...}           // 1st argument of app2.all()
+        res.end('OK'); 
+    })
+    
+    app.use('/:test/:test2', app2);
+    
+// request URL 'localhost:1000/test/somethin/other?one=1' -----------------------------
+    router.all('/:test3', function (req, res, next){
+        console.log( req.route );                                                      // -> {path:'/:test3, ...}           // 1st argument of router.all()    
+        res.end('OK'); 
+    })
+    
+    app.use('/:test/:test2', router);
+    
+// request URL 'localhost:1000/test/somethin/other/another?one=1' ---------------------
+    app2.use('/:test3/:test4', function (req, res, next){
+        console.log( req.route );                                                      // -> undefined                      // in 'use()' methods alwasy returns undefined    
+        next();
+    })
+    
+    router.use('/:test3/:test4', function (req, res, next){
+        console.log( req.route );                                                      // -> undefined                      // in 'use()' methods alwasy returns undefined    
+        res.end('OK'); 
+    })  
+    
+    app.use('/:test/:test2', app2, router);
+    
+    
+    app.listen(1000, () => { console.log('Express is Listening') })      
+    </pre>
+<hr>
+<!---------------------------------------------------------------------------------------------------->
+<h4 class="header"> <mark>cookies</mark> / <mark>signedCookies</mark> TEST </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    const cookieParser = require('cookie-parser');
+    
+    app.all('/', 
+        cookieParser('pallSecret'),                                                    // the cookie-parser middleware is required ('pallSecret' is the secret key the server uses to sign cookie values)   
+        function(req, res, next){
+            
+            console.log( req.cookies );                                                // -> {egy: 'one'}
+            console.log( req.signedCookies );                                          // -> {ketto: 'two'}
+                                                                                       // -> {ketto: false}    // -! if the signed cookie value is changed   
+            
+            res.cookie('egy', 'one', {signed:false});
+            res.cookie('ketto', 'two', {signed:true});                                 // sings the cookie value 
+            
+            res.end('OK');
+        }
+    );
+    
+    
+    app.listen(1000, () => { console.log('Express is Listening') })      
+    </pre>
+<hr>
+<!---------------------------------------------------------------------------------------------------->
+<h4 class="header"> <mark>fresh</mark> / <mark>stale</mark> TEST </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+    app.all('/', 
+        function(req, res, next){
+            
+            console.log( req.fresh );                                                  // -> false
+            console.log( req.stale );                                                  // -> true
+            
+          // request has "If-None-Match:*" header -------------------------
+            console.log( req.fresh );                                                  // -> true
+            console.log( req.stale );                                                  // -> false
+            res.end('OK');
+        }
+    );
+    
+    app.listen(1000, () => { console.log('Express is Listening') })      
+    </pre>
+<hr>
+<!---------------------------------------------------------------------------------------------------->
+<h4 class="header"> <mark>params</mark> TEST </h4>
+    <p> - the request url is <mark>localhost:1000/sub/nest/child</mark> </p>
+    <pre>
+    const express = require('express');
+    const app = express();
+    const router = express.Router();
+    
+    router.all('/:test3', function(req, res, next){
+        console.log( req.params );                                                     // -> {test3:'child'}
+        res.end('OK');
+    });
+    
+    app.use('/:test/:test2', 
+        function(req, res, next){
+            console.log( req.params );                                                 // -> {test:'sub', test2:'nest'}
+            next();
+        }, 
+        router
+    );    
+    
+    
+    app.listen(1000, () => { console.log('Express is Listening') })  
+    </pre>
+<hr>
+<!---------------------------------------------------------------------------------------------------->
+<h4 class="header"> <mark>query</mark> TEST </h4>
+    <p> - the request url is <mark>localhost:1000/sub/nest/child?one=1&two=2&three=3</mark> </p>    
+    <pre>
+    const express = require('express');
+    const app = express();
+    const router = express.Router();
+    
+    router.all('/:test3', function(req, res, next){
+        console.log( req.query );                                                      // -> {one:'1', two:'2', three:'3'}    
+        res.end('OK');
+    });
+    
+    app.use('/:test/:test2', 
+        function(req, res, next){
+            console.log( req.query );                                                  // -> {one:'1', two:'2', three:'3'}    
+            next();
+        }, 
+        router
+    );    
+    
+    
+    app.listen(1000, () => { console.log('Express is Listening') })  
+    </pre>
+<hr>
+<!---------------------------------------------------------------------------------------------------->
+<h4 class="header"> <mark>accept()</mark> / <mark>acceptsCharsets()</mark> / <mark>acceptsEncodings()</mark> / <mark>acceptsLanguages()</mark> / <mark>is()</mark> / <mark>range()</mark> / <mark>xhr()</mark> TEST </h4>
+    <p> - the request has a <mark>Accept:text/html</mark> header </p>
+    <p> - the request has a <mark>Accept-Charset:utf-8, utf-16, ascii</mark> header </p>
+    <p> - the request has a <mark>Accept-Encoding:gzip, deflate, br</mark> header </p>
+    <p> - the request has a <mark>Accept-Language:en-US, fr-FR</mark> header </p>
+    <p> - the request has a <mark>Content-Type:application/json</mark> header </p>
+    <p> - the request has a <mark>Range:bytes=10-1000, 255-500, 1000-</mark> header </p>
+    <p> - the request has a <mark>X-Requested-With:XMLhttpRequest</mark> header </p>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+    app.all('/', 
+        function(req, res, next){
+            
+          // accepts() ----------------------------------------------------------------
+            console.log( req.accepts('html') );                                        // -> 'html'
+            
+          // acceptsCharsets() --------------------------------------------------------
+            console.log( req.acceptsCharsets(['iso-8859-1', 'utf-8']) );               // -> 'utf-8'
+            
+          // acceptsEncodings() -------------------------------------------------------
+            console.log( req.acceptsEncodings('br') );                                 // -> 'br'
+            
+          // acceptsLanguages() -------------------------------------------------------
+            console.log( req.acceptsLanguages(['fr-FR', 'en-US']) );                   // -> 'fr-FR'
+            console.log( req.acceptsLanguages('fr-CA') );                              // -> false  
+            
+          // is() ---------------------------------------------------------------------
+            console.log( req.is(['jpeg', 'json']) );                                   // -> 'json'  
+            
+          // range() ------------------------------------------------------------------
+            console.log( req.range(1500) );                                            // -> [{start:10, end:1000}, {start:255, end:500}, {start:1000, end:1499}, type:'bytes'] 
+            console.log( req.range(1500, {combine:true}));                             // -> [{start:10, end:1499}, type:'bytes']      // all requested range are combine    
+            console.log( req.range(500) );                                             // -> [{ start:10, end:499}, {start:255, end:499}, type:'bytes' ]   // the 3rd range request is not satisfiable so omitted   
+            console.log( req.range(5) );                                               // -> -1        // range not satisfiable (5 is below the lowes requested range)    
+            
+          // xhr ----------------------------------------------------------------------
+            console.log( req.xhr );                                                    // -> true 
+            
+            
+            res.end('OK');
+        }
+    );    
+    
+    
+    app.listen(1000, () => { console.log('Express is Listening') })      
+    </pre>
+<hr>
+<!---------------------------------------------------------------------------------------------------->
+<h4 class="header"> <mark>headers</mark> / <mark>get()</mark> TEST </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+    app.all('/', 
+        function(req, res, next){
+            console.log( req.headers );                                                // -> {'content-type':'text/plain', ...}
+            
+            console.log( req.get('Content-Type') );                                    // -> 'text/plain'
+            console.log( req.get('conTEnT-TYpE') );                                    // -> 'text/plain'      // case insensitive search 
+            
+            
+            res.end('OK');
+        }
+    );    
+    
+    app.listen(1000, () => { console.log('Express is Listening') })  
+    </pre>
+<hr>
+<!---------------------------------------------------------------------------------------------------->
+<h4 class="header"> <mark>body</mark> TEST </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+    app.all('/', 
+        express.text(),                                                                // body parser middleware is required 
+        function(req, res, next){
+            console.log( req.body );                                                   // -> 'some request body'
+            
+            res.end('OK');
+        }
+    );    
+    
+    app.listen(1000, () => { console.log('Express is Listening') })  
+    </pre>
+</details>
+    
+    <br><br>
+</body>
+</html>

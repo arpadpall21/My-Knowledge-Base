@@ -1,0 +1,41 @@
+.myVideo {
+    border: double 5px lightgray;
+    margin-left: 5px;
+}
+        /*-- styling webVTT cues TEST --*/
+#styleVtt::cue {
+    color: green;
+    bottom: 1px;
+    padding: 5px;
+    background-color: lightblue
+}
+/* targeting cue id's is not supported at the moment [2019-04-02]*/
+#styleVtt::cue(#thirdS) {
+    color: red;
+}
+
+        /*-- using tags in vtt file TEST --*/
+#vtt_tagTest::cue {
+    color: yellow;
+    background-image: linear-gradient(to bottom, dimgray, lightgray);
+    font-size: 1.3em;
+}
+#vtt_tagTest::cue(b) {
+    color: red;
+}
+
+        /*-- usint track element to display audio tracks TEST --*/
+#videoAudio::cue {
+    font-size: 2em;
+}
+
+        /*-- style images in <pitucre> element --*/
+.pic_1 {            /* this has no effect */
+    width: 10%;     
+}
+.pic_2 {            /* this has no effect */
+    width: 50%;
+}
+.pic_3 {
+    border: solid 5px blue;
+}

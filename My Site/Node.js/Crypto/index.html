@@ -11,22 +11,19 @@
 </head>
 
 <body>
-  <h1> Crypto (ver 4.0.0) </h1>
+  <h1> Crypto </h1>
   <p> Updated ( 2021-03-03 )</p>
   <p class="sitenav"> <a href="../../index.html">MySite></a>
     <a href="../index.html">Node.js></a> Crypto
   </p>
   <table class="table">
-    <caption>
-      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-    </caption>
     <tr>
       <th style="width:30%;"> Method / Property </th>
       <th> Description </th>
     </tr>
-    <tr class="05.01">
+    <tr>
       <td>
-        <strong>crypto</strong>.constants
+        constants
       </td>
       <td>
         - returns an object with the <mark>crypto</mark> module's constants
@@ -35,68 +32,95 @@
         </span>
       </td>
     </tr>
-    <tr class="07.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
-        <strong>crypto</strong>.getFips()
+        getCiphers()
+      </td>
+      <td>
+        - returns an Array with the supported cipher algorithms
+        <span class="browserSupport">
+          <span><i class="fab fa-node-js"></i> 0.9.3 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        getCurves()
+      </td>
+      <td>
+        - returns an Array with the supported elliptic curvers (for ECDH key exchange protocol)
+        <span class="browserSupport">
+          <span><i class="fab fa-node-js"></i> 2.3.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        getHashes()
+      </td>
+      <td>
+        - returns an Array with the supported hash algorithms (digest algorithms)
+        <span class="browserSupport">
+          <span><i class="fab fa-node-js"></i> 0.9.3 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        getFips()
       </td>
       <td>
         - returns <mark>1</mark> if <strong class="openable">FIPS<div>
             <p> - FIPS (Federal Information Processing Standard) </p>
             <p> - it's a US government security standard for cryptographyc modules (security standard for Federal Systems) </p>
           </div></strong> compliant crypto provider is currently in use <mark>0</mark> otherwise
+        <span class="browserSupport">
+          <span><i class="fab fa-node-js"></i> 10.0.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        setFips(<strong>bol</strong>)
+      </td>
+      <td>
+        - enables the <strong class="openable">FIPS<div>
+            <p> - FIPS (Federal Information Processing Standard) </p>
+            <p> - it's a US government security standard for cryptographyc modules (security standard for Federal Systems) </p>
+          </div></strong> compliant crypto provider in a FIPS-enabled Node.js build <br>
+        - throws an error if FIPS mode is not available
         <span class="browserSupport" title="updated : 2021-03-10">
           <span><i class="fab fa-node-js"></i> 10.0.0 </span>
         </span>
       </td>
     </tr>
-    <tr class="06.03">
-      <td>
-        <strong>crypto</strong>.getHashes()
-      </td>
-      <td>
-        - returns an Array with the supported hash algorithms (digest algorithms)
-        <span class="browserSupport" title="updated : 2021-03-10">
-          <span><i class="fab fa-node-js"></i> 0.9.3 </span>
-        </span>
-      </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="06.01">
+    <tr>
       <td>
-        <strong>crypto</strong>.getCiphers()
-      </td>
-      <td>
-        - returns an Array with the supported cipher algorithms
-        <span class="browserSupport" title="updated : 2021-03-10">
-          <span><i class="fab fa-node-js"></i> 0.9.3 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="06.02">
-      <td>
-        <strong>crypto</strong>.getCurves()
-      </td>
-      <td>
-        - returns an Array with the supported elliptic curvers (for ECDH key exchange protocol)
-        <span class="browserSupport" title="updated : 2021-03-10">
-          <span><i class="fab fa-node-js"></i> 2.3.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="08.01">
-      <td>
-        <strong>crypto</strong>.randomBytes(<strong>length:nr</strong>, <i>fn(err, buf)</i>)
+        randomBytes(<strong>length:nr</strong>, <i>fn(err, buf)</i>)
       </td>
       <td>
         - generates cryptographycally strong pseudo-random data of the specified <strong>length</strong> (the generated result is returned in a <strong>buf</strong> (Buffer)) <br>
         - no callback provided = synchronously operation | callback provided = asynchronous operation
-        <span class="browserSupport" title="updated : 2021-03-10">
+        <span class="browserSupport">
           <span><i class="fab fa-node-js"></i> 0.5.8 </span>
         </span>
       </td>
     </tr>
-    <tr class="08.02">
+    <tr>
       <td>
-        <strong>crypto</strong>.randomFill(<strong class="openable">buf<div>
+        randomFill(<strong class="openable">buf<div>
             <p> <strong>ArrayBuffer|TypedArray|DataView</strong>
           </div></strong>, <i class="openable">offset:nr, size:nr<div>
             <p> <i>offset</i> - index where to start writing the passed buffer (Default: <mark>0</mark>) </p>
@@ -113,9 +137,9 @@
         </span>
       </td>
     </tr>
-    <tr class="08.03">
+    <tr>
       <td>
-        <strong>crypto</strong>.randomFillSync(<strong class="openable">buf<div>
+        randomFillSync(<strong class="openable">buf<div>
             <p> <strong>ArrayBuffer|TypedArray|DataView</strong>
           </div></strong>, <i class="openable">offset:nr, size:nr<div>
             <p> <i>offset</i> - index where to start writing the passed buffer (Default: <mark>0</mark>) </p>
@@ -135,9 +159,9 @@
         </span>
       </td>
     </tr>
-    <tr class="08.04">
+    <tr>
       <td>
-        <strong>crypto</strong>.randomInt(<i class="openable">min(inc):nr<div>
+        randomInt(<i class="openable">min(inc):nr<div>
             <p> Default: <mark>0</mark> </p>
           </div></i>, <strong>max(exc):nr</strong>, <i>fn(err, n)</i>)
       </td>
@@ -151,9 +175,9 @@
         </span>
       </td>
     </tr>
-    <tr class="08.05">
+    <tr>
       <td>
-        <strong>crypto</strong>.randomUUID(<strong class="openable">option:obj<div>
+        randomUUID(<strong class="openable">option:obj<div>
             <p> disableEntrophyCache: <strong>bol</strong> -
           </div></strong>)
       </td>
@@ -165,9 +189,13 @@
         </span>
       </td>
     </tr>
-    <tr class="09.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
-        <strong>crypto</strong>.secureHeapUsed()
+        secureHeapUsed()
       </td>
       <td>
         - returns an object which contains the underlying <span class="openable">OpenSSL secure heap<div>
@@ -179,9 +207,13 @@
         </span>
       </td>
     </tr>
-    <tr class="10.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
-        <strong>crypto</strong>.setEngine(<strong class="openable">engine:str<div>
+        setEngine(<strong class="openable">engine:str<div>
             <p> - id or a path to the engine's shared library </p>
           </div></strong>, <i class="openable">flags:nr<div>
             <p> - Default: <mark>crypto.constants.ENGINE_METHOD_ALL</mark> </p>
@@ -194,24 +226,24 @@
         </span>
       </td>
     </tr>
-    <tr class="07.02">
+    <tr>
       <td>
-        <strong>crypto</strong>.setFips(<strong>bol</strong>)
+        webcrypto
       </td>
       <td>
-        - enables the <strong class="openable">FIPS<div>
-            <p> - FIPS (Federal Information Processing Standard) </p>
-            <p> - it's a US government security standard for cryptographyc modules (security standard for Federal Systems) </p>
-          </div></strong> compliant crypto provider in a FIPS-enabled Node.js build <br>
-        - throws an error if FIPS mode is not available
+        - returns a <strong>webCrypto</strong> object which is an implementation of the Web Crypto API standard <u>[Experimental: 2021-03-11]</u>
         <span class="browserSupport" title="updated : 2021-03-10">
-          <span><i class="fab fa-node-js"></i> 10.0.0 </span>
+          <span><i class="fab fa-node-js"></i> 15.0.0 </span>
         </span>
       </td>
     </tr>
-    <tr class="11.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
-        <strong>crypto</strong>.timingSafeEqual(<strong class="openable">a:buf<div>
+        timingSafeEqual(<strong class="openable">a:buf<div>
             <p> <strong>ArrayBuffer|TypedArray|DataView</strong> </p>
           </div></strong>, <strong class="openable">b:buf<div>
             <p> <strong>ArrayBuffer|TypedArray|DataView</strong> </p>
@@ -232,14 +264,175 @@
         </span>
       </td>
     </tr>
-    <tr class="10.02">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2"> Derivation Functions (deriving key|hash) </td>
+    </tr>
+    <tr>
       <td>
-        <strong>crypto</strong>.webcrypto
+        hkdf(<strong>hashAlgorithm:str</strong>, <strong class="openable">key:str|...<div>
+            <p> - the secret key (synchronous key) </p>
+            <p> <strong>str|buf|keyObj|ArrayBuffer|TypedArray|DataView</strong> </p>
+          </div></strong>, <strong class="openable">salt:str|...<div>
+            <p> - salt value </p>
+            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
+          </div></strong>, <strong class="openable">info:str|...<div>
+            <p> - additional info value, its length can be from <mark>0</mark> to <mark>1024</mark> bytes </p>
+            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
+          </div></strong>, <strong class="openable">keyLength:nr<div>
+            <p> - key length (min 1 ) (max 255 times the selected digest algorith (ex: <mark>sha512</mark> generates a 64 byte hash so the maximum keylengt can be <mark>16320</mark> bytes) </p>
+          </div></strong>, <strong>fn(err, key:ArrayBuffer)</strong>)
       </td>
       <td>
-        - returns a <strong>webCrypto</strong> object which is an implementation of the Web Crypto API standard <u>[Experimental: 2021-03-11]</u>
-        <span class="browserSupport" title="updated : 2021-03-10">
+        - asynchronous simple key derivation function, generates a secret key of the specified length<br>
+        - RFC 5869 specification (HKDF = key-Hashed Key Derivation Function)
+        <span class="browserSupport" title="updated : 2021-03-14">
           <span><i class="fab fa-node-js"></i> 15.0.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        hkdfSync(<strong>hashAlgorithm:str</strong>, <strong class="openable">key:str|...<div>
+            <p> - the secret key (synchronous key) </p>
+            <p> <strong>str|buf|keyObj|ArrayBuffer|TypedArray|DataView</strong> </p>
+          </div></strong>, <strong class="openable">salt:str|...<div>
+            <p> - salt value </p>
+            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
+          </div></strong>, <strong class="openable">info:str|...<div>
+            <p> - additional info value, its length can be from <mark>0</mark> to <mark>1024</mark> bytes </p>
+            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
+          </div></strong>, <strong class="openable">keyLength:nr<div>
+            <p> - key length (min 1 ) (max 255 times the selected digest algorith (ex: <mark>sha512</mark> generates a 64 byte hash so the maximum keylengt can be <mark>16320</mark> bytes) </p>
+          </div></strong>)
+      </td>
+      <td>
+        - synchronous simple key derivation function, generates a secret key of the specified length (returns <strong>ArrayBuffer</strong>)<br>
+        - RFC 5869 specification (HKDF = key-Hashed Key Derivation Function)
+        <span class="browserSupport" title="updated : 2021-03-13">
+          <span><i class="fab fa-node-js"></i> 15.0.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>
+        scrypt(<strong class="openable">passWord:str|...<div>
+            <p> - password </p>
+            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
+          </div></strong>, <strong class="openable">salt:str|...<div>
+            <p> - salt value (recommended to be at least 16 bytes long) </p>
+            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
+          </div></strong>, <strong>keyLength:nr</strong>, <strong class="openable">option:obj<div>
+            <p> cost|N: <strong>nr</strong> - CPU/memory cost parameter, must be a power of 2 (Default: <mark>16384</mark>) </p>
+            <p> blockSize|r: <strong>nr</strong> - block size (Default: <mark>8</mark>) </p>
+            <p> paralleliztion|p: <strong>nr</strong> - parallelization parameter (Default: <mark>1</mark>) </p>
+            <p> maxmem: <strong>nr</strong> - memory upper bound (Default: <mark>32 * 1024 * 1024</mark>) </p>
+          </div></strong>, <strong>fn(err, buf)</strong>)
+      </td>
+      <td>
+        - asynchronous password-based key derivation function, to generate a secret key|hashed password of the specified length (returns <reqval>buf</reqval>) <br>
+        - RCF 7914 sepcification (designed to be computationally and memory-wise expensive in order to be resistent to brute-force attacks)
+        <span class="browserSupport" title="updated : 2021-03-13">
+          <span><i class="fab fa-node-js"></i> 10.5.0 </span>
+          <span class="openable"> more... <div>
+              <p> 12.8.0 / 10.17.0 </p>
+              <p> - <mark>maxmem</mark> option can be a safe integer </p>
+              <hr>
+              <p> 15.0.0 </p>
+              <p> - <strong>ArrayBuffer</strong> support </p>
+            </div></span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scryptSync(<strong class="openable">passWord:str|...<div>
+            <p> - password </p>
+            <p> <strong>str|buf|TypedArray|DataView</strong> </p>
+          </div></strong>, <strong class="openable">salt:str|...<div>
+            <p> - salt value (recommended to be at least 16 bytes long) </p>
+            <p> <strong>str|buf|TypedArray|DataView</strong> </p>
+          </div></strong>, <strong>keyLength:nr</strong>, <strong class="openable">option:obj<div>
+            <p> cost|N: <strong>nr</strong> - CPU/memory cost parameter, must be a power of 2 (Default: <mark>16384</mark>) </p>
+            <p> blockSize|r: <strong>nr</strong> - block size (Default: <mark>8</mark>) </p>
+            <p> paralleliztion|p: <strong>nr</strong> - parallelization parameter (Default: <mark>1</mark>) </p>
+            <p> maxmem: <strong>nr</strong> - memory upper bound (Default: <mark>32 * 1024 * 1024</mark>) </p>
+          </div></strong>)
+      </td>
+      <td>
+        - synchronous password-based key derivation function, to generate a secret key|hashed password of the specified length <br>
+        - RCF 7914 sepcification (designed to be computationally and memory-wise expensive in order to be resistent to brute-force attacks)
+        <span class="browserSupport" title="updated : 2021-03-13">
+          <span><i class="fab fa-node-js"></i> 10.5.0 </span>
+          <span class="openable"> more... <div>
+              <p> 12.8.0 / 10.17.0 </p>
+              <p> - <mark>maxmem</mark> option can be a safe integer </p>
+            </div></span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        pbkdf2(<strong class="openable">passWord:str|...<div>
+            <p> - password </p>
+            <p> <strong>str|buf|TypedArray|DataView|ArrayBuffer</strong> </p>
+          </div></strong>, <strong class="openable">salt:str|...<div>
+            <p> - salt value (recommended to be at least 16 bytes long) </p>
+            <p> <strong>str|buf|TypedArray|DataView|ArrayBuffer</strong> </p>
+          </div></strong>, <strong>iteration:nr</strong>, <strong>keyLength:nr</strong>, <strong>hashAlgorithm:str</strong>, <strong>fn(err, key:buf)</strong>)
+      </td>
+      <td>
+        - asynchronous password-based key derivation function, to generate a secret key|hashed password of the specified length <br>
+        - RCF 2898 specification (Password Based Key Derivation Function 2)
+        <span class="browserSupport" title="updated : 2021-03-16">
+          <span><i class="fab fa-node-js"></i> 0.0.5 </span>
+          <span class="openable"></i> more... <div>
+              <p> 6.0.0 </p>
+              <p> - <strong>password</strong> default encoding changed from binary to utf-8 </p>
+              <hr>
+              <p> 14.0.0 </p>
+              <p> - <strong>iteration</strong> must be a positive integer </p>
+              <hr>
+              <p> 15.0.0 </p>
+              <p> - <strong>ArrayBuffer</strong> support </p>
+            </div></span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        pbkdf2Sync(<strong class="openable">passWord:str|...<div>
+            <p> - password </p>
+            <p> <strong>str|buf|TypedArray|DataView</strong> </p>
+          </div></strong>, <strong class="openable">salt:str|...<div>
+            <p> - salt value (recommended to be at least 16 bytes long) </p>
+            <p> <strong>str|buf|TypedArray|DataView</strong> </p>
+          </div></strong>, <strong>iteration:nr</strong>, <strong>keyLength:nr</strong>, <strong>hashAlgorithm:str</strong>)
+      </td>
+      <td>
+        - synchronous password-based key derivation function, to generate a secret key|hashed password of the specified length (returns <reqval>buf</reqval>) <br>
+        - RCF 2898 specification (Password Based Key Derivation Function 2)
+        <span class="browserSupport" title="updated : 2021-03-16">
+          <span><i class="fab fa-node-js"></i> 0.0.5 </span>
+          <span class="openable"></i> more... <div>
+              <p> 6.0.0 </p>
+              <p> - <strong>password</strong> default encoding changed from binary to utf-8 </p>
+              <hr>
+              <p> 14.0.0 </p>
+              <p> - <strong>iteration</strong> must be a positive integer </p>
+            </div></span>
         </span>
       </td>
     </tr>
@@ -248,61 +441,14 @@
   <table class="table">
     <caption>
       Keys
-      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
     </caption>
     <tr>
       <th style="width:30%;"> Method / Property </th>
       <th> Description </th>
     </tr>
-    <tr class="07.01">
+    <tr>
       <td>
-        <strong>crypto</strong>.createPrivateKey(<strong class="openable">key:obj|str|...<div>
-            <p> - the passed key material must be a valid key in PEM or DER format </p>
-            <hr>
-            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
-            <hr>
-            <p> <strong>obj</strong> </p>
-            <p> key: <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> - the key material in PEM of DER format </p>
-            <p> format: 'pem|der' (Default: <mark>pem</mark>) </p>
-            <p> type: <strong>str</strong> - can be <mark>pkcs1</mark>, <mark>pkcs8</mark> or <mark>sec1</mark> (for DER format only) </p>
-            <p> passprase: <strong>str|buf</strong> - must be specified if the private key is encrypted </p>
-            <p> encoding: <strong>str</strong> - encoding if the passed key is a string </p>
-          </div></strong>)
-      </td>
-      <td>
-        - creates a private key from the passed <u>valid private key material</u> (does not generate a new key) <br>
-        - this is a wrapper method, it wraps a valid private key and returns it as a <strong>keyObj</strong> object
-        <span class="browserSupport" title="updated : 2021-03-13">
-          <span><i class="fab fa-node-js"></i> </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="07.02">
-      <td>
-        <strong>crypto</strong>.createPublicKey(<strong class="openable">key:obj|str|...<div>
-            <p> - the passed key material must be a valid key in PEM or DER format </p>
-            <p> - X.509 certificate can be passed as well if the passed format is in PEM </p>
-            <hr>
-            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
-            <hr>
-            <p> <strong>obj</strong> </p>
-            <p> key: <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> - the key material in PEM of DER format </p>
-            <p> format: 'pem|der' (Default: <mark>pem</mark>) </p>
-            <p> type: <strong>str</strong> - can be <mark>pkcs1</mark> or <mark>spki</mark> (for DER format only) </p>
-            <p> encoding: <strong>str</strong> - encoding if the passed key is a string </p>
-          </div></strong>)
-      </td>
-      <td>
-        - creates a public key from the passed <u>valid public key material</u> (does not generate a new key) <br>
-        - this is a wrapper method, it wraps a valid public key and returns it as a <strong>keyObj</strong> object
-        <span class="browserSupport" title="updated : 2021-03-13">
-          <span><i class="fab fa-node-js"></i> </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="05.02">
-      <td>
-        <strong>crypto</strong>.createSecretKey(<strong class="openable">key:str|...<div>
+        createSecretKey(<strong class="openable">key:str|...<div>
             <p> <strong>buf|ArrayBuffer|TypedArray|DataView</strong></p>
           </div></strong>, <i class="openable">encode:str<div>
             <p> Default: <mark>utf-8</mark> </p>
@@ -322,9 +468,9 @@
         </span>
       </td>
     </tr>
-    <tr class="05.03">
+    <tr>
       <td>
-        <strong>crypto</strong>.generateKey(<strong class="openable">type:str<div>
+        generateKey(<strong class="openable">type:str<div>
             <p> 'aes' or 'hmac' </p>
           </div></strong>, <strong class="openable">option:obj<div>
             <p> length: <strong>nr</strong> - the bit length of the generated key (for <mark>aes</mark> key must be <mark>128</mark>, <mark>192</mark> or <mark>256</mark>) (for <mark>hmac</mark> key must be between <mark>1</mark> to <mark>2**31 -1</mark>) </p>
@@ -337,9 +483,28 @@
         </span>
       </td>
     </tr>
-    <tr class="06.01">
+    <tr>
       <td>
-        <strong>crypto</strong>.generateKeyPair(<strong class="openable">type:str<div>
+        generateKeySync(<strong class="openable">type:str<div>
+            <p> 'aes' or 'hmac' </p>
+          </div></strong>, <strong class="openable">option:obj<div>
+            <p> length: <strong>nr</strong> - the bit length of the generated key (for <mark>aes</mark> key must be <mark>128</mark>, <mark>192</mark> or <mark>256</mark>) (for <mark>hmac</mark> key must be between <mark>1</mark> to <mark>2**31 -1</mark>) </p>
+          </div></strong>)
+      </td>
+      <td>
+        - synchronously generates and returns a random secret key <strong>keyObj</strong> (used for symmetric encryptions)
+        <span class="browserSupport" title="updated : 2021-03-13">
+          <span><i class="fab fa-node-js"></i> </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        generateKeyPair(<strong class="openable">type:str<div>
             <p> <mark>rsa</mark>, <mark>dsa</mark>, <mark>ec</mark>, <mark>ed25519</mark>, <mark>ed448</mark>, <mark>x25519</mark>, <mark>x448</mark>, or <mark>dh</mark> </p>
           </div></strong>, <strong class="openable">option:obj<div>
             <p> modulusLength: <strong>nr</strong> - key size in bits (for <mark>RSA</mark> and <mark>DSA</mark>) </p>
@@ -380,9 +545,9 @@
         </span>
       </td>
     </tr>
-    <tr class="06.02">
+    <tr>
       <td>
-        <strong>crypto</strong>.generateKeyPairSync(<strong class="openable">type:str<div>
+        generateKeyPairSync(<strong class="openable">type:str<div>
             <p> <mark>rsa</mark>, <mark>dsa</mark>, <mark>ec</mark>, <mark>ed25519</mark>, <mark>ed448</mark>, <mark>x25519</mark>, <mark>x448</mark>, or <mark>dh</mark> </p>
           </div></strong>, <strong class="openable">option:obj<div>
             <p> modulusLength: <strong>nr</strong> - key size in bits (for <mark>RSA</mark> and <mark>DSA</mark>) </p>
@@ -423,186 +588,66 @@
         </span>
       </td>
     </tr>
-    <tr class="05.04">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
-        <strong>crypto</strong>.generateKeySync(<strong class="openable">type:str<div>
-            <p> 'aes' or 'hmac' </p>
-          </div></strong>, <strong class="openable">option:obj<div>
-            <p> length: <strong>nr</strong> - the bit length of the generated key (for <mark>aes</mark> key must be <mark>128</mark>, <mark>192</mark> or <mark>256</mark>) (for <mark>hmac</mark> key must be between <mark>1</mark> to <mark>2**31 -1</mark>) </p>
+        createPrivateKey(<strong class="openable">key:obj|str|...<div>
+            <p> - the passed key material must be a valid key in PEM or DER format </p>
+            <hr>
+            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
+            <hr>
+            <p> <strong>obj</strong> </p>
+            <p> key: <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> - the key material in PEM of DER format </p>
+            <p> format: 'pem|der' (Default: <mark>pem</mark>) </p>
+            <p> type: <strong>str</strong> - can be <mark>pkcs1</mark>, <mark>pkcs8</mark> or <mark>sec1</mark> (for DER format only) </p>
+            <p> passprase: <strong>str|buf</strong> - must be specified if the private key is encrypted </p>
+            <p> encoding: <strong>str</strong> - encoding if the passed key is a string </p>
           </div></strong>)
       </td>
       <td>
-        - synchronously generates and returns a random secret key <strong>keyObj</strong> (used for symmetric encryptions)
+        - creates a private key from the passed <u>valid private key material</u> (does not generate a new key) <br>
+        - this is a wrapper method, it wraps a valid private key and returns it as a <strong>keyObj</strong> object
         <span class="browserSupport" title="updated : 2021-03-13">
           <span><i class="fab fa-node-js"></i> </span>
         </span>
       </td>
     </tr>
-    <tr class="08.01">
+    <tr>
       <td>
-        <strong>crypto</strong>.hkdf(<strong>hashAlgorithm:str</strong>, <strong class="openable">key:str|...<div>
-            <p> - the secret key (synchronous key) </p>
-            <p> <strong>str|buf|keyObj|ArrayBuffer|TypedArray|DataView</strong> </p>
-          </div></strong>, <strong class="openable">salt:str|...<div>
-            <p> - salt value </p>
+        createPublicKey(<strong class="openable">key:obj|str|...<div>
+            <p> - the passed key material must be a valid key in PEM or DER format </p>
+            <p> - X.509 certificate can be passed as well if the passed format is in PEM </p>
+            <hr>
             <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
-          </div></strong>, <strong class="openable">info:str|...<div>
-            <p> - additional info value, its length can be from <mark>0</mark> to <mark>1024</mark> bytes </p>
-            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
-          </div></strong>, <strong class="openable">keyLength:nr<div>
-            <p> - key length (min 1 ) (max 255 times the selected digest algorith (ex: <mark>sha512</mark> generates a 64 byte hash so the maximum keylengt can be <mark>16320</mark> bytes) </p>
-          </div></strong>, <strong>fn(err, key:ArrayBuffer)</strong>)
-      </td>
-      <td>
-        - asynchronous simple key derivation function, used to generate a secret key of the specified length<br>
-        - HKDF defined in RFC 5869 (HKDF = key-Hashed Key Derivation Function)
-        <span class="browserSupport" title="updated : 2021-03-14">
-          <span><i class="fab fa-node-js"></i> 15.0.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="08.02">
-      <td>
-        <strong>crypto</strong>.hkdfSync(<strong>hashAlgorithm:str</strong>, <strong class="openable">key:str|...<div>
-            <p> - the secret key (synchronous key) </p>
-            <p> <strong>str|buf|keyObj|ArrayBuffer|TypedArray|DataView</strong> </p>
-          </div></strong>, <strong class="openable">salt:str|...<div>
-            <p> - salt value </p>
-            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
-          </div></strong>, <strong class="openable">info:str|...<div>
-            <p> - additional info value, its length can be from <mark>0</mark> to <mark>1024</mark> bytes </p>
-            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
-          </div></strong>, <strong class="openable">keyLength:nr<div>
-            <p> - key length (min 1 ) (max 255 times the selected digest algorith (ex: <mark>sha512</mark> generates a 64 byte hash so the maximum keylengt can be <mark>16320</mark> bytes) </p>
+            <hr>
+            <p> <strong>obj</strong> </p>
+            <p> key: <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> - the key material in PEM of DER format </p>
+            <p> format: 'pem|der' (Default: <mark>pem</mark>) </p>
+            <p> type: <strong>str</strong> - can be <mark>pkcs1</mark> or <mark>spki</mark> (for DER format only) </p>
+            <p> encoding: <strong>str</strong> - encoding if the passed key is a string </p>
           </div></strong>)
       </td>
       <td>
-        - synchronous simple key derivation function, used to generate a secret key of the specified length<br>
-        - the generated data is returned as an <strong>ArrayBuffer</strong> <br>
-        - HKDF defined in RFC 5869 (HKDF = key-Hashed Key Derivation Function)
+        - creates a public key from the passed <u>valid public key material</u> (does not generate a new key) <br>
+        - this is a wrapper method, it wraps a valid public key and returns it as a <strong>keyObj</strong> object
         <span class="browserSupport" title="updated : 2021-03-13">
-          <span><i class="fab fa-node-js"></i> 15.0.0 </span>
+          <span><i class="fab fa-node-js"></i> </span>
         </span>
       </td>
     </tr>
-    <tr class="08.05">
-      <td>
-        <strong>crypto</strong>.pbkdf2(<strong class="openable">passWord:str|...<div>
-            <p> - password </p>
-            <p> <strong>str|buf|TypedArray|DataView|ArrayBuffer</strong> </p>
-          </div></strong>, <strong class="openable">salt:str|...<div>
-            <p> - salt value (recommended to be at least 16 bytes long) </p>
-            <p> <strong>str|buf|TypedArray|DataView|ArrayBuffer</strong> </p>
-          </div></strong>, <strong>iteration:nr</strong>, <strong>keyLength:nr</strong>, <strong>hashAlgorithm:str</strong>, <strong>fn(err, key)</strong>)
-      </td>
-      <td>
-        - asynchronous password-based key derivation function, used to generate a secret key of the specified length <br>
-        - PBKDF2 implementation
-        <span class="browserSupport" title="updated : 2021-03-16">
-          <span><i class="fab fa-node-js"></i> 0.0.5 </span>
-          <span class="openable"></i> more... <div>
-              <p> 6.0.0 </p>
-              <p> - <strong>password</strong> default encoding changed from binary to utf-8 </p>
-              <hr>
-              <p> 14.0.0 </p>
-              <p> - <strong>iteration</strong> must be a positive integer </p>
-              <hr>
-              <p> 15.0.0 </p>
-              <p> - <strong>ArrayBuffer</strong> support </p>
-            </div></span>
-        </span>
-      </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="08.06">
-      <td>
-        <strong>crypto</strong>.pbkdf2Sync(<strong class="openable">passWord:str|...<div>
-            <p> - password </p>
-            <p> <strong>str|buf|TypedArray|DataView</strong> </p>
-          </div></strong>, <strong class="openable">salt:str|...<div>
-            <p> - salt value (recommended to be at least 16 bytes long) </p>
-            <p> <strong>str|buf|TypedArray|DataView</strong> </p>
-          </div></strong>, <strong>iteration:nr</strong>, <strong>keyLength:nr</strong>, <strong>hashAlgorithm:str</strong>)
-      </td>
-      <td>
-        - synchronous password-based key derivation function, used to generate a secret key of the specified length <br>
-        - the generated data is returned as a <strong>buf</strong> (Buffer) <br>
-        - PBKDF2 implementation
-        <span class="browserSupport" title="updated : 2021-03-16">
-          <span><i class="fab fa-node-js"></i> 0.0.5 </span>
-          <span class="openable"></i> more... <div>
-              <p> 6.0.0 </p>
-              <p> - <strong>password</strong> default encoding changed from binary to utf-8 </p>
-              <hr>
-              <p> 14.0.0 </p>
-              <p> - <strong>iteration</strong> must be a positive integer </p>
-            </div></span>
-        </span>
-      </td>
-    </tr>
-    <tr class="08.03">
-      <td>
-        <strong>crypto</strong>.scrypt(<strong class="openable">passWord:str|...<div>
-            <p> - password </p>
-            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
-          </div></strong>, <strong class="openable">salt:str|...<div>
-            <p> - salt value (recommended to be at least 16 bytes long) </p>
-            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
-          </div></strong>, <strong>keyLength:nr</strong>, <strong class="openable">option:obj<div>
-            <p> cost|N: <strong>nr</strong> - CPU/memory cost parameter, must be a power of 2 (Default: <mark>16384</mark>) </p>
-            <p> blockSize|r: <strong>nr</strong> - block size (Default: <mark>8</mark>) </p>
-            <p> paralleliztion|p: <strong>nr</strong> - parallelization parameter (Default: <mark>1</mark>) </p>
-            <p> maxmem: <strong>nr</strong> - memory upper bound (Default: <mark>32 * 1024 * 1024</mark>) </p>
-          </div></strong>, <strong>fn(err, buf)</strong>)
-      </td>
-      <td>
-        - asynchronous password-based key derivation function, used to generate a secret key of the specified length <br>
-        - 'scrypt' implementation = designed to be expensive computationally and memory-wise (resistent to brute-force attacks)
-        <span class="browserSupport" title="updated : 2021-03-13">
-          <span><i class="fab fa-node-js"></i> 10.5.0 </span>
-          <span class="openable"> more... <div>
-              <p> 12.8.0 / 10.17.0 </p>
-              <p> - <mark>maxmem</mark> option can be a safe integer </p>
-              <hr>
-              <p> 15.0.0 </p>
-              <p> - <strong>ArrayBuffer</strong> support </p>
-            </div></span>
-        </span>
-      </td>
-    </tr>
-    <tr class="08.04">
-      <td>
-        <strong>crypto</strong>.scryptSync(<strong class="openable">passWord:str|...<div>
-            <p> - password </p>
-            <p> <strong>str|buf|TypedArray|DataView</strong> </p>
-          </div></strong>, <strong class="openable">salt:str|...<div>
-            <p> - salt value (recommended to be at least 16 bytes long) </p>
-            <p> <strong>str|buf|TypedArray|DataView</strong> </p>
-          </div></strong>, <strong>keyLength:nr</strong>, <strong class="openable">option:obj<div>
-            <p> cost|N: <strong>nr</strong> - CPU/memory cost parameter, must be a power of 2 (Default: <mark>16384</mark>) </p>
-            <p> blockSize|r: <strong>nr</strong> - block size (Default: <mark>8</mark>) </p>
-            <p> paralleliztion|p: <strong>nr</strong> - parallelization parameter (Default: <mark>1</mark>) </p>
-            <p> maxmem: <strong>nr</strong> - memory upper bound (Default: <mark>32 * 1024 * 1024</mark>) </p>
-          </div></strong>)
-      </td>
-      <td>
-        - synchronous password-based key derivation function, used to generate a secret key of the specified length <br>
-        - the generated data is returned as a <strong>buf</strong> (Buffer) <br>
-        - 'scrypt' implementation = designed to be expensive computationally and memory-wise (resistent to brute-force attacks)
-        <span class="browserSupport" title="updated : 2021-03-13">
-          <span><i class="fab fa-node-js"></i> 10.5.0 </span>
-          <span class="openable"> more... <div>
-              <p> 12.8.0 / 10.17.0 </p>
-              <p> - <mark>maxmem</mark> option can be a safe integer </p>
-            </div></span>
-        </span>
-      </td>
-    </tr>
-    <tr class="10.01">
+    <tr>
       <td colspan="2">
         Key Object
       </td>
     </tr>
-    <tr class="10.02">
+    <tr>
       <td>
         <strong>keyObj</strong>
       </td>
@@ -617,7 +662,7 @@
         </span>
       </td>
     </tr>
-    <tr class="10.03">
+    <tr>
       <td>
         KeyObject.from(<strong>cryptoKey</strong>)
       </td>
@@ -628,45 +673,11 @@
         </span>
       </td>
     </tr>
-    <tr class="12.04">
-      <td>
-        <strong>keyObj</strong>.asymmetrycKeyDetails
-      </td>
-      <td>
-        - for public and private keys returns an <span class="openable">object<div>
-            <p> modulusLength: <strong>nr</strong> - key size in bits (RSA, DSA) </p>
-            <p> publicExponent: <strong>bigInt</strong> - public exponent (RSA) </p>
-            <p> divisorLength: <strong>nr</strong> - size of <mark>q</mark> in bits (DSA) </p>
-            <p> namedCurve: <strong>nr</strong> - name of curve (EC) </p>
-          </div></span> with the key details <br>
-
-
-        - for secret (symmetric) keys returns <mark>undefinded</mark>
-        <span class="browserSupport" title="updated : 2021-03-17">
-          <span><i class="fab fa-node-js"></i> 15.7.0 </span>
-        </span>
-      </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="12.03">
-      <td>
-        <strong>keyObj</strong>.asymmetrycKeyType
-      </td>
-      <td>
-        - for public and private keys returns the key's type (ex: <mark>'rsa'</mark>) <br>
-        - for secret (symmetric) keys returns <mark>undefinded</mark>
-        <span class="browserSupport" title="updated : 2021-03-17">
-          <span><i class="fab fa-node-js"></i> 11.6.0 </span>
-          <span class="openable"> more... <div>
-              <p> 12.0.0 </p>
-              <p> - <mark>x25519</mark>, <mark>x448</mark>, <mark>ed25519</mark>, <mark>ed448</mark>, <mark>rsa-pss</mark> support </p>
-              <hr>
-              <p> 13.9.0 / 12.17.0 </p>
-              <p> - <mark>dh</mark> support </p>
-            </div></span>
-        </span>
-      </td>
-    </tr>
-    <tr class="11.01">
+    <tr>
       <td>
         <strong>keyObj</strong>.export(<strong class="openable">option:obj<div>
             <p><b><u> For symmetric (secret) key </u></b></p>
@@ -691,7 +702,22 @@
         </span>
       </td>
     </tr>
-    <tr class="12.02">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>keyObj</strong>.type
+      </td>
+      <td>
+        - returns the <strong>keyObj</strong>'s type (<mark>'secret'</mark>, <mark>'public'</mark> or <mark>'private'</mark>)
+        <span class="browserSupport" title="updated : 2021-03-17">
+          <span><i class="fab fa-node-js"></i> 11.6.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
       <td>
         <strong>keyObj</strong>.symmetrycKeySize
       </td>
@@ -703,14 +729,39 @@
         </span>
       </td>
     </tr>
-    <tr class="12.01">
+    <tr>
       <td>
-        <strong>keyObj</strong>.type
+        <strong>keyObj</strong>.asymmetrycKeyType
       </td>
       <td>
-        - returns the <strong>keyObj</strong>'s type (<mark>'secret'</mark>, <mark>'public'</mark> or <mark>'private'</mark>)
+        - for public and private keys returns the key's type (ex: <mark>'rsa'</mark>) <br>
+        - for secret (symmetric) keys returns <mark>undefinded</mark>
         <span class="browserSupport" title="updated : 2021-03-17">
           <span><i class="fab fa-node-js"></i> 11.6.0 </span>
+          <span class="openable"> more... <div>
+              <p> 12.0.0 </p>
+              <p> - <mark>x25519</mark>, <mark>x448</mark>, <mark>ed25519</mark>, <mark>ed448</mark>, <mark>rsa-pss</mark> support </p>
+              <hr>
+              <p> 13.9.0 / 12.17.0 </p>
+              <p> - <mark>dh</mark> support </p>
+            </div></span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>keyObj</strong>.asymmetrycKeyDetails
+      </td>
+      <td>
+        - for public and private keys returns an <span class="openable">object<div>
+            <p> modulusLength: <strong>nr</strong> - key size in bits (RSA, DSA) </p>
+            <p> publicExponent: <strong>bigInt</strong> - public exponent (RSA) </p>
+            <p> divisorLength: <strong>nr</strong> - size of <mark>q</mark> in bits (DSA) </p>
+            <p> namedCurve: <strong>nr</strong> - name of curve (EC) </p>
+          </div></span> with the key details <br>
+        - for secret (symmetric) keys returns <mark>undefinded</mark>
+        <span class="browserSupport" title="updated : 2021-03-17">
+          <span><i class="fab fa-node-js"></i> 15.7.0 </span>
         </span>
       </td>
     </tr>
@@ -718,16 +769,15 @@
   <br>
   <table class="table">
     <caption>
-      Cipher / Decipher
-      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+      Cipher / Decipher 
     </caption>
     <tr>
       <th style="width:30%;"> Method </th>
       <th> Description </th>
     </tr>
-    <tr class="05.01">
+    <tr>
       <td>
-        <strong>crypto</strong>.publicEncrypt(<strong class="openable">pubKey:obj|str|...<div>
+        publicEncrypt(<strong class="openable">pubKey:obj|str|...<div>
             <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView|keyObj|cryptoKey</strong> </p>
             <hr>
             <p> <strong>obj</strong> </p>
@@ -760,67 +810,9 @@
         </span>
       </td>
     </tr>
-    <tr class="05.04">
+    <tr>
       <td>
-        <strong>crypto</strong>.publicDecrypt(<strong class="openable">pubKey:obj|str|...<div>
-            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView|keyObj|cryptoKey</strong> </p>
-            <hr>
-            <p> <strong>obj</strong> </p>
-            <p> key: <strong>str|buf|ArrayBuffer|TypedArray|DataView|keyObj|cryptoKey</strong> - PEM encoded public key </p>
-            <p> passprase: <strong>str|bur|ArrayBuffer|TypedArray|DataView</strong> - passprase if the passed key is a private key </p>
-            <p> padding: <strong>str|bur|ArrayBuffer|TypedArray|DataView</strong> - padding value (can be <mark><strong>crypto</strong>.constants.RSA_NO_PADDING</mark>, <mark><strong>crypto</strong>.constants.RSA_PKCS1_PADDING</mark>, or <mark><strong>crypto</strong>.constants.RSA_PKCS1_OAEP_PADDING</mark>) </p>
-            <p> encoding: <strong>str</strong> - encoding for the passed strings </p>
-          </div></strong>, <strong class="openable">data:str|...<div>
-            <p><strong>str|buf|ArrayBuffer|TypedArray|DataView</strong></p>
-          </div></strong>)
-      </td>
-      <td>
-        - decrypts the passed <strong>data</strong> with the public key and returns the result in a <strong>buf</strong> (Buffer) <br>
-        - the <strong>data</strong> previously was encrypted with the corresponding private key pair <br>
-        - if the passed <strong>key</strong> argument is not a <strong>keyObj</strong> the <mark><strong>crypto</strong>.createPubliceKey()</mark> will be called on it internally
-        <span class="browserSupport" title="updated : 2021-03-17">
-          <span><i class="fab fa-node-js"></i> 1.10.0 </span>
-          <span class="openable"> more... <div>
-              <p> 11.6.0 </p>
-              <p> - <strong>keyObj</strong> support </p>
-              <p> 15.0.0 </p>
-              <p> - <strong>ArrayBuffer</strong> and <strong>cryptoKey</strong> support </p>
-            </div></span>
-        </span>
-      </td>
-    </tr>
-    <tr class="05.03">
-      <td>
-        <strong>crypto</strong>.privateEncrypt(<strong class="openable">privKey:obj|str|...<div>
-            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView|keyObj|cryptoKey</strong> </p>
-            <hr>
-            <p> <strong>obj</strong> </p>
-            <p> key: <strong>str|buf|ArrayBuffer|TypedArray|DataView|keyObj|cryptoKey</strong> - PEM encoded public key </p>
-            <p> passprase: <strong>str|bur|ArrayBuffer|TypedArray|DataView</strong> - passprase if the passed key is a private key </p>
-            <p> padding: <strong>str|bur|ArrayBuffer|TypedArray|DataView</strong> - padding value (can be <mark><strong>crypto</strong>.constants.RSA_NO_PADDING</mark>, <mark><strong>crypto</strong>.constants.RSA_PKCS1_PADDING</mark>, or <mark><strong>crypto</strong>.constants.RSA_PKCS1_OAEP_PADDING</mark>) </p>
-            <p> encoding: <strong>str</strong> - encoding for the passed strings </p>
-          </div></strong>, <strong class="openable">data:str|...<div>
-            <p><strong>str|buf|ArrayBuffer|TypedArray|DataView</strong></p>
-          </div></strong>)
-      </td>
-      <td>
-        - encrypts the passed <strong>data</strong> with the private key and returns the result in a <strong>buf</strong> (Buffer) <br>
-        - the encrypted data can be decrypted with the corresponding public key pair later on<br>
-        - if the passed <strong>key</strong> argument is not a <strong>keyObj</strong> the <mark><strong>crypto</strong>.createPrivateKey()</mark> will be called on it internally
-        <span class="browserSupport" title="updated : 2021-03-17">
-          <span><i class="fab fa-node-js"></i> 1.10.0 </span>
-          <span class="openable"> more... <div>
-              <p> 11.6.0 </p>
-              <p> - <strong>keyObj</strong> support </p>
-              <p> 15.0.0 </p>
-              <p> - <strong>ArrayBuffer</strong> and <strong>cryptoKey</strong> support </p>
-            </div></span>
-        </span>
-      </td>
-    </tr>
-    <tr class="05.02">
-      <td>
-        <strong>crypto</strong>.privateDecrypt(<strong class="openable">privKey:obj|str|...<div>
+        privateDecrypt(<strong class="openable">privKey:obj|str|...<div>
             <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView|keyObj|cryptoKey</strong> </p>
             <hr>
             <p> <strong>obj</strong> </p>
@@ -851,14 +843,76 @@
         </span>
       </td>
     </tr>
-    <tr class="10.01">
+    <tr>
+      <td>
+        privateEncrypt(<strong class="openable">privKey:obj|str|...<div>
+            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView|keyObj|cryptoKey</strong> </p>
+            <hr>
+            <p> <strong>obj</strong> </p>
+            <p> key: <strong>str|buf|ArrayBuffer|TypedArray|DataView|keyObj|cryptoKey</strong> - PEM encoded public key </p>
+            <p> passprase: <strong>str|bur|ArrayBuffer|TypedArray|DataView</strong> - passprase if the passed key is a private key </p>
+            <p> padding: <strong>str|bur|ArrayBuffer|TypedArray|DataView</strong> - padding value (can be <mark><strong>crypto</strong>.constants.RSA_NO_PADDING</mark>, <mark><strong>crypto</strong>.constants.RSA_PKCS1_PADDING</mark>, or <mark><strong>crypto</strong>.constants.RSA_PKCS1_OAEP_PADDING</mark>) </p>
+            <p> encoding: <strong>str</strong> - encoding for the passed strings </p>
+          </div></strong>, <strong class="openable">data:str|...<div>
+            <p><strong>str|buf|ArrayBuffer|TypedArray|DataView</strong></p>
+          </div></strong>)
+      </td>
+      <td>
+        - encrypts the passed <strong>data</strong> with the private key and returns the result in a <strong>buf</strong> (Buffer) <br>
+        - the encrypted data can be decrypted with the corresponding public key pair later on<br>
+        - if the passed <strong>key</strong> argument is not a <strong>keyObj</strong> the <mark><strong>crypto</strong>.createPrivateKey()</mark> will be called on it internally
+        <span class="browserSupport" title="updated : 2021-03-17">
+          <span><i class="fab fa-node-js"></i> 1.10.0 </span>
+          <span class="openable"> more... <div>
+              <p> 11.6.0 </p>
+              <p> - <strong>keyObj</strong> support </p>
+              <p> 15.0.0 </p>
+              <p> - <strong>ArrayBuffer</strong> and <strong>cryptoKey</strong> support </p>
+            </div></span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        publicDecrypt(<strong class="openable">pubKey:obj|str|...<div>
+            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView|keyObj|cryptoKey</strong> </p>
+            <hr>
+            <p> <strong>obj</strong> </p>
+            <p> key: <strong>str|buf|ArrayBuffer|TypedArray|DataView|keyObj|cryptoKey</strong> - PEM encoded public key </p>
+            <p> passprase: <strong>str|bur|ArrayBuffer|TypedArray|DataView</strong> - passprase if the passed key is a private key </p>
+            <p> padding: <strong>str|bur|ArrayBuffer|TypedArray|DataView</strong> - padding value (can be <mark><strong>crypto</strong>.constants.RSA_NO_PADDING</mark>, <mark><strong>crypto</strong>.constants.RSA_PKCS1_PADDING</mark>, or <mark><strong>crypto</strong>.constants.RSA_PKCS1_OAEP_PADDING</mark>) </p>
+            <p> encoding: <strong>str</strong> - encoding for the passed strings </p>
+          </div></strong>, <strong class="openable">data:str|...<div>
+            <p><strong>str|buf|ArrayBuffer|TypedArray|DataView</strong></p>
+          </div></strong>)
+      </td>
+      <td>
+        - decrypts the passed <strong>data</strong> with the public key and returns the result in a <strong>buf</strong> (Buffer) <br>
+        - the <strong>data</strong> previously was encrypted with the corresponding private key pair <br>
+        - if the passed <strong>key</strong> argument is not a <strong>keyObj</strong> the <mark><strong>crypto</strong>.createPubliceKey()</mark> will be called on it internally
+        <span class="browserSupport" title="updated : 2021-03-17">
+          <span><i class="fab fa-node-js"></i> 1.10.0 </span>
+          <span class="openable"> more... <div>
+              <p> 11.6.0 </p>
+              <p> - <strong>keyObj</strong> support </p>
+              <p> 15.0.0 </p>
+              <p> - <strong>ArrayBuffer</strong> and <strong>cryptoKey</strong> support </p>
+            </div></span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td colspan="2">
         Cipher
       </td>
     </tr>
-    <tr class="10.02">
+    <tr>
       <td>
-        <strong>crypto</strong>.createCipheriv(<strong>algorithm:str</strong>, <strong class="openable">key:str|...<div>
+        createCipheriv(<strong>algorithm:str</strong>, <strong class="openable">key:str|...<div>
             <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView|keyObj|cryptoKey</strong> </p>
           </div></strong>, <strong class="openable">iv<div>
             <p> - initialization vector (Nonce) </p>
@@ -897,66 +951,11 @@
         </span>
       </td>
     </tr>
-    <tr class="11.02">
-      <td>
-        <strong>cipher</strong>.final(<i class="openable">outEncode:str<div>
-            <p> - output encoding </p>
-          </div></i>)
-      </td>
-      <td>
-        - returns any remaining enciphered content from the <strong>cipher</strong> object (once called the <strong>cipher</strong> is finalized (won't encrypt more data))
-        <span class="browserSupport" title="updated : 2021-03-17">
-          <span><i class="fab fa-node-js"></i> 0.1.94 </span>
-        </span>
-      </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="12.02">
-      <td>
-        <strong>cipher</strong>.getAuthTag()
-      </td>
-      <td>
-        - when authenticated encryption mode is used (<mark>GCM</mark>, <mark>CCM</mark> or <mark>OCB</mark>) returns the computed authentication tag as a <strong>buf</strong> <br>
-        - must be called after <mark><strong>cipher</strong>.final()</mark>
-        <span class="browserSupport" title="updated : 2021-03-18">
-          <span><i class="fab fa-node-js"></i> </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="12.01">
-      <td>
-        <strong>cipher</strong>.setAAD(<strong class="openable">aad:str|...<div>
-            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
-            <p> - data used for additional authentication </p>
-          </div></strong>, <i class="openable">option:obj<div>
-            <p> plaintextLength: <strong>nr</strong> - the length <u>in bytes</u> of the original text what we want to encrypt <u>(required for <mark>CCM</mark> mode)</u> (optional for <mark>GCM</mark> and <mark>OCB</mark> modes) </p>
-            <p> encoding: <strong>str</strong> - encoding for the <strong>data</strong> when string passed </p>
-          </div></i>)
-      </td>
-      <td>
-        - when authenticated encryption mode is used (<mark>GCM</mark>, <mark>CCM</mark> or <mark>OCB</mark>) sets the <b>a</b>dditional <b>a</b>uthenticated <b>d</b>ata for the <strong>cipher</strong> <br>
-        - returns the <strong>cipher</strong> object for method chaining <br>
-        - must be called before <mark><strong>cipher</strong>.update()</mark>
-        <span class="browserSupport" title="updated : 2021-03-18">
-          <span><i class="fab fa-node-js"></i> 1.0.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="13.01">
-      <td>
-        <strong>cipher</strong>.setAutoPadding(<strong>bol</strong>)
-      </td>
-      <td>
-        - enables/disables <span class="openable">auto padding<div>
-            <p> - block ciphers automatically add a padding to the last cipher block on the chain, so all cipher blocks are full (ex: if <mark>AES128</mark> encryption's last block is a 64 bit block an additional 64 bit padding is added so the last block will be a full 128bit cipher block) </p>
-            <p> - this method can disable this, but in this case we have to make sure that the last block of the encrypted data is a full block (like the data to encrypt is the exact length) </p>
-          </div></span> for block encryptions (Default: <mark>true</mark>) <br>
-        - must be called before <mark><strong>cipher</strong>.final()</mark>
-        <span class="browserSupport" title="updated : 2021-03-18">
-          <span><i class="fab fa-node-js"></i> 0.7.1 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="11.01">
+    <tr>
       <td>
         <strong>cipher</strong>.update(<strong class="openable">data:str|...<div>
             <p> <strong>str|buf|TypedArray|DataView</strong> </p>
@@ -977,14 +976,85 @@
         </span>
       </td>
     </tr>
-    <tr class="15.01">
+    <tr>
+      <td>
+        <strong>cipher</strong>.final(<i class="openable">outEncode:str<div>
+            <p> - output encoding </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns any remaining enciphered content from the <strong>cipher</strong> object (once called the <strong>cipher</strong> is finalized (won't encrypt more data))
+        <span class="browserSupport" title="updated : 2021-03-17">
+          <span><i class="fab fa-node-js"></i> 0.1.94 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>cipher</strong>.setAAD(<strong class="openable">aad:str|...<div>
+            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
+            <p> - data used for additional authentication </p>
+          </div></strong>, <i class="openable">option:obj<div>
+            <p> plaintextLength: <strong>nr</strong> - the length <u>in bytes</u> of the original text what we want to encrypt <u>(required for <mark>CCM</mark> mode)</u> (optional for <mark>GCM</mark> and <mark>OCB</mark> modes) </p>
+            <p> encoding: <strong>str</strong> - encoding for the <strong>data</strong> when string passed </p>
+          </div></i>)
+      </td>
+      <td>
+        - when authenticated encryption mode is used (<mark>GCM</mark>, <mark>CCM</mark> or <mark>OCB</mark>) sets the <b>a</b>dditional <b>a</b>uthenticated <b>d</b>ata for the <strong>cipher</strong> <br>
+        - returns the <strong>cipher</strong> object for method chaining <br>
+        - must be called before <mark><strong>cipher</strong>.update()</mark>
+        <span class="browserSupport" title="updated : 2021-03-18">
+          <span><i class="fab fa-node-js"></i> 1.0.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>cipher</strong>.getAuthTag()
+      </td>
+      <td>
+        - when authenticated encryption mode is used (<mark>GCM</mark>, <mark>CCM</mark> or <mark>OCB</mark>) returns the computed authentication tag as a <strong>buf</strong> <br>
+        - must be called after <mark><strong>cipher</strong>.final()</mark>
+        <span class="browserSupport" title="updated : 2021-03-18">
+          <span><i class="fab fa-node-js"></i> </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>cipher</strong>.setAutoPadding(<strong>bol</strong>)
+      </td>
+      <td>
+        - enables/disables <span class="openable">auto padding<div>
+            <p> - block ciphers automatically add a padding to the last cipher block on the chain, so all cipher blocks are full (ex: if <mark>AES128</mark> encryption's last block is a 64 bit block an additional 64 bit padding is added so the last block will be a full 128bit cipher block) </p>
+            <p> - this method can disable this, but in this case we have to make sure that the last block of the encrypted data is a full block (like the data to encrypt is the exact length) </p>
+          </div></span> for block encryptions (Default: <mark>true</mark>) <br>
+        - must be called before <mark><strong>cipher</strong>.final()</mark>
+        <span class="browserSupport" title="updated : 2021-03-18">
+          <span><i class="fab fa-node-js"></i> 0.7.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td colspan="2">
         Decipher
       </td>
     </tr>
-    <tr class="15.02">
+    <tr>
       <td>
-        <strong>crypto</strong>.createDecipheriv(<strong>algorithm:str</strong>, <strong class="openable">key:str|...<div>
+        createDecipheriv(<strong>algorithm:str</strong>, <strong class="openable">key:str|...<div>
             <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView|keyObj|cryptoKey</strong> </p>
           </div></strong>, <strong class="openable">iv<div>
             <p> - initialization vector (Nonce) </p>
@@ -1023,7 +1093,32 @@
         </span>
       </td>
     </tr>
-    <tr class="16.02">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>decipher</strong>.update(<strong class="openable">data:str|...<div>
+            <p> <strong>str|buf|TypedArray|DataView</strong> </p>
+          </div></strong>, <i class="openable">inEncode:str<div>
+            <p> - the input <strong>data</strong> encoding when string passed </p>
+          </div></i>, <i class="openable">outEncode:str<div>
+            <p> - output encoding </p>
+          </div></i>)
+      </td>
+      <td>
+        - feeds the <strong>decipher</strong> with data and returns the decoded result as <strong>str|buf</strong> (can be called multiple times)
+        <span class="browserSupport" title="updated : 2021-03-17">
+          <span><i class="fab fa-node-js"></i> 0.1.94 </span>
+          <span class="openable"> more...<div>
+              <p> 6.0.0 </p>
+              <p> - default <i>inEncode</i> changed from <mark>binary</mark> to <mark>utf-8</mark> </p>
+            </div></span>
+        </span>
+      </td>
+    </tr>
+    <tr>
       <td>
         <strong>decipher</strong>.final(<i class="openable">outEncode:str<div>
             <p> - output encoding </p>
@@ -1036,26 +1131,11 @@
         </span>
       </td>
     </tr>
-    <tr class="17.02">
-      <td>
-        <strong>decipher</strong>.setAAD(<strong class="openable">aad:str|...<div>
-            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
-            <p> - additional authenticated data used when the original data was encrypted </p>
-          </div></strong>, <i class="openable">option:obj<div>
-            <p> plaintextLength: <strong>nr</strong> - the length <u>in bytes</u> of the original text what was encrypted <u>(required for <mark>CCM</mark> mode)</u> (optional for <mark>GCM</mark> and <mark>OCB</mark> modes) </p>
-            <p> encoding: <strong>str</strong> - encoding for the <strong>data</strong> when string passed </p>
-          </div></i>)
-      </td>
-      <td>
-        - when authenticated encryption mode is used (<mark>GCM</mark>, <mark>CCM</mark> or <mark>OCB</mark>) sets the <b>a</b>dditional <b>a</b>uthenticated <b>d</b>ata to the <strong>decipher</strong> <br>
-        - returns the <strong>decipher</strong> object for method chaining <br>
-        - must be called before <mark><strong>decipher</strong>.update()</mark>
-        <span class="browserSupport" title="updated : 2021-03-18">
-          <span><i class="fab fa-node-js"></i> 1.0.0 </span>
-        </span>
-      </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="17.01">
+    <tr>
       <td>
         <strong>decipher</strong>.setAuthTag(<strong class="openable">authTag:str|...<div>
             <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
@@ -1083,7 +1163,30 @@
         </span>
       </td>
     </tr>
-    <tr class="18.01">
+    <tr>
+      <td>
+        <strong>decipher</strong>.setAAD(<strong class="openable">aad:str|...<div>
+            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
+            <p> - additional authenticated data used when the original data was encrypted </p>
+          </div></strong>, <i class="openable">option:obj<div>
+            <p> plaintextLength: <strong>nr</strong> - the length <u>in bytes</u> of the original text what was encrypted <u>(required for <mark>CCM</mark> mode)</u> (optional for <mark>GCM</mark> and <mark>OCB</mark> modes) </p>
+            <p> encoding: <strong>str</strong> - encoding for the <strong>data</strong> when string passed </p>
+          </div></i>)
+      </td>
+      <td>
+        - when authenticated encryption mode is used (<mark>GCM</mark>, <mark>CCM</mark> or <mark>OCB</mark>) sets the <b>a</b>dditional <b>a</b>uthenticated <b>d</b>ata to the <strong>decipher</strong> <br>
+        - returns the <strong>decipher</strong> object for method chaining <br>
+        - must be called before <mark><strong>decipher</strong>.update()</mark>
+        <span class="browserSupport" title="updated : 2021-03-18">
+          <span><i class="fab fa-node-js"></i> 1.0.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>decipher</strong>.setAutoPadding(<strong>bol</strong>)
       </td>
@@ -1098,41 +1201,19 @@
         </span>
       </td>
     </tr>
-    <tr class="16.01">
-      <td>
-        <strong>decipher</strong>.update(<strong class="openable">data:str|...<div>
-            <p> <strong>str|buf|TypedArray|DataView</strong> </p>
-          </div></strong>, <i class="openable">inEncode:str<div>
-            <p> - the input <strong>data</strong> encoding when string passed </p>
-          </div></i>, <i class="openable">outEncode:str<div>
-            <p> - output encoding </p>
-          </div></i>)
-      </td>
-      <td>
-        - feeds the <strong>decipher</strong> with data and returns the decoded result as <strong>str|buf</strong> (can be called multiple times)
-        <span class="browserSupport" title="updated : 2021-03-17">
-          <span><i class="fab fa-node-js"></i> 0.1.94 </span>
-          <span class="openable"> more...<div>
-              <p> 6.0.0 </p>
-              <p> - default <i>inEncode</i> changed from <mark>binary</mark> to <mark>utf-8</mark> </p>
-            </div></span>
-        </span>
-      </td>
-    </tr>
   </table>
   <br>
   <table class="table">
     <caption>
       Sign / Verify
-      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
     </caption>
     <tr>
       <th style="width:30%;"> Method </th>
       <th> Description </th>
     </tr>
-    <tr class="05.01">
+    <tr>
       <td>
-        <strong>crypto</strong>.sign(<strong>hashAlgorithm:str</strong>, <strong class="openable">data:str|...<div>
+        sign(<strong>hashAlgorithm:str</strong>, <strong class="openable">data:str|...<div>
             <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
           </div></strong>, <strong class="openable">privKey:str|...<div>
             <p> <strong>obj|str|bur|ArrayBuffer|TypedArray|DataView|keyObj|cryptoKey</strong> </p>
@@ -1163,9 +1244,9 @@
         </span>
       </td>
     </tr>
-    <tr class="05.02">
+    <tr>
       <td>
-        <strong>crypto</strong>.verify(<strong>hashAlgorithm:str</strong>, <strong class="openable">data:str|...<div>
+        verify(<strong>hashAlgorithm:str</strong>, <strong class="openable">data:str|...<div>
             <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
           </div></strong>, <strong class="openable">pubKey:str|...<div>
             <p> <strong>obj|str|bur|ArrayBuffer|TypedArray|DataView|keyObj|cryptoKey</strong> </p>
@@ -1198,19 +1279,18 @@
         </span>
       </td>
     </tr>
-
-
-
-
-
-    <tr class="10.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td colspan="2">
         Sing
       </td>
     </tr>
-    <tr class="10.02">
+    <tr>
       <td>
-        <strong>crypto</strong>.createSing(<strong>hashAlgorithm:str</strong>, <i class="openable">option:obj<div>
+        createSing(<strong>hashAlgorithm:str</strong>, <i class="openable">option:obj<div>
             <p> - any <strong>writableStream</strong> options </p>
           </div></i>)
       </td>
@@ -1223,7 +1303,32 @@
         </span>
       </td>
     </tr>
-    <tr class="11.02">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>sign</strong>.update(<strong class="openable">data:str|...<div>
+            <p> <strong>str|buf|TypedArray|DataView</strong> </p>
+            <p> - the data what we want to sign </p>
+          </div></strong>, <i class="openable">encode:str<div>
+            <p> - encoding if <strong>data</strong> is a string (Default: <mark>utf-8</mark>) </p>
+            <p> - if <strong>data</strong> is not a string this option is ignored </p>
+          </div></i>)
+      </td>
+      <td>
+        - feeds the <strong>sign</strong> object with the data what we want to sign (can be called multiple times)
+        <span class="browserSupport" title="updated : 2021-03-23">
+          <span><i class="fab fa-node-js"></i> 0.1.92 </span>
+          <span class="openable"> more...<div>
+              <p> 6.0.0 </p>
+              <p> - default encoding changed from <mark>binary</mark> to <mark>utf-8</mark> </p>
+            </div></span>
+        </span>
+      </td>
+    </tr>
+    <tr>
       <td>
         <strong>sign</strong>.end()
       </td>
@@ -1234,7 +1339,11 @@
         </span>
       </td>
     </tr>
-    <tr class="12.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>sign</strong>.sign(<strong class="openable">privKey:str|...<div>
             <p> <strong>obj|str|bur|ArrayBuffer|TypedArray|DataView|keyObj|cryptoKey</strong> </p>
@@ -1273,35 +1382,18 @@
         </span>
       </td>
     </tr>
-    <tr class="11.01">
-      <td>
-        <strong>sign</strong>.update(<strong class="openable">data:str|...<div>
-            <p> <strong>str|buf|TypedArray|DataView</strong> </p>
-            <p> - the data what we want to sign </p>
-          </div></strong>, <i class="openable">encode:str<div>
-            <p> - encoding if <strong>data</strong> is a string (Default: <mark>utf-8</mark>) </p>
-            <p> - if <strong>data</strong> is not a string this option is ignored </p>
-          </div></i>)
-      </td>
-      <td>
-        - feeds the <strong>sign</strong> object with the data what we want to sign (can be called multiple times)
-        <span class="browserSupport" title="updated : 2021-03-23">
-          <span><i class="fab fa-node-js"></i> 0.1.92 </span>
-          <span class="openable"> more...<div>
-              <p> 6.0.0 </p>
-              <p> - default encoding changed from <mark>binary</mark> to <mark>utf-8</mark> </p>
-            </div></span>
-        </span>
-      </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="20.01">
+    <tr>
       <td colspan="2">
         Verify
       </td>
     </tr>
-    <tr class="20.02">
+    <tr>
       <td>
-        <strong>crypto</strong>.createVerify(<strong>hashAlgorithm:str</strong>, <i class="openable">option:obj<div>
+        createVerify(<strong>hashAlgorithm:str</strong>, <i class="openable">option:obj<div>
             <p> - any <strong>readableStream</strong> options </p>
           </div></i>)
       </td>
@@ -1314,18 +1406,11 @@
         </span>
       </td>
     </tr>
-    <tr class="21.02">
-      <td>
-        <strong>verify</strong>.end()
-      </td>
-      <td>
-        - called after <mark>update()</mark> to signal that no more data will be written to the <strong>verify</strong> object
-        <span class="browserSupport" title="updated : 2021-03-23">
-          <span><i class="fab fa-node-js"></i> 0.1.92 </span>
-        </span>
-      </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="21.01">
+    <tr>
       <td>
         <strong>verify</strong>.update(<strong class="openable">data:str|...<div>
             <p> <strong>str|buf|TypedArray|DataView</strong> </p>
@@ -1346,7 +1431,22 @@
         </span>
       </td>
     </tr>
-    <tr class="22.01">
+    <tr>
+      <td>
+        <strong>verify</strong>.end()
+      </td>
+      <td>
+        - called after <mark>update()</mark> to signal that no more data will be written to the <strong>verify</strong> object
+        <span class="browserSupport" title="updated : 2021-03-23">
+          <span><i class="fab fa-node-js"></i> 0.1.92 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>verify</strong>.verify(<strong class="openable">pubKey:str|...<div>
             <p> <strong>obj|str|bur|ArrayBuffer|TypedArray|DataView|keyObj|cryptoKey</strong> </p>
@@ -1393,18 +1493,17 @@
   <table class="table">
     <caption>
       Hashes
-      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
     </caption>
     <tr>
       <th style="width:30%;"> Method </th>
       <th> Description </th>
     </tr>
-    <tr class="10.01">
+    <tr>
       <td colspan="2"> Hash </td>
     </tr>
-    <tr class="10.02">
+    <tr>
       <td>
-        <strong>crypto</strong>.createHash(<strong>hashAlgorithm:str</strong>, <i class="openable">option:obj<div>
+        createHash(<strong>hashAlgorithm:str</strong>, <i class="openable">option:obj<div>
             <p> - any <strong>transformStream</strong> options </p>
           </div></i>)
       </td>
@@ -1421,34 +1520,11 @@
         </span>
       </td>
     </tr>
-    <tr class="12.01">
-      <td>
-        <strong>hash</strong>.copy(<i class="openable">option:obj<div>
-            <p> - any <strong>transformStream</strong> options </p>
-          </div></i>)
-      </td>
-      <td>
-        - creates and returns a new <strong>hash</strong> object copy <br>
-        - the newly created <strong>hash</strong> contains a deep copy of the internal state of the original <strong>hash</strong>
-        <span class="browserSupport" title="updated : 2021-03-26">
-          <span><i class="fab fa-node-js"></i> </span>
-        </span>
-      </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="11.02">
-      <td>
-        <strong>hash</strong>.digest(<i class="openable">encode:str<div>
-            <p> - encoding of the return value (Default: <strong>buf</strong>) </p>
-          </div></i>)
-      </td>
-      <td>
-        - calculates and returns the digest (as <strong>buf</strong>) on the data passed to the <strong>hash</strong> object
-        <span class="browserSupport" title="updated : 2021-03-26">
-          <span><i class="fab fa-node-js"></i> 0.1.92 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="11.01">
+    <tr>
       <td>
         <strong>hash</strong>.update(<strong class="openable">data:str|...<div>
             <p> <strong>str|buf|TypedArray|DataView</strong> </p>
@@ -1467,14 +1543,49 @@
         </span>
       </td>
     </tr>
-    <tr class="20.01">
+    <tr>
+      <td>
+        <strong>hash</strong>.digest(<i class="openable">encode:str<div>
+            <p> - encoding of the return value (Default: <strong>buf</strong>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - calculates and returns the digest (as <strong>buf</strong>) on the data passed to the <strong>hash</strong> object
+        <span class="browserSupport" title="updated : 2021-03-26">
+          <span><i class="fab fa-node-js"></i> 0.1.92 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>hash</strong>.copy(<i class="openable">option:obj<div>
+            <p> - any <strong>transformStream</strong> options </p>
+          </div></i>)
+      </td>
+      <td>
+        - creates and returns a new <strong>hash</strong> object copy <br>
+        - the newly created <strong>hash</strong> contains a deep copy of the internal state of the original <strong>hash</strong>
+        <span class="browserSupport" title="updated : 2021-03-26">
+          <span><i class="fab fa-node-js"></i> </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td colspan="2">
         HMAC (key-Hashed Message Authentication Code)
       </td>
     </tr>
-    <tr class="20.02">
+    <tr>
       <td>
-        <strong>crypto</strong>.createHmac(<strong>hashAlgorithm:str</strong>, <strong class="openable">key:str|...<div>
+        createHmac(<strong>hashAlgorithm:str</strong>, <strong class="openable">key:str|...<div>
             <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView|keyObj|cryptoKey</strong> </p>
           </div></strong>, <i class="openable">option:obj<div>
             <p> - any <strong>transformStream</strong> options </p>
@@ -1494,23 +1605,13 @@
               <p> - the <strong>key</strong> argument can be <strong>ArrayBuffer</strong> or <strong>cryptoKey</strong> </p>
             </div></span>
         </span>
-
       </td>
     </tr>
-    <tr class="21.02">
-      <td>
-        <strong>hmac</strong>.digest(<i class="openable">encode:str<div>
-            <p> - encoding of the return value (Default: <strong>buf</strong>) </p>
-          </div></i>)
-      </td>
-      <td>
-        - calculates and returns the hmac hash (as <strong>buf</strong>) on the data and key passed to the <strong>hmac</strong> object
-        <span class="browserSupport" title="updated : 2021-03-26">
-          <span><i class="fab fa-node-js"></i> 0.1.92 </span>
-        </span>
-      </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="21.01">
+    <tr>
       <td>
         <strong>hmac</strong>.update(<strong class="openable">data:str|...<div>
             <p> <strong>str|buf|TypedArray|DataView</strong> </p>
@@ -1529,6 +1630,19 @@
         </span>
       </td>
     </tr>
+    <tr>
+      <td>
+        <strong>hmac</strong>.digest(<i class="openable">encode:str<div>
+            <p> - encoding of the return value (Default: <strong>buf</strong>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - calculates and returns the hmac hash (as <strong>buf</strong>) on the data and key passed to the <strong>hmac</strong> object
+        <span class="browserSupport" title="updated : 2021-03-26">
+          <span><i class="fab fa-node-js"></i> 0.1.92 </span>
+        </span>
+      </td>
+    </tr>
   </table>
   <br>
   <table class="table">
@@ -1540,39 +1654,9 @@
       <th style="width:30%;"> Method </th>
       <th> Description </th>
     </tr>
-    <tr class="11.01">
+    <tr>
       <td>
-        <strong>crypto</strong>.checkPrime(<strong class="openable">candidate:bigint|...<div>
-            <p> <strong>bigint|buf|ArrayBuffer|SharedArrayBuffer|TypedArray|DataView</strong> (must be big-endian encoded) </p>
-          </div></strong>, <i class="openable">option:obj<div>
-            <p> checks: <strong>nr</strong> - the number of Miller-Rabin probabilistic primality iterations to perform. When the value is 0 (zero), a number of checks is used that yields a false positive rate of at most 2-64 for random input. Care must be used when selecting a number of checks. Refer to the OpenSSL documentation for the BN_is_prime_ex function nchecks options for more details (Default: <mark>0</mark>) </p>
-          </div></i>, <strong>fn(err, res)</strong>)
-      </td>
-      <td>
-        - asynchronously checks if the passed <strong>candidate</strong> is a prime number and returns a boolean accordingly
-        <span class="browserSupport" title="updated : 2021-03-26">
-          <span><i class="fab fa-node-js"></i> 15.8.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="11.02">
-      <td>
-        <strong>crypto</strong>.checkPrimeSync(<strong class="openable">candidate:bigint|...<div>
-            <p> <strong>bigint|buf|ArrayBuffer|SharedArrayBuffer|TypedArray|DataView</strong> (must be big-endian encoded) </p>
-          </div></strong>, <i class="openable">option:obj<div>
-            <p> checks: <strong>nr</strong> - the number of Miller-Rabin probabilistic primality iterations to perform. When the value is 0 (zero), a number of checks is used that yields a false positive rate of at most 2-64 for random input. Care must be used when selecting a number of checks. Refer to the OpenSSL documentation for the BN_is_prime_ex function nchecks options for more details (Default: <mark>0</mark>) </p>
-          </div></i>)
-      </td>
-      <td>
-        - synchronously checks if the passed <strong>candidate</strong> is a prime number and returns a boolean accordingly
-        <span class="browserSupport" title="updated : 2021-03-26">
-          <span><i class="fab fa-node-js"></i> 15.8.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="10.01">
-      <td>
-        <strong>crypto</strong>.generatePrime(<strong class="openable">size:nr<div>
+        generatePrime(<strong class="openable">size:nr<div>
             <p> - size in bits (ex: <mark>8</mark>bit = 1byte can be up to 255) </p>
           </div></strong>, <i class="openable">option:obj<div>
             <p> bigint: <strong>bol</strong> - if <mark>true</mark> the returned result is a <strong>bigint</strong> (Default: <mark>false</mark>) </p>
@@ -1595,9 +1679,9 @@
         </span>
       </td>
     </tr>
-    <tr class="10.02">
+    <tr>
       <td>
-        <strong>crypto</strong>.generatePrimeSync(<strong class="openable">size:nr<div>
+        generatePrimeSync(<strong class="openable">size:nr<div>
             <p> - size in bits (ex: <mark>8</mark>bit = 1byte can be up to 255) </p>
           </div></strong>, <i class="openable">option:obj<div>
             <p> bigint: <strong>bol</strong> - if <mark>true</mark> the returned result is a <strong>bigint</strong> (Default: <mark>false</mark>) </p>
@@ -1620,14 +1704,52 @@
         </span>
       </td>
     </tr>
-    <tr class="20.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        checkPrime(<strong class="openable">candidate:bigint|...<div>
+            <p> <strong>bigint|buf|ArrayBuffer|SharedArrayBuffer|TypedArray|DataView</strong> (must be big-endian encoded) </p>
+          </div></strong>, <i class="openable">option:obj<div>
+            <p> checks: <strong>nr</strong> - the number of Miller-Rabin probabilistic primality iterations to perform. When the value is 0 (zero), a number of checks is used that yields a false positive rate of at most 2-64 for random input. Care must be used when selecting a number of checks. Refer to the OpenSSL documentation for the BN_is_prime_ex function nchecks options for more details (Default: <mark>0</mark>) </p>
+          </div></i>, <strong>fn(err, res)</strong>)
+      </td>
+      <td>
+        - asynchronously checks if the passed <strong>candidate</strong> is a prime number and returns a boolean accordingly
+        <span class="browserSupport" title="updated : 2021-03-26">
+          <span><i class="fab fa-node-js"></i> 15.8.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        checkPrimeSync(<strong class="openable">candidate:bigint|...<div>
+            <p> <strong>bigint|buf|ArrayBuffer|SharedArrayBuffer|TypedArray|DataView</strong> (must be big-endian encoded) </p>
+          </div></strong>, <i class="openable">option:obj<div>
+            <p> checks: <strong>nr</strong> - the number of Miller-Rabin probabilistic primality iterations to perform. When the value is 0 (zero), a number of checks is used that yields a false positive rate of at most 2-64 for random input. Care must be used when selecting a number of checks. Refer to the OpenSSL documentation for the BN_is_prime_ex function nchecks options for more details (Default: <mark>0</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - synchronously checks if the passed <strong>candidate</strong> is a prime number and returns a boolean accordingly
+        <span class="browserSupport" title="updated : 2021-03-26">
+          <span><i class="fab fa-node-js"></i> 15.8.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td colspan="2">
         Diffie-Hellman (key exchange utility)
       </td>
     </tr>
-    <tr class="20.02">
+    <tr>
       <td>
-        <strong>crypto</strong>.createDiffieHellman(<strong class="openable">prime:str|...<div>
+        createDiffieHellman(<strong class="openable">prime:str|...<div>
             <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
             <p> - prime value (number) </p>
           </div></strong>, <i class="openable">primeEncode:str<div>
@@ -1660,9 +1782,9 @@
         </span>
       </td>
     </tr>
-    <tr class="20.03">
+    <tr>
       <td>
-        <strong>crypto</strong>.createDiffieHellmanGroup(<strong class="openable">diffHellGroup:str<div>
+        createDiffieHellmanGroup(<strong class="openable">diffHellGroup:str<div>
             <p> - Diffie-Hellman group (pre defined fixed Diffie-Hellman primes) <u>bigger prime = better security</u> </p>
             <p> <mark>'modp1'</mark> = 768bit prime </p>
             <p> <mark>'modp2'</mark> = 1024bit prime </p>
@@ -1693,7 +1815,150 @@
         </span>
       </td>
     </tr>
-    <tr class="26.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>diffieHellman</strong>.generateKeys(<i class="openable">encode:str<div>
+            <p> - the returned public diffie-hellman key is encoded in this format </p>
+            <p> - if this option is not provided <strong>buf</strong> will be returned </p>
+          </div></i>)
+      </td>
+      <td>
+        - generates the private and public <u>Diffie-Hellman keys</u> <br>
+        - the public diffie-hellman key is kept internally and also returned (as <strong>buf</strong>), it should be transfered to the other party <br>
+        - the private diffie-hellman key is kept internally (can be retrieved with <mark>getPrivateKey()</mark>)
+        <span class="browserSupport" title="updated : 2021-03-26">
+          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>diffieHellman</strong>.getPrivateKey(<i class="openable">encode:str<div>
+            <p> - the returned private diffie-hellman key is encoded in this format </p>
+            <p> - if this option is not provided <strong>buf</strong> will be returned </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns the <u>diffie-hellman private key</u> as <strong>buf</strong> (previously generated by <mark>generateKeys()</mark> or set by <mark>setPrivateKey()</mark>)
+        <span class="browserSupport" title="updated : 2021-03-26">
+          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>diffieHellman</strong>.getPublicKey(<i class="openable">encode:str<div>
+            <p> - the returned public diffie-hellman key is encoded in this format </p>
+            <p> - if this option is not provided <strong>buf</strong> will be returned </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns the <u>diffie-hellman public key</u> as <strong>buf</strong> (previously generated by <mark>generateKeys()</mark> or set by <mark>setPublicKey()</mark>)
+        <span class="browserSupport" title="updated : 2021-03-26">
+          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>diffieHellman</strong>.setPrivateKey(<strong class="openable">privKeyDiffHell:str|...<div>
+            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
+            <p> - Diffie-Hellman private key (previously generated by <mark><strong>diffieHellman</strong>.generateKeys()</mark>) </p>
+          </div></strong>, <i class="openable">encode:str<div>
+            <p> - <strong>privKeyDiffHell</strong> encoding if string passed </p>
+          </div></i>)
+      </td>
+      <td>
+        - sets a diffie-hellman private key to the <strong>diffieHellman</strong> object
+        <span class="browserSupport" title="updated : 2021-03-26">
+          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>diffieHellman</strong>.setPublicKey(<strong class="openable">pubKeyDiffHell:str|...<div>
+            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
+            <p> - Diffie-Hellman public key (previously generated by <mark><strong>diffieHellman</strong>.generateKeys()</mark>) </p>
+          </div></strong>, <i class="openable">encode:str<div>
+            <p> - <strong>pubKeyDiffHell</strong> encoding if string passed </p>
+          </div></i>)
+      </td>
+      <td>
+        - sets a diffie-hellman public key to the <strong>diffieHellman</strong> object
+        <span class="browserSupport" title="updated : 2021-03-26">
+          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>diffieHellman</strong>.getPrime(<i class="openable">encode:str<div>
+            <p> - encoding for the returned string </p>
+            <p> - if this option is not provided <strong>buf</strong> is returned </p>
+          </div></i>)
+      <td>
+        - returns the diffie-hellman <strong>prime</strong> in a <strong>buf</strong> (by Default)
+        <span class="browserSupport" title="updated : 2021-03-26">
+          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>diffieHellman</strong>.getGenerator(<i class="openable">encode:str<div>
+            <p> - encoding for the returned string </p>
+            <p> - if this option is not provided <strong>buf</strong> is returned </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns the diffie-hellman <strong>gen</strong> (generator) in a <strong>buf</strong> (by Default)
+        <span class="browserSupport" title="updated : 2021-03-26">
+          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>diffieHellman</strong>.verifyError
+      </td>
+      <td>
+        - contains a <span class="openable">number<div>
+            <p> <mark>1</mark> = <mark><strong>crypto</strong>.constants.DH_CHECK_P_NOT_PRIME</mark> </p>
+            <p> <mark>2</mark> = <mark><strong>crypto</strong>.constants.DH_CHECK_P_NOT_SAFE_PRIME</mark> </p>
+            <p> <mark>4</mark> = <mark><strong>crypto</strong>.constants.DH_UNABLE_TO_CHECK_GENERATOR</mark> </p>
+            <p> <mark>8</mark> = <mark><strong>crypto</strong>.constants.DH_NOT_SUITABLE_GENERATOR</mark> </p>
+          </div></span> which indicates any <strong>diffieHellman</strong> warnings/errors
+        <span class="browserSupport" title="updated : 2021-03-26">
+          <span><i class="fab fa-node-js"></i> 0.11.12 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>diffieHellman</strong>.computeSecret(<strong class="openable">pubKeyDiffHell:str|...<div>
             <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
@@ -1714,133 +1979,18 @@
         </span>
       </td>
     </tr>
-    <tr class="21.01">
-      <td>
-        <strong>diffieHellman</strong>.generateKeys(<i class="openable">encode:str<div>
-            <p> - the returned public diffie-hellman key is encoded in this format </p>
-            <p> - if this option is not provided <strong>buf</strong> will be returned </p>
-          </div></i>)
-      </td>
-      <td>
-        - generates the private and public <u>Diffie-Hellman keys</u> <br>
-        - the public diffie-hellman key is kept internally and also returned (as <strong>buf</strong>), it should be transfered to the other party <br>
-        - the private diffie-hellman key is kept internally (can be retrieved with <mark>getPrivateKey()</mark>)
-        <span class="browserSupport" title="updated : 2021-03-26">
-          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
-        </span>
-      </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="24.02">
-      <td>
-        <strong>diffieHellman</strong>.getGenerator(<i class="openable">encode:str<div>
-            <p> - encoding for the returned string </p>
-            <p> - if this option is not provided <strong>buf</strong> is returned </p>
-          </div></i>)
-      </td>
-      <td>
-        - returns the diffie-hellman <strong>gen</strong> (generator) in a <strong>buf</strong> (by Default)
-        <span class="browserSupport" title="updated : 2021-03-26">
-          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="24.01">
-      <td>
-        <strong>diffieHellman</strong>.getPrime(<i class="openable">encode:str<div>
-            <p> - encoding for the returned string </p>
-            <p> - if this option is not provided <strong>buf</strong> is returned </p>
-          </div></i>)
-      <td>
-        - returns the diffie-hellman <strong>prime</strong> in a <strong>buf</strong> (by Default)
-        <span class="browserSupport" title="updated : 2021-03-26">
-          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="22.01">
-      <td>
-        <strong>diffieHellman</strong>.getPrivateKey(<i class="openable">encode:str<div>
-            <p> - the returned private diffie-hellman key is encoded in this format </p>
-            <p> - if this option is not provided <strong>buf</strong> will be returned </p>
-          </div></i>)
-      </td>
-      <td>
-        - returns the <u>diffie-hellman private key</u> as <strong>buf</strong> (previously generated by <mark>generateKeys()</mark> or set by <mark>setPrivateKey()</mark>)
-        <span class="browserSupport" title="updated : 2021-03-26">
-          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="22.02">
-      <td>
-        <strong>diffieHellman</strong>.getPublicKey(<i class="openable">encode:str<div>
-            <p> - the returned public diffie-hellman key is encoded in this format </p>
-            <p> - if this option is not provided <strong>buf</strong> will be returned </p>
-          </div></i>)
-      </td>
-      <td>
-        - returns the <u>diffie-hellman public key</u> as <strong>buf</strong> (previously generated by <mark>generateKeys()</mark> or set by <mark>setPublicKey()</mark>)
-        <span class="browserSupport" title="updated : 2021-03-26">
-          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="23.01">
-      <td>
-        <strong>diffieHellman</strong>.setPrivateKey(<strong class="openable">privKeyDiffHell:str|...<div>
-            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
-            <p> - Diffie-Hellman private key (previously generated by <mark><strong>diffieHellman</strong>.generateKeys()</mark>) </p>
-          </div></strong>, <i class="openable">encode:str<div>
-            <p> - <strong>privKeyDiffHell</strong> encoding if string passed </p>
-          </div></i>)
-      </td>
-      <td>
-        - sets a diffie-hellman private key to the <strong>diffieHellman</strong> object
-        <span class="browserSupport" title="updated : 2021-03-26">
-          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="23.02">
-      <td>
-        <strong>diffieHellman</strong>.setPublicKey(<strong class="openable">pubKeyDiffHell:str|...<div>
-            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
-            <p> - Diffie-Hellman public key (previously generated by <mark><strong>diffieHellman</strong>.generateKeys()</mark>) </p>
-          </div></strong>, <i class="openable">encode:str<div>
-            <p> - <strong>pubKeyDiffHell</strong> encoding if string passed </p>
-          </div></i>)
-      </td>
-      <td>
-        - sets a diffie-hellman public key to the <strong>diffieHellman</strong> object
-        <span class="browserSupport" title="updated : 2021-03-26">
-          <span><i class="fab fa-node-js"></i> 0.5.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="25.01">
-      <td>
-        <strong>diffieHellman</strong>.verifyError
-      </td>
-      <td>
-        - contains a <span class="openable">number<div>
-            <p> <mark>1</mark> = <mark><strong>crypto</strong>.constants.DH_CHECK_P_NOT_PRIME</mark> </p>
-            <p> <mark>2</mark> = <mark><strong>crypto</strong>.constants.DH_CHECK_P_NOT_SAFE_PRIME</mark> </p>
-            <p> <mark>4</mark> = <mark><strong>crypto</strong>.constants.DH_UNABLE_TO_CHECK_GENERATOR</mark> </p>
-            <p> <mark>8</mark> = <mark><strong>crypto</strong>.constants.DH_NOT_SUITABLE_GENERATOR</mark> </p>
-          </div></span> which indicates any <strong>diffieHellman</strong> warnings/errors
-        <span class="browserSupport" title="updated : 2021-03-26">
-          <span><i class="fab fa-node-js"></i> 0.11.12 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="30.01">
+    <tr>
       <td colspan="2">
         ECDH (Elliptic Curve Diffie-Hellman key exchange utility)
       </td>
     </tr>
-    <tr class="30.02">
+    <tr>
       <td>
-        <strong>crypto</strong>.ECDH.convertKey(<strong class="openable">pubKeyECDH:str|...<div>
+        ECDH.convertKey(<strong class="openable">pubKeyECDH:str|...<div>
             <p><strong>str|buf|ArrayBuffer|TypedArray|DataView</strong></p>
           </div></strong>, <strong>eCurve:str</strong>, <i>inEncode:str</i>, <i class="openable">outEncode:str<div>
             <p> - if this option is specified the returned value will be a string in this encoded format, otherwise the returned value is a <i>buf</strong> </p>
@@ -1855,9 +2005,13 @@
         </span>
       </td>
     </tr>
-    <tr class="31.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
-        <strong>crypto</strong>.createECDH(<strong>eCurve:str</strong>)
+        createECDH(<strong>eCurve:str</strong>)
       </td>
       <td>
         - creates and returns an <strong>ecdh</strong> object with the provided elliptic curve
@@ -1866,7 +2020,105 @@
         </span>
       </td>
     </tr>
-    <tr class="35.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>ecdh</strong>.generateKeys(<i class="openable">encode:str<div>
+            <p> - the returned public ECDH key is encoded in this format </p>
+            <p> - if this option is not provided <strong>buf</strong> will be returned </p>
+          </div></i>, <i class="openable">format:str<div>
+            <p> - <mark>'uncompressed'</mark> (Default) / <mark>'compressed'</mark> </p>
+          </div></i>)
+      </td>
+      <td>
+        - generates the private and public <u>ECDH keys</u> <br>
+        - the public ECDH key is kept internally and also returned (as <strong>buf</strong> in the specified <i>format</i> (uncompressed or compressed)), it should be transfered to the other party <br>
+        - the private ECDH key is kept internally (can be retrieved with <mark>getPrivateKey()</mark>)
+        <span class="browserSupport" title="updated : 2021-03-26">
+          <span><i class="fab fa-node-js"></i> 0.11.14 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>ecdh</strong>.getPrivateKey(<i class="openable">encode:str<div>
+            <p> - the returned private ecdh key is encoded in this format </p>
+            <p> - if this option is not provided <strong>buf</strong> will be returned </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns the <u>ecdh private key</u> as <strong>buf</strong> (previously generated by <mark>generateKeys()</mark> or set by <mark>setPrivateKey()</mark>)
+        <span class="browserSupport" title="updated : 2021-03-27">
+          <span><i class="fab fa-node-js"></i> 0.11.14 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>ecdh</strong>.getPublicKey(<i class="openable">encode:str<div>
+            <p> - the returned public ecdh key is encoded in this format </p>
+            <p> - if this option is not provided <strong>buf</strong> will be returned </p>
+          </div></i>, <i class="openable">format:str<div>
+            <p> - <mark>'uncompressed'</mark> (Default) / <mark>'compressed'</mark> </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns the <u>ecdh public key</u> as <strong>buf</strong> (previously generated by <mark>generateKeys()</mark> or set by <mark>setPublicKey()</mark>)
+        <span class="browserSupport" title="updated : 2021-03-27">
+          <span><i class="fab fa-node-js"></i> 0.11.14 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>ecdh</strong>.setPrivateKey(<strong class="openable">privKeyECDH:str|...<div>
+            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
+            <p> - ECDH private key (previously generated by <mark><strong>ecdh</strong>.generateKeys()</mark>) </p>
+          </div></strong>, <i class="openable">encode:str<div>
+            <p> - <strong>privKeyECDH</strong> encoding if string passed </p>
+          </div></i>)
+      </td>
+      <td>
+        - sets an ECDH private key to the <strong>ecdh</strong> object
+        <span class="browserSupport" title="updated : 2021-03-26">
+          <span><i class="fab fa-node-js"></i> 0.11.14 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>ecdh</strong>.setPublicKey(<strong class="openable">pubKeyECDH:str|...<div>
+            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
+            <p> - ECDH public key (previously generated by <mark><strong>ecdn</strong>.generateKeys()</mark>) </p>
+          </div></strong>, <i class="openable">encode:str<div>
+            <p> - <strong>pubKeyECDH</strong> encoding if string passed </p>
+          </div></i>)
+      </td>
+      <td>
+        - <u class="openable">[DEPRECATED v5.2.0]<div>
+            <p> - because the <strong>ecdh</strong> only needs the ECDH private key and the other party's public key to compute the shared secret </p>
+          </div></u> sets an ECDH public key to the <strong>ecdh</strong> object
+        <span class="browserSupport" title="updated : 2021-03-26">
+          <span><i class="fab fa-node-js"></i> 0.11.14 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>ecdh</strong>.computeSecret(<strong class="openable">pubKeyECDH:str|...<div>
             <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
@@ -1891,100 +2143,17 @@
         </span>
       </td>
     </tr>
-    <tr class="32.01">
-      <td>
-        <strong>ecdh</strong>.generateKeys(<i class="openable">encode:str<div>
-            <p> - the returned public ECDH key is encoded in this format </p>
-            <p> - if this option is not provided <strong>buf</strong> will be returned </p>
-          </div></i>, <i class="openable">format:str<div>
-            <p> - <mark>'uncompressed'</mark> (Default) / <mark>'compressed'</mark> </p>
-          </div></i>)
-      </td>
-      <td>
-        - generates the private and public <u>ECDH keys</u> <br>
-        - the public ECDH key is kept internally and also returned (as <strong>buf</strong> in the specified <i>format</i> (uncompressed or compressed)), it should be transfered to the other party <br>
-        - the private ECDH key is kept internally (can be retrieved with <mark>getPrivateKey()</mark>)
-        <span class="browserSupport" title="updated : 2021-03-26">
-          <span><i class="fab fa-node-js"></i> 0.11.14 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="33.01">
-      <td>
-        <strong>ecdh</strong>.getPrivateKey(<i class="openable">encode:str<div>
-            <p> - the returned private ecdh key is encoded in this format </p>
-            <p> - if this option is not provided <strong>buf</strong> will be returned </p>
-          </div></i>)
-      </td>
-      <td>
-        - returns the <u>ecdh private key</u> as <strong>buf</strong> (previously generated by <mark>generateKeys()</mark> or set by <mark>setPrivateKey()</mark>)
-        <span class="browserSupport" title="updated : 2021-03-27">
-          <span><i class="fab fa-node-js"></i> 0.11.14 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="33.02">
-      <td>
-        <strong>ecdh</strong>.getPublicKey(<i class="openable">encode:str<div>
-            <p> - the returned public ecdh key is encoded in this format </p>
-            <p> - if this option is not provided <strong>buf</strong> will be returned </p>
-          </div></i>, <i class="openable">format:str<div>
-            <p> - <mark>'uncompressed'</mark> (Default) / <mark>'compressed'</mark> </p>
-          </div></i>)
-      </td>
-      <td>
-        - returns the <u>ecdh public key</u> as <strong>buf</strong> (previously generated by <mark>generateKeys()</mark> or set by <mark>setPublicKey()</mark>)
-        <span class="browserSupport" title="updated : 2021-03-27">
-          <span><i class="fab fa-node-js"></i> 0.11.14 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="34.01">
-      <td>
-        <strong>ecdh</strong>.setPrivateKey(<strong class="openable">privKeyECDH:str|...<div>
-            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
-            <p> - ECDH private key (previously generated by <mark><strong>ecdh</strong>.generateKeys()</mark>) </p>
-          </div></strong>, <i class="openable">encode:str<div>
-            <p> - <strong>privKeyECDH</strong> encoding if string passed </p>
-          </div></i>)
-      </td>
-      <td>
-        - sets an ECDH private key to the <strong>ecdh</strong> object
-        <span class="browserSupport" title="updated : 2021-03-26">
-          <span><i class="fab fa-node-js"></i> 0.11.14 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="34.02">
-      <td>
-        <strong>ecdh</strong>.setPublicKey(<strong class="openable">pubKeyECDH:str|...<div>
-            <p> <strong>str|buf|ArrayBuffer|TypedArray|DataView</strong> </p>
-            <p> - ECDH public key (previously generated by <mark><strong>ecdn</strong>.generateKeys()</mark>) </p>
-          </div></strong>, <i class="openable">encode:str<div>
-            <p> - <strong>pubKeyECDH</strong> encoding if string passed </p>
-          </div></i>)
-      </td>
-      <td>
-        - <u class="openable">[DEPRECATED v5.2.0]<div>
-            <p> - because the <strong>ecdh</strong> only needs the ECDH private key and the other party's public key to compute the shared secret </p>
-          </div></u> sets an ECDH public key to the <strong>ecdh</strong> object
-        <span class="browserSupport" title="updated : 2021-03-26">
-          <span><i class="fab fa-node-js"></i> 0.11.14 </span>
-        </span>
-      </td>
-    </tr>
   </table>
   <br>
   <table class="table">
     <caption>
       X509 Certificate
-      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
     </caption>
     <tr>
       <th style="width:30%;"> Method / Property </th>
       <th> Description </th>
     </tr>
-    <tr class="05.01">
+    <tr>
       <td>
         new <strong>crypto</strong>.X509Certificate(<strong class="openable">cert:buf<div>
             <p> <strong>str|buf|TypedArray|DataView</strong></p>
@@ -1998,7 +2167,11 @@
         </span>
       </td>
     </tr>
-    <tr class="06.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>x509</strong>.ca
       </td>
@@ -2011,181 +2184,11 @@
         </span>
       </td>
     </tr>
-    <tr class="08.01">
-      <td>
-        <strong>x509</strong>.checkEmail(<strong>eMail:str</strong>, <i class="openable">option:obj<div>
-            <p> subject: 'always|never' - (Default: <mark>always</mark>) </p>
-            <p> wildcards: <strong>bol</strong> - (Default: <mark>true</mark>) </p>
-            <p> partialWildcards: <strong>bol</strong> - (Default: <mark>true</mark>) </p>
-            <p> multiLabelWildcards: <strong>bol</strong> - (Default: <mark>false</mark>) </p>
-            <p> singleLableSubdomains: <strong>bol</strong> - (Default: <mark>false</mark>) </p>
-          </div></i>)
-      </td>
-      <td>
-        - returns the <strong>eMail</strong> if the passed <strong>eMail</strong> matches the certificate, <mark>undefined</mark> otherwise
-        <span class="browserSupport" title="updated : 2021-03-30">
-          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
-        </span>
-      </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="08.02">
-      <td>
-        <strong>x509</strong>.checkHost(<strong class="openable">hostName:str<div>
-            <p> hostname = FQDN (ex: <mark>www.google.com</mark>) </p>
-          </div></strong>, <i class="openable">option:obj<div>
-            <p> subject: 'always|never' - (Default: <mark>always</mark>) </p>
-            <p> wildcards: <strong>bol</strong> - (Default: <mark>true</mark>) </p>
-            <p> partialWildcards: <strong>bol</strong> - (Default: <mark>true</mark>) </p>
-            <p> multiLabelWildcards: <strong>bol</strong> - (Default: <mark>false</mark>) </p>
-            <p> singleLableSubdomains: <strong>bol</strong> - (Default: <mark>false</mark>) </p>
-          </div></i>)
-      </td>
-      <td>
-        - returns the <strong>hostName</strong> if the passed <strong>hostName</strong> matches the certificate, <mark>undefined</mark> otherwise
-        <span class="browserSupport" title="updated : 2021-03-30">
-          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="14.01">
-      <td>
-        <strong>x509</strong>.checkIssued(<strong>ca:x509</strong>)
-      </td>
-      <td>
-        - returns <mark>true</mark> if the <strong>x509</strong> certificate was issued by the passed Certificate Authority's certificate <strong>ca</strong>, otherwise returns <mark>false</mark>
-        <span class="browserSupport" title="updated : 2021-03-30">
-          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="14.03">
-      <td>
-        <strong>x509</strong>.checkPrivateKey(<strong>privKey:keyObj</strong>)
-      </td>
-      <td>
-        - returns <mark>true</mark> if the passed <strong>privKey</strong> is the pair of the certificate's public key, otherwiser <mark>false</mark>
-        <span class="browserSupport" title="updated : 2021-03-30">
-          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="11.01">
-      <td>
-        <strong>x509</strong>.fingerprint
-      </td>
-      <td>
-        - returns the SHA-1 fingerprint of the certificate in a string
-        <span class="browserSupport" title="updated : 2021-03-30">
-          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="11.02">
-      <td>
-        <strong>x509</strong>.fingerprint256
-      </td>
-      <td>
-        - returns the SHA-256 fingerprint of the certificate in a string
-        <span class="browserSupport" title="updated : 2021-03-30">
-          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="08.03">
-      <td>
-        <strong>x509</strong>.checkIP(<strong>ip:str</strong>, <i class="openable">option:obj<div>
-            <p> subject: 'always|never' - (Default: <mark>always</mark>) </p>
-            <p> wildcards: <strong>bol</strong> - (Default: <mark>true</mark>) </p>
-            <p> partialWildcards: <strong>bol</strong> - (Default: <mark>true</mark>) </p>
-            <p> multiLabelWildcards: <strong>bol</strong> - (Default: <mark>false</mark>) </p>
-            <p> singleLableSubdomains: <strong>bol</strong> - (Default: <mark>false</mark>) </p>
-          </div></i>)
-      </td>
-      <td>
-        - returns the <strong>ip</strong> if the passed <strong>ip</strong> matches the certificate, <mark>undefined</mark> otherwise (can be IPv4 or IPv6)
-        <span class="browserSupport" title="updated : 2021-03-30">
-          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="07.05">
-      <td>
-        <strong>x509</strong>.infoAccess
-      </td>
-      <td>
-        - returns the information access content of this certificate (returned the URL to the ICA's certificate)
-        <span class="browserSupport" title="updated : 2021-03-30">
-          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="07.03">
-      <td>
-        <strong>x509</strong>.issuer
-      </td>
-      <td>
-        - returns the certificate's issuers identification
-        <span class="browserSupport" title="updated : 2021-03-30">
-          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="07.04">
-      <td>
-        <strong>x509</strong>.issuerCertificate
-      </td>
-      <td>
-        - returns the issuers <strong>x509</strong> certificate (if available)
-        <span class="browserSupport" title="updated : 2021-03-30">
-          <span><i class="fab fa-node-js"></i> 15.9.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="12.02">
-      <td>
-        <strong>x509</strong>.keyUsage
-      </td>
-      <td>
-        - return an Array which defines how the public key may be used (I don't know what is this)
-        <span class="browserSupport" title="updated : 2021-03-30">
-          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="12.01">
-      <td>
-        <strong>x509</strong>.publicKey
-      </td>
-      <td>
-        - returns the certificate's public key in a <strong>keyObj</strong>
-        <span class="browserSupport" title="updated : 2021-03-30">
-          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="13.01">
-      <td>
-        <strong>x509</strong>.raw
-      </td>
-      <td>
-        - returns the <mark>der</mark> encoded certificate in a <strong>buf</strong>
-        <span class="browserSupport" title="updated : 2021-03-30">
-          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="07.06">
-      <td>
-        <strong>x509</strong>.serialNumber
-      </td>
-      <td>
-        - returns certificate serial number in a string
-        <span class="browserSupport" title="updated : 2021-03-30">
-          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="07.01">
+    <tr>
       <td>
         <strong>x509</strong>.subject
       </td>
@@ -2206,7 +2209,7 @@
             </span>
       </td>
     </tr>
-    <tr class="07.02">
+    <tr>
       <td>
         <strong>x509</strong>.subjectAltName
       </td>
@@ -2217,7 +2220,212 @@
         </span>
       </td>
     </tr>
-    <tr class="13.03">
+    <tr>
+      <td>
+        <strong>x509</strong>.issuer
+      </td>
+      <td>
+        - returns the certificate's issuers identification
+        <span class="browserSupport" title="updated : 2021-03-30">
+          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>x509</strong>.issuerCertificate
+      </td>
+      <td>
+        - returns the issuers <strong>x509</strong> certificate (if available)
+        <span class="browserSupport" title="updated : 2021-03-30">
+          <span><i class="fab fa-node-js"></i> 15.9.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>x509</strong>.infoAccess
+      </td>
+      <td>
+        - returns the information access content of this certificate (returned the URL to the ICA's certificate)
+        <span class="browserSupport" title="updated : 2021-03-30">
+          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>x509</strong>.serialNumber
+      </td>
+      <td>
+        - returns certificate serial number in a string
+        <span class="browserSupport" title="updated : 2021-03-30">
+          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>x509</strong>.checkEmail(<strong>eMail:str</strong>, <i class="openable">option:obj<div>
+            <p> subject: 'always|never' - (Default: <mark>always</mark>) </p>
+            <p> wildcards: <strong>bol</strong> - (Default: <mark>true</mark>) </p>
+            <p> partialWildcards: <strong>bol</strong> - (Default: <mark>true</mark>) </p>
+            <p> multiLabelWildcards: <strong>bol</strong> - (Default: <mark>false</mark>) </p>
+            <p> singleLableSubdomains: <strong>bol</strong> - (Default: <mark>false</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns the <strong>eMail</strong> if the passed <strong>eMail</strong> matches the certificate, <mark>undefined</mark> otherwise
+        <span class="browserSupport" title="updated : 2021-03-30">
+          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>x509</strong>.checkHost(<strong class="openable">hostName:str<div>
+            <p> hostname = FQDN (ex: <mark>www.google.com</mark>) </p>
+          </div></strong>, <i class="openable">option:obj<div>
+            <p> subject: 'always|never' - (Default: <mark>always</mark>) </p>
+            <p> wildcards: <strong>bol</strong> - (Default: <mark>true</mark>) </p>
+            <p> partialWildcards: <strong>bol</strong> - (Default: <mark>true</mark>) </p>
+            <p> multiLabelWildcards: <strong>bol</strong> - (Default: <mark>false</mark>) </p>
+            <p> singleLableSubdomains: <strong>bol</strong> - (Default: <mark>false</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns the <strong>hostName</strong> if the passed <strong>hostName</strong> matches the certificate, <mark>undefined</mark> otherwise
+        <span class="browserSupport" title="updated : 2021-03-30">
+          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>x509</strong>.checkIP(<strong>ip:str</strong>, <i class="openable">option:obj<div>
+            <p> subject: 'always|never' - (Default: <mark>always</mark>) </p>
+            <p> wildcards: <strong>bol</strong> - (Default: <mark>true</mark>) </p>
+            <p> partialWildcards: <strong>bol</strong> - (Default: <mark>true</mark>) </p>
+            <p> multiLabelWildcards: <strong>bol</strong> - (Default: <mark>false</mark>) </p>
+            <p> singleLableSubdomains: <strong>bol</strong> - (Default: <mark>false</mark>) </p>
+          </div></i>)
+      </td>
+      <td>
+        - returns the <strong>ip</strong> if the passed <strong>ip</strong> matches the certificate, <mark>undefined</mark> otherwise (can be IPv4 or IPv6)
+        <span class="browserSupport" title="updated : 2021-03-30">
+          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>x509</strong>.validFrom
+      </td>
+      <td>
+        - date/time the certificate is valid from
+        <span class="browserSupport" title="updated : 2021-03-30">
+          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>x509</strong>.validTo
+      </td>
+      <td>
+        - date/time the certificate is valid to
+        <span class="browserSupport" title="updated : 2021-03-30">
+          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>x509</strong>.fingerprint
+      </td>
+      <td>
+        - returns the SHA-1 fingerprint of the certificate in a string
+        <span class="browserSupport" title="updated : 2021-03-30">
+          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>x509</strong>.fingerprint256
+      </td>
+      <td>
+        - returns the SHA-256 fingerprint of the certificate in a string
+        <span class="browserSupport" title="updated : 2021-03-30">
+          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>x509</strong>.publicKey
+      </td>
+      <td>
+        - returns the certificate's public key in a <strong>keyObj</strong>
+        <span class="browserSupport" title="updated : 2021-03-30">
+          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>x509</strong>.keyUsage
+      </td>
+      <td>
+        - return an Array which defines how the public key may be used (I don't know what is this)
+        <span class="browserSupport" title="updated : 2021-03-30">
+          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>x509</strong>.raw
+      </td>
+      <td>
+        - returns the <mark>der</mark> encoded certificate in a <strong>buf</strong>
+        <span class="browserSupport" title="updated : 2021-03-30">
+          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>x509</strong>.toString()
+      </td>
+      <td>
+        - returns the <mark>pem</mark> encoded certificate in a <strong>str</strong>
+        <span class="browserSupport" title="updated : 2021-03-30">
+          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
       <td>
         <strong>x509</strong>.toJSON()
       </td>
@@ -2228,7 +2436,7 @@
         </span>
       </td>
     </tr>
-    <tr class="13.04">
+    <tr>
       <td>
         <strong>x509</strong>.toLegacyObject()
       </td>
@@ -2255,45 +2463,38 @@
         </span>
       </td>
     </tr>
-    <tr class="13.02">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
-        <strong>x509</strong>.toString()
+        <strong>x509</strong>.checkIssued(<strong>ca:x509</strong>)
       </td>
       <td>
-        - returns the <mark>pem</mark> encoded certificate in a <strong>str</strong>
+        - returns <mark>true</mark> if the <strong>x509</strong> certificate was issued by the passed Certificate Authority's certificate <strong>ca</strong>, otherwise returns <mark>false</mark>
         <span class="browserSupport" title="updated : 2021-03-30">
           <span><i class="fab fa-node-js"></i> 15.6.0 </span>
         </span>
       </td>
     </tr>
-    <tr class="10.01">
-      <td>
-        <strong>x509</strong>.validFrom
-      </td>
-      <td>
-        - date/time the certificate is valid from
-        <span class="browserSupport" title="updated : 2021-03-30">
-          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="10.02">
-      <td>
-        <strong>x509</strong>.validTo
-      </td>
-      <td>
-        - date/time the certificate is valid to
-        <span class="browserSupport" title="updated : 2021-03-30">
-          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
-        </span>
-      </td>
-    </tr>
-    <tr class="14.02">
+    <tr>
       <td>
         <strong>x509</strong>.verify(<strong>pubKey:keyObj</strong>)
       </td>
       <td>
         - returns <mark>true</mark> if the certificate was signed with the passed <strong>pubKey</strong>, otherwise <mark>false</mark>
+        <span class="browserSupport" title="updated : 2021-03-30">
+          <span><i class="fab fa-node-js"></i> 15.6.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>x509</strong>.checkPrivateKey(<strong>privKey:keyObj</strong>)
+      </td>
+      <td>
+        - returns <mark>true</mark> if the passed <strong>privKey</strong> is the pair of the certificate's public key, otherwiser <mark>false</mark>
         <span class="browserSupport" title="updated : 2021-03-30">
           <span><i class="fab fa-node-js"></i> 15.6.0 </span>
         </span>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> WebVTT </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> WebVTT </h1>
+  <p> Updated ( 2017-02-19 / 2019-03-29 / 2024-04-05 )</p>
+  <nav class="sitenav"> <a href="../../../index.html">MySite></a>
+    <a href="../../index.html">HTML></a>
+    <a href="../index.html">Image / Video / Audio></a> WebVTT
+  </nav>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API" target="_blank"> MDN Video Text Track files (.vtt) </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - WEBVTT stands from Web Video Text Track  </p>
+  <p> - .vtt is a file format for displaying timed text tracks, on the web it is used to add timed text overlays to a <mark>&lt;video&gt;</mark> element (encoded in UTF-8 format, MIME type <mark>text/vtt</mark>) </p>
+  <p style="color:yellow;"> - <mark>.vtt</mark> files are not supported locally (except Firefox 66.0.2) [TESTED 2019-04-02] </p>
+  <p style="color:yellow;"> - vtt styling is poorly supported for now, the <mark>::cue</mark> selector's <mark>(selector)</mark> part is partially supported by Chrome only, cue ID's cannot be target, tags in vtt file cannot be targeted, the <mark>STYLE</mark> within the vtt file is not working, this is maybe the browsers did not implementend these features yet [TESTED 2019-04-02] </p>
+  <pre class="syntax">
+.vtt file SYNTAX :    
+// ------------------------------------------------------------------
+            WEBVTT <i>headerName</i>                                 // after the "WEBVTT " everything is optional   
+            
+            STYLE                                             <span style="color:orange;">// this styling technique apparently is not yet implemented [TESTED not working 2019-04-02]</span>
+            ::cue<i>(selector)</i> { <strong>CSS_code</strong> }                      // <i>(selector)</i> should select targeted elements
+            
+      <span style="color:lightgreen; font-weight:bold;">/</span>     <i>cueID</i>                                             // CUE identifier to reference this cue <u style="color:orange;">(does not have to be unique)</u> (cannot contain the <mark>--&gt;</mark>(string))   
+<span style="color:lightgreen; font-weight:bold;">CUE -</span>       <i>HH:</i><strong>MM:SS.MMM</strong> --> <i>HH:</i><strong>MM:SS.MMM</strong> <i>setting seting ...</i>  // start and ending time to display the associated text (optional settings at the end)  
+     <span style="color:lightgreen; font-weight:bold;">|</span>      <strong>text to display</strong>                                   // text(s) to display (cannot contain <mark>--></mark>(string), <mark>&lt;</mark>(less than sign), <mark>&amp;</mark>(ampersand) and <mark>&gt;</mark>(greater than sign) is not recommended to use) <u>(HTML entities can replace them)</u>     
+      <span style="color:lightgreen; font-weight:bold;">\</span>     <i>text to display</i>                 
+                                                              // CUEs and comments are separated with white lines 
+            NOTE <i>comment</i>                                      // this is a comment   
+            <i>comment</i>  
+            
+            <i>HH:</i><strong>MM:SS.MMM</strong> --> <i>HH:</i><strong>MM:SS.MMM</strong>
+            <strong>text to &lt;HTMLtag&gt;display&lt;/HTMLtag&gt;</strong>                // HTML tags can be used <u style="color:orange;">cannot target them apparently not yet supported [TESTED not working 2019-04-04]</u>   
+            
+            <i>HH:</i><strong>MM:SS.MMM</strong> --> <i>HH:</i><strong>MM:SS.MMM</strong>
+            <strong>text</strong> <i>&lt;HH:MM:SS.MMM&gt;</i> <strong>display after the timestemp</strong>   // timestamp (karaoke style) display, (text is displayed <u>after</u> the set time stamp) <u style="color:orange;">apparently not yet implemented [TESTED not working 2019-04-04]</u>
+    
+// ------------------------------------------------------------------
+    <i>setting</i> (can be multiple and the order doesn't matter)
+        vertical:lt         <span style="color:skyblue;">// left-to-right       // track displayed vertically and defines the writing direction <u style="color:orange;">(vertically rotated tracks will be positioned according to the rotated matrix!)</u></span>
+                 rl         <span style="color:skyblue;">// right-to-left</span>
+        line:0              <span style="color:skyblue;">// top                 // specifies where the track appears vertically (relative to the video)</span>
+             -1             <span style="color:skyblue;">// bottom </span>
+             <strong>0-100</strong>%         <span style="color:skyblue;">// <mark>0%</mark> top </span>
+        position:<strong>0-100</strong>%     <span style="color:skyblue;">// <mark>0%</mark> left             // specifies where the track appears horizontally (relative to the video)</span>
+        size:<strong>0-100</strong>%                                <span style="color:skyblue;">// specifies the width of the track area <u style="color:orange;">not working for now [TESTED 2019-04-02]</u></span>
+        align:start         <span style="color:skyblue;">// left                // horizontally alignes the track (within video frame) </span>
+              middle        <span style="color:skyblue;">// center </span> 
+              end           <span style="color:skyblue;">// right </span>
+             
+// CSS --------------------------------------------------------------  
+            <i>element</i>::cue<i>(selector)</i>                            // selects webVTT(.vtt file) CUEs (<mark>&lt;video&gt;</mark> tags should be targeted) <u>(cannot position tracks)</u> <span style="color:orange;">(the <mark>(selector)</mark> is poorly supported (partial Chrome support) [TESTED 2019-04-02])</span>   
+    </pre>
+  <pre>
+// -- CODE (HTML) ------------------------------------------
+    &lt;video id="myVideo" src="Video/Demo Video 2.mp4" controls&gt;
+        &lt;track default src="Track Files/DEMO.vtt"&gt;
+    &lt;/video&gt;
+    
+// -- CODE (HTML) ------------------------------------------
+    #myVideo::cue {                                           // cues are targeted and styled (the &lt;video&gt; element is targeted not the &lt;track&gt;)
+        font-size: 1.2em;                                     // -! we can style font apearance only (we cannot position tracks from here!)
+        color: yellow;
+    }
+    #myVideo::cue(#1) {                                       // !! the ::cue selector "(#1)" is barely supported now (Chrome only) [TESTED 2019-04-03]
+        color: red;                                           
+    }
+    
+// -- vtt file ---------------------------------------------
+    WEBVTT - myDemo track file                                // "- myDemo track file" is the header 
+    
+    STYLE                                                     // style within the vtt file  // !! no support for now [TESTED 2019-04-03]  
+    ::cue {
+        text-decoration: underline;                           // standard CSS code 
+    }
+    
+    1                                                         // cue identifier (optional)          // !! should be targetable but apparently it is not yet supported [TESTED 2019-04-03]
+    00:00:00.000 --> 00:00:05.000                             // from - to time to display this cue (hour is optional (00:00.000 --> 00:05.000))  
+    first text                                                // content to display on the user's video element
+    to display                                                    // track lines are displayed as it is specified here (in the vtt file)
+                                                          // vtt declarations are separated by one white line 
+    2
+    00:05.000 --> 00:10.000 
+    html <b>styled</b> <i>line</i>                            // html tags are styled accordingly   // !! should be targetable but it is not yet implemented apparently [TESTED 2019-04-03]   
+    
+    NOTE this is a comment                                    // comment expands to the next white  
+    and this is another comment 
+    
+    3
+    00:10.000 --> 00:15.000 line:-1 align:left                // settings after the time range define the position of the current track    // -! if "vertical" setting is used the track will be positioned according to the rotated matrix!  
+    some random track 
+    
+    4
+    00:15.000 --> 00:20.000 
+    un <00:16.000>deux <00:17.000>trois                       // timestamps content (text after the timestamp) is displayed in "karaoke style"  // !! not yet implemented apparently [TESTED 2019-04-03]  
+    </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> basic TEST (cues and comments) </u></h4>
+    <video controls width="550" height="auto" preload="metadata">
+      <source src="Video/Demo Video 2.mp4" type="video/mp4">
+      <track default src="Track Files/test1.vtt">
+    </video>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+-- CODE (HTML) --
+    <video controls width="550" height="auto">
+        <source src="Video/Demo Video 2.mp4" type="video/mp4">
+        <track default src="Track Files/test1.vtt">
+    </video>
+    
+-- vtt file --
+    WEBVTT - FILE
+    
+    1
+    00:00:02.000 --> 00:00:05.000
+    test 1 text.
+    
+    2
+    00:00:08.000 --> 00:00:15.000
+    test 2 text.
+    
+    3
+    00:00:03.000 --> 00:00:07.000
+    overrider text 
+    
+    4
+    00:00:04.000 --> 00:00:07.000
+    second overrider text 
+    
+    NOTE the above 2 cues create a mess do NOT do that! (this is not displayed)
+        </pre>
+    </details>
+    <!----------------------------------------------------------------------------------------------------------->
+    <h4><u> styling webVTT cues with CSS TEST </u></h4>
+    <p style="color:yellow;"> - CSS cannot position vtt file elements </p>
+    <p style="color:yellow;"> - cue id's cannot be targeted (not supported yet apparently [TESTED 2019-04-02]) </p>
+    <video id="styleVtt" controls width="550" height="auto" preload="metadata">
+      <source src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/mp4">
+      <track default src="Track Files/test2.vtt">
+    </video>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+-- CODE (HTML) --
+    <video id="styleVtt" controls width="550" height="auto" preload="metadata">
+        <source src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/mp4">
+        <track default src="Track Files/test2.vtt">
+    </video>
+    
+-- CODE (CSS) --
+    #styleVtt::cue {
+        color: green;
+        bottom: 1px;                    // this is now working (we cannot positions vtt file elements with CSS)
+        padding: 5px;
+        background-color: lightblue
+    }
+    #styleVtt::cue(#thirdS) {           // CUE id's cannot be targeted by CSS for now [2019-04-02] (this is not working)
+        color: red;
+        left: 0;
+    }
+    
+-- vtt file -- 
+    WEBVTT - FILE
+    
+    firstS
+    00:00:00.000 --> 00:00:02.000
+    first subtitle 
+        
+    secondS
+    00:00:02.000 --> 00:00:04.000
+    second subtitle 
+        
+    thridS 
+    00:00:04.000 --> 00:00:06.000
+    thrid subtitle
+        </pre>
+    </details>
+    <!----------------------------------------------------------------------------------------------------------->
+    <h4><u> styling webVTT cues using CSS within the vtt file itself TEST </u></h4>
+    <p style="color:yellow;"> - not working in this test <u>apparently is not supported yet [2019-04-02]</u></p>
+    <video controls width="550" height="auto" preload="metadata">
+      <source src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/mp4">
+      <track default src="Track Files/test3.vtt">
+    </video>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+-- CODE (HTML) --
+    <video controls width="550" height="auto" preload="metadata">
+        <source src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/mp4">
+        <track default src="Track Files/test3.vtt">
+    </video>        
+    
+-- vtt file -- 
+    WEBVTT 
+    
+    STYLE
+    ::cue {
+        background-image: linear-gradient(to bottom, dimgray, lightgray);
+        color: papayawhip;
+    }
+    
+    NOTE the above style is not applied (it seems to be it is not yet supported by the browsers [2019-04-02])
+    
+    firstS
+    00:00:00.000 --> 00:00:02.000
+    first subtitle 
+    
+    secondS
+    00:00:02.000 --> 00:00:04.000
+    second subtitle 
+    
+    thridS 
+    00:00:04.000 --> 00:00:06.000
+    third subtitle
+        </pre>
+    </details>
+    <!----------------------------------------------------------------------------------------------------------->
+    <h4><u> CUE settings (poistioning) </u></h4>
+    <video controls width="550" height="auto" preload="metadata">
+      <source src="Video/Demo Video 2.mp4" type="video/mp4">
+      <track default src="Track Files/test4.vtt">
+    </video>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+-- CODE (HTML) --
+    <video controls width="550" height="auto" preload="metadata">
+        <source src="Video/Demo Video 2.mp4" type="video/mp4">
+        <track default src="Track Files/test4.vtt">
+    </video>
+    
+-- vtt file -- 
+    WEBVTT 
+    
+    1
+    00:00:00.000 --> 00:00:03.000 vertical:rl
+    subtitle (vertical:rl)
+    
+    2
+    00:00:03.000 --> 00:00:06.000 line:0
+    subtitle (line:0) 
+    
+    3 
+    00:00:06.000 --> 00:00:09.000 line:50%
+    subtitle (line:50%)
+    
+    4 
+    00:00:09.000 --> 00:00:12.000 vertical:lr line:50%
+    subtitle (vertical:lr line:50%)
+    
+    5 
+    00:00:12.000 --> 00:00:15.000 position:20%
+    subtitle (position: 20%)
+    
+    6 
+    00:00:15.000 --> 00:00:18.000 line:-1
+    subtitle (line:-1)
+    
+    7
+    00:00:18.000 --> 00:00:21.000 line:-0.50
+    subtitle (line:-0.50)
+    
+    NOTE line value is eighter 0 or -1 there no possible values between 
+    
+    8
+    00:00:21.000 --> 00:00:24.000 line:0
+    subtitle (line:0)
+    
+    9
+    00:00:24.000 --> 00:00:27.000 size:100%
+    subtitle (size:100%)
+    
+    10
+    00:00:27.000 --> 00:00:30.000 size:70%
+    subtitle (size:70%)
+    
+    11
+    00:00:30.000 --> 00:00:33.000 size:30%
+    subtitle (size:30%)
+    
+    12  
+    00:00:33.000 --> 00:00:36.000 size:5%
+    subtitle (size:5%)
+    
+    12
+    00:00:36.000 --> 00:00:39.000 size:1%
+    subtitle (size:1%)
+    
+    13
+    00:00:39.000 --> 00:00:41.000 align:start
+    subtitle (align:start)
+    
+    14
+    00:00:41.000 --> 00:00:44.000 align:middle  
+    subtitle (align:middle)
+    
+    15
+    00:00:44.000 --> 00:00:47.000 align:end
+    subtitle (align:end)
+        </pre>
+    </details>
+    <!----------------------------------------------------------------------------------------------------------->
+    <h4><u> using HTML tags in vtt file TEST </u></h4>
+    <p style="color:yellow;"> - HTML tags can be used in vtt tracks but again I cannot target them in order to style [TESTED 2019-04-02]</p>
+    <video id="vtt_tagTest" controls width="550" height="auto" preload="metadata">
+      <source src="Video/Demo Video 2.mp4" type="video/mp4">
+      <track default src="Track Files/test5.vtt">
+    </video>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+-- CODE (HTML) --
+    <video id="vtt_tagTest" controls width="550" height="auto" preload="metadata">
+        <source src="Video/Demo Video 2.mp4" type="video/mp4">
+        <track default src="Track Files/test5.vtt">
+    </video>
+    
+-- CODE (CSS) -- 
+    #vtt_tagTest::cue {
+        color: yellow;
+        background-image: linear-gradient(to bottom, dimgray, lightgray);
+        font-size: 1.3em;
+    }
+    #vtt_tagTest::cue(b) {                      // cannot target tags :(
+        color: red;
+    }
+    
+-- vtt file --
+    WEBVTT - demo vtt file
+    
+    1
+    00:00:00.000 --> 00:00:03.000 
+    - some text <b>bold text</b>
+    
+    2
+    00:00:03.000 --> 00:00:06.000 
+    - some text <b>bold text 2</b>
+    
+    3 
+    00:00:06.000 --> 00:00:09.000 
+    - some text <i>italic text</i>
+        </pre>
+    </details>
+    <!----------------------------------------------------------------------------------------------------------->
+    <h4><u> timestemp tag <mark>&lt;HH:MM:SS.MMM&gt;</mark> TEST </u></h4>
+    <p style="color:yellow;"> - time stamps are not working for now apparently [TESTED 2019-04-02]</p>
+    <video id="vtt_tagTest" controls width="550" height="auto" preload="metadata">
+      <source src="Video/Demo Video 2.mp4" type="video/mp4">
+      <track default src="Track Files/test6.vtt">
+    </video>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+-- CODE (HTML) -- 
+    <video id="vtt_tagTest" controls width="550" height="auto" preload="metadata">
+        <source src="Video/Demo Video 2.mp4" type="video/mp4">
+        <track default src="Track Files/test6.vtt">
+    </video>
+    
+-- vtt file -- 
+    WEBVTT - time stamp demo
+    
+    1
+    00:00.000 --> 00:10.000 
+    - start text <00:02.000>2mins <00:04.000>4mins <00:06.000>6mins          // text after the time stamp SHOULD be displayed at the se time 
+        </pre>
+    </details>
+    <!----------------------------------------------------------------------------------------------------------->
+    <h4><u> using <mark>track</mark> element to display audio tracks TEST </u></h4>
+    <p> - because the audio element has no place to display the track we use a video element and size it just as big to display the tracks </p>
+    <audio src="Sound/Ago - Tell Me Where You Are (Original Radio Edit).mp3" type="audio/mp3" controls style="outline:none;">
+      <track default src="Track Files/text7 - audio.vtt">
+    </audio>
+    <video id="videoAudio" src="Sound/Ago - Tell Me Where You Are (Original Radio Edit).mp3" type="video/mp4" controls style="width:80%;" height="150">
+      <track default src="Track Files/text7 - audio.vtt">
+    </video>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+-- CODE (HTML) --
+    <audio src="Sound/Ago - Tell Me Where You Are (Original Radio Edit).mp3" type="audio/mp3" controls style="outline:none;">
+        <track default src="Track Files/text7 - audio.vtt">
+    </audio>
+    <video id="videoAudio" src="Sound/Ago - Tell Me Where You Are (Original Radio Edit).mp3" type="video/mp4" controls style="width:80%;" height="150">
+        <track default src="Track Files/text7 - audio.vtt">
+    </video>
+    
+-- CODE (CSS) -- 
+    #videoAudio::cue {
+        font-size: 2em;
+    }
+    
+-- vtt file -- 
+    WEBVTT - autio test 
+    
+    00:00.000 --> 00:03.000 line:100% align:start
+    - life without you  
+    
+    00:03.000 --> 00:04.000 line:50% align:start
+    - it's just right 
+        </pre>
+    </details>
+  </details>
+
+  <br><br>
+</body>
+
+</html>

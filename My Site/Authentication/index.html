@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Authentication </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../Assets/stylesPages.css">
+  <script src="../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Authentication </h1>
+  <p> Updated ( 2023-02-13 / 2024-03-22 )</p>
+  <nav class="sitenav">
+    <a href="../index.html" title="home">MySite></a> Authentication
+  </nav>
+  <p class="subSite"><a href="./OAuth2/index.html"> OAuth 2.0 > </a></p>
+  <p class="subSite"><a href="./JWT Token/index.html"> JWT Token > </a></p>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <img style="display:block; margin:auto;" src="Authentications.png" />
+  <h2 class="header"> Session VS Token Based Authentication </h2>
+  <h3 class="header"> Session Based Authentication </h3>
+  <p> - after successful client login the server generates a session token then sends it to the client as cookie </p>
+  <p> - the session token is included in every request as cookie (so the server can verify if the client is logged in) </p>
+  <!------------------------------------------------------------------------------------------------>
+  <hr>
+  <h3 class="header"> Token Based Authentication </h3>
+  <p> - after successful client login the server creates and signs the token and sends it to the client in a request body </p>
+  <p class="indent-lv1"> - the token contains all necessary session informations (username, expiration, signature, etc...) so these informations are stored on client side </p>
+  <p> - the token is included in every request's <mark>Authorization: Bearer <strong>token</strong></mark> header </p>
+  <p> - session informations are stored on client side, the server verifies the tokens signature and considers the token valid on successful signature verification </p>
+  <table class="table">
+    <caption>
+      Session VS Token Based Authentication
+    </caption>
+    <tr>
+      <th style="width:30%;">
+        Criteria
+      </th>
+      <th style="width:30%;">
+        Session Authentication
+      </th>
+      <th style="width:30%;">
+        Token Authentication
+      </th>
+    </tr>
+    <tr>
+      <td>
+        - information stored in token
+      </td>
+      <td>
+        - contains no information
+      </td>
+      <td>
+        - contains all session informations (user, expiration, signagure, etc...)
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        - authentication stored on side
+      </td>
+      <td>
+        - server
+      </td>
+      <td>
+        - client
+      </td>
+    </tr>
+    <tr>
+      <td>
+        - client sends for authorization
+      </td>
+      <td>
+        - token in cookie
+      </td>
+      <td>
+        - token in <mark>Authorization: Bearer <strong>token</strong></mark> header
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        - server process to authorize the client request 
+      </td>
+      <td>
+        - database lookup + token validation process
+      </td>
+      <td>
+        - decrypts the token and verifies its signature
+      </td>
+    </tr>
+    <tr>
+      <td>
+        - server can control login operations
+      </td>
+      <td>
+        - yes because the token is stored on server side
+      </td>
+      <td>
+        - no (limited) because the token is stored on client side
+      </td>
+    </tr>
+    <tr>
+      <td>
+        - prefered implementation
+      </td>
+      <td>
+        - user-to-server connection
+      </td>
+      <td>
+        - server-to-server connection
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        - cyber attack weakness
+      </td>
+      <td>
+        - man-in-the middle <br>
+        - cross-site request forgery (CSRF)
+      </td>
+      <td>
+        - man-in-the middle <br>
+        - token steal <br>
+        - breaches of secret key
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        - pros
+      </td>
+      <td>
+        - more secure because the data is kept on server side <br>
+        - server has more control over the session <br>
+        - easy to implement
+      </td>
+      <td>
+        - scalable because the server does not store the token <br>
+        - stateless, the server does not required to keep track the user's session <br>
+        - required less server resources and infrastructure
+      </td>
+    </tr>
+    <tr>
+      <td>
+        - cons
+      </td>
+      <td>
+        - hard to scale because the session information is kept on server side, this becomes a problem with a large number of users <br>
+        - requires more server resources (storage, processing power) <br>
+      </td>
+      <td>
+        - less secure because session informations are stored on client side <br>
+        - server has less control because the token is not stored on its side <br>
+        - harder to implement (needs secret key, validation, etc...)
+      </td>
+    </tr>
+  </table>
+  <!------------------------------------------------------------------------------------------------>
+  <hr>
+  <h2 class="headerExtra"> Using Tokens for Authentication </h2>
+  <p> <mark class="mark">Never expired Access token</mark> </p>
+  <p class="indent-lv1"> - we issue an access token what never expires (we need to have a mechanism to revoke the token) </p>
+  <p> <mark class="mark">Expring Access token</mark> </p>
+  <p class="indent-lv1"> - the user needs to re-authenticate when the token expires (lives between the current session to a couple of weeks) </p>
+  <p> <mark class="mark">Access token & Refresh token</mark> </p>
+  <p class="indent-lv1"> - the Access token lives between a few hours to a few weeks (depending security requirements) </p>
+  <p class="indent-lv1"> - the Refresh token is kept by the Authentication Server, getting a new Access token happens without any user action </p>
+  <p class="indent-lv1"> - talking to the Authentication server happens on the <b>back channel (highly sercure)</b>, talking to the Resoruce server happens on the <b>front channel (less sercure)</b> </p>
+  <img style="display:block; margin:auto;" src="Tokens.png" width="650">
+  <br><br>
+  
+  
+  <!--
+    - access token last from serveral hours to serveral days 
+    
+    - access token only approach
+    
+    - no expiring token 
+  
+  -->
+  
+</body>
+
+</html>

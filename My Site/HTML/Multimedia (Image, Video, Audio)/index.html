@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Image / Video / Audio </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Image / Video / Audio </h1>
+  <p> Updated ( 2017-02-19 / 2019-03-29 / 2024-04-05 )</p>
+  <nav class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html">HTML></a> Image / Video / Audio
+  </nav>
+  <p class="subSite"> <a href="./WebVTT/index.html">WebVTT ></a> </p>
+  <br>
+  <table class="table">
+    <tr>
+      <th style="width:15%"> Tag </th>
+      <th style="width:40%"> Attribute </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td> &lt;img&gt; </td>
+      <td>
+        alt="<strong>txt</strong>" <span class="cssAV">(message in case the image is not reachable <u>(required)</u>)</span><br>
+        crossorigin="<strong class="openable">cors<div>
+            <p> anonymous - credentials (cookies, localstorage, etc..) won't be sent with the request </p>
+            <p> use-credentials - credentials (cookies, localstorage, etc..) will be sent with the request </p>
+          </div></strong>" <span class="cssAV">(image request must be done using CORS request)</span> <br>
+        height="<strong>px</strong>" <span class="cssAV">(sets the image height in pixels)</span><br>
+        decoding="<strong class="openable">hint<div>
+            <p> sync - synchronous, for atomic presentation with other content </p>
+            <p> async - asynchronously </p>
+            <p> auto - browser decides </p>
+          </div></strong>" <span class="cssAV">(decoding hint to the browser)</span>
+        <span id="browserSupport" title="Updated: 2021-05-22">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> 63 </span>
+          <span><i class="fab fa-opera"></i> </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 11.1 </span>
+        </span><br>
+        ismap <span class="cssAV">((Boolean) image is part of a server-side map)</span><br>
+        referrerpolicy="<strong class="openable">ref<div>
+            <p> "" - (Default) the higher level of referrer policy </p>
+            <p> no-referrer - the <mark>Referer</mark> header excluded in the request </p>
+            <p> no-referrer-when-downgrade - the <mark>Referrer</mark> header excluded in non TLS (HTTPS) requests </p>
+            <p> origin - only the origin (scheme, host, port) is included in the <mark>Referrer</mark> header in the request </p>
+            <p> origin-when-cross-origin - for cross-origin request only the origin (scheme, host, port) is included in the <mark>Referrer</mark> header, for same-site request the <mark>Referrer</mark> header contains the full referrer</p>
+            <p> same-origin - the <mark>Referer</mark> header is included only in same-origin requests (omitted for cross-origin requests) </p>
+            <p> strict-origin - the <mark>Referer</mark> header is included in the request if the security level stays the same (included in HTTPS -> HTTPS, excluded in HTTPS -> HTTP) </p>
+            <p> strict-origin-when-corss-origin - the <mark>Referer</mark> header is included in the request for same-site request, for cross-origin requests include only if the security level stays the same (included in HTTPS -> HTTPS, excluded in HTTPS -> HTTP) </p>
+            <p> unsafe-url - the <mark>Referer</mark> header includes only the origin and the path (but not the document fragment, password, username) </p>
+          </div></strong>" <span class="cssAV">(controls the <mark>Referer</mark> header for this request)</span>
+        <span id="browserSupport" title="Updated: 2021-05-22">
+          <span><i class="fab fa-chrome"></i> 51 </span>
+          <span><i class="fab fa-firefox"></i> 50 </span>
+          <span><i class="fab fa-opera"></i> 38 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 11.1 </span>
+        </span><br>
+        sizes="<strong><em>(</em>mediaQuery<em>)</em> nr<em>w</em></strong><i>, ...</i>" <span class="cssAV">(source sizes, used along with the <mark>srcset</mark> to request different images for different screen sizes)</span> <br>
+        src="<strong>URL</strong>" <span class="cssAV">(URL of the image (source))</span> <br>
+        srcset="<strong>URL nr</strong><em>w</em><i>, ...</i>" <span class="cssAV">(different image sources for different screen sizes, used along with the <mark>sizes</mark> to request different images for different screen sizes)</span> <br>
+        width="<strong>px</strong>" <span class="cssAV">(sets the image width in pixels)</span><br>
+        usemap="<em>#</em><strong>mapName</strong>" <span class="cssAV">(specifies the image as client-side image-map (image with clickable areas) (the <mark>&lt;map&gt;</mark> tag describes the map)) </span>
+      </td>
+      <td>
+        - embeds an image in the HTML page
+        <span id="browserSupport" title="Updated: 2021-05-22">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> yes </span>
+          <span><i class="fab fa-opera"></i> yes </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> yes </span>
+          <span><i class="fab fa-safari"></i> yes </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> &lt;picture&gt; </td>
+      <td> </td>
+      <td>
+        - defines one or multiple images soruces (<mark>&lt;source&gt;</mark>) for different media query conditions
+        <span id="browserSupport" title="Updated: 2021-05-22">
+          <span><i class="fab fa-chrome"></i> 38 </span>
+          <span><i class="fab fa-firefox"></i> 38 </span>
+          <span><i class="fab fa-opera"></i> 25 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 13 </span>
+          <span><i class="fab fa-safari"></i> 9.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        &lt;video&gt;
+      </td>
+      <td>
+        src="<reqval>url</reqval>" <span class="cssAV">(video source)</span><br>
+        autoplay <span class="cssAV">((boolean) start on load (browser may block this))</span><br>
+        controls <span class="cssAV">((boolean) display video controls)</span><br>
+        muted <span class="cssAV">((boolean) mutes video on page load)</span><br>
+        loop <span class="cssAV">((boolean) video starts over and over again)</span><br>
+        poster="<reqval>url</reqval>" <span class="cssAV">(thunbnail)</span><br>
+        preload="auto|metadata|none" <span class="cssAV">(video load behaviour on page load)</span><br>
+
+      </td>
+      <td>
+        - embends a video playback element
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        &lt;audio&gt;
+      </td>
+      <td>
+        src="<reqval>url</reqval>" <span class="cssAV">(video source)</span><br>
+        autoplay <span class="cssAV">((boolean) start on load (browser may block this))</span><br>
+        controls <span class="cssAV">((boolean) display video controls)</span><br>
+        muted <span class="cssAV">((boolean) mutes video on page load)</span><br>
+        loop <span class="cssAV">((boolean) video starts over and over again)</span><br>
+        preload="auto|metadata|none" <span class="cssAV">(video load behaviour on page load)</span><br>
+      </td>
+      <td>
+        - embends an audio playback element
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        &lt;source&gt;
+      </td>
+      <td>
+        media="<reqval>mediaQueryCondition</reqval>" <span class="cssAV">(source displayed/played on truthy media query condition)</span><br>
+        src="<reqval>url</reqval>" <span class="cssAV">(source for <mark>&lt;video&gt;</mark> <mark>&lt;video&gt;</mark>)</span><br>
+        srcset="<reqval>url</reqval>" <span class="cssAV">(source for <mark>&lt;image&gt;</mark>)</span><br>
+        type="<reqval>mimeType</reqval>" <span class="cssAV">(source MIME type)</span><br>
+        height="<reqval>px</reqval>" <span class="cssAV">(sets the intrinsic height for <mark>&lt;picture&gt;</mark>)</span>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 90 </span>
+          <span><i class="fab fa-firefox"></i> 390 </span>
+          <span><i class="fab fa-opera"></i> 76 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
+          <span><i class="fab fa-safari"></i> 3.1 </span>
+        </span><br>
+        width="<reqval>px</reqval>" <span class="cssAV">(sets the intrinsic width for <mark>&lt;picture&gt;</mark>)</span>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 90 </span>
+          <span><i class="fab fa-firefox"></i> 390 </span>
+          <span><i class="fab fa-opera"></i> 76 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 12 </span>
+          <span><i class="fab fa-safari"></i> 3.1 </span>
+        </span>
+      </td>
+      <td>
+        - specifies multiple resources for the <mark>&lt;picture&gt;</mark> <mark>&lt;video&gt;</mark> <mark>&lt;video&gt;</mark>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 10.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9 </span>
+          <span><i class="fab fa-safari"></i> 4 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        &lt;track&gt;
+      </td>
+      <td>
+        default <span class="cssAV">((boolean) track is to be enabled if the user's preferences do not indicate that another track would be more appropriate)</span><br>
+        kind="<reqval class="openable">kind<div>
+          <p> <mark>captions</mark> </p>
+          <p> <mark>chapters</mark> </p>
+          <p> <mark>descriptions</mark> </p>
+          <p> <mark>metadata</mark> </p>
+          <p> <mark>subtitles</mark> </p>
+        </div></reqval>" <span class="cssAV">(sets the thext kind)</span><br>
+        label="<reqval>txt</reqval>" <span class="cssAV">(text track title)</span><br>
+        src="<reqval>url</reqval>" <span class="cssAV">(text track source)</span><br>
+        srclang="<reqval>lang</reqval>" <span class="cssAV">(text track language (required if kind="subtitles"))</span>
+      </td>
+      <td>
+        - specifies text tracks for <mark>&lt;video&gt;</mark> and <mark>&lt;audio&gt;</mark>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 23 </span>
+          <span><i class="fab fa-firefox"></i> 31 </span>
+          <span><i class="fab fa-opera"></i> 12.1 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 10 </span>
+          <span><i class="fab fa-safari"></i> 6 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      Multimedia Fromat Browser Support
+    </caption>
+    <tr>
+      <th> Fromat </th>
+      <th> Chrome </th>
+      <th> Firefox </th>
+      <th> Opera </th>
+      <th> Internet Explorer/Edge </th>
+      <th> Safari </th>
+    </tr>
+    <tr>
+      <td colspan="6"> Image </td>
+    </tr>
+    <tr>
+      <td>
+        JPEG (Joint Photographic Experts Group)
+      </td>
+      <td>
+        yes
+      </td>
+      <td>
+        yes
+      </td>
+      <td>
+        yes
+      </td>
+      <td>
+        yes
+      </td>
+      <td>
+        yes
+      </td>
+    </tr>
+    <tr>
+      <td>
+        PNG (Portable Network Graphics) <br>
+        - semi transparent image format
+      </td>
+      <td>
+        4
+      </td>
+      <td>
+        2
+      </td>
+      <td>
+        10
+      </td>
+      <td>
+        7
+      </td>
+      <td>
+        3.1
+      </td>
+    </tr>
+    <tr>
+      <td>
+        GIF (Graphic Interchange Format)
+      </td>
+      <td>
+        yes
+      </td>
+      <td>
+        yes
+      </td>
+      <td>
+        yes
+      </td>
+      <td>
+        yes
+      </td>
+      <td>
+        yes
+      </td>
+    </tr>
+    <tr>
+      <td>
+        WebP (Web Picture)<br>
+        - developed by Google for better compression and faster loading than <mark>.jpeg</mark> and <mark>.png</mark>
+      </td>
+      <td>
+        23 (partial)<br>
+        32
+      </td>
+      <td>
+        65
+      </td>
+      <td>
+        11.5 (partial)<br>
+        19
+      </td>
+      <td>
+        18
+      </td>
+      <td>
+        14 (partial)<br>
+        16
+      </td>
+    </tr>
+    <tr>
+      <td>
+        SVG (Scalable Vector Graphic) <br>
+        - XML vector based image
+      </td>
+      <td>
+        4
+      </td>
+      <td>
+        3
+      </td>
+      <td>
+        10
+      </td>
+      <td>
+        9 (partial)<br>
+        12
+      </td>
+      <td>
+        3.2
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="6"> Video </td>
+    </tr>
+    <tr>
+      <td>
+        MP4 (MPEG4 Moving Picture Experts Group)
+      </td>
+      <td>
+        4
+      </td>
+      <td>
+        21 (partial)<br>
+        35
+      </td>
+      <td>
+        25
+      </td>
+      <td>
+        9
+      </td>
+      <td>
+        3.2
+      </td>
+    </tr>
+    <tr>
+      <td>
+        WebM (Web Multimedia Extension) (versions: <mark class="mark">VP8</mark> <mark class="mark">VP9</mark>)<br>
+        - high-quality video developed by Google
+      </td>
+      <td>
+        6 (partial)<br>
+        25
+      </td>
+      <td>
+        4 (partial)<br>
+        28
+      </td>
+      <td>
+        11.5 (partial)<br>
+        16
+      </td>
+      <td>
+        14 (partial)<br>
+        79
+      </td>
+      <td>
+        12.1 (partial)<br>
+        16
+      </td>
+    </tr>
+    <tr>
+      <td>
+        AV1 (AOMedia Video 1) <br>
+        - video coding format designed for video transmissions over the internet
+      </td>
+      <td>
+        70
+      </td>
+      <td>
+        65 (partial)
+        67
+      </td>
+      <td>
+        57
+      </td>
+      <td>
+        121
+      </td>
+      <td>
+        17 ((partial) support on hardware decoder (Iphone 15, MacBook Pro M3))
+      </td>
+    </tr>
+    <tr>
+      <td>
+        MOV (Apple QuickTime Movie)
+      </td>
+      <td>
+        NO
+      </td>
+      <td>
+        NO
+      </td>
+      <td>
+        NO
+      </td>
+      <td>
+        NO
+      </td>
+      <td>
+        3
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="6"> Audio </td>
+    </tr>
+    <tr>
+      <td>
+        MP3 (MPEG Audio Layer III (Moving Picture Experts Group))
+      </td>
+      <td>
+        4
+      </td>
+      <td>
+        3.5 (partial)<br>
+        22
+      </td>
+      <td>
+        15
+      </td>
+      <td>
+        9
+      </td>
+      <td>
+        4
+      </td>
+    </tr>
+    <tr>
+      <td>
+        WAV (Waveform Audio File Format) <br>
+        - uncompressed high-quality audio
+      </td>
+      <td>
+        8
+      </td>
+      <td>
+        3.5
+      </td>
+      <td>
+        11.5
+      </td>
+      <td>
+        12
+      </td>
+      <td>
+        3.5
+      </td>
+    </tr>
+    <tr>
+      <td>
+        OGG (Ogg Vorbis) <br>
+        - open source high-quality low file size format
+      </td>
+      <td>
+        4
+      </td>
+      <td>
+        3.5
+      </td>
+      <td>
+        11.5
+      </td>
+      <td>
+        17
+      </td>
+      <td>
+        14.1 (partial)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        AAC (Advanced Audio Coding) <br>
+        - for audio streaming
+      </td>
+      <td>
+        12
+      </td>
+      <td>
+        22 (partial)
+      </td>
+      <td>
+        15
+      </td>
+      <td>
+        9
+      </td>
+      <td>
+        4
+      </td>
+    </tr>
+    <tr>
+      <td>
+        FLAC (Free Lossless Audio Codec) <br>
+        - lossless audio format but high file size
+      </td>
+      <td>
+        56
+      </td>
+      <td>
+        51
+      </td>
+      <td>
+        42
+      </td>
+      <td>
+        16
+      </td>
+      <td>
+        11 (partial) <br>
+        13
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://www.w3schools.com/html/html_media.asp" target="_blank"> W3Schools Multimedia </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <h2 class="headerExtra"> Image </h2>
+  <pre class="syntax">
+    &lt;img src="<strong>url</strong>" alt="<strong>txt</strong>"&gt;
+  
+  
+    &lt;picture&gt;                                                                 // sets multiple images for different <reqval>mediaQueryCondition</reqval> rules 
+        &lt;source media="<reqval>mediaQueryCondition</reqval>" srcset="<reqval>url</reqval>"&gt;
+        // ...
+        &lt;img src="<strong>url</strong>" alt="<strong>txt</strong>"&gt;     // fallback image (when ther's no media query condition fits the above listed <mark>&lt;source&gt;</mark>es)  
+    &lt;/picture&gt;                                                        // -! for styling we target the <mark>&lt;img&gt;</mark> in order to apply styles to all <mark>&lt;source&gt;</mark>   
+  </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
+    &lt;img src="myImage.jpg" alt="backupText"&gt;
+    &lt;a herf="https://demo.com"&gt; &lt;img src="myImage.jpg" alt="backupText"&gt; &lt;/a&gt;
+    </pre>
+    <pre>
+    &lt;picture&gt;
+        &lt;source srcset="image_1.jpg" media="(max-width:500px)"&gt;   // if screen size is less than 500px this source will be displayed (display precedence order is form top to bottom)
+        &lt;source srcset="image_2.jpg" media="(min-width:501px)"&gt;   // if screen size is higher than 501px this source will be displayed
+        &lt;img src="backupImage.jpg" alt="backup Image" id="target"&gt;// backup image (used for backward compatibility)   // !! only the "img" tag can be targeted by CSS which styles will be applied to all picture sources   
+    &lt;/picture&gt;
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 class="header"> image form a server </h4>
+    <p><img src="http://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com" width="40px;"></p>
+    <details>
+      <summary> CODE </summary>
+      <pre>
+        &lt;img src="http:\/\/www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com" width="40px;"&gt;
+      </pre>
+    </details>
+    <!--------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Simple Demo </h4>
+    <p style="text-align:center;"><img src="Images/Me.jpg" alt="me" height="200" width="200"></p>
+    <details>
+      <summary> CODE: </summary>
+      <pre>
+    &lt;img src="Images/Me.jpg" alt="me" height="200"&gt;
+      </pre>
+    </details>
+    <!--------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> display images based on mediq query condition <mark>&lt;picture&gt;</mark> </h4>
+    <picture>
+      <source srcset="Images/pink_flowers.jpg" media="(min-width:500px)" type="image/jpg">
+      <source srcset="Images/white_flower.jpg" media="(min-width:450px)" type="image/jpg">
+      <img src="Images/orange_flowers.jpg" alt="orange flowers" style="width:auto;">
+    </picture>
+    <details>
+      <summary> CODE </summary>
+      <pre>
+    &lt;picture&gt;
+        &lt;source srcset="Images/pink_flowers.jpg" media="(min-width:500px)" type="image/jpg"&gt;
+        &lt;source srcset="Images/white_flower.jpg" media="(min-width:450px)" type="image/jpg"&gt;
+        &lt;img src="Images/orange_flowers.jpg" alt="orange flowers" style="width:auto;"&gt;
+    &lt;/picture&gt;
+        </pre>
+    </details>
+    <!----------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> CSS styling </u></h4>
+    <p> - the <mark>&lt;picture&gt;</mark> and <mark>&lt;source&gt;</mark> elements <u>cannot be targeted in CSS</u>, we target the <mark>&lt;img&gt;</mark> element which style is <u>applied to all sources in the "picture" element</u> </p>
+    <picture class="pic_1">
+      <source srcset="Images/pink_flowers.jpg" media="(min-width:500px)" type="image/jpg" class="pic_2">
+      <source srcset="Images/white_flower.jpg" media="(min-width:450px)" type="image/jpg">
+      <img src="Images/orange_flowers.jpg" alt="orange flowers" class="pic_3">
+    </picture>
+    <details>
+      <summary> CODE :</summary>
+      <pre>
+// HTML ----------
+    &lt;picture class="pic_1"&gt;
+        &lt;source srcset="Images/pink_flowers.jpg" media="(min-width:500px)" type="image/jpg" class="pic_2"&gt;
+        &lt;source srcset="Images/white_flower.jpg" media="(min-width:450px)" type="image/jpg"&gt;
+        &lt;img src="Images/orange_flowers.jpg" alt="orange flowers" class="pic_3"&gt;                        // -! only this tag can be targeted by CSS (which applies the style to all pictures)    
+    &lt;/picture&gt;
+    
+    
+// CSS ------------
+    .pic_1 {                                            // has no effect
+        width: 10%;     
+    }
+    
+    .pic_2 {                                           // has no effect
+        width: 50%;
+    }
+    
+    .pic_3 {
+        border: solid 5px blue;
+    }
+        </pre>
+    </details>
+  </details>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Video </h2>
+  <pre class="syntax">
+    &lt;video src="<reqval>url</reqval>"&gt;&lt;/video&gt;                                           // single source video element
+    
+    
+    &lt;video&gt;
+        &lt;source src="<reqval>url</reqval>"&gt;                            // video source (multiple can be specified as fallback in case the previous is not reachable)
+        // ...
+        &lt;track src="<reqval>url</reqval>"</em>&gt;                        // video text tracks (for timed text file (vtt))
+        <i>fallback message </i>                                          // displayed in case the browser does not support the <mark>&lt;video&gt;</mark> element
+    &lt;video&gt;
+    </pre>
+  <details class="example">
+    <summary> DEMO : </summary>
+    <pre>
+// simples version ----------------------------------------------------- 
+    &lt;video src="myVideo.mp4" controls autoplay poster="myposter.jpg" width="500" height="auto"&gt;&lt;/video&gt;     // simplest way to embed a video
+        
+// using multiple sources ----------------------------------------------  
+    &lt;video controls autoplay poster="myposter.jpg" width="500" height="auto" preload="metadata"&gt;
+        &lt;source src="demo.mp4" type="video/mp4"&gt;                      // browser will play the first VALID &lt;source&gt; (falls back to the next &lt;source&gt; element if the current is not readable)    
+        &lt;source src="other.mp4" type="video/mp4"&gt;
+        &lt;track src="myTrack.vtt" default kind="subtitles" lang="fr"&gt;  // track file used to display timed text (subtitles in this case)
+        This browser does not support Videos                          // message displayed if the browser does not recognize the &lt;video&gt; element 
+    &lt;/video&gt;
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 class="header"> <mark>&lt;video&gt;</mark> element without using <mark>&lt;source&gt;</mark> elements </h4>
+    <video width="500" height="auto" controls src="Video/Demo Video 1.mp4" preload="none"></video>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    &lt;video width="500" height="auto" controls src="Video/Demo Video 1.mp4" preload="none"&gt;&lt;/video&gt;
+        </pre>
+    </details>
+    <!----------------------------------------------------------------------------------------------------------->
+    <h4 class="header"> The <mark>width</mark> / <mark>height</mark> / <mark>autplay</mark> / <mark>controls</mark> / <mark>muted</mark> / <mark>src</mark> vidoe element attributes </h4>
+    <ul type="circle">
+      <li> autoplay enabled </li>
+      <li> controls are displayed </li>
+      <li> video muted </li>
+    </ul>
+    <video class="myVideo" width="500" height="auto" autoplay controls loop muted>
+      <source src="Video/HTML5 Video.mp4" type="video/mp4">
+      <source src="Video/Magic Lantern.mp4" type="video/mp4">
+    </video>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML -------
+    &lt;video class="myVideo" width="500" height="auto" autoplay controls loop muted&gt;
+        &lt;source src="Video/HTML5 Video.mp4" type="video/mp4"&gt;
+        &lt;source src="Video/Magic Lantern.mp4" type="video/mp4"&gt;        // because the first source is not available browser falls back to this one (next available video)
+        Your browser does not support videos
+    &lt;/video&gt;
+    
+    
+// CSS ---
+    .myVideo {
+        border: double 5px lightgray;
+        margin-left: 5px;
+    }
+    </pre>
+    </details>
+    <!----------------------------------------------------------------------------------------------------------->
+    <h4 class="header"> The <mark>poster</mark> video attribute </h4>
+    <p> - an image is displayed wihile the video is downloading and until the user hits the "play" button </p>
+    <video class="myVideo" width="500" height="auto" controls poster="Video/myCustomPoster.jpg">
+      <source src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/mp4">
+      <source src="Video/Demo Video 2.mp4" type="video/mp4">
+      Your Browser does not support videos!
+    </video>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    &lt;video class="myVideo" width="500" height="auto" controls poster="Video/myCustomPoster.jpg"&gt;
+        &lt;source src="https:\/\/archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/mp4"&gt;      // video linked form an external source
+        &lt;source src="Video/Demo Video 2.mp4" type="video/mp4"&gt;                                                                      // fallback video specified 
+        Your Browser does not support videos! 
+    &lt;/video&gt;
+        </pre>
+    </details>
+    <!----------------------------------------------------------------------------------------------------------->
+    <h4 class="header"> The <mark>preload</mark> vidoe attribute </h4>
+    <p> - <mark>preload=auto</mark> (defalt) borwser will download video file (browser handles download) </p>
+    <video class="myVideo" width="350" height="auto" controls preload="auto">
+      <source src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/mp4">
+      <source src="Video/Demo Video 2.mp4" type="video/mp4">
+      Your Browser does not support videos!
+    </video>
+    <p> - <mark>preload="metadata"</mark> only infromations (like length and title) is downloaded (download will start when the user hits the "play" button) </p>
+    <video class="myVideo" width="350" height="auto" controls preload="metadata">
+      <source src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/mp4">
+      <source src="Video/Demo Video 2.mp4" type="video/mp4">
+      Your Browser does not support videos!
+    </video>
+    <p> - <mark>preload="none"</mark> nothing is downloaded when the page is loaded (download start when user hits the "play" button) </p>
+    <video class="myVideo" width="350" height="auto" controls="controls" preload="none">
+      <source src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/mp4">
+      <source src="Video/Demo Video 2.mp4" type="video/mp4">
+      Your Browser does not support videos!
+    </video>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    &lt;video class="myVideo" width="350" height="auto" controls preload="auto"&gt;
+        &lt;source src="https:\/\/archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/mp4"&gt;
+        &lt;source src="Video/Demo Video 2.mp4" type="video/mp4"&gt;
+        Your Browser does not support videos! 
+    &lt;/video&gt;
+    
+    &lt;video class="myVideo" width="350" height="auto" controls preload="metadata"&gt;
+        &lt;source src="https:\/\/archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/mp4"&gt;
+        &lt;source src="Video/Demo Video 2.mp4" type="video/mp4"&gt;
+        Your Browser does not support videos! 
+    &lt;/video&gt;
+    
+    &lt;video class="myVideo" width="350" height="auto" controls preload="none"&gt;
+        &lt;source src="https:\/\/archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/mp4"&gt;
+        &lt;source src="Video/Demo Video 2.mp4" type="video/mp4"&gt;
+        Your Browser does not support videos! 
+    &lt;/video&gt;
+        </pre>
+    </details>
+    <!----------------------------------------------------------------------------------------------------------->
+    <h4 class="header"> The <mark>&lt;track&gt;</mark> tag </h4>
+    <p> - apparently vtt files do not work locally [TESTED 2019-04-03] </p>
+    <video class="myVideo" width="350" height="auto" controls="controls" preload="none" src="Video/Demo Video 2.mp4">
+      <track default src="Track Files/test1.vtt" kind="subtitles" srclang="en" label="myLabel">
+      Your Browser does not support videos!
+    </video>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    &lt;video class="myVideo" width="350" height="auto" controls="controls" preload="none" src="Video/Demo Video 2.mp4"&gt;
+        &lt;track default src="Track Files/test1.vtt" kind="subtitles" srclang="en" label="myLabel"&gt;
+        Your Browser does not support videos! 
+    &lt;/video&gt;
+        </pre>
+    </details>
+  </details>
+  <!----------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Audio </h2>
+  <pre class="syntax">
+    &lt;audio src="<reqval>url</reqval>"&gt;&lt;/audio&gt;                                           // single source audio element
+    
+    
+    &lt;audio&gt;
+        &lt;source src="<reqval>url</reqval>"&gt;                            // audio source (multiple can be specified as fallback in case the previous is not reachable)
+        // ...
+        &lt;track src="<reqval>url</reqval>"</em>&gt;                        // audio text tracks (for timed text file (vtt))
+        <optval>fallback message </optval>                                          // displayed in case the browser does not support the <mark>&lt;audio&gt;</mark> element
+    &lt;audio&gt;
+    </pre>
+  <details class="example">
+    <summary> DEMO : </summary>
+  <pre>
+// simples version ----------------------------------------------------- 
+    &lt;audio src="myAudio.mp3" controls autoplay&gt;&lt;/audio&gt;       // simplest way to embed an audio
+        
+// using multiple sources ----------------------------------------------  
+    &lt;audio controls autoplay preload="metadata"&gt;
+        &lt;source src="demo.mp3" type="audio/mp3"&gt;              // browser will play the first VALID &lt;source&gt; (falls back to the next &lt;source&gt; element if the current is not readable)    
+        &lt;source src="other.mp3" type="audio/mp3"&gt;
+        &lt;track src="myTrack.vtt" default kind="subtitles" lang="fr"&gt;  // -! track file cannot be displayed in audio elements (although the specification says it is supported)
+        This browser does not support Audios                  // message displayed if the browser does not recognize the &lt;audio&gt; element 
+    &lt;/audio&gt;
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <audio src="Sound/Soscia - Rhytmo Sensuale (Radio) (Sarkany).mp3" controls></audio>
+    <audio controls>
+      <source src="badSource" type="audio/mp3">
+      <source src="Sound/Soscia - Rhytmo Sensuale (Radio) (Sarkany).mp3" type="audio/mp3">
+      This Browser does not support audio!
+    </audio>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    &lt;audio src="Sound/Soscia - Rhytmo Sensuale (Radio) (Sarkany).mp3" controls&gt;&lt;/audio&gt;
+    &lt;audio controls&gt;
+        &lt;source src="badSource" type="audio/mp3"&gt;
+        &lt;source src="Sound/Soscia - Rhytmo Sensuale (Radio) (Sarkany).mp3" type="audio/mp3"&gt;
+        This Browser does not support audio!
+    &lt;/audio&gt;
+        </pre>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------->
+    <h4 class="header"> The <mark>autoplay</mark> / <mark>muted</mark> / <mark>controls</mark> / <mark>loop</mark> audio attribute </h4>
+    <p style="color:yellow;"> - the <mark>autoplay</mark> function might be blocked by some browsers (to prevent annoyance) </p>
+    <p style="color:yellow;"> - the <mark>controls</mark> attribute is sort of required otherwise there is nothing to show up on the page </p>
+    <audio autopaly controls loop muted>
+      <source src="Sound/Soscia - Rhytmo Sensuale (Radio) (Sarkany).mp3" type="audio/mp3">
+      <source src="Sound/Ago - Tell Me Where You Are (Original Radio Edit).mp3" type="audio/mp3">
+    </audio>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    &lt;audio autopaly controls loop muted&gt;
+        &lt;source src="Sound/Soscia - Rhytmo Sensuale (Radio) (Sarkany).mp3" type="audio/mp3"&gt;
+        &lt;source src="Sound/Ago - Tell Me Where You Are (Original Radio Edit).mp3" type="audio/mp3"&gt;
+    &lt;/audio&gt;
+        </pre>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------->
+    <h4 class="header"> The <mark>preload</mark> audio attribute </h4>
+    <p> - <mark>preload="auto"</mark> (browser downloads the file or at least some of the information)</p>
+    <audio controls loop preload="auto">
+      <source src="Sound/Soscia - Rhytmo Sensuale (Radio) (Sarkany).mp3" type="audio/mp3">
+      <source src="Sound/Ago - Tell Me Where You Are (Original Radio Edit).mp3" type="audio/mp3">
+    </audio>
+    <p> - <mark>preload="metadata"</mark> (only metadata is downloaded, like title length) </p>
+    <audio controls loop preload="metadata">
+      <source src="Sound/Soscia - Rhytmo Sensuale (Radio) (Sarkany).mp3" type="audio/mp3">
+      <source src="Sound/Ago - Tell Me Where You Are (Original Radio Edit).mp3" type="audio/mp3">
+    </audio>
+    <p> - <mark>preload="none"</mark> (nothing is downloaded, when the user hits the "play" button browser will start the downloading) </p>
+    <audio controls loop preload="none">
+      <source src="Sound/Soscia - Rhytmo Sensuale (Radio) (Sarkany).mp3" type="audio/mp3">
+      <source src="Sound/Ago - Tell Me Where You Are (Original Radio Edit).mp3" type="audio/mp3">
+    </audio>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    &lt;audio controls loop preload="auto"&gt;
+        &lt;source src="Sound/Soscia - Rhytmo Sensuale (Radio) (Sarkany).mp3" type="audio/mp3"&gt;
+        &lt;source src="Sound/Ago - Tell Me Where You Are (Original Radio Edit).mp3" type="audio/mp3"&gt;
+    &lt;/audio&gt;
+    
+    &lt;audio controls loop preload="metadata"&gt;
+        &lt;source src="Sound/Soscia - Rhytmo Sensuale (Radio) (Sarkany).mp3" type="audio/mp3"&gt;
+        &lt;source src="Sound/Ago - Tell Me Where You Are (Original Radio Edit).mp3" type="audio/mp3"&gt;
+    &lt;/audio&gt;
+    
+    &lt;audio controls loop preload="none"&gt;
+        &lt;source src="Sound/Soscia - Rhytmo Sensuale (Radio) (Sarkany).mp3" type="audio/mp3"&gt;
+        &lt;source src="Sound/Ago - Tell Me Where You Are (Original Radio Edit).mp3" type="audio/mp3"&gt;
+    &lt;/audio&gt;
+      </pre>
+    </details>
+    <!--------------------------------------------------------------------------------------------------------->
+    <h4 class="header"> using <mark>track</mark> element to display audio tracks </h4>
+    <p> - because the audio element has no place to display the track we use a audio element and size it just as big to display the tracks </p>
+    <audio src="Sound/Ago - Tell Me Where You Are (Original Radio Edit).mp3" type="audio/mp3" controls style="outline:none;">
+      <track default src="Track Files/text7 - audio.vtt">
+    </audio>
+    <video id="videoAudio" src="Sound/Ago - Tell Me Where You Are (Original Radio Edit).mp3" type="video/mp4" controls style="width:80%;" height="150">
+      <track default src="Track Files/text7 - audio.vtt">
+    </video>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML ---
+    &lt;audio src="Sound/Ago - Tell Me Where You Are (Original Radio Edit).mp3" type="audio/mp3" controls style="outline:none;"&gt;
+        &lt;track default src="Track Files/text7 - audio.vtt"&gt;
+    &lt;/audio&gt;
+    &lt;video id="videoAudio" src="Sound/Ago - Tell Me Where You Are (Original Radio Edit).mp3" type="video/mp4" controls style="width:80%;" height="150"&gt;
+        &lt;track default src="Track Files/text7 - audio.vtt"&gt;
+    &lt;/video&gt;
+    
+// CSS -----
+    #videoAudio::cue {
+        font-size: 2em;
+    }
+    
+// vtt file content -----
+    WEBVTT - autio test 
+    
+    00:00.000 --> 00:03.000 line:100% align:start
+    - life without you  
+    
+    00:03.000 --> 00:04.000 line:50% align:start
+    - it's just right 
+        </pre>
+    </details>
+  </details>
+
+  <br><br>
+</body>
+
+</html>

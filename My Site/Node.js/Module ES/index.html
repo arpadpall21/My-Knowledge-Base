@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Module: ECMAScript </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Module: ES (ECMAScript) (ver 4.0.0) </h1>
+  <p> Updated ( 2021-01-12 )</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html">Node.js></a> ES
+  </p>
+  <table class="table">
+    <caption>
+      loading files as ECMAScript module
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> File </th>
+      <th> Description </th>
+    </tr>
+    <tr class="1.1">
+      <td> <strong>moduleFile</strong>.mjs </td>
+      <td> - Node.js loads the file as ECMAScript module </td>
+    </tr>
+    <tr class="1.2">
+      <td> <strong>moduleFile</strong>.js </td>
+      <td>
+        - if the nearest <mark>package.json</mark> file contains a top-level <mark>"type":"module"</mark> field then
+        Node.js loads this file as ECMAScript module <br>
+        - if the nearest <mark>package.json</mark> file contains a top-level <mark>"type":"commonjs"</mark> field or
+        doesn't contain any <mark>"type"</mark> field then Node.js loads this file as CommonJS module
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      ECMAScript module statements and properties
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Statement / Property </th>
+      <th> Description </th>
+    </tr>
+    <tr class="3">
+      <td> import.meta.url </td>
+      <td> - returns the absolute path of the current location <u>as a file path</u> (ex:
+        <mark>file:///home/dev/main.mjs</mark>) (like in the browser, percent encoded)
+        <span class="browserSupport" title="updated : 2021-01-16">
+          <span><i class="fab fa-node-js"></i> 8.5.0 (experimental) </span>
+          <span class="openable"> more... <div>
+              <p> - 12.0.0 - <mark>*.js</mark> file support (through <mark>package.json</mark>
+                <mark>"type":"module"</mark> field) </p>
+              <p> - 13.2.0 / 12.17.0 - no longer requires command line flag </p>
+              <p> - 14.0.0 / 13.14.0 - experimental warning removed </p>
+              <p> - 14.8.0 - unflag top-level <mark>await</mark> </p>
+              <p> - 14.13.0 - detection CommonJS named exports </p>
+            </div></span>
+          <span><i class="fab fa-node-js"></i> 15.3.0 Stable </span>
+        </span>
+      </td>
+    </tr>
+    <tr class="01.01">
+      <td> import <strong>importSyntax</strong> </td>
+      <td>
+        - named items (<strong>name</strong>) must be imported as they were exported by the exporting module (under the
+        same name) <br>
+        - the default import name (<strong>defaultName</strong>) is not named (we can name it as we like) <br>
+        - this statement cannot be used in embeded script (like in a function)
+        <span class="browserSupport" title="updated : 2021-01-16">
+          <span><i class="fab fa-node-js"></i> 8.5.0 (experimental) </span>
+          <span class="openable"> more... <div>
+              <p> - 12.0.0 - <mark>*.js</mark> file support (through <mark>package.json</mark>
+                <mark>"type":"module"</mark> field) </p>
+              <p> - 13.2.0 / 12.17.0 - no longer requires command line flag </p>
+              <p> - 14.0.0 / 13.14.0 - experimental warning removed </p>
+              <p> - 14.8.0 - unflag top-level <mark>await</mark> </p>
+              <p> - 14.13.0 - detection CommonJS named exports </p>
+            </div></span>
+          <span><i class="fab fa-node-js"></i> 15.3.0 Stable </span>
+        </span>
+      </td>
+    </tr>
+    <tr class="01.02">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="01.03">
+      <td>
+        import <strong class="openable">specifier:str<div>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
+          </div></strong>
+      </td>
+      <td>
+        - no data is imported (module is called for its side effect only)
+      </td>
+    </tr>
+    <tr class="01.04">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="01.05">
+      <td>
+        import * as <strong class="openable">specifier:str<div>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
+          </div></strong>
+      </td>
+      <td>
+        - imports all named items and default from the specified module in the specified namespace
+        (<strong>name</strong>)
+      </td>
+    </tr>
+    <tr class="01.06">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="01.07">
+      <td>
+        import {<strong>name</strong> <small>[as <i>newName</i>]</small>, <i>...</i>} from <strong class="openable">specifier:str<div>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
+          </div></strong>
+      </td>
+      <td>
+        - imports the specified <strong>name</strong>(s) from the specified module (names can be renamed with the
+        <mark>as</mark> keyword)
+      </td>
+    </tr>
+    <tr class="01.08">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="01.09">
+      <td>
+        import <strong>defaultName</strong><small>[, {<i>name, ...</i>}]</small> from <strong class="openable">specifier:str<div>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
+          </div></strong>
+      </td>
+      <td>
+        - imports the default value from the specified module (we can name the <strong>defaultName</strong> as we like)
+      </td>
+    </tr>
+    <tr class="01.10">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="01.11">
+      <td>
+        import(<strong class="openable">specifier:str<div>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
+          </div></strong>)
+      </td>
+      <td>
+        - used to import a module dynamically (can be called from a function body)<br>
+        - returns a <strong>promise</strong> which resolves to the required module
+        <span class="browserSupport" title="updated : 2021-01-16">
+          <span><i class="fab fa-node-js"></i> 14.8.0 </span>
+        </span>
+      </td>
+    </tr>
+    <tr class="02.00">
+      <td> export <strong>exportSyntax</strong> </td>
+      <td>
+        - we can export 0 or more named items and 1 default item (named item = a value bound to a name) <br>
+        - named items (<strong>name</strong>) must be imported as they were exported by the exporting module (same name)
+        <br>
+        - default items are exported without name binding (default exports are sort-of fallback export values) <br>
+        - transfered items (with <mark>export ... from</mark> 'aggregate export') are <u>not availabe in the current
+          module</u> <br>
+        - this statement cannot be used in embeded script (like in a function)
+        <span class="browserSupport" title="updated : 2021-01-16">
+          <span><i class="fab fa-node-js"></i> 8.5.0 (experimental) </span>
+          <span class="openable"> more... <div>
+              <p> - 12.0.0 - <mark>*.js</mark> file support (through <mark>package.json</mark>
+                <mark>"type":"module"</mark> field) </p>
+              <p> - 13.2.0 / 12.17.0 - no longer requires command line flag </p>
+              <p> - 14.0.0 / 13.14.0 - experimental warning removed </p>
+              <p> - 14.8.0 - unflag top-level <mark>await</mark> </p>
+              <p> - 14.13.0 - detection CommonJS named exports </p>
+            </div></span>
+          <span><i class="fab fa-node-js"></i> 15.3.0 Stable </span>
+        </span>
+      </td>
+    </tr>
+    <tr class="02.01">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="02.02">
+      <td>
+        export <em>var|let|const</em> <strong>name</strong> <small>[= <i>val</i>]</small>, <i>...</i>
+      </td>
+      <td>
+        - expors one or multiple individual names <u>(<mark>var|let|const</mark> required only in front (ex:
+          <mark>import var x 21, y = 22, z = 23</mark>))</u>
+      </td>
+    </tr>
+    <tr class="02.03">
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr class="02.04">
+      <td>
+        export function <strong>fnName</strong>() {<i>...</i>}
+      </td>
+      <td>
+        - exports an individual function bound to a name
+      </td>
+    </tr>
+    <tr class="02.06">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="02.07">
+      <td>
+        export class <strong>className</strong> {<i>...</i>}
+      </td>
+      <td>
+        - exports an individual class bound to a name
+      </td>
+    </tr>
+    <tr class="02.08">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="02.09">
+      <td>
+        export {<strong>name</strong> <small>[as <i>newName</i>]</small>, <i>...</i>}
+      </td>
+      <td>
+        - exports a list of names (names can be renamed with the <mark>as</mark> keyword)
+      </td>
+    </tr>
+    <tr class="02.10">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="02.11">
+      <td>
+        export default <strong>exp</strong>
+      </td>
+      <td>
+        - exports the result of an expression as default
+      </td>
+    </tr>
+    <tr class="02.12">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="02.13">
+      <td>
+        export {<strong>name</strong> as default, <i>...</i>}
+      </td>
+      <td>
+        - exports the list name as default
+      </td>
+    </tr>
+    <tr class="02.14">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="02.15">
+      <td>
+        export default function<small>[*]</small> <i>name</i>(){<i>...</i>}
+      </td>
+      <td>
+        - exports the function (or generator function <mark>*</mark>) as default (<i>name</i> is visible on the import
+        side but has no effect apparently)
+      </td>
+    </tr>
+    <tr class="02.16">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="02.17">
+      <td>
+        export default class <i>name</i>{<i>...</i>}
+      </td>
+      <td>
+        - exports the Class as default (<i>name</i> is visible on the import side but has no effect apparently)
+      </td>
+    </tr>
+    <tr class="02.19">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="02.20">
+      <td>
+        export * from <strong class="openable">specifier:str<div>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
+          </div></strong>
+      </td>
+      <td>
+        - imports every named item from the specified module then exports them <u>(default not transfered)</u>
+      </td>
+    </tr>
+    <tr class="02.21">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="02.22">
+      <td>
+        export * as <strong class="openable">specifier:str<div>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
+          </div></strong>
+      </td>
+      <td>
+        - imports every named item from the specified module then exports them in specified namespace
+        (<strong>name</strong>) <u>(default value transfered)</u>
+      </td>
+    </tr>
+    <tr class="02.23">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="02.24">
+      <td>
+        export {<strong>name</strong> <small>[as <i>newName</i>]</small>, <i>...</i>} from <strong class="openable">specifier:str<div>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
+          </div></strong>
+      </td>
+      <td>
+        - imports the specified named items from the specified module then exports them
+      </td>
+    </tr>
+    <tr class="02.25">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="02.26">
+      <td>
+        export { default } from <strong class="openable">specifier:str<div>
+            <p> - <mark><strong>relativePath</strong></mark> - relative specifier (ex: <mark>./main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - relative path from the current location <u>(file extensions are required)</u> </p>
+            <p> - <mark><strong>absolutePath</strong></mark> - absolute specifier (ex: <mark>/home/dev/main.js</mark>) </p>
+            <p style="text-indent: 10px;"> - absolute path <u>in ECMAscript modules we can also pass file protocol path <mark>"file:///home/dev/main.js</mark> (browser percent encoded)</u> </p>
+            <p> - <mark><strong><small>[node:]</small>moduleName<small>/<i>path</i></small></strong></mark> - bare specifier (ex: <mark>main</mark> / <mark>mymodule/main</mark> / <mark>node:fs</mark>) </p>
+            <p style="text-indent: 10px;"> - built-in module or package entry point to the nearest <mark>node_modules</mark> directory <u>(<mark>node:</mark> prefix indicates built-in node module 
+              <span id="browserSupport" title="updated : 2021-01-11">
+                <span><i class="fab fa-node-js"></i> 16.0.0 </span>
+              </span>
+            )</u></p>
+          </div></strong>
+      </td>
+      <td>
+        - imports the default value from the specified module then export it as <u>default value</u>
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://nodejs.org/dist/latest-v15.x/docs/api/esm.html" target="_blank">ECMAScript modules
+      (nodejs.org)</a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - requiring JSON and Wasm (Web Assembly) modules are still experimental [2021-01-13] </p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - Node.js loads a file as ECMAScript module when : </p>
+  <p style="text-indent:35px;"> - a file has <mark>*.mjs</mark> extension </p>
+  <p style="text-indent:35px;"> - a file has <mark>*.js</mark> extension and the nearest <mark>package.json</mark> file
+    contains a top-level <mark>"type":"module"</mark> field </p>
+  <p> - ECMAScript modules can import (require) both ECMAScript and CommonJS modules </p>
+  <p> - the code inside ECMAScript modules <u>runs in strict mode</u></p>
+  <details class="example">
+    <summary> DEMO </summary>
+    <p> - <mark>main.mjs</mark> file (loades as ECMAScript module) </p>
+    <pre>
+    import * as test1 from './module1.mjs';                                            // can import data from ECMAScript modules   
+    import test2 from './module1.cjs';                                                 // also can import data from CommonJS modules   
+    
+// module runs in strict mode ---------------------------------------------------------
+    x = 21;                                                                            // -! Error thrown (undeclared variables are not allowed in strict mode)   
+    </pre>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> Loading <mark>*.js</mark> files as CommonJS module </u></h4>
+    <p> - <mark>main.js</mark> file <u>loaded as ECMAScript module because the nearest <mark>package.json</mark> file
+        has a top-level <mark>"type":"module"</mark> field</u> </p>
+    <pre>
+    import fs from 'fs';                                                               // file loaded as ECMAScript module   
+    </pre>
+    <p> - nearest <mark>package.json</mark> file </p>
+    <pre>
+    {
+    "name": "module-ecmascript",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "type":"module"                                                                    // this makes Node.js load *.js files as ECMAScript module  
+    }
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> loading <mark>*.js</mark> files as ECMAScript module TEST </u></h4>
+    <p> - <mark>main.js</mark> file </p>
+    <pre>
+    import fs from 'fs';                                                               // file loaded as ECMAScript module because the nearest 'package.json' file has a top-level "type":"module" field  
+    </pre>
+    <p> - nearest <mark>package.json</mark> file </p>
+    <pre>
+    {
+    "name": "module-ecmascript",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "type":"module"                                                                    // this makes Node.js load *.js files as ECMAScript module  
+    }
+    </pre>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> require modules from ECMAScript module TEST </u></h4>
+    <p> - ECMAScritp modules can import (require) both ECMAScript and CommonJS modules </p>
+    <p> <mark>main.mjs</mark> file </p>
+    <pre>
+    import * as test1 from './module1.mjs';                                            // ECMAScript module import (require)    
+    import test2 from './module1.cjs';                                                 // CommonJS module import (require)     
+    
+    console.log( test1 );                                                              // -> {p1:21}
+    console.log( test2 );                                                              // -> {p2:22}
+        </pre>
+    <p> <mark>module1.mjs</mark> file </p>
+    <pre>
+    export var p1 = 21;        
+        </pre>
+    <p> <mark>module1.cjs</mark> file </p>
+    <pre>
+    exports.p1 = 22;        
+        </pre>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> code runs in strict mode in ECMAScript module TEST </u></h4>
+    <p> <mark>main.mjs</mark> file </p>
+    <pre>
+    x = 21;                                                                            // -! Error thrown, undeclared variables are not allowed in strict mode 
+    </pre>
+  </details>
+  <hr>
+  <!---------------------------------------------------------------------------------------------------->
+  <h2 style="color:darkblue;"><u> Static VS Dynamic module requiring </u></h2>
+  <p> - by default ECMAScript modules require modules statically, (required module loads on the spot) </p>
+  <p> - ECMAScript modules can require modules dynamically, so they don't block the main module, once the main module is
+    finished loading the dynamically required module start loading <u>(this is not an asynchronous module loading
+      mechanism)</u> </p>
+  <p> - the main benefit of dynamically loading modules is that we can require modules only when needed (from a function
+    body 'dynamically') </p>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
+// static -----------------------------------------------------------------------------
+    import * as module1 from './module1.mjs';                                          // the required module is loaded here and the required data is available here    
+    
+    import * as module1_ from './module1.cjs';                                         // loading CommonJS module    
+    
+// dynamic ----------------------------------------------------------------------------
+    import('./module2.mjs')                                                            // module loaded once the promise is resolved  
+        .then(res => {res})                                                            // -> moduel imprt awailable here  
+        .catch(err => {err})
+        
+    import('./module2.cjs')                                                            // dynamically loading CommonJS module   
+        .then(res => {res}) 
+        .catch(err => {err})
+        
+        
+// require from a function (when needed 'dynamically') --------------------------------
+    setTimeout(function(){
+        import('./modulee.mjs')                                                        // module is required after 5 seconds (dynamically)
+            .then(res => {res}) 
+            .catch(err => {err})
+        
+        // import * as module1_ from './module1.mjs';                                  // -! this would throw an error (static syntax is not allowed in a function)    
+    }, 5000);
+    </pre>
+  </details>
+  <hr>
+  <!---------------------------------------------------------------------------------------------------->
+  <h2 style="color:darkblue;"><u> The <mark>import</mark> / <mark>import()</mark> / <mark>await import</mark> /
+      <mark>export</mark> / <mark>import.meta.url</mark> statements and property </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
+    <p> <mark>import</mark> </p>
+    <pre>
+// no data imported -------------------------------------------------------------------
+    import './module1.mjs';                                                            // no data imported, './module1.mjs' called for its side effect only  
+    
+// importing named items --------------------------------------------------------------
+    import * as all from './module1.mjs';                                              // all named items (default included) are imported in the 'all' namespace 
+    all;                                                                                   // -> {all named items default included ...}
+    
+    import {egy, ketto} from './module1.mjs';                                          // 'egy' and 'ketto' named items imported (named items are exported under the same name 'egy', 'ketto' in this case)    
+    egy;                                                                                   // -> imported value under this name  
+    ketto;                                                                                 // -> imported value under this name  
+    
+    import {egy as un, ketto as deux} from './module1.mjs';                            // rename named items while importing 
+    un;                                                                                    // -> imported value under the 'egy' name  
+    deux;                                                                                  // -> imported value under the 'ketto' name  
+    
+// import default value ---------------------------------------------------------------// -! only 1 default import allowed (bellow is for the sake of demo)    
+    import def from './module1.mjs';                                                   // imports the default value     // def can be named as we like 
+    def;                                                                                   // -> default export value of './module1.mjs'   
+    
+    import def, {ketto, harom as trois} from './module1.mjs';                          // imports the default value and other named items 
+    def;                                                                                   // -> default export value of './module1.mjs'   
+    ketto;                                                                                 // -> imported value under the 'ketto' name  
+    trois;                                                                                 // -> imported value under the 'harom' name  
+    
+// dynamic import ---------------------------------------------------------------------
+    import('./module2.mjs')                                                            // module loaded once the promise is resolved    
+        .then(module  => {module})                                                     // -> imported data will be available here  
+        .catch(err => {err})
+    
+    await import('./module2.mjs')                                                      // top level await is supported from node v14.8.0   
+    </pre>
+    <p> <mark>export</mark> </p>
+    <pre>
+// exporting individual features ------------------------------------------------------
+    export var x = 21;                                                                 // exports one named item  
+    export let x = 21, y = 'some string';                                              // exports multiple features     // -! var|let|const must be declared only once at the beginning    
+    
+    var a = 'one thing';
+    var b = 'some other thing';
+    export var a, b;                                                                   // exports a variable binding as named item    
+    
+    export function myFunc(a, b){return a + b}                                         // exports a function as 'myFunc' named item
+    
+    export class Cat{constructor(breed, color){this.breed = breed, this.color = color}};  // exports a class as 'Cat' named item  
+    
+// exporting a list of items ----------------------------------------------------------
+    var a = 'one thing';
+    var b = 'another thing';
+    export {a, b};                                                                     // exporting a list of named items    
+    
+    export {a as one, b as two};                                                       // renames named items while exporting (importing modules will receive 'one' and 'two' named items)    
+    
+// default export ---------------------------------------------------------------------// -! only 1 default export allowed (bellow is for the sake of demo)    
+    default 1 + 2;                                                                     // exports 3 as default export value  
+    
+    var a = 'default value';
+    export {a as default};                                                             // exports the value of 'a' as default value  
+    
+    export default function(){return 'default value'}                                  // exports the function as default value 
+    
+    export default class {constructor(breed, color){this.breed = breed, this.color = color}};       // exports the class as default value   
+    
+    export default function myFunc(){return 'default value'}                                        // can have a name but I'm not sure what this does (doesn't seems do anything)    
+    export default class Cat{constructor(breed, color){this.breed = breed, this.color = color}};    // can have a name but I'm not sure what this does (doesn't seems do anything)    
+    
+// aggregate export (import then export) ----------------------------------------------// -! the transfered data is not available in the current module    
+    export * from './module2.mjs'                                                      // imports all named items from './module2.mjs' then export it   // -! default value is not transfered    
+    
+    export * as all from './module2.mjs'                                               // imports all named itmes (including default) and exports them in the 'all' namespace   // -! default not exported as default value    
+    all;                                                                                   // -! Error thrown transfered items are not available here    
+    
+    export {egy, ketto} from './module2.mjs';                                          // imports the specified named items then exports them 
+    export {ketto as deux} from './module2.mjs';                                       // renames the item whild transfering  
+    egy;                                                                                   // -! Error thrown transfered items are not available here    
+    deux;                                                                                  // -! Error thrown transfered items are not available here    
+    
+    export { default } from './module2.mjs';                                           // imports the default value then exports it as default value 
+    </pre>
+    <p> - other <mark>import.meta.url</mark> property </p>
+    <pre>
+    import.meta.url;                                                                   // -> 'file:///home/pall/Node.js/Module%20ECMAScript/main.mjs'       // absolute path of the module location (as file protocol (percent encoded))    
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> <mark>export</mark> TEST </u></h4>
+    <p> - <mark>main.mjs</mark> file </p>
+    <pre>
+// (01) -------------------------------------------------------------------------------
+    import * as all from './module1.mjs';
+    
+    console.log( all );                                                                // -> {Car:[class Car], a:1, add:[Function: add], b:2, c:3, x:21, y:22}    
+    
+    
+// (02) -------------------------------------------------------------------------------
+    import * as all from './module1.mjs';
+    
+    console.log( all );                                                                // -> {add:[Function:myFunction], x:21, y:22}   
+    
+// (03) -------------------------------------------------------------------------------
+    import def from './module1.mjs';                                            
+    
+    console.log( def );                                                                // -> 2
+    
+// (04) -------------------------------------------------------------------------------
+    import def from './module1.mjs';                                                   // -> 21  
+    
+    console.log( def );                                                                // -> 2
+    
+// (05) -------------------------------------------------------------------------------
+    import def from './module1.mjs';                                                   // -> 21  
+    
+    console.log( def );                                                                // -> [Function: default] 
+    
+// (06) -------------------------------------------------------------------------------
+    import def from './module1.mjs';                                                   // -> 21  
+    
+    console.log( def );                                                                // -> [Function: myFunction] 
+    
+// (07) -------------------------------------------------------------------------------
+    import def from './module1.mjs';                                                   // -> 21  
+    
+    console.log( def );                                                                // -> [class: default] 
+    
+// (08) -------------------------------------------------------------------------------
+    import def from './module1.mjs';                                                   // -> 21  
+    
+    console.log( def );                                                                // -> [class: myClass] 
+    
+// (09) -------------------------------------------------------------------------------
+    import * as all from './module1.mjs';
+    
+    console.log( all );                                                                // -> {egy:1, harom:3, ketto:2}  // -! default not transfered   
+
+// (10) -------------------------------------------------------------------------------
+    import * as all from './module1.mjs';
+    
+    console.log( all );                                                                // -> {all:{default:0, egy:1, harom:3, ketto:2}  // -! default value is transfered but not as default   
+    
+// (11) -------------------------------------------------------------------------------
+    import * as all from './module1.mjs';
+    
+    console.log( all );                                                                // -> {egy:1, harom:3}     
+    
+// (12) -------------------------------------------------------------------------------
+    import def from './module1.mjs';
+    
+    console.log( def );                                                                // -> 0
+    </pre>
+    <p> - <mark>module1.mjs</mark> file </p>
+    <pre>
+// (01) individual export -------------------------------------------------------------  
+    var y = 22;
+    
+    export var x = 21                                                                  // export locally assigned name 
+    export var y                                                                       // export a binding 
+    // export y                                                                        // -! not allowed the 'var|let|const' keyword required in front 
+    export var a = 1, b = 2, c = 3;                                                    // exporting multiple individual names 
+    
+    export function add(a, b){ return a + b};                                          // exporting a function 
+    
+    export class Car{constructor(a, b){this.mark = a, this.type = b}};                 // exporting a class     
+    
+    
+// (02) export a list -----------------------------------------------------------------  
+    var x = 21;
+    var y = 22;
+    var myFunction = function(a, b){ return a + b};
+    
+    export {x, y, myFunction as add}                                                   // exporting a list of names (renamed one name)
+    
+    
+// export defaults --------------------------------------------------------------------
+// (03) -------------------------------------------------------------------------------
+    export default 1 + 1;                                                              // exports the result of the expression  
+    
+// (04) -------------------------------------------------------------------------------
+    var x = 21;
+    export {x as default};                                                             // exports a name in the list as default   
+    
+// (05) -------------------------------------------------------------------------------
+    export default function (){}                                                       // exports the function as default 
+    
+// (06) -------------------------------------------------------------------------------
+    export default function myFunction(){}                                             // function name doesn't appear to have any effect (we can see on the import side but that's it)    
+    
+// (07) -------------------------------------------------------------------------------
+    export default class {}                                                            // exports the class as default 
+    
+// (08) -------------------------------------------------------------------------------
+    export default class Myclass{}                                                     // class name doesn't appear to have any effect (we can see on the import side but that's it)  
+    
+    
+// aggregate export -------------------------------------------------------------------
+// (09) -------------------------------------------------------------------------------
+    export * from './module2.mjs';                                                     // imports every exported names from 'module2.mjs' then exports it as it is <u>(does not transfer the default)</u>   
+    
+// (10) -------------------------------------------------------------------------------
+    export * as all from './module2.mjs';                                              // imports every exported names from 'module2.mjs' then exports them all in the 'all' named item    
+    
+    console.log(all);                                                                  // -! Error thrown (transfered items are not available in the current module)
+    
+// (11) -------------------------------------------------------------------------------
+    export {egy, harom} from './module2.mjs';                                          // only the specified named items are imported then exported  
+
+    console.log( egy, harom );                                                         // -! Error thrown (transfered items are not available in the current module)
+    
+// (11) -------------------------------------------------------------------------------
+    export {default} from './module2.mjs';                                             // imports the default value from './module2.mjs' then exports it  
+    </pre>
+    <p> - <mark>module2.mjs</mark> file </p>
+    <pre>
+// (09) -------------------------------------------------------------------------------
+    export default 0;
+    export var egy = 1, ketto = 2, harom = 3;    
+    
+// (10) -------------------------------------------------------------------------------
+    export default 0;
+    export var egy = 1, ketto = 2, harom = 3;    
+    
+// (11) -------------------------------------------------------------------------------
+    export default 0;
+    export var egy = 1, ketto = 2, harom = 3;    
+    
+// (11) -------------------------------------------------------------------------------
+    export default 0;
+    export var egy = 1, ketto = 2, harom = 3;    
+    </pre>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>import</mark> TEST </u></h4>
+    <p> - <mark>main.mjs</mark> file </p>
+    <pre>
+// (01) -------------------------------------------------------------------------------
+    import * as all from './module1.mjs';
+    
+    console.log( all );                                                                // -> {default:0, egy:1, harom:3, ketto:2}  
+    
+// (02) -------------------------------------------------------------------------------
+    import {egy, ketto} from './module1.mjs';                                          // only 'egy' and 'ketto' named items are imported  
+    
+    console.log( egy, ketto );                                                         // -> 1   2  
+    
+// (03) -------------------------------------------------------------------------------
+    import def from './module1.mjs';                                                   // default value imported  
+    
+    console.log( def );                                                                // -> 0
+    
+// (04) -------------------------------------------------------------------------------
+    import def, {harom} from './module1.mjs';
+    
+    console.log( def );                                                                // -> 0
+    console.log( harom );                                                              // -> 3  
+    </pre>
+    <p> - <mark>module1.mjs</mark> file </p>
+    <pre>
+// (01) -------------------------------------------------------------------------------
+    export default 0;
+    export var egy = 1, ketto = 2, harom = 3;    
+    
+// (02) -------------------------------------------------------------------------------
+    export default 0;
+    export var egy = 1, ketto = 2, harom = 3;    
+    
+// (03) -------------------------------------------------------------------------------
+    export default 0;
+    export var egy = 1, ketto = 2, harom = 3;    
+    
+// (04) -------------------------------------------------------------------------------
+    export default 0;
+    export var egy = 1, ketto = 2, harom = 3;    
+    </pre>
+  </details>
+  <hr>
+  
+  <br><br>
+</body>
+
+</html>

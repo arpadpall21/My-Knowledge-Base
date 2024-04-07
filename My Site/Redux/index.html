@@ -18,7 +18,7 @@
     <caption>
       Redux
       <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-    </caption>
+    </caption>vK is a package that has all recent redux tools,
     <tr>
       <th style="width:30%;"> Command </th>
       <th> Description </th>
@@ -58,20 +58,20 @@
   </p>
   <p> - Redux maintains a centralized state (store) for the whole application (Redux is useful for large apps) </p>
   <p> - Redux Concepts: </p>
-  <p style="text-indent: 30px;"> <b>- store:</b> this is where the application state is stored (we don't mutate the
+  <p class="indent-lv1"> - <mark class="mark">store</mark>: this is where the application state is stored (we don't mutate the
     store object, instead a new instance is created with the changes)</p>
-  <p style="text-indent: 30px;"> <b>- slice:</b> a namespace in the sotre, each slice should be handled separately </p>
-  <p style="text-indent: 30px;"> <b>- reducer:</b> function that receives the original store and a redux action, it
+  <p class="indent-lv1"> - <mark class="mark">slice</mark>: a namespace in the sotre, each slice should be handled separately </p>
+  <p class="indent-lv1"> - <mark class="mark">reducer</mark>: function that receives the original store and a redux action, it
     calculates and returns a NEW store (should not mutate the original store) (should be a pure function)</p>
-  <p style="text-indent: 30px;"> <b>- action:</b> plain JS object having the <mark>type</mark> (and usually the
+  <p class="indent-lv1"> - <mark class="mark">action</mark>: plain JS object having the <mark>type</mark> (and usually the
     <mark>payload</mark>) property (ex: <mark>{ type: <strong>action:str</strong>, payload: <strong>obj</strong>
       }</mark>), describes the action that the store should perform
   </p>
-  <p style="text-indent: 30px;"> <b>- action creator:</b> function that returns a redux action </p>
-  <p style="text-indent: 30px;"> <b>- dispatcher:</b> a function that accepts a redux action object then dispatches it
+  <p class="indent-lv1"> - <mark class="mark">action creator</mark>: function that returns a redux action </p>
+  <p class="indent-lv1"> - <mark class="mark">dispatcher</mark>: a function that accepts a redux action object then dispatches it
     to the store (this should be the only way to update the store) </p>
-  <p style="text-indent: 30px;"> <b>- selector:</b> a function that returns a store part </p>
-  <p style="text-indent: 30px;"> <b>- thunk:</b> a function that can asynchronously update the redux store (passed to
+  <p class="indent-lv1"> - <mark class="mark">selector</mark>: a function that returns a store part </p>
+  <p class="indent-lv1"> - <mark class="mark">thunk</mark>: a function that can asynchronously update the redux store (passed to
     the dispatcher as a normal redux action object) </p>
   <p> - The Store is not directly changed! We dispatch redux actions to it, then the reducers handle the storing logic
     (reducer never mutate the store, instead a new sotre object is created)</p>
@@ -108,7 +108,7 @@
     }
     
     <strong>reducers</strong> = combineReducers({                                // combining multiple reducers for the store 
-      <strong>sliceKey</strong>: <strong>reducer</strong>,                                        // each reducer will handle its own store slice 
+      <strong>sliceName</strong>: <strong>reducer</strong>,                                        // each reducer will handle its own store slice 
       <i>...</i>
     })
     
@@ -120,7 +120,7 @@
     </div></i>);  // creating the redux store 
     
     
-<span style="color:darkgray;">// compnent file --------------------------------------------------------------------</span>
+// component file ---------------------------------------------------------------
     <em>function <strong>Component</strong>() {</em>
       <strong>store</strong>.subscribe(<strong>cb</strong>)                                       // executes the callback if there's any change in the store 
       <strong>store</strong>.getState()                                          // returns the current state of the store 
@@ -260,9 +260,13 @@
       name: <strong>str</strong>,                                                // store slice registered in the store with this name 
       initialState: <strong>obj</strong>,                                        // initial state of this store slice 
       reducers: {
-        <strong>name</strong>: <strong class="openable">reducer<div>
-          <p> a function receiving <b>this</b> store slice, in the function body we can mutate the received slice (redux internally will create a new store) </p>
-          <p> ex: <mark>(state, action) => { state.value += action.payload }</mark> (do not return) </p>
+        <strong>name</strong>: <strong class="openable">fn(slice, action):reducer<div>
+          <p> - we can modify the <reqval>slice</reqval> directly (redux will internally create a new store) or we can return a new <reqval>slice</reqval> object </p>
+          <p> ex: </p>
+          <p> - <mark>(slice, action) => { state.value += action.payload }</mark> (without return) </p>
+          <p> - <mark>(slice, action) => <reqval>newSlice</reqval></mark> (return new <reqval>slice</reqval>) </p>
+          
+          
         </div></strong>,                                         // reducers handling actions fort this store 
         <i>...</i>
       }
@@ -277,15 +281,16 @@
     
     <strong>store</strong> = configureStore({
       reducer: {
-        <strong>sliceKey</strong>: <strong>slice</strong>.reducer,                                // registering slices to the store 
+        <strong>sliceName</strong>: <strong>slice</strong>.reducer,                                // registering slices to the store 
         <i>...</i>
     });
     
-    function <strong>selector</strong>(<strong>store</strong>) {                                  // <strong>selector</strong> <- function that returns a store part
-      <span style="color:darkgray;">// return <strong>store</strong> part </span>
-    }
+    function <strong>selector</strong>(<strong class="openable">store<div>
+      <p> - react store containing all slices </p>
+    </div></strong>) { }                                  // <strong>selector</strong> (basically a function that returns a store part)
     
-<span style="color:darkgray;">// compnent file --------------------------------------------------------------------</span>
+    
+// compnent file ------------------------------------------------------------
     import { useSelector, useDispatch } from 'react-redux';    
     
     <em>function <strong>Component</strong>() {</em>
@@ -520,7 +525,7 @@
     
     <strong>store</strong> = configureStore({
       reducer: {
-        <strong>sliceKey</strong>: <strong>apiSlice</strong>.reducer,
+        <strong>sliceName</strong>: <strong>apiSlice</strong>.reducer,
       },
       middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(<strong>apiSlice</strong>.middleware),
     });

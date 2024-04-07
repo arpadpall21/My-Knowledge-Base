@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> OAuth 2.0 </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> OAuth 2.0 </h1>
+  <p> Updated ( 2024-02-25 ) </p>
+  <nav class="sitenav"> <a href="../../index.html" title="home">MySite></a>
+    <a href="../index.html">Authentication ></a> OAuth 2.0
+  </nav>
+
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - OAuth 2.0 is an Authorization protocol meaning that we can do certain stuff in the behalf of the user <u>but we don't know anyting about the user's credentials </u>
+  <p> - OAuth 2.0 terminology: </p>
+  <p class="indent-lv1"> - Resource Onwer: the user owning resources on a 3rt party app </p>
+  <p class="indent-lv1"> - Authorization Server: the 3rt party server that deals with all authorizations </p>
+  <p class="indent-lv1"> - Resource Server: the 3rt party server that manages the resource owner's resources </p>
+  <p class="indent-lv1"> - Authorization Grant: the authorization code that we can exchange for an Access & Refresh token </p>
+  <p class="indent-lv1"> - Redirect URI: URL where we want to recevies the Authorization Code or Access Tokens from the 3rd party app </p>
+  <p class="indent-lv1"> - Authorization Scope: limited authorization categories (scopes) defined by the 3rd party app </p>
+  <p class="indent-lv1"> - Response Type: the OAuth type we whant to receive (<mark>code</mark> = Authorization Code / <mark>token</mark> = Access Token) </p>
+  <img src="OAuth flow.png" width="800">
+  <h2 class="header"> Open Id Connect </h2>
+  <p> - Open Id Connect is an Authentication protocol, it's basically an extension of OAuth 2.0 </p>
+  <p> - when sending the redirect URI request we specify <mark>openid</mark> as scope (is that simple) </p>
+  <p> - when exchanging the Authorization code for an Access token we also get an Id token (JWT token containing the user's id) </p>
+
+
+  <br><br>
+</body>
+
+</html>

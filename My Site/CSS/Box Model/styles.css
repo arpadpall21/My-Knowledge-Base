@@ -1,11 +1,11 @@
         /* box-sizing TEST */
 .boxSizing {
     background-color: lightskyblue;
-    padding: 10px;
-    margin: 5px;
-    border: solid 10px black;
-    width: 800px;
-    height: 200px;
+    padding: 20px;
+    margin: 20px;
+    border: solid 20px black;
+    width: 400px;
+    height: 100px;
 }
 .bs1 {
     box-sizing: content-box;

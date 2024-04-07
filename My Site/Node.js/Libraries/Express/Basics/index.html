@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Basics </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../../Assets/stylesPages.css">
+  <script src="../../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Basics </h1>
+  <p> Updated ( 2021-01-28 / 2024-02-25 )</p>
+  <nav class="sitenav"> 
+    <a href="../../../../index.html" title="home">MySite></a>
+    <a href="../../../index.html">Node.js></a>
+    <a href="../index.html">Express JS></a> Basics
+  </nav>
+  <br>
+  <table class="table">
+    <caption>
+      Expressjs CLI
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> CLI </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td> <em>npm</em> install express </td>
+      <td> - installs expressjs (locally) </td>
+    </tr>
+    <tr>
+      <td> <em>npx</em> express-generator </td>
+      <td>
+        - creates the express application skeleton <a href="https://expressjs.com/en/starter/generator.html" target="_blank">[link]</a>
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://expressjs.com/" target="_blanc">Express (expressjs.com)</a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - the <mark>*</mark> character is interpreted as globe when used in string path </p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - Express.js is a fast, unopignonated, minimalist web server framework for Node.js (simplifies HTTP server building) </p>
+  <p> - in Express we essentially route the traffic through middlewares in order to process the request and server some content to the client </p>
+  <p> - middlewares are functions that are sequencially executed (in middelware stack order) </p>
+  <hr>
+  <!------------------------------------------------------------------------------------------------>
+  <h2 class="header"> Middlewares </h2>
+  <p> - a middleware can: </p>
+  <p class="indent-lv1"> - execute some code </p>
+  <p class="indent-lv1"> - modify the <mark>req</mark> (Request) and <mark>res</mark> (Response) objects </p>
+  <p class="indent-lv1"> - call the next middleware in the stack </p>
+  <p class="indent-lv1"> - end the request/response life-cycle </p>
+  <p> - middleware types: </p>
+  <p class="indent-lv1"> - application-level middleware (middlewares attached to the <mark>app</mark> (application) stack) </p>
+  <p class="indent-lv1"> - router-level middleware (middlewares attached to the <mark>router</mark> stack) </p>
+  <p class="indent-lv1"> - error handling middleware (usually the last middleware in the stack) </p>
+  <p class="indent-lv1"> - built-in middleware (like: <mark>express.static()</mark>, <mark>express.json()</mark> body parsers) </p>
+  <p class="indent-lv1"> - third party middleware (external module like: <mark>cookie-parser</mark>) </p>
+  <pre class="syntax">
+    <reqval>app</reqval>.use(<reqval>routePath</reqval>)
+        (req, res, next) => { next() },                        // calls the next middleware in the stack  
+        (req, res, next) => { res.send('OK') },                // middleware end the request/response life-cycle 
+        (req, res, next) => { ??? },                           // never called
+        <reqval>errorHandlerMiddleware</reqval>,
+    );
+    
+    
+<span style="color:darkgray;">// middleware -------------------------------------------------------------------------</span>
+    function <reqval>middleware</reqval>(req, res, next) {
+        req                                                    // -> request object
+        res                                                    // -> response object
+        
+        next()                                                 // skip executing the rest of this middleware 
+        next('route')                                          // skip executing <u>this middleware stack</u> 
+        next(<reqval>err</reqval>)                                              // calls the error handler middleware in this stack with <reqval>err</reqval> (if there's no error handler middleware will send a <mark>500</mark> response)   
+    }
+    
+    
+    function <reqval>errorHandlerMiddleware</reqval>(err, req, res, next) {     // handles the thrown error in the stack (only called when error thrown)    
+        err                                                    // thrown error on the stack
+    }
+    </pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+    app.use('/', 
+        express.text(),                                                                // this built-in middleware modifies the incomming request object so the content can be read ast text    
+        function(req, res, next) {
+            console.log('something');                                                  // executing code 
+            next();                                                                    // calls the next middelware in the stack  
+        }, 
+        function(req, res, next){
+            res.send('OK');                                                            // ends the request/response life-cycle 
+        }
+    );
+    </pre>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 class="header"> Middleware types </h4>
+    <pre>
+    const express = require('express');
+    const cookieParser = require('cookie-parser');
+    const app = express();
+    const router = express.Router();
+    
+    app.use('/', 
+        cookieParser(),                                                                // thrid-party middleware (parses cookies)
+        express.text(),                                                                // built-in middleware modifies the incomming request object so the content can be read ast text    
+        function(req, res, next) {                                                     // application-level middleware 
+            // do something...                           
+            next(); 
+        }, 
+        router
+    );  
+        
+    router.use('/sub',
+        function(req, res, next){                                                      // router-level middleware  
+            res.send('OK');
+        },
+        function(err, req, res, next){                                                 // error handling middleware 
+            if(err) console.log(err)
+        }
+    )
+    </pre>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 class="header"> Using <mark>next()</mark> in middlewares </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    const fs = require('fs');
+    
+// next() -----------------------------------------------------------------------------
+    app.all('/', 
+        (req, res, next) => { next() },                                                // calls the next middleware in the stack 
+        (req, res, next) => { res.send('OK') }                                           // called
+    );
+    
+// next('route')-----------------------------------------------------------------------
+    app.all('/', 
+        (req, res, next) => { next('route') },                                         // calls the next route 
+        (req, res, next) => { next() },                                                  // ignored
+        (req, res, next) => { next() }                                                   // ignored 
+    );
+    
+    app.all('/', 
+        (req, res, next) => { next() },                                                  // called 
+        (req, res, next) => { res.send('OK!') }                                          // called 
+    );
+    
+  // ---------------------------
+    app.use('/', 
+        (req, res, next) => { next('route') },                                         // skips this middelware stack
+        (req, res, next) => { next() },                                                  // called   
+        (req, res, next) => { next() }                                                   // called    
+    );
+    
+    app.all('/', 
+        (req, res, next) => { next() },                                                  // called 
+        (req, res, next) => { res.send('OK!') }                                          // called 
+    );
+    
+// next(err) --------------------------------------------------------------------------
+    app.use('/', function(req, res, next) {
+        fs.readFile('noFile', function(err){
+            next(err)                                                                  // in asynchronous tasks the error should be passed to it so Express can throw it   
+        });
+    });
+    </pre>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 class="header"> Error handling </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    const fs = require('fs');
+    
+    app.use('/', function(req, res, next){
+        fs.readFile('nofile', function(err, data){
+            next(err)                                                                  // asynchronous errors must always be passed 
+        })
+    }, function(err, req, res, next){                                                  // error handler middleware should be mounted at the end 
+        console.log(err.message);                                                      // -> 'no such file or directory'
+        res.send('Error Occured!')                                                     // we can decied how to handle the thrown error here (synchronous errors are handled this way too!)    
+    });
+    </pre>
+  </details>
+  <hr>
+  <!---------------------------------------------------------------------------------------------------->
+  <h2 style="color:darkblue;"><u> Route Paths and Parameters </u></h2>
+  <p> - the path parameter is basically a capturable value in the URL </p>
+  <pre class="syntax">
+  <reqval>app</reqval>.use(<reqval>routePath:str|regExp</reqval><optval>, middleware, ...</optval>)
+  
+  <reqval>routePath:str</reqval>                      // <mark>?</mark> <mark>+</mark> <mark>(</mark> <mark>)</mark> are interpreted as regExp characters
+                                     <span style="color:orange;">// (v4) <mark>*</mark> is interpreted as glob <u>not as regExp</u> (this will likely change in v5)</span>
+                                     // path parameter <mark>:<reqval>param</reqval>-</mark> or <mark>:<reqval>param</reqval>.</mark> or <mark>:<reqval>param</reqval>/</mark> (starts with <mark>:</mark> and ends with <mark>-</mark> <mark>.</mark> <mark>/</mark>)
+                                       // the path parameter accepts <mark>a-zA-Z0-9_</mark> characters (available on <mark>req.params.<reqval>param</reqval></mark>)
+  </pre>
+
+  <details class="example">
+    <summary> DEMO </summary>
+    <h4 class="header"> String VS RegExp as route path </h4>
+    <pre>
+// * ----------------------------------------------------------------------------------
+    app.all('/some*Path', middleware});                                                // matches 'some(zero or more any chararacters)Path'    // !! used as globe = different than RegExp    
+                                                                                         // ex: '/somePath' | '/somemorePath' | '/some458Path' 
+    
+    app.all(/\/some*Path/, middleware});                                               // matches 'som(zero or more 'e' characters)Path' 
+                                                                                         // ex: 'somPath' / 'somePath' / 'someeeePath' 
+                                                                                          
+// + ----------------------------------------------------------------------------------
+    app.all('/some+Path', middleware});                                                // matches 'some(one or more 'e' characters)Path'       // -! same as in RegExp  
+                                                                                         // ex: '/somePath' | '/someeeeePath' 
+                                                                                         
+    app.all(/\/some+Path/, middleware});                                               // matches 'some(one or more 'e' characters)Path'   
+                                                                                          // ex: '/somePath' | '/someeeeePath' 
+    
+// ? ----------------------------------------------------------------------------------
+    app.all('/some?Path', middleware});                                                // matches 'some(zero or one 'e' character)Path'        // -! same as in RegExp  
+                                                                                         // ex: '/somPath' | '/somePath' 
+                                                                                         
+    app.all(/\/some+Path/, middleware});                                               // matches 'some(zero or one 'e' character)Path'
+                                                                                         // ex: '/somPath' | '/somePath' 
+    </pre>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 class="header"> Route path parameter </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+    app.use('/:base/:sub1', function(req, res, next){                                  // request URL is 'localhost:1000/basePath/subPath'
+        req.params;                                                                    // -> {base:'basePath', sub1:'subPath'}
+    })
+    
+    app.use('/user/:userName-:userId/:time.:minute', function(req, res, next){         // request URL is 'localhost:1000/user/pall-21/14.16'
+        req.params;                                                                    // -> {userName:'pall', userId:'21', time:'14', minute:'16'} 
+    })
+    
+    app.listen(1000, ()=> console.log('Expressjs is listening!'))
+    </pre>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------->
+    <h4 class="header"> Route parameter TEST </h4>
+    <pre>
+    const express = require('express');
+    const app = express();
+    
+// ------------------------------------------------------------------------------------
+    app.use('/:base/:sub1', function(req, res, next){                                  // request URL is 'localhost:1000/basePath/subPath'
+        console.log( req.params );                                                     // -> {base:'basePath', sub1:'subPath'}
+        res.send('OK!');
+    })
+    
+// ------------------------------------------------------------------------------------
+    app.use('/user/:userName-:userId/:time.:minute', function(req, res, next){         // request URL is 'localhost:1000/user/pall-21/14.16'
+        console.log( req.params );                                                     // -> {userName:'pall', userId:'21', time:'14', minute:'16'} 
+        res.send('OK!');
+    })
+    
+    app.listen(1000, ()=> console.log('Expressjs is listening!'))
+    </pre>
+  </details>
+  <hr>
+  <hr>
+  <!---------------------------------------------------------------------------------------------------->
+  <h2 style="color:darkblue;"><u> Using ExpressJS through HTTPS and HTTP/2 </u></h2>
+  <p> - Expressjs does not support HTTPS on its own but the <mark>app</mark> object is designed to be passed as callback in <mark>http.createServer()</mark> and <mark>https.createServer()</mark> making Express functionalities available throgh these native Node servers </p>
+  <p> - however the <mark>app</mark> object cannot be passed as callback in <mark>http2.createServer()</mark> and <mark>http2.createSecureServer()</mark> methods, so Node.js does not natively support Express through http/2 protocols [TESTED Express.js v4.17.1]</p>
+  <p> - if we want to use Express through HTTP/2 the <mark>spdy</mark> module allows this [TESTED Express.js v4.17.1 / spdy v4.0.2]</p>
+  <details class="example">
+    <summary> DEMO </summary>
+    <p> - using Express.js thorugh <mark>http</mark> native Node server </p>
+    <pre>
+    const http = require('http')
+    const express = require('express');
+    const app = express();
+    
+    app.use('/', express.static('/home/pall/Documents/CodePlus/My Site'));
+    
+    const server = http.createServer(app);                                             // Express app object passed as callback here 
+    
+    server.listen(1000, ()=> console.log('Node server is listening!'));
+    </pre>
+    <p> - using Express.js thorugh <mark>https</mark> native Node server </p>
+    <pre>
+    const fs = require('fs')
+    const https = require('https')
+    const express = require('express');
+    const app = express();
+    
+    app.use('/', express.static('/home/pall/Documents/CodePlus/My Site'));
+    
+    var options = {
+        key: fs.readFileSync('./cert/pallKey.pem'),                                    // certificate and key for TLS  
+        cert: fs.readFileSync('./cert/pallCer.cer')
+    }
+    
+    const server = https.createServer(options, app);                                   // Express app object passed as callback here 
+    
+    server.listen(1000, ()=> console.log('Node server is listening!'));
+    </pre>
+    <p> - using Express.js through HTTP/2 (HTTPS) by <mark>spdy</mark> </p>
+    <pre>
+    const fs = require('fs');
+    const spdy = require('spdy');                                                      // spdy module works just like http or http2 (awesome!)    
+    const express = require('express');
+    const app = express();
+    
+    app.use('/', express.static('/home/pall/Documents/CodePlus/My Site'));   
+    
+    var options = {
+        key: fs.readFileSync('./cert/pallKey.pem'),                                    // certificate and key for TLS  
+        cert: fs.readFileSync('./cert/pallCer.cer')
+    }
+    
+    const server = spdy.createServer(options, app);                                    // Express app object passed as callback here    
+    
+    server.listen(1000, ()=> console.log('Spdy server is listening!'));
+    </pre>
+  </details>
+
+  <br><br>
+</body>
+
+</html>

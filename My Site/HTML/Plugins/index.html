@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Plugins </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Plugins </h1>
+  <p> Updated ( 19-02-2017 / 2019-03-29 / 2024-04-05 ) </p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html">HTML></a> Plugins
+  </p>
+  <table class="table">
+    <tr>
+      <th style="width:15%"> Tag </th>
+      <th style="width:40%"> Attribute </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td>
+        &lt;object&gt;
+      </td>
+      <td>
+        data="<strong>url</strong>" <span class="cssAV">(source)</span> <br>
+        form="<strong>formId</strong>" <span class="cssAV">(specifies the form(s) the object belongs to)</span> <br>
+        height="<strong>px</strong>" <br>
+        width="<strong>px</strong>" <br>
+        name="<strong>name</strong>" <br>
+        type="<strong>mimeType</strong>" <span class="cssAV">(embeded content MIME type)</span> <br>
+        typemismatch <span class="cssAV">((boolean) forces the content to match the <mark>type</mark> attribute)</span> <br>
+        usemap="#<strong>mapName</strong>" <span class="cssAV">name of a client-side image map to be used with the object</span>
+      </td>
+      <td>
+        - specifies a container for an external content (web page, picture, multimedia player or plugin)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        &lt;param&gt;
+      </td>
+      <td>
+        name="<strong>name</strong>" <br>
+        value="<strong>value</strong>"
+      </td>
+      <td>
+        - defines a parmeter for <mark>&lt;object&gt;</mark>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        &lt;embed&gt;
+      </td>
+      <td>
+        src="<strong>url</strong>" <span class="cssAV">(source)</span> <br>
+        type="<strong>mimeType</strong>" <span class="cssAV">(embeded content MIME type)</span> <br>
+        height="<strong>px</strong>" <br>
+        width="<strong>px</strong>"
+      </td>
+      <td>
+        - specifies a container for an external content (web page, picture, multimedia player or plugin)
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  
+  <h2 style="color:green;"><u> Description and Demonstration </u></h2>
+  <p style="background-color: yellow;"> - Plugins are not supported anymore (because of security concerns), so all this is deprecated! </p>
+  <p> - Plug-Ins are additional softwares instaled in the browser in order to run content what the browser cannot run natively (like: Adobe Flash Player, Java Runtime Environment, ActiveX) </p>
+  <p> - Plug-Ins are not popular in these days (especially on modile browsers) because HTML5 supports these functionalities natively (video, audio, image, canvas, svg, ect..) so the user does not have to bother to download these additional craps in order tho run the enbeded content </p>
+  <pre>
+// &lt;object&gt; / &lt;param&gt; ------------------------------------------------------------- 
+    &lt;object data="flashPlayerData.swf" type="application/x-shockwave-flash" typemustmatch width="500" height="350"&gt;       // Flash player Plug-In required to run this type of content (we could also embed any type of content what is supported by an instaled Plug-In, video, audio, image, svg, html document)    
+        &lt;param name="autopaly" value="true"&gt;                  
+        &lt;param name="volume" value="45%"&gt;                     // parameters set 
+        &lt;param name="fullscreen" value="false"&gt;
+        &lt;p> Problem Occured &lt;/p&gt;                              // fallback message in case the object is not supported or it cannot run the embeded content 
+    &lt;/object&gt;
+        
+// &lt;embed&gt; ------------------------------------------------------------------------ 
+    &lt;embed src="flashPlayerData.swf" type="application/x-shockwave-flash" width="500" height="350"&gt;                       // -! the &lt;embed&gt; does the same but it offers less tools 
+    </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> <mark>&lt;object&gt;</mark> / <mark>&lt;embed&gt;</mark> element plug-in TEST</u></h4>
+    <object data="Plug-In/Car-speakers-590x90.swf" type="application/x-shockwave-flash">
+      <p style="color:red;"> Flash Player Problem occured! </p>
+    </object>
+    <embed src="Plug-In/BannerSnack-ad-336x280.swf">
+    <details>
+      <summary> CODE: </summary>
+      <pre>
+    &lt;object data="Plug-In/Car-speakers-590x90.swf" type="application/x-shockwave-flash"&gt;
+        &lt;p style="color:red;"&gt; Flash Player Problem occured! &lt;/p&gt;
+    &lt;/object&gt;
+        
+    &lt;embed src="Plug-In/BannerSnack-ad-336x280.swf"&gt;
+        </pre>
+    </details>
+    <!------------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>&lt;object&gt;</mark> / <mark>&lt;embed&gt;</mark> multimedia TEST </u></h4>
+    <p> - other multimedia (audio, video) is workint too [TESTED] </p>
+    <object data="../Images and Image Sprites/Images/lightning.jpg" type="image/jpeg">
+      <p style="color:red;"> Content cannot be displayed! </p>
+    </object>
+    <embed src="../Images and Image Sprites/Images/lightning.jpg" type="image/jpeg">
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    &lt;object data="../Images and Image Sprites/Images/lightning.jpg" type="image/jpeg"&gt;
+        &lt;p style="color:red;"&gt; Content cannot be displayed! &lt;/p&gt;
+    &lt;/object&gt;
+    
+    &lt;embed src="../Images and Image Sprites/Images/lightning.jpg" type="image/jpeg" &gt;
+      </pre>
+    </details>
+    <!------------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>&lt;object&gt;</mark> / <mark>&lt;embed&gt;</mark> embed other web page TEST </u></h4>
+    <object data="index.html" type="text/html" typemustmatch width="80%" height="400" style="border:solid 3px blue;">
+      <p style="color:red;"> Page Cannot be displayed! </p>
+    </object>
+    <embed src="index.html" type="text/html" width="80%" height="400" style="border:solid 3px blue;">
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    &lt;object data="index.html" type="text/html" typemustmatch width="80%" height="400" style="border:solid 3px blue;"&gt;
+        &lt;p style="color:red;"&gt; Page Cannot be displayed! &lt;/p&gt;
+    &lt;/object&gt;
+    
+    &lt;embed src="index.html" type="text/html" width="80%" height="400" style="border:solid 3px blue;"&gt;
+        </pre>
+    </details>
+  </details>
+
+  <br><br>
+</body>
+
+</html>
