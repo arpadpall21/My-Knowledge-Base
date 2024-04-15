@@ -124,7 +124,26 @@
     resize: both;
     overflow: hidden;
 }
-     
+
+        /* aspect-ratio */
+[class^=aspectRatio] {
+    display: inline-block;
+    background-color: beige;
+    border: solid 2px black;
+    width: 250px;
+}
+
+.aspectRatio1 {
+    aspect-ratio: 16 / 9;
+}
+.aspectRatio2 {
+    aspect-ratio: 4 / 3;
+}
+.aspectRatio3 {
+    aspect-ratio: 1 / 1;
+}
+
+
         /* top / right / bottom / left properties TEST */
 .positioned {
     background-color: yellow;

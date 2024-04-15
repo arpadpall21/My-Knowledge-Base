@@ -1,167 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Overlapping and Overflow </title>    
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="../../Assets/stylesPages.css"> 
-    <script src="../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Overlapping and Overflow </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Overlapping and Overflow (ver 3.1) </h1>
-	<p> Updated ( 2016-05-24 / 2019-04-16 ) </p>
-    <p class="sitenav"> <a href="../../index.html">MySite></a>
-        <a href="../index.html" title="CSS">CSS></a> Overlapping and Overflow  
-    </p>
-<table class="table">
+  <h1> Overlapping and Overflow </h1>
+  <p> Updated ( 2016-05-24 / 2019-04-16 / 2024-04-15 ) </p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Overlapping and Overflow
+  </p>
+  <table class="table">
     <tr>
-        <th style="width:8%;"> Property </th>
-        <th> Value </th>
-        <th> Description </th>
+      <th style="width:15%;"> Property </th>
+      <th style="width:40%;"> Value </th>
+      <th> Description </th>
+    </tr>
+    <caption>
+      Overflow
+    </caption>
+    <tr>
+      <td> overflow </td>
+      <td>
+        visible <span class="cssAV">((Default) overflowed content visible outside of the element)</span><br>
+        hidden <span class="cssAV">(hides overflowed content, but the content can be scrolled programatically)</span><br>
+        clip <span class="cssAV">(hides overflowed content, content cannot be scrolled programatically)</span>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 90 </span>
+          <span><i class="fab fa-firefox"></i> 81 </span>
+          <span><i class="fab fa-opera"></i> 76 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 90 </span>
+          <span><i class="fab fa-safari"></i> 16 </span>
+        </span>
+        <br>
+        scroll <span class="cssAV">(overflowed content visible by scrolling <u>(scroll bar added to the lement</u>)</span><br>
+        auto <span class="cssAV">(<u>if</u> content overflows scroll bar added to the element)</span>
+        <span id="browserSupport">
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+        </span>
+      </td>
+      <td>
+        - specifies how to handle overflowing content on both <mark>x</mark> and <mark>y</mark> axes
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 7 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> overflow </td>
-        <td> 
-            visible	<span style="color:#7f85a3;">((default) content is visible outside of the container)</span><br>	
-            hidden <span style="color:#7f85a3;">(content is not visible outside the container)</span><br>
-            scroll <span style="color:#7f85a3;">(scroll bar added, content is not visible outside the container)</span><br>
-            auto <span style="color:#7f85a3;">(if content overflows adds scroll bar)</span><br> 
-        </td>
-        <td> 
-            specifies what to do when the content is too big to fit in its container<br>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 1 </span>
-                <span><i class="fab fa-opera"></i> 7 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
+      <td> overflow-y </td>
+      <td>
+        visible <span class="cssAV">((Default) overflowed content visible outside of the element)</span><br>
+        hidden <span class="cssAV">(hides overflowed content, but the content can be scrolled programatically)</span><br>
+        clip <span class="cssAV">(hides overflowed content, content cannot be scrolled programatically)</span>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 90 </span>
+          <span><i class="fab fa-firefox"></i> 81 </span>
+          <span><i class="fab fa-opera"></i> 76 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 90 </span>
+          <span><i class="fab fa-safari"></i> 16 </span>
+        </span>
+        <br>
+        scroll <span class="cssAV">(overflowed content visible by scrolling <u>(scroll bar added to the lement</u>)</span><br>
+        auto <span class="cssAV">(<u>if</u> content overflows scroll bar added to the element)</span>
+        <span id="browserSupport">
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+        </span>
+      </td>
+      <td>
+        - specifies how to handle vertically overflowing content
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9/8 -ms- </span>
+          <span><i class="fab fa-safari"></i> 3 </span>
+        </span>
+      </td>
     </tr>
     <tr>
-        <td> overflow-x </td>
-        <td> 
-            visible	<span style="color:#7f85a3;">((default) content is visible outside of the container)</span><br>	
-            hidden <span style="color:#7f85a3;">(content is not visible outside the container)</span><br>
-            scroll <span style="color:#7f85a3;">(scroll bar added, content is not visible outside the container)</span><br>
-            auto <span style="color:#7f85a3;">(if content overflows adds scroll bar)</span><br>
-        </td>
-        <td> 
-            specifies what to do horizontally when the content is too big to fit in its container<br>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9/8 -ms- </span>
-                <span><i class="fab fa-safari"></i> 3 </span>
-            </span>
-        </td>
+      <td> overflow-x </td>
+      <td>
+        visible <span class="cssAV">((Default) overflowed content visible outside of the element)</span><br>
+        hidden <span class="cssAV">(hides overflowed content, but the content can be scrolled programatically)</span><br>
+        clip <span class="cssAV">(hides overflowed content, content cannot be scrolled programatically)</span>
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 90 </span>
+          <span><i class="fab fa-firefox"></i> 81 </span>
+          <span><i class="fab fa-opera"></i> 76 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 90 </span>
+          <span><i class="fab fa-safari"></i> 16 </span>
+        </span>
+        <br>
+        scroll <span class="cssAV">(overflowed content visible by scrolling <u>(scroll bar added to the lement</u>)</span><br>
+        auto <span class="cssAV">(<u>if</u> content overflows scroll bar added to the element)</span>
+        <span id="browserSupport">
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+        </span>
+      </td>
+      <td>
+        - specifies how to handle horizontally overflowing content
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 9.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9/8 -ms- </span>
+          <span><i class="fab fa-safari"></i> 3 </span>
+        </span>
+      </td>
     </tr>
+  </table>
+  <br>
+  <table class="table">
     <tr>
-        <td> overflow-y </td>
-        <td> 
-            visible	<span style="color:#7f85a3;">((default) content is visible outside of the container)</span><br>	
-            hidden <span style="color:#7f85a3;">(content is not visible outside the container)</span><br>
-            scroll <span style="color:#7f85a3;">(scroll bar added, content is not visible outside the container)</span><br>
-            auto <span style="color:#7f85a3;">(if content overflows adds scroll bar)</span><br>
-        </td>
-        <td> 
-            specifies what to do vertically when the content is too big to fit in its container<br>
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 4 </span>
-                <span><i class="fab fa-firefox"></i> 3.5 </span>
-                <span><i class="fab fa-opera"></i> 9.5 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 9/8 -ms- </span>
-                <span><i class="fab fa-safari"></i> 3 </span>
-            </span>
-        </td>
+      <th style="width:15%;"> Property </th>
+      <th style="width:40%;"> Value </th>
+      <th> Description </th>
     </tr>
+    <caption>
+      Overlap
+    </caption>
     <tr>
-        <td> z-index </td>
-        <td> 
-            auto <span style="color:#7f85a3;">((default) equal to its parents)</span><br>
-            <strong>nr</strong> <span style="color:#7f85a3;">(stack order, negative number is allowed)</span><br>
-        </td>
-        <td> 
-            defines the stacking order when the element is overlapping, (highest value is closer to the viewer) (does not work if <mark>position:static</mark>)
-            <span id="browserSupport">
-                <span><i class="fab fa-chrome"></i> 1 </span>
-                <span><i class="fab fa-firefox"></i> 3 </span>
-                <span><i class="fab fa-opera"></i> 4 </span>
-                <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
-                <span><i class="fab fa-safari"></i> 1 </span>
-            </span>
-        </td>
+      <td> z-index </td>
+      <td>
+        auto <span class="cssAV">((Default) inherits from the parent)</span><br>
+        <strong>nr</strong> <span class="cssAV">(stack order, negative number are allowed)</span>
+      </td>
+      <td>
+        - sets the stacking order of the elment (visible when the element is overlapping) <br>
+        - highest value is closer to the viewer <br>
+        - requires element positioned <mark>absolute</mark> / <mark>relative</mark> / <mark>fixed</mark> / <mark>sticky</mark> <br>
+        - also works on flex child elements
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 3 </span>
+          <span><i class="fab fa-opera"></i> 4 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 4 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
     </tr>
-</table>
-<h2 style="color:green;"><u> Notes : </u></h2>
-    <details class="example" id="notes">
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p><a href="http://www.w3schools.com/cssref/pr_pos_overflow.asp" target="_blank"> W3Schools Overflow </a></p>
-    <p><a href="http://www.w3schools.com/css/css_positioning.asp" target="_blank"> W3Schools Overlapping </a></p>
-<h2 style="color:green;"><u> Remember This : </u></h2>  
-    <p> - </p>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-<h2 style="color:darkblue;"><u> Overflow <mark>overflow</mark> / <mark>overflow-x</mark> / <mark>overflow-y</mark> </u></h2>
-    <pre class="syntax">
-SYNTAX :    overflow: visible           <span style="color:skyblue;">// (default) content is visible outside of the container </span>  // specifies what to do when the content is too big to fit in its container   
-                    : hidden            <span style="color:skyblue;">// content is not visible outside the container </span>
-                    : scroll            <span style="color:skyblue;">// scroll bar added, content is not visible outside the container </span>
-                    : auto              <span style="color:skyblue;">// if content overflows adds scroll bar </span>
-            
-            overflow-x: visible         <span style="color:skyblue;">// (default) content is visible outside of the container </span>  // specifies what to do horizontally when the content is too big to fit in its container   
-                    : hidden            <span style="color:skyblue;">// content is not visible outside the container </span>
-                    : scroll            <span style="color:skyblue;">// scroll bar added, content is not visible outside the container </span>
-                    : auto              <span style="color:skyblue;">// if content overflows adds scroll bar </span>
-        
-            overflow-y: visible         <span style="color:skyblue;">// (default) content is visible outside of the container </span>  // specifies what to do vertically when the content is too big to fit in its container   
-                    : hidden            <span style="color:skyblue;">// content is not visible outside the container </span>
-                    : scroll            <span style="color:skyblue;">// scroll bar added, content is not visible outside the container </span>
-                    : auto              <span style="color:skyblue;">// if content overflows adds scroll bar </span>
-    </pre>
-    <pre>
-    .myElement { 
-        overflow: auto;                 // if the content is too big to fit in the container the browser automatically adds a scroll bar to the element
-    }
-    </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> <mark>overflow</mark> TEST </u></h4>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="http://www.w3schools.com/cssref/pr_pos_overflow.asp" target="_blank"> W3Schools Overflow </a></p>
+  <p><a href="http://www.w3schools.com/css/css_positioning.asp" target="_blank"> W3Schools Overlapping </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <h2 class="headerExtra"> Overflow </h2>
+  <h3 class="header"> The <mark>overflow</mark> / <mark>overflow-x</mark> / <mark>overflow-y</mark> properties </h3>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 class="header"> <mark>overflow</mark> </h4>
     <p id="com"> When the content is bigger than its container you can use the "overflow" propierty to control it </p>
     <div id="overflowdem">
-        <div id="over1"> This text overflows, This text overflows, This text overflows, This text overflows, 
-        This text overflows, This text overflows, This text overflows, This text overflows, 
-        This text overflows, This text overflows, This text overflows, This text overflows, 
-        This text overflows, This text overflows, This text overflows, This text overflows, 
-        This text overflows, This text overflows, This text overflows,    </div>
-        <div id="overh"> This area hides the additional text overflow set to hide, 
-        This area hides the additional text overflow set to hide, 
-        This area hides the additional text overflow set to hide, 
-        This area hides the additional text overflow set to hide, 
-        This area hides the additional text overflow set to hide, 
-        This area hides the additional text overflow set to hide, 
+      <div id="over1"> This text overflows, This text overflows, This text overflows, This text overflows,
+        This text overflows, This text overflows, This text overflows, This text overflows,
+        This text overflows, This text overflows, This text overflows, This text overflows,
+        This text overflows, This text overflows, This text overflows, This text overflows,
+        This text overflows, This text overflows, This text overflows, </div>
+      <div id="overh"> This area hides the additional text overflow set to hide,
+        This area hides the additional text overflow set to hide,
+        This area hides the additional text overflow set to hide,
+        This area hides the additional text overflow set to hide,
+        This area hides the additional text overflow set to hide,
+        This area hides the additional text overflow set to hide,
         This area hides the additional text overflow set to hide, </div>
-        <div id="overs"> This area srolls down the aditiona contetn in the window, 
-        This area srolls down the aditiona contetn in the window, 
-        This area srolls down the aditiona contetn in the window, 
+      <div id="overs"> This area srolls down the aditiona contetn in the window,
+        This area srolls down the aditiona contetn in the window,
+        This area srolls down the aditiona contetn in the window,
         This area srolls down the aditiona contetn in the window, This area srolls down the aditiona contetn in the
-        window, This area srolls down the aditiona contetn in the window, This area srolls down the aditiona 
+        window, This area srolls down the aditiona contetn in the window, This area srolls down the aditiona
         contetn in the window, </div>
-        <div id="overa"> This area is set auto, the browser will doo the necessary to the overflow, This area is set 
-        auto, the browser will doo the necessary to the overflow, This area is set auto, the browser will doo the 
-        necessary to the overflow, This area is set auto, the browser will doo the necessary to the overflow, 
-        This area is set auto, the browser will doo the necessary to the overflow, This area is set auto, the browser 
+      <div id="overa"> This area is set auto, the browser will doo the necessary to the overflow, This area is set
+        auto, the browser will doo the necessary to the overflow, This area is set auto, the browser will doo the
+        necessary to the overflow, This area is set auto, the browser will doo the necessary to the overflow,
+        This area is set auto, the browser will doo the necessary to the overflow, This area is set auto, the browser
         will doo the necessary to the overflow, </div>
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- CODE (HTML) --
-    
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML ----------------
     &lt;p id="com"&gt; When the content is bigger than its container you can use the "overflow" propierty to control it &lt;/p&gt;
     &lt;div id="overflowdem"&gt;
         &lt;div id="over1"&gt; This text overflows, This text overflows, This text overflows, This text overflows, 
@@ -189,7 +223,8 @@ SYNTAX :    overflow: visible           <span style="color:skyblue;">// (default
             will doo the necessary to the overflow, &lt;/div&gt;
     &lt;/div&gt;
     
--- CODE (CSS) --
+    
+// CSS ---------------
     div#overflowdem{
         position:relative;
         border:2px solid black;
@@ -243,23 +278,25 @@ SYNTAX :    overflow: visible           <span style="color:skyblue;">// (default
         text-align: center;   
     }
         </pre>
-        </details>
-<!---------------------------------------------------------------------------------------------------------------------->
-<h4><u> hiding overflowed elemens DEMO </u></h4>
+    </details>
+    <hr>
+    <!-------------------------------------------------------------------------------------------------->
+    <h4 class="header"> hiding overflowed elemens </h4>
     <div class="parent">
-        <div></div>
-        <div></div>
+      <div></div>
+      <div></div>
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
- -- CODE (HTML) --
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML ------------
     &lt;div class="parent"&gt;
         &lt;div&gt;&lt;/div&gt;
         &lt;div&gt;&lt;/div&gt;
     &lt;/div&gt;
     
--- CODE (CSS) --
+    
+// CSS -------------------
     .parent {
         position: relative;
         width: 100px;
@@ -283,43 +320,30 @@ SYNTAX :    overflow: visible           <span style="color:skyblue;">// (default
         bottom: -13px;
     }
         </pre>
-        </details>
-</details>
-<!---------------------------------------------------------------------------------------------------------------------->
-<hr>
-<h2 style="color:darkblue;"><u> Overlap <mark>z-index</mark> </u></h2>
-    <pre class="syntax">
-SYNTAX :    z-index: auto               <span style="color:skyblue">// (default) equal to its parents </span>       // defines the stacking order when the element is overlapping, (highest value is closer to the viewer) (does not work if <mark>position:static</mark>)   
-                   : <strong>nr</strong>                 <span style="color:skyblue">// stack order, negative number is allowed</span>
-    </pre>
-    <pre>
--- HTML -- 
-    &lt;p id="demo"&gt; demo element 1 &lt;/p&gt;
-    &lt;p&gt; demo element 2 &lt;/p&gt;                                                      // by default the latest element overlaps the former ones 
-        
--- CSS -- 
-    #demo {
-        position: absolute;             // -! position other than "static" must be declared in order to the "z-index" to work (this element floats over the layout)
-        z-index: 1;                     // visible over the "&lt;p&gt;demo element 2&lt;/p&gt;" element (closer to the viewer)
-    }
-    </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> <mark>z-index</mark> TEST </u></h4>
+    </details>
+  </details>
+  <!---------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Overlap </h2>
+  <h3 class="header"> The <mark>z-index</mark> property </h3>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> <mark>z-index</mark> TEST </u></h4>
     <div class="zIndex">
-        <img src="../../../../Pictures/Smilie.jpg" alt="Smilie">
-        <p> This image is place begind the text by using the absolute property and the images "z-index" is set the "-1"</p>
+      <img src="./sunrise.webp" alt="sunrise">
+      <p> This image is place begind the text by using the absolute property and the images "z-index" is set the "-1"</p>
     </div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- CODE (HTML) --
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML ------------
     &lt;div class="zIndex"&gt;
-        &lt;img src="../../../../Pictures/Smilie.jpg" alt="Smilie"&gt;
-        &lt;p&gt; This image is place begind the text by using the absolute property and the images "z-index" is set the "-1"&lt;/p&gt;
+      &lt;img src="./sunrise.webp" alt="sunrise"&gt;
+      &lt;p&gt; This image is place begind the text by using the absolute property and the images "z-index" is set the "-1"&lt;/p&gt;
     &lt;/div&gt;
     
--- CODE (CSS) --
+    
+// CSS ------------
     .zIndex{
         position: relative; 
         border: solid black 5px; 
@@ -331,30 +355,31 @@ SYNTAX :    z-index: auto               <span style="color:skyblue">// (default)
         position: absolute; 
         top: 1%; 
         left: 1%;
-        z-index: -3;
+        z-index: -1;
     }
     .zIndex p{
         position: absolute;
         font-family: Arial, Verdana, sans-serif;
         font-size: 2.0em; 
-        color: red;
-        z-index: -4;
+        color: white;
+        z-index: 1;
     }
         </pre>
-        </details>
-<!---------------------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>z-index</mark> TEST 2 </u></h4>
+    </details>
+    <!---------------------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>z-index</mark> TEST 2 </u></h4>
     <p> - the yellow box is a floating element is floats over the below inline element but it is placed behind it with the <mark>z-index</mark> property </p>
     <div id="floatStack"></div>
     <div id="floatStack_2"></div>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
--- CODE (HTML) --
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML -----------
     &lt;div id="floatStack"&gt;&lt;/div&gt;
     &lt;div id="floatStack_2"&gt;&lt;/div&gt;
     
--- CODE (CSS) --
+    
+// CSS -------------
     #floatStack {
         width: 200px;
         height: 100px;
@@ -374,9 +399,10 @@ SYNTAX :    z-index: auto               <span style="color:skyblue">// (default)
         z-index: 1;
     }
         </pre>
-        </details>
-</details>
-    
-    <br><br>
+    </details>
+  </details>
+
+  <br><br>
 </body>
+
 </html>
