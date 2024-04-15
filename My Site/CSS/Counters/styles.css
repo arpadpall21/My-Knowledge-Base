@@ -1,0 +1,182 @@
+.simpleList {
+    counter-reset: listCounter 0;
+}
+.simpleList li:before {
+    counter-increment: listCounter 1;
+    content: counter(listCounter) " ";
+}
+
+
+.nestedList {
+    counter-reset: listCounter 0;
+}
+.nestedList li:before {
+    counter-increment: listCounter 1;
+    content: counters(listCounter, '.');
+}
+
+
+        /*-- counter --*/ 
+#counter{
+    counter-reset: count;
+    background-color: bisque;
+    padding: 5px;
+    width: 60%;
+    margin: auto;
+}
+#counter p::before{
+    counter-increment: count;
+    content: "line" counter(count);
+    text-decoration: underline;
+}   
+        /*nesting counters*/
+#nested-counter{
+    width: 60%;
+    margin: auto;
+    padding: 5px;
+    background-color: bisque;
+    counter-reset: main;
+}
+#nested-counter h3::before{
+    counter-increment: main;
+    content: " -" counter(main);
+}
+#nested-counter h3{
+    counter-reset: subs;
+}
+#nested-counter h4::before{
+    counter-increment: subs;
+    content: " -" counter(main) "." counter(subs);
+}
+#nested-counter h4{
+    counter-reset: sub-subs;
+}
+#nested-counter h5::before{
+    counter-increment: sub-subs;
+    content: " -" counter(main) "." counter(subs) ".." counter(sub-subs);
+}
+
+        /*-- counterS --*/
+#list-count{
+    background-color: bisque;
+    width: 60%;
+    margin: auto;
+    padding: 5px;
+}
+#list-count ul{
+    list-style-type: none;
+    counter-reset: list;
+}
+#list-count li::before{
+    counter-increment: list;
+    content: counters(list, " | ") " - ";
+}
+
+        /*-- counters() test 2 --*/
+.testCounters ul {
+    counter-reset: countIt 0;
+}
+.testCounters ul li::before {
+    counter-increment: countIt 1;
+    content: counters(countIt, ".") "-";
+    color: yellow;
+}
+
+        /*-- multiple counters --*/
+body {
+    counter-reset: countP countSpan 5; 
+}
+.countParagraphs::before {
+    counter-increment: countP 2;
+    content: counter(countP);
+    color: yellow;
+}
+.countSpans::before {
+    counter-increment: countSpan -1;
+    content: counter(countSpan);
+    color: darkgreen;
+}
+
+        /* counter() VS counters() TEST */
+html {
+    counter-reset: t_counter 0;
+}
+.t_counter, .nest_counter {
+    list-style-type: none;
+    border: double 3px black;
+    margin: 0;
+    background-color: lightcoral;
+}
+.t_counter ul, .nest_counter ul {
+    list-style-type: none;
+}
+.t_counter li::before {
+    counter-increment: t_counter 1;
+    content: counter(t_counter) " ";
+    color: yellow;
+}
+.nest_counter {
+    counter-reset: nestCounter 0;
+}
+.nest_counter li::before {
+    counter-increment: nestCounter 1;
+    content: counters(nestCounter, "-") " ";
+    color: yellow;
+}
+
+        /* "counter()" another TEST */
+#childCount {
+    counter-reset: childCount 0;
+}
+#childCount *::before {
+    counter-increment: childCount 1;
+    content: counter(childCount) "(";
+    color: white;
+    font-weight: bold;
+}
+#childCount *::after {
+    content: ")";
+    color: white;
+    font-weight: bold;
+}
+
+        /*-- insert content --*/
+.content li:first-child::after {
+    content: attr(style);
+}
+
+.content li:nth-child(2)::before {
+    content: open-quote;
+}
+.content li:nth-child(2)::after {
+    content: close-quote;
+}
+
+.content li:nth-child(3)::before {
+    content: open-quote;
+}
+.content li:nth-child(3)::after {
+    content: close-quote;
+}
+.content li:nth-child(3)::before {
+    content: no-open-quote;
+}
+.content li:nth-child(3)::after {
+    content: no-close-quote;
+}
+
+.content li:last-child::after {
+    content: url(Button.jpg);
+}
+
+        /* where the content is added by the "::before" "::after" pseudo classes TEST */ 
+#addedContent::before {
+    content: "text added Before";
+    color: greenyellow;
+}
+#addedContent::after {
+    content: "text added After";
+    color: yellow;
+}
+
+

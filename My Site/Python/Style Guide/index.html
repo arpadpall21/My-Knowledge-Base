@@ -29,7 +29,7 @@
   <p> - limit all lines up to 79 characters, docstrings and comments up to 72 characters (not recommended but I prefer 120 characters) </p>
   <p> - PEP8 doesn't recommend single or double quotes for strings but avoid using escapes in strings (bad -> <mark>'It\'s'</mark> good -> <mark>"It's"</mark>)) </p>
   <p> - files should be terminated with a single new line character </p>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
 // naming conventions --------------------------------------
   SOME_CONSTANT = 'constant value'                          // constants are written with capital letters and words are spearated by <mark>_</mark>
   
@@ -50,12 +50,12 @@
       pass
   </pre>
   <br>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   if x is not None:                                         // with <mark>None</mark> in comparison operations the <mark>is</mark> <mark>is not</mark> operator should be used instead of equality operators   
     print('OK')                                             // use <mark>is not</mark> instead of <mark>is ... not</mark>
     
   </pre>
-  <pre class='wrong'>
+  <pre class='wrong ignoreBg'>
   if x != None:
       print('OK')
   
@@ -63,23 +63,23 @@
       print('OK')
   </pre>
   <br>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   def my_func(x):                                           // always use <mark>def</mark> for functions (<mark>lambda</mark> is for inline short function solutions)
       return 2 * x
   </pre>
-  <pre class='wrong'>
+  <pre class='wrong ignoreBg'>
   my_func = lambda x : 2 * x
   </pre>
   <br>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   class MyCustomError(Exception):                         // custom Error classes should inherit from the <mark>Exception</mark> class and suffixed with <mark>Error</mark>
       pass
   </pre>
-  <pre class='wrong'>
+  <pre class='wrong ignoreBg'>
   class MyCustomError(BaseException):
       pass
   </pre>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   try:
       some code                                             // we should be specific what kind of error are we expecting to catch
   except MyCustomError:
@@ -87,21 +87,21 @@
   except Exception:
       handle_all_exceptions
   </pre>
-  <pre class='wrong'>
+  <pre class='wrong ignoreBg'>
   try:
       some code 
   except Exception:
       handle_all_exceptions
   </pre>
   <br>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   def larger_than_10(x):                                    // if we have <mark>return</mark> in a function we should return all cases explicitly
       if x > 10:
           return True
   
       return None
   </pre>
-  <pre class='wrong'>
+  <pre class='wrong ignoreBg'>
   def larger_than_10(x):
       if x > 10:
           return True
@@ -109,12 +109,12 @@
   <hr>
   <!---------------------------------------------------------------------------->
   <h2 class='header'> Indentations </h2>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   def some_function:                                        // use 4 spaces of indentation 
       some_var = None
   </pre>
   <br>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   def this_is_a_long_function_name(arg_one, arg_two         // aligned with the opening delimiter
                                    arg_three, arg_four
                                    arg_five)
@@ -125,14 +125,14 @@
           arg_five):
     some_var = None
   </pre>
-  <pre class='wrong'>
+  <pre class='wrong ignoreBg'>
   def this_is_a_long_function_name(                         // arguments are not distinguishable from the function body
       arg_one, arg_two,
       arg_three, arg_four):
       some_var = None
   </pre>
   <br>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   foo = this_is_a_long_function_name(                       // hanging indent should add a level
       arg_one, arg_two,
       arg_three, arg_four)
@@ -151,37 +151,37 @@
     arg_one, arg_two,
     arg_three, arg_four)
   </pre>
-  <pre class='wrong'>
+  <pre class='wrong ignoreBg'>
   foo = this_is_a_long_function_name(arg_one, arg_two,      // arguments on the 1st line are forbidden when using hanging indents    
       arg_three, arg_four,
       arg_five)
   </pre>
   <br>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   if (this_is_one_thing                                     // in case of the <mark>if</mark> multiline statement this is accepted     
       and this_is_another_thing):
       # some comment                                        // a comment might help to distinguish the statement from its code block    
-        some_var = None
+      some_var = None
     
   if (this_is_one_thing                                     // this one is more readable though
           and this_is_another_thing):
       some_var = None
   </pre>
   <br>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   net_income = (job_income                                  // operators should come at the start on the indented line    
                 + side_job_income
                 - rent
                 - other_expenses)
   </pre>
-  <pre class='wrong'>
+  <pre class='wrong ignoreBg'>
   net_income = (job_income +                                // this is less readable 
                 side_job_income -
                 rent -
                 other_expenses)
   </pre>
   <br>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   result = ('this is OK!'                                   // ternary operator can be broken into multiple lines within parentheses
             if condition
             else 'this is wrong!')
@@ -191,7 +191,7 @@
       if condition
       else 'this is wrong!')
   </pre>
-  <pre class='wrong'>
+  <pre class='wrong ignoreBg'>
   result = ('this is OK!'                                   // indentation should start the same level as the first line of the statement
       if condition
       else 'this is wrong!')
@@ -199,7 +199,7 @@
   <hr>
   <!---------------------------------------------------------------------------->
   <h2 class='header'> Blank Lines </h2>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   import something
   
   
@@ -215,7 +215,7 @@
       pass
   
   </pre>
-  <pre class='wrong'>
+  <pre class='wrong ignoreBg'>
   import something
   
   class Two:                                                // not readable
@@ -230,7 +230,7 @@
   <hr>
   <!---------------------------------------------------------------------------->
   <h2 class='header'> Imports </h2>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   import standard_module                                    // module imports should be placed at the top of the file  
   import standard_module                                    // modules should be grouped and imported in the demonstrated order
   
@@ -241,7 +241,7 @@
   import app_specific_module
   </pre>
   <br>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   from some_module import some_var                          // absolute imports are recommended 
   
   from .somepkg.some_module import some_var                 // use relative imports when needed only
@@ -249,7 +249,7 @@
   from some_module import *                                 // wildcard import is discuraged because imported names can conflict with local names    
   </pre>
   <br>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   __version__ = '0.1'                                       // dunders (variable pre and post fixed with <mark>__</mark>) should be placed before imports     
   __author__ = 'Stewie'
   
@@ -259,7 +259,7 @@
   <hr>
   <!---------------------------------------------------------------------------->
   <h2 class='header'> White spaces inside expressions and statements </h2>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   if x == y:                                                // avoid writing multiple statements on the same line  
       print('OK')
   print(a); 
@@ -271,7 +271,7 @@
   else: 
       do_something_else()
   </pre>
-  <pre class='wrong'>
+  <pre class='wrong ignoreBg'>
   if x == y: print('OK')
   print(a); print(b); print(c)
   
@@ -279,25 +279,25 @@
   else: do_something_else()
   </pre>
   <br>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   some_dict = {'a': 1, 'b': 2}                              // don't use white spaces immediately inside parenthesis or brackets
   some_tuple = (1,)
   </pre>
-  <pre class='wrong'>
+  <pre class='wrong ignoreBg'>
   some_dict = { 'a': 1, 'b': 2 }
   some_tuple = (1, )
   </pre>
   <br>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   some_dict = {'a': 1, 'b': 2}                              // don't use white spaces right before commas, semicolons and colons    
   print(test1); print(test2)
   </pre>
-  <pre class='wrong'>
+  <pre class='wrong ignoreBg'>
   some_dict = {'a' : 1 , 'b' : 2}
   print(test1) ; print(test2)
   </pre>
   <br>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   x = 'a'                                                   // surround operators with a single white space 
   long_var_name = 'b'
   
@@ -308,7 +308,7 @@
   c = x*x + y*y
   d = (1+1) * (2+2)
   </pre>
-  <pre class='wrong'>
+  <pre class='wrong ignoreBg'>
   x             = 'a'
   long_var_name = 'b'
   
@@ -320,7 +320,7 @@
   d = (1 + 1) * (2 + 2)
   </pre>
   <br>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   def my_func(a: str) -> str:                               // return type annotation must be surrounded with a single space
       return a
   
@@ -331,7 +331,7 @@
   my_func(a: str = None):                                   // use single white space around <mark>=</mark> when combining argument type and default value    
       pass
   </pre>
-  <pre class='wrong'>
+  <pre class='wrong ignoreBg'>
   def my_func(a: str)->str:
       return a
   
@@ -345,7 +345,7 @@
   <hr>
   <!---------------------------------------------------------------------------->
   <h2 class='header'> Tailing Commas </h2>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   my_tuple = (0,)                                           // use parenthesis to create tuple 
   
   my_dict = {                                               // tailing commas are ok when using hanging indent
@@ -357,7 +357,7 @@
           arg_two,
           )
   </pre>
-  <pre class='wrong'>
+  <pre class='wrong ignoreBg'>
   my_tuple = 0,
   
   my_dict = {'a': 1, 'b': 2,}                               // tailing commans are not acceped on the same line
@@ -367,7 +367,7 @@
   <hr>
   <!---------------------------------------------------------------------------->
   <h2 class='header'> Comments </h2>
-  <pre class='right'>
+  <pre class='right ignoreBg'>
   some_statement     # Some inline comment                  // inline comments are on the same line as the statement 
   
   # This is a block comment.                                // block comment

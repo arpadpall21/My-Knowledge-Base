@@ -1,5 +1,17 @@
 // pre formating config
 const colorMap = {
+  ignoreBgElement: {
+    background: {
+      primary: 'unset',
+      secondary: 'unset',
+    },
+    comment: {
+      info: '#707070',
+      warning: '#e19a00',
+      error: 'orangered',
+      return: 'cornflowerblue',
+    },
+  },
   preElement: {
     background: {
       primary: '#f2f2f0',
@@ -268,6 +280,8 @@ $(document).ready(function () {
       color = colorMap.preSyntaxElement;
     } else if (preElement.classList.contains('cmd') || preElement.classList.contains('cmd')) {
       color = colorMap.preCmdElement;
+    } else if (preElement.classList.contains('ignoreBg')) {
+      color = colorMap.ignoreBgElement;
     }
 
     const lines = getLines(preElement);

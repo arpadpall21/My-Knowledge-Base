@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Insert Contet </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Insert Content </h1>
+  <p> Updated ( 2016-10-26 / 2018-07-03 / 2019-01-12 / 2024-05-08 )</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Insert Content
+  </p>
+  <table class="table">
+    <tr>
+      <th style="width:15%"> Property </th>
+      <th style="width:40%"> Value </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td> content </td>
+      <td>
+        normal <span class="cssAV">((Default) same as "none")</span><br>
+        none <span class="cssAV">(no content)</span><br>
+        "<strong>text</strong>" <span class="cssAV">(text)</span><br>
+        counter(<strong>counterId</strong>) <span class="cssAV">(css counter)</span><br>
+        attr("<strong>attrId</strong>") <span class="cssAV">(targeted attribute's value)</span><br>
+        open-quote <span class="cssAV">(add opening quote)</span><br>
+        close-quote <span class="cssAV">(add closing quote)</span><br>
+        no-open-quote <span class="cssAV">(removes opening quote)</span><br>
+        no-close-quote <span class="cssAV">(removes closing quote)</span><br>
+        url("<strong>URL</strong>") <span class="cssAV">(media file)</span><br>
+        <strong>value</strong> <i>value ..</i> <span class="cssAV">(multiple values are allowed)</span><br>
+      </td>
+      <td>
+        - used with the <mark>::before</mark> and <mark>::after</mark> pseudo elements in order to insert a generated content
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 1 </span>
+          <span><i class="fab fa-firefox"></i> 1 </span>
+          <span><i class="fab fa-opera"></i> 4 </span>
+          <span><i class="fab fa-edge"></i> 12 </span>
+          <span><i class="fab fa-internet-explorer"></i> 8 </span>
+          <span><i class="fab fa-safari"></i> 1 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <pre>
+// HTML ---
+    &lt;p&gt; myContent &lt;/p&gt; 
+    
+    
+// CSS ------
+    p::before {
+        content: " -->"                 // adds the " -->" text before the targeted paragraph
+        color: red;                     // newly added content styled here
+    }
+    
+// display on the webpage --
+    <mark>--> myContent</mark>
+    </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <ul class="content">
+      <li style="color:darkviolet;"> style value = </li>
+      <li> with quotes </li>
+      <li> quotes added and removed </li>
+      <li> media added = </li>
+    </ul>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML ----------------------
+    &lt;ul class="content"&gt;
+        &lt;li style="color:darkviolet;"&gt; style value = &lt;/li&gt;
+        &lt;li&gt; with quotes &lt;/li&gt;
+        &lt;li&gt; quotes added and removed &lt;/li&gt;
+        &lt;li&gt; media added = &lt;/li&gt;
+    &lt;/ul&gt;
+    
+    
+// CSS -----
+// display attribute value ---------------------------
+    .content li:first-child::after {
+        content: attr(style);
+    }
+    
+// add/remove quotes ---------------------------------
+    .content li:nth-child(2)::before {
+        content: open-quote;                    // quote opened 
+    }
+    
+    .content li:nth-child(2)::after {
+        content: close-quote;                   // quote closed
+    }
+    
+    // quotes added and removed ----------------------
+    .content li:nth-child(3)::before {
+        content: open-quote;
+    }
+    
+    .content li:nth-child(3)::after {
+        content: close-quote;
+    }
+    
+    .content li:nth-child(3)::before {
+        content: no-open-quote;                 // remove opening quote
+    }
+    
+    .content li:nth-child(3)::after {
+        content: no-close-quote;                // remove closing quote
+    }
+    
+// add media -----------------------------------------
+    .content li:last-child::after {
+        content: url(Button.jpg);               // media file added
+    }
+    </pre>
+    </details>
+    <hr>
+    <!-------------------------------------------------------------------------------->
+    <h4 class="header"> Where the content added by the <mark>::before</mark> / <mark>::after</mark> pseudo-elements </h4>
+    <p> - content added by the <mark>::before</mark> and <mark>::after</mark> pseudo-elements are <u>not part of the DOM</u></p>
+    <p id="addedContent"> original paragraph </p>
+    <script>
+      var element = document.getElementById('addedContent');
+
+      // JS cannot return the added content by the "::before" and "::after" pseudo-elements because they are not part of the DOM        
+      var nextSibling = element.nextSibling;
+      var nextElementSibling = element.nextElementSibling;
+      var childNodes = element.childNodes;
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML ------------------
+    &lt;p id="addedContent"&gt; original paragraph &lt;/p&gt;
+    &lt;script&gt;
+        var element = document.getElementById('addedContent');
+        
+    // JS cannot return the added content by the "::before" and "::after" pseudo-elements because they are not part of the DOM        
+        var nextSibling = element.nextSibling ;
+        var nextElementSibling = element.nextElementSibling ;
+        var childNodes = element.childNodes ;
+    &lt;/script&gt; 
+    
+    
+// CSS ------------
+    #addedContent::before {
+        content: "text added Before";
+        color: greenyellow;
+    }
+    #addedContent::after {
+        content: "text added After";
+        color: yellow;
+    }
+        </pre>
+    </details>
+  </details>
+
+  <br><br>
+</body>
+
+</html>

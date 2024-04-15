@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Scroll </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Scroll </h1>
+  <p> Updated ( 2024-04-13 ) </p>
+  <nav class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Scroll
+  </nav>
+  <br>
+  <table class="table">
+    <caption>
+      Scrollbar
+    </caption>
+    <tr>
+      <th style="width:15%;"> Property </th>
+      <th style="width:40%;"> Value </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td>
+        scrollbar-width
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser scrollbar width) </span><br>
+        thin <br>
+        none <span class="cssAV">(no scrollbar (content takes its place)) </span>
+      </td>
+      <td>
+        - sets the scrollbar width
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 121 </span>
+          <span><i class="fab fa-firefox"></i> 64 </span>
+          <span><i class="fab fa-opera"></i> 107 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 121 </span>
+          <span><i class="fab fa-safari"></i> NO </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scrollbar-color
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser scrollbar color) </span><br>
+        <reqval>track:cssColor</reqval>
+        <reqval>thumb:cssColor</reqval>
+      </td>
+      <td>
+        - sets the scrollbar color (track = scrollbar background / thumb = scrollbar moving part)
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 121 </span>
+          <span><i class="fab fa-firefox"></i> 64 </span>
+          <span><i class="fab fa-opera"></i> 107 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 121 </span>
+          <span><i class="fab fa-safari"></i> NO </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scrollbar-gutter
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default) </span><br>
+        stable <span class="cssAV">(preservers the left scrollbar space) </span><br>
+        stable both-edges <span class="cssAV">(preservers the left and right scrollbar space) </span>
+
+      </td>
+      <td>
+        - preservers the scrollbar space even when scrollbar needed <br>
+        - requires <mark>overflow: scroll|auto|hidden;</mark> <br>
+        - useful to prevent unwanted layout changes
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 121 </span>
+          <span><i class="fab fa-firefox"></i> 64 </span>
+          <span><i class="fab fa-opera"></i> 107 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 121 </span>
+          <span><i class="fab fa-safari"></i> NO </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      Scroll Behavior
+    </caption>
+    <tr>
+      <th style="width:15%;"> Property </th>
+      <th style="width:40%;"> Value </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td>
+        scroll-behavior
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) jumps to the next position) </span><br>
+        smooth <span class="cssAV">(smooth scroll to the next positon) </span>
+      </td>
+      <td>
+        - set the scroll animation behavior when the user click on a document fragment in order to navigat to the next document postion
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 61 </span>
+          <span><i class="fab fa-firefox"></i> 36 </span>
+          <span><i class="fab fa-opera"></i> 48 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td> 
+    </tr>
+    <tr>
+      <td>
+        overscroll-behavior-y
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) scrolls the parent element once the child element scroll limit reached (does not scroll chain)) </span><br>
+        contain <span class="cssAV">(does not scroll the parent element once the child element scroll limit reached (scroll chains)) </span><br>
+        none <span class="cssAV">(same as <mark>contain</mark> but won't feedback the user on scroll edge (ex: no bouncing scroll effect on Android)) </span>
+      </td>
+      <td>
+        - sets the <span class="openable">scroll chain<div>
+        <p> - once the user reaches the child element scroll limit the scroll is propagated to the parent </p>
+        </div></span> behavior on vertical scroll <br>
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 61 </span>
+          <span><i class="fab fa-firefox"></i> 59 </span>
+          <span><i class="fab fa-opera"></i> 50 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 18 (partial) / 79 </span>
+          <span><i class="fab fa-safari"></i> 14 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        overscroll-behavior-x
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) scrolls the parent element once the child element scroll limit reached (does not scroll chain)) </span><br>
+        contain <span class="cssAV">(does not scroll the parent element once the child element scroll limit reached (scroll chains)) </span><br>
+        none <span class="cssAV">(same as <mark>contain</mark> but won't feedback the user on scroll edge (ex: no bouncing scroll effect on Android)) </span>
+      </td>
+      <td>
+        - sets the <span class="openable">scroll chain<div>
+        <p> - once the user reaches the child element scroll limit the scroll is propagated to the parent </p>
+        </div></span> behavior on horizontal scroll <br>
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 61 </span>
+          <span><i class="fab fa-firefox"></i> 59 </span>
+          <span><i class="fab fa-opera"></i> 50 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 18 (partial) / 79 </span>
+          <span><i class="fab fa-safari"></i> 14 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        overscroll-behavior-block
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) scrolls the parent element once the child element scroll limit reached (does not scroll chain)) </span><br>
+        contain <span class="cssAV">(does not scroll the parent element once the child element scroll limit reached (scroll chains)) </span><br>
+        none <span class="cssAV">(same as <mark>contain</mark> but won't feedback the user on scroll edge (ex: no bouncing scroll effect on Android)) </span>
+      </td>
+      <td>
+        - sets the <span class="openable">scroll chain<div>
+        <p> - once the user reaches the child element scroll limit the scroll is propagated to the parent </p>
+        </div></span> behavior on vertical scroll (from writing direction perspective) <br>
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 77 </span>
+          <span><i class="fab fa-firefox"></i> 73 </span>
+          <span><i class="fab fa-opera"></i> 64 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 16 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        overscroll-behavior-inline
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) scrolls the parent element once the child element scroll limit reached (does not scroll chain)) </span><br>
+        contain <span class="cssAV">(does not scroll the parent element once the child element scroll limit reached (scroll chains)) </span><br>
+        none <span class="cssAV">(same as <mark>contain</mark> but won't feedback the user on scroll edge (ex: no bouncing scroll effect on Android)) </span>
+      </td>
+      <td>
+        - sets the <span class="openable">scroll chain<div>
+        <p> - once the user reaches the child element scroll limit the scroll is propagated to the parent </p>
+        </div></span> behavior on horizontal scroll (from writing direction perspective) <br>
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 77 </span>
+          <span><i class="fab fa-firefox"></i> 73 </span>
+          <span><i class="fab fa-opera"></i> 64 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 16 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        overscroll-behavior
+      </td>
+      <td>
+        <reqval>x y</reqval><br>
+        <reqval>xy</reqval>
+      </td>
+      <td>
+        - shorthand property for <mark>overscroll-behavior-y</mark> and <mark>overscroll-behavior-x</mark>
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 77 </span>
+          <span><i class="fab fa-firefox"></i> 73 </span>
+          <span><i class="fab fa-opera"></i> 64 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 16 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      Scroll Snap
+    </caption>
+    <tr>
+      <th style="width:15%;"> Property </th>
+      <th style="width:40%;"> Value </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td colspan="3"> Scroll Container Properties </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-snap-type
+      </td>
+      <td>
+        <reqval class="openable">direction<div>
+          <p> <mark>x</mark> - vertical </p>
+          <p> <mark>y</mark> - horizontal </p>
+          <p> <mark>block</mark> - vertical (from writing direction perspective) </p>
+          <p> <mark>inline</mark> - horizontal (from writing direction perspective) </p>
+          <p> <mark>both</mark> - vertical and horizontal </p>
+        </div></reqval> <span class="openable">mandatory|proximity<div>
+          <p> <mark>mandatory</mark> - snaps scroll items regardless its scroll position </p>
+          <p> <mark>proximity</mark> - snaps scroll items only if their scroll position is close to the snap edge </p>
+        </div></span>
+      </td>
+      <td>
+        - sets how scroll items are snaped into their scroll snap position when the user stops scrolling
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 (bug on MacOs) / 99 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 11 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        scroll-padding-top
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default) </span><br>
+        <reqval>cssLength</reqval>
+      </td>
+      <td>
+        - sets the top scroll snap distance from the scroll items and the container's top border
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-padding-rigth
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default) </span><br>
+        <reqval>cssLength</reqval>
+      </td>
+      <td>
+        - sets the rigth scroll snap distance from the scroll items and the container's right border
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-padding-bottom
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default) </span><br>
+        <reqval>cssLength</reqval>
+      </td>
+      <td>
+        - sets the bottom scroll snap distance from the scroll items and the container's bottom border
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-padding-left
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default) </span><br>
+        <reqval>cssLength</reqval>
+      </td>
+      <td>
+        - sets the left scroll snap distance from the scroll items and the container's left border
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-padding
+      </td>
+      <td>
+        <strong>top right bottom left</strong> <span style="color:#7f85a3;">(4 values)</span><br>
+        <strong>top leftRight bottom</strong> <span style="color:#7f85a3;">(3 values)</span><br>
+        <strong>topBottom leftRight</strong> <span style="color:#7f85a3;">(2 values)</span><br>
+        <strong>all</strong> <span style="color:#7f85a3;">(1 value)</span><br>
+      </td>
+      <td>
+        - shorthand property for <mark>scroll-padding-top</mark> <mark>scroll-padding-right</mark> <mark>scroll-padding-bottom</mark> <mark>scroll-padding-left</mark> properties 
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        scroll-padding-block-start
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default) </span><br>
+        <reqval>cssLength</reqval>
+      </td>
+      <td>
+        - sets the top scroll snap distance from the scroll items and the container's top border (from writing direction perspective) <br>
+        - same as <mark>scroll-padding-top</mark> in english writing direction 
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-padding-inline-end
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default) </span><br>
+        <reqval>cssLength</reqval>
+      </td>
+      <td>
+        - sets the right scroll snap distance from the scroll items and the container's rigth border (from writing direction perspective) <br>
+        - same as <mark>scroll-padding-right</mark> in english writing direction 
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-padding-block-end
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default) </span><br>
+        <reqval>cssLength</reqval>
+      </td>
+      <td>
+        - sets the bottom scroll snap distance from the scroll items and the container's bottom border (from writing direction perspective) <br>
+        - same as <mark>scroll-padding-bottom</mark> in english writing direction 
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-padding-inline-start
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default) </span><br>
+        <reqval>cssLength</reqval>
+      </td>
+      <td>
+        - sets the left scroll snap distance from the scroll items and the container's left border (from writing direction perspective) <br>
+        - same as <mark>scroll-padding-left</mark> in english writing direction
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-padding-block
+      </td>
+      <td>
+        <strong>start end</strong> <span style="color:#7f85a3;">(2 values)</span><br>
+        <strong>startEnd</strong> <span style="color:#7f85a3;">(1 value)</span><br>
+      </td>
+      <td>
+        - shorthand property for <mark>scroll-padding-block-start</mark> and <mark>scroll-padding-block-end</mark>
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-padding-inline
+      </td>
+      <td>
+        <strong>start end</strong> <span style="color:#7f85a3;">(2 values)</span><br>
+        <strong>startEnd</strong> <span style="color:#7f85a3;">(1 value)</span><br>
+      </td>
+      <td>
+        - shorthand property for <mark>scroll-padding-inline-start</mark> and <mark>scroll-padding-inline-end</mark>
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="3"> Scroll Item Properties </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-snap-align
+      </td>
+      <td>
+        none <span class="cssAV">((Default) no snap) </span><br>
+        start <span class="cssAV">(start of <mark>x</mark> or <mark>y</mark> axis) </span><br>
+        end <span class="cssAV">(end of <mark>x</mark> or <mark>y</mark> axis) </span><br>
+        center <span class="cssAV">(center of <mark>x</mark> or <mark>y</mark> axis) </span><br>
+        <reqval>blockDirection inlineDirection</reqval> <span class="cssAV">(block and inline direction in the sence of writing direction) </span>
+      </td>
+      <td>
+        - sets where the snap item snaps into focus when the user stops scrolling 
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 11 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        scroll-snap-stop
+      </td>
+      <td>
+        normal <span class="cssAV">((Default) no scroll snap stop) </span><br>
+        always <span class="cssAV">(after fast swipe scroll stops and snaps into focus on the next element)</span>
+      </td>
+      <td>
+        - after a fast scroll limits the scroll to the next item <br>
+        - it's mostly useful on touch screens, so the user gets the next element after a fast scroll
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 75 </span>
+          <span><i class="fab fa-firefox"></i> 103 </span>
+          <span><i class="fab fa-opera"></i> 62 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 15 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        scroll-margin-top
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default) </span><br>
+        <reqval>cssLength</reqval>
+      </td>
+      <td>
+        - sets the top scroll snap distance from the scroll item and the container's top border
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-margin-rigth
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default) </span><br>
+        <reqval>cssLength</reqval>
+      </td>
+      <td>
+        - sets the rigth scroll snap distance from the scroll item and the container's right border
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-margin-bottom
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default) </span><br>
+        <reqval>cssLength</reqval>
+      </td>
+      <td>
+        - sets the bottom scroll snap distance from the scroll item and the container's bottom border
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-margin-left
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default) </span><br>
+        <reqval>cssLength</reqval>
+      </td>
+      <td>
+        - sets the left scroll snap distance from the scroll item and the container's left border
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-margin
+      </td>
+      <td>
+        <strong>top right bottom left</strong> <span style="color:#7f85a3;">(4 values)</span><br>
+        <strong>top leftRight bottom</strong> <span style="color:#7f85a3;">(3 values)</span><br>
+        <strong>topBottom leftRight</strong> <span style="color:#7f85a3;">(2 values)</span><br>
+        <strong>all</strong> <span style="color:#7f85a3;">(1 value)</span><br>
+      </td>
+      <td>
+        - shorthand property for <mark>scroll-margin-top</mark> <mark>scroll-margin-right</mark> <mark>scroll-margin-bottom</mark> <mark>scroll-margin-left</mark> properties 
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        scroll-margin-block-start
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default) </span><br>
+        <reqval>cssLength</reqval>
+      </td>
+      <td>
+        - sets the top scroll snap distance from the scroll item and the container's top border (from writing direction perspective) <br>
+        - same as <mark>scroll-margin-top</mark> in english writing direction 
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-margin-inline-end
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default) </span><br>
+        <reqval>cssLength</reqval>
+      </td>
+      <td>
+        - sets the right scroll snap distance from the scroll item and the container's rigth border (from writing direction perspective) <br>
+        - same as <mark>scroll-margin-right</mark> in english writing direction 
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-margin-block-end
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default) </span><br>
+        <reqval>cssLength</reqval>
+      </td>
+      <td>
+        - sets the bottom scroll snap distance from the scroll item and the container's bottom border (from writing direction perspective) <br>
+        - same as <mark>scroll-margin-bottom</mark> in english writing direction 
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-margin-inline-start
+      </td>
+      <td>
+        auto <span class="cssAV">((Default) browser default) </span><br>
+        <reqval>cssLength</reqval>
+      </td>
+      <td>
+        - sets the left scroll snap distance from the scroll item and the container's left border (from writing direction perspective) <br>
+        - same as <mark>scroll-margin-left</mark> in english writing direction
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-margin-block
+      </td>
+      <td>
+        <strong>start end</strong> <span style="color:#7f85a3;">(2 values)</span><br>
+        <strong>startEnd</strong> <span style="color:#7f85a3;">(1 value)</span><br>
+      </td>
+      <td>
+        - shorthand property for <mark>scroll-margin-block-start</mark> and <mark>scroll-margin-block-end</mark>
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        scroll-margin-inline
+      </td>
+      <td>
+        <strong>start end</strong> <span style="color:#7f85a3;">(2 values)</span><br>
+        <strong>startEnd</strong> <span style="color:#7f85a3;">(1 value)</span><br>
+      </td>
+      <td>
+        - shorthand property for <mark>scroll-margin-inline-start</mark> and <mark>scroll-margin-inline-end</mark>
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 69 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 56 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 79 </span>
+          <span><i class="fab fa-safari"></i> 14.1 </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior" target="_blank">developer.mozilla.org (scroll-* property) </a></p>
+  <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-color" target="_blank">developer.mozilla.org (scrollbar-* property) </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <h2 class="headerExtra"> Scrollbar </h2>
+  <h3 class="header"> The <mark>scrollbar-width</mark> / <mark>scrollbar-color</mark> / <mark>scrollbar-gutter</mark> properties </h3>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> The <mark>scrollbar-width</mark> property </h4>
+    <div class="scrollbarWidth-auto"> <mark>scrollbar-width: auto;</mark> <br><br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci, dicta nemo reiciendis officiis dolorum ipsum, exercitationem tenetur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci, dicta nemo reiciendis officiis dolorum ipsum, exercitationem tenetur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci, dicta nemo reiciendis officiis dolorum ipsum, exercitationem tenetur.</div>
+    <div class="scrollbarWidth-thin"> <mark>scrollbar-width: thin;</mark> <br><br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci, dicta nemo reiciendis officiis dolorum ipsum, exercitationem tenetur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci, dicta nemo reiciendis officiis dolorum ipsum, exercitationem tenetur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci, dicta nemo reiciendis officiis dolorum ipsum, exercitationem tenetur.</div>
+    <div class="scrollbarWidth-none"> <mark>scrollbar-width: none;</mark> <br><br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci, dicta nemo reiciendis officiis dolorum ipsum, exercitationem tenetur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci, dicta nemo reiciendis officiis dolorum ipsum, exercitationem tenetur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci, dicta nemo reiciendis officiis dolorum ipsum, exercitationem tenetur.</div>
+    <details>
+      <summary> CODE </summary>
+      <pre>
+// HTML -------------
+    &lt;div class="scrollbarWidth-auto"&gt; &lt;mark&gt;scrollbar-width: auto;&lt;/mark&gt; Lorem ipsum dolor ... &lt;/div&gt;
+    &lt;div class="scrollbarWidth-thin"&gt; &lt;mark&gt;scrollbar-width: thin;&lt;/mark&gt; Lorem ipsum dolor ... &lt;/div&gt;
+    &lt;div class="scrollbarWidth-none"&gt; &lt;mark&gt;scrollbar-width: none;&lt;/mark&gt; Lorem ipsum dolor ... &lt;/div&gt;
+    
+    
+// CSS ----------
+    .scrollbarWidth-auto {
+        scrollbar-width: auto;
+    }
+    
+    .scrollbarWidth-thin {
+        scrollbar-width: thin;
+    }
+    
+    .scrollbarWidth-none {
+        scrollbar-width: none;
+    }
+    </pre>
+    </details>
+    <!---------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>scrollbar-color</mark> property </h4>
+    <div class="scrollbarColor"> <mark>scrollbar-color: red blue;</mark> <br><br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci, dicta nemo reiciendis officiis dolorum ipsum, exercitationem tenetur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci, dicta nemo reiciendis officiis dolorum ipsum, exercitationem tenetur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci, dicta nemo reiciendis officiis dolorum ipsum, exercitationem tenetur.</div>
+    <details>
+      <summary> CODE </summary>
+      <pre>
+// HTML -------------
+    &lt;div class="scrollbarColor"&gt; &lt;mark&gt;scrollbar-color: red blue;&lt;/mark&gt; Lorem ipsum dolor ... &lt;/div&gt;
+    
+    
+// CSS ----------
+    .scrollbarColor {
+        scrollbar-color: #007 #bada55;
+    }
+  </pre>
+    </details>
+    <!---------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>scrollbar-gutter</mark> property </h4>
+    <div class="scrollbarGutter-auto"> <mark>scrollbar-gutter: auto;</mark> <br><br><br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci </div>
+    <div class="scrollbarGutter-stable"> <mark>scrollbar-gutter: stable;</mark> <br><br><br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci </div>
+    <div class="scrollbarGutter-stable-both-edges"> <mark>scrollbar-gutter: stable both-edges;</mark> <br><br><br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci </div>
+    <details>
+      <summary> CODE </summary>
+      <pre>
+// HTML -------------
+    &lt;div class="scrollbarGutter-auto"&gt; &lt;mark&gt;scrollbar-gutter: auto;&lt;/mark&gt; &lt;br&gt;&lt;br&gt;&lt;br&gt; Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci &lt;/div&gt;
+    &lt;div class="scrollbarGutter-stable"&gt; &lt;mark&gt;scrollbar-gutter: stable;&lt;/mark&gt; &lt;br&gt;&lt;br&gt;&lt;br&gt; Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci &lt;/div&gt;
+    &lt;div class="scrollbarGutter-stable-both-edges"&gt; &lt;mark&gt;scrollbar-gutter: stable both-edges;&lt;/mark&gt; &lt;br&gt;&lt;br&gt;&lt;br&gt; Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sapiente iste nihil omnis quas repudiandae accusantium. Deserunt cupiditate minima expedita quaerat adipisci &lt;/div&gt;
+    
+    
+// CSS -------------
+    [class|=scrollbarGutter] {
+        display: inline-block;
+        margin: 5px;
+        background-color: beige;
+        width: 200px;
+        height: 300px;
+        overflow: auto;
+    }
+    
+    .scrobarGutter-auto {
+        scrollbar-gutter: auto;
+    }
+    
+    .scrollbarGutter-stable {
+        scrollbar-gutter: stable;
+    }
+    
+    .scrollbarGutter-stable-both-edges {
+        scrollbar-gutter: stable both-edges;
+    }
+    </pre>
+    </details>
+  </details>
+  <!---------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Scroll Behavior </h2>
+  <h3 class="header"> The <mark>scroll-behavior</mark> property </h3>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> The <mark>scroll-behavior</mark> property </h4>
+    <nav>
+      <a href="#one"> [link 1] </a>
+      <a href="#two"> [link 2] </a>
+    </nav>
+    <div id="one"> box 1 </div>
+    <div id="two"> box 2 </div>
+    <details>
+      <summary> CODE </summary>
+      <pre>
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    #one {
+        background-color: lightblue;
+        height: 150px;
+    }
+    
+    #two {
+        background-color: beige;
+        height: 150px;
+    }
+      </pre>
+    </details>
+  </details>
+  <!---------------------------------------------------------------------------->
+  <hr>
+  <h3 class="header"> The <mark>overscroll-behavior-*</mark> properties </h3>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> The <mark>overscroll-behavior-*</mark> property </h4>
+    <div class="overScroll">
+      <div>
+        <mark>overscroll-behavior-y: auto;</mark><br><br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque consequat leo eu odio feugiat luctus. Duis vel sagittis ipsum, non dictum nisl. Vivamus sit amet volutpat metus. Nunc tempus, mi ut vehicula porttitor, velit lacus sagittis lorem, sit amet venenatis mauris nibh sit amet urna. Nam nibh mi, commodo id diam eu, congue suscipit nunc. Vestibulum scelerisque dui tempus tincidunt luctus. Donec placerat quis neque vel ultrices. Pellentesque dignissim placerat orci sed cursus. Ut convallis leo sapien, vitae ornare nulla sodales at. Suspendisse ut vestibulum erat. Sed ut fermentum tortor. Integer quis tellus eget nisi pharetra pharetra non vitae magna. Cras ultricies, nulla id imperdiet varius, nisi odio finibus diam, at finibus lacus risus vel dui. Ut euismod consequat libero eu pharetra.
+      </div>
+      <div>
+        <mark>overscroll-behavior-y: contain;</mark><br><br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque consequat leo eu odio feugiat luctus. Duis vel sagittis ipsum, non dictum nisl. Vivamus sit amet volutpat metus. Nunc tempus, mi ut vehicula porttitor, velit lacus sagittis lorem, sit amet venenatis mauris nibh sit amet urna. Nam nibh mi, commodo id diam eu, congue suscipit nunc. Vestibulum scelerisque dui tempus tincidunt luctus. Donec placerat quis neque vel ultrices. Pellentesque dignissim placerat orci sed cursus. Ut convallis leo sapien, vitae ornare nulla sodales at. Suspendisse ut vestibulum erat. Sed ut fermentum tortor. Integer quis tellus eget nisi pharetra pharetra non vitae magna. Cras ultricies, nulla id imperdiet varius, nisi odio finibus diam, at finibus lacus risus vel dui. Ut euismod consequat libero eu pharetra.
+      </div>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque consequat leo eu odio feugiat luctus. Duis vel sagittis ipsum, non dictum nisl. Vivamus sit amet volutpat metus. Nunc tempus, mi ut vehicula porttitor, velit lacus sagittis lorem, sit amet venenatis mauris nibh sit amet urna. Nam nibh mi, commodo id diam eu, congue suscipit nunc. Vestibulum scelerisque dui tempus tincidunt luctus. Donec placerat quis neque vel ultrices. Pellentesque dignissim placerat orci sed cursus. Ut convallis leo sapien, vitae ornare nulla sodales at. Suspendisse ut vestibulum erat. Sed ut fermentum tortor. Integer quis tellus eget nisi pharetra pharetra non vitae magna. Cras ultricies, nulla id imperdiet varius, nisi odio finibus diam, at finibus lacus risus vel dui. Ut euismod consequat libero eu pharetra.
+    </div>
+    <details>
+      <summary> CODE </summary>
+      <pre>
+// HTML -----------
+    &lt;div class="overScroll"&gt;
+      &lt;div&gt;
+        &lt;mark&gt;overscroll-behavior-y: auto;&lt;/mark&gt;&lt;br&gt;&lt;br&gt;
+        Lorem ipsum dolor ...
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;mark&gt;overscroll-behavior-y: contain;&lt;/mark&gt;&lt;br&gt;&lt;br&gt;
+        Lorem ipsum dolor sit amet ...
+      &lt;/div&gt;
+    Lorem ipsum dolor ...
+    &lt;/div&gt;
+  
+  
+// CSS ------------
+    .overScroll {
+        background-color: beige;
+        border: solid 3px blue;
+        width: 60%;
+        margin: auto;
+        height: 300px;
+        overflow-y: scroll;
+    }
+    
+    .overScroll > div {
+        background-color: lightblue;
+        display: inline-block;
+        border: solid 3px green;
+        width: 40%;
+        margin: auto;
+        height: 150px;
+        overflow: scroll;
+    }
+    
+    .overScroll > div:first-child {
+        overscroll-behavior-y: auto;
+    }
+    
+    .overScroll > div:nth-child(2) {
+        overscroll-behavior-y: contain;
+    }
+      </pre>
+    </details>
+  </details>
+  <!---------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"> Scroll Snap </h2>
+  <h3 class="header"> The <mark>scroll-snap-type</mark> / <mark>scroll-snap-align</mark> / <mark>scroll-snap-stop</mark> / <mark>scroll-padding-*</mark> / <mark>scroll-margin-*</mark> properties </h3>
+  <p> Concept: </p>
+  <p class="indent-lv1"> - <mark class="mark">scroll snap</mark> - snap or lock the scollable content within its container onto a specific positions as the user scrolls through, this creates a smooth and precise scrolling experience, (especially useful on touch screen devices) </p>
+  <p class="indent-lv1"> - <mark class="mark">block</mark> and <mark class="mark">inline</mark> directons - directions described from the perspective of writing direction </p>
+  <p class="indent-lv2"> - in english <mark class="mark">block</mark> direction means vertical and <mark class="mark">inline</mark> direction means horizontal, but in Mongolian lines are laid out left to right which makes block direction left to right </p>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> The <mark>scroll-snap-type</mark> / <mark>scroll-snap-align</mark> properties </h4>
+    <p> - <mark>scroll-snap-type: mandatory</mark> </p>
+    <div class="scrollSnapCont">
+      <div class="even"></div>
+      <div class="odd"></div>
+      <div class="even"></div>
+      <div class="odd"></div>
+      <div class="even"></div>
+    </div>
+    <details>
+      <summary> CODE </summary>
+      <pre>
+// HTML ----------------
+    &lt;div class="scrollSnapCont"&gt;
+      &lt;div class="even"&gt;&lt;/div&gt;
+      &lt;div class="odd"&gt;&lt;/div&gt;
+      &lt;div class="even"&gt;&lt;/div&gt;
+      &lt;div class="odd"&gt;&lt;/div&gt;
+      &lt;div class="even"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+// CSS ----------------
+    .scrollSnapCont {
+        border: solid 3px blue;
+        width: 60%;
+        margin: auto;
+        height: 200px;
+        overflow-x: scroll;
+        scroll-snap-type: y mandatory;
+    }
+    
+    .scrollSnapCont > .even {
+        background-color: beige;
+        height: 170px;
+        scroll-snap-align: start;
+        margin-top: 5px;
+    }
+    
+    .scrollSnapCont > .odd {
+        background-color: lightblue;
+        height: 170px;
+        scroll-snap-align: start;
+        margin-top: 5px;
+    }
+    </pre>
+    </details>
+    <p> - <mark>scroll-snap-type: proximity</mark> </p>
+    <div class="scrollSnapCont2">
+      <div class="even"></div>
+      <div class="odd"></div>
+      <div class="even"></div>
+      <div class="odd"></div>
+      <div class="even"></div>
+    </div>
+    <details>
+      <summary> CODE </summary>
+      <pre>
+// HTML ----------------
+    &lt;div class="scrollSnapCont"&gt;
+      &lt;div class="even"&gt;&lt;/div&gt;
+      &lt;div class="odd"&gt;&lt;/div&gt;
+      &lt;div class="even"&gt;&lt;/div&gt;
+      &lt;div class="odd"&gt;&lt;/div&gt;
+      &lt;div class="even"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+// CSS ----------------
+    .scrollSnapCont2 {
+        border: solid 3px blue;
+        width: 60%;
+        margin: auto;
+        height: 200px;
+        overflow-x: scroll;
+        scroll-snap-type: y proximity;
+    }
+    
+    .scrollSnapCont2 > .even {
+        background-color: beige;
+        height: 170px;
+        scroll-snap-align: start;
+        margin-top: 5px;
+    }
+    
+    .scrollSnapCont2 > .odd {
+        background-color: lightblue;
+        height: 170px;
+        scroll-snap-align: start;
+        margin-top: 5px;
+    }
+    </pre>
+    </details>
+    <hr>
+    <!--------------------------------------------------------------------------->
+    <h4 class="header"> The <mark>scroll-snap-stop</mark> property </h4>
+    <div class="scrollSnapStop">
+      <div class="even"></div>
+      <div class="odd"></div>
+      <div class="even"></div>
+      <div class="odd"></div>
+      <div class="even"></div>
+    </div>
+    <details>
+      <summary> CODE </summary>
+      <pre>
+// HTML ----------------
+    &lt;div class="scrollSnapStop"&gt;
+      &lt;div class="even"&gt;&lt;/div&gt;
+      &lt;div class="odd"&gt;&lt;/div&gt;
+      &lt;div class="even"&gt;&lt;/div&gt;
+      &lt;div class="odd"&gt;&lt;/div&gt;
+      &lt;div class="even"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+// CSS ----------------
+    .scrollSnapStop {
+        border: solid 3px blue;
+        width: 60%;
+        margin: auto;
+        height: 200px;
+        overflow-x: scroll;
+        scroll-snap-type: y mandatory;
+    }
+    
+    .scrollSnapStop > .even {
+        background-color: beige;
+        height: 170px;
+        margin-top: 5px;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+    }
+    
+    .scrollSnapStop > .odd {
+        background-color: lightblue;
+        height: 170px;
+        margin-top: 5px;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+    }
+    </pre>
+    </details>
+    <!--------------------------------------------------------------------------->
+    <h4 class="header"> The <mark>scroll-margin-*</mark> / <mark>scroll-padding-*</mark> properties </h4>
+    <p style="color: yellow;"> - these 2 properties appears to do the same thing, the difference is <mark>scroll-padding-*</mark> is set on the scroll container VS the <mark>scroll-margin-*</mark> is set on individual scroll elements </p>
+    <p> - <mark>scroll-margin-top</mark> (the <mark>scroll-margin-block</mark> property does the same) </p>
+    <div class="scrollMargin">
+      <div class="even"></div>
+      <div class="odd"></div>
+      <div class="even"></div>
+      <div class="odd"></div>
+      <div class="even"></div>
+    </div>
+    <p> - <mark>scroll-padding-top</mark> (the <mark>scroll-padding-block</mark> property does the same) </p>
+    <div class="scrollPadding">
+      <div class="even"></div>
+      <div class="odd"></div>
+      <div class="even"></div>
+      <div class="odd"></div>
+      <div class="even"></div>
+    </div>
+    <details>
+      <summary> CODE </summary>
+      <pre>
+// HTML ----------------
+    &lt;div class="scrollMargin"&gt;
+      &lt;div class="even"&gt;&lt;/div&gt;
+      &lt;div class="odd"&gt;&lt;/div&gt;
+      &lt;div class="even"&gt;&lt;/div&gt;
+      &lt;div class="odd"&gt;&lt;/div&gt;
+      &lt;div class="even"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p&gt; - &lt;mark&gt;scroll-padding-top&lt;/mark&gt; &lt;/p&gt;
+    &lt;div class="scrollPadding"&gt;
+      &lt;div class="even"&gt;&lt;/div&gt;
+      &lt;div class="odd"&gt;&lt;/div&gt;
+      &lt;div class="even"&gt;&lt;/div&gt;
+      &lt;div class="odd"&gt;&lt;/div&gt;
+      &lt;div class="even"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+// CSS ----------------
+    .scrollMargin {
+        border: solid 3px blue;
+        width: 60%;
+        margin: auto;
+        height: 200px;
+        overflow-x: scroll;
+        scroll-snap-type: y mandatory;
+    }
+    
+    .scrollMargin > .even {
+        background-color: beige;
+        height: 170px;
+        scroll-snap-align: start;
+        scroll-margin-top: 20px;
+    }
+    
+    .scrollMargin > .odd {
+        background-color: lightblue;
+        height: 170px;
+        scroll-snap-align: start;
+        scroll-margin-top: 20px;
+    }
+    
+    
+    .scrollPadding {
+        border: solid 3px blue;
+        width: 60%;
+        margin: auto;
+        height: 200px;
+        overflow-x: scroll;
+        scroll-snap-type: y mandatory;
+        scroll-padding-top: 20px;
+    }
+    
+    .scrollPadding > .even {
+        background-color: beige;
+        height: 170px;
+        scroll-snap-align: start;
+    }
+    
+    .scrollPadding > .odd {
+        background-color: lightblue;
+        height: 170px;
+        scroll-snap-align: start;
+    }
+    </pre>
+    </details>
+  </details>
+
+    <br><br>
+</body>
+
+</html>

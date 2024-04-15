@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Counters </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Counters </h1>
+  <p> Updated ( 2016-10-26 / 2018-07-03 / 2019-01-12 / 2024-04-10 )</p>
+  <p class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="CSS">CSS></a> Counters
+  </p>
+  <table class="table">
+    <tr>
+      <th style="width:15%"> Property </th>
+      <th style="width:40%"> Value </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td colspan="3"> CSS Counters </td>
+    </tr>
+    <tr>
+      <td> counter-reset </td>
+      <td>
+        none <span class="cssAV">((Default) does nothing)</span><br>
+        <strong>counterId</strong> <i>nr</i> <span class="cssAV">(sets a counter identifier and optionally its content (default <mark>0</mark>))</span><br>
+      </td>
+      <td> - creates a new counter id and optionally sets its value
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 2 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
+          <span><i class="fab fa-safari"></i> 3.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> counter-set </td>
+      <td>
+        none <span class="cssAV">((Default) does nothing)</span><br>
+        <strong>counterId</strong> <i>nr</i> <span class="cssAV">(sets a counter identifier and optionally its content (default <mark>0</mark>))</span><br>
+      </td>
+      <td> 
+        - does the same as <mark>counter-reset</mark> <br>
+        - in theory the <mark>counter-set</mark> is used to initiate the counter and the <mark>counter-reset</mark> is for reseting an ongoing content (but in reality there's not much difference)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 85 </span>
+          <span><i class="fab fa-firefox"></i> 68 </span>
+          <span><i class="fab fa-opera"></i> 71 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 85 </span>
+          <span><i class="fab fa-safari"></i> NO </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td> counter-increment </td>
+      <td>
+        none <span class="cssAV">((Default) does nothing)</span><br>
+        <strong>counterId</strong> <i>nr</i> <span class="cssAV">(increments/decrements the <reqval>counterId</reqval> value (default increment value <mark>1</mark>))</span><br>
+      </td>
+      <td> 
+        - increments/decrements the <reqval>counterId</reqval> value (decrement example <mark>counter-increment: <reqval>counterId</reqval> -1</mark>)
+        <span id="browserSupport">
+          <span><i class="fab fa-chrome"></i> 4 </span>
+          <span><i class="fab fa-firefox"></i> 2 </span>
+          <span><i class="fab fa-opera"></i> 9.6 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
+          <span><i class="fab fa-safari"></i> 3.1 </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> counter(<strong>counterId</strong>) </td>
+      <td> 
+        - returns the <reqval>cssCounter</reqval> value for the current element <br>
+        - used with the <mark>content</mark> property to display the counter current value
+      </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> counters(<strong>counterId</strong>, "<strong>nestSeparator</strong>") </td>
+      <td>
+        - does the same as <mark>counter()</mark> but recognizes nested list and implement nested counter <br>
+        - used with the <mark>content</mark> property to display the counter current value
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <a href="http://www.w3schools.com/css/css_counters.asp" target="_blank">W3Schools CSS Counters </a>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <ul class="simpleList">
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+    </ul>
+  <pre>
+// HTML -------
+    &lt;ul class="simpleList"&gt;
+        &lt;li&gt;item&lt;/li&gt;
+        &lt;li&gt;item&lt;/li&gt;
+        &lt;li&gt;item&lt;/li&gt;
+    &lt;/ul&gt;
+  
+  
+// CSS -----------
+    .simpleList {
+        counter-reset: listCounter 0;            // initialize counter
+    }
+    
+    .simpleList li:before {
+        counter-increment: listCounter 1;        // increment value (by <mark>1</mark>)
+            content: counter(listCounter) " ";   // append counter value
+    }
+  </pre>
+  <ol class="nesteList">
+    <li>item</li>
+    <li>item
+      <ol class="nesteList">
+        <li>item</li>
+        <li>item</li>
+        <li>item
+          <ol class="nesteList">
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+          </ol>
+        </li>
+        <li>item</li>
+      </ol>
+    </li>
+    <li>item</li>
+    <li>item</li>
+  </ol>
+  <ol class="nesteList">
+    <li>item</li>
+    <li>item</li>
+  </ol>
+  <pre>
+// HTML ------------------------
+    &lt;ol class="nesteList"&gt;
+      &lt;li&gt;item&lt;/li&gt;
+      &lt;li&gt;item
+        &lt;ol class="nesteList"&gt;
+          &lt;li&gt;item&lt;/li&gt;
+          &lt;li&gt;item&lt;/li&gt;
+          &lt;li&gt;item
+            &lt;ol class="nesteList"&gt;
+              &lt;li&gt;item&lt;/li&gt;
+              &lt;li&gt;item&lt;/li&gt;
+              &lt;li&gt;item&lt;/li&gt;
+            &lt;/ol&gt;
+          &lt;/li&gt;
+          &lt;li&gt;item&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;item&lt;/li&gt;
+      &lt;li&gt;item&lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;ol class="nesteList"&gt;
+      &lt;li&gt;item&lt;/li&gt;
+      &lt;li&gt;item&lt;/li&gt;
+    &lt;/ol&gt;
+    
+    
+// CSS ----------------------
+    .nestedList {
+        counter-reset: listCounter 0;
+    }
+    
+    .nestedList li:before {
+        counter-increment: listCounter 1;
+        content: counters(listCounter, '.');
+    }
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 class="header"> Simple CSS Counter </h4>
+    <div id="counter">
+      <p> One simple paragraph </p>
+      <p> Second simple paragraph </p>
+      <p> Third simple paragraph </p>
+    </div>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML -----------
+    &lt;div id="counter"&gt;
+        &lt;p&gt; One simple paragraph &lt;/p&gt;
+        &lt;p&gt; Second simple paragraph &lt;/p&gt;
+        &lt;p&gt; Third simple paragraph &lt;/p&gt;
+    &lt;/div&gt;
+    
+    
+// CSS ------------
+    #counter{
+        counter-reset: count;
+    }
+    #counter p::before{
+        counter-increment: count;
+        content: "line" counter(count);
+        text-decoration: underline;                 // inserted element styled
+    }
+    </pre>
+    </details>
+    <!-------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Nesting CSS Counter </h4>
+    <div id="nested-counter">
+      <h3> (Heading three) </h3>
+      <h4> (Heading four) </h4>
+      <h5> (Heading five) </h5>
+      <h5> (Heading five) </h5>
+      <h5> (Heading five) </h5>
+      <h5> (Heading five) </h5>
+      <h4> (Heading four) </h4>
+      <h5> (Heading five) </h5>
+      <h3> (Heading three) </h3>
+      <h4> (Heading four) </h4>
+      <h5> (Heading five) </h5>
+      <h5> (Heading five) </h5>
+      <h5> (Heading five) </h5>
+      <h4> (Heading four) </h4>
+      <h5> (Heading five) </h5>
+      <h5> (Heading five) </h5>
+      <h4> (Heading four) </h4>
+      <h5> (Heading five) </h5>
+      <h3> (Heading three) </h3>
+      <h4> (Heading four) </h4>
+      <h5> (Heading five) </h5>
+      <h5> (Heading five) </h5>
+      <h5> (Heading five) </h5>
+      <h5> (Heading five) </h5>
+    </div>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML -------------
+    &lt;div id="nested-counter"&gt;
+        &lt;h3&gt; (Heading three) &lt;/h3&gt;
+            &lt;h4&gt; (Heading four) &lt;/h4&gt;
+                &lt;h5&gt; (Heading five) &lt;/h5&gt;
+                &lt;h5&gt; (Heading five) &lt;/h5&gt;
+                &lt;h5&gt; (Heading five) &lt;/h5&gt;
+                &lt;h5&gt; (Heading five) &lt;/h5&gt;
+            &lt;h4&gt; (Heading four) &lt;/h4&gt;
+                &lt;h5&gt; (Heading five) &lt;/h5&gt;
+        &lt;h3&gt; (Heading three) &lt;/h3&gt;
+            &lt;h4&gt; (Heading four) &lt;/h4&gt;
+                &lt;h5&gt;> (Heading five) &lt;/h5&gt;
+                &lt;h5&gt; (Heading five) &lt;/h5&gt;
+                &lt;h5&gt; (Heading five) &lt;/h5&gt;
+            &lt;h4&gt; (Heading four) &lt;/h4&gt;
+                &lt;h5&gt; (Heading five) &lt;/h5&gt;
+                &lt;h5&gt; (Heading five) &lt;/h5&gt;
+            &lt;h4&gt; (Heading four) &lt;/h4&gt;
+                &lt;h5&gt; (Heading five) &lt;/h5&gt;
+        &lt;h3&gt; (Heading three) &lt;/h3&gt;
+            &lt;h4&gt; (Heading four) &lt;/h4&gt;
+                &lt;h5&gt; (Heading five) &lt;/h5&gt;
+                &lt;h5&gt; (Heading five) &lt;/h5&gt;
+                &lt;h5&gt; (Heading five) &lt;/h5&gt;
+                &lt;h5&gt;> (Heading five) &lt;/h5&gt;
+    &lt;/div&gt;
+    
+    
+// CSS ----------------------------
+        #nested-counter{
+            counter-reset: main;                                // initialize "main" counter
+        }
+        #nested-counter h3::before{                             // "main" counter will increment and inserted before every "h3" elements
+            counter-increment: main;                    
+            content: "-" counter(main);
+        }
+        #nested-counter h3{
+            counter-reset: subs;                                // initialize "main" counter
+        }
+        #nested-counter h4::before{
+            counter-increment: subs;
+            content: "-" counter(main) "." counter(subs);       // counters are grouped and inserted 
+        }
+        #nested-counter h4{
+            counter-reset: sub-subs;
+        }
+        #nested-counter h5::before{
+            counter-increment: sub-subs;
+            content: " -" counter(main) "." counter(subs) ".." counter(sub-subs);
+        }
+        </pre>
+    </details>
+    <!-------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Count children elements with the <mark>counters()</mark> CSS function </u></h4>
+    <div id="list-count">
+      <ul>
+        <li>item</li>
+        <li>item
+          <ul>
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+            <ul>
+              <li>item</li>
+              <li>item</li>
+              <li>item</li>
+            </ul>
+            <li>item</li>
+          </ul>
+        <li>item</li>
+        <li>item</li>
+      </ul>
+
+      <ul>
+        <li>item</li>
+        <li>item</li>
+      </ul>
+    </div>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML ------
+    &lt;div id="list-count"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;item&lt;/li&gt;
+            &lt;li&gt;item
+            &lt;ul&gt;
+                &lt;li&gt;item&lt;/li&gt;
+                &lt;li&gt;item&lt;/li&gt;
+                &lt;li&gt;item&lt;/li&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;item&lt;/li&gt;
+                    &lt;li&gt;item&lt;/li&gt;
+                    &lt;li&gt;item&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;li&gt;item&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;li&gt;item&lt;/li&gt;
+            &lt;li&gt;item&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;ul&gt;
+            &lt;li&gt;item&lt;/li&gt;
+            &lt;li&gt;item&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    
+    
+// CSS --------
+    #list-count ul{
+        list-style-type: none;
+        counter-reset: list;
+    }
+    #list-count li::before{
+        counter-increment: list;
+        content: counters(list, " | ") " - ";
+    }
+    </pre>
+    </details>
+    <!-------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Set multiple counters and change step value </u></h4>
+    <p class="countParagraphs"> myParagraph </p>
+    <p class="countParagraphs"> myParagraph </p>
+    <p class="countParagraphs"> myParagraph </p>
+    <p class="countParagraphs"> myParagraph </p>
+    <span class="countSpans"> mySpan </span><br>
+    <span class="countSpans"> mySpan </span><br>
+    <span class="countSpans"> mySpan </span><br>
+    <span class="countSpans"> mySpan </span>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML ------------
+    &lt;p class="countParagraphs"&gt; myParagraph &lt;/p&gt;
+    &lt;p class="countParagraphs"&gt; myParagraph &lt;/p&gt;
+    &lt;p class="countParagraphs"&gt; myParagraph &lt;/p&gt;
+    &lt;p class="countParagraphs"&gt; myParagraph &lt;/p&gt;
+    &lt;span class="countSpans"&gt; mySpan &lt;/span&gt;&lt;br&gt;
+    &lt;span class="countSpans"&gt; mySpan &lt;/span&gt;&lt;br&gt;
+    &lt;span class="countSpans"&gt; mySpan &lt;/span&gt;&lt;br&gt;
+    &lt;span class="countSpans"&gt; mySpan &lt;/span&gt;
+    
+    
+// CSS ----------------
+    body {
+        counter-reset: countP countSpan 5;          // multiple counter set, second counter initialized "5"
+    }
+    .countParagraphs::before {
+        counter-increment: countP 2;                // counter increment changed 
+        content: counter(countP);
+        color: yellow;
+    }
+    .countSpans::before {
+        counter-increment: countSpan -1;            // negative counter increment
+        content: counter(countSpan);
+        color: darkgreen;
+    }
+        </pre>
+    </details>
+    <!-------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>counter()</mark> VS <mark>counters()</mark> TEST </h4>
+    <p> - the <mark>counter()</mark> function does not handle nested elements, it simply counts and returns the value for the elements what are targeted </p>
+    <ul class="t_counter">
+      <li>item</li>
+      <li>item
+        <ul>
+          <li>item</li>
+          <li>item</li>
+          <li>item
+            <ul>
+              <li>item</li>
+              <li>item</li>
+            </ul>
+            <ul>
+              <li>item</li>
+              <li>item</li>
+              <li>item</li>
+            </ul>
+          </li>
+          <li>item</li>
+        </ul>
+      </li>
+      <li>item</li>
+      <li>item</li>
+    </ul>
+    <ul class="t_counter">
+      <li>item</li>
+      <li>item</li>
+    </ul>
+    <p> - the <mark>counters()</mark> function recognizes nested elements, it returns the <u>nested values for nested elements</u></p>
+    <ul class="nest_counter">
+      <li>item</li> <!-- 1     -->
+      <li>item <!-- 2     -->
+        <ul class="nest_counter">
+          <li>item</li> <!-- 2.1   -->
+          <li>item</li> <!-- 2.2   -->
+          <li>item <!-- 2.3   -->
+            <ul class="nest_counter">
+              <li>item</li> <!-- 2.3.1 -->
+              <li>item</li> <!-- 2.3.2 -->
+            </ul>
+            <ul class="nest_counter">
+              <li>item</li> <!-- 2.3.1 -->
+              <li>item</li> <!-- 2.3.2 -->
+              <li>item</li> <!-- 2.3.3 -->
+            </ul>
+          </li>
+          <li>item</li> <!-- 2.4   -->
+        </ul>
+      </li>
+      <li>item</li> <!-- 3     -->
+      <li>item</li> <!-- 4     -->
+    </ul>
+    <ul class="nest_counter">
+      <li>item</li> <!-- 1     -->
+      <li>item</li> <!-- 2     -->
+    </ul>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML ---------------------------
+    &lt;ul class="t_counter"&gt;                        // the "counter()" function counts how many "&lt;li&gt;" elements has this parent simply (no need to target every parent element)
+      &lt;li&gt;item&lt;/li&gt;         
+      &lt;li&gt;item              
+        &lt;ul&gt;
+          &lt;li&gt;item&lt;/li&gt;      
+          &lt;li&gt;item&lt;li&gt;      
+          &lt;li&gt;item           
+            &lt;ul&gt;
+              &lt;li&gt;item&lt;/li&gt;  
+              &lt;li&gt;item&lt;/li&gt;  
+            &lt;/ul&gt;
+            &lt;ul&gt;
+              &lt;li&gt;item&lt;/li&gt;  
+              &lt;li&gt;item&lt;/li&gt;  
+              &lt;li&gt;item&lt;/li&gt;  
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;item&lt;/li&gt;      
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li>item&lt;/li&gt;          
+      &lt;li>item&lt;/li&gt;          
+    &lt;/ul&gt;
+    &lt;ul class="t_counter"&gt;
+      &lt;li&gt;item&lt;/li&gt;          
+      &lt;li&gt;item&lt;/li&gt;           
+    &lt;/ul&gt;
+    
+  // count nested list items ---------
+    &lt;ul class="nest_counter"&gt;                     // the "counters()" function counts and returns nested children, therefore every parent element must be targeted
+      &lt;li&gt;item&lt;/li&gt;         
+      &lt;li&gt;item                                    // the following list is PART of this list item!!!!!! 
+        &lt;ul class="nest_counter"&gt;                 // the "counters()" function counts and returns nested children, therefore every parent element must be targeted
+          &lt;li&gt;item&lt;/li&gt;      
+          &lt;li&gt;item&lt;li&gt;                      
+          &lt;li&gt;item                                // the following lists are PART of this list item!!!!!!       
+            &lt;ul class="nest_counter"&gt;             // the "counters()" function counts and returns nested children, therefore every parent element must be targeted
+              &lt;li&gt;item&lt;/li&gt;  
+              &lt;li&gt;item&lt;/li&gt;  
+            &lt;/ul&gt;
+            &lt;ul class="nest_counter"&gt;             // the "counters()" function counts and returns nested children, therefore every parent element must be targeted
+              &lt;li&gt;item&lt;/li&gt;  
+              &lt;li&gt;item&lt;/li&gt;  
+              &lt;li&gt;item&lt;/li&gt;  
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;item&lt;/li&gt; 
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li>item&lt;/li&gt;          
+      &lt;li>item&lt;/li&gt;          
+    &lt;/ul&gt;
+    &lt;ul class="nest_counter"&gt;
+      &lt;li&gt;item&lt;/li&gt;          
+      &lt;li&gt;item&lt;/li&gt;           
+    &lt;/ul&gt;
+    
+    
+// CSS --------------
+    html {
+        counter-reset: t_counter 0;                     // counter variable for the "counter()" function can be declared nearly anywhere (acts as a simple variable)
+    }
+    .t_counter, .nest_counter {
+        list-style-type: none;
+        border: double 3px black;
+        margin: 0;
+        background-color: lightcoral;
+    }
+    .t_counter ul, .nest_counter ul {
+        list-style-type: none;
+    }
+    .t_counter li::before {
+        counter-increment: t_counter 1;
+        content: counter(t_counter) " ";
+        color: yellow;
+    }
+    
+// nested counter "counters()" function    
+    .nest_counter {                                     // counter variable for the "counters()" function must be declared at every parent elemet in ordet properly create nested counters
+        counter-reset: nestCounter 0;
+    }
+    .nest_counter li::before {
+        counter-increment: nestCounter 1;
+        content: counters(nestCounter, "-") " ";
+        color: yellow;
+    }
+        </pre>
+    </details>
+    <!-------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> <mark>counter()</mark> another TEST </h4>
+    <p id="childCount"> this paragraph has
+      <span>one child</span> and
+      <i>another child</i> and
+      <b> this last child has <span>even more child</span> </b>
+    </p>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+// HTML -----------------
+    &lt;p id="childCount"&gt; this paragraph has
+        &lt;span&gt;one child&lt;/span&gt; and 
+        &lt;i&gt;another child&lt;/i&gt; and
+        &lt;b&gt; this last child has &lt;span&gt;even more child&lt;/span&gt; &lt;/b&gt;
+    &lt;/p&gt;
+    
+    
+// CSS --------------
+    #childCount {
+        counter-reset: childCount 0;
+    }
+    #childCount *::before {
+        counter-increment: childCount 1;
+        content: counter(childCount) "(";
+        color: white;
+        font-weight: bold;
+    }
+    #childCount *::after {
+        content: ")";
+        color: white;
+        font-weight: bold;
+    }
+        </pre>
+    </details>
+  </details>
+  <br><br>
+  
+  
+</body>
+
+</html>
