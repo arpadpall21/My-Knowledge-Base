@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title> Terminal (Bash, Zsh) </title>
+  <title> Bash & Zsh </title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="styles.css">
@@ -12,9 +12,9 @@
 </head>
 
 <body>
-  <h1> Terminal (Bash, Zsh) (ver 4.0.0) </h1>
+  <h1> Bash & Zsh </h1>
   <p> Updated ( 2020-04-03 )</p>
-  <p class="sitenav"> <a href="../index.html">MySite></a> Terminal (Bash, Zsh) </p>
+  <p class="sitenav"> <a href="../index.html">MySite></a> Bash & Zsh </p>
   <p class="subSite"><a href="#compiling">Compiling Executables</a> </p>
   <p class="subSite"><a href="#compression">Compression</a> </p>
   <p class="subSite"> <a href="#compression">Compression</a> </p>
@@ -113,6 +113,10 @@
         data on the screen <br>
         - (<small>-a</small>) appends the data to the specified file(s)
       </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td colspan="2" id="general_commands"> General Commands </td>
@@ -264,8 +268,20 @@
         and 15 minutes </td>
     </tr>
     <tr>
-      <td> whereis <strong>cmd</strong> </td>
-      <td> - locates the binaries and the manual files of the command </td>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> which <strong>cmd</strong> </td>
+      <td> - searches <strong>cmd</strong> in directories listend on the <mark>$PATH</mark> environment variable </td>
+    </tr>
+    <tr>
+      <td> where <strong>cmd</strong> </td>
+      <td> - searches <strong>cmd</strong> in directories listend on the <mark>$PATH</mark> environment variable </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td colspan="2" id="users_and_groups"> Users and Groups </td>
@@ -404,6 +420,10 @@
       <td> - list the currently <u>logged-in users</u> (<mark>w</mark> provides more information) </td>
     </tr>
     <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td colspan="2" id="process_management"> Process Management </td>
     </tr>
     <tr>
@@ -464,6 +484,10 @@
     <tr>
       <td> top </td>
       <td> - shows running processes <u>in real time</u> </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td colspan="2" id="services"> Services (Daemons) (<mark>systemctl</mark> is the successor of <mark>service</mark>) </td>
@@ -537,6 +561,10 @@
     <tr>
       <td> systemctl stop <strong>serviceName</strong> </td>
       <td> - stops the specified service </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td colspan="2" id="environment_variables"> Environment Variables </td>
@@ -632,6 +660,10 @@
     <tr>
       <td> unset <strong>envKey</strong> </td>
       <td> - removes the specified environment varaible </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td colspan="2" id="file_system"> File System </td>
@@ -893,6 +925,10 @@
       </td>
     </tr>
     <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td colspan="2" id="compression"> Compression </td>
     </tr>
     <tr>
@@ -1000,6 +1036,10 @@
         files) </td>
     </tr>
     <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td colspan="2" id="package_managers"> Package Managers </td>
     </tr>
     <tr>
@@ -1054,6 +1094,10 @@
       <td> - prints informations about the specified package </td>
     </tr>
     <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td colspan="2" style="background-color:burlywood;">
         dpkg <br>
         package installer (part of apt)
@@ -1074,6 +1118,10 @@
     <tr>
       <td> <em>dpkg</em> -l <i>package</i> </td>
       <td> - prints all packages on the system (or the specified one) </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td colspan="2" style="background-color:burlywood;">
@@ -1121,6 +1169,10 @@
     <tr>
       <td> <em>snap</em> find <i>package</i> </td>
       <td> - lists some available snaps (packages) or searches for a specified one </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td colspan="2" style="background-color:burlywood;">
@@ -1178,6 +1230,10 @@
         - (<small>stop <i>service</i></small>) stops the specified service and unregisters it from the lauch at login (boot) <br>
         - (<small>restart <i>service</i></small>) stops and starts the specified service and registers it to lauch at login (boot)
       </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td colspan="2" id="networking"> Networking </td>
@@ -1308,6 +1364,10 @@
       <td> - <i class="fas fa-download"></i> traces the netwrok routes to the specified address </td>
     </tr>
     <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td colspan="2" id="compiling"> Compiling Executables </td>
     </tr>
     <tr>
@@ -1368,7 +1428,7 @@
       </td>
     </tr>
     <tr>
-      <td> [<strong>char</strong>...] </td>
+      <td> [<strong>char</strong><optval>...</optval>] </td>
       <td> - matches one character (any of the enclosed character(s) (ex: <mark>[aex]</mark> matches <mark>a</mark>
         <mark>e</mark> <mark>x</mark>))
       </td>
@@ -1379,9 +1439,13 @@
         other character than <mark>a</mark> <mark>b</mark> <mark>c</mark> <mark>d</mark> <mark>e</mark>)) </td>
     </tr>
     <tr>
-      <td> [!<strong>char</strong>...] </td>
+      <td> [!<strong>char</strong><optval>...</optval>] </td>
       <td> - negative match one character (any other than the enclosed character(s) (ex: <mark>[!aex]</mark> matches any
         other character than <mark>a</mark> <mark>e</mark> <mark>x</mark>)) </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td colspan="2"> Globs (pathnames expressed with Wildcards) </td>

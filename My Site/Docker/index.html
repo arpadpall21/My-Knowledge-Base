@@ -552,7 +552,7 @@
   <!--------------------------------------------------------------------------------------------->
   <h2 class="headerExtra"><u> Docker file-system </u></h2>
   <img src="types-of-mounts.png" height="220">
-  <p> - each container has its own file system (a union fs = isolated part within the host's fs), files stored in the container live as long as the container exist </p>
+  <p> - each container has its own file system (a union fs = isolated part within the host's fs), stored data is lost once the container stops </p>
   <p> - we can use different external storages (volumes, mounts and tmpfs) and mount them inside the container (regardless of the mount type the data looks the same inside the container) </p>
   <p> - externally mounted storages obscures (hides) the cotainer's fs (files stored in the container layer will be kept in background) </p>
   <h3 class="header"> Volumes </h3>

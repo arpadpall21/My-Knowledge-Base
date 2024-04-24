@@ -6,17 +6,17 @@
   <title> Routing Traffic on the Network </title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
-  <script src="../../../Assets/scriptPages.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
 </head>
 
 <body>
   <h1> Routing Traffic on the Network </h1>
   <p> Updated ( 2020-02-20 / 2024-01-11 )</p>
-  <p class="sitenav"> <a href="../../../index.html" title="home">MySite></a>
-    <a href="../../index.html" title="Learn WebDesign">Computer Science></a>
-    <a href="../index.html" title="Learn WebDesign">Network and Internet></a> Routing Traffic on the Network
-  </p>
+  <nav class="sitenav"> 
+    <a href="../../index.html">MySite></a>
+    <a href="../index.html">Network></a> Routing Traffic on the Network
+  </nav>
   <h2 style="color:green;"><u> Notes : </u></h2>
   <details class="example" id="notes">
     <summary> Notes :</summary>
@@ -45,7 +45,7 @@
   <p> - the idea is to use a single public IPv4 and distribute the traffic into multiple private IPs (enlarges the IPv4 space)</p>
   <h3 class="header"> Static NAT/PAT </h3>
   <p> - We statically configure the translation table </p>
-  <p> - Bidirectional -> traffic initialization works from both sides (because the translation rule is statically set) </p>
+  <p> - Bidirectional -> requests can be initialized from both sides (because the translation rule is statically set) </p>
   <img src="Static PAT.png" alt="Static PAT" height="200">
   <h3 class="header"> Dynamic NAT/PAT </h3>
   <p> - We set a pool of connection in both sides (private, public) and the router automatically routes connections </p>

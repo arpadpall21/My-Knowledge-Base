@@ -3,19 +3,18 @@
 
 <head>
   <meta charset="utf-8">
-  <title> Demo </title>
+  <title> SSH </title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-  <link rel="stylesheet" href="  ">
-  <script src="   "></script>
+  <link rel="stylesheet" href="../Assets/stylesPages.css">
+  <script src="../Assets/scriptPages.js"></script>
 </head>
 
 <body>
-  <h1> Demo </h1>
-  <p> Updated ( yyyy-mm-dd ) </p>
-  <nav class="sitenav"> <a>site navigation></a>
-    <a>site navigation></a>
+  <h1> SSH </h1>
+  <p> Updated ( 2024-04-21 ) </p>
+  <nav class="sitenav">
+    <a href="../index.html" title="home">My Site></a> SSH
   </nav>
   <br>
 
@@ -76,13 +75,114 @@ stage 3 :
     - organize and document down everything 
 ---------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
+    - SSH stands for Secure Shell. It is a network protocol that provides a secure and encrypted way to access and communicate with a remote server. SSH is commonly used by system administrators and developers to remotely access servers and execute commands, transfer files, and manage network services. SSH uses public-key cryptography to authenticate the remote server and the client, and to establish a secure connection between them. This encryption ensures that the data transmitted over the network is protected from eavesdropping and tampering.
+    
+    - MacOS has SSH built in 
+
+
+
+--- CLI ---
+    ssh [options] <user>@<hostname|IP> [command]         -> connect to server
+        - [options]
+            -p <port> 
+            -i <privateKeyFile>
+            -v                                    // verbose
+
+
+    ssh-keygen [options]
+        - [options]
+            -t rsa|dsa|ecdsa|ed25519              // encryption type
+            -b <number>                           // key size (ex: 2048, 4096)
+            -C <string>                           // comment, usually the owner's email in order to identify the owner
+            -f <fileName>                         // filename for the key (Defaut: <mark>id_rsa</mark> & <mark>id_rsa.pub</mark>)
+
+
+    ssh-copy-id [optoin] <user>@<hostname|IP>     // copies the public key to the remote server ()
+        - [options]
+            -i <pubKeyFile>
+            -p <port>
+
+
+
+--- config file --- (.ssh/config)
+    - config file used to setup mulitple hosts
+    
+    ssh <reqval>name</reqval> -> to connect host listend in config file
+    
+    -- SYNTAX --
+    Host <reqval>name</reqval>
+      Hostname <reqval>host|ip</reqval>
+      Port <reqval>port</reqval>
+      User <reqval>user</reqval>
+    
+    <optval>...</optval>
+
+
+
+authorized_keys (file in .ssh directory)
+    - contains public keys (connecting client's private key is mathced agains these keys)
+    - this is how the server check valid key pairs
+
+
+- the user I'm using to login on the remote system needs to be present 
+    - we can login with admin@remote_host in order to login as administrator (root?)
+
+
+- so all this gibrish pirvate/pulic key stuff is to login a remote system without password basically
+    - this approach is consiedred much more secure over password authentication because the password must be transmitted and easier to brute force
+
+
+---------------------------------------------------------
+SSH AGENT 
+- ssh-agent
+    - stores SSH keys for the SSh client 
+    - when the client initiale a request this is where it checks for stored ssh kesy
+    
+    ssh-add <pathToShhPrivateKey>         <- adds private key to the ssh agent
+    ssh-add -l                            <- list all added private keys
+    ssh-add -D                            <- deletes all added private keys
+
+
+    eval "$(ssh-agent -s)"                <- start ssh agent 
+    pgrep ssh-agent                       <- check if agent is running
+    
 
 
 
 ?????????????????????????????????????????????????????????????????????????????????????????????
 WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
 ?????????????????????????????????????????????????????????????????????????????????????????????
-    - 
+    - what exactly is the known_hosts file in .ssh directory
+        - this is where ssh store connected fingerprints so at next connection no need to type password (ect...)
+        - remembers connected hosts (known_hosts -> I already know about it)
+        - also if the server changes on the same IP address we want to connect this will result to bring up a warningn (security)
+    
+    - what fingerprint means exactly?
+        - short key that helps identify a longer public key
+        - short summary or hash value of a digital message or document.
+    
+    
+    - so MacOS doesn't uses the known_hosts file ?
+        - on MacOS does this working differently?
+    
+    
+    - what about SSH server?
+    
+    
+    - /var/log/auth.log
+        - this is where the connection is logged (check)
+    
+    
+    - what's the deal with no passord better security question?
+    
+    
+    - 1st login as administrator in the system the system automatically generates the pirvatre/plublic key (but using this connection is not recommended)
+    
+    
+    - where can I configure allowed remote users to access the system?
+    
+    
+    - check out this command on ubuntu 'sudo systemctl status firewalld'
     
 -->
 

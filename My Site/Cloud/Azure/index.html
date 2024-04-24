@@ -27,7 +27,7 @@
 
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
   <p> Concpets: </p>
-  <p class="indent-lv1"> - SKU (Stock Keeping Unit) describes the resource characteristics </p>
+  <p class="indent-lv1"> - SKU (Stock Keeping Unit) describes the resource characteristics (type, class) (ex: VM SKU <mark>Standard_B1ls</mark> is a 1 CPU virtual machine, <mark>Standard_D2s_v4</mark> is a 2 CPU virtual machine) </p>
   <h2 class="header"> Azure Global Infrastructure </h2>
   <p> - <mark class="mark">Azure backbone</mark> -> Azure's global network </p>
   <p> - <mark class="mark">Region</mark> -> Geographic location where one or multiple data centers reside </p>
@@ -50,13 +50,11 @@
     <mark class="mark">Resource Group</mark> are esentially logical containers providing hierarchical resource
     management
   </p>
-  <p class="indent-lv2"> - <mark class="mark">Resource</mark> -> is the service itself </p>
-  <p style="text-indent: 60px"> - is represented as a json template </p>
-  <p style="text-indent: 60px"> - must be part of one (but only one) resource group </p>
-  <p style="text-indent: 60px"> - resource groups can contain resources in different regions </p>
-  <p style="text-indent: 60px"> - <u>not all resources are available in all regions</u> (except global services) </p>
-  <p style="text-indent: 60px"> - resources can be tagged (key value pair), but <u>not inherited in the hierarchy</u>
-    (can be used ofr additional resource management, automation, etc...)</p>
+  <p class="indent-lv2"> - <mark class="mark">Resource</mark> -> he service itself </p>
+  <p class="indent-lv3"> - described as JSON template </p>
+  <p class="indent-lv3"> - must be part of one (but only one) resource group </p>
+  <p class="indent-lv3"> - resource groups can contain resources in different regions </p>
+  <p class="indent-lv3"> - <u>not all resources are available in all regions</u> (except global services) </p>
   <p> - <mark class="mark">Scope</mark> -> a hierarchy level with all its sub levels (ex: subsription scope means all
     its resource groups and all those resource groups' resources) </p>
   <p class="indent-lv2"> - all resources within a scope are affected by the scope's roles and policies </p>
@@ -81,16 +79,16 @@
   <p class="indent-lv2"> - a <mark class="mark">tenant</mark> is an Active Directory instance in Azure (identity that identifies an organization or a person) </p>
   <p class="indent-lv2"> - a tenant contains uses, groups, app and control their access </p>
   <p class="indent-lv2"> - we also can use it for web app (and probably other service) identification as well </p>
+  <p class="indent-lv1"> <mark class="mark">Security Principal</mark> -> defines an identity in Azure that can be: </p>
+  <p class="indent-lv2"> - <mark class="mark">User</mark> </p>
+  <p class="indent-lv2"> - <mark class="mark">Group</mark> </p>
+  <p class="indent-lv2"> - <mark class="mark">Service Principal</mark> -> a registered application (app object representation in Active
+    Directory (Entra ID)) (app what is registered in Active Directory for Authentication) </p>
+  <p class="indent-lv3"> - Application Registration -> the app registration in Active Directory </p>
+  <p class="indent-lv3"> - Enterprise Applicaton -> basically a list of service principals </p>
   <p class="indent-lv1"> <mark class="mark">Role</mark> -> defines what acctions the assigned identity can do (built-in or custom)</p>
   <p class="indent-lv2"> - in Azure managing access to resources is done by RBAC (Role Based Access Control) </p>
-  <p class="indent-lv2"> - a role must be assigned to a security principal and a scope (defines who and where) </p>
-  <p class="indent-lv2"> - a Security Principal is basically an identity in Azure what can be: </p>
-  <p class="indent-lv3"> - User </p>
-  <p class="indent-lv3"> - Group </p>
-  <p class="indent-lv3"> - Service Principal -> a registered application (app object representation in Active
-    Directory (Entra ID)) (app what is registered in Active Directory for Authentication) </p>
-  <p class="indent-lv4"> - Application Registration -> the app registration in Active Directory </p>
-  <p class="indent-lv4"> - Enterprise Applicaton -> basically a list of service principals </p>
+  <p class="indent-lv2"> - a role must be assigned to a Security Principal and a scope (defines who and where) </p>
   <p class="indent-lv1"> <mark class="mark">Policy</mark> -> a resource limitation (ex: location restriction) (can be built-in or custom) </p>
   <p class="indent-lv2"> - Can be assigned to a scope </p>
   <p class="indent-lv2"> - Applying a policy to a scope will affect current and future resources only (but we can
@@ -185,7 +183,7 @@
   <p style="text-indent:90px;"> - tables contain rows (entities) size limit 1MB </p>
   <p style="text-indent:120px;"> - rows contain properties (up to 255) </p>
   <p style="text-indent:150px;"> - default row properties are <mark class="mark">PartitionKey</mark>, <mark class="mark">RowKey</mark> and <mark class="mark">Timestamp</mark> (the PartitionKey and RowKey are indexed for fast data access) </p>
-  <p class="indent-lv1"> <mark class="mark">CosmosDB</mark> works like table storage but offers far better global availability and speed (also mor pricy) </p>
+  <p class="indent-lv1"> <mark class="mark">CosmosDB</mark> works like table storage but offers much better global availability, speed and privacy features </p>
   <p class="indent-lv2"> - accessible by various query languages (SQL, MongoDB, Table Storage, Cassandra, Germlin) </p>
   <p class="indent-lv1"> <mark class="mark">Disk Storage</mark> various (HDD, SSD) attachable storage form VMs </p>
   <p class="indent-lv2"> - <mark class="mark">Managed disk</mark> -> the underlying storage is automatically managed, it also has better availability and security than unmanaged disk </p>

@@ -1,615 +1,620 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Jest </title> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
-    <link rel="stylesheet" href="../Assets/stylesPages.css"> 
-    <script src="../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Jest </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Jest v27.0.0 (ver 4.0.0) </h1>
-    <p> Updated ( 2021-07-18 / 2021-08-16 )</p>
-    <p class="sitenav"> <a href="../index.html">MySite></a> Jest </p>
-      <p class="subSite"><a href="Mocking, Stabbing & Spying/index.html"> Mocking, Spying & Stabbing > </a></p>
-<table class="table">
-<caption>
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
+  <h1> Jest v27.0.0 (ver 4.0.0) </h1>
+  <p> Updated ( 2021-07-18 / 2021-08-16 )</p>
+  <nav class="sitenav">
+    <a href="../../../index.html">MySite></a>
+    <a href="../../index.html">Node.js></a> Jest
+  </nav>
+  <p class="subSite"><a href="Mocking, Stabbing & Spying/index.html"> Mocking, Spying & Stabbing > </a></p>
+  <table class="table">
+    <caption>
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
     <tr>
-        <th style="width:30%;"> Command </th>
-        <th> Description </th>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
     </tr>
-<tr class="05.01">
-  <td> 
-        <em>npm install</em> jest</em> 
-  </td>
-  <td> 
-        - installs jest 
-  </td>
-</tr>
-<tr class="05.02">
-  <td> 
-         <strong>fileName</strong>.test.js
-  </td>
-  <td> 
-        - jest file, jest will run these files in the current directory for testing 
-  </td>
-</tr>
-<tr class="05.03">
-  <td> 
+    <tr class="05.01">
+      <td>
+        <em>npm install</em> jest</em>
+      </td>
+      <td>
+        - installs jest
+      </td>
+    </tr>
+    <tr class="05.02">
+      <td>
+        <strong>fileName</strong>.test.js
+      </td>
+      <td>
+        - jest file, jest will run these files in the current directory for testing
+      </td>
+    </tr>
+    <tr class="05.03">
+      <td>
         jest <small>[--coverage]</small> <small>[--config=<i>path</i>]</small> <i>pathToJestFile</i>
-  </td>
-  <td> 
+      </td>
+      <td>
         - runs all jest files in the current direcoty or the specified file (the <mark>.test.js</mark> extension can be omitted ex: (<mark>jest someTest.test.js</mark> can be called as <mark>jest someTest</mark>)) <br>
         - (<small>--coverage</small>) also runs the coverage test (prints the result at the end of the test) <br>
         - (<small>--config=<i>path</i></small>) specifies the location of the <mark>jest.config.js</mark> file (Default: current directory)
-  </td>
-</tr>
-</table>
-  <br>
-<table class="table">
-<caption>
-    Scopes and Teardown
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
-    <tr>
-        <th style="width:30%;"> Method / Property </th>
-        <th> Description </th>
+      </td>
     </tr>
-<tr class="05.0">
-  <td colspan="2"> Scope Methods </td>
-</tr>
-<tr class="05.01">
-  <td> 
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      Scopes and Teardown
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Method / Property </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.0">
+      <td colspan="2"> Scope Methods </td>
+    </tr>
+    <tr class="05.01">
+      <td>
         describe<small class="openable">[.only|skip<div>
-          <p> <small>only</small> - only this describe scope will be executed in this test file </p>
-          <p> <small>skip</small> - skips this describe scope </p>
-        </div>]</small>(<strong>name:str</strong>, <strong>fn</strong>)
-  </td>
-  <td> 
-        - creates a scope for test suites 
-  </td>
-</tr>
-<tr class="10.01">
-  <td> 
+            <p> <small>only</small> - only this describe scope will be executed in this test file </p>
+            <p> <small>skip</small> - skips this describe scope </p>
+          </div>]</small>(<strong>name:str</strong>, <strong>fn</strong>)
+      </td>
+      <td>
+        - creates a scope for test suites
+      </td>
+    </tr>
+    <tr class="10.01">
+      <td>
         describe<small class="openable">[.only|skip<div>
-          <p> <small>only</small> - only this describe scope will be executed in this test file </p>
-          <p> <small>skip</small> - skips this describe scope </p>
-        </div>]</small>.each([<strong>item:any</strong>, <i>...</i>])(<strong class="openable">name:str<div>
-          <p> <mark>%s</mark> - String </p>
-          <p> <mark>%d</mark> - Number </p>
-          <p> <mark>%i</mark> - Integer </p>
-          <p> <mark>%f</mark> - Floating point value </p>
-          <p> <mark>%j</mark> - JSON </p>
-          <p> <mark>%o</mark> - Object </p>
-          <p> <mark>%#</mark> - Index of the test case </p>
-          <p> <mark>%%</mark> - single percent sign ('%'). This does not consume an argument </p>
-        </div></strong>, <strong>fn</strong>)
-  </td>
-  <td> 
-        - runs a describe scope for each <strong>item</strong> 
-  </td>
-</tr>
-<tr class="20.01">
-  <td colspan="2"> Teardown Methods </td>
-</tr>
-<tr class="20.02">
-  <td> 
+            <p> <small>only</small> - only this describe scope will be executed in this test file </p>
+            <p> <small>skip</small> - skips this describe scope </p>
+          </div>]</small>.each([<strong>item:any</strong>, <i>...</i>])(<strong class="openable">name:str<div>
+            <p> <mark>%s</mark> - String </p>
+            <p> <mark>%d</mark> - Number </p>
+            <p> <mark>%i</mark> - Integer </p>
+            <p> <mark>%f</mark> - Floating point value </p>
+            <p> <mark>%j</mark> - JSON </p>
+            <p> <mark>%o</mark> - Object </p>
+            <p> <mark>%#</mark> - Index of the test case </p>
+            <p> <mark>%%</mark> - single percent sign ('%'). This does not consume an argument </p>
+          </div></strong>, <strong>fn</strong>)
+      </td>
+      <td>
+        - runs a describe scope for each <strong>item</strong>
+      </td>
+    </tr>
+    <tr class="20.01">
+      <td colspan="2"> Teardown Methods </td>
+    </tr>
+    <tr class="20.02">
+      <td>
         afterAll(<strong>fn|asyncFn</strong>, <i class="openable">timeout:nr<div>
-          <p> - default <mark>5000</mark> </p>
-        </div></i>)
-  </td>
-  <td> 
-        - runs the <strong>fn</strong> after all test suite cases in this scope  
-  </td>
-</tr>
-<tr class="20.03">
-  <td> 
+            <p> - default <mark>5000</mark> </p>
+          </div></i>)
+      </td>
+      <td>
+        - runs the <strong>fn</strong> after all test suite cases in this scope
+      </td>
+    </tr>
+    <tr class="20.03">
+      <td>
         afterEach(<strong>fn|asyncFn</strong>, <i class="openable">timeout:nr<div>
-          <p> - default <mark>5000</mark> </p>
-        </div></i>)
-  </td>
-  <td> 
-        - runs the <strong>fn</strong> after each test suite cases in this scope  
-  </td>
-</tr>
-<tr class="25.01">
-  <td> 
+            <p> - default <mark>5000</mark> </p>
+          </div></i>)
+      </td>
+      <td>
+        - runs the <strong>fn</strong> after each test suite cases in this scope
+      </td>
+    </tr>
+    <tr class="25.01">
+      <td>
         beforeAll(<strong>fn|asyncFn</strong>, <i class="openable">timeout:nr<div>
-          <p> - default <mark>5000</mark> </p>
-        </div></i>)
-  </td>
-  <td> 
-        - runs the <strong>fn</strong> before all test suite cases in this scope  
-  </td>
-</tr>
-<tr class="25.02">
-  <td> 
+            <p> - default <mark>5000</mark> </p>
+          </div></i>)
+      </td>
+      <td>
+        - runs the <strong>fn</strong> before all test suite cases in this scope
+      </td>
+    </tr>
+    <tr class="25.02">
+      <td>
         beforeEach(<strong>fn|asycnFn</strong>, <i class="openable">timeout:nr<div>
-          <p> - default <mark>5000</mark> </p>
-        </div></i>)
-  </td>
-  <td> 
-        - runs the <strong>fn</strong> before each test suite cases in this scope  
-  </td>
-</tr>
-</table>
-  <br>
-<table class="table">
-<caption>
-    Test Cases   
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
-    <tr>
-        <th style="width:30%;"> Method </th>
-        <th> Description </th>
+            <p> - default <mark>5000</mark> </p>
+          </div></i>)
+      </td>
+      <td>
+        - runs the <strong>fn</strong> before each test suite cases in this scope
+      </td>
     </tr>
-<tr class="05.01">
-  <td> 
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      Test Cases
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Method </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td>
         test|it<small class="openable">[.only|skip<div>
-          <p> <small>only</small> - runs only this test case in the file </p>
-          <p> <small>skip</small> - skips this test case </p>
-        </div>]</small>(<strong>name:str</strong>, <strong>fn|asyncFn</strong>, <i class="openable">timeout:nr<div>
-          <p> - default <mark>5000</mark> </p>
-        </div></i>)
-  </td>
-  <td> 
-        - runs a test case (executes its <strong>fn</strong>) and prints the test <strong>name</strong> in the output  
-  </td>
-</tr>
-<tr class="10.01">
-  <td> 
+            <p> <small>only</small> - runs only this test case in the file </p>
+            <p> <small>skip</small> - skips this test case </p>
+          </div>]</small>(<strong>name:str</strong>, <strong>fn|asyncFn</strong>, <i class="openable">timeout:nr<div>
+            <p> - default <mark>5000</mark> </p>
+          </div></i>)
+      </td>
+      <td>
+        - runs a test case (executes its <strong>fn</strong>) and prints the test <strong>name</strong> in the output
+      </td>
+    </tr>
+    <tr class="10.01">
+      <td>
         test|it<small class="openable">[.only|skip<div>
-          <p> <small>only</small> - runs only this test case in the file </p>
-          <p> <small>skip</small> - skips this test case </p>
-        </div>]</small>.each([<strong>item:any</strong>, <i>...</i>])(<strong class="openable">name:str<div>
-          <p> <mark>%s</mark> - String </p>
-          <p> <mark>%d</mark> - Number </p>
-          <p> <mark>%i</mark> - Integer </p>
-          <p> <mark>%f</mark> - Floating point value </p>
-          <p> <mark>%j</mark> - JSON </p>
-          <p> <mark>%o</mark> - Object </p>
-          <p> <mark>%#</mark> - Index of the test case </p>
-          <p> <mark>%%</mark> - single percent sign ('%'). This does not consume an argument </p>
-        </div></strong>, <strong>fn|asyncFn</strong>, <i class="openable">timeout:nr<div>
-          <p> - default <mark>5000</mark> </p>
-        </div></i>)
-  </td>
-  <td> 
-        - runs a test case for each <strong>item</strong> (executes its <strong>fn</strong>) and prints the test <strong>name</strong> in the output  
-  </td>
-</tr>
-<tr class="15.01">
-  <td> 
+            <p> <small>only</small> - runs only this test case in the file </p>
+            <p> <small>skip</small> - skips this test case </p>
+          </div>]</small>.each([<strong>item:any</strong>, <i>...</i>])(<strong class="openable">name:str<div>
+            <p> <mark>%s</mark> - String </p>
+            <p> <mark>%d</mark> - Number </p>
+            <p> <mark>%i</mark> - Integer </p>
+            <p> <mark>%f</mark> - Floating point value </p>
+            <p> <mark>%j</mark> - JSON </p>
+            <p> <mark>%o</mark> - Object </p>
+            <p> <mark>%#</mark> - Index of the test case </p>
+            <p> <mark>%%</mark> - single percent sign ('%'). This does not consume an argument </p>
+          </div></strong>, <strong>fn|asyncFn</strong>, <i class="openable">timeout:nr<div>
+            <p> - default <mark>5000</mark> </p>
+          </div></i>)
+      </td>
+      <td>
+        - runs a test case for each <strong>item</strong> (executes its <strong>fn</strong>) and prints the test <strong>name</strong> in the output
+      </td>
+    </tr>
+    <tr class="15.01">
+      <td>
         test|it.todo(<strong>name:str</strong>)
-  </td>
-  <td> 
+      </td>
+      <td>
         - writes a todo <strong>name</strong> at the end of the of the output (used to write notes in the test)
-  </td>
-</tr>
-</table>
-  <br>
-<table class="table">
-<caption>
-    Expect and Matchers 
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
-    <tr>
-        <th style="width:30%;"> Method </th>
-        <th> Description </th>
+      </td>
     </tr>
-<tr class="05.01">
-  <td colspan="2"> Expect </td>
-</tr>
-<tr class="05.02">
-  <td> 
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      Expect and Matchers
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Method </th>
+      <th> Description </th>
+    </tr>
+    <tr class="05.01">
+      <td colspan="2"> Expect </td>
+    </tr>
+    <tr class="05.02">
+      <td>
         expect(<strong>exp</strong>).<strong>matcherMethod</strong>
-  </td>
-  <td>
+      </td>
+      <td>
         - the <strong>exp</strong> return a result which is verified by the <strong>matcherMethod</strong> to check if the test passes of fails <br>
-        - used inside a <mark>test</mark> function 
-  </td>
-</tr>
-<tr class="15.01">
-  <td> 
+        - used inside a <mark>test</mark> function
+      </td>
+    </tr>
+    <tr class="15.01">
+      <td>
         expect.assertions(<strong>nr</strong>)
-  </td>
-  <td>
+      </td>
+      <td>
         - this test case must have <strong>nr</strong> of assertions in order for the test to pass <u>(supports asynchronous code)</u>
-  </td>
-</tr>
-<tr class="10.05">
-  <td> 
+      </td>
+    </tr>
+    <tr class="10.05">
+      <td>
         expect.extend({<strong class="openable">fn(received)<div>
-          <p> - the <strong>received</strong> is the value passed by the expect method preceding this matcher </p>
-          <p> - the function returns an object <mark>{pass:<strong>bol</strong>, message:<strong>fn</strong>}</mark> based on a passed or failed test (<strong>fn</strong> generates and returns the message) </p>
-        </div></strong><i>, ...</i>}) 
-  </td>
-  <td>
+            <p> - the <strong>received</strong> is the value passed by the expect method preceding this matcher </p>
+            <p> - the function returns an object <mark>{pass:<strong>bol</strong>, message:<strong>fn</strong>}</mark> based on a passed or failed test (<strong>fn</strong> generates and returns the message) </p>
+          </div></strong><i>, ...</i>})
+      </td>
+      <td>
         - creates custom <strong>matcherMethod</strong>s that can be used anywhere in the jest scope (just like any other matcher methods)
-  </td>
-</tr>
-<tr class="15.02">
-  <td> 
+      </td>
+    </tr>
+    <tr class="15.02">
+      <td>
         expect.hasAssertions()
-  </td>
-  <td>
+      </td>
+      <td>
         - this test case must have at least one assertion for the test to pass <u>(supports asynchronous code)</u>
-  </td>
-</tr>
-<tr class="20.01">
-  <td colspan="2"> Matchers Methods </td>
-</tr>  
-<tr class="20.02">
-  <td> 
+      </td>
+    </tr>
+    <tr class="20.01">
+      <td colspan="2"> Matchers Methods </td>
+    </tr>
+    <tr class="20.02">
+      <td>
         not<strong>.matcherMethod</strong>
-  </td>
-  <td> 
-        - negates the <strong>matcherMethod</strong> 
-  </td>
-</tr>
-<tr class="25.01">
-  <td> 
+      </td>
+      <td>
+        - negates the <strong>matcherMethod</strong>
+      </td>
+    </tr>
+    <tr class="25.01">
+      <td>
         toBe(<strong>val</strong>)
-  </td>
-  <td> 
-        - the expected value should be equal <strong>val</strong> (uses the <mark>===</mark> operator) 
-  </td>
-</tr>
-<tr class="35.05">
-  <td> 
+      </td>
+      <td>
+        - the expected value should be equal <strong>val</strong> (uses the <mark>===</mark> operator)
+      </td>
+    </tr>
+    <tr class="35.05">
+      <td>
         toBeCloseTo(<strong>nr</strong>)
-  </td>
-  <td> 
+      </td>
+      <td>
         - the expected value should close to the <strong>nr</strong> (ex: <mark>0.1 + 0.2</mark> will be close to <mark>0.3</mark>)
-  </td>
-</tr>
-<tr class="30.04">
-  <td> 
+      </td>
+    </tr>
+    <tr class="30.04">
+      <td>
         toBeDefined()
-  </td>
-  <td> 
-        - the expected value should be <u>other than</u> <mark>undefined</mark> 
-  </td>
-</tr>
-<tr class="30.06">
-  <td> 
+      </td>
+      <td>
+        - the expected value should be <u>other than</u> <mark>undefined</mark>
+      </td>
+    </tr>
+    <tr class="30.06">
+      <td>
         toBeFalsy()
-  </td>
-  <td> 
+      </td>
+      <td>
         - the expected value should be evaluated <mark>false</mark>
-  </td>
-</tr>
-<tr class="35.01">
-  <td> 
+      </td>
+    </tr>
+    <tr class="35.01">
+      <td>
         toBeGreaterThan(<strong>nr</strong>)
-  </td>
-  <td> 
-        - the expected value should be greater than the <strong>nr</strong>   
-  </td>
-</tr>
-<tr class="35.02">
-  <td> 
+      </td>
+      <td>
+        - the expected value should be greater than the <strong>nr</strong>
+      </td>
+    </tr>
+    <tr class="35.02">
+      <td>
         toBeGreaterThanOrEqual(<strong>nr</strong>)
-  </td>
-  <td> 
-        - the expected value should be greater or equal than the <strong>nr</strong>   
-  </td>
-</tr>
-<tr class="50.02">
-  <td> 
+      </td>
+      <td>
+        - the expected value should be greater or equal than the <strong>nr</strong>
+      </td>
+    </tr>
+    <tr class="50.02">
+      <td>
         toBeInstanceOf(<strong>class</strong>)
-  </td>
-  <td> 
+      </td>
+      <td>
         - the expected data should be an instance of <strong>class</strong>
-  </td>
-</tr>
-<tr class="35.03">
-  <td> 
+      </td>
+    </tr>
+    <tr class="35.03">
+      <td>
         toBeLessThan(<strong>nr</strong>)
-  </td>
-  <td> 
-        - the expected value should be less than the <strong>nr</strong>   
-  </td>
-</tr>
-<tr class="35.04">
-  <td> 
+      </td>
+      <td>
+        - the expected value should be less than the <strong>nr</strong>
+      </td>
+    </tr>
+    <tr class="35.04">
+      <td>
         toBeLessThanOrEqual(<strong>nr</strong>)
-  </td>
-  <td> 
-        - the expected value should be less or equal than the <strong>nr</strong>   
-  </td>
-</tr>
-<tr class="30.02">
-  <td> 
+      </td>
+      <td>
+        - the expected value should be less or equal than the <strong>nr</strong>
+      </td>
+    </tr>
+    <tr class="30.02">
+      <td>
         toBeNaN()
-  </td>
-  <td> 
+      </td>
+      <td>
         - the expected value should be <mark>NaN</mark>
-  </td>
-</tr>
-<tr class="30.01">
-  <td> 
+      </td>
+    </tr>
+    <tr class="30.01">
+      <td>
         toBeNull()
-  </td>
-  <td> 
-        - the expected value should be <mark>null</mark> 
-  </td>
-</tr>
-<tr class="30.05">
-  <td> 
+      </td>
+      <td>
+        - the expected value should be <mark>null</mark>
+      </td>
+    </tr>
+    <tr class="30.05">
+      <td>
         toBeTruthy()
-  </td>
-  <td> 
+      </td>
+      <td>
         - the expected value should be evaluated <mark>true</mark>
-  </td>
-</tr>
-<tr class="30.03">
-  <td> 
+      </td>
+    </tr>
+    <tr class="30.03">
+      <td>
         toBeUndefined()
-  </td>
-  <td> 
-        - the expected value should be <mark>undefined</mark> 
-  </td>
-</tr>
-<tr class="40.02">
-  <td> 
+      </td>
+      <td>
+        - the expected value should be <mark>undefined</mark>
+      </td>
+    </tr>
+    <tr class="40.02">
+      <td>
         toContain(<strong>val</strong>)
-  </td>
-  <td> 
-        - the expected data should be iterable that contains <strong>val</strong>   
-  </td>
-</tr>
-<tr class="40.03">
-  <td> 
+      </td>
+      <td>
+        - the expected data should be iterable that contains <strong>val</strong>
+      </td>
+    </tr>
+    <tr class="40.03">
+      <td>
         toContainEqual(<strong>data:any</strong>)
-  </td>
-  <td> 
-        - the expected data should be an Array, one of the Array item should have the same data structure as <strong>data</strong> 
-  </td>
-</tr>
-<tr class="25.02">
-  <td> 
+      </td>
+      <td>
+        - the expected data should be an Array, one of the Array item should have the same data structure as <strong>data</strong>
+      </td>
+    </tr>
+    <tr class="25.02">
+      <td>
         toEqual(<strong>data</strong>)
-  </td>
-  <td> 
+      </td>
+      <td>
         - the expected data should be equal <strong>data</strong> <u>(recursively checks the expected data (used to compare objects))</u>
-  </td>
-</tr>
-<tr class="45.01">
-  <td> 
+      </td>
+    </tr>
+    <tr class="45.01">
+      <td>
         toHaveLength(<strong>nr</strong>)
-  </td>
-  <td> 
-        - the expected data should be iterable and should contain <strong>nr</strong> items 
-  </td>
-</tr>
-<tr class="50.01">
-  <td> 
+      </td>
+      <td>
+        - the expected data should be iterable and should contain <strong>nr</strong> items
+      </td>
+    </tr>
+    <tr class="50.01">
+      <td>
         toHaveProperty(<strong class="openable">propPath:str<div>
-          <p> - ex: an object nested property <mark>{p1:{n2:21}}</mark> can be reached as <mark>p1.n2</mark> </p> 
-        </div></strong>)
-  </td>
-  <td> 
+            <p> - ex: an object nested property <mark>{p1:{n2:21}}</mark> can be reached as <mark>p1.n2</mark> </p>
+          </div></strong>)
+      </td>
+      <td>
         - the expected data should be an object having <strong>propPath</strong> (nested properties can be reached)
-  </td>
-</tr>
-<tr class="40.01">
-  <td> 
+      </td>
+    </tr>
+    <tr class="40.01">
+      <td>
         toMatch(<strong>str|regExp</strong>)
-  </td>
-  <td> 
-        - the expected data should match <strong>str|regExp</strong>    
-  </td>
-</tr>
-<tr class="40.02">
-  <td> 
+      </td>
+      <td>
+        - the expected data should match <strong>str|regExp</strong>
+      </td>
+    </tr>
+    <tr class="40.02">
+      <td>
         toMatchObject(<strong>obj</strong>)
-  </td>
-  <td> 
+      </td>
+      <td>
         - the expected data should be an object, the <strong>obj</strong> should contain at least one key/value pair that is present in the expected object <br>
         - recusively checks for nested objects too (ex: <mark>expect( {p1:{n1:22, n2:23}} ).toMatchObject( {p1:{n2:23}} )</mark> will pass) <br>
         - does not work with Arrays (ex: <mark>expect( {p1:[1, 2]} ).toMatchObject( {p1:[1]} )</mark> will fail)
-  </td>
-</tr>
-<tr class="25.03">
-  <td> 
+      </td>
+    </tr>
+    <tr class="25.03">
+      <td>
         toStrictEqual(<strong>data</strong>)
-  </td>
-  <td> 
+      </td>
+      <td>
         - the expected data should be equal <strong>data</strong> <u>(recursively checks the expected data (used to compare objects))</u> <br>
         - stricter version of <mark>toEqual</mark> (<mark>{}</mark> not equal <mark>{p1:undefined}</mark>, strict object check = class instances are not equal literal objects)
-  </td>
-</tr>
-<tr class="55.01">
-  <td> 
+      </td>
+    </tr>
+    <tr class="55.01">
+      <td>
         toThrow(<i class="openable">err<div>
-          <p> - thrown error object </p>
-          <p> - the thrown error object's class (ex: <mark>Error</mark>) </p>
-          <p> - the thrown error's message as a string </p>
-          <p> - the thrown error's message as <strong>regExp</strong> </p>
-        </div></i>)
-  </td>
-  <td> 
+            <p> - thrown error object </p>
+            <p> - the thrown error object's class (ex: <mark>Error</mark>) </p>
+            <p> - the thrown error's message as a string </p>
+            <p> - the thrown error's message as <strong>regExp</strong> </p>
+          </div></i>)
+      </td>
+      <td>
         - the expected data should be a function that optionally throws an error <br>
         - <u class="openable">(wrap the expected function in the <mark>expect</mark>)<div>
-    <p> - <mark>expect(function(){ return <strong>fnThatThrows</strong>() }).toThrow()</mark></p>
-    <p> - function inside <mark>expect()</mark> must not be called, jest calls it for you </p>
-    </div></u>
-  </td>
-</tr>
-<tr class="60.01">
-  <td colspan="2"> Expect can be used in <mark>toEqual()</mark> / <mark>toBeCalledWith()</mark> matchers </td>
-</tr>
-<tr class="70.02">
-  <td> 
-        expect.any(<strong>constructor</strong>)
-  </td>
-  <td>
-        - the expected value should be created by the <strong>constructor</strong>  
-  </td>
-</tr>
-<tr class="70.01">
-  <td> 
-        expect.anything()
-  </td>
-  <td>
-        - the expected value should NOT be <mark>undefined</mark> or <mark>null</mark> 
-  </td>
-</tr>
-<tr class="65.02">
-  <td> 
-        expect<small>[.not]</small>.arrayContaining(<strong>arr</strong>)
-  </td>
-  <td>
-        - the expect array should contain items in <strong>arr</strong> (shallow comparison)
-  </td>
-</tr>
-<tr class="65.01">
-  <td> 
-        expect<small>[.not]</small>.objectContaining(<strong>obj</strong>)
-  </td>
-  <td>
-        - the expected object should contain key/value pairs in <strong>obj</strong> (shallow comparison)
-  </td>
-</tr>
-<tr class="60.02">
-  <td> 
-        expect<small>[.not]</small>.stringContaining(<strong>str</strong>)
-  </td>
-  <td>
-        - expect value should contain <strong>str</strong> part
-  </td>
-</tr>
-<tr class="60.03">
-  <td> 
-        expect<small>[.not]</small>.stringMatching(<strong>str|regExp</strong>)
-  </td>
-  <td>
-        - the expect value should contain <strong>str|regExp</strong> part
-  </td>
-</tr>
-</table>
-  <br>
-<table class="table">
-<caption>
-    Fake Timers (managing virtual time)
-    <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-</caption>
-    <tr>
-        <th style="width:30%;"> Method  </th>
-        <th> Description </th>
+            <p> - <mark>expect(function(){ return <strong>fnThatThrows</strong>() }).toThrow()</mark></p>
+            <p> - function inside <mark>expect()</mark> must not be called, jest calls it for you </p>
+          </div></u>
+      </td>
     </tr>
-<tr class="10.02">
-  <td> 
-      jest.advanceTimersByTime(<strong>ms:nr</strong>)
-  </td>
-  <td> 
-      - advances the virtual time by the specified milliseconds then stops it 
-  </td>
-</tr>
-<tr class="10.03">
-  <td> 
-      jest.advanceTimersToNextTimer(<i class="openable">step:nr<div>
-        <p> - if there's a <mark>setInterval</mark> advances the virtual time by how many cycles the interval takes </p>
-        <p> - if there's no <mark>setInterval</mark> this option has no effect </p>
-      </div></i>)
-  </td>
-  <td> 
-      - advances the virtual time till the shortest pending timer is exhausted then stops is <br>
-      - for <mark>setInterval</mark> takes only the first cycle length  
-  </td>
-</tr>
-<tr class="20.02">
-  <td> 
-      jest.clearAllTimers()
-  </td>
-  <td> 
-      - removes all pending timers from the system (pending <mark>setTimeout</mark> / <mark>setInterval</mark> / <mark>setImmediate</mark>, <mark>process.nextTick()</mark> and pending promises)  
-  </td>
-</tr>
-<tr class="25.02">
-  <td> 
-      jest.getRealSystemTime()
-  </td>
-  <td> 
-      - returns the real UTC system time in milliseconds  
-  </td>
-</tr>
-<tr class="20.01">
-  <td> 
-      jest.getTimerCount()
-  </td>
-  <td> 
-      - returns the number of pending timers (pending <mark>setTimeout</mark> / <mark>setInterval</mark> / <mark>setImmediate</mark>, <mark>process.nextTick()</mark> and pending promises)  
-  </td>
-</tr>
-<tr class="15.01">
-  <td> 
-      jest.runAllTicks()
-  </td>
-  <td> 
-      - exhausts functions set by <mark>process.nextTick()</mark>  
-  </td>
-</tr>
-<tr class="10.01">
-  <td> 
-      jest.runAllTimers()
-  </td>
-  <td> 
-      - starts the virtual time and elapses it untill all timers are exhausted (<mark>setTimeout</mark> / <mark>setImmediate</mark> / <mark>process.nextTick()</mark> and all promises) <br>
-      - also exhaust timers scheduled by other timers , <u><mark>setInterval</mark> will be called infinitely </u> 
-  </td>
-</tr>
-<tr class="10.04">
-  <td> 
-      jest.runOnlyPendingTimers()
-  </td>
-  <td> 
-      - advances the virtual time till the longest pending timer is exhausted then stops it <br>
-      - for <mark>setInterval</mark> takes only the first cycle length  
-  </td>
-</tr>
-<tr class="25.01">
-  <td> 
-      jest.setSystemTime(<strong>nr:ms|date:obj</strong>)
-  </td>
-  <td> 
-      - sets the virtual (fake) time to the specified time <u>(does not trigger pending timers)</u>
-  </td>
-</tr>
-<tr class="05.01">
-  <td> 
-      jest.useFakeTimers()
-  </td>
-  <td> 
-      - globally enables fake (virtual) time in Jest (allows the use of <mark>setTimeout</mark> / <mark>setInterval</mark> / <mark>setImmediate</mark> / <mark>process.nextTick()</mark> and virtual time management) <u>(this call is hoisted)</u> <br>
-      - also affects <mark>Date</mark> instances what shows the current virtual time when created 
-  </td>
-</tr>
-<tr class="05.02">
-  <td> 
-      jest.useRealTimers()
-  </td>
-  <td> 
-      - globally disables Jest fake timers, also resets the virtual time  <u>(this call is hoisted)</u>
-  </td>
-</tr>
-</table>
-    <br>
-    <details class="example" id="notes">
+    <tr class="60.01">
+      <td colspan="2"> Expect can be used in <mark>toEqual()</mark> / <mark>toBeCalledWith()</mark> matchers </td>
+    </tr>
+    <tr class="70.02">
+      <td>
+        expect.any(<strong>constructor</strong>)
+      </td>
+      <td>
+        - the expected value should be created by the <strong>constructor</strong>
+      </td>
+    </tr>
+    <tr class="70.01">
+      <td>
+        expect.anything()
+      </td>
+      <td>
+        - the expected value should NOT be <mark>undefined</mark> or <mark>null</mark>
+      </td>
+    </tr>
+    <tr class="65.02">
+      <td>
+        expect<small>[.not]</small>.arrayContaining(<strong>arr</strong>)
+      </td>
+      <td>
+        - the expect array should contain items in <strong>arr</strong> (shallow comparison)
+      </td>
+    </tr>
+    <tr class="65.01">
+      <td>
+        expect<small>[.not]</small>.objectContaining(<strong>obj</strong>)
+      </td>
+      <td>
+        - the expected object should contain key/value pairs in <strong>obj</strong> (shallow comparison)
+      </td>
+    </tr>
+    <tr class="60.02">
+      <td>
+        expect<small>[.not]</small>.stringContaining(<strong>str</strong>)
+      </td>
+      <td>
+        - expect value should contain <strong>str</strong> part
+      </td>
+    </tr>
+    <tr class="60.03">
+      <td>
+        expect<small>[.not]</small>.stringMatching(<strong>str|regExp</strong>)
+      </td>
+      <td>
+        - the expect value should contain <strong>str|regExp</strong> part
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      Fake Timers (managing virtual time)
+      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
+    </caption>
+    <tr>
+      <th style="width:30%;"> Method </th>
+      <th> Description </th>
+    </tr>
+    <tr class="10.02">
+      <td>
+        jest.advanceTimersByTime(<strong>ms:nr</strong>)
+      </td>
+      <td>
+        - advances the virtual time by the specified milliseconds then stops it
+      </td>
+    </tr>
+    <tr class="10.03">
+      <td>
+        jest.advanceTimersToNextTimer(<i class="openable">step:nr<div>
+            <p> - if there's a <mark>setInterval</mark> advances the virtual time by how many cycles the interval takes </p>
+            <p> - if there's no <mark>setInterval</mark> this option has no effect </p>
+          </div></i>)
+      </td>
+      <td>
+        - advances the virtual time till the shortest pending timer is exhausted then stops is <br>
+        - for <mark>setInterval</mark> takes only the first cycle length
+      </td>
+    </tr>
+    <tr class="20.02">
+      <td>
+        jest.clearAllTimers()
+      </td>
+      <td>
+        - removes all pending timers from the system (pending <mark>setTimeout</mark> / <mark>setInterval</mark> / <mark>setImmediate</mark>, <mark>process.nextTick()</mark> and pending promises)
+      </td>
+    </tr>
+    <tr class="25.02">
+      <td>
+        jest.getRealSystemTime()
+      </td>
+      <td>
+        - returns the real UTC system time in milliseconds
+      </td>
+    </tr>
+    <tr class="20.01">
+      <td>
+        jest.getTimerCount()
+      </td>
+      <td>
+        - returns the number of pending timers (pending <mark>setTimeout</mark> / <mark>setInterval</mark> / <mark>setImmediate</mark>, <mark>process.nextTick()</mark> and pending promises)
+      </td>
+    </tr>
+    <tr class="15.01">
+      <td>
+        jest.runAllTicks()
+      </td>
+      <td>
+        - exhausts functions set by <mark>process.nextTick()</mark>
+      </td>
+    </tr>
+    <tr class="10.01">
+      <td>
+        jest.runAllTimers()
+      </td>
+      <td>
+        - starts the virtual time and elapses it untill all timers are exhausted (<mark>setTimeout</mark> / <mark>setImmediate</mark> / <mark>process.nextTick()</mark> and all promises) <br>
+        - also exhaust timers scheduled by other timers , <u><mark>setInterval</mark> will be called infinitely </u>
+      </td>
+    </tr>
+    <tr class="10.04">
+      <td>
+        jest.runOnlyPendingTimers()
+      </td>
+      <td>
+        - advances the virtual time till the longest pending timer is exhausted then stops it <br>
+        - for <mark>setInterval</mark> takes only the first cycle length
+      </td>
+    </tr>
+    <tr class="25.01">
+      <td>
+        jest.setSystemTime(<strong>nr:ms|date:obj</strong>)
+      </td>
+      <td>
+        - sets the virtual (fake) time to the specified time <u>(does not trigger pending timers)</u>
+      </td>
+    </tr>
+    <tr class="05.01">
+      <td>
+        jest.useFakeTimers()
+      </td>
+      <td>
+        - globally enables fake (virtual) time in Jest (allows the use of <mark>setTimeout</mark> / <mark>setInterval</mark> / <mark>setImmediate</mark> / <mark>process.nextTick()</mark> and virtual time management) <u>(this call is hoisted)</u> <br>
+        - also affects <mark>Date</mark> instances what shows the current virtual time when created
+      </td>
+    </tr>
+    <tr class="05.02">
+      <td>
+        jest.useRealTimers()
+      </td>
+      <td>
+        - globally disables Jest fake timers, also resets the virtual time <u>(this call is hoisted)</u>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-        <p> - concurrent (parallel) testing <mark>test.concurrent()</mark> works but it's still buggy [Experimental TESTED: 2021-07-31] </p>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <p> <a href="https://jestjs.io/" target="_blank">JestJs.io </a></p>
-    <p> <a href="https://jestjs.io/docs/configuration" target="_blank">Jest config (jestjs.io) </a></p> 
-<h2 style="color:green;"><u> Remember This : </u></h2>
+    <p> - concurrent (parallel) testing <mark>test.concurrent()</mark> works but it's still buggy [Experimental TESTED: 2021-07-31] </p>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p> <a href="https://jestjs.io/" target="_blank">JestJs.io </a></p>
+  <p> <a href="https://jestjs.io/docs/configuration" target="_blank">Jest config (jestjs.io) </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
   <p> - Jest runs all <mark>describe</mark> scopes (before all test cases) then runs all tests, the execution order is from top-to-bottom <u>not in scoping order</u> </p>
   <p> - unfortunately <mark>Date</mark> instances don't track the virtually elapsed time! They only show the virtual time at the moment when they are created </p>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
   <p> - Jest is a JavaScript testing framework </p>
   <p> - currently [2021-09-05] Jest support only CommonJS modules (ESM module support is still experimental) </p>
   <pre class="syntax">
@@ -618,10 +623,10 @@
     expect(<strong>exp</strong>).<strong>matcherMethod</strong>                                                          // the <strong>exp</strong> is the case what we want to test, the <strong>matcherMethod</strong> checks to outcome   
   })
   </pre>
-<details class="example"> 
-<summary> DEMO </summary>
-  <p> - <mark>jest.test.js</mark> (file) </p>
-  <pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <p> - <mark>jest.test.js</mark> (file) </p>
+    <pre>
   test('addition check-1', function(){
     expect(1 + 1).toBe(2)                                                              // test passes 
   })
@@ -630,12 +635,12 @@
     expect(1 + 1).toBe(3)                                                              // test fails 
   })
   </pre>
-</details>
-<details class="example"> 
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> coverage test </u></h4>
-  <p> - <mark>myTest.test.js</mark> file </p>
-  <pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> coverage test </u></h4>
+    <p> - <mark>myTest.test.js</mark> file </p>
+    <pre>
   const {myFn1, myFn2} = require('./testFn')
   
   test('should run imported functions', function(){
@@ -644,8 +649,8 @@
     
   })
   </pre>
-  <p> - <mark>testFn.js</mark> file </p>
-  <pre>
+    <p> - <mark>testFn.js</mark> file </p>
+    <pre>
   function myFn1(){
     let x = 2;
     let y = 3;
@@ -667,7 +672,7 @@
     myFn2
   }
   </pre>
-  <pre class="cmd">
+    <pre class="cmd">
   pall@Aspire:~/Documents/CodePlus/My Site/Jest/TEST$ jest --coverage
     PASS  ./myTest.test.js
       ✓ should run imported functions (4 ms)
@@ -685,10 +690,10 @@
     Ran all test suites.
   pall@Aspire:~/Documents/CodePlus/My Site/Jest/TEST$ 
   </pre>
-</details>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h2 style="color:darkblue;"><u> Testing Asynchronous code </u></h2>
+  </details>
+  <hr>
+  <!------------------------------------------------------------------------------------------------------>
+  <h2 style="color:darkblue;"><u> Testing Asynchronous code </u></h2>
   <pre class="syntax">
 <span style="color:darkgray;">// asynchronous callback --------------------------------------------------------------</span>
   test(<strong>testLabel:str</strong>, function(done){                                                  // the <mark>done</mark> callback will signal the end of an async task   
@@ -723,10 +728,10 @@
     await expect(<strong>promise</strong>).rejects.<strong>matcherMethod</strong> 
   })
   </pre>
-<details class="example">
-<summary> DEMO </summary>
-  <p> - asynchronous callback </p>
-  <pre>
+  <details class="example">
+    <summary> DEMO </summary>
+    <p> - asynchronous callback </p>
+    <pre>
   const fs = require('fs')
   
   test('should read file', function(done){
@@ -738,8 +743,8 @@
     fs.readFile('testFile.txt', cb)
   })
   </pre>
-  <p> - promises </p>
-  <pre>
+    <p> - promises </p>
+    <pre>
   const fs = require('fs').promises
   const resPromise = Promise.resolve('res')
   const rejPromise = Promise.reject('rej')
@@ -760,8 +765,8 @@
     return expect(rejPromise).rejects.toBe('rej')                                      // the '.rejects' property expects a rejected promise result  
   })
   </pre>
-  <p> - async function </p>
-  <pre>
+    <p> - async function </p>
+    <pre>
   const resPromise = Promise.resolve('res')
   const rejPromise = Promise.reject('rej')
   
@@ -770,12 +775,12 @@
     await expect(rejPromise).rejects.toBe('rej')
   })
   </pre>
-</details>
-<details class="example"> 
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> testing async code </u></h4>
-  <p> - both cases work fine, however the jest specification says that the <mark>done</mark> callback should be used for accurate testing </p>
-  <pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> testing async code </u></h4>
+    <p> - both cases work fine, however the jest specification says that the <mark>done</mark> callback should be used for accurate testing </p>
+    <pre>
   const fs = require('fs')
   
 // -------------------------------------------------------------------------
@@ -797,10 +802,10 @@
     fs.readFile('testFile.txt', cb)
   })
   </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> testing promisses </u></h4>
-  <pre>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> testing promisses </u></h4>
+    <pre>
   const fs = require('fs').promises
   
   test('should read file', function(){
@@ -810,7 +815,7 @@
       })
   })
   </pre>
-  <pre>
+    <pre>
   const resPromise = Promise.resolve('res')
   const rejPromise = Promise.reject('rej')
   
@@ -822,8 +827,8 @@
     return expect(rejPromise).rejects.toBe('rej')
   })
   </pre>
-  <p> - async functions </p>
-  <pre>
+    <p> - async functions </p>
+    <pre>
   const resPromise = Promise.resolve('res')
   const rejPromise = Promise.reject('rej')
 
@@ -832,15 +837,15 @@
     await expect(rejPromise).rejects.toBe('rej')
   })
   </pre>
-</details>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h2 style="color:darkblue;"><u> Configuration </u></h2>
+  </details>
+  <hr>
+  <!------------------------------------------------------------------------------------------------------>
+  <h2 style="color:darkblue;"><u> Configuration </u></h2>
   <p> - there are 2 ways to configure Jest, in the nearest <mark>package.json</mark> file in the top <mark>"jest":{}</mark> object or in a <mark>jest.config.js|ts</mark> file through the <mark>--config</mark> option </p>
-  <p> - <a href="https://jestjs.io/docs/configuration" target="_blank">Jest config options [link]</a></p> 
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h3 style="color:darkblue;"><u> Jest config in <mark>package.json</mark></u></h3>
+  <p> - <a href="https://jestjs.io/docs/configuration" target="_blank">Jest config options [link]</a></p>
+  <hr>
+  <!------------------------------------------------------------------------------------------------------>
+  <h3 style="color:darkblue;"><u> Jest config in <mark>package.json</mark></u></h3>
   <pre>
 // nearest package.json file ----------------------------------------------------------
   {
@@ -853,9 +858,9 @@
   <pre class="cmd">
   apall@apall-notebook:~$ jest                                                         // jest runs with verbose setting enabled 
   </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h3 style="color:darkblue;"><u> Jest config with <mark>jest.config.js</mark></u></h3>
+  <hr>
+  <!------------------------------------------------------------------------------------------------------>
+  <h3 style="color:darkblue;"><u> Jest config with <mark>jest.config.js</mark></u></h3>
   <pre>
 // jest.config.js file ----------------------------------------------------------------
   module.exports = {
@@ -868,17 +873,17 @@
 // jest.config.js file in other directory ---------------------------------------------
   apall@apall-notebook:~$ jest --config=../jest.config.js                              // jest config file path specified on startup    
   </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h2 style="color:darkblue;"><u> Scopes and Teardown </u></h2>
-<h3 style="color:darkblue;"><u> Scope Methods <mark>describe()</mark> / <mark>describe.skip()</mark> / <mark>describe.only()</mark> / <mark>describe.each()()</mark> / <mark>describe.skip.each()()</mark> / <mark>describe.only.each()()</mark> </u></h3>
-<h3 style="color:darkblue;"><u> Teardown Methods <mark>beforeEach()</mark> / <mark>afterEach()</mark> / <mark>beforeAll()</mark> / <mark>afterAll()</mark>  </u></h3>
+  <hr>
+  <!------------------------------------------------------------------------------------------------------>
+  <h2 style="color:darkblue;"><u> Scopes and Teardown </u></h2>
+  <h3 style="color:darkblue;"><u> Scope Methods <mark>describe()</mark> / <mark>describe.skip()</mark> / <mark>describe.only()</mark> / <mark>describe.each()()</mark> / <mark>describe.skip.each()()</mark> / <mark>describe.only.each()()</mark> </u></h3>
+  <h3 style="color:darkblue;"><u> Teardown Methods <mark>beforeEach()</mark> / <mark>afterEach()</mark> / <mark>beforeAll()</mark> / <mark>afterAll()</mark> </u></h3>
   <p> - we can scope our test so test suites are isolated from each other, in Jest scopes are executed from top-to-bottom (not nesting execution order) </p>
   <p> - teardown methods execute their functions at the desired time </p>
   <p> - Jest runs all <mark>describe</mark> scopes (before all test cases) then runs all tests, the execution order is from top-to-bottom <u>not in scoping order</u> </p>
-<details class="example"> 
-<summary> DEMO </summary>
-<!--
+  <details class="example">
+    <summary> DEMO </summary>
+    <!--
   - no test is executed before all describe runs (collection phase)  
   
   
@@ -886,8 +891,8 @@
   - which is the order of describes (top to bottom ???)
 
 -->
-  <p> - all scopes are executed before any test cases </p>
-  <pre>
+    <p> - all scopes are executed before any test cases </p>
+    <pre>
   describe('desc-1', () => {                                                           // Jest first executes all describe cases then all test cases   // -! from top-to-bottom 
     test('test-1 in desc-1', () =>  });                                                // the execution order in this case is...  
                                                                                          // -> desc-1
@@ -911,8 +916,8 @@
     test('test-1 in desc-2', () => {})
   })
   </pre>
-  <p> - <mark>describe()</mark> / <mark>describe.skip()</mark> / <mark>describe.only()</mark> / <mark>describe.each()</mark> / <mark>describe.skip.each()</mark> / <mark>describe.only.each()</mark> </p>
-  <pre>
+    <p> - <mark>describe()</mark> / <mark>describe.skip()</mark> / <mark>describe.only()</mark> / <mark>describe.each()</mark> / <mark>describe.skip.each()</mark> / <mark>describe.only.each()</mark> </p>
+    <pre>
 // describe() -------------------------------------------------------------------------
   describe('some desc 1', () => {                                                      // describe scopes are isolated from each other 
     // some here ...  
@@ -947,8 +952,8 @@
     // some test ...
   })
   </pre>
-  <p> - teardown methods <mark>beforeEach()</mark> / <mark>afterEach()</mark> / <mark>beforeAll()</mark> / <mark>afterAll()</mark> </p>
-  <pre>
+    <p> - teardown methods <mark>beforeEach()</mark> / <mark>afterEach()</mark> / <mark>beforeAll()</mark> / <mark>afterAll()</mark> </p>
+    <pre>
   describe('some description-1', () => {
     beforeEach(() => {                                                                 // runs its function before each test in this scope   
       // some code ...
@@ -980,12 +985,12 @@
     })
   })
   </pre>
-</details>
-<details class="example"> 
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> scope calling order TEST </u></h4>
-  <p> - <mark>describe</mark> scopes are called form top-to-bottom </p>
-  <pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> scope calling order TEST </u></h4>
+    <p> - <mark>describe</mark> scopes are called form top-to-bottom </p>
+    <pre>
   describe('main', function(){
     it('someTest', function(){})
     
@@ -1006,7 +1011,7 @@
     })
   })
   </pre>
-  <pre class="cmd">
+    <pre class="cmd">
   pall@apall-notebook:~/Documents/Pall's Stuff/CodePlus/My Site/Jest/TEST$ ./node_modules/.bin/jest 
     PASS  ./myTest.test.js
       main
@@ -1027,11 +1032,11 @@
     Ran all test suites.
   apall@apall-notebook:~/Documents/Pall's Stuff/CodePlus/My Site/Jest/TEST$ 
   </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>describe.only()</mark> / <mark>describe.skip()</mark> / <mark>describe.each()</mark> / <mark>describe.skip.each()</mark> / <mark>describe.only.each()</mark> / <mark>describe.skip.each()</mark> TEST </u></h4>
-<hr>
-  <pre>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>describe.only()</mark> / <mark>describe.skip()</mark> / <mark>describe.each()</mark> / <mark>describe.skip.each()</mark> / <mark>describe.only.each()</mark> / <mark>describe.skip.each()</mark> TEST </u></h4>
+    <hr>
+    <pre>
 // describe.each()() ------------------------------------------------------------------
   describe.each(['des-1', 'desc-2', 'desc-3'])('name: %s', function(){                 // runs 3 describe scopes (%s = is the name of the current scope)
     test('test', function(){})
@@ -1089,9 +1094,9 @@
     test('test', function(){})
   })
   </pre>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>beforeEach()</mark> / <mark>afterEach()</mark> / <mark>beforeAll()</mark> / <mark>afterAll()</mark> TEST </u></h4>
-  <pre>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>beforeEach()</mark> / <mark>afterEach()</mark> / <mark>beforeAll()</mark> / <mark>afterAll()</mark> TEST </u></h4>
+    <pre>
   beforeEach(function(){
     console.log( 'before-each')
   })
@@ -1113,7 +1118,7 @@
     console.log( 'test-2' )
   })
   </pre>
-  <pre class="cmd">
+    <pre class="cmd">
   pall@apall-notebook:~/Documents/Pall's Stuff/CodePlus/My Site/Jest/TEST$ ./node_modules/.bin/jest 
     PASS  ./myTest.test.js
       ✓ test-1 (2 ms)
@@ -1151,13 +1156,13 @@
     Ran all test suites.
   apall@apall-notebook:~/Documents/Pall's Stuff/CodePlus/My Site/Jest/TEST$ 
   </pre>
-</details>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h2 style="color:darkblue;"><u> Test cases <mark>test()</mark> / <mark>test.only()</mark> / <mark>test.skip()</mark> / <mark>test.each()()</mark> / <mark>test.only.each()()</mark> / <mark>test.skip.each()()</mark> / <mark>test.todo()</mark> </u></h2>
-<details class="example"> 
-<summary> DEMO </summary>
-  <pre>
+  </details>
+  <hr>
+  <!------------------------------------------------------------------------------------------------------>
+  <h2 style="color:darkblue;"><u> Test cases <mark>test()</mark> / <mark>test.only()</mark> / <mark>test.skip()</mark> / <mark>test.each()()</mark> / <mark>test.only.each()()</mark> / <mark>test.skip.each()()</mark> / <mark>test.todo()</mark> </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
   test('some test', function(){
     // expect test case here...
   })
@@ -1197,11 +1202,11 @@
   test('test-4', () => {})
   test('test-5', () => {})
   </pre>
-</details>
-<details class="example"> 
-<summary> Example : </summary>
-<h4 style='color:darkblue'><u> <mark>test()</mark> / <mark>test.only()</mark> / <mark>test.skip()</mark> TEST </u></h4>
-  <pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style='color:darkblue'><u> <mark>test()</mark> / <mark>test.only()</mark> / <mark>test.skip()</mark> TEST </u></h4>
+    <pre>
   test('test-1', function(){
     console.log( 'test1')
   })
@@ -1216,10 +1221,10 @@
     console.log( 'test2')
   })
   </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style='color:darkblue'><u> <mark>test.eac()</mark> / <mark>test.only.each()</mark> / <mark>test.skip.each()</mark> TEST </u></h4>
-  <pre>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style='color:darkblue'><u> <mark>test.eac()</mark> / <mark>test.only.each()</mark> / <mark>test.skip.each()</mark> TEST </u></h4>
+    <pre>
   test.each([1, 2, 3])('test-%d', function(){
     console.log( 'test')                                                               // 3 test cases are executed here 
   })
@@ -1234,10 +1239,10 @@
     console.log( 'test')
   })
   </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style='color:darkblue'><u> <mark>test.todo()</mark> TEST </u></h4>
-  <pre>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style='color:darkblue'><u> <mark>test.todo()</mark> TEST </u></h4>
+    <pre>
   test('test-1', () => {})
   test('test-2', () => {})
   test('test-3', () => {})
@@ -1248,7 +1253,7 @@
   
   test.todo('ok we have 4 tests now')  
   </pre>
-  <pre class="cmd">
+    <pre class="cmd">
   apall@apall-notebook:~/Documents/Pall's Stuff/CodePlus/My Site/Jest/TEST$ ./node_modules/.bin/jest
     PASS  ./myTest.test.js
       ✓ test-1
@@ -1265,15 +1270,15 @@
     Ran all test suites.
   apall@apall-notebook:~/Documents/Pall's Stuff/CodePlus/My Site/Jest/TEST$  
   </pre>
-</details>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h2 style="color:darkblue;"><u> Expect and Matchers  </u></h2>
-<h3 style="color:darkblue"><u> Expect <mark>expect()</mark> / <mark>expect.extend()</mark> / <mark>expect.assertions()</mark> / <mark>expect.hasAssertions()</mark> / <mark>expect.stringContaining()</mark> / <mark>expect.stringMatching()</mark> / <mark>objectContaining()</mark> / <mark>arrayContaining()</mark> / <mark>expect.anything()</mark> / <mark>expect.any()</mark> </u></h3>
-<h3 style="color:darkblue;"><u> Matchers <mark>not</mark> / <mark>toBe()</mark> / <mark>toEqual()</mark> / <mark>toStrictEqual()</mark> / <mark>toBeNull()</mark> / <mark>toBeNaN</mark> / <mark>toBeUndefined()</mark> / <mark>toBeDefined()</mark> / <mark>toBeTruthy()</mark> / <mark>toBeFalsy()</mark> / <mark>toBeGreaterThan()</mark> / <mark>toBeGreaterThanOrEqual()</mark> / <mark>toBeLessThan()</mark> / <mark>toBeLessThanOrEqual()</mark> / <mark>toBeCloseTo()</mark> / <mark>toMatch()</mark> / <mark>toMatchObject</mark> / <mark>toContain()</mark> / <mark>toContainEqual()</mark> / <mark>toHaveLength()</mark> / <mark>toHaveProperty()</mark> / <mark>toBeInstanceOf()</mark> / <mark>toThrow()</mark>  </u></h3>
-<details class="example"> 
-<summary> DEMO </summary>
-  <pre>
+  </details>
+  <hr>
+  <!------------------------------------------------------------------------------------------------------>
+  <h2 style="color:darkblue;"><u> Expect and Matchers </u></h2>
+  <h3 style="color:darkblue"><u> Expect <mark>expect()</mark> / <mark>expect.extend()</mark> / <mark>expect.assertions()</mark> / <mark>expect.hasAssertions()</mark> / <mark>expect.stringContaining()</mark> / <mark>expect.stringMatching()</mark> / <mark>objectContaining()</mark> / <mark>arrayContaining()</mark> / <mark>expect.anything()</mark> / <mark>expect.any()</mark> </u></h3>
+  <h3 style="color:darkblue;"><u> Matchers <mark>not</mark> / <mark>toBe()</mark> / <mark>toEqual()</mark> / <mark>toStrictEqual()</mark> / <mark>toBeNull()</mark> / <mark>toBeNaN</mark> / <mark>toBeUndefined()</mark> / <mark>toBeDefined()</mark> / <mark>toBeTruthy()</mark> / <mark>toBeFalsy()</mark> / <mark>toBeGreaterThan()</mark> / <mark>toBeGreaterThanOrEqual()</mark> / <mark>toBeLessThan()</mark> / <mark>toBeLessThanOrEqual()</mark> / <mark>toBeCloseTo()</mark> / <mark>toMatch()</mark> / <mark>toMatchObject</mark> / <mark>toContain()</mark> / <mark>toContainEqual()</mark> / <mark>toHaveLength()</mark> / <mark>toHaveProperty()</mark> / <mark>toBeInstanceOf()</mark> / <mark>toThrow()</mark> </u></h3>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
 // expect.extend() --------------------------------------------------------------------
   expect.extend({
     toBeNotString(received){                                                           // creating a custom matcher method 
@@ -1363,7 +1368,7 @@
     await expect(myTimeout).resolves.toBe('timeout promise OK!')                       // also works with async code 
   })
   </pre>
-  <pre>
+    <pre>
 // not --------------------------------------------------------------------------------
   test('test', function(){
     expect(2).not.toBe(3)                                                              // test passes 
@@ -1497,11 +1502,11 @@
     expect(testFn).toThrow(Error)                                                      // test passes (the thrown error is an instance of this class)
   })
   </pre>
-</details>
-<details class="example"> 
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> <mark>expect.extend()</mark> TEST </u></h4>
-  <pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> <mark>expect.extend()</mark> TEST </u></h4>
+    <pre>
   expect.extend({
     toBeBiggerThan0(received){
       if(received > 0){
@@ -1547,10 +1552,10 @@
     expect(10).toBeInRangeOf(11, 25)
   })
   </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>expect.assertions()</mark> / <mark>expect.hasAssertions()</mark> TEST </u></h4>
-  <pre>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>expect.assertions()</mark> / <mark>expect.hasAssertions()</mark> TEST </u></h4>
+    <pre>
   const myTimeout = new Promise(function(res, rej){
     setTimeout(function(){
       res('timeout promise OK!')
@@ -1572,10 +1577,10 @@
     await expect(myTimeout).resolves.toBe('timeout promise OK!')                       // assertios() also works with async code 
   })
   </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>expect.stringContaining()</mark> / <mark>expect.StringMatching()</mark> TEST </u></h4>
-  <pre>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>expect.stringContaining()</mark> / <mark>expect.StringMatching()</mark> TEST </u></h4>
+    <pre>
   test('some test-1', function(){
     expect('Kicsi kutya tarka').toEqual(expect.stringContaining('kutya'))              // test passes 
     expect('Kicsi kutya tarka').toEqual(expect.stringContaining('macka'))              // test fails 
@@ -1601,10 +1606,10 @@
     expect(mock).toBeCalledWith(expect.stringContaining('one'), expect.stringContaining('two'))   // test passes 
   })
   </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>expect.objectContaining()</mark> / <mark>expectArrayContaining()</mark> TEST </u></h4>
-  <pre>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>expect.objectContaining()</mark> / <mark>expectArrayContaining()</mark> TEST </u></h4>
+    <pre>
 // expect.objectContaining() ----------------------------------------------------------
   test('obj containing-1', function(){
     expect({p1:21, p2:22}).toEqual(expect.objectContaining({p2:22}))                   // test passes 
@@ -1631,10 +1636,10 @@
     expect([1, 2, 3, 4, 5]).toEqual(expect.arrayContaining([2, 5]))                    // test passes  
   })
   </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>expect.anything()</mark> / <mark>expect.any()</mark> TEST </u></h4>
-  <pre>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>expect.anything()</mark> / <mark>expect.any()</mark> TEST </u></h4>
+    <pre>
 // expect.anything() ------------------------------------------------------------------
   test('anything-1', function(){
     expect(0).toEqual(expect.anything())                                               // test passes
@@ -1668,10 +1673,10 @@
     expect(/r/).toEqual(expect.any(RegExp))                                            // test passes 
   })
   </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>toBe()</mark> / <mark>toEqual()</mark> / <mark>toStrictEqual()</mark> TEST </u></h4>
-  <pre>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>toBe()</mark> / <mark>toEqual()</mark> / <mark>toStrictEqual()</mark> TEST </u></h4>
+    <pre>
   test('test-1', function(){
     expect(2).toBe('2')                                                                // test fails because the toBe() uses the same value comparison operator (===)
   })
@@ -1696,8 +1701,8 @@
     expect([1, 2, 3]).toEqual([1, 2, 3])                                               // test fails because the toBe() can compare only values   
   })
   </pre>
-  <p> - <mark>toEqual()</mark> VS <mark>toStrictEqual()</mark> </p>
-  <pre>
+    <p> - <mark>toEqual()</mark> VS <mark>toStrictEqual()</mark> </p>
+    <pre>
   class TestClass {
     constructor(a, b){
       this.a = a
@@ -1730,10 +1735,10 @@
     expect({a:21, b:22}).toStrictEqual(myObj)                                          // test fails
   })
   </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>.not</mark> TEST </u></h4>  
-  <pre>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>.not</mark> TEST </u></h4>
+    <pre>
   test('test-1', function(){
     expect(2).not.toBe(3)                                                              // test passes 
   })
@@ -1742,10 +1747,10 @@
     expect(2).not.toBe(2)                                                              // test fails 
   })
   </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>.toThrow()</mark> TEST </u></h4>  
-  <pre>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>.toThrow()</mark> TEST </u></h4>
+    <pre>
   function testFn(){
     throw new Error('someError')
   }
@@ -1760,8 +1765,8 @@
     expect(testFn).toThrow(Error)
   })
   </pre>
-<h4 style="color:darkblue;"><u> <mark>toBeNull()</mark> / <mark>toBeNaN()</mark> / <mark>toBeUndefined()</mark> / <mark>toBeDefined()</mark> / <mark>toBeTruthy()</mark> / <mark>toBeFalsy()</mark> TEST </u></h4>  
-  <pre>
+    <h4 style="color:darkblue;"><u> <mark>toBeNull()</mark> / <mark>toBeNaN()</mark> / <mark>toBeUndefined()</mark> / <mark>toBeDefined()</mark> / <mark>toBeTruthy()</mark> / <mark>toBeFalsy()</mark> TEST </u></h4>
+    <pre>
   test('test-1', function(){
     expect(null).toBeNull()  
     
@@ -1774,10 +1779,10 @@
     expect(0).toBeFalsy()
   })
   </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>toBeGreaterThan()</mark> / <mark>toBeGreaterThanOrEqual()</mark> / <mark>toBeLessThan()</mark> / <mark>toBeLessThanOrEqual()</mark> / <mark>toBeCloseTo()</mark> TEST </u></h4>  
-  <pre>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>toBeGreaterThan()</mark> / <mark>toBeGreaterThanOrEqual()</mark> / <mark>toBeLessThan()</mark> / <mark>toBeLessThanOrEqual()</mark> / <mark>toBeCloseTo()</mark> TEST </u></h4>
+    <pre>
   test('test-1', function(){
     expect(5).toBeGreaterThan(3)  
     expect(5).toBeGreaterThanOrEqual(3)  
@@ -1790,10 +1795,10 @@
     expect(0.1 + 0.2).toBeCloseTo(0.3)                                                 // for double floating comparison 
   })
   </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>toMatch()</mark> / <mark>toMatchObject()</mark> TEST </u></h4>  
-  <pre>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>toMatch()</mark> / <mark>toMatchObject()</mark> TEST </u></h4>
+    <pre>
 // toMatch() --------------------------------------------------------------------------
   test('test-1', function(){
     expect('some test').toMatch('some test')
@@ -1817,10 +1822,10 @@
     expect({p1:[1, 2, 3]}).toMatchObject({p1:[1, 2, 3]})                               // test passes (the nested item has the same structure as in the expected object) 
   })
   </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>toHaveLength()</mark> / <mark>toContain()</mark> / <mark>toContainEqual()</mark> TEST </u></h4>  
-  <pre>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>toHaveLength()</mark> / <mark>toContain()</mark> / <mark>toContainEqual()</mark> TEST </u></h4>
+    <pre>
 // toHaveLength() ---------------------------------------------------------------------
   test('test-1', function(){
     expect([1, 2, 3]).toHaveLength(3)
@@ -1854,10 +1859,10 @@
     expect({p1:21, p2:22, p3:[1, 2]}).toContainEqual({p2:22})                          // test fails this matcher expects an Array 
   })
   </pre>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h4 style="color:darkblue;"><u> <mark>toHaveProperty()</mark> / <mark>toBeInstanceOf()</mark> TEST </u></h4>  
-  <pre>
+    <hr>
+    <!------------------------------------------------------------------------------------------------------>
+    <h4 style="color:darkblue;"><u> <mark>toHaveProperty()</mark> / <mark>toBeInstanceOf()</mark> TEST </u></h4>
+    <pre>
   // toHaveProperty() ---------------------------------------------------------
   test('test-1', function(){
     expect({p1:21, p2:{n1:33}}).toHaveProperty('p1')
@@ -1876,18 +1881,18 @@
     expect(myInstance).toBeInstanceOf(SomeClass)
   })
   </pre>
-</details>
-<hr>
-<!------------------------------------------------------------------------------------------------------>
-<h2 style="color:darkblue;"><u> Fake Timers <mark>useFakeTimers()</mark> / <mark>useRealTimers()</mark> / <mark>runAllTimers()</mark> / <mark>advanceTimersByTime()</mark> / <mark>advanceTimeToNextTimer()</mark> / <mark>runOnlyPendingTimers()</mark> / <mark>runAllTicks()</mark> / <mark>getTimerCount()</mark> / <mark>clearAllTimers()</mark> / <mark>setSystemTime()</mark> / <mark>getRealSystemTime()</mark> </u></h2>
+  </details>
+  <hr>
+  <!------------------------------------------------------------------------------------------------------>
+  <h2 style="color:darkblue;"><u> Fake Timers <mark>useFakeTimers()</mark> / <mark>useRealTimers()</mark> / <mark>runAllTimers()</mark> / <mark>advanceTimersByTime()</mark> / <mark>advanceTimeToNextTimer()</mark> / <mark>runOnlyPendingTimers()</mark> / <mark>runAllTicks()</mark> / <mark>getTimerCount()</mark> / <mark>clearAllTimers()</mark> / <mark>setSystemTime()</mark> / <mark>getRealSystemTime()</mark> </u></h2>
   <p> - Testing timers are not ideal because they rely on real time to be elapsed, Jest allows us to use 'fake' (virtual time) </p>
   <p> - <u>real timers cannot be tested in Jest</u> </p>
   <p> - with fake timers we can control a virtual time so the behaviour of <mark>setTimeout</mark> / <mark>setInterval</mark> / <mark>setImmediate</mark> (timers), <mark>process.nextTick</mark> (exhaust the callback queue) and <mark>Date</mark> (system time) can be controled </p>
-    <p> - unfortunately <mark>Date</mark> instances don't track the virtually elapsed time! They only show the virtual time at the moment when they are created </p>
-<details class="example"> 
-<summary> DEMO </summary>
-  <p> - <mark>useFakeTimers()</mark> / <mark>useRealTimers()</mark> </p>
-  <pre>
+  <p> - unfortunately <mark>Date</mark> instances don't track the virtually elapsed time! They only show the virtual time at the moment when they are created </p>
+  <details class="example">
+    <summary> DEMO </summary>
+    <p> - <mark>useFakeTimers()</mark> / <mark>useRealTimers()</mark> </p>
+    <pre>
   test('some test', () => {
     jest.useFakeTimers();                                                              // allows to use 'fake' virtual time in Jest (the virtual time is not elapsing when this function is called)    
     
@@ -1903,8 +1908,8 @@
     // setInterval(() => console.log( 'intervaled out!' ), 5500);                      // -! would throw an error -> virutal time is disabled 
   })
   </pre>
-  <p> - <mark>runAllTimers()</mark> / <mark>advanceTimersByTime()</mark> / <mark>advanceTimersToNextTimer()</mark> / <mark>runOnlyPendingTimers()</mark> / <mark>runAllTicks()</mark> / <mark>getTimerCount()</mark> / <mark>clearAllTimers()</mark> </p>
-  <pre>
+    <p> - <mark>runAllTimers()</mark> / <mark>advanceTimersByTime()</mark> / <mark>advanceTimersToNextTimer()</mark> / <mark>runOnlyPendingTimers()</mark> / <mark>runAllTicks()</mark> / <mark>getTimerCount()</mark> / <mark>clearAllTimers()</mark> </p>
+    <pre>
   jest.useFakeTimers();
   
   const promiseTimer = new Promise(function(res, rej){
@@ -2037,8 +2042,8 @@
     jest.runAllTimers();                                                               // does nothing because there isn't any pending timer in the system anymore     
   }) 
   </pre>
-  <p> - <mark>setSystemTime()</mark> / <mark>getRealSystemTime()</mark> </p>  
-  <pre>
+    <p> - <mark>setSystemTime()</mark> / <mark>getRealSystemTime()</mark> </p>
+    <pre>
   jest.useFakeTimers();
   
   test('some test', () => {
@@ -2062,11 +2067,11 @@
     jest.setSystemTime(2000000000000);                                                 // advancing the virtual time by using this function does not trigger any timers   
   })
   </pre>
-</details>
-<details class="example"> 
-<summary> Example: </summary>
-<h4 style="color:darkblue;"><u> <mark>jest.useFakeTimers()</mark> / <mark>jest.useRealTimers()</mark> TEST </u></h4>
-  <pre>
+  </details>
+  <details class="example">
+    <summary> Example: </summary>
+    <h4 style="color:darkblue;"><u> <mark>jest.useFakeTimers()</mark> / <mark>jest.useRealTimers()</mark> TEST </u></h4>
+    <pre>
   test('some test', () => {
     setTimeout(() => console.log( 'timed out!' ), 1500);
     setInterval(() => console.log( 'intervaled out!' ), 5500);
@@ -2077,7 +2082,7 @@
   // -! jest.useFakeTimers() calls are hoisted!  
   jest.useFakeTimers();                                                                // allows to use 'fake' virtual time (the virtual time is not elapsing)
   </pre>
-  <pre>
+    <pre>
   test('some test', () => {
     setTimeout(() => console.log( 'timed out!' ), 1500);
     setInterval(() => console.log( 'intervaled out!' ), 5500);
@@ -2089,10 +2094,10 @@
   jest.useFakeTimers(); 
   jest.useRealTimers();                                                                // prevents jest from using fake timers 
   </pre>
-<hr>
-<!----------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>jest.runAllTimers()</mark> / <mark>jest.runAllTicks()</mark> TEST </u></h4>
-  <pre>
+    <hr>
+    <!----------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>jest.runAllTimers()</mark> / <mark>jest.runAllTicks()</mark> TEST </u></h4>
+    <pre>
   jest.useFakeTimers();
   
   const testTimer = new Promise(function(res, rej){
@@ -2129,10 +2134,10 @@
     jest.runAllTicks();                                                                // only exhaust process.nextTick() scheduled callbacks 
   })
   </pre>
-<hr>
-<!----------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>jest.advanceTimersByTime()</mark> / <mark>jest.advanceTimersToNextTimer()</mark> / <mark>jest.runOnlyPendingTimers()</mark> TEST </u></h4>
-  <pre>
+    <hr>
+    <!----------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>jest.advanceTimersByTime()</mark> / <mark>jest.advanceTimersToNextTimer()</mark> / <mark>jest.runOnlyPendingTimers()</mark> TEST </u></h4>
+    <pre>
   jest.useFakeTimers();
   
   const testTimer = new Promise(function(res, rej){
@@ -2216,10 +2221,10 @@
     jest.runOnlyPendingTimers();                                                       // in this situation advances the virtual time by 5100 ms    
   })
   </pre>
-<hr>
-<!----------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>jest.advanceTimersToNextTimer()</mark> steps TEST </u></h4>
-  <pre>
+    <hr>
+    <!----------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>jest.advanceTimersToNextTimer()</mark> steps TEST </u></h4>
+    <pre>
   jest.useFakeTimers();
   
   test('some test', () => {
@@ -2236,10 +2241,10 @@
     jest.advanceTimersToNextTimer(2);                                                  // setInterval will take 2 cycles 
   })
   </pre>
-<hr>
-<!----------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>jest.getTimerCount()</mark> / <mark>jest.clearAllTimers()</mark> TEST </u></h4>
-  <pre>
+    <hr>
+    <!----------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>jest.getTimerCount()</mark> / <mark>jest.clearAllTimers()</mark> TEST </u></h4>
+    <pre>
   jest.useFakeTimers();
   
   const testTimer = new Promise(function(res, rej){
@@ -2264,10 +2269,10 @@
     jest.runAllTimers();                                                               // doesn't do anything because there's no pending timer    
   })
   </pre>
-<hr>
-<!----------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>Date</mark> instances don't track the virtually elapsed time TEST </u></h4>
-  <pre>
+    <hr>
+    <!----------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>Date</mark> instances don't track the virtually elapsed time TEST </u></h4>
+    <pre>
   jest.useFakeTimers();
 
   test('some test', () => {
@@ -2285,9 +2290,9 @@
     console.log( virtualTime2.getMinutes() );                                          // -> 14   
   })
   </pre>
-<!----------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>jest.setSystemTime()</mark> / <mark>jest.getRealSystemTime()</mark> TEST </u></h4>
-  <pre>
+    <!----------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>jest.setSystemTime()</mark> / <mark>jest.getRealSystemTime()</mark> TEST </u></h4>
+    <pre>
   jest.useFakeTimers();
   
   test('some test', () => {
@@ -2312,10 +2317,11 @@
     jest.setSystemTime(2630741044868);                                                 // the modified virtual time by this function does not trigger any timers  
   })
   </pre>
-</details>
-    
-    
-    
-    <br><br>
+  </details>
+
+
+
+  <br><br>
 </body>
+
 </html>

@@ -54,9 +54,15 @@
   <h2 style="color:green;"><u> Remember This : </u></h2>
 
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-  <p> - Redux is a state manager library for JavaScript applications (React, Angular, Vue, Vanilla JavaScript, etc...)
-  </p>
+  <p> - Redux is a state manager library for JavaScript applications (React, Angular, Vue, Vanilla JavaScript, etc...)</p>
   <p> - Redux maintains a centralized state (store) for the whole application (Redux is useful for large apps) </p>
+  <p> - Data types that can and cannot be stored in Redux store: </p>
+  <p class="indent-lv1"> Supported data types (serializable data): </p>
+  <p class="indent-lv2"> - <mark class="mark">any primitives</mark> (string, number, boolean, etc...) </p>
+  <p class="indent-lv2"> - <mark class="mark">any immutable data strucutre</mark> </p>
+  <p class="indent-lv2"> - <mark class="mark">Arrays and Objects containing only primitives or immutables</mark> </p>
+  <p class="indent-lv1"> Not supported data types (not-serializable data): </p>
+  <p class="indent-lv2"> - <mark class="mark">Function, Promise, DOM Object, etc...</mark> (ex: the <mark class="mark">Date object</mark> in not serializable on its own, but we can store it's value as number) </p>
   <p> - Redux Concepts: </p>
   <p class="indent-lv1"> - <mark class="mark">store</mark>: this is where the application state is stored (we don't mutate the
     store object, instead a new instance is created with the changes)</p>
