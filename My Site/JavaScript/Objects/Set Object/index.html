@@ -585,7 +585,7 @@ var weakSetTest = function(){
     myWeakSet.has(myObj1);                                                             // -> true                                   // the WeakSet has this object reference    
     myWeakSet.has(myObj2);                                                             // -> false                                  // the WeakSet does not have this object reference (because it was deleted)    
     
-    myObj1 = 'new value';                                                              // varialbe has a new value assigned to (so it does not references the {p1:'val1'} object any more = WeakSet marks it for garbage collection)    
+    myObj1 = 'new value';                                                              // variable has a new value assigned to (so it does not references the {p1:'val1'} object any more = WeakSet marks it for garbage collection)    
     myWeakSet.has(myObj1);                                                             // -> false                                  // the WeakSet does not have this object reference (because its object value was garbage collected)    
     </pre>
 </details>

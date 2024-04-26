@@ -78,7 +78,7 @@
     <tr class="02.04">
         <td> <em>window</em>.with(<strong>obj</strong>) {} </td>
         <td> 
-            - makes possible to use the passed object's scope <u>new varialbes cannot be declared</u> on it) <br>
+            - makes possible to use the passed object's scope <u>new variables cannot be declared</u> on it) <br>
             - <u>no allowed in "strict mode"</u>
             <span id="browserSupport" title="updated: 2021-02-16">
                 <span><i class="fab fa-chrome"></i> 1 </span>
@@ -593,13 +593,13 @@
     var testObj = {pr_1:"val", pr_2:32, pr3_nest:{nestProp_1:"val_1", nestProp_2:"val_2"}};
     
     with(testObj) {
-        var newProp = "newValue";               // <b>does not create a new property for the "testObj"!</b> (varialbe declared on the global scope)
+        var newProp = "newValue";               // <b>does not create a new property for the "testObj"!</b> (variable declared on the global scope)
         pr_2 = 21;                              // property value modified
         delete pr_3;                            // property deleted
     }
     
     testObj.newProp                             // -> undefined     // because it is not possible to create new variables in the "with" statement)
-    window.newPorp                              // -> "newValue"    // varialbe declared in the "with" statement <u>is still declared on the global scope</u>)
+    window.newPorp                              // -> "newValue"    // variable declared in the "with" statement <u>is still declared on the global scope</u>)
     testObj.pr_2;                               // -> 21            // modified value
     testObj.pr_3;                               // -> undefined     // property deleted
     </pre>

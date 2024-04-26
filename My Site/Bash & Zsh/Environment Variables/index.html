@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Environment Variables </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Environment Variables </h1>
+  <p> Updated ( 2020-04-03 )</p>
+  <p class="sitenav"> 
+    <a href="../../index.html">MySite></a>
+    <a href="../index.html">Bash & Zsh></a> Environment Variables 
+  </p>
+  <br>
+  <table class="table">
+    <tr>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td> <strong>envKey</strong>=<strong>envVal</strong> </td>
+      <td> - sets an environment variable for the current process </td>
+    </tr>
+    <tr>
+      <td> export <strong>envKey</strong>=<strong>envVal</strong> </td>
+      <td> - sets an environment variable for the current process and <u>its child processes</u> </td>
+    </tr>
+    <tr>
+      <td> unset <strong>envKey</strong> </td>
+      <td> - removes the specified environment varaible </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        $<strong>envKey</strong> <br>
+        ${<strong>envKey</strong>}
+      </td>
+      <td>
+        - returns the variable's value (ex: <mark>echo $<strong>envKey</strong></mark> | <mark>echo
+          ${<strong>envKey</strong>}</mark>)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        ${<strong>envKey</strong>:-<strong>defVal</strong>}
+      </td>
+      <td>
+        - if <strong>envKey</strong> is not set returns <strong>defVal</strong> (default value) <br>
+        - if <strong>envKey</strong> is set returns its value
+      </td>
+    </tr>
+    <tr>
+      <td>
+        ${<strong>envKey</strong>:+<strong>defVal</strong>}
+      </td>
+      <td>
+        - if <strong>envKey</strong> is not set returns an empty string (<mark>''</mark>) <br>
+        - if <strong>envKey</strong> is set returns <strong>defVal</strong> (default value)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> env <small>[options]</small> </td>
+      <td>
+        - (no option) returns all environment variables <br>
+        <small>[options]</small><br>
+        - (<small>-0</small>) removes the new line character from the end of each key/value pairs <br>
+        - (<small>-i <i>cmd</i></small>) runs the command (program) without environment variables
+      </td>
+    </tr>
+    <tr>
+      <td> printenv <small>[options]</small> </td>
+      <td>
+        - reutns all environment variables <br>
+        <small>[options]</small><br>
+        - (<small>-0</small>) removes the new line character from the end of each key/value pairs
+      </td>
+    </tr>
+  </table>
+  
+  <br><br>
+</body>
+
+</html>

@@ -443,37 +443,37 @@ SYNTAX :    global                                                              
     require('./module1.js');                                        // we required the first module (this way 'module1.js' have the same global object at this module)
     
     global.mainVar1 = "main variable one";                          // variable declared on the global scope
-    mainVar2 = "main varialbe two";                                 // this is a global varialbe (not recommended and in strict mode it will fail)
+    mainVar2 = "main variable two";                                 // this is a global variable (not recommended and in strict mode it will fail)
         
-    var localVar = 'local variable';                                // local varialbe accessbile anywhere from this module 
+    var localVar = 'local variable';                                // local variable accessbile anywhere from this module 
         
     // global variables declared in modules ----------
       // global variables declared in this module ----
         console.log( global.mainVar1 );                             // -> "main variable one"
-        console.log( global.mainVar2 );                             // -> "main varialbe two"
+        console.log( global.mainVar2 );                             // -> "main variable two"
     
       // global variables declared in module1.js -----
-        console.log( global.module1Var1 );                          // -> "module1 varialbe first value"
-        console.log( global.module1Var2 );                          // -> "module1 varialbe second value"
+        console.log( global.module1Var1 );                          // -> "module1 variable first value"
+        console.log( global.module1Var2 );                          // -> "module1 variable second value"
         
       // global variables delcared in module2.js -----              // -! because we did not call the require() method on 'module2.js' variables declared on it are not declared ont this global object!
         console.log( global.module2Var1 );                          // -> undefined
         console.log( global.module2Var2 );                          // -> undefined
     
 // module1.js ---------------------------------------------------------------------------------------------------------------------
-    global.module1Var1 = "module1 varialbe first value";
-    module1Var2 = "module1 varialbe second value "    
+    global.module1Var1 = "module1 variable first value";
+    module1Var2 = "module1 variable second value "    
     
 // module2.js ---------------------------------------------------------------------------------------------------------------------    
-    global.module2Var1 = "module1 varialbe first value";
-    module2Var2 = "module1 varialbe second value "    
+    global.module2Var1 = "module1 variable first value";
+    module2Var2 = "module1 variable second value "    
     </pre>
     <pre class="cmd" style="margin-top:1px;">
     PS D:\safe\code +\my site\03 improuve\Learn WebDesign\04 Node.js\Node.js Program Structure\02 - multiple module same global object TEST> node main.js
         main variable one
-        main varialbe two
-        module1 varialbe first value
-        module1 varialbe second value
+        main variable two
+        module1 variable first value
+        module1 variable second value
         undefined
         undefined
     PS D:\safe\code +\my site\03 improuve\Learn WebDesign\04 Node.js\Node.js Program Structure\02 - multiple module same global object TEST>    

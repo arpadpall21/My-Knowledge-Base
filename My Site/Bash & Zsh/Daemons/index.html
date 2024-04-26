@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Daemons </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Daemons </h1>
+  <p> Updated ( 2020-04-03 )</p>
+  <p class="sitenav"> 
+    <a href="../../index.html">MySite></a>
+    <a href="../index.html">Bash & Zsh></a> Daemons 
+  </p>
+  <br>
+  <table class="table">
+    <tr>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td colspan="2"> Ubuntu (<mark>systemctl</mark> is the successor of <mark>service</mark>) </td>
+    </tr>
+    <tr>
+      <td> <strong>cmd</strong> & </td>
+      <td> - runs the <strong>cmd</strong> in the background (as current shell background process/daemon) </td>
+    </tr>
+    <tr>
+      <td> jobs </td>
+      <td> - list current shell background processes </td>
+    </tr>
+    <tr>
+      <td> fg %<strong>jobID</strong> </td>
+      <td> - birings the specified current shell background process (<strong>jbNr</strong>) in the foreground </td>
+    </tr>
+    <tr>
+      <td> bg %<strong>jobID</strong> </td>
+      <td> - sends the specified process (<strong>jbNr</strong>) in the background (as background process in the current shell) </td>
+    </tr>
+    <tr>
+      <td> kill %<strong>jobID</strong> </td>
+      <td> - stops the specified current shell background process (<strong>jbNr</strong>) </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> service <strong>service</strong> start </td>
+      <td> - starts the specified service </td>
+    </tr>
+    <tr>
+      <td> service <strong>service</strong> stop </td>
+      <td> - stops the specified service </td>
+    </tr>
+    <tr>
+      <td> service <strong>service</strong> reload </td>
+      <td> - reloads the system (reloads configurations) </td>
+    </tr>
+    <tr>
+      <td> service --status-all </td>
+      <td> - prints all services (<mark>+</mark> = service running | <mark>-</mark> = service not running) </td>
+    </tr>
+    <tr>
+      <td> service <strong>service</strong> status </td>
+      <td> - prints the status of the specified service </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> systemctl start <strong>service</strong> </td>
+      <td> - starts the specified service </td>
+    </tr>
+    <tr>
+      <td> systemctl stop <strong>service</strong> </td>
+      <td> - stops the specified service </td>
+    </tr>
+    <tr>
+      <td> systemctl reload <strong>service</strong> </td>
+      <td> - reloads the <strong>service</strong>'s configuration file (without restarting the service if possible)
+      </td>
+    </tr>
+    <tr>
+      <td> systemctl restart <strong>service</strong>|all </td>
+      <td> - restart the specified service or all running services </td>
+    </tr>
+    <tr>
+      <td> systemctl enable|disable <strong>service</strong> </td>
+      <td> - enables or disables the daemon when the system starts </td>
+    </tr>
+    <tr>
+      <td> systemctl is-enabled <strong>service</strong> </td>
+      <td> - checks whether the service is enabled or disabled</td>
+    </tr>
+    <tr>
+      <td> systemctl status <i>serviceName</i> </td>
+      <td> - prints all running services or checks the status of the specified one </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2"> MacOS <mark>brew</mark> (uses MacOS <mark>launchctl</mark> underneath <a href="https://ss64.com/osx/launchctl.html" target="_blank">[link]</a>) </td>
+    </tr>
+    <tr>
+      <td> <em>brew services</em> start <reqval>service</reqval> </td>
+      <td> - starts the specified service and registers it to lauch at login (boot) </td>
+    </tr>
+    <tr>
+      <td> <em>brew services</em> run <reqval>service</reqval> </td>
+      <td> - starts the specified service without registers it to lauch </td>
+    </tr>
+    <tr>
+      <td> <em>brew services</em> stop <reqval>service</reqval> </td>
+      <td> - stops the specified service and unregisters it from the lauch at login (boot) </td>
+    </tr>
+    <tr>
+      <td> <em>brew services</em> restart <reqval>service</reqval> </td>
+      <td> - tops and starts the specified service and registers it to lauch at login (boot) </td>
+    </tr>
+  </table>
+  
+  <br><br>
+</body>
+
+</html>

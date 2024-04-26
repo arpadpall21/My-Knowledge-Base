@@ -349,8 +349,8 @@
 <!---------------------------------------------------------------------------------------------------->
 <hr>
 <h2 style="color:darkblue; text-decoration: underline;"> Environment Variables </h2>
-    <p> - we can use environment varialbes in docker-compose files, (just like in bash), environment variables are used from the shell where we start the docker-compose </p>
-    <p> - we can define default environment variables in the <mark class="mark">.env</mark> file in the project folder, these are used as default when the shell does not provide the specified environment varialbe</p>
+    <p> - we can use environment variables in docker-compose files, (just like in bash), environment variables are used from the shell where we start the docker-compose </p>
+    <p> - we can define default environment variables in the <mark class="mark">.env</mark> file in the project folder, these are used as default when the shell does not provide the specified environment variable</p>
     <pre class="syntax">
     $ docker-compose up -d                                                             // will start the <mark class="mark">web1</mark> service from the <mark class="mark">default</mark> images (falls back to the default variable)
     
@@ -364,7 +364,7 @@
     services:
       web1:
         container_name: testcont
-        image: ${WEB_SERVER1}                                                          // environment varialbe used here   
+        image: ${WEB_SERVER1}                                                          // environment variable used here   
         network_mode: "host"
     
 // .env (file) ------------------------------------------------------------------------

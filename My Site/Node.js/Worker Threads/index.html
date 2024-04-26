@@ -102,7 +102,7 @@
     <tr class="03.02">
         <td> <strong>workerMd</strong>.SHARE_ENV </td>
         <td> 
-            - can be passed as <mark>env</mark> option when a new Worker is created, when doing so the parent thread and the Worker thread will share the same environment varialbes 
+            - can be passed as <mark>env</mark> option when a new Worker is created, when doing so the parent thread and the Worker thread will share the same environment variables 
             <span class="browserSupport" title="updated : 2020-07-06">
                 <span><i class="fab fa-node-js"></i> 11.14.0 </span>
             </span>
@@ -146,7 +146,7 @@
                 <p> - if WHATWG URL object is passed it must use the <mark>file:</mark> protocol </p> 
             </div></strong>, <i class="openable">option:obj<div>
                 <p> argv: <strong>[any, ...]</strong> - a list of arguments which will be stringified and appended to <mark>process.argv</mark> in this created worker </p>
-                <p> env: <strong>obj</strong> - if specified the passed object will be available in <mark>process.env</mark> in this created worker (if the <mark><strong>workerMd</strong>.SHARE_ENV</mark> is passed, the worker and the parent share their environment variables, in this case changing the threads <mark>process.evn</mark> will affect environment varialbes in both threads) (Default: <mark>process.env</mark>) </p>
+                <p> env: <strong>obj</strong> - if specified the passed object will be available in <mark>process.env</mark> in this created worker (if the <mark><strong>workerMd</strong>.SHARE_ENV</mark> is passed, the worker and the parent share their environment variables, in this case changing the threads <mark>process.evn</mark> will affect environment variables in both threads) (Default: <mark>process.env</mark>) </p>
                 <p> eval: <strong>bol</strong> - if <mark>true</mark> interprets the first argument (<strong>filePath</strong>) as JavaScript code and runs when the worker initiated (Default: <mark>false</mark>) </p>
                 <p> execArgv: <strong>[option:str, ...]</strong> - Command Line options for the worker thread, if specified options will be available in <mark>process.execArgv</mark> in this created worker (Default: inherits options from the parent) </p>
                 <p> stdin: <strong>bol</strong> - if <mark>true</mark> enables the <mark>stdin</mark> worker property as writable stream, data written on it can be read inside the worker thread <mark>process.stdin</mark> (Default: <mark>false</mark> = <mark>stdin</mark> property undefined) </p>

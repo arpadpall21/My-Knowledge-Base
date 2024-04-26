@@ -1037,7 +1037,7 @@ console.log( 'combining multiple fromatf ---------------------------------------
     
 // debuglog() -------------------------------------------------------------------------
     var logFunc = util.debuglog('testVal');                                            // returns the logging function 
-    logFunc('my debug message');                                                       // emits the message to stderr if this process recognizes the NODE_DEBUG="testVal" environment varialbe uppon start    
+    logFunc('my debug message');                                                       // emits the message to stderr if this process recognizes the NODE_DEBUG="testVal" environment variable uppon start    
     
 // deprecate() ------------------------------------------------------------------------
     var myFunc = function() { console.log('myFunc executed!') }
@@ -1052,8 +1052,8 @@ console.log( 'combining multiple fromatf ---------------------------------------
     </pre>
     <pre class="cmd" style="margin-top:1px;">
 // debuglog() -------------------------------------------------------------------------
-    > $env:NODE_DEBUG="testVal" ; node main.js                                         // (2 separated commands) 1st command sets the environment varialbe / 2nd command executes node file    
-    > $env:NODE_DEBUG="t*"                                                             // universal sign supported in environment varialbe values (at least one character must be present apparently still)    
+    > $env:NODE_DEBUG="testVal" ; node main.js                                         // (2 separated commands) 1st command sets the environment variable / 2nd command executes node file    
+    > $env:NODE_DEBUG="t*"                                                             // universal sign supported in environment variable values (at least one character must be present apparently still)    
         TESTVAL 10872: my debug message                                                // printed message on stderr (contains the process id)    
     
 // deprecate() ------------------------------------------------------------------------

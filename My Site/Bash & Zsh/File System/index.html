@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> File System </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> File System </h1>
+  <p> Updated ( 2020-04-03 )</p>
+  <p class="sitenav"> 
+    <a href="../../index.html">MySite></a>
+    <a href="../index.html">Bash & Zsh></a> File System 
+  </p>
+  <br>
+  <table class="table">
+    <tr>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td> pwd </td>
+      <td> - prints the absolute path of the current working directory </td>
+    </tr>
+    <tr>
+      <td> cd <strong>dirPath</strong> </td>
+      <td> - navigates to the specified directory </td>
+    </tr>
+    <tr>
+      <td> ls <small>[options]</small> <strong>dirPath</strong> </td>
+      <td>
+        - list items in the specified directory <br>
+        <small>[options]</small><br>
+        - (<small>-l</small>) detailed list (permissions, ownership, size, etc..) <br>
+        - (<small>-a</small>) include hidden items <br>
+        - (<small>-h</small>) list file sizes in human readable format (G, M, k) <br>
+        - (<small>-i</small>) include item Inode numbers <br>
+        - (<small>-r</small>) reverse list order <br>
+        - (<small>-S</small>) sort by file size
+      </td>
+    </tr>
+    <tr>
+      <td> tree <small>[options]</small> </td>
+      <td>
+        - <i class="fas fa-download"></i> (no option) displays the structure of the specified directory in a tree-like format <br>
+        <small>[options]</small><br>
+        - (<small>-L <i>nr</i></small>) level depth to display <br>
+        - (<small>-a</small>) all items (including hidden onces) <br>
+        - (<small>-d</small>) display directories only <br>
+        - (<small>-f</small>) display the path for all items <br>
+        - (<small>-p</small>) display the item permissions <br>
+        - (<small>-u</small>) display the item owner <br>
+        - (<small>-g</small>) display the item group <br>
+        - (<small>-s</small>) display the item size in bytes <br>
+        - (<small>-h</small>) display the item size in human readable format (G, M, k) <br>
+        - (<small>--inodes</small>) display the item inodes <br>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> cat <small>[options]</small> <strong>filePath</strong> <i>...</i> </td>
+      <td>
+        - read the specified file(s) content and output the read data <br>
+        <small>[options]</small><br>
+        - (<small>-n</small>) number output lines <br>
+        - (<small>-E</small>) highlight output line ends <br>
+        - (<small>-s</small>) collapses multiple empty lines into a single one <br>
+        - (<small>&gt;</small>) creates a file (if not exist) and writes the specified content to it (overwrites
+        existing files contents) (<mark>cat srcFile > destFile</mark> = copy source file content and overwrite target
+        file content) <br>
+        - (<small>&gt;&gt;</small>) creates a file (if not exist) and appends the specified content to it (appends data
+        to existing files contents) (<mark>cat srcFile >> destFile</mark> = copy source file content and append it to
+        the target file content)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        diff | colordiff <small>[options]</small> <strong>file1 file2</strong>
+      </td>
+      <td>
+        - prints the differenc between the files (colordiff is an installable command)<br>
+        <small>[options]</small><br>
+        - (<small>-i</small>) case-insensitive check <br>
+        - (<small>-s</small>) does report when files are identical <br>
+        - (<small>-q</small>) quick report instead of suggesting modifications <br>
+        - (<small>-r</small>) recursively compares directories with all their child items <br>
+        - (<small>-y</small>) side by side view (suggested modifications are displayed in the middle) <br>
+      </td>
+    </tr>
+    <tr>
+      <td> head <small>[options]</small> <strong>filePath</strong> <i>...</i> </td>
+      <td>
+        - returns the first 10 lines of the specified file(s) <br>
+        <small>[options]</small><br>
+        - (<small>-n <i>nr</i></small>) specifies the number of lines to display
+      </td>
+    </tr>
+    <tr>
+      <td> tail <small>[options]</small> <strong>filePath</strong> <i>...</i> </td>
+      <td>
+        - returns the last 10 lines of the specified file(s) <br>
+        <small>[options]</small><br>
+        - (<small>-f</small>) watches the file for changes <br>
+        - (<small>-n <i>nr</i></small>) specifies the number of lines to display
+      </td>
+    </tr>
+    <tr>
+      <td> stat <strong>path</strong> <i>path ...</i> </td>
+      <td> - prints the stats of the specified file(s) or directory(ies) </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> chown <small>[options]</small> <strong>ownerName</strong><small>:</small><i>groupName</i> <strong>path</strong>
+      </td>
+      <td>
+        - (<strong>ownerName</strong>) changes the owner of the specified file or directory <br>
+        <small>[options]</small><br>
+        - (<small>:</small><i>groupName</i>) changes the group ownership of the file (can be written as <mark>chown
+          :newGroup file</mark>) <br>
+        - (<small>-R</small>) changes the ownership of the targeted directory and <u>all its descendent items</u>
+      </td>
+    </tr>
+    <tr>
+      <td> chmod <small>[options]</small> <strong>NrNrNr path</strong> </td>
+      <td>
+        - changes the permissions of the specified file or direcotry <br>
+        <small>[options]</small><br>
+        - (<strong>NrNrNr</strong>) (<mark>0</mark> = <mark>---</mark>) (<mark>1</mark> = <mark>--x</mark>)
+        (<mark>2</mark> = <mark>-w-</mark>) (<mark>3</mark> = <mark>-wx</mark>) (<mark>4</mark> = <mark>r--</mark>)
+        (<mark>5</mark> = <mark>r-x</mark>) (<mark>6</mark> = <mark>rw-</mark>) (<mark>7</mark> = <mark>rwx</mark>) <br>
+        - (<small>-R</small>) changes the permissions of the targeted directory and <u>all its descendent items</u>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> touch <strong>file</strong> <i>file ...</i> </td>
+      <td> - creates empty file(s) </td>
+    </tr>
+    <tr>
+      <td> rm <small>[options]</small> <strong>path</strong> <i>...</i> </td>
+      <td>
+        - removes the specified file(s) <u>(cannot remove directories)</u> <br>
+        <small>[options]</small><br>
+        - (<small>-i</small>) prompts (warns) before removing items <br>
+        - (<small>-f</small>) (force) removes write protected items <br>
+        - (<small>-r|-R</small>) removes the specified directory and all its items
+      </td>
+    </tr>
+    <tr>
+      <td> mkdir <strong>dirPath</strong> <i>...</i> </td>
+      <td> - creates a new directory </td>
+    </tr>
+    <tr>
+      <td> rmdir <strong>dirPath</strong> </td>
+      <td> - removes an <u>empty</u> directory </td>
+    </tr>
+    <tr>
+      <td> cp <small>[options]</small> <strong>srcPath</strong> <i>scrPath ...</i>
+        <strong>destPath</strong>
+      </td>
+      <td>
+        - copies (and renames) file(s) <u>(cannot copy directories)</u> <br>
+        <small>[options]</small><br>
+        - (<small>-i</small>) prompts (warns) before overwriting files at destination <br>
+        - (<small>-f</small>) (force) overwrite protected files at destination <br>
+        - (<small>-p</small>) preserves the file's stats (ownership, permission bits, times, etc...) <br>
+        - (<small>-u</small>) copy only if file(s) at destination are older or missing <br>
+        - (<small>-l</small>) creates hard-links instead of copying files or directories <u>(directory hard-links are
+          not allowed)</u><br>
+        - (<small>-s</small>) creates soft-links (symbolic-links) instead of copying files <u>(cannot create directory
+          symbolic-links)</u> <u>(you must be in the directory where you want to create the symbolic-link)</u> <br>
+        - (<small>-r|-R</small>) copies the specified directory and all its items
+      </td>
+    </tr>
+    <tr>
+      <td>
+        mv <small>[options]</small> <strong>srcPath</strong> <i>scrPath ...</i> <strong>destPath</strong>
+      </td>
+      <td>
+        - moves (and renames) file(s) or directory(ies) <u>(directories are moved with all their items)</u> <br>
+        <small>[options]</small><br>
+        - (<small>-i</small>) prompts (warns) before overwriting files at destination <br>
+        - (<small>-f</small>) (force) overwrites files at destination <br>
+        - (<small>-n</small>) does not overwrite existing file(s) at destination <br>
+        - (<small>-u</small>) move only if file(s) at destination are older or missing <br>
+        - (<small>-b</small>) keeps the original file(s) at destination as backup (with <mark>~</mark> extension)
+      </td>
+    </tr>
+    <tr>
+      <td> ln <small>[options]</small> <strong>srcPath destPath</strong> </td>
+      <td>
+        - creates a hard-link at destination (created link can be named) (remember there are no directory hard-links)<br>
+        <small>[options]</small><br>
+        - (<small>-i</small>) prompt before replacing links at destination <br>
+        - (<small>-f</small>) replaces existing links at destination <br>
+        - (<small>-s</small>) create soft-link (file or directory symbolic-link) instead hard link <u>(you must be in
+          the directory where you want to create the symbolic-link)</u>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> df <small>[options]</small> </td>
+      <td>
+        - displays the available space on all <u>mounted</u> file systems <br>
+        <small>[options]</small><br>
+        - (<small>-h</small>) list sizes in human readable format (G, M, k) <br>
+        - (<small>-i</small>) display inode informations instead of block usage <br>
+        - (<small>-a</small>) display all devices (including zero block sizes)
+      </td>
+    <tr>
+      <td> du <small>[options]</small> <i>path ...</i> </td>
+      <td>
+        - returns the <u>estimated</u> space of the current (or specified file or directory) <br>
+        <small>[options]</small><br>
+        - (<small>-h</small>) human readable fromat (K, MB, etc..) <br>
+        - (<small>-s</small>) returns the one summerized size only
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> find <strong>dirPath</strong> <i>...</i> -name <strong>fileOrDirname</strong> <small>[options]</small> </td>
+      <td>
+        - searches for the specified file or direcotry in <strong>dirPath</strong> <br>
+        <small>[options]</small><br>
+        - (<small>-maxdepth <i>nr</i></small>) directory depth to search <br>
+        - (<small>-name '<i>name</i>'</small>) by item name <br>
+        - (<small>-iname '<i>name</i>'</small>) by item name (case-insensitive) <br>
+        - (<small>-type f|d|l</small>) by item type (<mark>f</mark> = file) (<mark>d</mark> = directory) (<mark>l</mark>
+        = symbolic link) (<mark>s</mark> = unix domain socket) <u>(by Default searches for all item types)</u><br>
+        - (<small>-inum <i>(+|-)nr</i></small>) by Inode number (<mark>+nr</mark> = greater or equal number)
+        (<mark>-nr</mark> = lower or equal number) <br>
+        - (<small>-empty</small>) by empty files <br>
+        - (<small>-size <i>(+|-)nr</i>G|M|k</small>) by file size (<mark>+nr</mark> = greater or equal number)
+        (<mark>-nr</mark> = lower or equal number) <br>
+        - (<small>-user '<i>name</i>'</small>) by user <br>
+        - (<small>-group '<i>group</i>'</small>) by group <br>
+        - (<small>-perm <i>NrNrNr</i></small>) by permission <br>
+        - (<small>-newer '<i>name</i>'</small>) newer than the specified item <br>
+        - (<small>-mmin <i>(+|-)nr</i></small>) by last modified time (in minutes) (<mark>+nr</mark> = greater or equal
+        number) (<mark>-nr</mark> = lower or equal number) <br>
+        - (<small>-mtime <i>(+|-)nr</i></small>) by last modified time (in days) (<mark>+nr</mark> = greater or equal
+        number) (<mark>-nr</mark> = lower or equal number) <br>
+        - (<small>-amin <i>(+|-)nr</i></small>) by last access time (in minutes) (<mark>+nr</mark> = greater or equal
+        number) (<mark>-nr</mark> = lower or equal number) <br>
+        - (<small>-atime <i>(+|-)nr</i></small>) by last access time (in days) (<mark>+nr</mark> = greater or equal
+        number) (<mark>-nr</mark> = lower or equal number) <br>
+        - (<small>-cmin <i>(+|-)nr</i></small>) by last change time (in minutes) (<mark>+nr</mark> = greater or equal
+        number) (<mark>-nr</mark> = lower or equal number) <br>
+        - (<small>-ctime <i>(+|-)nr</i></small>) by last change time (in days) (<mark>+nr</mark> = greater or equal
+        number) (<mark>-nr</mark> = lower or equal number) <br>
+        - (<small>-not</small>) returns anyting else than the specified criteria <br>
+        - (<small>! <i>criteria</i></small>) removes the specified items (<i>criteria</i>) from the already returned
+        result <br>
+        - (<small><i>-name</i> -or <i>-name</i></small>) groups multiple name criterias <br>
+        - (<small>-exec <i>cmd</i> {} +</small>) executes the specified command on the returned result(s) <br>
+      </td>
+    </tr>
+    <tr>
+      <td> grep <small>[options]</small> <strong>pattern filePath</strong> <i>...</i> </td>
+      <td>
+        - searches for a <strong>pattern</strong> in stdin, returns each line where there's a match <br>
+        <small>[options]</small><br>
+        - (<small>-i</small>) case-insensitive search <br>
+        - (<small>-n</small>) print line numb with output lines <br>
+        - (<small>-B <i>int</i></small>) print nr of lines before the match <br>
+        - (<small>-A <i>int</i></small>) print nr of lines after the match <br>
+
+        - (<small>-v</small>) print everything other than the matched result
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> umask <small>[options]</small> <i>umaskVal</i> </td>
+      <td>
+        - returns the umask value for the <u>user</u> (Default: umask = <mark>0002</mark> | file
+        permission = <mark>0666</mark> | directory permission = <mark>0777</mark>) <br>
+        <small>[options]</small><br>
+        - (<small>-S</small>) the umask value is symbolically printed <br>
+        - <i>umaskVal</i> sets the umask value <u>for the current session (umask value resets to <mark>0002</mark>)</u>
+      </td>
+    </tr>
+  </table>
+  
+  <br><br>
+</body>
+
+</html>

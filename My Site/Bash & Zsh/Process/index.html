@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Process </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Process </h1>
+  <p> Updated ( 2020-04-03 )</p>
+  <p class="sitenav"> 
+    <a href="../../index.html">MySite></a>
+    <a href="../index.html">Bash & Zsh></a> Process 
+  </p>
+  <br>
+  <table class="table">
+    <tr>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td> $$ </td>
+      <td> - current shell process id (<mark>echo $$</mark> to display) </td>
+    </tr>
+    <tr>
+      <td> ps <small>[options]</small></td>
+      <td>
+        - returns the processes for the current shell (this terminal's pid) <br>
+        <small>[options]</small><br>
+        - (<small>-A|-e</small>) returns all processes <br>
+        - (<small>aux</small>) returns all processes in an extra detailed list with executable (command) paths <br>
+        - (<small>-eH</small>) returns all processes as hierarchy tree <br>
+        - (<small>-e --forest</small>) returns all processes as ASCII hierarchy tree <br>
+        - (<small>-C <i>processName</i></small>) returns all processes running under the specified process name <br>
+        - (<small>--pid|-p <i>pid</i></small>) returns the specified processes by its pid <br>
+        - (<small>-U <i>userName</i></small>) returns all processes belonging to the specified user <br>
+        - (<small>-G <i>groupName</i></small>) returns all processes belonging to the specified group <br>
+        - (<small>-l</small>) detailed list with commands <br>
+        - (<small>-f</small>) detailed list with executable (command) paths
+      </td>
+    </tr>
+    <tr>
+      <td> pgrep <small>[options]</small> <strong>processName</strong> </td>
+      <td>
+        - returns the pid(s) for the specified process(es) (oldest first) <br>
+        <small>[options]</small><br>
+        - (<small>-v</small>) returns all other processes than the specified one <br>
+        - (<small>-P</small> <i>ppid</i>) returns all processes belonging to the specified parent process <br>
+        - (<small>-l</small>) process name included <br>
+        - (<small>-i</small>) case-insensitive <br>
+        - (<small>-n</small>) return only the newest process <br>
+        - (<small>-o</small>) return only the oldest process <br>
+        - (<small>-c</small>) return a number indicating the number of processes running under the passed process name
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> kill <strong>pid</strong> <i>...</i> </td>
+      <td> - kill the specified process(es) </td>
+    </tr>
+    <tr>
+      <td> killall <small>[options]</small> <strong>processName</strong> <i>...</i> </td>
+      <td>
+        - kill the specified process(es) <br>
+        <small>[options]</small><br>
+        - (<small>-i</small>) case-insensitive <br>
+        - (<small>-s</small> <i>signal</i>) sends the specified signal instead of <mark>SIGTERM</mark> <br>
+        - (<small>-v</small>) report if the signal was successfully sent <br>
+        - (<small>-l</small>) list avaialble signals
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> top </td>
+      <td> - shows running processes <u>in real time</u> </td>
+    </tr>
+    <tr>
+      <td> htop </td>
+      <td> - <i class="fas fa-download"></i> process manager (advanced version of <mark>top</mark>) </td>
+    </tr>
+  </table>
+  
+  <br><br>
+</body>
+
+</html>

@@ -579,7 +579,7 @@ var weakMapTest = function(){
 // has() ------------------------------------------------------------------------------
     myWeakMap.has(myObj1);                                                             // -> true                           // WeakMap contains the myObj1 object reference as key    
     
-    myObj1 = 'new value';                                                              // varialbe has a new value assigned to (so it does not references the {p1:'val1'} object any more = WeakMap marks it and its value for garbage collection)    
+    myObj1 = 'new value';                                                              // variable has a new value assigned to (so it does not references the {p1:'val1'} object any more = WeakMap marks it and its value for garbage collection)    
     myWeakMap.has(myObj1);                                                             // -> false                          // WeakMap does not have the myObj1 object reference as key any more because it is garbage collected along with its value    
     </pre>
 </details>

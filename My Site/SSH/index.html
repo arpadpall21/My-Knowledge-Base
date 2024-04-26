@@ -132,14 +132,21 @@ authorized_keys (file in .ssh directory)
     - this approach is consiedred much more secure over password authentication because the password must be transmitted and easier to brute force
 
 
+- the .ssh directory can be used only by the owner (if we add other user, groups the ssh client won't allow usage -> because of security concerns)
+
+
+- /var/log/auth.log       <- check for connection logging
+
 ---------------------------------------------------------
 SSH AGENT 
 - ssh-agent
-    - stores SSH keys for the SSh client 
-    - when the client initiale a request this is where it checks for stored ssh kesy
+    - stores SSH keys for the SSH client 
+    - when the client initiale a request this is where it checks for stored ssh keys
+    - once the key added to the ssh agent no password needed when the ssh client connects to the server
     
-    ssh-add <pathToShhPrivateKey>         <- adds private key to the ssh agent
+    ssh-add <pathToSshPrivateKey>         <- adds private key to the ssh agent
     ssh-add -l                            <- list all added private keys
+    ssh-add -d <pathToSshPrivateKey>      <- removes the specified private key from the agent
     ssh-add -D                            <- deletes all added private keys
 
 
@@ -147,6 +154,14 @@ SSH AGENT
     pgrep ssh-agent                       <- check if agent is running
     
 
+
+--- SERVER ---
+    - sshd 
+
+    - /etc/ssh                            <- contains configurations and keys for the sshd (ssh daemon)
+    - /etc/ssh/ssh_config                 <- global ssh configurations
+    - /etc/ssh/sshd_config                <- ssh server configurations (in here mention the 'PasswordAuthentication' setting in order to turn off this feature)
+    
 
 
 ?????????????????????????????????????????????????????????????????????????????????????????????
@@ -167,10 +182,10 @@ WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
     
     
     - what about SSH server?
-    
+        - sshd daemon that handles this               -> TEST THIS
     
     - /var/log/auth.log
-        - this is where the connection is logged (check)
+        - this is where the connection is logged      -> TEST THIS
     
     
     - what's the deal with no passord better security question?

@@ -281,7 +281,7 @@
     const repl = require('repl');
     repl.start();                                                                // launching repl from an application (from a node.js process)
     </pre>
-    <p> - the default REPL evaluator provides access to all global varialbes and <u style='color:yellow;'>all built-in modules are available without requiring them (like <mark>os</mark>, <mark>assert</mark>, ect...)</u> </p>
+    <p> - the default REPL evaluator provides access to all global variables and <u style='color:yellow;'>all built-in modules are available without requiring them (like <mark>os</mark>, <mark>assert</mark>, ect...)</u> </p>
     <p> - the <mark>context</mark> property holds REPL local variables </p>
     <pre style="margin-bottom:1px;">
     const repl = require('repl');
@@ -293,7 +293,7 @@
     </pre>
     <pre class="cmd" style="margin-top:1px;">
     PS D:\safe\code +\my site\03 improuve\learn webdesign\04 node.js\repl> node main
-        > x                                                                      // module varialbe not available in REPL
+        > x                                                                      // module variable not available in REPL
         Thrown:
         ReferenceError: x is not defined                                         
         > y                                                                      // global variable available 
@@ -506,7 +506,7 @@
         stream                string_decoder        tls                   trace_events
         tty                   undefined             unescape              url
         util                  v8                    vm                    worker_threads
-        x                     zlib                                                                              // 'x' is a REPL local varialbe 
+        x                     zlib                                                                              // 'x' is a REPL local variable 
         
         __defineGetter__      __defineSetter__      __lookupGetter__      __lookupSetter__
         __proto__             hasOwnProperty        isPrototypeOf         propertyIsEnumerable
@@ -680,7 +680,7 @@
         clearImmediate: [Function: clearImmediate],
         setImmediate: [Function: setImmediate] {
             [Symbol(util.promisify.custom)]: [Function]
-        x: 10                                                                    // varialbe added to this context at the top of the scope 
+        x: 10                                                                    // variable added to this context at the top of the scope 
         }
         }
         > .delAddedCommands                                                      // -! this suppose to clear buffered commands (my custom commands if I understand it right) but it didn't work here [TESTED : 2019-09-05]    

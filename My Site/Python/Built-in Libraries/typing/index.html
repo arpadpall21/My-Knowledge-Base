@@ -35,14 +35,14 @@
   <p> - in Python everything is an object, object types are defined by classes, when we talk about types we talk about
     classes in typing context</p> 
   <p> - the type annotation syntax is <u>not</u> enforced by the Python compiler, however type annotation offers code
-    completition (once a varialbe type is annotated later on the code editor can offer methods on that type) </p>
+    completition (once a variable type is annotated later on the code editor can offer methods on that type) </p>
   <p> - third party tools (like <mark class="mark">mypy</mark>) can use these type hints to check for typing errors </p>
   <!----------------------------------------------------------------------------------->
   <hr>
   <h2 class='header'> Type Annotation </h2>
   <pre class="syntax">
     <strong>varName</strong>: <strong>pyType</strong>                                                                     // type annotates the variable (later on the variable must have the correct type assigned)
-    <strong>varName</strong>: <strong>pyType</strong> = <strong>val</strong>                                                               // type annotates and declares the varialbe     
+    <strong>varName</strong>: <strong>pyType</strong> = <strong>val</strong>                                                               // type annotates and declares the variable     
     
     def <strong>fnName</strong>(<strong>argName: pyType <small>= <i>defVal</i></small></strong>) -> <strong>pyType</strong>:                                     // annotates the function's return type   
         <span style='color:darkgray;'>// body...</span>
@@ -61,7 +61,7 @@
     
     myNr = 11
     
-    from test2 import varFromModule                                                     // imporeted varialbes are not listed by __annotations__
+    from test2 import varFromModule                                                     // imporeted variables are not listed by __annotations__
     print( __annotations__ )                                                            // -> {'myNr': &lt;class 'int'&gt;, 'myStr': &lt;class 'str'&gt;}
     
     

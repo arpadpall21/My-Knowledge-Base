@@ -36,7 +36,7 @@
     <tr class="05.01">
         <td>  
             <strong>cluster</strong>.fork(<i class="openable">env:obj<div>
-                <p> - object sets environment varialbes in the spawned cluster worker (ex: <mark>{KEY1:'env var value'</mark>}) </p>
+                <p> - object sets environment variables in the spawned cluster worker (ex: <mark>{KEY1:'env var value'</mark>}) </p>
             </div></i>)
         </td>
         <td> 
@@ -621,7 +621,7 @@
     
     if (cluster.isMaster) {
         for(i = 0; i &lt; 2; i++){
-            cluster.fork({KEY1:'egy', KEY2:'ketto'});                                  // setting environment varialbes in the spawned cluster worker
+            cluster.fork({KEY1:'egy', KEY2:'ketto'});                                  // setting environment variables in the spawned cluster worker
         }
     } else {
         console.log( process.env.KEY1 );                                               // -> 'egy'   | 'egy'           // cluster worker environment variable value 
@@ -663,7 +663,7 @@
     </pre>
 <hr>
 <!----------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> set <mark>schedulingPolicy</mark> through environment varialbes TEST </u></h4>
+<h4 style="color:darkblue;"><u> set <mark>schedulingPolicy</mark> through environment variables TEST </u></h4>
     <pre class="cmd">
 pall@Ryzen:~/Documents/CodePlus/My Site/03 Improuve/Learn WebDesign/04 Node.js/Cluster/TEST$ export NODE_CLUSTER_SCHED_POLICY='none'    // set schedulingPolicy environment variable  
 pall@Ryzen:~/Documents/CodePlus/My Site/03 Improuve/Learn WebDesign/04 Node.js/Cluster/TEST$ node main

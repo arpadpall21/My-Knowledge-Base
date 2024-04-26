@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../../../Assets/stylesPages.css">
-  <script src="../../../Assets/scriptPages.js"></script>
   <link rel="stylesheet" href="./styles.css">
+  <script src="../../../Assets/scriptPages.js"></script>
 </head>
 
 <body>
@@ -27,27 +27,47 @@
     </tr>
     <tr>
       <td> / </td>
-      <td> root directory </td>
+      <td> - root directory </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td> /bin </td>
-      <td> (binary) holds <u>essential</u> binaries (booting, system emergency, single user mode, etc..)</td>
+      <td> - (binary) directory holds <u>essential</u> binaries (booting, system emergency, single user mode, etc..)</td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td> /boot </td>
-      <td> (boot) Linux boot loader files </td>
+      <td> - (boot) directory for Linux boot loader files </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td> /cdrom </td>
-      <td> (CD-ROM) for cd-rom devices </td>
+      <td> - (CD-ROM) directory for cd-rom devices </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td> /dev </td>
-      <td> (devices) device files (in Linux every device is depicted as a file, like mouse, keyboard, etc...) </td>
+      <td> - (devices) directory for device files (in Linux every device is depicted as a file, like mouse, keyboard, etc...) </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td> /etc </td>
-      <td> (etcetera) system-wide configuration files, these configurations are valid for all users </td>
+      <td> - (etcetera) directory for system-wide configuration files, these configurations are valid for all users </td>
     </tr>
     <tr>
       <td class="indent-lv1"> /enviroment </td>
@@ -67,14 +87,14 @@
     <tr>
       <td class="indent-lv1"> /hosts </td>
       <td>
-        - local DNS mapping (local domain to IP address mapping) <br>
+        - file contains local DNS mapping (local domain to IP address mapping) <br>
         - (column1 = ip address) (column2 = domain) (column3 = domain alias)
       </td>
     </tr>
     <tr>
       <td class="indent-lv1"> /os-release </td>
       <td>
-        - operating system informations (like linux distro, version, etc...)
+        - file contains operating system informations (like linux distro, version, etc...)
       </td>
     </tr>
     <tr>
@@ -90,8 +110,12 @@
     <tr>
       <td class="indent-lv1"> /resolv.conf </td>
       <td>
-        - contains DNS resolution addresses (host requests these addresses for DNS resolution)
+        - contains DNS server IPs (thse servers are requested for DNS resolution)
       </td>
+    </tr>
+    <tr>
+      <td class="indent-lv1"> /ssh </td>
+      <td> - contains configurations and keys for the sshd (ssh daemon -> ssh server) </td>
     </tr>
     <tr>
       <td class="indent-lv1"> /sudoers </td>
@@ -100,123 +124,189 @@
       </td>
     </tr>
     <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td> /home </td>
       <td>
-        - (home) user(s) home folder <br>
+        - (home) directory for user(s) <br>
         - each user has its own home folder and cannot access other home folders without superuser permissions <br>
         - holds the current user application configurations setting caching
       </td>
     </tr>
     <tr>
-      <td class="indent-lv1"> /home/<strong>user</strong>/.bash_aliases </td>
+      <td class="indent-lv1"> /<strong>user</strong> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td class="indent-lv2"> /.bash_aliases </td>
       <td>
-        - (file) we can add <u>permanent command aliases</u> <span class="openable">at the bottom of this file<div>
+        - contans user command aliases <span class="openable">(ex:)<div>
             <p><mark>alias <strong>aliasCmd</strong>=<strong>cmd</strong></mark> </p>
             <p><mark><i>...</i></mark></p>
             <hr>
             <p><u> EX: </u></p>
             <p><mark>alias test="ls | grep test"</mark> (list all <mark>test</mark> files in the current directory) </p>
           </div></span> <br>
-        - make sure that <span class="openable">this line<div>
+        - <span class="openable">must be read and executed from <mark>~/.bashrc</mark> <div>
             <pre>
-              if [ -f ~/.bash_aliases ]; then
-              . ~/.bash_aliases
-              fi
+    if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+    fi
               </pre>
-          </div></span> is present in the <makr>~/.bashrc</makr> file <br>
-        - takes effect after the system is restarted or after the <mark>source ~/.profile</mark> command
+          </div></span>
       </td>
     </tr>
     <tr>
-      <td class="indent-lv1"> /home/<strong>user</strong>/.profile </td>
+      <td class="indent-lv2"> /.bashrc|.zshrc </td>
       <td>
-        - (file) we can add <u>permanent user environment varialbes</u> <span class="openable">at the bottom of this
-          file<div>
-            <p><mark>export <strong>key</strong>=<strong>val</strong></mark> </p>
-            <p><mark><i>...</i></mark></p>
-            <hr>
-            <p><u> EX: </u></p>
-            <p><mark>export TEST1=21</mark></p>
-            <p><mark>export TEST2=test</mark></p>
-            <p><mark>export TEST2='new val'</mark> (use quotes if the string contains spaces)</p>
-          </div></span> <br>
-        - takes effect after the system is restarted or after the <mark>source ~/.profile</mark> command
+        - file contains commands that are executed every time when a new shell (bash or zshell) is opened (each line is a new command) <br>
       </td>
+    </tr>
+    <tr>
+      <td class="indent-lv2"> /.profile|.zprofile </td>
+      <td>
+        - file contains commands that are executed when a <u class="openable">log in shell is opened<div>
+          <p> - when a user logs in with user and password so the shell initializes the user's environment </p>
+        </div></u> (each line is a new command)<br>
+        - <u>its mostly used to setup user specific environment variables</u>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td> /lib<small>nr</small> </td>
-      <td> (libraries) kernel modules and libraries what binaries can use </td>
+      <td> - (libraries) directory holds system libraries </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td> /media </td>
-      <td> (removable media) external storage devices are mounted her by the OS (like USB sticks, SD cards, etc...)
+      <td> - (removable media) directory for external storage devices are mounted her by the OS (like USB sticks, SD cards, etc...)
       </td>
     </tr>
     <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td> /mnt </td>
-      <td> (mount) manually mounted storage and partitions </td>
+      <td> - (mount) directory for manually mounted storage and partitions </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td> /opt </td>
-      <td> (optional) manually installed softwares which are not part of the default installation </td>
+      <td> - (optional) directory for manually installed softwares which are not part of the default installation </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td> /proc </td>
-      <td> (process) process and kernel information files, the OS keeps track of running processes and other OS
+      <td> - (process) directory for process and kernel information files, the OS keeps track of running processes and other OS
         functionalities in files here </td>
     </tr>
     <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td> /root </td>
-      <td> (root) superuser's directory </td>
+      <td> - (root) directory of the superuser </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td> /run </td>
-      <td> (run-time variables) initial runing system files since the last boot (OS creates this directory on every boot
+      <td> - (run-time variables) directory for initial runing system files since the last boot (OS creates this directory on every boot
         up) </td>
     </tr>
     <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td> /sbin </td>
-      <td> (system binaryes) holds system binary files which are accessible only for the superuser </td>
+      <td> - (system binaryes) directory for holding system binary files which are accessible only for the superuser </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td> /snap </td>
-      <td> (snap packages) Ubuntu snap packages </td>
+      <td> - (snap packages) directory for Ubuntu snap packages </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td> /srv </td>
-      <td> (server) server data is sotred here </td>
+      <td> - (server) directory for server data is sotred here </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td> /sys </td>
-      <td> (system) kernel configuration files (OS creates this directory on every boot up) </td>
+      <td> - (system) directory for kernel configuration files (OS creates this directory on every boot up) </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td> /tmp </td>
-      <td> (temporary) temporary files stored by applications </td>
+      <td> - (temporary) directory for temporary files stored by applications </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td> /usr </td>
-      <td> (user) user applications (non-essential for system operations) </td>
+      <td> - (user) directory for user applications (non-essential for system operations) </td>
     </tr>
     <tr>
-      <td class="indent-lv1"> /usr/bin </td>
-      <td> user binaries (non required by the system) </td>
+      <td class="indent-lv1"> /bin </td>
+      <td> - directory user binaries (non required by the system) </td>
     </tr>
     <tr>
-      <td class="indent-lv1"> /usr/share </td>
-      <td> sharable architecture independend files (icons, fonts, docs, etc..) </td>
+      <td class="indent-lv1"> /share </td>
+      <td> - directory for sharable architecture independend files (icons, fonts, docs, etc..) </td>
     </tr>
     <tr>
-      <td class="indent-lv1"> /usr/share/doc </td>
-      <td> package documentations, configurations, utilities, etc... </td>
+      <td class="indent-lv2"> /doc </td>
+      <td> - directory for package documentations, configurations, utilities, etc... </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
     <tr>
       <td> /var </td>
-      <td> (varialbes) variable data files, log files, cache data, waiting tasks, etc... </td>
+      <td> - (variables) directory for data files, log files, cache data, waiting tasks, etc... </td>
     </tr>
     <tr>
-      <td class="indent-lv1"> /var/spool/cron/crontabs </td>
-      <td> directory contains user crontab files </td>
+      <td class="indent-lv1"> /log </td>
+      <td> - directory contains log files </td>
+    </tr>
+    <tr>
+      <td class="indent-lv1"> /spool/cron/crontabs </td>
+      <td> - directory contains user crontab files </td>
     </tr>
   </table>
   <br>

@@ -534,7 +534,7 @@
     
     
 // ENV --------------------------------------------------------------------------------
-    ENV VAR_1='val_1' \                                                                // environment varialbes available in build-time but also persisted in the final images   
+    ENV VAR_1='val_1' \                                                                // environment variables available in build-time but also persisted in the final images   
       VAR_2='val_2' \
       VAR_3='val_3' 
     
@@ -547,7 +547,7 @@
     FROM node
     
     ENV TEST_ENV=original 
-    ARG ARG1=arg1_val                                                                  // build-time varialbe set 
+    ARG ARG1=arg1_val                                                                  // build-time variable set 
     ARG TEST_ENV=newVal                                                                // the <mark>TEST_ENV</mark> value stays <mark>original</mark> (ARG cannot override ENV)
     
     RUN echo ${TEST_ENV} > testFile.txt                                                // output value is <mark>original</mark> 
@@ -938,7 +938,7 @@ pall@Aspire:~$ docker ps
     <pre>
     FROM node
     
-    ENV ENVVAR_1='val_1' \                                                             // environment varialbes available in build-time but also persisted in the final images   
+    ENV ENVVAR_1='val_1' \                                                             // environment variables available in build-time but also persisted in the final images   
     ENVVAR_2='val_2' \
     ENVVAR_3='val_3' 
     
@@ -973,7 +973,7 @@ root@c07cde9e8e56:/test#
     FROM node
     
     ENV TEST_ENV=original 
-    ARG ARG1=arg1_val                                                                  // build-time varialbe set 
+    ARG ARG1=arg1_val                                                                  // build-time variable set 
     ARG TEST_ENV=newVal                                                                // the <mark>TEST_ENV</mark> value stays <mark>original</mark> (ARG cannot override ENV)
     
     RUN echo ${TEST_ENV} > testFile.txt                                                // output value is <mark>original</mark> 

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Networking </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Networking </h1>
+  <p> Updated ( 2020-04-03 )</p>
+  <p class="sitenav"> 
+    <a href="../../index.html">MySite></a>
+    <a href="../index.html">Bash & Zsh></a> Networking 
+  </p>
+  <br>
+  <table class="table">
+    <tr>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td> hostname <small>[option]</small> </td>
+      <td>
+        - returns the name of this machine <br>
+        <small>[options]</small> <br>
+        - (<small>-i</small>) returns the IP address of this machine
+      </td>
+    </tr>
+    <tr>
+      <td> ifconfig <small>[options]</small> <i>netAdapter</i> </td>
+      <td>
+        - <i class="fas fa-download"></i> returns details about all <u>active</u> network interfaces on the host (or the specified one <i>netAdapter</i>) <br>
+        - run <mark>ifconfig | awk '/inet /{print $2}'</mark> to get the host IP on MacOs <br>
+        <small>[options]</small> <br>
+        - (<small>-a</small>) returns all network devices (including inactive ones)
+      </td>
+    </tr>
+    <tr>
+      <td> ifconfig <strong>netDev</strong> up|down </td>
+      <td> - enables (<mark>up</mark>) or disables (<mark>down</mark>) the specified network device
+    </tr>
+    <tr>
+      <td> netstat <small>[options]</small> </td>
+      <td>
+        - returns <u>active</u> TCP, UDP and UNIX connections <u>(options can be combined)</u> <br>
+        - run <mark>netstat -anvp tcp | awk 'NR&lt;3 || /LISTEN/'</mark> to get all the host's listening TCP connections (MacOSifconfig | awk '/inet /{print $2}') <br>
+        <small>[options]</small> <br>
+        - (<small>-p</small>) process name and PID is returned which uses the connection <br>
+        - (<small>-n</small>) IP address returned instead of the domain (PTR reccord) <br>
+        - (<small>-a</small>) returns <u>all</u> connections <br>
+        - (<small>-l</small>) listening connections only <br>
+        - (<small>-t</small>) TCP connections only <br>
+        - (<small>-u</small>) UDP connections only <br>
+      </td>
+    </tr>
+    <tr>
+      <td> nmcli <small>[options]</small></td>
+      <td>
+        - print the network status <br>
+        <small>[options]</small> <br>
+        - (<small>device show</small>) complete information about the devices <br>
+        - (<small>connection show</small>) connection profiles
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> curl <small>[options]</small> <strong>IP|URL</strong> </td>
+      <td>
+        - requests the <strong>IP|URL</strong> (supported protocols are <mark>HTTP</mark>,
+        <mark>HTTPS</mark>, <mark>FTP</mark>, <mark>SFTP</mark>, <mark>TFTP</mark>, <mark>IMAP</mark>,
+        <mark>POP3</mark>, <mark>SCP</mark>, <mark>SMTP</mark>, <mark>TELNET</mark>, <mark>LDAP</mark>,
+        <mark>FILE</mark>) <br>
+        <small>[options]</small> <br>
+        - (<small>-X <strong>METHOD</strong></small>) sets the request method (ex: <mark>curl -X DELETE <strong>host</strong></mark>) <br>
+        - (<small>-H "<i>httpHeader</i>: <i>value</i>"</small>) add this header to the request <br>
+        - (<small>-i</small>) also includes the HTTP header fields in the response <br>
+        - (<small>-s</small>) silent download (does not show download status) <br>
+        - (<small>-o <i>filePath</i></small>) saves the downloaded data in the specified file <br>
+        - (<small>-C</small>) resumes downloading (when download stopped) <br>
+        - (<small>-k</small>) no server certificate validation <br>
+        - (<small>-v</small>) verbose (also prints request & response headers) <br>
+        - (<small>--unix-socket <i>socketPath</i> http://localhost<i>path</i></small>) domain socket request (ex: <mark>curl --unix-socket /var/run/nginx.sock http:///localhost/test</mark>)
+      </td>
+    </tr>
+    <tr>
+      <td> ping <small>[options]</small> <strong>IP|URL</strong>
+      </td>
+      <td>
+        - test the connectivity of the specified server (does DNS resolution) <br>
+        <small>[options]</small> <br>
+        - (<small>-c <i>nr</i></small>) how many ping packets to send <br>
+        - (<small>-f</small>) sent packets as soon as possible (floods the network) <br>
+        - (<small>-s <i>nr</i></small>) packet size in bytes (Default: 60bytes) <br>
+        - (<small>-i <i>nr</i></small>) seconds between sending packets (Default :1s) <br>
+        - (<small>-w <i>nr</i></small>) ping duration in seconds <br>
+      </td>
+    </tr>
+    <tr>
+      <td> host <small>[options]</small> <strong>domain|IP</strong> </td>
+      <td>
+        - (<strong>domain</strong>) performs a DNS lookup (returns the A and AAAA records) <br>
+        - (<strong>IP</strong>) performs a reverse lookup (returns the PTR (pointer) records) <br>
+        <small>[options]</small> <br>
+        - (<small>-v</small>)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> nmap <small>[options]</small> <strong>domain|IP</strong> </td>
+      <td>
+        - <i class="fas fa-download"></i> checks for open ports on the specified domain or IP address (performs DNS
+        lookup) <br>
+        <small>[options]</small> <br>
+        - (<small>-O</small>) also returns the target's OS <br>
+        - (<small>-v</small>) returns a more detailed data
+      </td>
+    </tr>
+    <tr>
+      <td> nmap -sP <strong>networkId</strong>/<strong>mask</strong> </td>
+      <td> - scan devices on the specified network (ex: <mark>nmap -sp 192.168.0.0/16</mark>)
+    </tr>
+    <tr>
+      <td> tcpdump <small>[options]</small> </td>
+      <td>
+        - <i class="fas fa-download"></i> intercepts packages on all network devices "package sniffer" <br>
+        <small>[options]</small> <br>
+        - (<small>[-D]</small>) displays available network devices (and their status) <br>
+        - (<small>[i <strong>netwDev</strong>]</small>) intercepts packages on the specified network device <br>
+        - (<small>-c <strong>nr</strong></small>) specifies how many packages to intercept <br>
+        - (<small>-A</small>) package content interpreted a ASCII <br>
+        - (<small>-XX</small>) package content interpreted a ASCII and hexadecimal <br>
+        - (<small>port <strong>portNr</strong></small>) interception on the specified port only <br>
+        - (<small>dst <strong>Ip</strong></small>) interception on the specified destination
+      </td>
+    </tr>
+    <tr>
+      <td> traceroute <strong>IP|URL</strong> </td>
+      <td> - <i class="fas fa-download"></i> traces the netwrok routes to the specified address </td>
+    </tr>
+  </table>
+  
+  <br><br>
+</body>
+
+</html>

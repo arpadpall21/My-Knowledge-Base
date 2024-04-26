@@ -179,7 +179,7 @@
     <tr class="25.01">
         <td> <em>process</em>.env </td>
         <td> 
-            - returns an the hosts system varialbes in an object <br>
+            - returns an the hosts system variables in an object <br>
             - we can set environment variables through this property (string value only!) <u>but they only available inside the current process and its child processes</u>
             <span id="browserSupport" title="updated : 2019-06-12">
                 <span><i class="fab fa-node-js"></i> 0.1.27 </span> (worker thread use its parent <mark>process.env</mark> <span><i class="fab fa-node-js"></i> 11.14.0 </span>)
@@ -943,7 +943,7 @@
     <pre style="margin-bottom:1px;">
 // main.js (file) ----------------------------------------------------------------------
 // arch / platform / config / env / report / title ----------------
-    process.env;                                                   // -> {ALLUSERSPROFILE:'C:\\ProgramData', .......}}      // environment varialbes 
+    process.env;                                                   // -> {ALLUSERSPROFILE:'C:\\ProgramData', .......}}      // environment variables 
     process.env.NEW_ENV_VARIABLE = 'some value'                    // -! the set environment variable available within this process and its child processes only! (string value only!)    
     
     process.arch;                                                  // -> 'x64'
@@ -1120,11 +1120,11 @@
 // main.js (file) ---------------------------------------------------------------------
     var { fork } = require('child_process');
     
-    process.env.NODE_TEST = 'set value';                                               // setting an environment varialbe 
+    process.env.NODE_TEST = 'set value';                                               // setting an environment variable 
     var forkedChild = fork('module1.js');                                              // child process fork 
     
     forkedChild.on('message', function(message){                                       // receiving child process' message 
-        console.log( message );                                                        // environment varialbe value available in the child process sent back 
+        console.log( message );                                                        // environment variable value available in the child process sent back 
     });    
     
 // module1.js (file) ------------------------------------------------------------------

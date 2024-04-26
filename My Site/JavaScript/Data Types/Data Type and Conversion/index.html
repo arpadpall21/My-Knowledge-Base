@@ -932,8 +932,8 @@ SYNTAX :    Symbol(<i>descriptor:str</i>)                                       
     mySymbolA === mySymbolB;                                                           // -> false          // not equal they are unique    
     
 // symbols cannot be used for other than object keys ----------------------------------
-    mySymbolB = 'someVal';                                                             // -! this doesn't work as symbol key -> we just reassigned a new value to the varialbe here  
-    [mySymbolB] = 'someVal'                                                            // -! this doesn't work either        -> we just initialized a new array and assigned a value to a varialbe in it    
+    mySymbolB = 'someVal';                                                             // -! this doesn't work as symbol key -> we just reassigned a new value to the variable here  
+    [mySymbolB] = 'someVal'                                                            // -! this doesn't work either        -> we just initialized a new array and assigned a value to a variable in it    
     
 // used as object keys (this is the only purpose of a symbol!) ------------------------
     var myObj = {nativeProp:'someValue', [mySymbolA]:"symbolVal"};                     // we can set symbols as object properties right upon object initialization 

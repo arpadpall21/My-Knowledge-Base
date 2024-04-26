@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Users & Groups </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Users & Groups </h1>
+  <p> Updated ( 2020-04-03 )</p>
+  <p class="sitenav"> 
+    <a href="../../index.html">MySite></a>
+    <a href="../index.html">Bash & Zsh></a> Users & Groups 
+  </p>
+  <br>
+  <table class="table">
+    <tr>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td> cat /etc/passwd </td>
+      <td>
+        - file contains all users in the system <br>
+        - each entry represents a user (<strong>userName</strong> : <em class="openable">x<div>
+            <p> - the 'x' represents the encrypted password </p>
+          </div></em> : <strong>uid</strong> : <strong>gid</strong> : <strong>fullName</strong> :
+        <strong>homeDirPath</strong> : <strong>loginShellPath</strong>)
+      </td>
+    </tr>
+    <tr>
+      <td> cat /etc/group </td>
+      <td>
+        - file contains all groups in the system <br>
+        - each entry represents a group (<strong>groupName</strong> : <em class="openable">x<div>
+            <p> - the 'x' represents the encrypted password </p>
+          </div></em> : <strong>gid</strong> : <strong>groupMember</strong><i><small>,</small>...</i>)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> id <optval>user</optval> </td>
+      <td> - returns the current (or passed) user's userId, groupId and groups the user is part of </td>
+    </tr>
+    <tr>
+      <td> groups <strong>user</strong> <i>...</i> </td>
+      <td> - returns the groups of the specified user(s) </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> adduser <small>[options]</small>
+        <strong>userName</strong>
+      </td>
+      <td>
+        - (no options) adds the specified user to the system (also creates user home directory and primary group) <br>
+        <small>[options]</small><br>
+        - (<small>--uid <i>uid</i></small>) specifies the user id of the user <br>
+        - (<small>--system</small>) creates a system user <br>
+        - (<small>--no-create-home</small>) does not create home directory for the user <br>
+        - (<small>--home <i>dirPath</i></small>) sets the home directory for the user
+      </td>
+    </tr>
+    <tr>
+      <td> adduser <strong>userName</strong> <strong>groupName</strong> </td>
+      <td> - adds the user to the specified group </td>
+    </tr>
+    <tr>
+      <td> deluser <small>[options]</small> <strong>userName</strong> </td>
+      <td>
+        - (no options) removes the specified user from the system <br>
+        <small>[options]</small><br>
+        - (<small>--remove-all-files</small>) removes all files which belongs to the user <br>
+        - (<small>--remove-home</small>) remove the home directory of the user
+      </td>
+    </tr>
+    <tr>
+      <td> deluser <strong>userName</strong> <strong>groupName</strong> </td>
+      <td> - removes the user from the specified group </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> groupadd <small>[options]</small> <strong>groupName</strong> </td>
+      <td>
+        - (no options) creates the specified group <br>
+        <small>[options]</small><br>
+        - (<small>--gid <i>gid</i></small>) sets the gid of the group <br>
+        - (<small>--system</small>) creates a system group
+      </td>
+    </tr>
+    <tr>
+      <td> groupdel <small>[options]</small> <strong>groupName</strong> </td>
+      <td>
+        - removes the specified group <br>
+        <small>[options]</small><br>
+        - (<small>-f</small>) also removes primary group
+      </td>
+    </tr>
+    <tr>
+      <td> groupmod --gid <strong>gid groupName</strong> </td>
+      <td> - sets the GID of the specified group </td>
+    </tr>
+    <tr>
+      <td> groupmod --new-name <strong>newName groupName</strong> </td>
+      <td> - changes the specified group's name </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> passwd <small>[options]</small> <i>userName</i> </td>
+      <td>
+        - changes the password for the current or for the specified user <br>
+        <small>[options]</small><br>
+        - (<small>-d</small>) deletes the specified user's password (deleted password works when login but on terminal the user still needs password [TESTED: 2020-04-11])
+      </td>
+    </tr>
+    <tr>
+      <td> usermod <small>[options]</small> <strong>userName</strong>
+      </td>
+      <td>
+        - modifys the specified user account <br>
+        <small>[options]</small> (at least one is required)<br>
+        - (<small>-d <i>dirPath</i></small>) sets the home directory for the user <br>
+        - (<small>-uid <i>uid</i></small>) sets the user id of the user <br>
+        - (<small>-gid <i>gid</i></small>) sets the primary group of the user
+      </td>
+    </tr>
+    <tr>
+      <td> usermod --login <strong>newName userName</strong> </td>
+      <td> - renames the specified user </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> su <strong>userName</strong> </td>
+      <td> - switches the user on the terminal (<mark>sudo su</mark> = switches to the super user) </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> sudo <strong>cmd</strong> </td>
+      <td> - executes the command as root user </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> w | users </td>
+      <td> - list the currently <u>logged-in users</u> (<mark>w</mark> provides more information) </td>
+    </tr>
+  </table>
+  
+  <br><br>
+</body>
+
+</html>
