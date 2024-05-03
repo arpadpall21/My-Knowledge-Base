@@ -34,7 +34,7 @@
     FastAPI) (run <mark>pip install pydantic</mark> to install) </p>
   <p> - pydantic uses normal python type annotations syntax supporting all Python types (including types in <mark>typing</mark> lib), but it has its own types for a more fine grained type validation like (ex: <mark>PositiveInt</mark> etc...) <a href="https://docs.pydantic.dev/1.10/usage/types/#pydantic-types" target="_blank">[pydantic types]</a> </p>
   <pre class="syntax">
-    from pydantic import BaseModel, Field, <strong class="openable">pydanticType<div>
+    from pydantic import BaseModel, Field, field_validator, model_validator, <strong class="openable">pydanticType<div>
         <p> - pydantic type for a more fine grained type validation <a href="https://docs.pydantic.dev/1.10/usage/types/#pydantic-types" target="_blank">[pydantic types]</a> </p>
     </div></strong>
     
@@ -44,6 +44,27 @@
         <strong>field</strong>: <strong>PydanticModel</strong>                           // field value can be <strong>PydanticModel</strong> to build further graph
         <strong>field</strong>: <strong>type</strong> = Field(<a href="https:\/\/docs.pydantic.dev/latest/usage/fields/#numeric-constraints" target="_blank">args</a>)                      // fine grained field validation (like text length, value upper/lower limit, etc...)
         <i>...</i>
+        
+        @field_validator(<reqval>field:str</reqval>)                  // validate (or modify) the specified <reqval>field</reqval> 
+        @classmethod
+        def <reqval>fn</reqval>(cls, <reqval>field</reqval>):
+            <opt>if ...</opt>                                         // some field validation condition
+                raise ValueError(<reqval>err:str</reqval>)            // raise ValueError on failed field validation
+            return <reqval>field</reqval>                             // on successful validation return the value (we can even modify the original value here)
+    
+    
+        @model_validator(<span class="openable">mode='before'<div>
+          <p> - <mark>before</mark> -> function triggered before any field validations </p>
+          <p> - <mark>after</mark> -> function triggered after field validations (has a slightly different syntax <a href="https://docs.pydantic.dev/latest/concepts/validators/#model-validators" target="_blank">[link]</a> </p>
+        </div></span>)                             
+        @classmethod                                          // validate (or modify) all <reqval>field</reqval>s
+        def <reqval>fn</reqval>(cls, <reqval class="openable">fields:dict<div>
+          <p> - dictionary of all pydantic <reqval>field</reqval>s </p>
+        </div></reqval>):
+            <opt>if ...</opt>                                         // some field validation conditions
+                raise ValueError(<reqval>err:str</reqval>)            // raise ValueError on failed field validation
+            return <reqval>fields</reqval>                            // on successful validation return the fields dictionary (we can even modify original values here)
+    
     
     
     <strong>pydanticInstance</strong> = <strong>PydanticModel</strong>(<strong>field</strong>=<strong>val</strong><i>, ...</i>)   // creates a <strong>pydanticInstance</strong> 
@@ -79,7 +100,7 @@
     
     class Person(BaseModel):
         name: str
-        age: int = None             # optional fields (have default values)
+        age: int = None                 // optional fields (have default values)
         address: Address = None
     
     
@@ -105,6 +126,8 @@
     
     person_copy_2 = person.copy(update={'new_key': 'new_val'})    // -> Person(name='Arpad' age=38 address=None, new_key='new_val')   // -! update the new copy on copy operation (this doesn't make any type validation)
   </pre>
+  <!----------------------------------------------------------------------------------->
+  <hr>
   <h4 class="header"> Convert to dictionary or JSON <mark>model_dump()</mark> / <mark>model_dump_json()</mark></h4>
   <pre>
     from datetime import date
@@ -140,13 +163,15 @@
     sally.model_dump()            // -> {'name': 'Sally', 'birth_date': datetime.date(1987, 11, 7), 'child1': {'name': 'Bob', 'birth_date': datetime.date(2003, 5, 17)}, 'child2': {'name': 'Marry', 'birth_date': datetime.date(2005, 1, 5)}}    
     sally.model_dump_json()       // -> {"name":"Sally","birth_date":"1987-11-07","child1":{"name":"Bob","birth_date":"2003-05-17"},"child2":{"name":"Marry","birth_date":"2005-01-05"}}    
   </pre>
+  <!----------------------------------------------------------------------------------->
+  <hr>
   <h4 class="header"> Using pydantic types and field validation with <mark>Field()</mark> </h4>
   <pre>
     from pydantic import BaseModel, Field, HttpUrl, PositiveFloat, PositiveInt
     
     
     class Job(BaseModel):
-        title: str = Field(title='Job title', default=None, min_length=5, maxlength=90)       # field validation
+        title: str = Field(title='Job title', default=None, min_length=5, maxlength=90)       // field validation
         payrange: int | float = Field(description='payrange', gt=1500, le=3500)
         tax: PositiveFloat | PositiveInt
         url: HttpUrl
@@ -161,6 +186,8 @@
     
     job_pydantic_instance = Job(**job)
   </pre>
+  <!----------------------------------------------------------------------------------->
+  <hr>
   <h4 class="header"> Using pydantic model for type validation in FastAPI </h4>
   <pre>
     from fastapi import FastAPI
@@ -189,6 +216,67 @@
         except Exception:
             return {'stored': False}
   </pre>
+  <!----------------------------------------------------------------------------------->
+  <hr>
+  <h4 class="header"> Custom field validation with <mark>@field_validator</mark> decorator </h4>
+  <pre>
+    from pydantic import BaseModel, field_validator
+    
+    
+    class Person(BaseModel):
+        name: str
+        age: int
+      
+        @field_validator('age')
+        @classmethod
+        def validate_age(cls, v: int) -> int:
+            if (v <= 0 or v > 110):                   // age range validation 
+                raise ValueError('invalid age')
+            return v
+      
+        @field_validator('name')
+        @classmethod
+        def capitalize_name(cls, v: str) -> str:      // we can use this method to modify a field on validation
+          return v.capitalize()
+    
+    
+    person = {
+        "name": "Pall",
+        "age": 39,
+    }
+    
+    pydanticPerson = Person(**person)                   // -> pydanticInstance(name='Pall' age=39)
+  </pre>
+  <!----------------------------------------------------------------------------------->
+  <hr>
+  <h4 class="header"> Custom field validation with <mark>@model_validator</mark> decorator </h4>
+  <pre>
+    from pydantic import BaseModel, model_validator
+    
+    
+    class Person(BaseModel):
+        name: str
+        age: int
+    
+        @model_validator(mode='before')
+        @classmethod
+        def validate_age(cls, fields: dict) -> dict:
+            if len(fields['name']) > 100:
+                raise ValueError('Too long name provided')
+            if fields['age'] <= 0 or fields['age'] > 110:
+                raise ValueError('invalid age')
+    
+            fields['name'] = fields['name'].capitalize()      // modifying the 'name' field
+            return fields
+    
+    
+    person = {
+        'name': 'pall',
+        'age': 39,
+    }
+    
+    pydanticPerson = Person(**person)           // -> pydanticInstance(name='Pall' age=39)
+  </pre>
   </details>
 <hr>
 <!------------------------------------------------------------------------------------->
@@ -204,16 +292,16 @@
         <i>...</i>
     
     
-    <strong>pydanticInstance</strong> = <strong>PydanticModel</strong>()                 // extracts and type check environment variables specified in <strong>PydanticModel</strong> (raises a <mark>ValidationError</mark> on fail)
-                                                       // <strong>pydanticInstance</strong> holds extracted environment variables    
+    <strong>pydanticInstance</strong> = <strong>PydanticModel</strong>()                 // gets and type checks environment variables specified in <strong>PydanticModel</strong> (raises a <mark>ValidationError</mark> on fail)
+                                                       // <strong>pydanticInstance</strong> holds got environment variables    
   </pre>
   <details class="example">
     <summary> Example : </summary>
   <h4 class="header"> Basics </h4>
   <pre>
-# # environment variables setup before program start -----------
-# export test_1='Hello World'
-# export test_3=1
+// environment variables setup before program start -----------
+// export test_1='Hello World'
+// export test_3=1
     
     
     from pydantic_settings import BaseSettings

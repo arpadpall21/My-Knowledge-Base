@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> File System Map </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> File System Map </h1>
+  <p> Updated ( 2020-03-10 / 2020-03-30 )</p>
+  <nav class="sitenav">
+    <a href="../../index.html" title="home">MySite></a>
+    <a href="../index.html" title="home">UNIX></a> File System Map
+  </nav>
+  <br>
+  <table class="table">
+    <tr>
+      <th style="width:30%;"> Folder </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td> / </td>
+      <td> - root directory </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /bin </td>
+      <td> - (binary) directory holds <u>essential</u> binaries (booting, system emergency, single user mode, etc..)</td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /boot </td>
+      <td> - (boot) directory for Linux boot loader files </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /cdrom </td>
+      <td> - (CD-ROM) directory for cd-rom devices </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /dev </td>
+      <td> - (devices) directory for device files (in Linux every device is depicted as a file, like mouse, keyboard, etc...) </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /etc </td>
+      <td> - (etcetera) directory for system-wide configuration files, these configurations are valid for all users </td>
+    </tr>
+    <tr>
+      <td class="indent-lv1"> /enviroment </td>
+      <td>
+        - file contains system-wide environment variables <br>
+      </td>
+    </tr>
+    <tr>
+      <td class="indent-lv1"> /group </td>
+      <td>
+        - file contains all groups in the system <br>
+        - each entry represents a group (<strong>groupName</strong> : <em class="openable">x<div>
+            <p> - the 'x' represents the encrypted password </p>
+          </div></em> : <strong>gid</strong> : <strong>groupMember</strong><i><small>,</small>...</i>)
+      </td>
+    </tr>
+    <tr>
+      <td class="indent-lv1"> /hosts </td>
+      <td>
+        - file contains local DNS mapping (local domain to IP address mapping) <br>
+        - (column1 = ip address) (column2 = domain) (column3 = domain alias)
+      </td>
+    </tr>
+    <tr>
+      <td class="indent-lv1"> /os-release </td>
+      <td>
+        - file contains operating system informations (like linux distro, version, etc...)
+      </td>
+    </tr>
+    <tr>
+      <td class="indent-lv1"> /passwd </td>
+      <td>
+        - file contains all users in the system <br>
+        - each entry represents a user (<strong>userName</strong> : <em class="openable">x<div>
+            <p> - the 'x' represents the encrypted password </p>
+          </div></em> : <strong>uid</strong> : <strong>gid</strong> : <strong>fullName</strong> :
+        <strong>homeDirPath</strong> : <strong>loginShellPath</strong>)
+      </td>
+    </tr>
+    <tr>
+      <td class="indent-lv1"> /resolv.conf </td>
+      <td>
+        - file contains DNS server IPs (thse servers are requested for DNS resolution)
+      </td>
+    </tr>
+    <tr>
+      <td class="indent-lv1" id="ssh"> /ssh </td>
+      <td> - directory contains system whide ssh config items </td>
+    </tr>
+    <tr>
+      <td class="indent-lv2" id="ssh_config"> /ssh_config </td>
+      <td> - file contains ssh system whide configurations </td>
+    </tr>
+    <tr>
+      <td class="indent-lv2" id="#/sshd_config"> /sshd_config </td>
+      <td> - file contains <span class="openable">ssh server configurations<div>
+        <p> <mark>PasswordAuthentication yes|no</mark>: enable|disable password authentication for all users (Default: <mark>yes</mark>) </p>
+        <p> <mark>AllowUsers <reqval>user</reqval><optval>, ...</optval></mark>: only the listed users are allowed to access the system (white list) </p>
+        <p> <mark>DenyUsers <reqval>user</reqval><optval>, ...</optval></mark>: listed users are allowed to access the system (black list) </p>
+        <p> <mark>Match User <reqval>user</reqval></mark>: below listed directives are valid for <reqval>user</reqval> only </p>
+        <p> ex: (password authentication disabled except for user <mark>remote</mark>) </p>
+        <pre>
+      PasswordAuthentication no
+      
+      Match User remote
+          PasswordAuthentication yes
+        </pre>
+        
+      </div></span> </td>
+    </tr>
+    <tr>
+      <td class="indent-lv1"> /sudoers </td>
+      <td>
+        - file contains users and groups with administrator priviledges (<mark>sudo</mark> must be installed)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /home </td>
+      <td>
+        - (home) directory for user(s) <br>
+        - each user has its own home folder and cannot access other home folders without superuser permissions <br>
+        - holds the current user application configurations setting caching
+      </td>
+    </tr>
+    <tr>
+      <td class="indent-lv1"> /<strong>user</strong> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td class="indent-lv2"> /.bash_aliases </td>
+      <td>
+        - file contans user command aliases <span class="openable">(ex:)<div>
+            <p><mark>alias <strong>aliasCmd</strong>=<strong>cmd</strong></mark> </p>
+            <p><mark><i>...</i></mark></p>
+            <hr>
+            <p><u> EX: </u></p>
+            <p><mark>alias test="ls | grep test"</mark> (list all <mark>test</mark> files in the current directory) </p>
+          </div></span> <br>
+        - <span class="openable">must be read and executed from <mark>~/.bashrc</mark> <div>
+            <pre>
+    if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+    fi
+              </pre>
+          </div></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="indent-lv2"> /.bashrc|.zshrc </td>
+      <td>
+        - file contains commands that are executed every time when a new shell (bash or zshell) is opened (each line is a new command) <br>
+      </td>
+    </tr>
+    <tr>
+      <td class="indent-lv2"> /.profile|.zprofile </td>
+      <td>
+        - file contains commands that are executed when a <u class="openable">log in shell is opened<div>
+          <p> - when a user logs in with user and password so the shell initializes the user's environment </p>
+        </div></u> (each line is a new command)<br>
+        - <u>its mostly used to setup user specific environment variables</u>
+      </td>
+    </tr>
+    <tr id="ssh">
+      <td class="indent-lv2"> /.ssh </td>
+      <td>
+        - directory contains ssh private & publick keys <br>
+        - usable only by the <reqval>user</reqval> (even a separate user part of the folder's group has no access for security reasons)
+      </td>
+    </tr>
+    <tr id="ssh_config">
+      <td class="indent-lv3"> /config </td>
+      <td>
+        - file contains ssh client configurations <br>
+        - maps <span class="openable">host names to connections<div>
+          <pre>
+    Host <reqval>hostName</reqval>
+      Hostname <reqval>host|ip</reqval>
+      Port <reqval>port</reqval>
+      User <reqval>user</reqval>
+    
+    <optval>...</optval>
+          </pre>
+          <p> - cmd to connect <mark>ssh <reqval>hostName</reqval></mark> </p>
+        </div></span>
+      </td>
+    </tr>
+    <tr id="known_hosts">
+      <td class="indent-lv3"> /known_hosts </td>
+      <td>
+        - file contains already connected connection fingerprints (this is how the ssh client 'remembers' connections) <br>
+        - if the remote host changes the user is warned (protects against man-in-the middle attacks)
+      </td>
+    </tr>
+    <tr id="known_hosts_old">
+      <td class="indent-lv3"> /known_hosts.old </td>
+      <td>
+        - one version older than <mark>known_hosts</mark> (backup file)
+      </td>
+    </tr>
+    <tr id="authorized_keys">
+      <td class="indent-lv3"> /authorized_keys </td>
+      <td>
+        - file contains ssh publick keys for the ssh server (daemon) <br>
+        - this is where the ssh server keeps its public keys
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /lib<small>nr</small> </td>
+      <td> - (libraries) directory holds system libraries </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /media </td>
+      <td> - (removable media) directory for external storage devices are mounted her by the OS (like USB sticks, SD cards, etc...)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /mnt </td>
+      <td> - (mount) directory for manually mounted storage and partitions </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /opt </td>
+      <td> - (optional) directory for manually installed softwares which are not part of the default installation </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /proc </td>
+      <td> - (process) directory for process and kernel information files, the OS keeps track of running processes and other OS
+        functionalities in files here </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /root </td>
+      <td> - (root) directory of the superuser </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /run </td>
+      <td> - (run-time variables) directory for initial runing system files since the last boot (OS creates this directory on every boot
+        up) </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /sbin </td>
+      <td> - (system binaryes) directory for holding system binary files which are accessible only for the superuser </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /snap </td>
+      <td> - (snap packages) directory for Ubuntu snap packages </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /srv </td>
+      <td> - (server) directory for server data is sotred here </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /sys </td>
+      <td> - (system) directory for kernel configuration files (OS creates this directory on every boot up) </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /tmp </td>
+      <td> - (temporary) directory for temporary files stored by applications </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /usr </td>
+      <td> - (user) directory for user applications (non-essential for system operations) </td>
+    </tr>
+    <tr>
+      <td class="indent-lv1"> /bin </td>
+      <td> - directory user binaries (non required by the system) </td>
+    </tr>
+    <tr>
+      <td class="indent-lv1"> /share </td>
+      <td> - directory for sharable architecture independend files (icons, fonts, docs, etc..) </td>
+    </tr>
+    <tr>
+      <td class="indent-lv2"> /doc </td>
+      <td> - directory for package documentations, configurations, utilities, etc... </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> /var </td>
+      <td> - (variables) directory for data files, log files, cache data, waiting tasks, etc... </td>
+    </tr>
+    <tr>
+      <td class="indent-lv1"> /log </td>
+      <td> - directory contains log files </td>
+    </tr>
+    <tr id="auth_log">
+      <td class="indent-lv2"> /auth.log </td>
+      <td> - file contains authentication logs (like ssh authentication logs) </td>
+    </tr>
+    <tr>
+      <td class="indent-lv1"> /spool/cron/crontabs </td>
+      <td> - directory contains user crontab files </td>
+    </tr>
+  </table>
+    <br>
+  <table class="table">
+    <caption> File Acces Modes </caption>
+    <tr>
+      <th style="width:10%;"> Number </th>
+      <th style="width:10%;"> Symbol </th>
+      <th> Permission Type </th>
+    </tr>
+    <tr>
+      <td> 0 </td>
+      <td> --- </td>
+      <td> No Permission </td>
+    </tr>
+    <tr>
+      <td> 1 </td>
+      <td> --x </td>
+      <td> Execute </td>
+    </tr>
+    <tr>
+      <td> 2 </td>
+      <td> -w- </td>
+      <td> Write </td>
+    </tr>
+    <tr>
+      <td> 3 </td>
+      <td> -wx </td>
+      <td> Write + Execute </td>
+    </tr>
+    <tr>
+      <td> 4 </td>
+      <td> r-- </td>
+      <td> Read </td>
+    </tr>
+    <tr>
+      <td> 5 </td>
+      <td> r-x </td>
+      <td> Read + Execute </td>
+    </tr>
+    <tr>
+      <td> 6 </td>
+      <td> rw- </td>
+      <td> Read + Write </td>
+    </tr>
+    <tr>
+      <td> 7 </td>
+      <td> rwx </td>
+      <td> Read + Write + Execute </td>
+    </tr>
+  </table>
+
+
+  <br><br>
+</body>
+
+</html>

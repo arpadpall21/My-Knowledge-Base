@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> UFW </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> UFW </h1>
+  <p> Updated ( 2024-05-01 ) </p>
+  <nav class="sitenav">
+    <a href="../../index.html" title="home">MySite></a>
+    <a href="../index.html" title="home">UNIX></a> UFW
+  </nav>
+  <br>
+  <table class="table">
+    <tr>
+      <th style="width:30%;"> CMD </th>
+      <th> Description </th>
+    </tr>
+    
+    
+    <tr>
+      <td>
+        
+      </td>
+      <td>
+        - 
+      </td>
+    </tr>
+    
+    
+    
+    
+  </table>
+    
+    
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+
+
+
+
+
+<!--
+
+- apt install ufw
+    - its a daemon (systemctl status ufw)
+    
+    
+- UFW stands for Uncomplicated Firewall
+    
+    
+- enabling ufw without rules (when the ufw daemon is runnign that doesn't men the firewall is enabled -> in has to be enabled manually)
+  - blocks all incoming traffic
+  - allow all outgoing traffic
+
+
+
+--- CMD ---
+$ ufw default allow outgoing      <- recommended to start config with these guys
+$ ufw default deny incoming
+
+
+$ ufw allow <port|protocol>   (same as: ufw allow ssh <- same as -> ufw allow 22)
+
+$ ufw allow from <ip>             <- allow access from a specific IP
+$ ufw allow from <ip>/mask        <- allow access from a specific subnet
+$ ufw allow from <ip> to any port 22 [proto <tcp|udp>]    <- allow access from a specific IP to a specifi port only
+
+$ ufw deny from <ip>              <- same as <allow>
+
+
+$ ufw delete <ruleNumber>     <- deletes the specified firewal rule
+
+
+$ ufw status [options]
+    - numbered              <- numbers the listed rules
+$ ufw enable            <- enable firewall (highlight that ufw is not enabled on daemon start)
+
+$ ufw reset             <- removes all rules (including the initial policies set by ufw default ...)
+
+
+$ ufw show raw          <- displays the raw IP table
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+- how can we set wildcard policies?
+- 
+
+
+
+-->
+
+
+
+  <br><br>
+</body>
+
+</html>

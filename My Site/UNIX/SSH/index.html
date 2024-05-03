@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> SSH </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> SSH </h1>
+  <p> Updated ( 2024-04-21 ) </p>
+  <nav class="sitenav">
+    <a href="../../index.html" title="home">MySite></a>
+    <a href="../index.html" title="home">UNIX></a> SSH
+  </nav>
+  <br>
+  <table class="table">
+    <tr>
+      <th style="width:30%;"> CMD </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td>
+        ssh <opt>[options]</opt>
+        <reqval>user</reqval>|admin@<reqval>host|IP</reqval>
+        <opt>[cmd]</opt>
+      </td>
+      <td>
+        - connects to the remote <reqval>host|IP</reqval> as <reqval>user</reqval> (or as root <mark>admin</mark>) <br>
+        <opt>[options]</opt><br>
+        - (<opt>-p <optval>port</optval>
+        </opt>) - sets the connection port <br>
+        - (<opt>-i <optval>pirvateKeyFileName</optval>
+        </opt>) - sets the key file names (Default: <mark>id</mark>) <br>
+        - (<opt>-v</opt>) - verbose <br>
+        <opt>[cmd]</opt> - executes the command on the connected remote host then disconnects
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        ssh-keygen <opt>[options]</opt>
+      </td>
+      <td>
+        - generates a private/public key pair for ssh the ssh connections <br>
+        <opt>[options]</opt> <br>
+        - (<opt class="openable">-t rsa|dsa|exdsa|ed25519<div>
+            <p> - <mark>RSA</mark> (Rivest-Shamir-Adleman): most widely-used algorithm for SSH (recommended key size: <mark>2048</mark> or higher) </p>
+            <p> - <mark>DSA</mark> (Digital Signature Algorithm): older algorithm no longer recommended for new applications (recommended key size: <mark>2048</mark> or higher) </p>
+            <p> - <mark>ECDSA</mark> (Elliptic Curve Digital Signature Algorithm): newer algorithm that provides similar security to RSA, but with <u>smaller key sizes</u>, this makes it good choice for systems with limited resources, such as embedded devices or mobile devices (recommended key size: <mark>256</mark> or higher) </p>
+            <p> - <mark>ED25519</mark> (Edwards-curve Digital Signature Algorithm): newer algorithm that provides high security <u>considered the most secure of all</u>, very fast key generation, fast signing, small key size (recommended key size: <mark>256</mark> or higher)</p>
+          </div>
+        </opt>) - cryptographic algorithm to generate the keys <br>
+        - (<opt>-b <optval>int</optval>
+        </opt>) - sets the key size <br>
+        - (<opt>-C <optval>comment</optval>
+        </opt>) - comment in public key file (usually the user's email) <br>
+        - (<opt>-f <optval>fileName</optval>
+        </opt>) - sets the file names (Default: <mark>id</mark>) <br>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        ssh-copy-id <opt>[option]</opt>
+        <reqval>user</reqval>|admin@<reqval>host|IP</reqval>
+      </td>
+      <td>
+        - copies the public key to the remote <reqval>host|IP</reqval> <br>
+        - 1) logs in to the remote host<br>
+        - 2) updates the <mark>/home/<reqval>user</reqval>/.ssh/authorized_keys</mark> file on the remote with the passed key<br>
+        - 3) logs out from the remote system <br>
+        <opt>[options]</opt> <br>
+        - (<opt>-i <optval>pubKeyFilePath</optval>
+        </opt>) - public key to copy <br>
+        - (<opt>-p <optval>port</optval>
+        </opt>) - sets the connection port <br>
+      </td>
+    </tr>
+
+
+
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      SSH Agent
+    </caption>
+    <tr>
+      <th style="width:30%;"> CMD </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td>
+        pgrep ssh-agent
+      </td>
+      <td>
+        - checks if the ssh agent is running (returns the process id)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        eval "$(ssh-agent -s)"
+      </td>
+      <td>
+        - starts ssh agent
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        ssh-add <reqval>pathToSshPrivateKey</reqval>
+      </td>
+      <td>
+        - adds the private key to the ssh agent
+      </td>
+    </tr>
+    <tr>
+      <td>
+        ssh-add -l
+      </td>
+      <td>
+        - lists the ssh agent's private keys
+      </td>
+    </tr>
+    <tr>
+      <td>
+        ssh-add -d <reqval>pathToSshPrivateKey<reqval>
+      </td>
+      <td>
+        - removes the specified private key from the ssh agent
+      </td>
+    </tr>
+    <tr>
+      <td>
+        ssh-add -D
+      </td>
+      <td>
+        - removes all private keys from the ssh agent (purges all keys)
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - for better security use private/public key authentication because the user & password authentcation is easier to brute force </p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - the SSH (<mark>S</mark>ecure <mark>S</mark>hell) is network protocol that provides a secure and encrypted way to access and communicate with a remote server </p>
+  <p> - SSH uses public/pirvate key infrastructure in order to authenticate the client to the server (after authentication symetric encryption is used for further transmission encryption) </p>
+  <p class="header"> UNIX systems ssh remote access requirements: </p>
+  <p class="indent-lv1"> - ssh server installed and running (not installed by default, listed as <mark>ssh</mark> daemon) (configurable through <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#sshd_config" target="_blank">/etc/ssh/sshd_config</a></mark>) </p>
+  <p class="indent-lv2"> - to install server: (prepare system <mark>sudo apt update && sudo apt upgrade</mark>) (install ssh server <mark>sudo apt install openssh-server</mark>) (start <mark>sudo systemctl start ssh</mark>) </p>
+  <p class="indent-lv1"> - the user exist on the remote system (be basically login as a user but remotely) </p>
+  <p class="header"> There are 2 ways a user can remotely authenticate in a system: </p>
+  <p class="indent-lv1"> - simple <mark class="mark">name & password authentication</mark> (cryptography is taken care in the background) </p>
+  <p class="indent-lv2"> - we log in with our user & password (like we would do locally), is that simple </p>
+  <p class="indent-lv1"> - using <mark class="mark">private/public key authentication</mark>, <u>considered far more secure than user & password authentication</u> (don't forget to disble the user & password authentciation if you want to use only this method <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#sshd_config" target="_blank">/etc/ssh/sshd_config</a></mark>) </p>
+  <p class="indent-lv2"> - 1) generate a private/public key pair </p>
+  <p class="indent-lv2"> - 2) register the public key with the server <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#authorized_keys" target="_blank">/home/<reqval>user</reqval>/.ssh/authorized_keys</a></mark> </p>
+  <p class="indent-lv2"> - 3) login with the private key </p>
+  <p class="header"> Important SSH file components: </p>
+  <p class="indent-lv1"> - <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#sshd_config" target="_blank">/etc/ssh/sshd_config</a></mark>: ssh server daemon config file </p>
+  <p class="indent-lv1"> - <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#ssh_config" target="_blank">/etc/ssh/ssh_config</a></mark>: system wide ssh config file </p>
+  <p class="indent-lv1"> - <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#auth_log" target="_blank">/var/log/auth.log</a></mark>: log file where all authentcation is registered </p>
+  <p class="indent-lv1"> - <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#ssh" target="_blank">/home/<reqval>user</reqval>/.ssh</a></mark>: user's ssh directory where all pirivate/public keys are stored </p>
+  <p class="indent-lv2"> - usable only by the user (even a separate user part of the folder's group has no access for security reasons) </p>
+  <p class="indent-lv1"> - <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#ssh_conifg" target="_blank">/home/<reqval>user</reqval>/.ssh/config</a></mark>: ssh client config file (used to map names to connections) </p>
+  <p class="indent-lv1"> - <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#known_hosts" target="_blank">/home/<reqval>user</reqval>/.ssh/known_hosts</a></mark>: contains already estabilished connection figerprints (protects against man-in-the middle attacks by detecting if the remote host changes) </p>
+  <p class="indent-lv1"> - <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#known_hosts_old" target="_blank">/home/<reqval>user</reqval>/.ssh/known_hosts.old</a></mark>: one version older than <mark>known_hosts</mark> (backup file) </p>
+  <p class="indent-lv1"> - <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#authorized_keys" target="_blank">/home/<reqval>user</reqval>/.ssh/authorized_keys</a></mark>: contains ssh public keys (this is where the ssh server keep its public kesy) </p>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> Connecting with user & password </h4>
+    <pre class="cmd">
+    $ ssh remote@192.168.0.101                        // connecting as user <mark>remote</mark> to <mark>192.168.0.101</mark> (that easy)
+    </pre>
+    <!----------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Using the <mark>config</mark> file </h4>
+    <pre>
+// /home/&lt;user&gt;/.ssh/config (file) --------------------
+    Host remote
+      Hostname 192.168.0.101
+      Port 22
+      User remote
+    
+    Host me
+      Hostname 192.168.0.101
+      Port 22
+      User pall
+    </pre>
+    <pre class="cmd">
+// connecting with the <mark>remote</mark> user ----
+    $ ssh remote
+    
+    
+// connecting with the <mark>pall</mark> user -------
+    $ ssh me
+    </pre>
+    <!----------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> Create private/public key pair </h4>
+    <h4 class="header"> Register public key with the remote host </h4>
+    <h4 class="header"> Add the private key to the ssh agent </h4>
+    <h4 class="header"> Disable password authentication (optional) </h4>
+    <p> - create a public/private key pair </p>
+    <pre class="cmd">
+    $ ssh-keygen -t ed25519 -b 256 -f myKey 
+    Generating public/private ed25519 key pair.
+    
+    $ ls 
+    myKey      myKey.pub
+    </pre>
+    <p> - register the public key with the remote pair (note: we have user & password access to the host) </p>
+    <p> - basically this operation copies the public key <mark>myKey</mark> to the remote host's <mark>authorized_keys</mark> file </p>
+    <pre class="cmd">
+    $ ssh-copy-id -i myKey.pub remote@192.168.0.101
+    </pre>
+    <p> - add the private key to the shh agent (note: the ssh agent is up and running) </p>
+    <pre class="cmd">
+    $ ssh-add myKey
+    
+    $ ssh-add- l
+    256 SHA256:Q1drkGvL+bWCxtzN0zgFMI3Emffc3jH1x9NAFWozOgs diarpall@A934D9W (ED25519)
+    </pre>
+    <p> - disable the remote host's user & password authentication (note: this operation is not required, but allowing only private/public key authentication makes the remote host much more secure) </p>
+    <pre class="cmd">
+    $ ssh remote@192.168.0.101                            // log in with user & password 
+    
+    remote@remoteHost $ sudo nano /etc/ssh/sshd_config      // set the <mark>PasswordAuthentication no</mark> directive in <mark>sshd_config</mark> file 
+    
+    remote@remoteHost $ sudo systemctl restart ssh      // restart the remote host's ssh server 
+    
+    remote@remoteHost $ exit                        // exit remote system
+    
+    $ ssh remote@192.168.0.101                      // log in with the private key
+    </pre>
+  </details>
+
+  <!-------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> SSH Agent </h2>
+  <p> - the ssh agent is in charge of storing private ssh keys for public/private key remote connections </p>
+  <p> - so this is when the ssh client looks for the private key when it tries to connect with remote host (private keys must be added to the ssh agent) </p>
+  <p> - note: on Ubuntu systems the ssh agent starts automatically, but on MacOS it doesn't </p>
+
+
+  <br><br>
+</body>
+
+</html>
