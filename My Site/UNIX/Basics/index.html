@@ -13,76 +13,12 @@
 
 <body>
   <h1> Basics </h1>
-  <p> Updated ( 2020-03-10 / 2020-03-30 )</p>
+  <p> Updated ( 2020-03-10 / 2020-03-30 / 2024-05-06 )</p>
   <nav class="sitenav">
     <a href="../../index.html" title="home">MySite></a>
     <a href="../index.html" title="home">UNIX></a> Basics
   </nav>
   <br>
-  <table class="table">
-    <caption> Cron daemon </caption>
-    <tr>
-      <th style="width:30%;"> Command / Syntax </th>
-      <th> Description </th>
-    </tr>
-    <tr>
-      <td> crontab <small>[-e] [-l] [-r] [-i]</small> </td>
-      <td>
-        - <u>(option required)</u> users' crontab (crontab = cron table) <br>
-        - (<small>-e</small>) edit the user's crontab file <br>
-        - (<small>-l</small>) print the user's crontab file <br>
-        - (<small>-r</small>) removes the user's crontab file from the <mark>/var/spool/cron/crontabs</mark> directory
-        (doesn't prompt) <br>
-        - (<small>-i</small>) prompts when removing crontab files
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2"> Scheduling Cron Jobs </td>
-    </tr>
-    <tr>
-      <td> <strong class="openable">min<div>
-            <p> - minute <mark>0 - 59</mark></p>
-          </div></strong> <strong class="openable">hour<div>
-            <p> - hour <mark>0 - 23</mark></p>
-          </div></strong> <strong class="openable">day<div>
-            <p> - day of month <mark>1 - 31</mark>
-          </div></strong> <strong class="openable">month<div>
-            <p> - month <mark>1 - 12</mark></p>
-          </div></strong> <strong class="openable">weekDay<div>
-            <p> - day of week <mark>0 - 7</mark> (<mark>0</mark> and <mark>7</mark> = Sunday) </p>
-          </div></strong> <strong>cmd</strong>
-      </td>
-      <td>
-        - schedules the passed command(s) <br>
-        - <mark>*</mark> = every (ex: <mark>* * * * *</mark> = every minutes | <mark>0 * * * *</mark> = every hour |
-        <mark>0 0 * * *</mark> = every day) <br>
-        - <mark><strong>nr</strong>,<strong>nr</strong></mark> = specifying multiple values (ex: <mark>5,10,15 * * *
-          *</mark> = 5, 10 and 15 minutes) <br>
-        - <mark><strong>nr</strong>-<strong>nr</strong></mark> = specifying a range (ex: <mark>5-15 * * * *</mark> =
-        every minutes between 5 and 15 minutes <br>
-        - <mark><strong>nr</strong>/<strong>nr</strong></mark> = repeat an interval (ex: <mark>0 */4 * * *</mark> =
-        every 4 hours)
-      </td>
-    </tr>
-    <tr>
-      <td> <span class="openable">@yearly | @anually<div>
-            <p> - same as = <mark>0 0 1 1 *</mark> (runs the task at every 00:00 hours 1st of January) </p>
-          </div></span> | <span class="openable">@monthy<div>
-            <p> - same as = <mark>0 0 1 * *</mark> (runs the task at every 00:00 hours 1st of every month) </p>
-          </div></span> | <span class="openable">@weekly<div>
-            <p> - same as = <mark>0 0 * * 0</mark> (runs the task at 00:00 hours every Sunday) </p>
-          </div></span> | <span class="openable">@daily<div>
-            <p> - same as = <mark>0 0 * * *</mark> </p>
-          </div></span> | <span class="openable">@hourly<div>
-            <p> - same as = <mark>0 * * * *</mark> </p>
-          </div></span> | <span class="openable">@reboot<div>
-            <p> - runs the task at every system startup </p>
-          </div></span>
-      </td>
-      <td> 1 predefined macro (schedule) can replace all the 5 values <u>[TESTED: 2020-04-13 <mark>@reboot</mark> not
-          working on Ubuntu 19.10]</u> </td>
-    </tr>
-  </table>
   <h2 style="color:green;"><u> Notes : </u></h2>
   <details class="example" id="notes">
     <summary> Notes :</summary>
@@ -149,109 +85,6 @@
   <p class="indent-lv1"> - cannot be controled with user commands (for that we have to bring them in the foreground) </p>
   <p class="indent-lv2"> - on linux we can control daemons with the <mark>service</mark> or <mark>systemctl</mark> commands (<mark>systemctl</mark> is the successor of <mark>service</mark>, it provides more control and starts daemons in parallel) </p>
   <p class="indent-lv2"> - on MacOS we have the <mark class="mark">Activity Monitor</mark> where services are visible </p>
-  <!-------------------------------------------------------------------------------------------------------------------------------->
-  <hr>
-  <h3 class="header"> Cron </h3>
-  <p> - Cron is a daemon tool which schedules commands on Unix-like systems, by default it does interpret commands with the Bourne shell (<mark>/bin/sh</mark>) Not with bash (this could lead somme differences)! </p>
-  <p> - by default <mark>/bin/sh</mark> doesn't have the <mark>DISPLAY=:0</mark> enviroment variable set, <u>(so if we want to lauch graphical applications we must set it first!)</u></p>
-  <p> - user "Cron Jobs" (tasks) are simply stored in a file in the <mark>/var/spool/cron/crontabs</mark> directory (each user has its own crontab file here), there is system-wide crontabs too but I don't test that now [2020-04-13] </p>
-  <p> - use commands to set crontabs (<mark>crontab -e</mark>), it is NOT recommended to modify crontab files directly! </p>
-  <pre class="syntax">
-COMMANDS :  crontab <small>[-e] [-l] [-r] [-i]</small>                                                // <u>(option required)</u> users' crontab (crontab = cron table)  
-                <small>-e</small>                                                                        // edit the user's crontab file 
-                <small>-l</small>                                                                        // print the user's crontab file 
-                <small>-r</small>                                                                        // removes the user's crontab file from the <mark>/var/spool/cron/crontabs</mark> directory (doesn't prompt) 
-                <small>-i</small>                                                                        // prompts when removing crontab file 
-            
-<span style="color:darkgrey;">// schedule cron jobs (tasks) in the (bottom of the) user's crontab file --------------</span>
-    <strong class="openable">min<div>
-        <p> - minute <mark>0 - 59</mark></p>
-    </div></strong> <strong class="openable">hour<div>
-        <p> - hour <mark>0 - 23</mark></p>
-    </div></strong> <strong class="openable">day<div>
-        <p> - day of month <mark>1 - 31</mark>
-    </div></strong> <strong class="openable">month<div>
-        <p> - month <mark>1 - 12</mark></p>
-    </div></strong> <strong class="openable">weekDay<div>
-        <p> - day of week <mark>0 - 7</mark> (<mark>0</mark> and <mark>7</mark> = Sunday) </p>
-    </div></strong>  <strong>cmd</strong>                                             // schedules the passed command(s) 
-                                                                                          // * = every (ex: <mark>* * * * *</mark> = every minutes | <mark>0 * * * *</mark> = every hour | <mark>0 0 * * *</mark> = every day)
-                                                                                          // <strong>nr</strong>,<strong>nr</strong> = specifying multiple values (ex: <mark>5,10,15 * * * *</mark> = 5, 10 and 15 minutes) 
-                                                                                          // <strong>nr</strong>-<strong>nr</strong> = specifying a range (ex: <mark>5-15 * * * *</mark> = every minutes between 5 and 15 minutes 
-                                                                                          // <strong>nr</strong>/<strong>nr</strong> = repeat an interval (ex: <mark>0 */4 * * *</mark> = every 4 hours)  
-    
-    <span class="openable">@yearly | @anually<div>
-        <p> - same as = <mark>0 0 1 1 *</mark> (runs the task at every 00:00 hours 1st of January) </p>
-    </div></span> | <span class="openable">@monthy<div>
-        <p> - same as = <mark>0 0 1 * *</mark> (runs the task at every 00:00 hours 1st of every month) </p>
-    </div></span> | <span class="openable">@weekly<div>
-        <p> - same as = <mark>0 0 * * 0</mark> (runs the task at 00:00 hours every Sunday) </p>
-    </div></span> | <span class="openable">@daily<div>
-        <p> - same as = <mark>0 0 * * *</mark> </p>
-    </div></span> | <span class="openable">@hourly<div>
-        <p> - same as = <mark>0 * * * *</mark> </p>
-    </div></span> | <span class="openable">@reboot<div>
-        <p> - runs the task at every system startup </p>
-    </div></span>        // 1 predefined macro (schedule) can replace all the 5 values <u>[TESTED: 2020-04-13 <mark>@reboot</mark> not working on Ubuntu 19.10]</u>    
-    </pre>
-  <pre>
-// user's crontab file ----------------------------------------------------------------
-    DISPLAY=:0                                                                         // !! graphical application won't start without this environment variable   
-    
-    * */4 * * *  echo 'test' > testFile                                                // run task every minute in every 4 hours 
-    
-    @reboot  echo 'test' > testFile                                                    // -! run task at every startup [TESTED: 2020-04-13 NOT workink on Ubuntu]   
-    
-    0 15 * * 1-5  echo 'test' > testFile                                               // run task at 15:00 from Monday to Friday  
-    
-    0 8-16 * * *  echo 'test' > testFile                                               // run task every hours from 8 to 16 
-    
-    0 7 1-7 * 1  echo 'test > testFile                                                 // run task on the first Monday of every month at 7 o'clock    
-    </pre>
-  <details class="example">
-    <summary> Example : </summary>
-    <h4 style="color:darkblue;"><u> Cron Test-1 </u></h4>
-    <p> - the below file is edited through the <mark>crontab -e</mark> command <u>(it is not recommended to edit it
-        directly!)</u> </p>
-    <pre>
-// (user's crontab file) /var/spool/cron/crontabs/pall --------------------------------
-    # Edit this file to introduce tasks to be run by cron.
-    # 
-    # Each task to run has to be defined through a single line
-    # indicating with different fields when the task will be run
-    # and what command to run for the task
-    # 
-    # To define the time you can provide concrete values for
-    # minute (m), hour (h), day of month (dom), month (mon),
-    # and day of week (dow) or use '*' in these fields (for 'any').
-    # 
-    # Notice that tasks will be started based on the cron's system
-    # daemon's notion of time and timezones.
-    # 
-    # Output of the crontab jobs (including errors) is sent through
-    # email to the user the crontab file belongs to (unless redirected).
-    # 
-    # For example, you can run a backup of all your user accounts
-    # at 5 a.m every week with:
-    # 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
-    # 
-    # For more information see the manual pages of crontab(5) and cron(8)
-    # 
-    # m h  dom mon dow   command
-    
-// ------------------------------------------------------------------------------------
-    */1 * * * * /usr/bin/node /home/pall/TestDir/main.js >> /home/pall/TestDir/nodeRes // runs node every minute and outputs the result in the specified file  
-    
-// ------------------------------------------------------------------------------------
-    */1 * * * * node /home/pall/TestDir/main.js >> /home/pall/TestDir/nodeRes          // does the same as above   
-    
-// ------------------------------------------------------------------------------------
-    DISPLAY=:0                                                                         // -! when launching GUI programs we must set the display environment variable 
-    16 19 12 4 * firefox                                                               // scheduling graphical applications  
-    17 19 12 4 * google-chrome-stable
-    @hourly nautilus                                                                   // does open the file manager every hour (at the beginning of every hour)   
-    </pre>
-  </details>
   <!-------------------------------------------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="header"> UNIX Domain Socket </h2>

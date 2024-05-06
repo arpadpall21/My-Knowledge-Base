@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Cron </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Cron </h1>
+  <p> Updated ( 2024-05-05 ) </p>
+  <nav class="sitenav">
+    <a href="../../index.html" title="home">MySite></a>
+    <a href="../index.html" title="home">UNIX></a> Cron
+  </nav>
+  <br>
+  <table class="table">
+    <tr>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td>
+        crontab <opt>[options]</opt>
+      </td>
+      <td>
+        <opt>[options]</opt> <br>
+        - (<opt>-l</opt>) print the user's crontab file <br>
+        - (<opt>-e</opt>) edit the user's crontab file <br>
+        - (<opt>-r</opt>) removes the user's crontab file from the <mark>/var/spool/cron/crontabs</mark> directory (doesn't prompt) <br>
+        - (<opt>-i</opt>) prompts when removing crontab files
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  
+  <!--
+    - on mac we cannot really see the user's cron file 
+    
+    use SHELL = <pathToShell> to modify the defautl shell
+    DISPLAY
+    
+  
+  -->
+  
+  
+  
+  
+  <p> - Cron is a daemon tool which schedules and executes commands on Unix-like systems </p>
+  <p> - cron tasks are sheduled by user specific cron files (each user has its own), we edit the cron file throgh the <mark>crontab -e</mark> command, <u>but never directly edit it (on MacOS we cannot even open it)</u></p> 
+  <p> - by default cron commands are interpreted with the Bourne shell (<mark>/bin/sh</mark>) on both Ubuntu and MacOS (but we can configure a different shell with the <mark>SHELL</mark> global variable) </p>
+  <pre class="syntax">
+// crontab file -------
+    SHELL=<reqval>pathToShell</reqval>                // sets the shell to execute cron <reqval>cmd</reqval> (Default: <mark>/bin/sh</mark>)
+    DISPLAY=:0                                        // on linux ubuntu it's required if we want to open a program on the GUI 
+    
+    <reqval>shedule cmd</reqval>                  // sheduling cron tasks...
+    <optval>...</optval>
+    
+    
+// <reqval>shedule</reqval> ---------
+    <strong class="openable">min hour day month weekDay<div>
+      <p> <reqval>min</reqval>: <mark>0 - 59</mark> </p>
+      <p> <reqval>hour</reqval>: <mark>0 - 23</mark> </p>
+      <p> <reqval>day</reqval>: <mark>1 - 31</mark> </p>
+      <p> <reqval>month</reqval>: <mark>1 - 12</mark> </p>
+      <p> <reqval>weekDay</reqval>: <mark>0 - 7</mark> (<mark>0|7</mark> = Sunday, <mark>1</mark> = Monday, etc..) </p>
+    </div></strong> 
+                                      // <mark>*</mark> (every): (ex: <mark>* * * * *</mark> = every minutes | <mark>0 * * * *</mark> = every hour | <mark>0 0 * * *</mark> = every day)
+                                      // <mark><strong>nr</strong>,<strong>nr</strong></mark> (multiple): (ex: <mark>5,10,15 * * * *</mark> = 5, 10 and 15 minutes) 
+                                      // <mark><strong>nr</strong>-<strong>nr</strong></mark> (range): (ex: <mark>5-15 * * * *</mark> = every minutes between 5 and 15 minutes)
+                                      // <mark><strong>nr</strong>/<strong>nr</strong></mark> (interval repeat): (ex: <mark>0 */4 * * *</mark> = every 4 hours)  
+    
+    <span class="openable">@yearly | @anually<div>
+        <p> - same as = <mark>0 0 1 1 *</mark> (runs the task at every 00:00 hours 1st of January) </p>
+    </div></span>   // macro schedules can replace all the 5 values <u>(NOT STANDARD)</u> 
+    <span class="openable">@monthy<div>
+        <p> - same as = <mark>0 0 1 * *</mark> (runs the task at every 00:00 hours 1st of every month) </p>
+    </div></span>
+    <span class="openable">@weekly<div>
+        <p> - same as = <mark>0 0 * * 0</mark> (runs the task at 00:00 hours every Sunday) </p>
+    </div></span>
+    <span class="openable">@daily<div>
+        <p> - same as = <mark>0 0 * * *</mark> </p>
+    </div></span>
+    <span class="openable">@hourly<div>
+        <p> - same as = <mark>0 * * * *</mark> </p>
+    </div></span>
+    <span class="openable">@reboot<div>
+        <p> - runs the task at every system startup </p>
+    </div></span>        
+    </pre>
+  <pre>
+// user's crontab file ---------------------------------------------------
+    * * * * * &lt;CMD&gt;        // runs task every minutes
+    
+    5,15,30 * * * * &lt;CMD&gt;            // runs at 5, 15 and 30 minutes each hours
+    0 6,18 * * * &lt;CMD&gt;                 // runs at 6 and 18 o'clock
+    
+    0 9-17 * * * &lt;CMD&gt;             // run task hoursly between 9 and 17 hours
+    0 15 * * 1-5 &lt;CMD&gt;           // run task at 15:00 from Monday to Friday  
+    
+    */5 * * * * &lt;CMD&gt;           // run task every 5 minutes
+    * */4 * * * &lt;CMD&gt;           // run task every 4 hours
+    
+    
+    0 7 1-7 * 1 &lt;CMD&gt;           // run task on the first Monday of every month at 7 o'clock    
+    59 23 31 12 * &lt;CMD&gt;         // run task every year December 31st 23 hours 59 mins
+    </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> Cron </u></h4>
+    <p> - the below file is edited through the <mark>crontab -e</mark> command <u>(it is not recommended to edit it directly!)</u> </p>
+    <pre>
+// (user's crontab file) /var/spool/cron/crontabs/pall --------------------------------
+    # Edit this file to introduce tasks to be run by cron.
+    # 
+    # Each task to run has to be defined through a single line
+    # indicating with different fields when the task will be run
+    # and what command to run for the task
+    # 
+    # To define the time you can provide concrete values for
+    # minute (m), hour (h), day of month (dom), month (mon),
+    # and day of week (dow) or use '*' in these fields (for 'any').
+    # 
+    # Notice that tasks will be started based on the cron's system
+    # daemon's notion of time and timezones.
+    # 
+    # Output of the crontab jobs (including errors) is sent through
+    # email to the user the crontab file belongs to (unless redirected).
+    # 
+    # For example, you can run a backup of all your user accounts
+    # at 5 a.m every week with:
+    # 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+    # 
+    # For more information see the manual pages of crontab(5) and cron(8)
+    # 
+    # m h  dom mon dow   command
+    
+// ------------------------------------------------------------------------------------
+    * * * * * /usr/bin/node /home/pall/TestDir/main.js >> /home/pall/TestDir/nodeRes // runs node every minute and outputs the result in the specified file  
+    
+    */1 * * * * node /home/pall/TestDir/main.js >> /home/pall/TestDir/nodeRes          // does the same as above   
+    
+// ------------------------------------------------------------------------------------
+    DISPLAY=:0                                                                         // -! when launching GUI programs we must set the display environment variable 
+    16 19 12 4 * firefox                                                               // scheduling graphical applications  
+    17 19 12 4 * google-chrome-stable
+    @hourly nautilus                                                                   // does open the file manager every hour (at the beginning of every hour)   
+    </pre>
+    <!----------------------------------------------------------------------->
+    <hr>
+    <h4 style="color:darkblue;"><u> Execute commands with <mark>/bin/bash</mark> </u></h4>
+    <pre>
+    SHELL="/bin/bash"
+    
+    * * * * * &lt;CMD&gt;
+    </pre>
+  </details>
+
+
+  <br><br>
+</body>
+
+</html>

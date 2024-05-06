@@ -23,23 +23,147 @@
       <th style="width:30%;"> CMD </th>
       <th> Description </th>
     </tr>
-    
-    
     <tr>
       <td>
-        
+        <lit>ufw</lit> enable
       </td>
       <td>
-        - 
+        - enables the UFW service on system startup and activates the firewall (starts the service)
       </td>
     </tr>
-    
-    
-    
-    
+    <tr>
+      <td>
+        <lit>ufw</lit> disable
+      </td>
+      <td>
+        - disables the UFW service on system startup and deactivates the firewall (stops the service)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <lit>ufw</lit> status <opt>[options]</opt>
+      </td>
+      <td>
+        - prints the firewall status (list firewall rules on active firewall) (provides poor feedback: does not display firewall rules when the firewall is inactive & does not display default firewal rules) <br>
+        <opt>[options]</opt><br>
+        - (<opt>numbered</opt>) - also print rule number 
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>ufw</lit> delete <reqval>ruleNumber</reqval>
+      </td>
+      <td>
+        - deletes the rule numbered <reqval>ruleNumber</reqval> <br>
+        - the <reqval>ruleNumber</reqval> is visible with the <mark>ufw status numbered</mark> command
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>ufw</lit> show raw
+      </td>
+      <td>
+        - displays the raw IP table
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <lit>ufw</lit> reload
+      </td>
+      <td>
+        - reloads all firewall rules without interupting the service
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>ufw</lit> reset
+      </td>
+      <td>
+        - resets all firewal rules to default and <u>deactivates the firewall</u> <br>
+        - by default the firewall blocks all incoming and allows all outgoing traffic
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <lit>ufw</lit> default allow|deny incoming|outgoing
+      </td>
+      <td>
+        - sets the default rules for all incoming or outgoing traffic 
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <lit>ufw</lit> allow|deny <reqval>port|service</reqval>
+      </td>
+      <td>
+        - allows|blocks incomming traffic to <reqval>port|service</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>ufw</lit> allow|deny from <reqval>IP</reqval><opt>/<optval>mask</optval></opt>
+      </td>
+      <td>
+        - allows|blocks incomming traffic from the specified IP or subnet 
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>ufw</lit> allow|deny from <reqval>IP</reqval><opt>/<optval>mask</optval></opt> to any port <reqval>port|service</reqval> <opt>[options]</opt>
+      </td>
+      <td>
+        - allows|blocks incomming traffic from the specified IP or subnet to <reqval>port|service</reqval><br>
+        <opt>[options]</opt><br>
+        - (tcp|udp) - transport protocol
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <lit>ufw</lit> allow|deny out <reqval>port|service</reqval><opt>/tcp|udp</opt>
+      </td>
+      <td>
+        - allows|blocks outgoing traffic from <reqval>port</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>ufw</lit> allow|deny out to <reqval>IP</reqval><opt>/<optval>mask</optval></opt>
+      </td>
+      <td>
+        - allows|blocks outgoing traffic to the specified IP or subnet
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>ufw</lit> allow|deny out from any port <reqval>port|service</reqval> to <reqval>IP</reqval><opt>/<optval>mask</optval></opt> <opt>[options]</opt>
+      </td>
+      <td>
+        - allows|blocks outgoing traffic to the specified IP or subnet from the specified port <br>
+        <opt>[options]</opt> <br>
+        - (<opt>proto tcp|udp</opt>) - sets the transport protocol
+      </td>
+    </tr>
   </table>
-    
-    
   <br>
   <details class="example" id="notes">
     <summary> Notes & Tips :</summary>
@@ -50,51 +174,34 @@
   <h2 style="color:green;"><u> Remember This : </u></h2>
   
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-
-
+  <p> - the UFW (<b>U</b>ncompliacated <b>F</b>ire<b>w</b>all) - is a simple firewall tool for linux </p>
+  <p> - UFW runs as a service (daemon) <u>(by default when the firewall is activated blocks all incoming traffic and allows all outgoing traffic)</u></p>
+  <p> Usage: </p>
+  <p class="indent-lv1"> - we don't have to enable|disable the UFW service itself, just use the <mark>sudo ufw enable</mark> or <mark>sudo ufw disable</mark> commands </p>
+  <details class="example" open>
+    <summary> DEMO (can be pseudocode) </summary>
+    <pre class="cmd">
+    $ sudo ufw enable             // starts the service, enables on system startup and activates the firewall
+    $ sudo ufw disable            // disables the UFW service on system startup and deactivates the firewall (this might not stop the service itself, but that doesn't really matter)   
+    
+    
+// setting default behaviour ---
+    $ sudo ufw default allow outgoing     // allows all outgoing traffic
+    $ sudo ufw default deny incoming      // blocks all incoming traffic 
+    
+    $ sudo ufw status                     // -! does not display default rules :/
+    Status: Active 
+    </pre>
+  </details>
 
 
 
 <!--
 
-- apt install ufw
-    - its a daemon (systemctl status ufw)
-    
-    
-- UFW stands for Uncomplicated Firewall
-    
-    
-- enabling ufw without rules (when the ufw daemon is runnign that doesn't men the firewall is enabled -> in has to be enabled manually)
-  - blocks all incoming traffic
-  - allow all outgoing traffic
 
 
 
---- CMD ---
-$ ufw default allow outgoing      <- recommended to start config with these guys
-$ ufw default deny incoming
 
-
-$ ufw allow <port|protocol>   (same as: ufw allow ssh <- same as -> ufw allow 22)
-
-$ ufw allow from <ip>             <- allow access from a specific IP
-$ ufw allow from <ip>/mask        <- allow access from a specific subnet
-$ ufw allow from <ip> to any port 22 [proto <tcp|udp>]    <- allow access from a specific IP to a specifi port only
-
-$ ufw deny from <ip>              <- same as <allow>
-
-
-$ ufw delete <ruleNumber>     <- deletes the specified firewal rule
-
-
-$ ufw status [options]
-    - numbered              <- numbers the listed rules
-$ ufw enable            <- enable firewall (highlight that ufw is not enabled on daemon start)
-
-$ ufw reset             <- removes all rules (including the initial policies set by ufw default ...)
-
-
-$ ufw show raw          <- displays the raw IP table
 
 
 
