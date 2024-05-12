@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Terraform </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../Assets/stylesPages.css">
+  <script src="../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Terraform </h1>
+  <p> Updated ( 2024-05-06 ) </p>
+  <nav class="sitenav"> 
+    <a href="../index.html" title="home">MySite></a> Terraform
+  </nav>
+  <br>
+
+  <p class="subSite"><a href=""> SubSite > </a></p>
+
+
+  <table class="table">
+    <tr>
+      <th style="width:30%;"> Method / Property / statement ect... </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td>
+        demo prop
+      </td>
+      <td>
+        - demo description
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 0/0 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> </span>
+          <span><i class="fab fa-opera"></i> </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> </span>
+          <span><i class="fab fa-safari"></i> </span>
+          <span><i class="fab fa-node-js"></i> </span>
+        </span>
+      </td>
+    </tr>
+
+
+
+
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+
+
+  <!--
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+stage 1: high level overview 
+    - read through 
+    - create notes 
+    - deciede what exactly will you document down 
+    - UNDERSTAND AND WRITE DOWN THE CONCEPTS!!!
+    
+stage 2:  low level overview
+    - deeper understanding of all what you've taken down in stage 1
+    
+stage 3 : 
+    - organize and document down everything 
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+    3 phases:
+        Init -> Plan -> Apply
+
+            - init: initializes the project 
+                - prepares the environment like downloads the necessary provider, etc..
+            - plan: drafts a plan to get to the target phase
+            - apply: applies the changes
+
+    - infrastructure as code
+        - managing and provisioning computing infrastructure using code, often in the form of declarative configuration files, to automate the process of deployment and management.
+    - open source
+    - declarative approach
+    - multi cloud support 
+    
+    
+    - HCL (hashicorp configuration language), uses *.tf file 
+    
+    - terraform providers: https://registry.terraform.io/browse/providers
+    
+    
+    - the infrastrucure is immutable (meaning we cannot change but destroy then redeploy a new one with the new change)
+    
+    - terraform provider (plugins that enable terraform to interact with various cloud platforms)
+    
+    - terraform keeps track of the infrastructure in a state file, when we are making changes the change is compared to this state 
+      - this state file is the single source of truth
+      - in real life this state file is kept in a cloud storage (AWS S3 bucket) (Azure Blob Storage)
+    
+    - creates an inmutable infrastructure (we cannot modify/upgrade existing infrastructure, but need to destroy then redeploy it again)
+    
+    - provisioner -> allows to run scripts or executables once the resources is created or updated
+        - terraform provides 3 provisioners:
+            - local-exec    -> runs commands on the machine itself runing terraform
+            - remote-exec   -> runs commands on the resource via SSH
+            - file          -> transfers file to the resource once created 
+
+    - can read attributes of existing resources (import?)
+
+
+
+    - by default terraform runs all *.tf files in the current directory
+
+
+    - dependency resolution
+        - in terraform the block order declaration doesn't matter
+        - by default terraform uses implicit dependency resolution -> automatically figures out which block depends on the other
+        - we can use the depends_on attribute in order to declare an explicit dependency resolution for the block (this can be important in situation ex: when we want to deploy a vNet before a virtual machine)
+        
+            depends_on = [
+              <resourceType>.<nameUniqueWithinConfig>
+              ...
+            ]
+
+--------------------------------
+--- data types -----------------
+--------------------------------
+    - supported data types
+        - any
+
+
+        - string          - "some text"
+            Annotate:
+            - type = string
+
+
+        - number          - 1 | -1 | ...              (positive or negative)    TODO: float?
+            Annotate:
+            - type = number
+
+
+        - bool            - true/false
+            Annotate:
+            - type = bool
+
+
+        - list            - ["one", "two"]            ordered collection of the same type
+            Annotate:
+            - type = list(<type>)                     Default: list<any>
+
+            Usage
+            - usage
+                var.<thisList>[<idx>]
+
+
+        - map             - {                         key/value pair of the same value type 
+                              "key1" = "val1"
+                              "key2" = "val2"
+                            }
+            Annotate
+            - type = map(<type>)                      for all key types
+
+            Usage
+                var.<thisMap>["key"]
+
+
+// TODO (after output an stuff)
+        - set             - ["one", "two"]            ordered collection of the same type (unuque values only)
+            Annotate:
+            - type = set(<type>)                     Default: list<any>
+
+            Usage
+            - usage
+                var.<thisSet>[<idx>]
+
+
+        - object                                      key/value pair of different value types
+            Annotate:
+            - type = object({
+                              key1 = <type>
+                              key2 = <type> 
+                            })
+
+            Usage
+            - usage
+                var.<thisObj>.key
+
+
+        - tuple                                       ordered collection with different types
+            Annotate:
+            - type = tuple([<type>, ...])
+
+            Usage
+            - usage
+                var.<thisTuple>[<idx>]
+
+
+
+
+--------------------------------
+--- using variables ------------
+--------------------------------
+    - the default value is there if we don't pass variable values from (outside :))
+    - if we omit the variable's default terraform will prompt
+    - using the -var flag for the apply command
+    - using the TF_VAR_<varName> environment variable 
+        $ export TF_VAR_<varName>=<val>
+    - using a *.tfvars file (need to be passed to plan and apply)
+        - using a *.auto.tfvars file (automatically loaded)
+
+
+    - loading precedence (highest loaded first)
+        1) -var flag or -var-file <path> 
+        2) *.auto.tfvars (file)
+        3) TF_VAR_<varName> environment variables
+        4) variables default
+
+
+--------------------------------
+--- commands -------------------
+--------------------------------
+        - show                -> displays the current state of the infrastructure
+        
+        - refresh             -> query infrastructure to get the current state
+        
+        - plan                -> create an execution plan
+            [options]
+                                  -> -var-file <filePath>
+
+        - apply [options]     -> execute the plan
+            [options]
+                                  -> -var '<varName>=<val>' (for each variable we start with -var)
+                                  -> -var-file <filePath>
+
+        - destroy             -> destroy infrastructure
+        
+        - fmt                 -> formats *.tf files in the current directory (only) (to HCL language beauty :))
+
+
+
+--------------------------------
+--- dictionary -----------------
+--------------------------------
+    provider                          -> plugins that enable terraform to interact with various platforms (cloud providers, but also has local provider)
+        - interface between terraform and the cloud
+    
+    resource                          -> represented a single component in a system (seen as object in terrafrom)
+                                      -> resource can be a file in the local machine
+                                      -> (syntax) unique resource type, followed by a name that is unique within the configuration. For example, aws_instance is a resource type for an EC2 instance in AWS, while google_container_cluster is a resource type for a Kubernetes cluster in GCP.
+    
+    configuration management tools    -> install and manage software on existing infrastructure resources
+    server templating tools           -> create and manage virtualized containers that contains all necessary tools in order to run applications and services in an isolated environment
+    provision tool                    -> deploys and configures infrastructure resources in a cloud
+
+
+
+--------------------------------
+--- syntax ---------------------
+--------------------------------
+// code block
+    resource <resourceType> <nameUniqueWithinConfig> {    // the resourceType has syntax <provider>_<resourceType>
+      <key> = <value>                                     // arguments for the specified resource 
+      ...
+    }
+
+// reference values from another code block (block declaration order does not matter here (we can referend something from the bottom of the file))
+    resource <resourceType2> <nameUniqueWithinConfig2> {
+      <key> ="${resourceType.nameUniqueWithinConfig.key|returnAttr}"    // referencing other code block's key or its return attribute
+      ...
+    }
+
+
+
+--------------------------------
+--- file convention names ------
+--------------------------------
+main.tf           // main entry file
+variables.tf      // variables
+outputs.tf        // outputs from resources
+provider.tf       // providers
+*.tfvars          // contain varialbes for the -var-file command
+    *.auto.tfvars     // auto load
+
+?????????????????????????????????????????????????????????????????????????????????????????????
+WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
+?????????????????????????????????????????????????????????????????????????????????????????????
+    - what is the terraform.lock.hcl file?
+        - this is where terraform locks the environemnt for provider replicability
+
+
+    - what are exactly the terraform.tfstate and terraform.tfstate.backup files (how can I store them in a separate place)
+
+
+    - what is the .terraform file (this is where the provider is installed?)
+        - yes exactly, so terraform does not have to download the provider again this is where providers stored (like packages)
+
+
+    - dig around modules (entry points ect...)
+
+
+    - terraform command only deal with *.tf files in the current directory right?
+        - yes terraform runs all *.tf files in the current directory (ex: variable.tf -> variables are loaded)
+        - *.tf files are loaded in alphabetical order 
+        - if there's a main.tf file that is always loaded first!
+
+
+    - ternary operator (other operations?)
+-->
+
+
+
+
+
+
+  <pre class="syntax">
+    resource "<reqval>provider</reqval>_<reqval>resourceType</reqval>" "<reqval>name</reqval>" {
+        <reqval>key</reqval> = "<reqval>val</reqval>"
+        <optval>...</optval>
+    }
+  </pre>
+  
+  
+  
+  <pre class="syntax">
+  // variable ----------------------------
+    variable "<reqval>key1</reqval>" {
+        default = "<reqval>val</reqval>"
+        <opt>type = string|number|bool</opt>                        // variable type 
+        <opt>description = "<optval>description</optval>"</opt>     // variable description
+    }
+  
+  
+    resource "<reqval>provider</reqval>_<reqval>resourceType</reqval>" "<reqval>name</reqval>" {
+        <reqval>key</reqval> = var.key1             // referencing variable
+    }
+  </pre>
+  
+  
+  
+  <pre class="syntax">
+  // referencing block values ----------------------------
+    resource "<reqval>someProvider</reqval>_<reqval>someResourceType</reqval>" "<reqval>someName</reqval>" {
+        <reqval>someKey</reqval> = "<reqval>val</reqval>"
+    }
+    
+    resource "<reqval>provider</reqval>_<reqval>resourceType</reqval>" "<reqval>name</reqval>" {
+        <reqval>key</reqval> = "${<reqval>someProvider</reqval>_<reqval>someResourceType</reqval>.<reqval>someName</reqval>.<reqval>someKey|returnAttribute</reqval>}"    // referencing <reqval>someKey</reqval> form the above block or its return value
+    }
+  </pre>
+
+
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+
+
+  <h2 class="headerExtra"><u> Title 1 </u></h2>
+  <h2 class="header"> Title 1.1 </h2>
+  <h3 class="header"> Title 1.1.1 </h3>
+  <h4 class="header"> Title 1.1.1.1 </h4>
+  <p> - stuff to learn <mark>syntax or command (or some tchnical stuff)</mark> bla bla bla </p>
+  <p> - stuff to learn <mark class="mark">highlights like file names and other things</mark> bla bla bla </p>
+  <p style="text-decoration:underline;"> - important information is underlined </p>
+  <p style="color:yellow;"> - very important information is written with yellow colors </p>
+  <p style="background-color:yellow;"> - highly important information has yellow background color </p>
+  <div style="background-color:red;">
+    <p> - red background block means not learned or not tested information! </p>
+    <p> - </p>
+  </div>
+
+  <pre class="syntax">
+    <reqval>required value </reqval>
+    <optval>optional value </optval>
+    <lit>literally used </lit>
+    <opt>optionally used </opt>
+  
+    <prot style="color:#049500;">prototype chain</prot>
+        
+    <span class="openable"> this is an openable element<div>
+        <p> - openable elements listed here in paragraphs </p>
+        <p> - </p>
+    </div></span>
+    </pre>
+
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <pre>
+    examples of the current lessons 
+    
+// -----------------------------------------
+
+// -----------------------------------------
+    </pre>
+  </details>
+
+  <pre class="cmd">
+    command line demo 
+    </pre>
+  <pre class="formula">
+    formula code (like conversion meter...)
+    </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> example title </u></h4>
+    <p> - live tests will come here </p>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    copy of the exaple code 
+        </pre>
+    </details>
+  </details>
+  <!---------------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+
+  <h2 class="test" style=""><a href="TEST/index.html"> TEST > </a></h2>
+
+
+  <br><br>
+</body>
+
+</html>

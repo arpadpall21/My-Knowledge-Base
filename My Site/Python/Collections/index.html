@@ -12,15 +12,12 @@
 </head>
 
 <body>
-  <h1> Collections (Arrays) (ver 4.0.0) </h1>
+  <h1> Collections </h1>
   <p> Updated (2022-02-21)</p>
   <p class="sitenav"> <a href="../../index.html">MySite></a>
     <a href="../index.html">Python></a> Collections (Arrays)
   </p>
   <table class="table">
-    <caption>
-      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-    </caption>
     <tr>
       <th style="width:20%;"> Collection Type </th>
       <th style="width:20%;"> Ordered </th>
@@ -28,7 +25,7 @@
       <th style="width:20%;"> Allow Duplicate members </th>
       <th style="width:20%;"> Hashable members Only </th>
     </tr>
-    <tr class="05.01">
+    <tr>
       <td>
         List
       </td>
@@ -45,7 +42,7 @@
         no
       </td>
     </tr>
-    <tr class="05.02">
+    <tr>
       <td>
         Tuple
       </td>
@@ -62,7 +59,7 @@
         no
       </td>
     </tr>
-    <tr class="05.03">
+    <tr>
       <td>
         Set
       </td>
@@ -79,7 +76,7 @@
         yes
       </td>
     </tr>
-    <tr class="05.04">
+    <tr>
       <td>
         FrozenSet
       </td>
@@ -96,7 +93,7 @@
         yes
       </td>
     </tr>
-    <tr class="05.05">
+    <tr>
       <td>
         Dictionary
       </td>
@@ -118,13 +115,12 @@
   <table class="table">
     <caption>
       Global Function
-      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
     </caption>
     <tr>
       <th style="width:30%;"> Function </th>
       <th> Description </th>
     </tr>
-    <tr class="0">
+    <tr>
       <td>
         sorted(<strong>iterable</strong>, <small class="openable">key=<i>fn</i>
           <div>
@@ -159,7 +155,11 @@
         </span>
       </td>
     </tr>
-    <tr class="05.02">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         all(<strong>iterable</strong>)
       </td>
@@ -167,7 +167,7 @@
         - returns <mark>True</mark> if all <strong>iterable</strong> members are truthy, returns <mark>False</mark> otherwise
       </td>
     </tr>
-    <tr class="05.03">
+    <tr>
       <td>
         filter(<strong>fn</strong>, <strong>iterable</strong>)
       </td>
@@ -175,7 +175,7 @@
         - returns an <strong>iterator</strong> object containing the items for which the passed <strong>fn</strong> returned <mark>True</mark>
       </td>
     </tr>
-    <tr class="05.04" id="map">
+    <tr id="map">
         <td>
             map(<strong>fn</strong>, <strong>iterableArg1</strong>, <i>iterableArg2, ...</i>)
         </td>
@@ -189,13 +189,12 @@
   <table class="table">
     <caption>
       List
-      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
     </caption>
     <tr>
       <th style="width:30%;"> Methods </th>
       <th> Description </th>
     </tr>
-    <tr class="25.02">
+    <tr>
       <td>
         <strong>list</strong>.append(<strong>val:any</strong>)
       </td>
@@ -204,31 +203,7 @@
         <mark>None</mark>)
       </td>
     </tr>
-    <tr class="35.03">
-      <td>
-        <strong>list</strong>.clear()
-      </td>
-      <td>
-        - completely empties the list (returns <mark>None</mark>)
-      </td>
-    </tr>
-    <tr class="25.05">
-      <td>
-        <strong>list</strong>.copy()
-      </td>
-      <td>
-        - creates and returns a new list (creates a completely new object)
-      </td>
-    </tr>
-    <tr class="30.02">
-      <td>
-        <strong>list</strong>.count(<strong>val:any</strong>)
-      </td>
-      <td>
-        - returns how many times the <strong>val</strong> appears in the list
-      </td>
-    </tr>
-    <tr class="25.03">
+    <tr>
       <td>
         <strong>list</strong>.extend(<strong>iterable</strong>)
       </td>
@@ -236,7 +211,28 @@
         - appends <strong>iterable</strong>'s items at the end of the original <strong>list</strong>
       </td>
     </tr>
-    <tr class="30.01">
+    <tr>
+      <td>
+        <strong>list</strong>.insert(<strong>idx(inc):int</strong>, <strong>val:any</strong>)
+      </td>
+      <td>
+        - inserts the <strong>item</strong> at the specified index position in the original <strong>list</strong>
+        (stretches the list size +1)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>list</strong>.copy()
+      </td>
+      <td>
+        - creates and returns a new list (creates a completely new object)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>list</strong>.index(<strong>val:any</strong>, <i>stIdx(inc):int</i>, <i>endIdx(exc):int</i>)
       </td>
@@ -246,16 +242,19 @@
         - optionally we can specify a search index range (<i>stIdx(inc) - endIdx(exc)</i>)
       </td>
     </tr>
-    <tr class="25.04">
+    <tr>
       <td>
-        <strong>list</strong>.insert(<strong>idx(inc):int</strong>, <strong>val:any</strong>)
+        <strong>list</strong>.count(<strong>val:any</strong>)
       </td>
       <td>
-        - inserts the <strong>item</strong> at the specified index position in the original <strong>list</strong>
-        (stretches the list size +1)
+        - returns how many times the <strong>val</strong> appears in the list
       </td>
     </tr>
-    <tr class="35.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>list</strong>.pop(<i>idx:int</i>)
       </td>
@@ -264,7 +263,7 @@
         list)
       </td>
     </tr>
-    <tr class="35.02">
+    <tr>
       <td>
         <strong>list</strong>.remove(<strong>val:any</strong>)
       </td>
@@ -273,15 +272,19 @@
           not found</u> (does not leave a 'hole' = shrinks the list) (returns <mark>None</mark>)
       </td>
     </tr>
-    <tr class="40.02">
+    <tr>
       <td>
-        <strong>list</strong>.reverse()
+        <strong>list</strong>.clear()
       </td>
       <td>
-        - simply reverses the list order in place (returns <mark>None</mark>)
+        - completely empties the list (returns <mark>None</mark>)
       </td>
     </tr>
-    <tr class="40.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>list</strong>.sort(<small class="openable">key=<i>fn</i>
           <div>
@@ -313,18 +316,25 @@
         - strings are sorted based on ASCII translation order <br>
       </td>
     </tr>
+    <tr>
+      <td>
+        <strong>list</strong>.reverse()
+      </td>
+      <td>
+        - simply reverses the list order in place (returns <mark>None</mark>)
+      </td>
+    </tr>
   </table>
   <br>
   <table class="table">
     <caption>
       Tuple
-      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
     </caption>
     <tr>
       <th style="width:30%;"> Methods </th>
       <th> Description </th>
     </tr>
-    <tr class="15.02">
+    <tr>
       <td>
         <strong>tuple</strong>.count(<strong>val:any</strong>)
       </td>
@@ -332,7 +342,11 @@
         - returns how many times the <strong>val</strong> appears in the tuple
       </td>
     </tr>
-    <tr class="20.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>tuple</strong>.index(<strong>val:any</strong>, <i>stIdx(inc):int</i>, <i>endIdx(exc):int</i>)
       </td>
@@ -347,13 +361,12 @@
   <table class="table">
     <caption>
       Set / Frozenset
-      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
     </caption>
     <tr>
       <th style="width:30%;"> Methods </th>
       <th> Description </th>
     </tr>
-    <tr class="25.02">
+    <tr>
       <td>
         <strong>set</strong>.add(<strong>val:any</strong>)
       </td>
@@ -361,7 +374,7 @@
         - adds a new value to the set
       </td>
     </tr>
-    <tr class="25.03">
+    <tr>
       <td>
         <strong>set</strong>.update(<strong>iterable</strong>)
       </td>
@@ -369,7 +382,7 @@
         - adds the <strong>iterable</strong>'s items to the set
       </td>
     </tr>
-    <tr class="25.04">
+    <tr>
       <td>
         <strong>set|frozenset</strong>.copy(<strong>iterable</strong>)
       </td>
@@ -377,7 +390,11 @@
         - creates and returns a new set|frozenset (creates a completely new object)
       </td>
     </tr>
-    <tr class="30.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>set</strong>.pop()
       </td>
@@ -385,7 +402,7 @@
         - removes and returns an arbitary member from the set (we never know which one)
       </td>
     </tr>
-    <tr class="30.02">
+    <tr>
       <td>
         <strong>set</strong>.remove(<strong>val:any</strong>)
       </td>
@@ -394,7 +411,7 @@
           ValueError if the item does not exist in the set</u>
       </td>
     </tr>
-    <tr class="30.03">
+    <tr>
       <td>
         <strong>set</strong>.discard(<strong>val:any</strong>)
       </td>
@@ -403,7 +420,7 @@
           if the item does not exist in the set</u>
       </td>
     </tr>
-    <tr class="30.04">
+    <tr>
       <td>
         <strong>set</strong>.clear()
       </td>
@@ -411,12 +428,16 @@
         - completely empties the set (returns <mark>None</mark>)
       </td>
     </tr>
-    <tr class="35.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td colspan="2">
         Math Methods
       </td>
     </tr>
-    <tr class="35.02">
+    <tr>
       <td>
         <strong>set|frozenset</strong>.union(<strong>list|tuple|set|frozenset|dict</strong>)
       </td>
@@ -425,18 +446,18 @@
         original objects)
       </td>
     </tr>
-    <tr class="35.03">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="35.04">
+    <tr>
       <td>
         <strong>set1|frozenset1</strong> | <strong>set2|frozenset2</strong>
       </td>
       <td>
       </td>
     </tr>
-    <tr class="40.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>set|frozenset</strong>.intersection(<strong>list|tuple|set|frozenset|dict</strong>)
       </td>
@@ -446,18 +467,14 @@
       </td>
     </tr>
     </tr>
-    <tr class="40.02">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="40.03">
+    <tr>
       <td>
         <strong>set1|frozenset1</strong> & <strong>set2|frozenset2</strong>
       </td>
       <td>
       </td>
     </tr>
-    <tr class="40.05">
+    <tr>
       <td>
         <strong>set</strong>.intersection_update(<strong>list|tuple|set|frozenset|dict</strong>)
       </td>
@@ -466,7 +483,11 @@
         (modifies the original <strong>set</strong>) (returns <mark>None</mark>)
       </td>
     </tr>
-    <tr class="45.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>set|frozenset</strong>.difference(<strong>list|tuple|set|frozenset|dict</strong>)
       </td>
@@ -476,18 +497,14 @@
       </td>
     </tr>
     </tr>
-    <tr class="45.02">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="45.03">
+    <tr>
       <td>
         <strong>set1|frozenset1</strong> - <strong>set2|frozenset2</strong>
       </td>
       <td>
       </td>
     </tr>
-    <tr class="45.04">
+    <tr>
       <td>
         <strong>set</strong>.difference_update(<strong>list|tuple|set|frozenset|dict</strong>)
       </td>
@@ -496,7 +513,11 @@
         (modifies the original <strong>set</strong>) (returns <mark>None</mark>)
       </td>
     </tr>
-    <tr class="50.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>set|frozenset</strong>.symmetric_difference(<strong>list|tuple|set|frozenset|dict</strong>)
       </td>
@@ -506,18 +527,14 @@
       </td>
     </tr>
     </tr>
-    <tr class="50.02">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="50.03">
+    <tr>
       <td>
         <strong>set1|frozenset1</strong> ^ <strong>set2|frozenset2</strong>
       </td>
       <td>
       </td>
     </tr>
-    <tr class="50.04">
+    <tr>
       <td>
         <strong>set</strong>.symmetric_difference_update(<strong>list|tuple|set|frozenset|dict</strong>)
       </td>
@@ -526,7 +543,11 @@
         (modifies the original <strong>set</strong>) (returns <mark>None</mark>)
       </td>
     </tr>
-    <tr class="55.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>set|frozenset</strong>.isdisjoint(<strong>list|tuple|set|frozenset</strong>)
       </td>
@@ -535,7 +556,11 @@
         sides have any common members
       </td>
     </tr>
-    <tr class="60.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>set|frozenset</strong>.issubset(<strong>list|tuple|set|frozenset</strong>)
       </td>
@@ -547,29 +572,25 @@
       </td>
     </tr>
     </tr>
-    <tr class="60.02">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="60.03">
+    <tr>
       <td>
         <strong>set1|frozenset1</strong> &lt;= <strong>set2|frozenset2</strong>
       </td>
       <td>
       </td>
     </tr>
-    <tr class="60.04">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="60.05">
+    <tr>
       <td>
         <strong>set1|frozenset1</strong> &lt; <strong>set2|frozenset2</strong>
       </td>
       <td>
       </td>
     </tr>
-    <tr class="65.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>set|frozenset</strong>.issuperset(<strong>list|tuple|set|frozenset</strong>)
       </td>
@@ -581,22 +602,14 @@
       </td>
     </tr>
     </tr>
-    <tr class="65.02">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="65.03">
+    <tr>
       <td>
         <strong>set1|frozenset1</strong> &gt;= <strong>set2|frozenset2</strong>
       </td>
       <td>
       </td>
     </tr>
-    <tr class="65.04">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="65.05">
+    <tr>
       <td>
         <strong>set1|frozenset1</strong> &gt; <strong>set2|frozenset2</strong>
       </td>
@@ -608,13 +621,12 @@
   <table class="table">
     <caption>
       Dictionary
-      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
     </caption>
     <tr>
       <th style="width:30%;"> Methods </th>
       <th> Description </th>
     </tr>
-    <tr class="20.02">
+    <tr>
       <td>
         <em>dict</em>.fromkeys(<strong>iterable</strong>, <strong>val:any</strong>)
       </td>
@@ -623,7 +635,11 @@
         2nd argument (<strong>val</strong>) will be the value for each key
       </td>
     </tr>
-    <tr class="25.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>dict</strong>.get(<strong>key</strong>, <i>defVal:any</i>)
       </td>
@@ -632,7 +648,7 @@
         - if <strong>key</strong> does not exist returns the default value (<i>defVal</i>, <mark>None</mark> by default)
       </td>
     </tr>
-    <tr class="25.02">
+    <tr>
       <td>
         <strong>dict</strong>.setdefault(<strong>key:hashable</strong>, <i class="openable">val:any<div>
             <p> Default: <mark>None</mark> </p>
@@ -645,7 +661,7 @@
         <strong>key</strong> currently holds in the dictionary)
       </td>
     </tr>
-    <tr class="25.03">
+    <tr>
       <td>
         <strong>dict</strong>.update(<strong class="openable">dict|iterableKeyVal<div>
             <p> a dictionary or an iterable with key/value structure (ex: <mark>[['key1', 1], ['key2', 2]]</mark>) </p>
@@ -655,7 +671,7 @@
         - adds or updates key/value members according to the passed <strong>dict|iterableKeyVal</strong> 
       </td>
     </tr>
-    <tr class="25.04">
+    <tr>
       <td>
         <strong>dict</strong>.copy()
       </td>
@@ -663,7 +679,11 @@
         - creates and returns a new dictionary (creates a completely new object)
       </td>
     </tr>
-    <tr class="30.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>dict</strong>.keys()
       </td>
@@ -672,7 +692,7 @@
         - provides a direct view to the dictionary's items <u>(can get, but cannot mutate items)</u>
       </td>
     </tr>
-    <tr class="30.02">
+    <tr>
       <td>
         <strong>dict</strong>.values()
       </td>
@@ -681,7 +701,7 @@
         - provides a direct view to the dictionary's items <u>(can get, but cannot mutate items)</u>
       </td>
     </tr>
-    <tr class="30.03">
+    <tr>
       <td>
         <strong>dict</strong>.items()
       </td>
@@ -690,7 +710,11 @@
         - provides a direct view to the dictionary's items <u>(can get, but cannot mutate items)</u>
       </td>
     </tr>
-    <tr class="35.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         <strong>dict</strong>.pop(<strong>key</strong>, <i>defVal:any</i>)
       </td>
@@ -701,7 +725,7 @@
         specified <u>raises a KeyError</u>
       </td>
     </tr>
-    <tr class="35.02">
+    <tr>
       <td>
         <strong>dict</strong>.popitem()
       </td>
@@ -711,7 +735,7 @@
         - before v3.7 this method returns a random member
       </td>
     </tr>
-    <tr class="35.03">
+    <tr>
       <td>
         <strong>dict</strong>.clear()
       </td>

@@ -296,8 +296,8 @@
     <tr>
       <td> umask <small>[options]</small> <i>umaskVal</i> </td>
       <td>
-        - returns the umask value for the <u>user</u> (Default: umask = <mark>0002</mark> | file
-        permission = <mark>0666</mark> | directory permission = <mark>0777</mark>) <br>
+        - returns the umask value for the <u>user</u> (Default: umask = <mark>0002</mark> | file permission = <mark>0666</mark> | directory permission = <mark>0777</mark>) <br>
+        - the idea is that for newly created files do allow any higher permissions what is allowed by the umask value
         <small>[options]</small><br>
         - (<small>-S</small>) the umask value is symbolically printed <br>
         - <i>umaskVal</i> sets the umask value <u>for the current session (umask value resets to <mark>0002</mark>)</u>
