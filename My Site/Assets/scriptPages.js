@@ -407,6 +407,7 @@ const fastingConfig = {
     yellowPeriodBetweenHours: [[11, 13], [17, 19]],
   }
 }
+const displayedMessage = "[None]"
 
 function getPeriodColor() {
   const currentHour = new Date().getHours();
@@ -428,13 +429,24 @@ function getPeriodColor() {
 
 $(document).ready(function(){
   const fastingPeriodIndicator = document.createElement('div');
-  fastingPeriodIndicator.style.position = 'fixed';
-  fastingPeriodIndicator.style.top = '5px';
-  fastingPeriodIndicator.style.right = '5px';
+  fastingPeriodIndicator.style.display = 'inline-block';
   fastingPeriodIndicator.style.backgroundColor = getPeriodColor()
   fastingPeriodIndicator.style.padding = '15px';
+  fastingPeriodIndicator.style.margin = '0 5px';
   fastingPeriodIndicator.style.border = '#666666 solid 2px';
   fastingPeriodIndicator.style.borderRadius = '30px';
+  fastingPeriodIndicator.style.verticalAlign = 'bottom';
 
-  document.body.appendChild(fastingPeriodIndicator);
+  const fixedContainer = document.createElement('div');
+  fixedContainer.innerHTML = displayedMessage;
+  fixedContainer.style.padding = '0 0 1px 3px';
+  fixedContainer.style.backgroundColor = 'darkgray';
+  fixedContainer.style.fontSize = '20px';
+  fixedContainer.style.position = 'fixed';
+  fixedContainer.style.top = '0';
+  fixedContainer.style.right = '0';
+  fixedContainer.appendChild(fastingPeriodIndicator);
+  
+
+  document.body.appendChild(fixedContainer);
 });

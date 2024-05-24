@@ -44,22 +44,17 @@
   <h2 class="headerExtra"> Governing Azure Services </h2>
   <h2 class="header"> Azure Hierarchy, Scope and Tags </h2>
   <p> - <mark class="mark">Azure Hierarchy</mark> -> Logical hierachy for resource management </p>
-  <p class="indent-lv2"> - the Azure Hierachy is composed of 4 levels (<mark class="mark">Management Group</mark>
-    -> <mark class="mark">Subscription</mark> -> <mark class="mark">Resource Group</mark> -> <mark class="mark">Resource</mark>) </p>
-  <p class="indent-lv2"> - <mark class="mark">Management Group</mark>, <mark class="mark">Subscription</mark> and
-    <mark class="mark">Resource Group</mark> are esentially logical containers providing hierarchical resource
-    management
-  </p>
-  <p class="indent-lv2"> - <mark class="mark">Resource</mark> -> he service itself </p>
-  <p class="indent-lv3"> - described as JSON template </p>
-  <p class="indent-lv3"> - must be part of one (but only one) resource group </p>
-  <p class="indent-lv3"> - resource groups can contain resources in different regions </p>
-  <p class="indent-lv3"> - <u>not all resources are available in all regions</u> (except global services) </p>
-  <p> - <mark class="mark">Scope</mark> -> a hierarchy level with all its sub levels (ex: subsription scope means all
+  <p class="indent-lv1"> - the Azure Hierachy is composed of 4 levels (<mark class="mark">Management Group</mark> -> <mark class="mark">Subscription</mark> -> <mark class="mark">Resource Group</mark> -> <mark class="mark">Resource</mark>) </p>
+  <p class="indent-lv1"> - <mark class="mark">Management Group</mark>, <mark class="mark">Subscription</mark> and <mark class="mark">Resource Group</mark> are esentially logical containers providing hierarchical resource management </p>
+  <p class="indent-lv1"> - <mark class="mark">Resource</mark> -> the service itself </p>
+  <p class="indent-lv2"> - described as JSON template </p>
+  <p class="indent-lv2"> - must be part of one (but only one) resource group </p>
+  <p class="indent-lv2"> - resource groups can contain resources in different regions </p>
+  <p class="indent-lv2"> - <u>not all resources are available in all regions</u> (except global services) </p>
+  <p class="indent-lv1"> - <mark class="mark">Scope</mark> -> a hierarchy level with all its sub levels (ex: subsription scope means all
     its resource groups and all those resource groups' resources) </p>
   <p class="indent-lv2"> - all resources within a scope are affected by the scope's roles and policies </p>
-
-  <p> - <mark class="mark">Tag</mark> -> additional information (key value pair) </p>
+  <p class="indent-lv1"> - <mark class="mark">Tag</mark> -> additional information (key value pair) </p>
   <p class="indent-lv2"> - can be assigned to a resource, resource group or a subscription </p>
   <p class="indent-lv2"> - used for enhanced service management, automation, etc... </p>
   <p class="indent-lv2"> - tags are not inherited in the hierarchy </p>
@@ -76,9 +71,8 @@
   <!--------------------------------------------------------------------------------------------->
   <h2 class="header"> Access Control </h2>
   <p class="indent-lv1"> <mark class="mark">Active Directory (Entra ID)</mark> -> Microsoft's identity provider for all sorts of Microsoft products (Azure, Outlook, Skype, Teams, etc...) </p>
-  <p class="indent-lv2"> - a <mark class="mark">tenant</mark> is an Active Directory instance in Azure (identity that identifies an organization or a person) </p>
-  <p class="indent-lv2"> - a tenant contains uses, groups, app and control their access </p>
-  <p class="indent-lv2"> - we also can use it for web app (and probably other service) identification as well </p>
+  <p class="indent-lv2"> - a <mark class="mark">tenant</mark> is an Active Directory instance in Azure (represents a unique organization or entity) </p>
+  <p class="indent-lv2"> - basically it's an organization namespace for users, groups, and applications, it's responsible for managing identities, authentication, and authorization for these objects </p>
   <p class="indent-lv1"> <mark class="mark">Security Principal</mark> -> defines an identity in Azure that can be: </p>
   <p class="indent-lv2"> - <mark class="mark">User</mark> </p>
   <p class="indent-lv2"> - <mark class="mark">Group</mark> </p>
@@ -138,12 +132,13 @@
   <p class="indent-lv4"> - <mark class="mark">Script</mark> -> A set of commands executed in bash os PowerShell </p>
   <p class="indent-lv2"> - <mark class="mark">Artifacts</mark> -> hosts & shares software packages </p>
   <p class="indent-lv2"> - <mark class="mark">Test Plans</mark> -> provides manual testing environments and tools (we can use all sorts of VMs for manual testing) </p>
-  <h3 class="header"> Advice and Security Services </h3>
-  <p class="indent-lv1"> <mark class="mark">Azure Marketplace</mark> -> marketplace for services or service groups built by Microsoft or 3rd party vendors </p>
-  <p class="indent-lv1"> <mark class="mark">Azure Advizor</mark> -> Gives recommendations according to Azure best practices (Cost, Security, Reliability, Performance, Operational Excellence) </p>
-  <p class="indent-lv1"> <mark class="mark">Azure Security Center</mark> -> Continouously scans resources for security issues (gives feedback in Azure Advizor) </p>
+  <h3 class="header"> Support and Security Services </h3>
+  <p class="indent-lv1"> <mark class="mark">Marketplace</mark> -> marketplace for services or service groups built by Microsoft or 3rd party vendors </p>
+  <p class="indent-lv1"> <mark class="mark">App Configuration</mark> -> configuration store for storing configuration data and feature flags </p>
+  <p class="indent-lv1"> <mark class="mark">Advizor</mark> -> Gives recommendations according to Azure best practices (Cost, Security, Reliability, Performance, Operational Excellence) </p>
+  <p class="indent-lv1"> <mark class="mark">Security Center</mark> -> Continouously scans resources for security issues (gives feedback in Azure Advizor) </p>
   <p class="indent-lv2"> - functionalities can be enhanced by adding VMs </p>
-  <p class="indent-lv1"> <mark class="mark">Azure Key Vault</mark> -> Centralized secret storage store </p>
+  <p class="indent-lv1"> <mark class="mark">Key Vault</mark> -> Centralized secret storage store </p>
   <p class="indent-lv2"> - we can use SDK to access these secrets </p>
   <p class="indent-lv2"> - monitored service </p>
   <h3 class="header"> Compute Resources </h3>
@@ -194,9 +189,9 @@
   <p style="text-indent:60px;"> - <mark class="mark">SQL Database</mark> -> limited database management </p>
   <p style="text-indent:60px;"> - <mark class="mark">SQL Managed Instance</mark> -> we have full SQL Database access from the OS perspective </p>
   <h3 class="header"> Big Data Analytics tools (Ingest -> Transform -> Store -> Serve) </h3>
-  <p class="indent-lv1"> <mark class="mark">Azure Synapse Analytics</mark> </p>
-  <p class="indent-lv1"> <mark class="mark">Azure HD Inside</mark> </p>
-  <p class="indent-lv1"> <mark class="mark">Azure Databricks</mark> </p>
+  <p class="indent-lv1"> <mark class="mark">Synapse Analytics</mark> </p>
+  <p class="indent-lv1"> <mark class="mark">HD Inside</mark> </p>
+  <p class="indent-lv1"> <mark class="mark">Databricks</mark> </p>
   <h3 class="header"> Network </h3>
   <p class="indent-lv1"> <mark class="mark">Virtual Network</mark> -> IPv4 or IPv6 logical network for resource isolation </p>
   <p class="indent-lv2"> - must reside in a single region </p>
@@ -215,7 +210,7 @@
   <p class="indent-lv2"> - we can create a group of servers within a subnet, ASG controls the netwrok traffic of this group </p>
   <p class="indent-lv1"> <mark class="mark">Virtual Network Gateway (VPN Gateway)</mark> -> allows and controls the communication between the virtual network and on-remises </p>
   <p class="indent-lv2"> - communication between virtual network -> public internet | private network | other Azure virtual network (even in different region) </p>
-  <p class="indent-lv1"> <mark class="mark">Azure Load Balancer</mark> -> load balances the traffic to multiple VMs or VM Scale Set </p>
+  <p class="indent-lv1"> <mark class="mark">Load Balancer</mark> -> load balances the traffic to multiple VMs or VM Scale Set </p>
   <p class="indent-lv2"> - public load balancer -> load balances public internet traffic to VMs </p>
   <p class="indent-lv2"> - private load balancer -> load balances traffic within a virtual network </p>
   <p class="indent-lv1"> <mark class="mark">Application Gateway</mark> -> load balances web (HTTP) traffic </p>
@@ -228,7 +223,7 @@
   <p class="indent-lv2"> - SKU: </p>
   <p class="indent-lv3"> - <mark class="mark">Basic</mark> </p>
   <p class="indent-lv3"> - <mark class="mark">Standard</mark> -> provides monitoring and machine learning for better protection </p>
-  <p class="indent-lv1"> <mark class="mark">Azure Front Door (CDN)</mark> -> Azure's CDN service </p>
+  <p class="indent-lv1"> <mark class="mark">Front Door (CDN)</mark> -> Azure's CDN service </p>
   <p class="indent-lv1"> <mark class="mark">Express Route</mark> -> a direct connection of an on-premise network and Azure (private traffic that does not go through the internet) </p>
   <h3 class="header"> IoT Services </h3>
   <p class="indent-lv1"> <mark class="mark">IoT Hub</mark> -> allows communication between IoT devices and Azure </p>
@@ -236,8 +231,8 @@
   <p class="indent-lv2"> - provides SDKs for different programming languages </p>
   <p class="indent-lv1"> <mark class="mark">IoT Central</mark> -> PaaS providing application for IoTs (built on top of IoT Hub) </p>
   <h3 class="header"> AI Services </h3>
-  <p class="indent-lv1"> <mark class="mark">Azure Machine Learning Service</mark> </p>
-  <p class="indent-lv1"> <mark class="mark">Azure Machine Learning Studio</mark> -> Web Based interface that provides access to Machine Learning </p>
+  <p class="indent-lv1"> <mark class="mark">Machine Learning Service</mark> </p>
+  <p class="indent-lv1"> <mark class="mark">Machine Learning Studio</mark> -> Web Based interface that provides access to Machine Learning </p>
 
 
   <br><br>

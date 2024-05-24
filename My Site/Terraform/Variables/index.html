@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Variables </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Variables </h1>
+  <p> Updated ( 2024-05-14 ) </p>
+  <nav class="sitenav"> 
+    <a href="../../index.html" title="home">MySite></a>
+    <a href="../index.html" title="home">Terraform></a> Variables
+  </nav>
+  <table class="table">
+    <caption>
+      input variable value assign priority
+    </caption>
+    <tr>
+      <th style="width:5%;"> Priority </th>
+      <th style="width:30%;"> Input Method </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td>
+        1
+      </td>
+      <td>
+        $ terraform plan|apply -var <reqval>varName</reqval>=<reqval>val</reqval> <optval>...</optval> <br>
+        $ terraform plan|apply -var-file <reqval>varFilePath</reqval> <br>
+      </td>
+      <td>
+        - passing variable values as command arguments or from a specified file
+      </td>
+    </tr>
+    <tr>
+      <td>
+        2
+      </td>
+      <td>
+        *.auto.tfvars (file) <br>
+        *.auto.tfvars.json (file) 
+      </td>
+      <td>
+        - terraform automatically loads variables from the current directory's <mark>*.auto.tfvars</mark> or <mark>*.auto.tfvars.json</mark> file
+      </td>
+    </tr>
+    <tr>
+      <td>
+        3
+      </td>
+      <td>
+        TF_VAR_<reqval>varName</reqval>
+      </td>
+      <td>
+        - terraform environment variable (for the specified <reqval>varName</reqval>)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        4
+      </td>
+      <td>
+        default = <reqval>val</reqval>
+      </td>
+      <td>
+        - default variable's vale
+      </td>
+    </tr>
+    <tr>
+      <td>
+        5
+      </td>
+      <td>
+        prompt
+      </td>
+      <td>
+        - terraform requests input values for variables that don't have any default value 
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - we cannot pass any variables from outside that are not declared in the module (input varibles must be declared in the moduel) </p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - terraform supports 3 variable types: </p>
+  <p class="indent-lv1"> - <mark class="mark">input</mark> variables: values passed in to the root or child module from outside </p>
+  <p class="indent-lv2"> - stored in the module's <mark>variables.tf</mark> file </p>
+  <p class="indent-lv1"> - <mark class="mark">output</mark> variables have 2 use cases: </p>
+  <p class="indent-lv2"> - when used in the root module they simply output their value on the terminal </p>
+  <p class="indent-lv2"> - when used in a child module they export their values to the parent module </p>
+  <p class="indent-lv2"> - stored in the module's <mark>outputs.tf</mark> file </p>
+  <p class="indent-lv1"> - <mark class="mark">local</mark> variables: local variables are mostly for convenience, we can store expression results then reuse them in the module </p>
+  <p class="indent-lv2"> - stored in the module's <mark>locals.tf</mark> file </p>
+  <hr>
+  <!-------------------------------------------------------------------------->
+  <h2 class="headerExtra"> Input Variables </h2>
+  <pre class="syntax">
+    variable "<reqval>varName</reqval>" {
+      <opt>default = "<optval>val</optval>"</opt>                            // default value (when no external value is passed)
+      <opt>type = <optval>dataType</optval></opt>                        // variable data type 
+      <opt>description = "<optval>description</optval>"</opt>     // description
+      <opt>sensitive = <optva>bool</optva></opt>                  // won't display the variables on the terminal 
+      <opt>nullable = <optva>bool</optva></opt>                   // specifies if the variable can be null or note (needs to have a value or not)
+      
+      <opt>validation {</opt>                                 // value validation
+        <opt>condition = <optval>cond</optval></opt>
+        <opt>error_message = "<optval>errMsg</optval>"</opt>        // message printed on failed validation
+      <opt>}</opt>
+    }
+  
+  
+// variable usage --
+    <reqval>someCodeBlock</reqval> {
+      <reqval>attr</reqval> = var.<reqval>varName</reqval>             // referencing the variable's value
+    }
+  </pre>
+  <p> Way to pass input variables to terraform: </p>
+  <p class="indent-lv1"><u> By the <mark>-var</mark> flag </u></p>
+  <pre class="syntax">
+  $ terraform plan|apply -var <reqval>varName</reqval>=<reqval>val</reqval> <optval>...</optval>
+  </pre>
+  <p class="indent-lv1"><u> By the <mark>-var-file</mark> flag that reads the passed file </u></p>
+  <p class="indent-lv2"> - the variable file name convertion is <mark>*.tfvars</mark> </p>
+  <pre class="syntax">
+// *.tfvars (file) ----------
+  <reqval>varName</reqval> = <reqval>val</reqval>
+  <optval>...</optval>
+  
+  
+// command ----------
+  $ terraform plan|apply -var-file <reqval>filePath</reqval>
+  </pre>
+  <p class="indent-lv1"><u> Automatically loading variables from file </u></p>
+  <p class="indent-lv2"> - terraform automatically loads variables from the <mark>*.auto.tfvars</mark> or <mark>*.auto.tfvars.json</mark> file </p>
+  <pre class="syntax">
+// *.auto.tfvars (file) ----------
+  <reqval>varName</reqval> = <reqval>val</reqval>
+  <optval>...</optval>
+  </pre>
+  <pre class="syntax">
+// *.auto.tfvars.json (file) ----------
+  {
+    "<reqval>varName</reqval>" : <reqval>val</reqval>,
+    <optval>...</optval>
+  }
+  </pre>
+  <pre class="syntax">
+// command ----------
+  $ terraform plan|apply
+  </pre>
+  <p class="indent-lv1"><u> By environment variable </u></p>
+  <pre class="syntax">
+  TF_VAR_<reqval>varName</reqval>
+  </pre>
+  <p class="indent-lv1"><u> Command line pormpt </u></p>
+  <p class="indent-lv2"> - terraform prompts and requests values for variables that don't have any default value </p>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+  <pre>
+// directory structure for all examples here ----------------
+  . 
+  ├── main.tf
+  ├── variables.tf
+  
+  
+// main.tf ------------
+  resource "local_file" "testFile" {
+    filename = var.filePath
+    content  = var.fileContent
+  }
+  
+  
+// variables.tf ----------------
+  variable "filePath" {
+    type    = string
+    default = "./defaultFile.txt"
+  }
+  variable "fileContent" {
+    type    = string
+    default = "Default content"
+  }  
+  </pre>
+  <hr>
+  <!----------------------------------------------------------------->
+  <h4 class="header"> Passing variable value by the <mark>-var</mark> flag </h4>
+  <pre class="cmd">
+  $ terraform plan -var filePath="./someFile.txt" -var fileContent="Some content"
+  ...
+  ...
+  
+  $ terraform apply -var filePath="./someFile.txt" -var fileContent="Some content"
+  </pre>
+  <hr>
+  <!----------------------------------------------------------------->
+  <h4 class="header"> Passing a variable file through <mark>var-file</mark> flag </h4>
+  <pre>
+// myVariables.tfvars (file) ---------
+  
+  filePath = "./someFile.txt"
+  fileContent = "Hello World!"
+  </pre>
+  <pre class="cmd">
+  $ terraform plan -var-file ./myVariables.tfvars
+  ...
+  ...
+  
+  $ terraform apply -var-file ./myVariables.tfvars
+  </pre>
+  <hr>
+  <!----------------------------------------------------------------->
+  <h4 class="header"> Automatically loading from <mark>*.auto.tfvars</mark> file </h4>
+  <pre>
+// myVariables.auto.tfvars (file) ---------
+  
+  filePath = "./someFile.txt"
+  fileContent = "Hello World!"
+  </pre>
+  <pre class="cmd">
+  $ terraform plan
+  ...
+  ...
+  
+  $ terraform apply
+  </pre>
+  <hr>
+  <!----------------------------------------------------------------->
+  <h4 class="header"> Using environment variables </h4>
+  <pre class="cmd">
+  $ export TF_VAR_filePath="./someFile.txt"
+  $ export TF_VAR_fileContent="Hello World"
+  
+  $ terraform plan
+  ...
+  ...
+  
+  $ terraform apply
+  </pre>
+  <hr>
+  <!----------------------------------------------------------------->
+  <h4 class="header"> Input on command line prompt </h4>
+  <p> - if a variable has no default value terraform prompts and ask for values at command execution </p>
+  <pre>
+// variables.tf (file) -----------------------------
+  variable "filePath" {                 // no variable default value 
+    type    = string
+  }
+  variable "fileContent" {
+    type    = string
+  }  
+  </pre>
+  <pre class="cmd">
+  $ terraform plan
+  
+  var.fileContent
+    Enter a value:    // enter value here...
+  </pre>
+  </details>
+  <hr>
+  <!----------------------------------------------------------------->
+  <h2 class="header"> Passing input variables from parent to child module </h2>
+  <pre class="syntax">
+    module "<reqval>moduleName</reqval>"{
+      source = "<reqval>dirPath|url</reqval>"
+      
+      <optval>attr   = val</optval>                   // attribute values are received as input variables by the child module
+      <optval>...</optval>
+    }
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+  <pre>
+// directory structure ----------------
+  .                               // root module 
+  ├── main.tf
+  ├── module1                     // child module 
+      ├── main.tf
+      ├── variables.tf
+  
+  
+// main.tf (root module) ----------
+  module "module1" {
+    source = "./module1"            // importing module 
+    
+    filePath = "./testFile.txt"     // passing input variable to the child module
+    fileContent = "Hello World!"
+  }
+  
+  
+// main.tf (child module) ----------
+  resource "local_file" "testFile" {
+    filename = var.filePath         // passed variables are used here
+    content  = var.fileContent
+  }
+  
+  
+// variables.tf (child module) ----------
+  variable "filePath" {
+    type = string
+  }
+  variable "fileContent" {
+    type = string
+  }  
+  </pre>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------->
+  <h2 class="headerExtra"> Output Variables </h2>
+  <pre class="syntax">
+    output "<reqval>outVarName</reqval>" {
+      value = <reqval>exp</reqval>
+      <opt>description = "<optval>description</optval>"</opt>     // description
+      <opt>sensitive = <optva>bool</optva></opt>                  // won't display the value on the terminal 
+      
+      <opt>precondition {</opt>                                     // value validation
+        <opt>condition = <optval>cond</optval></opt>
+        <opt>error_message = "<optval>errMsg</optval>"</opt>        // message printed on failed validation
+      <opt>}</opt>
+      
+      <opt>depends_on [</opt>                                      // explicity dependency resolution
+        <optval>resource</optval>
+        <optval>...</optval>
+      <opt>]</opt>
+    }
+  
+  
+// output variable usage in parent module -----
+    <reqval>someCodeBlock</reqval> {
+      <reqval>attr</reqval> = module.<reqval>childModuleName</reqval>.<reqval>outVarName</reqval>             // referencing the output variable's value
+    }
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+  <h4 class="header"> Output variable in root module </h4>
+  <pre>
+// main.tf (file) ---------------------------------
+  resource "local_file" "testFile" {
+    filename = var.filePath
+    content  = var.fileContent
+  }
+  
+  
+// variables.tf (file) ---------------------------------
+  variable "filePath" {
+    type    = string
+    default = "./defaultFile.txt"
+  }
+  
+  variable "fileContent" {
+    type    = string
+    default = "Default Content"
+  }
+  
+  
+// outputs.tf (file) ---------------------------------
+  output "filePath" {
+    value = var.filePath
+  }
+  
+  output "fileContent" {
+    value = var.fileContent
+  }
+  </pre>
+  <pre class="cmd">
+  $ terraform apply
+  
+  ...
+  Outputs:                                    // output variables are printed on the terminal
+  fileContent = "Default Content"
+  filePath = "./defaultFile.txt"
+  </pre>
+  <hr>
+  <!----------------------------------------------------------------->
+  <h4 class="header"> Output variable in child module </h4>
+  <pre>
+// directory structure ----------------
+  .                               // root module 
+  ├── main.tf
+  ├── module1                     // child module
+      ├── outputs.tf
+  
+  
+// main.tf (root module) ----------
+  module "module1" {
+    source = "./module1"
+  }
+  
+  resource "local_file" "testFile" {
+    filename = module.module1.filePath
+    content  = module.module1.fileContent
+  }
+  
+  
+// outputs.tf (child module) ----------
+  output "filePath" {                     // child module exports these varaibles
+    value = "./testFile.txt"
+  }
+  
+  output "fileContent" {
+    value = "Hello World!"
+  }
+  </pre>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------->
+  <h2 class="headerExtra"> Local Variables </h2>
+  <pre class="syntax">
+    locals {
+      <reqval>varName</reqval> = <reqval>exp</reqval>         // multiple values can be stored, but we can also use multipe <mark>locals</mark> block as well
+      <optval>...</optval>
+    }
+  
+  
+// local variable usage ----------
+    <reqval>someCodeBlock</reqval> {
+      <reqval>attr</reqval> = local.<reqval>varName</reqval>             // referencies the local variable's value
+    }
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+  <pre>
+// directory structure ----------------
+  . 
+  ├── main.tf
+  ├── variables.tf
+  ├── outputs.tf
+  
+  
+// main.tf (root module) ----------
+  resource "local_file" "testFile" {
+    filename = local.filePath                     // using local variable
+    content  = "Hello World"
+  }
+  
+  
+// variables.tf (child module) ----------
+  variable "filePathInput" {
+    type = string
+    default = "./testFile"
+  }
+  
+  
+// outputs.tf (child module) ----------
+  locals {
+    filePath = join("", [var.filePathInput, ".txt"])    // we can evaluate some expression like this
+  }  
+</pre>
+
+
+
+
+  </details>
+
+
+  <br><br>
+</body>
+
+</html>

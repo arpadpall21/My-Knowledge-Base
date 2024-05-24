@@ -33,6 +33,7 @@ html{
 
 #sitenav, .sitenav{
     background-color: forestgreen;
+    margin: 8px 0;
 }
 
 mark{

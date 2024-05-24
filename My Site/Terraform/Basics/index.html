@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Basics </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Basics </h1>
+  <p> Updated ( 2024-05-06 ) </p>
+  <nav class="sitenav"> 
+    <a href="../../index.html" title="home">MySite></a>
+    <a href="../index.html" title="home">Terraform></a> Basics
+  </nav>
+  <table class="table">
+    <tr>
+      <th style="width:30%;"> Command </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td>
+        <lit>terraform</lit> init
+      </td>
+      <td>
+        - initializes the current directory as terraform project (requires at least one <mark>*.tf</mark> file)<br>
+        - installs necessary provider plugins and creates the terraform project skeleton (<mark>.terraform</mark> directory where packages are stored and the <mark>.terraform.lock.hcl</mark> file) 
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>terraform</lit> get
+      </td>
+      <td>
+        - installs necessary provider plugins (required after creating a new module)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <lit>terraform</lit> plan <opt>[options]</opt>
+      </td>
+      <td>
+        - creates an execution plan as described in the configuration files <br>
+        - 1) request deployed resources for their current state <br>
+        - 2) displays on the terminal what infrastructure changes would be performed if we run <mark>terraform apply</mark> <br>
+        <opt>[options]</opt> <br>
+        - (<opt>-var</opt> <optval>varName=val</optval>) passes an input variable terraform <br>
+        - (<opt>-var-file</opt> <optval>filePath</optval>) reads input variables from a <mark>*.tfvars</mark> file and passes them as input variables <br>
+        - (<opt>-refresh=false</opt>) does not request resources for their current state (omits step 1) <br>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>terraform</lit> apply <opt>[options]</opt>
+      </td>
+      <td>
+        - applies changes to the infrastructure according as described in the configuration files <br>
+        - 1) request deployed resources for their current state <br>
+        - 2) apply changes
+        <opt>[options]</opt> <br>
+        - (<opt>-auto-approve</opt> immediately deploys the infrsatructure (does not ask for confirmation) <br>
+        - (<opt>-var</opt> <optval>varName=val</optval>) passes an input variable terraform <br>
+        - (<opt>-var-file</opt> <optval>filePath</optval>) reads input variables from a <mark>*.tfvars</mark> file and passes them as input variables <br>
+        - (<opt>-refresh=false</opt>) does not request resources for their current state (omits step 1) <br>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>terraform</lit> destroy <opt>[options]</opt>
+      </td>
+      <td>
+        - destroys the infrastructure what was created using configuration files
+        <opt>[options]</opt> <br>
+        - (<opt>-auto-approve</opt> immediately destoys the infrsatructure (does not ask for confirmation) <br>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <lit>terraform</lit> show
+      </td>
+      <td>
+        - displays the infrastructure describe in the terraform state file (not the actual deployed infrastructure state)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <lit>terraform</lit> output <opt>outputVarName</opt>
+      </td>
+      <td>
+        - displays all or the specified output variables
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>terraform</lit> providers
+      </td>
+      <td>
+        - displays all used providers by the terraform project
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lit>terraform</lit> graph
+      </td>
+      <td>
+        - reads the project's config files then generates and outputs a "digraph" object (readable by GUI programs in order to display the infrastructure <a href="https://dreampuf.github.io/GraphvizOnline" target="_blank">[link]</a>)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <lit>terraform</lit> validate
+      </td>
+      <td>
+        - reads the project's config files and syntax validates them
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://registry.terraform.io/browse/providers" target="_blank"> terraform providers (registry.terraform.io)</a></p>
+  <p><a href="https://developer.hashicorp.com/terraform/language/providers" target="_blank"> terraform providers docs (registry.terraform.io)</a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - terraform has also provisioner support for local|remote script execution and file transfer <u>but terraform itself recommends not to used it (but as last resort)</u> <a href="https://spacelift.io/blog/terraform-provisioners" target="_blank">[link]</a></p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - terraform in an open source infrastructure as code tool, it automates the provisioning of computing resources based on configuration (uses HCL <b>H</b>ashicorp <b>C</b>onfiguration <b>L</b>anguage) </p>
+  <p> - <mark class="mark">declarative approach</mark> </p>
+  <p class="indent-lv1"> - HCL is a declarative language, meaning we declare what we need and terraform performs the necessary tasks </p>
+  <p> - <mark class="mark">immutable infrastructure</mark> </p>
+  <p class="indent-lv1"> - terraform is a provision tool, in deploys or destroys infrastructure resources <u>(but does not modify them)</u>, meaning if we change someting about a deployed resource, the resource is 1st destroyed then redeployed again </p> 
+  <p> - <mark class="mark">partial resouce deploy (on error) </mark> </p>
+  <p class="indent-lv1"> - in case of deploy failure, terraform still deploys resources it can, there's no rollback (ex: out of 10 resources 1 fails, terraform deploys the remaining 9) </p> 
+  <p class="indent-lv1"> - deployments are idempotent, so on deploy already deployed resources are not modifed </p> 
+    <pre class="syntax">
+// terraform project files ----------------------
+    .
+    ├── .terraform                        // directory where provider plugins and modules are installed
+    ├── .terraform.lock.hcl               // lock file for the project (pins installed provider plugin and module versions)
+    ├── terraform.tfstate                 // this is where the deployed infrastructure is tracked (the blueprint of the infrastructure)
+    ├── terraform.tfstate.backup          // infrastructure track backup (1 version older than the <mark>terraform.tfstate</mark> file for backup)
+  </pre>
+  <hr>
+  <!-------------------------------------------------------------------------------------------->
+  <h2 class="header"> Porvider <a href="https://developer.hashicorp.com/terraform/language/providers" target="_blank">[link]</a></h2>
+  <hr>
+  <p> - terraform providers are plugins that enable terraform to interact with various cloud platforms, services, and platforms </p>
+  <p> - in the project providers work the same way as packages do in a javascript & python project, they must be installed, lock file locks the environment, etc...</p>
+  <p> - each provider has it documentation that describes the way it connects to its target plantform <a href="https://registry.terraform.io/browse/providers" target="_blank">[link]</a></p>
+  <img src="./Terraform.png" height="200">
+  <p> - in the root module we specify the required providers and their configuration for the project (usially in the <mark>providers.tf</mark> file) </p>
+  <pre class="syntax">
+    terraform {
+      required_version = "<reqval>ver</reqval>"          // specifies the terraform version the project requires
+      
+      required_prodivers {
+        <reqval>providerName</reqval> = {               // list required providers for the project
+          source  = "<reqval>providerSource</reqval>"
+          version = "<reqval>ver</reqval>"
+        }
+        <optval>...</optval>
+      }
+    }
+    
+    provider "<reqval>providerName</reqval>" {            // configures the provider such as authentication credentials and region
+      <optval>...</optval>
+    }
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+  <pre>
+    terraform {
+      required_version = ">= 0.12.0, < 2.0.0" 
+      required_providers {
+        azurerm = {
+          source  = "hashicorp/azurerm"
+          version = "=3.41.0"
+        }
+      }
+    }
+    
+    provider "azurerm" {
+      features {}
+      skip_provider_registration = "true"
+      subscription_id            = &lt;subscriptionId&gt;    // authenticates the provider
+      tenant_id                  = &lt;tenantId&gt;
+    }  
+  </pre>
+  
+  
+  
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------------------------->
+  <h2 class="header"> State <a href="https://developer.hashicorp.com/terraform/language/state" target="_blank">[link]</a></h2>
+  <p> - terraform keeps track of the deployed infrastructure in a state file, it's considered as <u>single source of truth</u> for the deployed infrastructure (should not be edited manually)</p>
+  <p> - this file (<mark>terraform.tfstate</mark>) also keeps important meta data like dependencies, caching, etc... (dependency is very important for the deploy|destroy order (ex: the vnet must be create before the virtual machine)) </p>
+  <p> - <mark class="mark">state lock</mark> </p>
+  <p class="indent-lv1"> - locking is basically allowing single user usage of the state file at a time </p>
+  <p class="indent-lv1"> - the locking mechanism is iplemented by the used backend (ex: Azure blob storage is automatically locks the container while the terraform state is used)</p>
+  <p> - <mark class="mark"> backend (state file location)</mark> <a href="https://developer.hashicorp.com/terraform/language/settings/backends/configuration" target="_blank">[link]</a> </p>
+  <p class="indent-lv1"> - terraform calls "backend" the location where the state file is stored </p>
+  <p class="indent-lv1"> - by default the state file is stored in the current directory, but we can specify local or remote backends with the <mark>backend</mark> block <a href="https://developer.hashicorp.com/terraform/language/settings/backends/local" target="_blank">[link]</a></p>
+  <pre class="syntax">
+// providers.tf (recommended file) -----------------
+    terraform {
+      backend "<reqval class="openable">backend<div>
+        <p> <a href="https:\/\/developer.hashicorp.com/terraform/language/settings/backends/local" target="_blank">[link]</a></p>
+      </div></reqval>" {                // configures the backend for this terraform project 
+        <optval>args...</optval>
+      }
+    }
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <pre>
+// providers.tf (file) ----------------------------------------------
+    terraform {
+      required_version = ">= 0.12.0, < 2.0.0"
+      backend "local" {
+        path = "/Users/diarpall/terraform/terraform.tfstate"        // local backend location
+      }
+    }
+    </pre>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------------------------->
+  <h2 class="header"> Resource </h2>
+  <p> - a compute resource is described as an object, depending on the resource it accepts different attributes and has different return values </p>
+  <p> - <mark class="mark">dependency resolution</mark> </p>
+  <p class="indent-lv1"> - by default terraform does implicit dependency resoluiton, it figures out resources depending on each other on its own (declaration order does not matter) </p>
+  <p class="indent-lv1"> - however we can explicitly specify the dependencies of the resource with the <mark>depends_on</mark> meta attribute </p>
+  <pre class="syntax">
+    resource "<reqval>provider</reqval>_<reqval>resourceType</reqval>" "<reqval>name</reqval>" {      // describes a resource
+      <reqval>attr</reqval> = <reqval>val</reqval>
+      <optval>...</optval>
+    }
+  
+  
+  
+// referencing block attributes & return values ----------------------------
+    resource "<reqval>providerA</reqval>_<reqval>resourceTypeA</reqval>" "<reqval>resourceNameA</reqval>" {   // each resource has return attributes (that should be documented)
+      <reqval>attr</reqval> = <reqval>val</reqval>
+    }
+    
+    resource "<reqval>providerB</reqval>_<reqval>resourceTypeB</reqval>" "<reqval>resourceNameB</reqval>" {
+      <reqval>attr</reqval> = <reqval>providerA</reqval>_<reqval>resourceTypeA</reqval>.<reqval>resourceNameA</reqval>.<reqval>attr|returnAttr</reqval>    // referencing <reqval>attr</reqval> or the <reqval>returnAttr</reqval> of the above resource
+    }
+  
+  
+  
+// explicit dependency resolution ----------------------------
+    resource "<reqval>providerA</reqval>_<reqval>resourceTypeA</reqval>" "<reqval>resourceNameA</reqval>" {
+      <optval>...</optval>
+    }
+  
+    resource "<reqval>providerB</reqval>_<reqval>resourceTypeB</reqval>" "<reqval>resourceNameB</reqval>" {
+      <optval>...</optval>
+      depends_on = [                                                              // explicitly depends on resource <reqval>resourceNameA</reqval>
+        <reqval>providerA</reqval>_<reqval>resourceTypeA</reqval>.<reqval>resourceNameA</reqval>
+        <optval>...</optval>
+      ]
+    }
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+  <h4 class="header"> Referencing other resource's return values </h4>
+  <pre>
+  resource "local_file" "testFile" {
+    filename = "./testFile1.txt"
+    content  = random_string.random_content.result      // references the below resource's <mark>result</mark> return attribute (check docs)
+  }
+  
+  resource "random_string" "random_content" {
+    length = 1000
+  }
+  </pre>
+  <hr>
+  <!----------------------------------------------------------------------------->
+  <h4 class="header"> Explicit dependency declaration </h4>
+  <pre>
+  resource "local_file" "testFile" {
+    filename = "./testFile1.txt"
+    content  = random_string.random_content.result
+    
+    depends_on = [                                  // we explicitly specify dependencies (in this situation we don't have to, but that's how its done :))
+      random_string.random_content
+    ]
+  }
+  
+  resource "random_string" "random_content" {
+    length = 1000
+  }
+  </pre>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------------------------->
+  <h2 class="header"> Meta Arguments <a href="https://developer.hashicorp.com/terraform/language/meta-arguments/depends_on" target="_blank">[link]</a> </h2>
+  <p> - meta arguments are available in all resources, they perform different 'meta' task on the resource </p>
+  <pre class="syntax">
+// <mark>count</mark> ----------------------------------
+    resource|module "<reqval>name</reqval>" {
+      count = <reqval>exp:->int</reqval>                    // runs the resource or module the number of times (starts with <mark>0</mark> included)
+      
+      // usage --------
+      count.index                                     // current iteration's <reqval>int</reqval>
+    }
+    
+    
+// <mark>for_each</mark> ------------------------------------
+    resource|module "<reqval>name</reqval>" {
+      for_each = <reqval>exp:->map|set</reqval>                    // runs the resource or module the number of times as many members the <reqval>map|set</reqval> has
+      
+      // usage --------
+      each.key                                     // current iteration's <reqval>key</reqval>
+      each.value                                     // current iteration's <reqval>val</reqval>
+    }
+    
+    
+// <mark>depends_on</mark> ----------------------------------
+    // explicit dependency resolution (described above)
+    
+    
+// <mark>provider</mark> ------------------------------------
+    // sets hich provider the resouce will use <a href="https://developer.hashicorp.com/terraform/language/meta-arguments/resource-provider" target="_blank">[link]</a> (overrides the global provider for this resource)
+    
+    
+// <mark>lifecycle</mark> ----------------------------------
+    resource "<reaval>name</reaval>" {
+      lifecycle {
+        <reqval class="openable">lifecycleMetaArgument<div>
+          <p> - <mark>create_before_destroy</mark> - creates the new resource before destroying the old one</p>
+          <p> - <mark>prevent_destroy</mark> - prevent destroying the resource </p>
+          <p> - <mark>ignore_changes</mark> - ignore changes </p>
+          <p> - <mark>replace_tirggered_by</mark> - replaces the resource only when any of the listed expression chagnes </p>
+        </div></reqval>                             // configures the resource behaviour for different life events <a href="https://developer.hashicorp.com/terraform/language/meta-arguments/depends_on" target="_blank">[link]</a>
+      }
+    }
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+  <h4 class="header"> The <mark>count</mark> meta argument (in resource)</h4>
+  <pre>
+  resource "local_file" "testFile" {
+    count = 3                                                   // create's 3 files
+  
+    filename = "./target_${count.index + 1}.txt"
+    content  = "Some file content in file number ${count.index + 1}"
+  }
+  </pre>
+  <hr>
+  <!----------------------------------------------------------------------------->
+  <h4 class="header"> The <mark>count</mark> meta argument (in module)</h4>
+  <pre>
+// main.tf (file) --------------------------
+    module "module1" {
+      source = "./module1"
+    
+      count = 3                                           // calls the module 3 times with the iterated input varialbe values
+    
+      file = {
+        path    = "./testFile${count.index}"
+        content = "File ${count.index} content"
+      }
+    }
+  
+  
+// ./module1/main.tf (file) ----------------
+    resource "local_file" "testFile21" {
+      filename = var.file.path
+      content  = var.file.content
+    }
+    
+    
+// ./module1/variables.tf (file) ----------------
+    variable "file" {
+      type = map(string)
+      default = {
+        path    = "./someFile.txt"
+        content = "Some file content"
+      }
+    }
+  </pre>
+  <!----------------------------------------------------------------------------->
+  <h4 class="header"> The <mark>for_each</mark> meta argument (in resource)</h4>
+  <pre>
+    resource "local_file" "testFile" {
+      for_each = toset(["./Joe's File.txt", "./Sally's File.txt"])
+    
+      filename = each.key
+      content  = "Some file content"
+    }
+  </pre>
+  <!----------------------------------------------------------------------------->
+  <h4 class="header"> The <mark>for_each</mark> meta argument (in module)</h4>
+  <pre>
+// main.tf (file) --------------------------
+    module "module1" {
+      source = "./module1"
+    
+      for_each = {                                // creates 2 files 
+        "./myFile.txt"   = "My file's content"
+        "./yourFile.txt" = "Your file's content"
+      }
+    
+      file = {
+        path    = each.key
+        content = each.value
+      }
+    }
+  
+  
+// ./module1/main.tf (file) ----------------
+    resource "local_file" "testFile21" {
+      filename = var.file.path
+      content  = var.file.content
+    }
+    
+    
+// ./module1/variables.tf (file) ----------------
+    variable "file" {
+      type = map(string)
+      default = {
+        path    = "./someFile.txt"
+        content = "Some file content"
+      }
+    }
+  </pre>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------------------------->
+  <h2 class="header"> Data Source </h2>
+  <p> - a data sources is a resource which is not controlled by terraform, we use data sources in order to read some data from a resource </p>
+  <p> - in order to read some data source we need a provider that supporst this feature <a href="https://registry.terraform.io/browse/providers" target="_blank">[link]</a></p>
+  <p> - we can even read a terraform state as data source <a href="https://developer.hashicorp.com/terraform/language/state/remote-state-data" target="_blank">[link]</a></p>
+  <pre class="syntax">
+    data "<reqval>provider</reqval>_<reqaval>resourceType</reqaval>" "<reqval>resourceName</reqval>" {
+      <reqval>attr</reqval> = <reqval>val</reqval>
+      <optval>...</optval>
+    }
+  
+  
+// data source usage ------------------------
+    <reqval>someCodeBlock</reqval> {
+      <reqval>attr</reqval> = data.<reqval>provider</reqval>_<reqval>resourceType</reqval>.<reqval>resourceName</reqval>.<reqval>returnAttr</reqval>      // each data resource type has documented return attributes (<reqval>returnAttr</reqval>)   
+    }
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+  <pre>
+    resource "local_file" "testFile" {
+      filename = "./target.txt"
+      content  = data.local_file.src.content          // the read output is used here
+    }
+    
+    data "local_file" "src" {                         // file read as data source 
+      filename = "./source.txt"
+    }
+  </pre>
+  </details>
+  
+  
+  <br><br>
+</body>
+
+</html>
