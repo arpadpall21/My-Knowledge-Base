@@ -20,7 +20,7 @@
   </p>
   <table class="table">
     <caption>
-      Pure Path <mark>PurePath</mark>
+      Pure Path <mark>PurePath</mark> and Concrete Path <mark>Path</mark>
       <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
     </caption>
     <tr>
@@ -35,16 +35,8 @@
           </div></i>)
       </td>
       <td>
-        - creates and returns a <strong>purePath</strong> object <br>
+        - creates and returns a <strong>purePath</strong> object (current directory if no arrgument passed) <br>
         - on instantiation does not check if the path exist on the system
-      </td>
-    </tr>
-    <tr class="10.01">
-      <td>
-        <strong>concretePath|purePath</strong> / <strong>path:str</strong> <i>...</i>
-      </td>
-      <td>
-        - the <mark>/</mark> operator can be used to concatenate path segments together
       </td>
     </tr>
     <tr class="15.01">
@@ -157,7 +149,7 @@
           </div></i>)
       </td>
       <td>
-        - creates and returns a <strong>concretePath</strong> object <br>
+        - creates and returns a <strong>concretePath</strong> object (current directory if no arrgument passed) <br>
         - on instantiation does not check if the path exist on the system
       </td>
     </tr>
@@ -472,8 +464,7 @@
   </p>
   <p> - for complex file system operations <u>(like: copying, removing entire fs structures)</u> use the <mark><a
         href="https://docs.python.org/3/library/shutil.html?highlight=shutil#module-shutil"
-        target="_blank">shutil</a></mark> module <u>(<mark>pathlib</mark> cannot remove an entire directory
-      structure)</u></p>
+        target="_blank">shutil</a></mark> module <u>(<mark>pathlib</mark> cannot remove an entire directory structure)</u></p>
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
   <p> - the <mark>pathlib</mark> module provides an object oriented file system access, for both POSIX and Windows paths
   </p>
@@ -488,10 +479,10 @@
     <u>subclass of <mark class="mark">Pure Path</mark></u>
   </p>
   <img src="pathlib-inheritance.png" width="500">
-  <!------------------------------------------------------------------------------------------------------>
-  <hr>
-  <h2 class="headerExtra"> <mark>PurePath</mark></h2>
-  <h3 class="header"> The <mark>/</mark> operator </h3>
+  <pre class="syntax">
+    <reqval>concretePath|purePath</reqval> / <strong>path:str</strong>    // the <mark>/</mark> operator acts as file system path separator
+                                                                          // ex: <mark>Path() / someFile.txt</mark> gets the someFile.txt in the current directory
+  </pre>
   <details class="example">
     <summary> DEMO </summary>
     <pre>
@@ -512,6 +503,7 @@
   </details>
   <!------------------------------------------------------------------------------------------------------>
   <hr>
+  <h2 class="headerExtra"> <mark>PurePath</mark></h2>
   <h3 class="header"> The <mark>parts</mark> / <mark>parent</mark> / <mark>root</mark> / <mark>name</mark> /
     <mark>suffix</mark> / <mark>suffixes</mark> / <mark>stem</mark> / <mark>is_absolute()</mark> /
     <mark>is_relative_to()</mark> / <mark>join_path()</mark> / <mark>match()</mark> properties and methods

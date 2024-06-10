@@ -17,6 +17,72 @@
     <a href="../../index.html" title="home">MySite></a>
     <a href="../index.html" title="home">Terraform></a> Modules
   </nav>
+  <table class="table">
+    <caption>
+      Module Files
+    </caption>
+    <tr>
+      <th style="width:30%;"> File Name </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td>
+        main.tf
+      </td>
+      <td>
+        - module's entry file
+      </td>
+    </tr>
+    <tr>
+      <td>
+        providers.tf
+      </td>
+      <td>
+        - contains provider configurations (in the root module)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        variables.tf
+      </td>
+      <td>
+        - contains input variable declarations
+      </td>
+    </tr>
+    <tr>
+      <td>
+        outputs.tf
+      </td>
+      <td>
+        - contains output variables
+      </td>
+    </tr>
+    <tr>
+      <td>
+        locals.tf
+      </td>
+      <td>
+        - contains local variables
+      </td>
+    </tr>
+    <tr>
+      <td>
+        *.tfvars
+      </td>
+      <td>
+        - input variables for the <mark>terraform plan|apply -var-file <reqval>filePath</reqval></mark> command
+      </td>
+    </tr>
+    <tr>
+      <td>
+        *.auto.tfvars
+      </td>
+      <td>
+        - input variables automatically loaded on <mark>terraform plan|apply</mark> command
+      </td>
+    </tr>
+  </table>
+  <br>
   <details class="example" id="notes">
     <summary> Notes & Tips :</summary>
     <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
@@ -44,38 +110,25 @@
   </pre>
   <pre>
 // directory structure ----------------
-  .                               // root module 
-  ├── main.tf
-  ├── module1                     // child module 
-      ├── main.tf
-  
+    .                               // root module 
+    ├── main.tf
+    ├── module1                     // child module 
+        ├── main.tf
+    
   
 // main.tf (root module) ----------
-  module "module1" {
-    source = "./module1"          // importing module 
-  }
+    module "module1" {
+      source = "./module1"          // importing module 
+    }
   
   
 // main.tf (child module) ----------
-  resource "local_file" "testFile" {      // creating some resource
-    filename = "./testFile.txt"           // -! path is relative to the root module (so the file is created in the root module)
-    content  = "Hello World!"
-  }
+    resource "local_file" "testFile" {      // creating some resource
+      filename = "./testFile.txt"           // -! path is relative to the root module (so the file is created in the root module)
+      content  = "Hello World!"
+    }
   </pre>
-  <hr>
-  <!--------------------------------------------------------------------------->
-  <h2 class="header"> Module Files </h2>
-  <p> - file names are just conventions, we can custom name any <mark>*.tf</mark> file </p>
-  <pre class="syntax">
-    .
-    ├── main.tf                           // module's entry file
-    ├── providers.tf                    // contains provider configurations (in the root module)
-    ├── variables.tf                    // contains input variable declarations
-    ├── *.tfvars                        // input variables for the <mark>terraform plan|apply -var-file <reqval>filePath</reqval></mark> command
-    ├── *.auto.tfvars                   // input variables automatically loaded on <mark>terraform plan|apply</mark> command
-    ├── outputs.tf                      // contains output variables
-    ├── locals.tf                       // contains local variables
-  </pre>
+  
   <br><br>
 </body>
 

@@ -18,77 +18,59 @@
     <a href="../index.html" title="home">Terraform></a> HCL Language
   </nav>
 
-  <p class="subSite"><a href=""> SubSite > </a></p>
-
-
-  <table class="table">
-    <tr>
-      <th style="width:30%;"> Method / Property / statement ect... </th>
-      <th> Description </th>
-    </tr>
-    <tr>
-      <td>
-        demo prop
-      </td>
-      <td>
-        - demo description
-        <span class="browserSupport">
-          <span><i class="fab fa-chrome"></i> 0/0 -webkit- </span>
-          <span><i class="fab fa-firefox"></i> </span>
-          <span><i class="fab fa-opera"></i> </span>
-          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> </span>
-          <span><i class="fab fa-safari"></i> </span>
-          <span><i class="fab fa-node-js"></i> </span>
-        </span>
-      </td>
-    </tr>
-
-
-
-
-  </table>
-  <br>
   <details class="example" id="notes">
     <summary> Notes & Tips :</summary>
     <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
   </details>
   <h2 style="color:green;"><u> Useful Links : </u></h2>
-
+  <p><a href="https://developer.hashicorp.com/terraform/language/functions" target="_blank">terraform built-in functions (developer.hashicorp.com)</a></p>
   <h2 style="color:green;"><u> Remember This : </u></h2>
 
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-
-
-
+  <p> - for Terraform code the convention is to use snake_case </p>
+  <p> - we can get some file system info here: <a href="https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info" target="_blank">[link]</a></p>
+  <pre class="syntax">
+    // <reqval>comment ...</reqval>  // single line comment
+    # <reqval>comment ...</reqval>
+    
+    /*                                       // multiline comment
+      <reqval>comment ...</reqval>
+      <reqval>comment ...</reqval>
+    */
+  </pre>
   <hr>
   <!-------------------------------------------------------------------------------------------->
   <h2 class="header"> Data Types </h2>
+  <p> the following data types can be used  interchangeably: </p>
+  <p class="indent-lv1"> - <mark class="mark">list</mark> <-> <mark class="mark">tuple</mark> <-> <mark class="mark">set</mark> </p>
+  <p class="indent-lv1"> - <mark class="mark">map</mark> <-> <mark class="mark">object</mark> </p>
   <pre class="syntax">
-    Type Annotation             Example                     Usage
+    <lit>Type Annotation                     Example              Literal support        Usage</lit>
     
     any                           // any data type
-    null                        <mark>null</mark>                                         // null value
+    null                                <mark>null</mark>                 yes                                      // null value
     
     
-    string                      <mark>"Hello World!"</mark>              <reqval>string</reqval>    // string (between double quotes)
-    number                      <mark>123.123</mark>                     <reqval>number</reqval>    // positive or negative float
-    bool                        <mark>true|false</mark>                  <reqval>bool</reqval>      // boolean (<mark>true</mark>|<mark>false</mark>)
+    string                              <mark>"Hello World!"</mark>       yes                    <reqval>string</reqval>    // string (between double quotes)
+    number                              <mark>123.123</mark>              yes                    <reqval>number</reqval>    // positive or negative float
+    bool                                <mark>true|false</mark>           yes                    <reqval>bool</reqval>      // boolean (<mark>true</mark>|<mark>false</mark>)
     
     
-    list(<reqval>type</reqval>)                  <mark>["one", "two"]</mark>              <reqval>list</reqval>[<reqval>idx</reqval>]    // ordered collection of the same type
-    set(<reqval>type</reqval>)                   <mark>["one", "two"]</mark>              <sapn style="color:orange;">[no indexing]</sapn>    // unordered collection of the same type holding unique values    
+    list(<reqval>type</reqval>)                          <mark>["one", "two"]</mark>       NO                     <reqval>list</reqval>[<reqval>idx</reqval>]    // ordered collection of the same type
+    set(<reqval>type</reqval>)                           <mark>["one", "two"]</mark>       NO                     <sapn style="color:orange;">[no indexing]</sapn>    // unordered collection of the same type holding unique values    
                                                       // -! members are NOT accessible individually (we have to use the <mark>for_each</mark> meta argument)
-    tuple([<reqval>type</reqval><optval>, ...</optval>])          <mark>["one", 2]</mark>                  <reqval>tuple</reqval>[<reqval>idx</reqval>]               // ordered collection of different types
+    tuple([<reqval>type</reqval><optval>, ...</optval>])                  <mark>["one", 2]</mark>           yes                    <reqval>tuple</reqval>[<reqval>idx</reqval>]               // ordered collection of different types
     
     
-    map(<reqval>type</reqval>)                   <mark>{</mark>                           <reqval>map</reqval>["<reqval>key</reqval>"] | <reqval>map</reqval>.<reqval>key</reqval>             // key/value pairs of the same type
-                                  <mark>key1 = "one"</mark>
-                                  <mark>key2 = "two"</mark>
-                                <mark>}</mark>
-    object({                    <mark>{</mark>                           <reqval>object</reqval>["<reqval>key</reqval>"] | <reqval>object</reqval>.<reqval>key</reqval>         // key/value pairs of different types
-      <reqval>key</reqval> = <reqval>type</reqval>,                 <mark>key1 = "one"</mark>
-      <optval>...</optval>                         <mark>key2 = 2</mark>
-    })                          <mark>}</mark>
+    map(<reqval>type</reqval>)                           <mark>{</mark>                    yes                    <reqval>map</reqval>["<reqval>key</reqval>"] | <reqval>map</reqval>.<reqval>key</reqval>             // key/value pairs of the same type
+                                          <mark>key1 = "one"</mark>
+                                          <mark>key2 = "two"</mark>
+                                        <mark>}</mark>
+    object({                            <mark>{</mark>                    yes                    <reqval>object</reqval>["<reqval>key</reqval>"] | <reqval>object</reqval>.<reqval>key</reqval>         // key/value pairs of different types
+      <reqval>key</reqval> = <reqval>type</reqval>,                         <mark>key1 = "one"</mark>
+      <reqval>key</reqval> = <opt>optional(</opt><optval>type</optval>, <optval>defVal</optval><opt>)</opt>,       <mark>key1 = "two"</mark>
+      <optval>...</optval>                                 <mark>key3 = "three"</mark>
+    })                                  <mark>}</mark>
   </pre>
   <details class="example">
     <summary> DEMO (can be pseudocode) </summary>
@@ -208,154 +190,260 @@
       }
     }
   </pre>
+  <hr>
+  <!----------------------------------------------------------------------------->
+  <h4 class="header"> optional <mark>object</mark> attribute </h4>
+  <pre>
+    variable "person" {
+      type = object({
+        name = string,
+        age  = optional(number, 39)     // optional attribute
+      })
+      default = {
+        name = "Me"
+      }
+    }
+    
+    output "test" {
+      value = var.person
+    }
+  </pre>
   </details>
   <hr>
   <!-------------------------------------------------------------------------------------------->
   <h2 class="header"> String </h2>
-  <p> - terraform supports some very powerfull string logics </p>
   <pre class="syntax">
     "<reqval>some string</reqval>"                // strings are double quoted 
   
   
 // heredoc string (multiline) ------------------
-    &lt;&lt;<reqval>EOT</reqval>
-    
+    &lt;&lt;<opt>[-]</opt><reqval>EOT</reqval>                    // the <reqval>EOT</reqval> can be anything (the <opt>-</opt> removes white spaces before each line)
+      <optval>...</optval>
+      <optval>...</optval>
     <reqval>EOT</reqval>
-  
+    
+    
+// interpolation -------------------------------------
+    <reqval>string</reqval>${<reqval>exp</reqval>}<reqval>string</reqval>       // works in both double quoted and in heredoc strings
+    
+    
+// conditional and iteration directives ------------------------------------
+    <reqval>string</reqval>%{ if <reqval>exp:->bool</reqval> }<reqval>trueVal</reqval>%{ else }<reqval>fakseVal</reqval>%{ endif }<reqval>string</reqval>       // if <reqval>exp</reqval> is <mark>true</mark> returns <reqval>trueVal</reqval>, if <mark>false</mark> returns <reqval>falseVal</reqval>   
+    
+    <reqval>string</reqval>%{ for <reqval>i</reqval> in <reqval>list|tupe|set</reqval> }<reqval>string</reqval>${ <reqval>i</reqval> }%{ endfor }<reqval>string</reqval>       // at each iteration the current member <reqval>i</reqval> is received
   </pre>
-
-
-
-
-  <!--
----------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------
-stage 1: high level overview 
-    - read through 
-    - create notes 
-    - deciede what exactly will you document down 
-    - UNDERSTAND AND WRITE DOWN THE CONCEPTS!!!
-    
-stage 2:  low level overview
-    - deeper understanding of all what you've taken down in stage 1
-    
-stage 3 : 
-    - organize and document down everything 
----------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------
-    - string: https://developer.hashicorp.com/terraform/language/expressions/strings
-        - quoted -> "some string"
-
-        - the escape character is \ (ex: \")
-
-    - heredoc string 
-        <<EOT               // the EOT can be anything 
-        ....
-        ....
-        EOT
-
-        - by default all characters are translated (use <<-EOT to trim spaces from the start of the line)
-
-    - interpolation "${<interpolation>}"
-    
-    - directive %{} accepts condition of iteration
-        %{if <BOOL>}/%{else}/%{endif}
-        %{for <NAME> in <COLLECTION>} / %{endfor}
-        
-
-
-?????????????????????????????????????????????????????????????????????????????????????????????
-WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
-?????????????????????????????????????????????????????????????????????????????????????????????
-    - 
-    
--->
-
-
-
-
-
-<!--
-    - terraform has a bunch of useful built-in functions: https://developer.hashicorp.com/terraform/language/functions
-
-
-
-    - comment
-      - single line // or #
-      - multi line /*  */
-    
-
--->
-
-
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-
-
-  <h2 class="headerExtra"><u> Title 1 </u></h2>
-  <h2 class="header"> Title 1.1 </h2>
-  <h3 class="header"> Title 1.1.1 </h3>
-  <h4 class="header"> Title 1.1.1.1 </h4>
-  <p> - stuff to learn <mark>syntax or command (or some tchnical stuff)</mark> bla bla bla </p>
-  <p> - stuff to learn <mark class="mark">highlights like file names and other things</mark> bla bla bla </p>
-  <p style="text-decoration:underline;"> - important information is underlined </p>
-  <p style="color:yellow;"> - very important information is written with yellow colors </p>
-  <p style="background-color:yellow;"> - highly important information has yellow background color </p>
-  <div style="background-color:red;">
-    <p> - red background block means not learned or not tested information! </p>
-    <p> - </p>
-  </div>
-
-  <pre class="syntax">
-    <reqval>required value </reqval>
-    <optval>optional value </optval>
-    <lit>literally used </lit>
-    <opt>optionally used </opt>
-  
-    <prot style="color:#049500;">prototype chain</prot>
-        
-    <span class="openable"> this is an openable element<div>
-        <p> - openable elements listed here in paragraphs </p>
-        <p> - </p>
-    </div></span>
-    </pre>
-
   <details class="example">
     <summary> DEMO (can be pseudocode) </summary>
-    <pre>
-    examples of the current lessons 
-    
-// -----------------------------------------
-
-// -----------------------------------------
-    </pre>
-  </details>
-
-  <pre class="cmd">
-    command line demo 
-    </pre>
-  <pre class="formula">
-    formula code (like conversion meter...)
-    </pre>
-  <details class="example">
-    <summary> Example : </summary>
-    <h4 style="color:darkblue;"><u> example title </u></h4>
-    <p> - live tests will come here </p>
-    <details>
-      <summary> CODE : </summary>
-      <pre>
-    copy of the exaple code 
-        </pre>
-    </details>
-  </details>
-  <!---------------------------------------------------------------------------------------------------------------------------------->
+  <h4 class="header"> Heredoc string </h4>
+  <pre>
+    resource "local_file" "test_file" {
+      filename = "./myFile.txt"
+      content  = <<-EOT                // the <mark>-</mark> character removes white spaces before each line
+        This is some heredoc string
+        addition line
+        another line
+      EOT
+    }
+  </pre>
   <hr>
-
-  <h2 class="test" style=""><a href="TEST/index.html"> TEST > </a></h2>
+  <!-------------------------------------------------------------------------------------------->
+  <h4 class="header"> Interpolation </h4>
+  <pre>
+    resource "local_file" "test_file" {
+      filename = "./myFile.txt"
+      content  = <<-EOT
+        This is some heredoc string
+        ${var.line.one}
+        ${var.line.two}
+      EOT
+    }
+    
+    variable "line" {
+      type = map(string)
+      default = {
+        one = "First line"
+        two = "second line"
+      }
+    }
+  </pre>
+  <hr>
+  <!-------------------------------------------------------------------------------------------->
+  <h4 class="header"> Conditional directive </h4>
+  <pre>
+    output "test" {
+      value = "Hello, %{ if var.sally != "" }${var.sally}%{ else }[no name provided]%{ endif }!"
+    }
+    
+    variable "sally" {
+      type = string
+    }
+  </pre>
+  <hr>
+  <!-------------------------------------------------------------------------------------------->
+  <h4 class="header"> Iteration directive </h4>
+  <pre>
+    output "test" {
+      value = "%{ for member in ["one", "two", "three"] } member ${member}%{ endfor }"
+    }
+    
+    output "test2" {
+      value = <<-EOT
+      %{ for member in ["one", "two", "three"] ~}        // removes unwanted spaces and new line characters
+      member ${member}
+      %{ endfor ~}"
+      EOT
+    }
+  </pre>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------------------------->
+  <h2 class="header"> Operators </h2>
+  <pre class="syntax">
+// Arithmetic Operators -----------------------------
+    <reqval>val:number</reqval> + <reqval>val:number</reqval>         // addition
+    <reqval>val:number</reqval> - <reqval>val:number</reqval>         // subtraction
+    <reqval>val:number</reqval> * <reqval>val:number</reqval>         // multiplication
+    <reqval>val:number</reqval> / <reqval>val:number</reqval>         // division
+    <reqval>val:number</reqval> % <reqval>val:number</reqval>         // reminder division (returns the reminder of the division)
+    
+    -<reqval>val:number</reqval>                              // flips the number's sign (negative -> positive / positive -> negative)
+    
+    
+// Comparison Operators -----------------------------
+    <reqval>val:number</reqval> &lt; <reqval>val:number</reqval>         // returns <mark>true</mark> if the left operand is smaller than the right operand, otherwise returs <mark>false</mark>
+    <reqval>val:number</reqval> &lt;= <reqval>val:number</reqval>        // returns <mark>true</mark> if the left operand is smaller or equal the right operand, otherwise returs <mark>false</mark>
+    <reqval>val:number</reqval> &gt; <reqval>val:number</reqval>         // returns <mark>true</mark> if the left operand is greater than the right operand, otherwise returs <mark>false</mark>
+    <reqval>val:number</reqval> &gt;= <reqval>val:number</reqval>        // returns <mark>true</mark> if the left operand is greater or equal the right operand, otherwise returs <mark>false</mark> 
+    
+    
+// Equality Operators -----------------------------
+    <reqval>val</reqval> == <reqval>val</reqval>         // returns <mark>true</mark> if both operands are the same value and type, otherwise returs <mark>false</mark>
+    <reqval>val</reqval> != <reqval>val</reqval>         // returns <mark>true</mark> if operands are different value or type, otherwise returs <mark>false</mark>
+    
+    
+// Logical Operators -----------------------------
+    <reqval>val:bool</reqval> || <reqval>val:bool</reqval>         // (logical OR) returns <mark>true</mark> if at least one operand is <mark>true</mark>, otherwise returs <mark>false</mark>
+    <reqval>val:bool</reqval> && <reqval>val:bool</reqval>         // (logical AND) returns <mark>true</mark> if both operand are <mark>true</mark>, otherwise returs <mark>false</mark>
+    !<reqval>val:bool</reqval>                                // (logical NOT) returns <mark>true</mark> if <reqval>val</reqval> is <mark>false</mark>, and vice versa
+  </pre>
+  <hr>
+  <!-------------------------------------------------------------------------------------------->
+  <h2 class="header"> Functions </h2>
+  <p> - terraform doesn't support user defined functions, but there is a bunch of <a href="https://developer.hashicorp.com/terraform/language/functions" target="_blank">built-in functions for all purposes</a> </p>
+  <pre class="syntax">
+    <reqval>func</reqval>(<reqval>list|tuple</reqval>...)     // spreads list or tuple members in as function arguments 
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+  <pre>
+    resource "local_file" "testFile" {
+      filename = "./myFile.txt"
+      content  = min([-23, 0.32, 32, -12.23, -123.123]...)    // spread list memebers
+    }
+  </pre>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------------------------->
+  <h2 class="header"> Conditional Statements </h2>
+  <pre class="syntax">
+    <reqval>cond</reqval> ? <reqval>truthyExp</reqval> : <reqval>falsyExp</reqval>
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+  <pre>
+    resource "local_file" "test_file" {
+      filename = "./myFile.txt"
+      content  = var.file_content > 5 ? "Input is bigger than 5" : "Input is smaller or equal 5"
+    }
+    
+    variable "file_content" {
+      type    = number
+      default = 6
+    }
+  </pre>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------------------------->
+  <h2 class="header"> For & Spalt Expressions (loop) </h2>
+  <p> - these expression are used to modify or filter collection members (by interation) </p>
+  <p class="indent-lv1"> - the splat expression can be used for a list of objects|maps where all objects|maps has the same attribute, we can extract these same attribute's values in a new tuple </p>
+  <pre class="syntax">
+// for expression -------------------
+    [for <reqval class="openable">i<div>
+      <p> - current member (in case of map or object we can get the key and value (ex: <mark>[for k, v in <reqval>obj</reqval>]</mark>))
+    </div></reqval> in <strong>list|tuple|set|map|object</strong> : <strong class="openable">exp<div>
+      <p> - receives the current member, we can modify it here </p>
+    </div></strong> <opt class="openable">[if <optval>exp</optval>]<div>
+      <p> - if condition is <mark>true</mark> the member is returned in the result, if <mark>false</mark> omitted </p>
+    </div></opt>]    // returns a <reqval>tuple</reqval>   
+    {for <reqval class="openable">i<div>
+      <p> - current member (in case of map or object we can get the key and value (ex: <mark>[for k, v in <reqval>obj</reqval>]</mark>))
+    </div></reqval> in <strong>list|tuple|set|map|object</strong> : <strong class="openable">exp<div>
+      <p> - receives the current member, we can modify it here </p>
+    </div></strong> <opt class="openable">[if <optval>exp</optval>]<div>
+      <p> - if condition is <mark>true</mark> the member is returned in the result, if <mark>false</mark> omitted </p>
+    </div></opt>}   // returns an <reqval>object</reqval> <u>(the <reqval>exp</reqval> must contain <mark>=&gt;</mark> (ex: <mark>k =&gt; v</mark>))</u>
+    
+    
+// splat expression ------------------
+    <reqval>list</reqval>[*].<reqval>attr</reqval>                      // returns a new <reqval>tuple</reqval> with all <reqval>attr</reqval> values 
+                                                        // equivalent with <mark>[for i in <reqval>list</reqval> : i.<reqval>attr</reqval>]</mark>
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+  <h4 class="header"> The for expression </h4>
+  <pre>
+    output "test_output" {
+      value = [for i in ["hi", "hello", "good day"] : upper(i)]         // tuple
+    }
+    
+    output "test_output_2" {
+      value = [for k, v in var.some_map : "key: ${k}, value: ${v}"]     // map
+    }
+    
+    variable "some_map" {
+      type = map(string)
+      default = {
+        key1 = "one"
+        key2 = "two"
+      }
+    }
+    
+    
+// returning an object -------------------------------------------------
+    output "test_output_3" {
+      value = { for k in ["hi", "hello", "good day"] : k => upper(k) } // returns an object
+    }
+    
+    
+// filtering -------------------------
+    output "test_output_4" {
+      value = [for i in [3, 1, 0, 2.32, -2.1] : i if i <= 1]          // the returned tuple contains only values that are bigger or equal 1
+    }
+  </pre>
+  <hr>
+  <!------------------------------------------------------------------------------->
+  <h4 class="header"> The splat expression </h4>
+  <pre>
+    output "test_output_1" {
+      value = var.my_list[*].id
+    }
+    
+    output "test_output_2" {
+      value = [for i in var.my_list : i.id]         // the above splat expression is equivalent with this
+    }
+    
+    
+    variable "my_list" {
+      type = list(map(string))
+      default = [
+        { id = "one" },
+        { id = "two" },
+        { id = "three" },
+      ]
+    }
+  </pre>
+  </details>
 
 
   <br><br>

@@ -159,26 +159,26 @@
   <p> - the SSH (<mark>S</mark>ecure <mark>S</mark>hell) is network protocol that provides a secure and encrypted way to access and communicate with a remote server </p>
   <p> - SSH uses public/pirvate key infrastructure in order to authenticate the client to the server (after authentication symetric encryption is used for further transmission encryption) </p>
   <p class="header"> UNIX systems ssh remote access requirements: </p>
-  <p class="indent-lv1"> - ssh server installed and running (not installed by default, listed as <mark>ssh</mark> daemon) (configurable through <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#sshd_config" target="_blank">/etc/ssh/sshd_config</a></mark>) </p>
+  <p class="indent-lv1"> - ssh server installed and running (not installed by default, listed as <mark>ssh</mark> daemon) (configurable through <mark><a href="../File System Map/index.html#sshd_config" target="_blank">/etc/ssh/sshd_config</a></mark>) </p>
   <p class="indent-lv2"> - to install server: (prepare system <mark>sudo apt update && sudo apt upgrade</mark>) (install ssh server <mark>sudo apt install openssh-server</mark>) (start <mark>sudo systemctl start ssh</mark>) </p>
   <p class="indent-lv1"> - the user exist on the remote system (be basically login as a user but remotely) </p>
   <p class="header"> There are 2 ways a user can remotely authenticate in a system: </p>
   <p class="indent-lv1"> - simple <mark class="mark">name & password authentication</mark> (cryptography is taken care in the background) </p>
   <p class="indent-lv2"> - we log in with our user & password (like we would do locally), is that simple </p>
-  <p class="indent-lv1"> - using <mark class="mark">private/public key authentication</mark>, <u>considered far more secure than user & password authentication</u> (don't forget to disble the user & password authentciation if you want to use only this method <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#sshd_config" target="_blank">/etc/ssh/sshd_config</a></mark>) </p>
+  <p class="indent-lv1"> - using <mark class="mark">private/public key authentication</mark>, <u>considered far more secure than user & password authentication</u> (don't forget to disble the user & password authentciation if you want to use only this method <mark><a href="../File System Map/index.html#sshd_config" target="_blank">/etc/ssh/sshd_config</a></mark>) </p>
   <p class="indent-lv2"> - 1) generate a private/public key pair </p>
-  <p class="indent-lv2"> - 2) register the public key with the server <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#authorized_keys" target="_blank">/home/<reqval>user</reqval>/.ssh/authorized_keys</a></mark> </p>
+  <p class="indent-lv2"> - 2) register the public key with the server <mark><a href="../File System Map/index.html#authorized_keys" target="_blank">/home/<reqval>user</reqval>/.ssh/authorized_keys</a></mark> </p>
   <p class="indent-lv2"> - 3) login with the private key </p>
   <p class="header"> Important SSH file components: </p>
-  <p class="indent-lv1"> - <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#sshd_config" target="_blank">/etc/ssh/sshd_config</a></mark>: ssh server daemon config file </p>
-  <p class="indent-lv1"> - <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#ssh_config" target="_blank">/etc/ssh/ssh_config</a></mark>: system wide ssh config file </p>
-  <p class="indent-lv1"> - <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#auth_log" target="_blank">/var/log/auth.log</a></mark>: log file where all authentcation is registered </p>
-  <p class="indent-lv1"> - <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#ssh" target="_blank">/home/<reqval>user</reqval>/.ssh</a></mark>: user's ssh directory where all pirivate/public keys are stored </p>
+  <p class="indent-lv1"> - <mark><a href="../File System Map/index.html#sshd_config" target="_blank">/etc/ssh/sshd_config</a></mark>: ssh server daemon config file </p>
+  <p class="indent-lv1"> - <mark><a href="../File System Map/index.html#ssh_config" target="_blank">/etc/ssh/ssh_config</a></mark>: system wide ssh config file </p>
+  <p class="indent-lv1"> - <mark><a href="../File System Map/index.html#auth_log" target="_blank">/var/log/auth.log</a></mark>: log file where all authentcation is registered </p>
+  <p class="indent-lv1"> - <mark><a href="../File System Map/index.html#ssh" target="_blank">/home/<reqval>user</reqval>/.ssh</a></mark>: user's ssh directory where all pirivate/public keys are stored </p>
   <p class="indent-lv2"> - usable only by the user (even a separate user part of the folder's group has no access for security reasons) </p>
-  <p class="indent-lv1"> - <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#ssh_conifg" target="_blank">/home/<reqval>user</reqval>/.ssh/config</a></mark>: ssh client config file (used to map names to connections) </p>
-  <p class="indent-lv1"> - <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#known_hosts" target="_blank">/home/<reqval>user</reqval>/.ssh/known_hosts</a></mark>: contains already estabilished connection figerprints (protects against man-in-the middle attacks by detecting if the remote host changes) </p>
-  <p class="indent-lv1"> - <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#known_hosts_old" target="_blank">/home/<reqval>user</reqval>/.ssh/known_hosts.old</a></mark>: one version older than <mark>known_hosts</mark> (backup file) </p>
-  <p class="indent-lv1"> - <mark><a href="../Computer Science/Operating Systems/UNIX Systems/index.html#authorized_keys" target="_blank">/home/<reqval>user</reqval>/.ssh/authorized_keys</a></mark>: contains ssh public keys (this is where the ssh server keep its public kesy) </p>
+  <p class="indent-lv1"> - <mark><a href="../File System Map/index.html#ssh_conifg" target="_blank">/home/<reqval>user</reqval>/.ssh/config</a></mark>: ssh client config file (used to map names to connections) </p>
+  <p class="indent-lv1"> - <mark><a href="../File System Map/index.html#known_hosts" target="_blank">/home/<reqval>user</reqval>/.ssh/known_hosts</a></mark>: contains already estabilished connection figerprints (protects against man-in-the middle attacks by detecting if the remote host changes) </p>
+  <p class="indent-lv1"> - <mark><a href="../File System Map/index.html#known_hosts_old" target="_blank">/home/<reqval>user</reqval>/.ssh/known_hosts.old</a></mark>: one version older than <mark>known_hosts</mark> (backup file) </p>
+  <p class="indent-lv1"> - <mark><a href="../File System Map/index.html#authorized_keys" target="_blank">/home/<reqval>user</reqval>/.ssh/authorized_keys</a></mark>: contains ssh public keys (this is where the ssh server keep its public keys) </p>
   <details class="example">
     <summary> DEMO (can be pseudocode) </summary>
     <h4 class="header"> Connecting with user & password </h4>

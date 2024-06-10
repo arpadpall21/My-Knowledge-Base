@@ -64,7 +64,7 @@
       <td>
         - applies changes to the infrastructure according as described in the configuration files <br>
         - 1) request deployed resources for their current state <br>
-        - 2) apply changes
+        - 2) apply changes <br>
         <opt>[options]</opt> <br>
         - (<opt>-auto-approve</opt> immediately deploys the infrsatructure (does not ask for confirmation) <br>
         - (<opt>-var</opt> <optval>varName=val</optval>) passes an input variable terraform <br>
@@ -77,7 +77,7 @@
         <lit>terraform</lit> destroy <opt>[options]</opt>
       </td>
       <td>
-        - destroys the infrastructure what was created using configuration files
+        - destroys the infrastructure what was created using configuration files <br>
         <opt>[options]</opt> <br>
         - (<opt>-auto-approve</opt> immediately destoys the infrsatructure (does not ask for confirmation) <br>
       </td>
@@ -128,6 +128,16 @@
     </tr>
     <tr>
       <td>
+        <lit>terraform</lit> fmt <opt>[options]</opt>
+      </td>
+      <td>
+        - terraform style formats all <mark>*.tf</mark> file in the current directory <br>
+        <opt>[options]</opt><br>
+        - (<opt>-recursive</opt>) in all subdirectories
+      </td>
+    </tr>
+    <tr>
+      <td>
         <lit>terraform</lit> validate
       </td>
       <td>
@@ -164,7 +174,7 @@
   </pre>
   <hr>
   <!-------------------------------------------------------------------------------------------->
-  <h2 class="header"> Porvider <a href="https://developer.hashicorp.com/terraform/language/providers" target="_blank">[link]</a></h2>
+  <h2 class="headerExtra"> Porvider <a href="https://developer.hashicorp.com/terraform/language/providers" target="_blank">[link]</a></h2>
   <hr>
   <p> - terraform providers are plugins that enable terraform to interact with various cloud platforms, services, and platforms </p>
   <p> - in the project providers work the same way as packages do in a javascript & python project, they must be installed, lock file locks the environment, etc...</p>
@@ -177,8 +187,12 @@
       
       required_prodivers {
         <reqval>providerName</reqval> = {               // list required providers for the project
-          source  = "<reqval>providerSource</reqval>"
-          version = "<reqval>ver</reqval>"
+          source  = <reqval>providerSource</reqval>
+          version = <reqval class="openable">versionConstraint<div>
+            <p> - a list of accepteble versions <a href="https:\/\/developer.hashicorp.com/terraform/language/expressions/version-constraints" target="_blank">[link]</a> </p>
+            <p> - supported operators: <mark>=</mark>, <mark>!=</mark>, <mark>&lt;</mark>, <mark>&lt;=</mark>, <mark>&gt;</mark>, <mark>&gt;=</mark>, <mark>~&gt;</mark> ((pessimistic constraint operator) allows to upgrade patch version only) </p>
+            <p> ex: <mark>"&gt;= 0.12.0, &lt; 2.0.0"</mark> / <mark>"~&gt; 1.8"</mark> (can use any 1.8 patch) </p>
+          </div></reqval>
         }
         <optval>...</optval>
       }
@@ -208,13 +222,10 @@
       tenant_id                  = &lt;tenantId&gt;
     }  
   </pre>
-  
-  
-  
   </details>
   <hr>
   <!-------------------------------------------------------------------------------------------->
-  <h2 class="header"> State <a href="https://developer.hashicorp.com/terraform/language/state" target="_blank">[link]</a></h2>
+  <h2 class="headerExtra"> State <a href="https://developer.hashicorp.com/terraform/language/state" target="_blank">[link]</a></h2>
   <p> - terraform keeps track of the deployed infrastructure in a state file, it's considered as <u>single source of truth</u> for the deployed infrastructure (should not be edited manually)</p>
   <p> - this file (<mark>terraform.tfstate</mark>) also keeps important meta data like dependencies, caching, etc... (dependency is very important for the deploy|destroy order (ex: the vnet must be create before the virtual machine)) </p>
   <p> - <mark class="mark">state lock</mark> </p>
@@ -247,17 +258,17 @@
   </details>
   <hr>
   <!-------------------------------------------------------------------------------------------->
-  <h2 class="header"> Resource </h2>
+  <h2 class="headerExtra"> Resource </h2>
   <p> - a compute resource is described as an object, depending on the resource it accepts different attributes and has different return values </p>
   <p> - <mark class="mark">dependency resolution</mark> </p>
   <p class="indent-lv1"> - by default terraform does implicit dependency resoluiton, it figures out resources depending on each other on its own (declaration order does not matter) </p>
   <p class="indent-lv1"> - however we can explicitly specify the dependencies of the resource with the <mark>depends_on</mark> meta attribute </p>
   <pre class="syntax">
     resource "<reqval>provider</reqval>_<reqval>resourceType</reqval>" "<reqval>name</reqval>" {      // describes a resource
+      self                                                  // references this resource
       <reqval>attr</reqval> = <reqval>val</reqval>
       <optval>...</optval>
     }
-  
   
   
 // referencing block attributes & return values ----------------------------
@@ -268,7 +279,6 @@
     resource "<reqval>providerB</reqval>_<reqval>resourceTypeB</reqval>" "<reqval>resourceNameB</reqval>" {
       <reqval>attr</reqval> = <reqval>providerA</reqval>_<reqval>resourceTypeA</reqval>.<reqval>resourceNameA</reqval>.<reqval>attr|returnAttr</reqval>    // referencing <reqval>attr</reqval> or the <reqval>returnAttr</reqval> of the above resource
     }
-  
   
   
 // explicit dependency resolution ----------------------------
@@ -283,6 +293,10 @@
         <optval>...</optval>
       ]
     }
+    
+    
+// dynamic blocks ------------------------------
+    // some resource include repeatable nested blocks in their arguments that can be declared with the <mark>dynamic</mark> block <a href="https:\/\/developer.hashicorp.com/terraform/language/expressions/dynamic-blocks" target="_blank">[link]</a>
   </pre>
   <details class="example">
     <summary> DEMO (can be pseudocode) </summary>
@@ -317,6 +331,38 @@
   </details>
   <hr>
   <!-------------------------------------------------------------------------------------------->
+  <h2 class="headerExtra"> Data Source </h2>
+  <p> - a data sources is a resource which is not controlled by terraform, we use data sources in order to read some data from a resource </p>
+  <p> - in order to read some data source we need a provider that supporst this feature <a href="https://registry.terraform.io/browse/providers" target="_blank">[link]</a></p>
+  <p> - we can even read a terraform state as data source <a href="https://developer.hashicorp.com/terraform/language/state/remote-state-data" target="_blank">[link]</a></p>
+  <pre class="syntax">
+    data "<reqval>provider</reqval>_<reqval>resourceType</reqval>" "<reqval>resourceName</reqval>" {
+      <reqval>attr</reqval> = <reqval>val</reqval>
+      <optval>...</optval>
+    }
+  
+  
+// data source usage ------------------------
+    <reqval>someCodeBlock</reqval> {
+      <reqval>attr</reqval> = data.<reqval>provider</reqval>_<reqval>resourceType</reqval>.<reqval>resourceName</reqval>.<reqval>returnAttr</reqval>      // each data resource type has documented return attributes (<reqval>returnAttr</reqval>)   
+    }
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+  <pre>
+    resource "local_file" "testFile" {
+      filename = "./target.txt"
+      content  = data.local_file.src.content          // the read output is used here
+    }
+    
+    data "local_file" "src" {                         // file read as data source 
+      filename = "./source.txt"
+    }
+  </pre>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------------------------->
+  <h2 class="headerExtra"> Meta Arguments / Pre and Post Conditions /  Assertion </h2>
   <h2 class="header"> Meta Arguments <a href="https://developer.hashicorp.com/terraform/language/meta-arguments/depends_on" target="_blank">[link]</a> </h2>
   <p> - meta arguments are available in all resources, they perform different 'meta' task on the resource </p>
   <pre class="syntax">
@@ -451,32 +497,131 @@
   </details>
   <hr>
   <!-------------------------------------------------------------------------------------------->
-  <h2 class="header"> Data Source </h2>
-  <p> - a data sources is a resource which is not controlled by terraform, we use data sources in order to read some data from a resource </p>
-  <p> - in order to read some data source we need a provider that supporst this feature <a href="https://registry.terraform.io/browse/providers" target="_blank">[link]</a></p>
-  <p> - we can even read a terraform state as data source <a href="https://developer.hashicorp.com/terraform/language/state/remote-state-data" target="_blank">[link]</a></p>
+  <h2 class="header"> Pre and Post Conditions (Validation) <mark class="mark">v1.2</mark> </h2>
+  <p> - we can specify a pre and post condition check for a resource, data source or output </p>
   <pre class="syntax">
-    data "<reqval>provider</reqval>_<reqaval>resourceType</reqaval>" "<reqval>resourceName</reqval>" {
-      <reqval>attr</reqval> = <reqval>val</reqval>
-      <optval>...</optval>
+  resource|data|output <reqval>...</reqval> {
+    <optval>...</optval>
+    
+    lifecycle {
+      precondition {                                // runs before deploying (prevents deploy on fail)
+        condition     = <reqval>cond</reqval>       // <mark>false</mark> = failed condition
+        error_message = <reqval>exp:->str</reqval>
+      }
+      
+      postcondition {                               // runs after deploy (on fail stop any further actions <u>but does not undo the actions already taken)</u>   
+        condition     = <reqval>cond</reqval>       // <mark>false</mark> = failed condition
+        error_message = <reqval>exp:->str</reqval>
+      }
     }
-  
-  
-// data source usage ------------------------
-    <reqval>someCodeBlock</reqval> {
-      <reqval>attr</reqval> = data.<reqval>provider</reqval>_<reqval>resourceType</reqval>.<reqval>resourceName</reqval>.<reqval>returnAttr</reqval>      // each data resource type has documented return attributes (<reqval>returnAttr</reqval>)   
-    }
+  }
   </pre>
   <details class="example">
     <summary> DEMO (can be pseudocode) </summary>
+  <h4 class="header"> Pre & Post Condition checks </h4>
   <pre>
     resource "local_file" "testFile" {
-      filename = "./target.txt"
-      content  = data.local_file.src.content          // the read output is used here
+      filename = var.some_file.name
+      content  = var.some_file.content
+    
+      lifecycle {
+        precondition {
+          condition     = endswith(var.some_file.name, ".txt")
+          error_message = "File extension is not .txt"
+        }
+        postcondition {
+          condition     = length(var.some_file.content) > 10
+          error_message = "File content is too short"
+        }
+      }
     }
     
-    data "local_file" "src" {                         // file read as data source 
-      filename = "./source.txt"
+    variable "some_file" {
+      type = map(string)
+      default = {
+        name    = "./myFile.txt"
+        content = "some content"
+      }
+    }
+  </pre>
+  <hr>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------------------------->
+  <h2 class="header"> Assertion <mark class="mark">v1.5</mark> </h2>
+  <p> - we can check and assert error messages <u>without interrupting</u> any terraform operations (also can be used to check resources that are not controlled by terraform) </p>
+  <pre class="syntax">
+  check {                                     // evaluated as last step of terraform plan or apply
+    <opt>data <optval>...</optval> {</opt>      // data source can be used to read data <u>(scoped within this block (does not break terraform operation on fail))</u>
+      <optval>...</optval>
+    <opt>}</opt>
+    
+    assert {                                  // we can have 1 or more assert block(s)
+      condition     = <reqval>cond</reqval>       // <mark>false</mark> = failed condition
+      error_message = <reqval>exp:->str</reqval>
+    }
+  }
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+  <h4 class="header"> Pre & Post Condition checks </h4>
+  <pre>
+    resource "local_file" "test_file" {
+      filename = "./someFile.txt"
+      content  = var.file_content
+    }
+    
+    check "check" {
+      assert {
+        condition     = length(var.file_content) > 0      // checking input variable
+        error_message = "Empty file!"
+      }
+    }
+    
+    variable "file_content" {
+      type    = string
+      default = "some file content..."
+    }
+  </pre>
+  <hr>
+  <!------------------------------------------------------------------------------->
+  <h4 class="header"> Resouce check outside terraform </h4>
+  <pre>
+    check "check" {
+      data "local_file" "another_file" {
+        filename = "./another_file.txt"
+      }
+      
+      assert {
+        condition     = length(data.local_file.another_file.content) > 0
+        error_message = "Empty file"
+      }
+      
+      assert {
+        condition     = data.local_file.another_file.content == "Hello World!"
+        error_message = "Invalid file content"
+      }
+    }
+  </pre>
+  <hr>
+  <!------------------------------------------------------------------------------->
+  <h4 class="header"> Checking resources that are deployed by terraform </h4>
+  <p> - at plan this will warn because the resource is not yet deployed (at apply we expect the check to pass) </p>
+  <pre>
+    resource "local_file" "test_file" {
+      filename = "./someFile.txt"
+      content  = "some file content..."
+    }
+    
+    check "check" {
+      data "local_file" "test_the_test_file" {          // reading the deployed file (on terraform plan this will wran because the resource is not yet deployed)
+        filename = "./someFile.txt"
+      }
+    
+      assert {
+        condition     = data.local_file.test_the_test_file.content == "some file content..."
+        error_message = "Invalid file content"
+      }
     }
   </pre>
   </details>

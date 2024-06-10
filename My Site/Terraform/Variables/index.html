@@ -108,15 +108,15 @@
   <h2 class="headerExtra"> Input Variables </h2>
   <pre class="syntax">
     variable "<reqval>varName</reqval>" {
-      <opt>default = "<optval>val</optval>"</opt>                            // default value (when no external value is passed)
-      <opt>type = <optval>dataType</optval></opt>                        // variable data type 
+      <opt>default     = "<optval>val</optval>"</opt>                            // default value (when no external value is passed)
+      <opt>type        = <optval>dataType</optval></opt>                        // variable data type 
       <opt>description = "<optval>description</optval>"</opt>     // description
-      <opt>sensitive = <optva>bool</optva></opt>                  // won't display the variables on the terminal 
-      <opt>nullable = <optva>bool</optva></opt>                   // specifies if the variable can be null or note (needs to have a value or not)
+      <opt>sensitive   = <optva>bool</optva></opt>                  // won't display the variables on the terminal 
+      <opt>nullable    = <optva>bool</optva></opt>                   // specifies if the variable can be null or note (needs to have a value or not)
       
       <opt>validation {</opt>                                 // value validation
-        <opt>condition = <optval>cond</optval></opt>
-        <opt>error_message = "<optval>errMsg</optval>"</opt>        // message printed on failed validation
+        <opt>condition     = <optval>cond</optval></opt>
+        <opt>error_message = <optval>exp:->str</optval></opt>        // message printed on failed validation
       <opt>}</opt>
     }
   
@@ -318,6 +318,7 @@
   <!-------------------------------------------------------------------------->
   <h2 class="headerExtra"> Output Variables </h2>
   <pre class="syntax">
+// child module (file) -----------------------
     output "<reqval>outVarName</reqval>" {
       value = <reqval>exp</reqval>
       <opt>description = "<optval>description</optval>"</opt>     // description
