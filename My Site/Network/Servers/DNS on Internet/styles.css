@@ -1,0 +1,6 @@
+.dns-hierarchy {
+    display: flex;
+}
+.dns-hierarchy > div.details {
+    margin-left:10px;
+}

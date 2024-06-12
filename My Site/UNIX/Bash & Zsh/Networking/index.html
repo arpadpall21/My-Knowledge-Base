@@ -106,12 +106,33 @@
       </td>
     </tr>
     <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td> host <small>[options]</small> <strong>domain|IP</strong> </td>
       <td>
         - (<strong>domain</strong>) performs a DNS lookup (returns the A and AAAA records) <br>
         - (<strong>IP</strong>) performs a reverse lookup (returns the PTR (pointer) records) <br>
         <small>[options]</small> <br>
         - (<small>-v</small>)
+      </td>
+    </tr>
+    <tr>
+      <td> dig <strong>domain</strong> <small>[options]</small> <small>[options_2]</small></td>
+      <td>
+        - performs a DNS lookup, returns the <mark>A</mark> dns record <br>
+        <opt>[options]</opt> <br>
+        - (<opt>ANY</opt>) returns all dns records <br>
+        - (<strong>dnsRecord</strong>) returns the specified dns record (ex: <mark>AAAA</mark>, <mark>MX</mark>) <br>
+        <opt>[options_2]</opt> <br>
+        - (<opt>+short</opt>) short (IP only)
+      </td>
+    </tr>
+    <tr>
+      <td> dig -x <strong>IP</strong> </td>
+      <td>
+        - performs a reverse lookup (returns the PTR (pointer) records)
       </td>
     </tr>
     <tr>

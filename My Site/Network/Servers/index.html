@@ -6,7 +6,6 @@
   <title> Servers </title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../../Assets/stylesPages.css">
   <script src="../../Assets/scriptPages.js"></script>
@@ -18,109 +17,33 @@
   <nav class="sitenav"> <a href="../../index.html">MySite></a>
     <a href="../index.html">Network and Internet></a> Servers
   </nav>
-  <table class="table">
-    <caption> DNS Reccords </caption>
-    <tr>
-      <th style="width:30%;"> Record </th>
-      <th> Description </th>
-    </tr>
-    <tr>
-      <td> TTL (Time To Live) </td>
-      <td> defines how long (seconds usually) the DNS record should be cached by the requested host (<span
-          class="openable">fully explained<div>
-            <p> - when a machine requests the DNS a domain name resolution the record's TTL tells the requested machine
-              for how long it should keep the DNS record cached </p>
-            <p> - let's say the <mark>www.someSite.com</mark> domain has a 1440 TTL (expressed in seconds which is 1
-              day) </p>
-            <p> - in this case the requested machine caches the <mark>www.someSite.com</mark> for one day, so it won't
-              make any new DNS request for this domain name for one day </p>
-            <p> - once the record's TTL is expired the machine will make a new DNS request for this domain name again
-            </p>
-          </div></span>)
-      </td>
-    </tr>
-    <tr>
-      <td> A reccords </td>
-      <td>
-        - (Host IPv4) specifies domains or <u>subdomains</u> pointing to the set server(s) <br>
-        - blank or <mark>@</mark> = base/naked domain | <mark>*</mark> = all unspecified subdomain
-      </td>
-    </tr>
-    <tr>
-      <td> AAAA records </td>
-      <td>
-        - (Host IPv6) specifies domains or <u>subdomains</u> pointing to the set server(s) <br>
-        - blank or <mark>@</mark> = base/naked domain | <mark>*</mark> = all unspecified subdomain
-      </td>
-    </tr>
-    <tr>
-      <td> CName records </td>
-      <td> (Canonical name) points to a domain or subdomain to another hostname </td>
-    </tr>
-    <tr>
-      <td> MX reccords </td>
-      <td>
-        - (Mail Exchanger) specifies which email server(s) to use when a mail is sent to the specified domain <br>
-        - server priority can be set, the lower value has higher prioritiy (ex: <mark>0</mark> = highest priority)
-      </td>
-    </tr>
-    <tr>
-      <td> NS records </td>
-      <td> (authoritative Name Server) authoritative DNS server(s) where these DNS records are stored </td>
-    </tr>
-    <tr>
-      <td> TXT reccords </td>
-      <td> (Text string) simple text records associated with the domain </td>
-    </tr>
-    <tr>
-      <td> PTR records </td>
-      <td> ((domain name) Pointer) resolves an IP address to a fully-qualified domain name (does the oposite as A
-        records) [NOT TESTED: 2020-02-25] </td>
-    </tr>
-    <tr>
-      <td> SRV records </td>
-      <td> (Service) points service servers (like MX records but for other services) [NOT TESTED: 2020-02-25] </td>
-    </tr>
-    <tr>
-      <td> SOA records </td>
-      <td>
-        - (Start Of Authority) record appears at the beginning of the DNS zone <br>
-        - contains the Authoritative Name Server, contact details for the domain Administrator and the domain serial
-        number
-      </td>
-    </tr>
-    <tr>
-      <td> CAA records </td>
-      <td>
-        - (Certification Authority Authorization) specifies which Certificate Authorities are allowed to issue
-        certificates for a domain <br>
-        - if nothing is specified all Authorities are allowed to issue certificats
-      </td>
-    </tr>
-    <tr>
-      <td> NAPTR </td>
-      <td> (Name Autority Pointer) used in internet telephony for mapping servers to users </td>
-    </tr>
-  </table>
+  
+  <p class="subSite"><a href="./DNS on Internet/index.html"> DNS on the Internet> </a></p>
+
   <h2 style="color:green;"><u> Notes : </u></h2>
   <details class="example" id="notes">
     <summary> Notes :</summary>
     <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
   </details>
   <h2 style="color:green;"><u> Useful Links : </u></h2>
-  <p><a href="https://dnschecker.org/all-dns-records-of-domain.php" target="_blank">check domain records
-      (dnschecker.org)</a></p>
+  
   <h2 style="color:green;"><u> Remember This : </u></h2>
-  <p> - changing internet DNS records takes time because the changes must be copied to all DNS servers around the word
-  </p>
+  
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
   <p> - a Server is a computer on the network which provides services to other Computers on the network </p>
   <p> - any computer can be a server but there are special Operating Systems (Windows Server Editions, Linux Ubuntu or
     Red Hat) and special hardware (Server processors, ECC RAM, ect...) made for servers, this special gear is more
     reliable and secure (obviously) </p>
-  <p> - there are many server types out there, File Server, Database Server (SQL), Email Server (Windows Exchange),
-    ect... </p>
+  <p> - there are many server types out there, File Server, Database Server (SQL), Email Server (Windows Exchange), ect... </p>
   <!------------------------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="headerExtra"><u> DNS Server (Domain Name Server/Service) </u></h2>
+  <p> - maps domain names to IP addresses, it's job is basically return IP address for the requested domain name </p>
+  <p> - Example: 1) the computer X on the network requests the DNS to identify the <mark>someDomain</mark> name </p>
+  <p style="text-indent:81px;"> 2) the DNS checks its reccords and maps the <mark>someDomain</mark> name to the
+    <mark>1.2.3.4</mark> IP address then sends back this information </p>
+  <p style="text-indent:81px;"> 3) now the compuer X can make a request to the <mark>1.2.3.4</mark> IP address </p>
+  <!------------------------------------------------------------------------------------------------------------------------>
   <hr>
   <h2 class="headerExtra"><u> Authentication Server (Domain Controller) </u></h2>
   <p> - the Domain Controller controls other computers on the network, gives them defined privileges to access computer
@@ -134,61 +57,6 @@
   <p> - Linux runs <u>Samba</u> as DC, we can have only one DC and one backup DC on the network </p>
   <!------------------------------------------------------------------------------------------------------------------------------------------->
   <hr>
-  <h2 class="headerExtra"><u> DNS Server (Domain Name Server/Service) </u></h2>
-  <p> - maps domain names to IP addresses </p>
-  <p> - DNS Network on Internet basics function in a nutshell </p>
-  <p> - Example: 1) the computer X on the network requests the DNS to identify the <mark>someDomain</mark> name </p>
-  <p style="text-indent:81px;"> 2) the DNS checks its reccords and maps the <mark>someDomain</mark> name to the
-    <mark>1.2.3.4</mark> IP address then sends back this information </p>
-  <p style="text-indent:81px;"> 3) now the compuer X can make a request to the <mark>1.2.3.4</mark> IP address </p>
-  <!------------------------------------------------------------------------------------------------------------------------>
-  <hr>
-  <h2 style="color:darkblue;"><u> Domain Registrar </u></h2>
-  <p> - the Domain Registrar is were you can purchase domain names, this is usually a business (like <a
-      href="https://uk.godaddy.com/">GoDaddy.com</a>) </p>
-  <p> - through Domain Registrars you can manage your (Authoritative) name server, DNS records, ect... </p>
-  <p style="color:yellow;"> - changing internet DNS records takes time because the changes must be copied to all (13)
-    Nameservers around the word, you can check this on the <a href="https://www.whatsmydns.net">www.whatsmydns.net</a>
-    website </p>
-  <hr>
-  <!------------------------------------------------------------------------------------------------------------------------>
-  <h2 style="color:darkblue;"><u> Domain Name Servers and Domain Name Resolution</u></h2>
-  <p> - a <b>DNS Resolver</b> is the closest DNS server which caches IP addresses and does domain forward lookups, its
-    main purpuse is to remove the load from the global DNS network </p>
-  <p> - domain names are resolved from right to left by a set of DNS hierarchy network </p>
-  <p> - DNS Server Hierarchy : </p>
-  <p style="text-indent:35px;"> - <b>Root Servers</b> store TLD Server IP addresses (there are only 13 in the word
-    [2020-02-24]) </p>
-  <p style="text-indent:35px;"> - <b>TLD Servers (Top Level Domain)</b> store all sites ending with the top level domain
-    code (ex: the <mark>.com</mark> server stores all <mark>.com</mark> sites, the <mark>.net</mark> server stores all
-    <mark>.net</mark> sites, ect... ) </p>
-  <p style="text-indent:35px;"> - <b>Authoritative Server (Hierarchy)</b> contain the actual DNS records <u>(this is
-      where Registrars register domains)</u></p>
-  <div class="cont">
-    <img src="DNS Explained.jpg" alt="DNS Explained" height="300">
-    <div class="details">
-      <p> 1) The user makes a DNS request to the DNS Resolver, if the DNS resolver finds the requested domain in its
-        cache responds to the client (step 8) </p>
-      <p> 2 / 3) the Root Server provides the apropriate TLD Servers IP address to the DNS Resolver </p>
-      <p> 4 / 5) the TLD Server provides the apropriate Authoritative Servers IP address to the DNS Resolver </p>
-      <p> 6 / 7) Authoritative Servers provide the acutal IP address of the requested site to the DNS Resolver </p>
-      <p> 8) the DNS Resolver sends the domain's IP address to the client </p>
-    </div>
-  </div>
-  <p> Example : the <mark>www.someSite.com.</mark> = (<mark>.</mark> = resolved by a Root Server) (<mark>.com</mark> =
-    resolved by a .com TLD Server) (<mark>someSite</mark> = resolved by a 1st level Authoritative server)
-    (<mark>www</mark> = resolved by a 2nd level Autoritative Server <u>this is where the domain is registered</u>) </p>
-  <!------------------------------------------------------------------------------------------------------------------------>
-  <hr>
-  <h2 style="color:darkblue;"><u> DNS Zones </u></h2>
-  <p> - a domain or group of domains is called a DNS Zone </p>
-  <img src="DNS Zones.jpg" alt="DNS Zones" height="300">
-  <!------------------------------------------------------------------------------------------------------------------------>
-  <hr>
-  <h2 style="color:darkblue;"><u> DNS Records </u></h2>
-  <p> - a DNS record is an entry that gives the DNS Zone instructions how to handle any given request </p>
-  <!------------------------------------------------------------------------------------------------------------------------------------------->
-  <hr>
   <h2 class="headerExtra"><u> DHCP Server (Dynamic Host Configuration Protocol) </u></h2>
   <p> - dynamically assigns host config requirements (host IP, subnet mask, Gateway IP, DNS IP) to a new devices so it can connect to the network </p>
   <p> - it does this by issuing 'leases' to the connecting devices, once the lease is expired (or before expiration) the connected device reuquests a new lease in order to get a new (or keep the) connection to the network </p>
@@ -198,30 +66,20 @@
   <hr>
   <h2 class="headerExtra"><u> Web Server </u></h2>
   <p> - serves web pages (static or dynamic = web application) </p>
-  <p> - <span style="background-color:lightslategray">IIS</span> (Internet Infromation Server) is a web server for
-    Windows, it supports ASP.NET in order to develop web applications </p>
-  <p> - <span style="background-color:lightslategray">Apache</span> is a very popular platform free web server, it
-    supports multiple scripting languages in order to develop web applications (PHP, SQL, Python, ect...) </p>
-  <p> - <span style="background-color:lightslategray">NGINX</span> (engineX) is a free web server which can be used as a
-    proxy, reverse proxy and mail server, supports HTTP, HTTPS, IMAP, POP3 and SMTP protocols and has SSL support (as
-    reverse proxy) </p>
-  <p> - <span style="background-color:lightslategray">Node.js</span> can run as standalone web server, it supported on
-    multiple platforms and has powerful tools and library support </p>
+  <p> - <span style="background-color:lightslategray">IIS</span> (Internet Infromation Server) is a web server for Windows, it supports ASP.NET in order to develop web applications </p>
+  <p> - <span style="background-color:lightslategray">Apache</span> is a very popular platform free web server, it supports multiple scripting languages in order to develop web applications (PHP, SQL, Python, ect...) </p>
+  <p> - <span style="background-color:lightslategray">NGINX</span> (engineX) is a free web server which can be used as a proxy, reverse proxy and mail server, supports HTTP, HTTPS, IMAP, POP3 and SMTP protocols and has SSL support (as reverse proxy) </p>
+  <p> - <span style="background-color:lightslategray">Node.js</span> can run as standalone web server, it supported on multiple platforms and has powerful tools and library support </p>
   <!------------------------------------------------------------------------------------------------------------------------------------------->
   <hr>
   <h2 class="headerExtra"><u> Proxy and Reverse Proxy Servers </u></h2>
-  <p> - both the <b>proxy</b> and the <b>reverse proxy</b> servers sit between the client and the server, they manage
-    the traffic passing through and offer several features </p>
-  <p> - the <b>proxy server</b> benefits clients behind it, <u>isolate clients</u> | <u>caches data</u> | <u>filters and
-      blocks unwanted traffic</u> </p>
-  <p> - the <b>reverse proxy server</b> benetits servers, <u>isolate servers</u> | <u>balances the load between
-      servers</u> </p>
+  <p> - both the <b>proxy</b> and the <b>reverse proxy</b> servers sit between the client and the server, they manage the traffic passing through and offer several features </p>
+  <p> - the <b>proxy server</b> benefits clients behind it, <u>isolate clients</u> | <u>caches data</u> | <u>filters and blocks unwanted traffic</u> </p>
+  <p> - the <b>reverse proxy server</b> benetits servers, <u>isolate servers</u> | <u>balances the load between servers</u> </p>
   <img src="Proxy and Reverse Proxy Servers.jpg" alt="Proxy and Reverse Proxy Servers" height="250">
 
 
-
-
-  <h2 class="test" style=""><a href="TEST/index.html"> TEST (empty) > </a></h2>
+  <br><br>
 </body>
 
 </html>

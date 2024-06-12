@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> DNS on the Internet </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> DNS on the Internet </h1>
+  <p> Updated ( 2024-06-10 ) </p>
+  <nav class="sitenav"> <a href="../../../index.html">MySite></a>
+    <a href="../../index.html">Network and Internet></a>
+    <a href="../index.html">Servers></a> DNS on the Internet
+  </nav>
+  <table class="table">
+    <caption> DNS Reccords </caption>
+    <tr>
+      <th style="width:30%;"> Record </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td> A </td>
+      <td>
+        - (Address) maps a domain name to an IPv4 IP address <br>
+      </td>
+    </tr>
+    <tr>
+      <td> AAAA </td>
+      <td>
+        - (Quad A Record) maps a domain name to an IPv6 IP address <br>
+        <!-- - blank or <mark>@</mark> = base/naked domain | <mark>*</mark> = all unspecified subdomain -->
+      </td>
+    </tr>
+    <tr>
+      <td> CNAME </td>
+      <td> 
+        - (Canonical name) - resolves a domain or subdomain to another domain (basically aliases a domain to a another) <br>
+        - comon usage is to resolve a subdomain to domain (ex: <mark>www.exampleSilte.com</mark> aliases to <mark>exampleSite.com</mark>) 
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> MX </td>
+      <td>
+        - (Mail Exchanger) maps your domain to an email servcie provider (ESP) domain <br>
+        - priority level can be set, the lower value has higher prioritiy (ex: <mark>0</mark> = highest priority) <br>
+        - there are usually several records with different ESPs and priorities set
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> SRV </td>
+      <td>
+        - (Service) contains a record for a specific service <br>
+        - it's used along with other records (like A, MX records) in order to point to a specific service <br>
+        - formated as <mark><reqval>_service._proto.name. TTL class type of record priority weight port target.</reqval></mark> (ex: <mark>_xmpp._tcp.example.com. 86400 IN SRV 10 5 5223 server.example.com.</mark>)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> TXT </td>
+      <td> (Text) simple text records (used for authentication since you are the only one who can access to your DNS records) </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> PTR </td>
+      <td> 
+        - (Pointer) maps an IP address to a fully-qualified domain name (oposite of the A record) <br>
+        - used in email networking in order to determin if an email server is legit
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> NS </td>
+      <td> 
+        - (Name Server) stores an Authoritative Name Server domain (where these DNS records are stored) <br>
+        - it's usually configureb by the domain registrar
+      </td>
+    </tr>
+    <tr>
+      <td> SOA </td>
+      <td>
+        - (Start Of Authority) stores administrator informations about the DNS zone (managed by DNS administrators) <br>
+        - contains the primary name server domain, mail for the domain administrator and the domain serial
+        number
+      </td>
+    </tr>
+    <tr>
+      <td> CAA records </td>
+      <td>
+        - (Certification Authority Authorization) specifies which Certificate Authorities are allowed to issue
+        certificates for a domain <br>
+        - if nothing is specified all Authorities are allowed to issue certificats
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://dnschecker.org/all-dns-records-of-domain.php" target="_blank">check domain records (dnschecker.org)</a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - changing internet DNS records takes time because the changes must be copied to all DNS servers around the word </p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <h2 style="color:darkblue;"><u> Domain Registrar </u></h2>
+  <p> - a service were you can purchase domain names, this is usually a business (like <a href="https://uk.godaddy.com/">GoDaddy.com</a>), through this service you can manage your DNS records </p>
+  <p style="color:yellow;"> - changing internet DNS records takes some time because the changes must be copied to all (13) Nameservers around the word, you can check this on the <a href="https://www.whatsmydns.net">www.whatsmydns.net</a>
+    website </p>
+  <hr>
+  <!------------------------------------------------------------------------------------------------------------------------>
+  <h2 style="color:darkblue;"><u> Hierarchy of DNS Servers </u></h2>
+  <p> - <mark class="mark">DNS Resolver</mark> </p>
+  <p class="indent-lv1"> - the client request this server for domain name resolution </p>
+  <p class="indent-lv1"> - it's job is to request Root -> TLD -> Authoritative servers for domain name resolution and return the result to the client </p>
+  <p class="indent-lv1"> - also work as cache (caches DNS records specified by the record's TTL) </p>
+  <p> - DNS Server Hierarchy : </p>
+  <p> - domain names are resolved from right to left by a set of DNS hierarchy network </p>
+  <p class="indent-lv1"> - <mark class="mark">Root Servers</mark> store TLD Server IP addresses (there are only 13 in the word [2024-06-11]) </p>
+  <p class="indent-lv1"> - <mark class="mark">TLD Servers (Top Level Domain)</mark> store all sites ending with the top level domain
+    code (ex: the <mark>.com</mark> server stores all <mark>.com</mark> sites, the <mark>.net</mark> server stores all
+    <mark>.net</mark> sites, ect... ) </p>
+  <p class="indent-lv1"> - <mark class="mark">Authoritative Name Server (Hierarchy)</mark> contain the actual DNS records <u>(this is where Registrars register domains)</u></p>
+  <div class="dns-hierarchy">
+    <img src="DNS Explained.jpg" alt="DNS Explained" height="300">
+    <div class="details">
+      <h4> DNS resolution flow </h4>
+      <p class="indent-lv1"> - <mark class="mark">request 1</mark> -  the user makes a DNS request to the DNS Resolver (if the DNS resolver finds the requested domain in its cache responds to the client <mark class="mark">response 8</mark>) </p>
+      <p class="indent-lv1"> - <mark class="mark">request 2 & response 3</mark> - the Root Server provides the apropriate TLD Servers IP address to the DNS Resolver </p>
+      <p class="indent-lv1"> - <mark class="mark">request 4 & response 5</mark> - the TLD Server provides the apropriate Authoritative Servers' IP address to the DNS Resolver </p>
+      <p class="indent-lv1"> - <mark class="mark">request 6 & response 7</mark> - the Authoritative Servers provide the acutal IP address of the requested site to the DNS Resolver </p>
+      <p class="indent-lv1"> - <mark class="mark">response 8</mark> - the DNS Resolver sends the domain's IP address to the client </p>
+      <h4> Example resolution of <mark>www.someSite.com.</mark> </h4>
+      <p class="indent-lv1"> - <mark>.</mark> - resolved by a Root Server (the <mark>.</mark> after the domain name is hidden by the user) </p>
+      <p class="indent-lv1"> - <mark>.com</mark> - resolved by a .com TLD (Top Level Domain) Server </p>
+      <p class="indent-lv1"> - <mark>www.someSite</mark> - resolved by the Authoritatieve Server (this is where the domain is registered) </p>
+    </div>
+  </div>
+  <p> - <mark class="mark">DNS Zones</mark> </p>
+  <p class="indent-lv1"> - DNS Zones are hierarchy level logical groupings of domain name parts (these are basically namespaces at different hierarchy level) </p>
+  <img src="DNS Zones.jpg" alt="DNS Zones" height="300">
+  <p> <mark class="mark">DNS Records</mark> </p>
+  <p class="indent-lv1"> - DNS records are data entries stored in a DNS server's database that associate domain names with IP addresses </p>
+
+
+  <br><br>
+</body>
+
+</html>

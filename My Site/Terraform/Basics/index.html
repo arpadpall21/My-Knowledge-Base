@@ -24,11 +24,14 @@
     </tr>
     <tr>
       <td>
-        <lit>terraform</lit> init
+        <lit>terraform</lit> init <opt>[options]</opt>
       </td>
       <td>
         - initializes the current directory as terraform project (requires at least one <mark>*.tf</mark> file)<br>
-        - installs necessary provider plugins and creates the terraform project skeleton (<mark>.terraform</mark> directory where packages are stored and the <mark>.terraform.lock.hcl</mark> file) 
+        - installs necessary provider plugins and creates the terraform project skeleton (<mark>.terraform</mark> directory where packages are stored and the <mark>.terraform.lock.hcl</mark> file) <br>
+        <opt>[options]</opt> <br>
+        - (<opt>-upgrade</opt>) upgrades modules and plugins to their latest versions
+        
       </td>
     </tr>
     <tr>
