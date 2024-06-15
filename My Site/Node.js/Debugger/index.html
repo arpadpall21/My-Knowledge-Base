@@ -14,71 +14,89 @@
 
 <body>
   <h1> Debugger </h1>
-  <p> Updated ( 2019-08-06 )</p>
+  <p> Updated ( 2019-08-06 / 2024-06-114 )</p>
   <p class="sitenav"> <a href="../../index.html">MySite></a>
     <a href="../index.html">Node.js></a> Debugger
   </p>
   <table class="table">
-    <caption>
-      Redux
-      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-    </caption>
     <tr>
       <th> Command </th>
       <th> Description </th>
     </tr>
-    <tr class="05.01">
-      <td> list(<strong>nr</strong>) </td>
+    <tr>
+      <td> list(<optval>nr</optval>) </td>
       <td>
-        - prints the source code (as many lines as it is specified)
+        - prints the source code (as many lines as it is specified (Default: <mark>5</mark>))
       </td>
     </tr>
-    <tr class="05.02">
+    <tr>
+      <td> backtrace | bt </td>
+      <td>
+        - print the current call stack
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td> cont | c </td>
       <td>
         - continue program execution
       </td>
     </tr>
-    <tr class="05.03">
+    <tr>
+      <td> kill </td>
+      <td>
+        - kills the <u>script</u> (not debugger exit)
+      </td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
       <td> next | n </td>
       <td>
-        - step next (does not enter functions)
+        - step next line <u>without executing it</u>
       </td>
     </tr>
-    <tr class="05.04">
+    <tr >
       <td> step | s </td>
       <td>
-        - step in (step next but enters functions)
+        - step next line <u>by executing it</u>
       </td>
     </tr>
-    <tr class="05.05">
+    <tr >
       <td> out | o </td>
       <td>
-        - step out (step out the current function -> moves down the call stack)
+        - step out current stack frame (exit function)
       </td>
     </tr>
-    <tr class="10.01">
-      <td> backtrace | bt </td>
-      <td>
-        - print the current execution frame (call stack)
-      </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="10.02">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    
+    <tr>
       <td> exec <strong>exp</strong> </td>
       <td>
         - executes an expression
       </td>
     </tr>
-    <tr class="15.03">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td> restart </td>
       <td>
         - restart the script
-      </td>
-    </tr>
-    <tr class="15.03">
-      <td> kill </td>
-      <td>
-        - kills the <u>script</u> (not debugger exit)
       </td>
     </tr>
     <tr class="15.04">

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> JSON </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> JSON </h1>
+  <p> Updated ( 2018-07-24 / 2019-05-24 / 2021-02-16 / 2024-06-13 )</p>
+  <nav class="sitenav">
+    <a href="../../index.html">MySite></a>
+    <a href="../index.html">Serialization Languages></a> JSON
+  </nav>
+  <table class="table">
+    <caption>
+      Browser Built-in Parsers
+    </caption>
+    <tr>
+      <th> Methods </th>
+      <th> Value </th>
+    </tr>
+    <tr>
+      <td>
+        <em>JSON</em>.parse(<strong>jsonData</strong>, <i class="openable">fn(key, value)<div>
+            <p> - callback executed for every key-value pair (callback used to filter values while parsing) </p>
+            <p> - must return the current value </p>
+          </div></i>)
+      </td>
+      <td>
+        - converts JSON data into JavaScript data
+        <span id="browserSupport" title="updated : 2019-05-24">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 10.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
+          <span><i class="fab fa-safari"></i> 4 </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <em>JSON</em>.stringify(<strong>jsData</strong>, <i class="openable">fn(key, val)|[key:str, ...]<div>
+            <p> <i>fn(key, val) </i> </p>
+            <p> - callback executed for every key-value pair (callback used to filter values while stringifying) </p>
+            <p> - must return the current value <u>(for the first pass the <mark>val</mark> is the received full <strong>jsData</strong></u> </p>
+            <hr>
+            <p> <i>[key:str, ...]</i> - array with the source object keys as string </p>
+            <p> - only these specified keys well be parsed to JSON </p>
+            <p> - EX: source object <mark>{p1:21, p2:22, p3:23}</mark> parsed with <mark>JSON.stringify({p1:21, p2:22, p3:23}, ['p1', 'p2'])</mark> results in <mark>'{"p1":21, "p2":22}'</mark> </p>
+          </div></i>, <i class="openable">space:str|nr<div>
+            <p> - <i>str</i> - string inserted between each of the parsed key/value pairs </p>
+            <p> - <i>nr</i> - number of white spaces inserted between each of the parsed key/value pairs </p>
+            <p> - (Default: <mark>null</mark>) </p>
+            <p> - EX: source object <mark>{p1:21, p2:22, p3:23}</mark> parsed with <mark>JSON.stringify({p1:21, p2:22, p3:23}, null, '**')</mark> results in <mark>{**"p1": 21,**"p2": 22,**"p3": 23}</mark> </p>
+          </div></i>)
+      </td>
+      <td>
+        - converts JavaScript data into a JSON data
+
+        <span id="browserSupport" title="updated : 2019-05-24">
+          <span><i class="fab fa-chrome"></i> yes </span>
+          <span><i class="fab fa-firefox"></i> 3.5 </span>
+          <span><i class="fab fa-opera"></i> 10.5 </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> 8 </span>
+          <span><i class="fab fa-safari"></i> 4 </span>
+          <span><i class="fab fa-node-js"></i> yes </span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
+    <summary> Notes :</summary>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <p><a href="https://www.w3schools.com/js/js_json_intro.asp" target="_blank"> W3School JSON </a></p>
+  <p><a href="https://www.json.org/" target="_blank"> JSON.org </a></p>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - JSON ojbect keys must be strings (ex: <mark>{"test": 123}</mark>) </p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - JSON (<b>J</b>ava<b>S</b>cript <b>O</b>bject <b>N</b>otation) is an <u>independent</u> (any programing language can use it) lightweight data format for storing and exchanging data </p>
+  <p> - the file extension is <mark>.json</mark> / the MIME type is <mark>application/json</mark> </p>
+  <pre class="syntax">
+// *.json (file) ------------------------
+    { <optval>jsonData</optval> }                          // the <mark>*.json</mark> file's content bust be wreapped in an object or Array
+    
+// *.json (file) ------------------------
+    [ <optval>jsonData</optval> ]
+  </pre>
+  <!---------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> Data Types </u></h2>
+  <pre class="syntax">
+    <reqval>string</reqval>                     // strings are double quoted (ex: <mark>"some string"</mark>)
+    <reqval>number</reqval>                     // float
+    <reqval>boolean</reqval>
+    null
+  
+    { "<reqval>key</reqval>": <reqval>val</reqval></i><optval>, ...</optval>}           // object 
+    [<reqval>val</reqval><optval>, ...</optval>]                                        // Array
+    
+    
+// unsupported JavaScript data types --------------------
+    undefined | <reqval>symbol</reqval>     // -! ignored on conversion 
+    <reqval>function</reqval>               // -! ignored on conversion (can be passed as string then reconverted with <mark>eval()</mark>, but it's not recommended)
+    Infinity | NaN                          // converted as <mark>null</mark> 
+    <reqval>dataObject</reqval>             // converted as date string (can be reconverted into a <reqval>dateObj</reqval> with the <mark>Date()</mark> constructor)
+  </pre>
+  
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
+ -> JavaScript Object                   -> JSON Object (you can create JSON Object on the fly in JavaScript like this)
+    {p1:"myString"                      '{"p1":"myString",
+     
+     p2:13.45,                            "p2":13.45,
+     p3:14e+1,                            "p3":140,                             // exponential notataion is converted to a regular number
+     p4:0142,                             "p4":98                               // -! octal notation is converted to decimal  
+     
+     p5:true,                             "p5":ture,
+     
+     p6:null,                             "p6":null,
+     p7:NaN,                              "p7":null,                            // NaN converted to null
+     p8:Infinity,                         "p8":null,                            // Infinity converted to null
+     
+     p9:function(){ return: 44 },                                               // function Ignored!
+     p10:undefined,                                                             // undefined Ignored!
+     p11:new Date();                      "p11":dateString;                     // date converted into a date string                       
+    };                                  }'           
+    </pre>
+    <h4 class="header"> JavaScript data types that are not supported in JSON </h4>
+    <pre>
+    var mySymbol = Symbol("symb1");
+    var myObj = {prop1:undefined, prop2:function() {return 54}, prop3:new Date()};
+    myObj[mySymbol] = "symbolValue";                                            // add the symbol to the object 
+    
+// the date is converted into a string and all other data is lost!
+    var objJSON = JSON.stringify(myObj);                                        // -> "{"prop3":"2018-08-06T15:14:48.858Z"}"
+    </pre>
+  </details>
+  <!---------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> Working with JSON data in JavaScript </u></h2>
+  <p> - because JSON is derived form JavaScript we use JavaScript Syntax to work with JSON data </p>
+  <pre>
+    var JSON_Obj = '{ "p1": "val1", "p2": 21, "p3": true }'
+    
+    JSON_Obj.p1;                                                                       // -> "val1"
+    
+    JSON_Obj["prop_B"] = null;                                                  
+    JSON_Obj["p2"];                                                                    // -> null
+    
+    delete JSON_Obj.p3;
+    JSON_Obj.prop_C;                                                                   // -> undefined
+    </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> Looping through JSON Objects </u></h4>
+    <p id="printJSON"></p>
+    <script>
+      // Object
+      var myObj_JSON = { "prA": "myString", "prB": 47, "prC": true, "rpD": false };     // JSON Object created
+      var myArr_JSON = ["myString", 47, true, false];                             // JSON Array same as JavaScript
+
+      // print
+      // Object looped through as a normal JS object
+      for (let i in myObj_JSON) {
+        document.getElementById('printJSON').innerHTML += myObj_JSON[i] + " ";
+      }
+      // Array is an Iterable Object
+      for (let k of myArr_JSON) {
+        document.getElementById("printJSON").innerHTML += " " + k;
+      }
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    &lt;p id="printJSON"&gt;&lt;/p&gt;
+&lt;script&gt;
+// Object
+    var myObj_JSON = {"prA":"myString", "prB":47, "prC":true, "rpD":false};     // JSON Object created
+    var myArr_JSON = ["myString", 47, true, false];                             // JSON Array same as JavaScript
+    
+// print
+    // Object looped through as a normal JS object
+    for(let i in myObj_JSON) {
+        document.getElementById('printJSON').innerHTML += myObj_JSON[i] + " ";
+    }
+    // Array is an Iterable Object
+    for(let k of myArr_JSON) {
+        document.getElementById("printJSON").innerHTML += " " + k;
+    }
+&lt;/script&gt;    
+        </pre>
+    </details>
+  </details>
+  <!---------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <h2 style="color:darkblue;"><u> JSON Methods <mark>.stringify()</mark> / <mark>parse()</mark> </u></h2>
+  <details class="example">
+    <summary> DEMO </summary>
+    <pre>
+    var myObj = {p1:'myString', p2:21, p3:true, p4:null, p5:undefined};
+    
+// stringify() -----------------------------------------------------------------
+    JSON.stringify(myObj);                                                      // -> {"p1":"myString", "p2":21, "p3":true, "p4":null}     // -! undefined in not supported 
+    
+   // filtering with select Array ----------------------------------------------
+    JSON.stringify(myObj, ['p2', 'p3']);                                        // -> {"p2":21, "p3":true}      // only the specified key/value pairs are stringified  
+                                                
+   // filtering with callback function -----------------------------------------
+    var jsonData = JSON.stringify(myObj, function(key, value){                  // -> {   "p1":"first",   "p2":21,   "p3":true,   "p4":null}
+        if(key == 'p1') value = 'first';                                        // values can be modified 
+        if(key == 'p2') key = "az";                                             // -! keys cannot be modified (this has no effect)
+        return value;                                                           // !! the value MUST be returned at every pass!  
+    }, 3);                                                                      // 3 white spaces are inserted between key/value paris      // -! this is for readability purposes only does not have any effect on the transformed data   
+    
+// parse() ---------------------------------------------------------------------
+    JSON.parse(jsonData);                                                       // -> {p1:"blah", p2:21, p3:true, p4:null}
+    
+    // fitlering with callback function ----------------------------------------
+    JSON.parse(result, function(key, value){                                    // -> {p1:"blah", p2:22, p3:true, p4: null}
+        if(key == 'p2') value = 22;                                             // valuse can be modified 
+        if(key == 'p4') key = 'last';                                           // -! keys cannot be modified (this has no effect)
+        return value;                                                           // !! the value MUST be returned at every pass!
+    })
+    </pre>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> converting </u></h4>
+    <script>
+      var objJS = { prop_A: "stringVal", prop_B: 475, prop_C: true };      // JS Object
+      var arrJS = ["stringVal", false, null];                         // JS Array
+
+      // JS to JSON
+      var objJSON = JSON.stringify(objJS);                            // JSON Object
+      var arrJSON = JSON.stringify(arrJS);                            // JSON Array
+
+      // JSON to JS 
+      var objJS_again = JSON.parse(objJSON);
+      var arrJS_again = JSON.parse(arrJSON);
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+&lt;script&gt;
+    var objJS = {prop_A:"stringVal", prop_B:475, prop_C:true};      // JS Object
+    var arrJS = ["stringVal", false, null];                         // JS Array
+    
+// JS to JSON
+    var objJSON = JSON.stringify(objJS);                            // JSON Object
+    var arrJSON = JSON.stringify(arrJS);                            // JSON Array
+    
+// JSON to JS 
+    var objJS_again = JSON.parse(objJSON);
+    var arrJS_again = JSON.parse(arrJSON);
+&lt;/script&gt;
+        </pre>
+    </details>
+    <h4><u> filtering </u></h4>
+    <p id="filterStringify"></p>
+    <script>
+      var myPro;
+      var testObj = { pr1: "str", pr2: 32, pr3: true, pr4: null };
+      var converted = JSON.stringify(testObj, replacer, " *** ");     // the 3rd argument can upgrad readability
+      var converted_2 = JSON.stringify(testObj, ["pr2", "pr4"]);      // an Array simply filters the targeted keys
+
+      function replacer(key, value) {
+        if (key === "pr1") {
+          return key = "myProp";                                  // keys cannot be changed only values!
+        }
+        else if (value === 32) {
+          return value = 33;
+        }
+        else if (key === "pr3") {                                    // JSON filters out "undefined" data type
+          return undefined;
+        }
+        else {
+          return value;                                           // at the end the value argument must be returned
+        };
+      }
+
+      // print
+      document.getElementById("filterStringify").innerHTML =
+        "Original Obj = " + JSON.stringify(testObj) + "<br>" +
+        "Replaceing values with the \"Replacer\" function = " + converted + "<br>" +
+        "Filtering with an Array = " + converted_2;
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    &lt;p id="filterStringify"&gt;&lt;/p&gt;
+&lt;script&gt;
+    var myPro;
+    var testObj = {pr1:"str", pr2:32, pr3:true, pr4:null};
+    var converted = JSON.stringify(testObj, replacer, " *** ");     // the 3rd argument can upgrad readability
+    var converted_2 = JSON.stringify(testObj, ["pr2", "pr4"]);      // an Array simply filters the targeted keys
+   
+    function replacer(key, value) {
+        if(key === "pr1") {                        
+            return key = "myProp";                                  // keys cannot be changed only values!
+        }
+        else if(value === 32) {
+            return value = 33;
+        }
+        else if(key === "pr3") {                                    // JSON filters out "undefined" data type
+            return undefined;
+        }
+        else { 
+            return value;                                           // at the end the value argument must be returned
+        };
+    }
+    
+// print
+    document.getElementById("filterStringify").innerHTML = 
+        "Original Obj = " + JSON.stringify(testObj) + "&lt;br&gt;" +
+        "Replaceing values with the \"Replacer\" function = " + converted + "&lt;br&gt;" +
+        "Filtering with an Array = " + converted_2;
+&lt;/script&gt;    
+        </pre>
+    </details>
+    <h4><u> JSON to JavaScript </u></h4>
+    <script>
+      var objObj = { p1: "value", p2: 78, p3: true, p4: null };
+      var jsoned = JSON.stringify(objObj);
+      var back_to_jsObj = JSON.parse(jsoned, reviverFn);          // returns "{p1:"modifiedValue", p2:0, p4:null}"
+
+      function reviverFn(key, value) {
+        if (key == "p1") {
+          return value = "modifiedValue";
+        }
+        else if (value == 78) {
+          return key = 0;                     // keys cannot be changed!
+        }
+        else if (key == "p3") {
+          return value = undefined;           // filtered out!
+        }
+        else {
+          return value;                       // value must be returned at the end!
+        }
+      }
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+&lt;script&gt;
+    var objObj = {p1:"value", p2:78, p3:true, p4:null};
+    var jsoned = JSON.stringify(objObj);
+    var back_to_jsObj = JSON.parse(jsoned, reviverFn);          // returns "{p1:"modifiedValue", p2:0, p4:null}"
+    
+    function reviverFn(key, value) {
+        if (key == "p1") {
+            return value = "modifiedValue";
+        }
+        else if (value == 78) {
+            return key = 0;                     // keys cannot be changed!
+        }
+        else if (key == "p3") {
+            return value = undefined;           // filtered out!
+        }
+        else {
+            return value;                       // value must be returned at the end!
+        }
+    }
+&lt;/script&gt;
+        </pre>
+    </details>
+  </details>
+
+  <br><br>
+</body>
+
+</html>

@@ -14,7 +14,7 @@ const fastingConfig = {
     yellowPeriodBetweenHours: [[11, 13], [17, 19]],
   }
 }
-const displayedMessage = "[Le maître du jeux]"
+const displayedMessage = "[Keep Going Tough]"
 
 function getPeriodColor() {
   const currentHour = new Date().getHours();

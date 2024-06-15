@@ -1,120 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8">
-	<title> XML </title>    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="../Assets/stylesPages.css">
-    <script src="../Assets/scriptPages.js"></script>
-    <script>
+  <meta charset="utf-8">
+  <title> XML </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+  <script>
     // script dinamically updates the rowspan attribute for the XML tech image     
-    $(document).ready(function(){
-        var trCount = $("table:first tr").length            // number of table rows 
-        $("td").has("img").attr("rowspan", trCount - 1);    // rowsapan control
+    $(document).ready(function () {
+      var trCount = $("table:first tr").length            // number of table rows 
+      $("td").has("img").attr("rowspan", trCount - 1);    // rowsapan control
     });
-    </script>
+  </script>
 </head>
+
 <body>
-<h1> XML (ver 2.9) </h1>
-	<p> Updated ( 2018-12-07 )</p>
-    <p class="sitenav"> <a href="../index.html">MySite></a> XML </p>
-    <p class="subSite"><a href="XML DOM/index.html"> XML DOM > </a></p>
-<table class="table">
-<caption style="color:yellow;"> Not learned XML technologies </caption>    
+  <h1> XML (ver 2.9) </h1>
+  <nav class="sitenav">
+    <a href="../../index.html">MySite></a>
+    <a href="../index.html">Serialization Languages></a> XML
+  </nav>
+  <table class="table">
+    <caption style="color:yellow;"> Not learned XML technologies </caption>
     <tr>
-        <th> Language </th>
-        <th> Description </th>
-        <th> </th>
+      <th> Language </th>
+      <th> Description </th>
+      <th> </th>
     </tr>
     <tr>
-        <td> XPath </td>
-        <td> standard XML Path language, uses a "traditional" language to navigate through the XML </td>
-        <td style="background-color:white; width:150px;"> <img src="XML%20tech.png" alt="XML tech" width="150" height="150"> </td>
+      <td> XPath </td>
+      <td> standard XML Path language, uses a "traditional" language to navigate through the XML </td>
+      <td style="background-color:white; width:150px;"> <img src="XML%20tech.png" alt="XML tech" width="150" height="150"> </td>
     </tr>
     <tr>
-        <td> XSLT </td>
-        <td> (e<b>X</b>tensible <b>S</b>tylesheet <b>L</b>anguage <b>T</b>ransformation) transforms and styles XML to HTML </td>
+      <td> XSLT </td>
+      <td> (e<b>X</b>tensible <b>S</b>tylesheet <b>L</b>anguage <b>T</b>ransformation) transforms and styles XML to HTML </td>
     </tr>
     <tr>
-        <td> XQuery </td>
-        <td> finds and extracts elements and attributes from XML documents (superset of XPath) </td>
+      <td> XQuery </td>
+      <td> finds and extracts elements and attributes from XML documents (superset of XPath) </td>
     </tr>
     <tr>
-        <td> XLink </td>
-        <td> creates hyperlinks in XML documents </td>
+      <td> XLink </td>
+      <td> creates hyperlinks in XML documents </td>
     </tr>
     <tr>
-        <td> XPointer </td>
-        <td> allows links to point to specific parts of an XML document </td>
+      <td> XPointer </td>
+      <td> allows links to point to specific parts of an XML document </td>
     </tr>
     <tr>
-        <td> XML DTD </td>
-        <td> (<b>D</b>ocument <b>T</b>ype <b>D</b>efinition) describes the structure of an XML document (same as Schema but different syntax) </td>
+      <td> XML DTD </td>
+      <td> (<b>D</b>ocument <b>T</b>ype <b>D</b>efinition) describes the structure of an XML document (same as Schema but different syntax) </td>
     </tr>
     <tr>
-        <td> XML Schema </td>
-        <td> describes the structure of an XML document (same as DTD but different syntax) </td>
+      <td> XML Schema </td>
+      <td> describes the structure of an XML document (same as DTD but different syntax) </td>
     </tr>
-</table><br>   
-<table class="table">
+  </table><br>
+  <table class="table">
     <tr>
-        <th> Attribute / Method </th>
-        <th> Description </th>
-    </tr>
-    <tr>
-        <td colspan="2"> namespace </td>
+      <th> Attribute / Method </th>
+      <th> Description </th>
     </tr>
     <tr>
-        <td> &lt;<i>tag</i> xmlns="<strong>URI</strong>"&gt; &lt;/<i>tag</i>&gt;  </td>
-        <td> defines a <u>default</u> namespace, the <strong>URI</strong> is the identifier of the namespace (all children element belong to this namespace) <span style="color:orangered;">(attributes do not inherit default namespaces!)</span> </td>
+      <td colspan="2"> namespace </td>
     </tr>
     <tr>
-        <td> &lt;<i>tag</i> xmlns:<strong>prefix</strong>="<strong>URI</strong>"&gt;&lt;/<i>tag</i>&gt; </td>
-        <td> defines a <u>prefixed</u> namespace, the <strong>URI</strong> is the identifier of the namespace (only elements or attributes that has this attribute belong to this namespace) </td>
+      <td> &lt;<i>tag</i> xmlns="<strong>URI</strong>"&gt; &lt;/<i>tag</i>&gt; </td>
+      <td> defines a <u>default</u> namespace, the <strong>URI</strong> is the identifier of the namespace (all children element belong to this namespace) <span style="color:orangered;">(attributes do not inherit default namespaces!)</span> </td>
     </tr>
     <tr>
-        <td colspan="2"> parse / serialize DOM </td>
+      <td> &lt;<i>tag</i> xmlns:<strong>prefix</strong>="<strong>URI</strong>"&gt;&lt;/<i>tag</i>&gt; </td>
+      <td> defines a <u>prefixed</u> namespace, the <strong>URI</strong> is the identifier of the namespace (only elements or attributes that has this attribute belong to this namespace) </td>
     </tr>
     <tr>
-        <td> new DOMParser() </td>
-        <td> returns an object which has the ability to parse a string into a DOM </td>
+      <td colspan="2"> parse / serialize DOM </td>
     </tr>
     <tr>
-        <td> <prot>DOMParser.prototype</prot>.parseFromString(<strong>string</strong>, <strong>MIME_type</strong>) </td>
-        <td> parses a string (DOMString (html, xml, svg)) into a DOM and returns it </td>
+      <td> new DOMParser() </td>
+      <td> returns an object which has the ability to parse a string into a DOM </td>
     </tr>
     <tr>
-        <td> new XMLSerializer() </td>
-        <td> returns an object which has the ability to parse a DOM tree into a string </td>
+      <td>
+        <prot>DOMParser.prototype</prot>.parseFromString(<strong>string</strong>, <strong>MIME_type</strong>)
+      </td>
+      <td> parses a string (DOMString (html, xml, svg)) into a DOM and returns it </td>
     </tr>
     <tr>
-        <td> <prot>XMLSerializer.prototype</prot>.serializeToString(<strong>DOM_obj</strong>) </td>
-        <td>parses a DOM tree into a string and returns it  </td>
+      <td> new XMLSerializer() </td>
+      <td> returns an object which has the ability to parse a DOM tree into a string </td>
     </tr>
     <tr>
-        <td colspan="2"> PCDATA / CDATA </td>
+      <td>
+        <prot>XMLSerializer.prototype</prot>.serializeToString(<strong>DOM_obj</strong>)
+      </td>
+      <td>parses a DOM tree into a string and returns it </td>
     </tr>
     <tr>
-        <td> &lt;![CDATA[<i>unparsed characters</i>]]&gt; </td>
-        <td> entered data ignored by the XML parser (<mark>CDATA</mark> = unparsed data / <mark>PCDATA</mark> = parsed data) (only restricted data is <mark>]]&gt;</mark> because it ends the element) </td>
+      <td colspan="2"> PCDATA / CDATA </td>
     </tr>
     <tr>
-        <td> <prot>XMLDocument</prot>.createCDATASection("<i>unparsed characters</i>") </td>
-        <td> creates a CDATA Node (unparsed data by the XML parser) with its value  </td>
+      <td> &lt;![CDATA[<i>unparsed characters</i>]]&gt; </td>
+      <td> entered data ignored by the XML parser (<mark>CDATA</mark> = unparsed data / <mark>PCDATA</mark> = parsed data) (only restricted data is <mark>]]&gt;</mark> because it ends the element) </td>
     </tr>
-</table>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    <a href="https://www.w3schools.com/xml/default.asp" target="_blank"> W3School XML Tutorial </a>
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    <p> - entities in tag names are NOT allowed </p>
-    <p> - XML expression ( <mark>PCDATA</mark> = (Parsed Character Data) / <mark><mark>CDATA</mark> = (Unparsed Character Data)</mark> )</p>
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - XML (e<b>X</b>tensible <b>M</b>arkup <b>L</b>anguage), is a language for storing and transporting data, it is designed to be both machine and human readable </p>
-    <p> - XML is a <u>hardware and software independent</u> tool symplifies data storage and exchanges for <u>many IT systems</u> </p>
-    <p> - XML does not do anything (like data type checking), it simply stores data in <u style="color:yellow;">plain text</u> (wrapped in tags) </p>
-    <p> - XML file extension is <mark>.xml</mark>, the basic MIME type is <mark>text/xml</mark> but because XML can be presented in many formats there are many other MIME types (like <mark>application/xhtml-xml</mark> and many others) </p>
-    <p> - XML is a W3C recommendatin since 1998 </p>
-    <pre class="syntax">
+    <tr>
+      <td>
+        <prot>XMLDocument</prot>.createCDATASection("<i>unparsed characters</i>")
+      </td>
+      <td> creates a CDATA Node (unparsed data by the XML parser) with its value </td>
+    </tr>
+  </table>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+  <a href="https://www.w3schools.com/xml/default.asp" target="_blank"> W3School XML Tutorial </a>
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - entities in tag names are NOT allowed </p>
+  <p> - XML expression ( <mark>PCDATA</mark> = (Parsed Character Data) / <mark><mark>CDATA</mark> = (Unparsed Character Data)</mark> )</p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - XML (e<b>X</b>tensible <b>M</b>arkup <b>L</b>anguage), is a language for storing and transporting data, it is designed to be both machine and human readable </p>
+  <p> - XML is a <u>hardware and software independent</u> tool symplifies data storage and exchanges for <u>many IT systems</u> </p>
+  <p> - XML does not do anything (like data type checking), it simply stores data in <u style="color:yellow;">plain text</u> (wrapped in tags) </p>
+  <p> - XML file extension is <mark>.xml</mark>, the basic MIME type is <mark>text/xml</mark> but because XML can be presented in many formats there are many other MIME types (like <mark>application/xhtml-xml</mark> and many others) </p>
+  <p> - XML is a W3C recommendatin since 1998 </p>
+  <pre class="syntax">
 SYNTAX :    <i>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</i>                &lt;-- <b>prolog</b> must come first but it is <u style="color:orange;">optional</u>, it should contain the character encoding to avoid errors <u>(<mark>UTF-8</mark> is the default)</u>  
             &lt;<i>rootelement</i>&gt;                                         &lt;-- <u style="color:orange;">required only one root element</u>!
               <span style="color:#c5e8c5;">// elements --------------------------------------</span>
@@ -142,8 +151,8 @@ SYNTAX :    <i>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</i>                &
                 &lt;<i>/tag</i>&gt;
             &lt;/<i>rootelement</i>&gt;
     </pre>
-    <p> - unlike HTML, XML tags are not defined, the author "invets" them and the XML Syntax is <u>very strict</u> compared to HTML </p>
-    <pre>
+  <p> - unlike HTML, XML tags are not defined, the author "invets" them and the XML Syntax is <u>very strict</u> compared to HTML </p>
+  <pre>
     &lt;?xml version="1.0" encoding="UTF-8"?&gt;
     &lt;biography&gt;
       // elements -------------
@@ -165,13 +174,13 @@ SYNTAX :    <i>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</i>                &
         &lt;/structured&gt;
     &lt;/biography&gt;
     </pre>
-<details class="example">    
-<summary> Example : </summary>  
-<h4><u> document structure and restriction TEST </u></h4>    
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> document structure and restriction TEST </u></h4>
     <a href="XML files/xml document structure text.xml" target="_blank">xml document structure TEST</a>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     // xml document structure text.xml (external file)
     &lt;?xml version="1.0" encoding="UTF-8"?&gt;
     &lt;myCar-details&gt;
@@ -188,20 +197,20 @@ SYNTAX :    <i>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</i>                &
     &lt;/myCar-details&gt;
     </pre>
     </details>
-</details>    
-<!------------------------------------------------------------------------------------------------------------------------>
-<hr>    
-<h2 style="color:darkblue;"><u> using entities in XML </u></h2>  
-    <p> - in XML <u>only 5 entity <b>references</b></u> are allowed, <u style="color:yellow;">but any entity <b>numbers</b> can be used no problem </u></p>
-    <u> - entities in tag names are NOT allowed! </u>
-    <pre class="syntax">
+  </details>
+  <!------------------------------------------------------------------------------------------------------------------------>
+  <hr>
+  <h2 style="color:darkblue;"><u> using entities in XML </u></h2>
+  <p> - in XML <u>only 5 entity <b>references</b></u> are allowed, <u style="color:yellow;">but any entity <b>numbers</b> can be used no problem </u></p>
+  <u> - entities in tag names are NOT allowed! </u>
+  <pre class="syntax">
 SYNTAX :    <mark>&lt;</mark>   &amp;lt;        less than                             &lt;-- strictly illegal
             <mark>&amp;</mark>   &amp;amp;       ampersand                             &lt;-- strictly illegal
             <mark>&gt;</mark>   &amp;gt;        greater than                          <span style="color:orange;">&lt;-- not illegal but recommended to replace </span>
             <mark>&apos;</mark>   &amp;apos;      apostrophe (single quote)
             <mark>&quot;</mark>   &amp;quot;      quotation mark
     </pre>
-    <pre>
+  <pre>
     &lt;?xml version="1.0" encoding="UTF-8"?&gt;
     &lt;rootElement&gt;
         &lt;testEntity&gt; <b>&amp;lt; &amp;gt; &amp;amp; &amp;apos; &amp;quot;</b> &lt;/testEntity&gt;  // pre-defined entitites references used 
@@ -209,13 +218,13 @@ SYNTAX :    <mark>&lt;</mark>   &amp;lt;        less than                       
         &lt;&amp;lt;&gt;&lt;/&amp;lt;&gt;                                                    // !! this is illegal entities cannot be used in tags (parser will throw an error)
     &lt;/rootElement&gt;
     </pre>
-<details class="example">
+  <details class="example">
     <summary> Example : </summary>
-<h4><u> XML entity TEST </u></h4>
+    <h4><u> XML entity TEST </u></h4>
     <a href="XML files/external entity TEST.xml" target="_blank"> external entity TEST.xml </a>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     // entity test.xml (external file source)   
     &lt;?xml version="1.0" encoding="UTF-8"?>
     &lt;pizza_order&gt;
@@ -229,14 +238,14 @@ SYNTAX :    <mark>&lt;</mark>   &amp;lt;        less than                       
         &lt;/composition&gt;
     &lt;/pizza_order&gt;
         </pre>
-        </details>
-</details>    
-<!------------------------------------------------------------------------------------------------------------------------>
-<hr>
-<h2 style="color:darkblue;"><u> name spaces </u></h2>    
-    <p> - namespaces <u style="background-color:yellow;">(sort of scopes)</u> useful when we mix multiple xml source in the same document </p>
-    <p> - in XML there are 2 type of namespaces are allowed to avoid name conflicts, default and perfixed namespace </p>
-    <pre class="syntax">
+    </details>
+  </details>
+  <!------------------------------------------------------------------------------------------------------------------------>
+  <hr>
+  <h2 style="color:darkblue;"><u> name spaces </u></h2>
+  <p> - namespaces <u style="background-color:yellow;">(sort of scopes)</u> useful when we mix multiple xml source in the same document </p>
+  <p> - in XML there are 2 type of namespaces are allowed to avoid name conflicts, default and perfixed namespace </p>
+  <pre class="syntax">
 SYNTAX :  <span style="color:#c5e8c5;">// default namespace ---------------------------------</span>
             <i>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</i>
             &lt;<i>tag</i> xmlns="<strong>URI_1</strong>"&gt;                                   &lt;-- this element and all its children <u>elements</u> belong to the <strong>URI_1</strong> namespaces
@@ -254,8 +263,8 @@ SYNTAX :  <span style="color:#c5e8c5;">// default namespace --------------------
                 &lt;<i><strong>prefix_A</strong>:tag <strong>prefix_A</strong>:attr="val"</i>&gt; <i>text</i> &lt;/<strong>prefix_A</strong><i>:tag</i>&gt;    &lt;-- both the element and the attribute are in the namespace <strong>URI_1</strong> 
             &lt;<i>/tag</i>&gt;
     </pre>
-    <p> - the URI is an identifier what makes the namespace unique (not parsed by the parser)</p>
-    <pre>
+  <p> - the URI is an identifier what makes the namespace unique (not parsed by the parser)</p>
+  <pre>
     &lt;?xml version="1.0" encoding="UTF-8"?&gt;
     &lt;dogs xmlns="http://white" xmlns:black="http://black"&gt;        // -> "http://white" default namespace declared               // -> "http://black" prefixed namespace declared
         &lt;dog1 origin="europe"&gt; peppy &lt;/dog1&gt;                      // children element belong to the "default" namespace         // !! but its attribue doesn't (it has no namespace declared)
@@ -265,13 +274,13 @@ SYNTAX :  <span style="color:#c5e8c5;">// default namespace --------------------
         &lt;dog3 black:origin="usa"&gt; puffy &lt;/dog3&gt;                   // the element belongs to the default namespace               // but the attribute belongs to the prefixed one     
     &lt;/dogs&gt;
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> default namespaces TEST </u></h4>  
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> default namespaces TEST </u></h4>
     <a href="XML files/default namespace TEST.xml" target="_blank">default namespace TEST</a>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     // default namespace TEST.xml (external file)
     &lt;?xml version="1.0" encoding="UTF-8"?&gt;
     &lt;xhtml xmlns="http://demo/demo.html"&gt;           &lt;!-- namespace usually points to the source (its purpose is give unique identifier to the namespase) --&gt;
@@ -287,11 +296,11 @@ SYNTAX :  <span style="color:#c5e8c5;">// default namespace --------------------
     &lt;/xhtml&gt;
     </pre>
     </details>
-<h4><u> prefix namespace TEST </u></h4>    
+    <h4><u> prefix namespace TEST </u></h4>
     <a href="XML files/prefix namespace TEST.xml" target="_blank">prefix namespace TEST</a>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     // prefix namespace TEST.xml (external file)
     &lt;?xml version="1.0" encoding="UTF-8"?&gt;
     &lt;rootElement xmlns="https://mainElement_source/demo" xmlns:a="http://prefix_source/demo"&gt;       
@@ -310,11 +319,11 @@ SYNTAX :  <span style="color:#c5e8c5;">// default namespace --------------------
     &lt;/rootElement&gt;
     </pre>
     </details>
-<h4><u> mixed namespace TEST </u></h4>
+    <h4><u> mixed namespace TEST </u></h4>
     <a href="XML files/mixed namespace TEST.xml" target="_blank">mixed namespace TEST</a>
     <details>
-    <summary> CODE : </summary>
-    <pre>
+      <summary> CODE : </summary>
+      <pre>
     // mixed namespace TEST.xml (external file)
     &lt;?xml version="1.0" encoding="UTF-8"?&gt;
     &lt;_20-steps.restaurant xmlns="http://20original" xmlns:factory="htttp://factory"&gt;
@@ -329,11 +338,11 @@ SYNTAX :  <span style="color:#c5e8c5;">// default namespace --------------------
     &lt;/_20-steps.restaurant&gt;
     </pre>
     </details>
-</details>    
-<!------------------------------------------------------------------------------------------------------------------------>
-<hr>    
-<h2 style="color:darkblue;"><u> parse / serialize DOM </u></h2>    
-    <pre class="syntax">
+  </details>
+  <!------------------------------------------------------------------------------------------------------------------------>
+  <hr>
+  <h2 style="color:darkblue;"><u> parse / serialize DOM </u></h2>
+  <pre class="syntax">
 SYNTAX :    new DOMParser()                                       // returns an object which has the ability to parse a string into a DOM
             <prot>DOMParser.prototype</prot>.parseFromString(<strong>string</strong>, <strong>MIME_type</strong>)  // parses a string (DOMString) into a DOM and returns it 
                 - <strong>string</strong> : string containing DOM Source 
@@ -342,7 +351,7 @@ SYNTAX :    new DOMParser()                                       // returns an 
             new XMLSerializer()                                   // returns an object which has the ability to parse a DOM tree into a string
             <prot>XMLSerializer.prototype</prot>.serializeToString(<strong>DOM_obj</strong>)    // parses a DOM tree into a string and returns it
     </pre>
-    <pre>
+  <pre>
 // parse froms string to DOM -----------------    
     var xmlDOMString = "&lt;person&gt;&lt;name&gt;Attila&lt;/name&gt; &lt;suraname&gt;Peter&lt;/suraname&gt; &lt;age /&gt; &lt;/person&gt;";        // string contains an XML source
     var domXML = new DOMParser().parseFromString(xmlDOMString, "text/xml");                               // -> XML DOM returned
@@ -351,22 +360,22 @@ SYNTAX :    new DOMParser()                                       // returns an 
     new XMLSerializer().serializeToString(domXML);                              
         // -> "&lt;person&gt;&lt;name&gt;Attila&lt;/name&gt; &lt;suraname&gt;Peter&lt;/suraname&gt; &lt;age /&gt; &lt;/person&gt;"                  // DOM tree parsed back to string
     </pre>
-<details class="example">
-<summary> Example : </summary>
-<h4><u> <mark>XMLSerializer()</mark> TEST </u></h4>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> <mark>XMLSerializer()</mark> TEST </u></h4>
     <button id="printThisDoc"> Print this documents DOMTree as a string </button>
-<script>
-    $(document).ready(function(){
-        $("#printThisDoc").mouseup(function(){
-            $("#printThisDoc").after("<pre id='prePrint'> </pre>");
-            document.getElementById('prePrint').textContent = new XMLSerializer().serializeToString(document);
-                        // "textContent" property used here because it does not parses the string
+    <script>
+      $(document).ready(function () {
+        $("#printThisDoc").mouseup(function () {
+          $("#printThisDoc").after("<pre id='prePrint'> </pre>");
+          document.getElementById('prePrint').textContent = new XMLSerializer().serializeToString(document);
+          // "textContent" property used here because it does not parses the string
         })
-    });
-</script>
-        <details>
-    <summary> CODE : </summary>
-    <pre>
+      });
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;button id="printThisDoc"&gt; Print this documents DOMTree as a string &lt;/button&gt;
 &lt;script&gt;
     $(document).ready(function(){
@@ -379,27 +388,27 @@ SYNTAX :    new DOMParser()                                       // returns an 
 &lt;/script&gt;
     </pre>
     </details>
-<h4><u> <mark>DOMParser</mark> TEST </u></h4>    
+    <h4><u> <mark>DOMParser</mark> TEST </u></h4>
     <button onmouseup="displayXML_inConsole()"> display parsed XML in console </button>
-<script>
-    var xmlString = 
-    "<?xml version='1.0' encoding='UTF-8'?> \
+    <script>
+      var xmlString =
+        "<?xml version='1.0' encoding='UTF-8'?> \
     <rootElement> \
         <name> Pall </name> \
         <sureName> Arpad </sureName> \
     </rootElement>"
-    
-    var xmlDoc = new DOMParser().parseFromString(xmlString, "text/xml");
-    
-    function displayXML_inConsole() {
-        console.log( Object.getPrototypeOf(xmlDoc) );           // print the parsed object's prototype (XML)
-        
+
+      var xmlDoc = new DOMParser().parseFromString(xmlString, "text/xml");
+
+      function displayXML_inConsole() {
+        console.log(Object.getPrototypeOf(xmlDoc));           // print the parsed object's prototype (XML)
+
         console.log(xmlDoc);
-    }
-</script>
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+      }
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;button onmouseup="displayXML_inConsole()"&gt; display parsed XML in console &lt;/button&gt;
 &lt;script&gt;
     var xmlString = 
@@ -418,18 +427,18 @@ SYNTAX :    new DOMParser()                                       // returns an 
     }
 &lt;/script&gt;
         </pre>
-        </details>
-</details>    
-<!------------------------------------------------------------------------------------------------------------------------>
-<hr>    
-<h2 style="color:darkblue;"><u> Parsed VS Unparsed Data <mark>PCDATA</mark> / <mark>CDATA</mark> </u></h2>     
-    <p> - <mark>PCDATA</mark> (Parsed Character Data) = text parsed by the XML parser </p>
-    <p> - <mark>CDATA</mark> (Unparsed Character Data) = text <u>NOT</u> parsed by the XML parser</p>
-    <pre class="syntax">
+    </details>
+  </details>
+  <!------------------------------------------------------------------------------------------------------------------------>
+  <hr>
+  <h2 style="color:darkblue;"><u> Parsed VS Unparsed Data <mark>PCDATA</mark> / <mark>CDATA</mark> </u></h2>
+  <p> - <mark>PCDATA</mark> (Parsed Character Data) = text parsed by the XML parser </p>
+  <p> - <mark>CDATA</mark> (Unparsed Character Data) = text <u>NOT</u> parsed by the XML parser</p>
+  <pre class="syntax">
 SYNTAX :    &lt;![CDATA[<i>unparsed characters</i>]]&gt;                       // entered data ignored by the XML parser (<mark>CDATA</mark> = unparsed data / <mark>PCDATA</mark> = parsed data) (only restricted data is <mark>]]&gt;</mark> because it ends the element)
             <prot>XMLDocument</prot>.createCDATASection("<i>unparsed characters</i>") // creates a CDATA Node (unparsed data by the XML parser) with its value 
     </pre>
-    <pre>
+  <pre>
 // XML source ------------------
     &lt;?xml version='1.0' encoding='UTF-8'?&gt;
     &lt;person&gt;
@@ -441,27 +450,27 @@ SYNTAX :    &lt;![CDATA[<i>unparsed characters</i>]]&gt;                       /
     var myCdata = XMLDom.createCDATASection(" unparsed data = &lt;&lt;l;kj;lk__`~ ");   // creates a CDATA node (same as in the XML source code)
     XMLDom.getElementsByTagName("person")[0].appendChild(myCdata);                // append the CDATA node
     </pre>
-<details class="example">
-<summary> Example : </summary>    
-<h4><u> <mark>PCDATA</mark> VS <mark>CDATA</mark> TEST </u></h4>    
+  <details class="example">
+    <summary> Example : </summary>
+    <h4><u> <mark>PCDATA</mark> VS <mark>CDATA</mark> TEST </u></h4>
     <pre id="cdata"></pre>
-<script>
-    let xmlSource = 
+    <script>
+      let xmlSource =
         "<?xml version='1.0' encoding='UTF-8'?>" +                                          // PCDATA 
-            "<rootElement>" +
-                "<someElement> </someElement>" + 
-                "<anotherElement />" +                                                                 
-                "<![CDATA[ I'm an unparsed data loock at this!   <@.!<> >>> ]]>" +          // CDATA is not parsed by the XML parser
-                "<!-- <,;kjsdf;asdf -->" +                                                  // comments are not parsed eihter
-            "</rootElement>";
-        
-    let XML_Doc = new DOMParser().parseFromString(xmlSource, "text/xml");
-    
-    document.getElementById("cdata").textContent = new XMLSerializer().serializeToString(XML_Doc);
-</script>    
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+        "<rootElement>" +
+        "<someElement> </someElement>" +
+        "<anotherElement />" +
+        "<![CDATA[ I'm an unparsed data loock at this!   <@.!<> >>> ]]>" +          // CDATA is not parsed by the XML parser
+        "<!-- <,;kjsdf;asdf -->" +                                                  // comments are not parsed eihter
+        "</rootElement>";
+
+      let XML_Doc = new DOMParser().parseFromString(xmlSource, "text/xml");
+
+      document.getElementById("cdata").textContent = new XMLSerializer().serializeToString(XML_Doc);
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;pre id="cdata"&gt;&lt;/pre&gt;
 &lt;script&gt;
     let xmlSource = 
@@ -477,28 +486,28 @@ SYNTAX :    &lt;![CDATA[<i>unparsed characters</i>]]&gt;                       /
     
     document.getElementById("cdata").textContent = new XMLSerializer().serializeToString(XML_Doc);
 &lt;/script&gt;      
-        </pre>    
-        </details>
-<h4><u> <mark>createCDATASection</mark></u></h4>
+        </pre>
+    </details>
+    <h4><u> <mark>createCDATASection</mark></u></h4>
     <pre id="cdata_print"></pre>
-<script>
-    let xmlSource_ = 
+    <script>
+      let xmlSource_ =
         "<?xml version='1.0' encoding='UTF-8'?>" +                                          // PCDATA
         "<rootElement>" +
-            "<someElement> </someElement>" + 
-            "<anotherElement />" +                                                                 
+        "<someElement> </someElement>" +
+        "<anotherElement />" +
         "</rootElement>";
-        
-    var xmlDoc__ = new DOMParser().parseFromString(xmlSource_, "text/xml");
-    
-    var cdata__ = xmlDoc__.createCDATASection(" created CDATA section look &2./< >>><,");   // CDATA node created
-    xmlDoc.getElementsByTagName("rootElement")[0].appendChild(cdata__);                     // CDATA node appended as the last element of the root element
-    
-    document.getElementById("cdata_print").textContent = new XMLSerializer().serializeToString(xmlDoc);
-</script>    
-        <details>
-        <summary> CODE : </summary>
-        <pre>
+
+      var xmlDoc__ = new DOMParser().parseFromString(xmlSource_, "text/xml");
+
+      var cdata__ = xmlDoc__.createCDATASection(" created CDATA section look &2./< >>><,");   // CDATA node created
+      xmlDoc.getElementsByTagName("rootElement")[0].appendChild(cdata__);                     // CDATA node appended as the last element of the root element
+
+      document.getElementById("cdata_print").textContent = new XMLSerializer().serializeToString(xmlDoc);
+    </script>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
     &lt;pre id="cdata_print"&gt;&lt;/pre&gt;
 &lt;script&gt;
     let xmlSource_ = 
@@ -516,24 +525,25 @@ SYNTAX :    &lt;![CDATA[<i>unparsed characters</i>]]&gt;                       /
     document.getElementById("cdata_print").textContent = new XMLSerializer().serializeToString(xmlDoc);
 &lt;/script&gt;      
         </pre>
-        </details>
-</details>    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    </details>
+  </details>
 
-    
-<h2 class="test" style=""><a href="TEST/index.html"> TEST (empty) > </a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="test" style=""><a href="TEST/index.html"> TEST (empty) > </a></h2>
 </body>
+
 </html>

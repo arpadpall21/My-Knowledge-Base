@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> YAML </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Assets/stylesPages.css">
+  <script src="../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> YAML </h1>
+  <p> Updated ( 2024-06-13 ) </p>
+  <nav class="sitenav">
+    <a href="../../index.html">MySite></a>
+    <a href="../index.html">Serialization Languages></a> YAML
+  </nav>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - YAML stands for (YAML Ain't Markup Languate), the file extenssion can be <mark>.yml</mark> or <mark>.yaml</mark> </p>
+  <p> - yaml uses indentations to separate code blocks (like Python does) </p>
+  <p> - yaml files are commonly used by DevOps tools, because they have an easy to read syntax </p>
+  <pre class="syntax">
+    # <optval>comment</optval>          // comment 
+    
+    
+    <reqval>string</reqval>             // strings can be written bare, with single or double quotes (ex: <mark>Hello World!</mark> / <mark>'Hello World!'</mark> / <mark>"Hello World!"</mark>)
+    <reqval>number</reqval>             // number can be integer or float (ex: <mark>23</mark> / <mark>-23.23</mark>)
+    <reqval>bool</reqval>               // boolean can be <mark>true / false</mark> / <mark>on / off</mark> / <mark>yes / no</mark> (interpreted as <mark>true / false</mark>)
+    null                                // null
+    
+    <reqval>map</reqval>:               // map multiline syntax
+      <reqval>key</reqval>: <reqval>val</reqval>
+      <optval>...</optval>
+    <reqval>map</reqval>: {<reqval>key</reqval>: <reqval>val</reqval><optval>, ...</optval>}    // map compact syntax
+    
+    <reqval>list</reqval>:              // list multiline syntax
+      - <reqval>item</reqval>
+      <optval>- ...</optval>
+    <reqval>list</reqval>: [<reqval>item</reqval><optval>, ...</optval>]        // list compact syntax
+  </pre>
+  <pre class="syntax">
+// multiline strings -----------------------------------------
+    <reqval>line_1</reqval>             // by default white spaces and new line characters are ignored (this result in <mark><reqval>line_1line_2</reqval></mark>)
+    <reqval>line_2</reqval>
+    
+    
+    |                                   // (literal block scalar) preserves white spaces & new line characters
+    <reqval>line_1</reqval>               // this results in <mark><reqval>line_1</reqval>\n<reqval>line_2</reqval>\n</mark>
+    <reqval>line_2</reqval>
+    
+    
+    >                                   // (folded block scalar)
+    <reqval>line_1</reqval>             // preservers white spaces for directly following linges 
+    <reqval>line_2</reqval>
+                                        // inserts new line character on emypty line
+    <reqval>line_3</reqval>             // this results in <mark><reqval>line_1line_2</reqval>\n<reqval>line_3</reqval>\n</mark>
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+  <h4 class="header"> Scalars </h4>
+  <pre>
+// strings ------------------------------------------
+    Hello World!                    // all 3 does the same
+    "Hello World!"
+    'Hello World!'
+    
+    Hello                           // -> <mark>"Hello World!"</mark>       // by default YAML removes white spaces and new line characgers     
+    World!
+  
+    |                               // -> <mark>"Hello\nWorld!\n"</mark>    // preseves new line and white spaces
+    Hello
+    World!
+    
+    >                               // -> <mark>"Hello World!\nThis is me\n"</mark>
+    Hello  
+    World!
+    
+    This is
+    me
+    
+    
+// numbers ------------------------------------------
+    1
+    1.21
+    -23.23
+    
+    
+// booleans -----------------------------------------
+    true                            // all interpreted as <mark>true</mark>
+    yes
+    on
+    
+    
+// null ---------------------------------------------
+    null                            // null
+  </pre>
+  <hr>
+  <!--------------------------------------------------------------------------->
+  <h4 class="header"> Complex Data Types </h4>
+  <pre>
+// map ----------------------------------------
+    map_1:
+      key_1: Hello World
+      key_2: 21
+      key_3: no
+    
+    map_2: {key_1: Hello World, key_2: 21, key_3: no}
+    
+    
+// list ---------------------------------------
+    list_1:
+      - a                         // each item is preceded with - 
+      - 32
+      - false
+      - some_obj:
+          key_1: val_1
+          key_2: val_2
+    
+    list_2: [a, 32, false, some_obj: {key_1: val_1, key_2: val_2}]
+  </pre>
+  </details>
+  <!----------------------------------------------------------------------------------------->
+  <hr>
+  <h2 class="header"> Ancors </h2>
+  <p> - anchors are label references to specific nodes (scalars, maps, list) in the yaml document (ex: we can anchor a configuration map, then reference it for another configuration) </p>
+  <p> - anchors are lables <u>not</u> varialbes, so they cannot be used as variables (ex: cannot be used as map keys) </p> 
+  <pre class="syntax">
+    &<reqval>anchor</reqval> <reqval>val</reqval>     // anchors <reqval>val</reqval>      // <reqval>anchor</reqval> is a label not a variable (ex: cannot be used as map key)
+    *<reqval>anchor</reqval>                          // references the anchored <reqval>val</reqval>
+    
+    
+// anchoring scalar -------------------------------
+    <reqval>key_1</reqval>: &<reqval>anchor</reqval> <reqval>scalar</reqval>    // -! an already used value is anchored then referenced elsewhere (that's the idea of anchoring)   
+    <reqval>key_2</reqval>: *<reqval>anchor</reqval>        // references the anchored scalar
+    
+    
+// anchoring map (for lists works the same way) ---------------------------------
+    <reqval>list|map</reqval>: &<reqval>anchor</reqval>
+      <reqval>key_1</reqval>: <reqval>val_1</reqval>
+      <reqval>key_2</reqval>: <reqval>val_2</reqval>
+      <reqval>key_3</reqval>: <reqval>val_3</reqval>
+    
+    <reqval>map_2</reqval>: *<reqval>anchor</reqval>    // references the anchored map
+    
+    <reqval>map_3</reqval>:                             // references the anchored map but overrides the specified key
+      <<: *<reqval>anchor</reqval>
+      <reqval>key_2</reqval>: <reqval>val_X</reqval> 
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+  <pre>
+    &anchor_1 abc                     // !! invalid syntax (anchors cannot be declared on top level because they are labels not variables)
+    
+// reusing anchored node (this is the idea behind anchoring) ------------------------
+    alice: &employee
+      name: Alice
+      profession: developer
+      level: senior
+    
+    bob:                              // the already map is rereferenced here
+      <<: *employee
+      name: Bob
+    
+    george:                           // and here...
+      <<: *employee
+      name: George
+      level: medior
+    
+// variable-like approach ------------
+    default_config: &config           //  we are anchoring the all configs & each value individualy
+      host: &default_host localhost
+      port: &default_port 80
+      path: &default_path /
+    
+    config_1: *config                 // referencing default configs
+    
+    config_2: 
+      <<: *config                     // referencing default configs but overrides the port key
+      port: 8080
+  </pre>
+  </details>
+  
+  
+  <br><br>
+</body>
+
+</html>

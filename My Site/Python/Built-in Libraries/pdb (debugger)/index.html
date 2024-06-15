@@ -19,14 +19,11 @@
     <a href="../index.html">Built-in Libraries></a> pdd
   </p>
   <table class="table">
-    <caption>
-      <span class="changeListOrder">[Ordered: <span>Alphabetically</span>]</span>
-    </caption>
     <tr>
       <th style="width:30%;"> command </th>
       <th> Description </th>
     </tr>
-    <tr class="05.01">
+    <tr>
       <td>
         h
       </td>
@@ -34,7 +31,11 @@
         - (<mark>h</mark>elp) prints debugger help informations
       </td>
     </tr>
-    <tr class="10.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         p <strong>exp</strong> <br>
         pp <strong>exp</strong>
@@ -44,7 +45,7 @@
         - usually used to print variables preceding the debugger
       </td>
     </tr>
-    <tr class="10.02">
+    <tr>
       <td>
         l
       </td>
@@ -52,11 +53,7 @@
         - (<mark>l</mark>ist) prints 11 lines around the debugger on the console
       </td>
     </tr>
-    <tr class="10.03">
-      <td></td>
-      <td></td>
-    </tr>
-    <tr class="10.04">
+    <tr>
       <td>
         ll
       </td>
@@ -64,7 +61,7 @@
         - prints the body of the current function (the whole file if on top level)
       </td>
     </tr>
-    <tr class="10.05">
+    <tr>
       <td>
         w
       </td>
@@ -73,7 +70,11 @@
         closest))
       </td>
     </tr>
-    <tr class="15.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         c
       </td>
@@ -81,7 +82,55 @@
         - (<mark>c</mark>ontinue) continues program execution
       </td>
     </tr>
-    <tr class="15.02">
+    <tr>
+      <td>
+        s
+      </td>
+      <td>
+        - (<mark>s</mark>tep) steps on the next <u>by executing it</u>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        n
+      </td>
+      <td>
+        - (<mark>n</mark>ext) steps on the next line <u>without executing it</u> <br>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        unt <strong>line:int</strong>
+      </td>
+      <td>
+        - (<mark>unt</mark>il) steps on the specified line <u>without executing it</u>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        u
+      </td>
+      <td>
+        - (<mark>u</mark>p) moves up -> steps on the <u>previous</u> stack frame (exit function)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        d
+      </td>
+      <td>
+        - (<mark>d</mark>own) moves down -> steps on the <u>next</u> stack frame (enter function)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         q
       </td>
@@ -89,53 +138,10 @@
         - (<mark>q</mark>uit) exits the program
       </td>
     </tr>
-    <tr class="20.01">
-      <td>
-        n
-      </td>
-      <td>
-        - (<mark>n</mark>ext) steps on the next logical line (ignores empty lines) <br>
-        - does not execute the current line (does not enter in functions = cannot open any new call stack)
-      </td>
-    </tr>
-    <tr class="20.02">
-      <td>
-        unt <strong>line:int</strong>
-      </td>
-      <td>
-        - (<mark>unt</mark>il) steps on the specified line <br>
-        - does not execute the current line (does not enter in functions = cannot open any new call stack)
-      </td>
-    </tr>
-    <tr class="20.03">
-      <td>
-        s
-      </td>
-      <td>
-        - (<mark>s</mark>tep) steps on the next logical line (ignores empty lines) <br>
-        - executes the current line (enters in functions = can open a new call stack)
-      </td>
-    </tr>
-    <tr class="25.01">
-      <td>
-        u
-      </td>
-      <td>
-        - (<mark>u</mark>p) moves up -> steps on the <u>previous</u> stack frame
-      </td>
-    </tr>
-    <tr class="25.02">
-      <td>
-        d
-      </td>
-      <td>
-        - (<mark>d</mark>own) moves down -> steps on the <u>next</u> stack frame
-      </td>
-    </tr>
-    <tr class="30.01">
+    <tr>
       <td colspan="2"> setting breakpoints </td>
     </tr>
-    <tr class="30.02">
+    <tr>
       <td>
         b
       </td>
@@ -143,8 +149,7 @@
         - prints all breakpoints <u>(breakpoints that are managed by this <mark>b</mark> command)</u>
       </td>
     </tr>
-    <tr  class="30.03"><td></td><td></td></tr>
-    <tr class="30.04">
+    <tr>
       <td>
         b <small><i>file<i>:</small><strong>line:int</strong>
       </td>
@@ -152,8 +157,7 @@
         - (<mark>b</mark>reakpoint) sets a new breakpoint on the specified line
       </td>
     </tr>
-    <tr  class="30.05"><td></td><td></td></tr>
-    <tr class="30.05">
+    <tr>
       <td>
         b <strong>fn</strong>
       </td>
@@ -161,7 +165,11 @@
         - (<mark>b</mark>reakpoint) sets a new breakpoint on the <strong>fn</strong>
       </td>
     </tr>
-    <tr class="35.01">
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>
         cl <strong>breakpointId:int</strong>
       </td>
@@ -169,7 +177,7 @@
         - (<mark>cl</mark>ear) clears (removes) the specified breakpoint
       </td>
     </tr>
-    <tr class="40.01">
+    <tr>
       <td>
         disable <strong>breakpointId:int</strong>
       </td>
@@ -177,7 +185,7 @@
         - disables the specified breakpoint (program won't stop on breakpoint)
       </td>
     </tr>
-    <tr class="40.02">
+    <tr>
       <td>
         enable <strong>breakpointId:int</strong>
       </td>
