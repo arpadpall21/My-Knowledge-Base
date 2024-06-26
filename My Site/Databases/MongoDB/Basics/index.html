@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> MongoDB </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> MongoDB </h1>
+  <p> Updated ( 2024-06-16 ) </p>
+  <nav class="sitenav"> <a href="../../index.html">MySite></a>
+    <a href="../index.html" title="Learn WebDesign">Databases></a> MongoDB
+  </nav>
+
+  <p class="subSite"><a href=""> SubSite > </a></p>
+
+
+  <table class="table">
+    <tr>
+      <th style="width:30%;"> Method / Property / statement ect... </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td>
+        demo prop
+      </td>
+      <td>
+        - demo description
+        <span class="browserSupport">
+          <span><i class="fab fa-chrome"></i> 0/0 -webkit- </span>
+          <span><i class="fab fa-firefox"></i> </span>
+          <span><i class="fab fa-opera"></i> </span>
+          <span><i class="fab fa-internet-explorer"></i><i class="fab fa-edge"></i> </span>
+          <span><i class="fab fa-safari"></i> </span>
+          <span><i class="fab fa-node-js"></i> </span>
+        </span>
+      </td>
+    </tr>
+
+
+
+
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+
+
+  <!--
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+stage 1: high level overview 
+    - read through 
+    - create notes 
+    - deciede what exactly will you document down 
+    - UNDERSTAND AND WRITE DOWN THE CONCEPTS!!!
+    
+stage 2:  low level overview
+    - deeper understanding of all what you've taken down in stage 1
+    
+stage 3 : 
+    - organize and document down everything 
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////
+// general description
+///////////////////////////////////////////////////////////////////////////
+    - MongoDB 7.0.11
+    - MongoDB shell
+
+    - MongoDB is an open-source NoSQL document oriented database that provides high scalability
+    - mongodb runs as a service (daemon)
+    - has mango shell 
+    - mongoDB Compas is a GUI client
+
+
+    - Database -> Collection -> Document
+    - Documents are stored BSON (Binary JSON)
+        - this is JSON basically with the extension that we also can store binary data 
+        - every document has an _id that identifies the document which is unique in the database (automatically created whith the document)
+            - the value of _id can be set by the user
+        - document size max 16 Mega Bytes
+
+    - in mongo shell we can select non existant database and collection! once we insert a new document the database and the collection will be created
+    - in mongo shell paginates the returned document by 20, to see the next page type 'it' 
+
+    - methods such as insert() / update() / remove()  are deprecated (they can operate on a single or multiple documents)
+
+    - mongoDB is schmealess (but we can enforce schema link it!)
+
+
+
+///////////////////////////////////////////////////////////////////////////
+// gridFS
+///////////////////////////////////////////////////////////////////////////
+    - to store files that are larger than 16MB use gridFS
+    - gridFS stores files in 2 collections (this is for efficiency reasons (ex: if you want some metadata we don't have to fetch the whole file))
+        - chunks -> the actual data stored in chunsk
+        - files  -> metadata of the files 
+        https://www.mongodb.com/docs/manual/core/gridfs/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var = <val>           // variable 
+
+
+
+    
+    
+    
+    
+    // MongoDB provides fancy multi operation methods such as findAndModify()
+    https://www.mongodb.com/docs/manual/reference/method/db.collection.findOneAndReplace/
+
+
+
+
+
+
+
+
+
+
+cmd:
+    mongosh                                       - enter mongo shell
+    
+    show dbs                                      - list all databases
+    use <database>                                - switches to the specified database (the database do not need to be exist, will be create when we insert collection or document)
+    db.dropDatabase()                             - deletes the specified databaseuse
+    db                                            - show current database
+    
+    show collections                              - list all collections in the current database
+    db.createCollection("<collectionName>")       - creates the specified colleciton
+    db.<collection>.isCapped()                    - checko for caped collection (Capped collections are often used to store logs or other data that is only useful for a limited amount of time and can be discarded once it is no longer needed. They are also useful for high-speed insert and retrieval operations, as they are optimized for insertion order and do not require constantly shifting the collection to maintain it.)
+                                                  - mention capped collections 
+    db.<collection>.drop()                        - deletes collection from the database
+    
+    help                                          - help doc
+    cls                                           - clear screen
+    
+    exit                                          - exit mongoshell
+    
+    db.<collection>.find(<filterObj>, <projection>)                        - (Default: returns the first 20 documents)
+        <serachParam>
+            - key: val                                        - returns all documents having key: val (we can pass any number of keys)
+                val can be operator (ex: { $lt: <val> })
+        <projections>                                         - object specifies which fileds the result should have (ex: {person:1} -> the returned object only has the person filed)
+                                                                  - this always returns the _id key
+    db.<collection>.findOne(<filterObj>, <filterParam>)       - same as find(), but only returns the 1st found document
+    
+    
+    db.<collection>.insertOne(<BSON>)             -  inserts one document in the targeted collection 
+                                                      - creates the database and or collection if not exist
+                                                      - the ObjectId is automatically create (if we dont specify the _id field)
+                                                      - the _id field must be unique in the collection
+    db.<collection>.insertMany([<BSON>, ...])     -  inserts multiple documents in the targeted collection 
+                                                      - creates the database and or collection if not exist
+    
+    
+// bulk operations (by default the insertion is oredered)
+    - unordered operations are executed in parallel (if one fails won't break all)
+
+    var bulk = db.items.initializeUnorderedBulkOp|initializeOrderedBulkOp();        // unordered insertion will continue even if some insert fails (the ordered won't
+    bulk.insert(<BSON>);
+    ...
+    bulk.execute();
+    
+    
+    db.<collection.bulkWrite([
+      insertOne: <BSON>,
+      updateOne|updateMany: {
+        filter: <filter:obj>,
+        update: <update:obj>,
+      },
+      repalceOne: {
+        filter: <filter:obj>,
+        replacement: <BSON>,
+      }
+      deleteOne|deleteMany: {
+        filter: <filter:obj>,
+      },
+    ], ordered: <bool>)
+    
+    
+    
+    
+    
+    db.<collection>.updateOne(<filter:obj>, <update:obj>)         // updates 
+    db.<collection>.updateMany(<filter:obj>, <update:obj>)
+    db.<collection>.replaceOne(<filter:obj>, <BSON>)              // completely replaces the document
+    
+    <update:obj>
+        - { $set: { <key>: <val>, ...} }                            // update key(s)
+        - { $unset: { <key>: 1, ... } }                             // delete key(s)
+        - { $setOnInsert: { <key>: <val>, ...}, { upsert: true }}   // sets the specified key:val if a new doucment is created
+        
+        - { $inc: { <key:nr>: <nr>, ... } }                         // increment the value by <nr> (to subtruct ex: -1)
+        - { $mul: { <key:nr>: <nr>, ... }}                          // multiplies the field's value by <nr> (to dvide by 2 ex: use <nr> * .5)
+        
+        
+        - { $pull: { <key:arr>: <val>, ...} }                        // pulls <val> from the array
+        - { $pullAll: { <key:arr>: [<val>, ...] } }                  // pulls all listes <val> from the array (even duplicate memers are removed)
+        - { $push: { <key:arr>: <val>, ...} }                        // pushes <val> in the array as last element(s)
+        - { $push: { <key:arr>: { $each: [<val>, ...] } } }
+        - { $addToSet: { <key:arr>: <val>, ...}}                      // pushes <val> in the array if <val> is not yet in the array
+        - { $pop: { <key>: 1|-1 } }                                   // removes the (1) last or (-1) first array element
+        - { $set: { '<key:arr.<idx>|$[]': <val> }                      // modifies the element at the specified index or all elements ($[]) (this can be awesome when nesting object with same keys)
+        
+        
+        - { $currentDate: { <key> : 1|{ $type: 'timestamp|date' }, ... }}     // inserts the current date (date or timestamp) as <key>
+        - { $max: { <key:nr>: <nr>, ... }}                                     // updates the <key> value only if the specified value <nr> is bigger than the original field value 
+        - { $min: { <key:nr>: <nr>, ... }}                                     // updates the <key> value only if the specified value <nr> is smaller than the original field value 
+        - { $rename: { <key>: <newName>, ...}}                      // rename field(s)
+    
+    
+    db><collection>.deleteMany(<filterObj>)              - deletes all documents having the passed key / value pairs 
+    db><collection>.deleteOne(<filterObj>)               - deletes the first found document having the passed key / value pairs
+    
+    db.<collection>.countDocuments(<filter:obj>)           - returns the number of documents having the passed key value pairs (more accurate than estimatedDocumentCount)
+    db.<collection>.estimatedDocumentCount()              - does the same as countDocuments() but faster because it only checks the documents' metadata
+    
+    
+    
+    
+    db.<collection>.distinct('<key>')                     - return distinct document keys (one of each) in an array
+    
+    
+// cursor (update the database Basics page)
+    - a set of query result 
+    - cursors are batched for network efficiency, its default size is 101, when we are iterating over, a new batch is requested if needed
+    
+    <cursor> methods -> https://www.mongodb.com/docs/manual/reference/method/js-cursor/
+    <cursor>.size()|count()                                   - number of records in the cursor (will be deprecated in v8)
+    
+    <cursor>.skip(<nr>)                                       - sipks the first <nr> results
+    <cursor>.limit(<nr>)                                      - limits the result (first <nr>)
+    <cursor>.sort({ <key>: 1|-1, ... })                              - sort the result (1 ascending, -1 descending)
+                                                                  - hierarchy sort order (awesome!)
+    
+    <cursor>.explain('executionStats')                      - prints cursor details
+    
+    <cursor.next()                                            - returns the next document in the cursor
+    <cursor.forEach()                                         - JS approach (link them)
+    <cursor.map()                                             - JS approach (link them)
+    
+    
+    
+    
+    
+operators: 
+    https://www.mongodb.com/docs/manual/reference/operator/query/
+    - same approach for MySQL https://dev.mysql.com/doc/refman/8.4/en/innodb-fulltext-index.html
+    
+    
+
+
+  // indexing in MongoDB
+    - the _id key is indexed by default
+    - if we want to index multiple text fields we have to use compound index (1 index for multiple text fields) (this is not true for numerical values)
+    - deleting an indexed field does not remove indexes!
+    - only one text index is allowed per collection (full-text index)
+    
+    
+    db.<collection>.createIndex({ <key>: 1|-1|'text', ... })   - indexes the specified document field (1 = ascending | -1 descending) (the indexing order matter for sorting only (ex price order))
+                                                                - 1|-1    -> index for lookup and sorting
+                                                                - 'text'  -> index for text search indexing (don't work for lookup) (this also support compound indexing)
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                  - this guy also can create compound indexes (passing several fields)
+    db.<collection>.createIndexex([{ <key>: 1|-1, ... }, ...])    - add several indexes
+    
+    db.collection>.dropIndex('<indexName>')                   - drops the specified index (the <indexName> is visible by getIndexes())
+    db.collection>.dropIndexes(['<indexName>', ...])          - drops the specified index (the <indexName> is visible by getIndexes())
+    
+    
+    db.<collection>.getIndexes()                            - returns a list of doucment fields that hold indexes
+    
+    
+// text search (only perform search on fields that are indexed!)
+    - in case of servera field search use compound indexing 
+    db.<collection>.find({ $text: { $search: <val> } })       - by default searches for word separated by white space (ex: 'test1 test2' -> will search for 'test1' and 'test2' words)
+                                                                  - exclude word from search '<word:indlucde> -<word:exclude>' (use minuse sign) (ex: db.<collection>.find({$text:{$search:"Car -Cycle"}})) -> indlude Car but exclude Cycle
+                                                              - if we want full sentece search we have to wrap the sentence between escaped double quotes \"<sentence>\" (ex: '\"hello world\"')
+    
+    
+    
+    
+// aggregation pipeline
+    - consist of multiple stages where each stage is an operation (like filter, group, clculate, etc...)
+    - the output of one stage is the input of the next stage
+    - the ouput is a cursor?
+    
+    - operators that usable on the aggregate pipeline: https://www.mongodb.com/docs/manual/reference/operator/aggregation/
+    - aggregation stages: https://www.mongodb.com/docs/manual/reference/operator/aggregation-pipeline/
+    
+    
+    // aggregation pipeline example
+    
+    {                         // documents in the collections
+      "order_id": 1,
+      "customer_id": 123,
+      "order_date": ISODate("2022-01-01T00:00:00Z"),
+      "total": 100.0,
+      "items": [
+        {
+          "product_id": 1,
+          "quantity": 2,
+          "price": 25.0
+        },
+        {
+          "product_id": 2,
+          "quantity": 1,
+          "price": 50.0
+        }
+      ]
+    }
+    
+    
+    db.orders.aggregate([
+      {
+        $match: {                                     // match orders in set range 
+          order_date: {
+            $gte: ISODate("2022-01-01T00:00:00Z"),
+            $lt: ISODate("2022-02-01T00:00:00Z")
+          }
+        }
+      },
+      {
+        $unwind: "$items"                             // flatten the array so each item is a document for the next stage
+      },
+      {
+        $project: {                                   // calculate revenue for by each item
+          customer_id: 1,
+          revenue: { $multiply: [ "$items.quantity", "$items.price" ] }
+        }
+      },
+      {
+        $group: {                                     // group documents by customer _id and calculate the total revenue generated by each customer
+          _id: "$customer_id",
+          total_revenue: { $sum: "$revenue" }
+        }
+      },
+      {                                               // sort the result
+        $sort: {
+          total_revenue: -1
+        }
+      }
+    ])
+    
+    
+    
+    
+    // mongoexport mongoimport utilities
+    $ mongoexport --collection <collection> --db <database> --out <outFile> [options] <connectionString>
+        [options]
+          --type=json|csv       (json default)
+    
+    $ mongoimport [options] <connectionString> <filePath>
+        [options]
+          --collections <collection>
+          --db <db>
+    
+    
+    
+    
+?????????????????????????????????????????????????????????????????????????????????????????????
+WRITE DOWN WHAT YOU DON'T UNDERSTAD OR MUST BE TESTED AS QUESTIONS HERE
+?????????????????????????????????????????????????????????????????????????????????????????????
+    - to which depth can I nest documents in BJSON document?
+        - no there's a 100 level limit on nested object and 16MB on the document size
+        
+    
+    
+    
+    - what about authentication?
+    
+    
+    
+    - regex filter?
+    
+    
+    
+    - how to get type?
+    
+    
+    
+    - $cmp operator -> aggregation stuff
+    
+    
+    
+    - what is a view?
+    
+    
+-->
+
+
+
+
+
+
+
+
+<!--
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+db.<collection>.find(<filter:obj>, <projection:obj>)
+
+<filter:obj>
+{ <key>: { <operatorExp>, ... } }
+
+{ <key>: <val>, ...}
+{ <key>: { $eq: <val>|[<val>, ...] } }
+{ <key>: { $ne: <val>|[<val>, ...] } }    // matches all that are not equal
+
+{ <key:arr>: { $in: [<val>, ...] } }      // matches any of the listed <val>
+{ <key:arr>: { $nin: [<val>, ...] } }     // matches any other that is not listed <val>
+
+{ <key>: { $lt: <val:nr> } }              // lower than
+{ <key>: { $lte: <val:nr> } }             // lower or equal than
+{ <key>: { $gt: <val:nr> } }              // greater than
+{ <key>: { $gte: <val:nr> } }             // greater or equal than
+
+{ <key>: { $exists: 1 } }                 // key exists
+{ <key>: { $regex: <regExp> } }           // key have regex matched value
+
+// logical operators
+{ $or: [{ <key>: <val|operatorExp> }, ...] }          // matches if any of the listed condition is true
+{ $and: [{ <key>: <val|operatorExp> }, ...] }         // matches if all of the listed conditions are true
+{ <key>: { $not: <regExp|operatorExp>} }                 // matches if NOT <val>
+{ $nor: [{ <key>: <val|operatorExp> }, ...] }         // matches if all of the listed conditions are NOT true
+
+
+// nested query
+test_db> db.c1.find({ "parent.nest": 2 })                     // string required
+
+// <projection:obj>
+{ <key>: 1|-1, ...}     indlude (1) / exclude (-1) field
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+<!--
+[ DO THIS AT THE END ]
+// authentication: https://www.geeksforgeeks.org/how-to-enable-authentication-on-mongodb/?ref=lbp
+    - disabled by default
+    
+    - we have to create 
+    
+    
+    -- admin roles
+        userAdminAnyDatabase: full access
+        read: allows the user to read data from a database.
+        readWrite: allows the user to read and write data to a database.
+        dbAdmin: allows the user to perform administrative tasks for a single database, such as creating indexes and viewing statistics.
+        userAdmin: allows the user to manage users and roles for a single database.
+        clusterAdmin: allows the user to perform administrative tasks for a cluster, such as adding and removing shards and viewing diagnostic information.
+        backup: allows the user to perform backups of a cluster.
+        restore: allows the user to restore backups of a cluster.
+    
+
+
+
+-->
+
+
+  <pre class="cmd">
+    test> show dbs                    // list all databases
+        admin     40.00 KiB
+        config   108.00 KiB
+        local     40.00 KiB
+        test_db  112.00 KiB
+    
+    test> use test_db                 // -! the database doesn't need to exist (on document/collection insertion MongoDB creates the new database)
+        switched to db local 
+    
+    test_db> show collections             // displays all the collections in the current db
+    
+    test_db> db.createCollection('c1')    // creates the <mark>c1</mark> collections <u>(and the database)</u>
+        { ok: 1 }
+    
+    test_db> db.createCollection('c2')    // creates the <mark>c2</mark> collections
+        { ok: 1 }
+    
+    test_db> show collections
+        c1
+        c2
+    
+    test_db> db.c1.drop()                 // deletes the <mark>c1</mark> collection
+        tru
+    
+    test_db> show collections
+        c1
+    
+    test_db> db.dropDatabase()            // deletes this database (notice how the selected database is still <mark>test_db</mark> but it doesn't exist already)
+        { ok: 1, dropped: 'test_db' }
+    
+    test_db> show databases
+        admin     40.00 KiB
+        config   108.00 KiB
+        local     40.00 KiB
+    
+    
+// insert documents ---------------------
+    test_db> db.c1.insertOne({ name: 'Pall', rank: 10 })              // insert one document
+        // ...
+    
+    test_db> db.c1.insertMany([{ name: 'Bob', rank: 7 }, { name: 'Sally', rank: 7.5 }])   // insert multiple documents
+        // ...
+    
+    
+// get documents ---------------------
+    test_db> db.c1.find()                                                 // returns all documents <u>(pages by 20)</u> in collection <mark>c1</mark>
+        { _id: ObjectId('666efb6fd107cf595f173d77'), name: 'Pall', rank: 10 },    
+        // ...
+    
+    test_db> db.c1.find({ rank: 7 })                                                 // returns all documents <u>(pages by 20)</u> where the document has the <mark>rank: 7</mark> key / value pair
+        // ...
+    
+    test_db> db.c1.find({ rank: 7 })                                                 // returns all documents <u>(pages by 20)</u> where the document has the <mark>rank: 7</mark> key / value pair
+        // ...
+    
+    test_db> db.c1.find({ rank: 7 }, { name: 1 })                                    // same as above but the returned documens will have only the name property 
+        // ...
+    
+    test_db> db.c1.findOne({ rank: 7 }, { name: 1 })                                 // does the same as <mark>find()</mark> but returns the 1st found document
+        // ...
+    
+    
+    
+// delete documents ---------------------
+    test_db> db.c1.deleteMany({ animal: 'dog', age: 1 })                // deletes all documents having <mark>{ animal: 'dog', age: 1 }</mark>
+        // ...
+    
+    test_db> db.c1.deleteOne({ animal: 'dog', age: 1 })                // deletes the first found document having <mark>{ animal: 'dog', age: 1 }</mark>
+        // ...
+  </pre>
+
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+
+
+  <h2 class="headerExtra"><u> Title 1 </u></h2>
+  <h2 class="header"> Title 1.1 </h2>
+  <h3 class="header"> Title 1.1.1 </h3>
+  <h4 class="header"> Title 1.1.1.1 </h4>
+  <p> - stuff to learn <mark>syntax or command (or some tchnical stuff)</mark> bla bla bla </p>
+  <p> - stuff to learn <mark class="mark">highlights like file names and other things</mark> bla bla bla </p>
+  <p style="text-decoration:underline;"> - important information is underlined </p>
+  <p style="color:yellow;"> - very important information is written with yellow colors </p>
+  <p style="background-color:yellow;"> - highly important information has yellow background color </p>
+  <div style="background-color:red;">
+    <p> - red background block means not learned or not tested information! </p>
+    <p> - </p>
+  </div>
+
+  <pre class="syntax">
+    <reqval>required value </reqval>
+    <optval>optional value </optval>
+    <lit>literally used </lit>
+    <opt>optionally used </opt>
+  
+    <prot style="color:#049500;">prototype chain</prot>
+        
+    <span class="openable"> this is an openable element<div>
+        <p> - openable elements listed here in paragraphs </p>
+        <p> - </p>
+    </div></span>
+    </pre>
+
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <pre>
+    examples of the current lessons 
+    
+// -----------------------------------------
+
+// -----------------------------------------
+    </pre>
+  </details>
+
+  <pre class="cmd">
+    command line demo 
+    </pre>
+  <pre class="formula">
+    formula code (like conversion meter...)
+    </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> example title </u></h4>
+    <p> - live tests will come here </p>
+    <details>
+      <summary> CODE : </summary>
+      <pre>
+    copy of the exaple code 
+        </pre>
+    </details>
+  </details>
+  <!---------------------------------------------------------------------------------------------------------------------------------->
+  <hr>
+
+  <h2 class="test" style=""><a href="TEST/index.html"> TEST > </a></h2>
+
+
+  <br><br>
+</body>
+
+</html>

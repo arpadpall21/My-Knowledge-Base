@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Data Types </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Data Types </h1>
+  <p> Updated ( 2024-06-22 ) </p>
+  <nav class="sitenav">
+    <a href="../../../index.html">MySite></a>
+    <a href="../../index.html" title="Learn WebDesign">Databases></a>
+    <a href="../index.html" title="Learn WebDesign">MongoDB></a> Data Types
+  </nav>
+  <table class="table">
+    <tr>
+      <th style="width:10%;"> Data Type </th>
+      <th style="width:30%;"> Syntax </th>
+      <th style="width:30%;"> Example </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td>
+        object
+      </td>
+      <td>
+        { <reqval>key</reqval>: <reqval>val</reqval><optval>, ...</optval> }
+      </td>
+      <td>
+        { some_key: 'Hello World!'}
+      </td>
+      <td>
+        - object, documents can contain nested object (as deep as we like)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        array
+      </td>
+      <td>
+        [<reqval>val</reqval><optval>, ...</optval>]
+      </td>
+      <td>
+        ['Hello World!', 32.3]
+      </td>
+      <td>
+        - array
+      </td>
+    </tr>
+    <tr>
+      <td>|</td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td>
+        string
+      </td>
+      <td>
+        <reqval>string</reqval>
+      </td>
+      <td>
+        'Hello World!' <br>
+        "Hello World!"
+      </td>
+      <td>
+        - strings are UTF-8 encoded (enclosed with single or double quotes) <br>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        boolean
+      </td>
+      <td>
+        <reqval>bool</reqval>
+      </td>
+      <td>
+        true | false
+      </td>
+      <td>
+        - boolean
+      </td>
+    </tr>
+    <tr>
+      <td>
+        null
+      </td>
+      <td>
+        null
+      </td>
+      <td>
+        null
+      </td>
+      <td>
+        - null
+      </td>
+    </tr>
+    <tr>
+      <td>|</td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td>
+        integer 32bit<br>
+        integer 64bit
+      </td>
+      <td>
+        <reqval>int</reqval>
+      </td>
+      <td>
+        98375987354
+      </td>
+      <td>
+        - integer 32 or 64 bits <br>
+        - we don't have to define the type, MongoDB automatically figures out the appropriate type (depending the integer size)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        decimal
+      </td>
+      <td>
+        NumberDecimal('<reqval>dec</reqval>')
+      </td>
+      <td>
+        NumberDecimal('423.12')
+      </td>
+      <td>
+        - decimal stored as 128 bits (precise up to 34 digits)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        dobule float
+      </td>
+      <td>
+        <reqval>float</reqval>
+      </td>
+      <td>
+        123.123
+      </td>
+      <td>
+        - 64 bits floating point
+      </td>
+    </tr>
+    <tr>
+      <td>|</td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td>
+        date
+      </td>
+      <td>
+        Date() (date string) <br>
+        new Date() (date object) <br>
+        new Date('<reqval>YYYY-mm-dd></reqval>) <br>
+        new Date('<reqval>YYYY-mm-dd</reqval>T<reqval>HH:MM:ss</reqval>') (local) <br>
+        new Date('<reqval>YYYY-mm-dd</reqval>T<reqval>HH:MM:ss</reqval>Z") (UTC) <br>
+        new Date(<reqval>int</reqval>) (milliseconds since Jan 1, 1970)
+      </td>
+      <td>
+        Date() <br>
+        new Date() <br>
+        new Date('2024-06-22') <br>
+        new Date('2024-06-22T06:39:52') <br>
+        new Date('2024-06-22T06:39:52Z') <br>
+        new Date(1719031221324)
+      </td>
+      <td>
+        - date object <u>(UTC date)</u>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        timestamp
+      </td>
+      <td>
+        new Timestamp(<reqval>sec:int</reqval>, <reqval class="openable">incr:int<div>
+          <p> - increment, unique identifier for this timestamp </p>
+        </div></reqval>)
+      </td>
+      <td>
+        new Timestamp(1719031221, 1)
+      </td>
+      <td>
+        - seconds elapsed since since Jan 1, 1970
+      </td>
+    </tr>
+    <tr>
+      <td>|</td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td>
+        binary data
+      </td>
+      <td>
+        BinData(<a href="https://www.mongodb.com/docs/manual/reference/method/BinData/#mongodb-method-BinData" target="_blank">subType, buffer</a>)
+      </td>
+      <td>
+        BinData(0, "gf1UcxdHTJ2HQ/EGQrO7mQ==")
+      </td>
+      <td>
+        - binary data
+      </td>
+    </tr>
+    <tr>
+      <td>
+        javaScript code
+      </td>
+      <td>
+        <reqval>jsCode</reqval>
+      </td>
+      <td>
+        function add(a, b) {return a + b}
+      </td>
+      <td>
+        - javascript code
+      </td>
+    </tr>
+    <tr>
+      <td>
+        regular expression
+      </td>
+      <td>
+        new RegExp('<reqval>pattern</reqval>'<optval>, 'flag'</optval>) <br>
+        <reqval>regExp</reqval>
+      </td>
+      <td>
+        new RegExp('^A.*', 'm') <br>
+        /^A.*/m
+      </td>
+      <td>
+        - regular expression
+      </td>
+    </tr>
+    <tr>
+      <td>|</td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td>
+        object id
+      </td>
+      <td>
+        ObjectId(<optval>'hex'</optval>)
+      </td>
+      <td>
+        ObjectId()
+      </td>
+      <td>
+        - used to uniquely identify a document 
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  
+  
+  <br><br>
+</body>
+
+</html>

@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title> Operators </title> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../../Assets/stylesPages.css"> 
-    <script src="../../../Assets/scriptPages.js"></script>
+  <meta charset="utf-8">
+  <title> Operators </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
 </head>
+
 <body>
-<h1> Operators </h1>
-    <p> Updated ( 2020-09-03 / 2020-09-24 )</p>
+  <h1> Operators </h1>
+  <p> Updated ( 2020-09-03 / 2020-09-24 )</p>
   <p class="sitenav"> <a href="../../../index.html">MySite></a>
     <a href="../../index.html" title="Learn WebDesign">Databases></a>
     <a href="../index.html" title="Learn WebDesign">MySQL></a> Operators
   </p>
-<h2 style="color:green;"><u> Notes : </u></h2>
-    <details class="example" id="notes">
+  <h2 style="color:green;"><u> Notes : </u></h2>
+  <details class="example" id="notes">
     <summary> Notes :</summary>
-        <p> - I did not tested bitwise opperators, I don't see the real use of them [2020-09-03] </p>
-    </details>
-<h2 style="color:green;"><u> Useful Links : </u></h2>
-    
-<h2 style="color:green;"><u> Remember This : </u></h2>
-    
-<h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-    <p> - MySQL Operators can be used in expressions </p>
-<hr>
-<!---------------------------------------------------------------------------------------------------------->
-<h2 style="color:darkblue;"><u> Assignement Operators </u></h2>
-    <pre class="syntax">
+    <p> - I did not tested bitwise opperators, I don't see the real use of them [2020-09-03] </p>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - MySQL Operators can be used in expressions </p>
+  <hr>
+  <!---------------------------------------------------------------------------------------------------------->
+  <h2 style="color:darkblue;"><u> Assignement Operators </u></h2>
+  <pre class="syntax">
     <strong>var</strong> =|:= <strong>val</strong>                                                               // assigns a value to a variable 
     </pre>
-<details class="example"> 
-<summary> DEMO </summary>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre class="cmd">
 // User-Defined Variable --------------------------------------------------------------
     mysql> SET @myVar_1 = 11;
@@ -47,10 +49,10 @@
     mysql> SET @@global.log_bin_trust_function_creators = 1;
     mysql> SET @@global.log_bin_trust_function_creators := 0;
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> TEST </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> TEST </u></h4>
     <pre class="cmd">
 // User-Defined Variable -------------------------------------------------------------
     mysql> SET @myVar_1 = 11;
@@ -110,11 +112,11 @@
     +---------------------------------+-------+
     1 row in set (0.00 sec)
     </pre>
-</details>
-<hr>
-<!---------------------------------------------------------------------------------------------------------->
-<h2 style="color:darkblue;"><u> Arithmetic Operators </u></h2>
-    <pre class="syntax">
+  </details>
+  <hr>
+  <!---------------------------------------------------------------------------------------------------------->
+  <h2 style="color:darkblue;"><u> Arithmetic Operators </u></h2>
+  <pre class="syntax">
     <strong>nr</strong> + <strong>nr</strong>                                                                    // add 
     <strong>nr</strong> - <strong>nr</strong>                                                                    // subtract
     <strong>nr</strong> * <strong>nr</strong>                                                                    // multiply
@@ -122,8 +124,8 @@
     <strong>nr</strong> DIV <strong>nr</strong>                                                                  // divide integer (ignores decimals)
     <strong>nr</strong> %|MOD <strong>nr</strong>                                                                // modulo division (division remainder) 
     </pre>
-<details class="example">
-<summary> DEMO </summary>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre class="cmd">
                                                                                        // results are returned in a table record  
     mysql> SELECT 1.32 + 2.21;                                                         // -> 3.53
@@ -139,10 +141,10 @@
     mysql> SELECT % % 6;                                                               // -> 3 
     mysql> SELECT % MOD 6;                                                             // -> 3 
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> TEST </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> TEST </u></h4>
     <pre class="cmd">
     mysql> SELECT 1.51 + 1.747 AS Add_result;
     +------------+
@@ -200,20 +202,20 @@
     +---------------+
     1 row in set (0.00 sec)
     </pre>
-</details>
-<hr>
-<!---------------------------------------------------------------------------------------------------------->
-<h2 style="color:darkblue;"><u> Comparison Operators </u></h2>
-    <p> - there's no data type checking </p>
-    <pre class="syntax">
+  </details>
+  <hr>
+  <!---------------------------------------------------------------------------------------------------------->
+  <h2 style="color:darkblue;"><u> Comparison Operators </u></h2>
+  <p> - there's no data type checking </p>
+  <pre class="syntax">
     <strong>val</strong> = <strong>val</strong>                                                                  // returns true if both values are equal (returns <mark>NULL</mark> if one or both operands are <mark>NULL</mark>)  
     <strong>val</strong> &lt;=&gt; <strong>val</strong>                                                                // returns true if both values are equal (returns false if one operand is <mark>NULL</mark> | returns true if both operands are <mark>NULL</mark>) <u>(NULL safe comparison)</u>    
     <strong>val</strong> LIKE <strong>val|pattern</strong>                                                       // returns true if both values are equal (returns <mark>NULL</mark> if one or both operands are <mark>NULL</mark>)  
-                                                                                  does the same as (<mark>=</mark>) but also accept patterns on its right side (wildcards can be used in patterns)    
+                                                                                  // does the same as (<mark>=</mark>) but also accept patterns on its right side (wildcards can be used in patterns)    
     
     <strong>val</strong> &lt;&gt;|!= <strong>val</strong>                                                              // returns true if values are different (returns <mark>NULL</mark> if one or both operands are <mark>NULL</mark>)    
     <strong>val</strong> NOT LIKE <strong>val|pattern</strong>                                                   // returns true if values are different (returns <mark>NULL</mark> if one or both operands are <mark>NULL</mark>)    
-                                                                                  does the same as (<mark>!=</mark> OR <mark>&lt;&gt;</mark>) but also accept patterns on its right side (wildcards can be used in patterns)    
+                                                                                  // does the same as (<mark>!=</mark> OR <mark>&lt;&gt;</mark>) but also accept patterns on its right side (wildcards can be used in patterns)    
     
     
     <strong>nr</strong> > <strong>nr</strong>                                                                    // returns true if the left operand is bigger than the right one (returns <mark>NULL</mark> if one or both operands are <mark>NULL</mark>)    
@@ -223,8 +225,8 @@
     <strong>nr</strong> &lt; <strong>nr</strong>                                                                    // returns true if the left operand is smaller than the right one (returns <mark>NULL</mark> if one or both operands are <mark>NULL</mark>)    
     <strong>nr</strong> &lt;= <strong>nr</strong>                                                                   // returns true if the left operand is smaller or equal than the right one (returns <mark>NULL</mark> if one or both operands are <mark>NULL</mark>)    
     </pre>
-<details class="example">
-<summary> DEMO </summary>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre class="cmd">
                                                                                        // results are returned in a table record  
 // = / &lt;=&gt; / LIKE (equal) -------------------------------------------------------------
@@ -266,10 +268,10 @@
     mysql> SELECT 9.99 &lt;= 10.1;                                                        // -> true
     mysql> SELECT 10.1 &lt;= 10.1;                                                        // -> true
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> TEST </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> TEST </u></h4>
     <pre class="cmd">
 // = ---------------------------------------------------------------------------------
     mysql> SELECT '2' = 2;
@@ -419,9 +421,9 @@
     +-----------+
     1 row in set (0.00 sec)
     </pre>
-<hr>
-<!---------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>LIKE</mark> / <mark>NOT LIKE</mark> TEST </u></h4>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>LIKE</mark> / <mark>NOT LIKE</mark> TEST </u></h4>
     <pre class="cmd">
 // LIKE -------------------------------------------------------------------------------
     mysql> SELECT 2 LIKE 2;
@@ -453,11 +455,11 @@
     
     
     </pre>
-</details>
-<hr>
-<!---------------------------------------------------------------------------------------------------------->
-<h2 style="color:darkblue;"><u> Logical Operators </u></h2>
-    <pre class="syntax">
+  </details>
+  <hr>
+  <!---------------------------------------------------------------------------------------------------------->
+  <h2 style="color:darkblue;"><u> Logical Operators </u></h2>
+  <pre class="syntax">
     <strong>cond</strong> AND|&& <strong>cond</strong>                                                           // returns true if both conditions are true    
     <strong>cond</strong> OR||| <strong>cond</strong>                                                            // returns true if one or both conditions are true    
     NOT|! <strong>cond</strong>                                                                 // returns true if the condition is false     
@@ -496,8 +498,8 @@
         <p> - must return a table with <u>one</u> column containing one or multiple values </p>
     </div></span> are compared true against the expression or current column value (<strong>col</strong>)    
     </pre>
-<details class="example">
-<summary> DEMO </summary>
+  <details class="example">
+    <summary> DEMO </summary>
     <pre class="cmd">
 // AND | OR | NOT | XOR ---------------------------------------------------------------// results are returned in a table record 
     mysql> SELECT 1 AND 1;                                                             // -> true
@@ -539,10 +541,10 @@
     
     mysql> SELECT 10 &lt; ALL(SELECT col1 FROM Numbers);                                  // -> true        // all 'Numbers.col1' records are bigger than 10   
     </pre>
-</details>
-<details class="example">
-<summary> Example : </summary>
-<h4 style="color:darkblue;"><u> <mark>AND</mark> / <mark>OR</mark> / <mark>NOT</mark> / <mark>XOR</mark> operators TEST </u></h4>
+  </details>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 style="color:darkblue;"><u> <mark>AND</mark> / <mark>OR</mark> / <mark>NOT</mark> / <mark>XOR</mark> operators TEST </u></h4>
     <pre class="cmd">
     mysql> SELECT * FROM Students;
     +------------+------------+-----------+
@@ -673,9 +675,9 @@
     +----------+
     1 row in set (0.00 sec)
     </pre>
-<hr>
-<!---------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>IN()</mark> operator TEST </u></h4>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>IN()</mark> operator TEST </u></h4>
     <pre class="cmd">
     mysql> SELECT * FROM Students;
     +------------+------------+-----------+
@@ -715,9 +717,9 @@
         ->     SELECT MAX(student_id) FROM Students
         -> );
     </pre>
-<hr>
-<!---------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>BETWEEN</mark> operator TEST </u></h4>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>BETWEEN</mark> operator TEST </u></h4>
     <pre class="cmd">
     mysql> SELECT * FROM Students;
     +------------+------------+-----------+---------------------+
@@ -805,9 +807,9 @@
     +------------+------------+-----------+---------------------+
     7 rows in set (0.00 sec)
     </pre>
-<hr>
-<!---------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>EXISTS</mark> / <mark>NOT EXISTS</mark> operator TEST </u></h4>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>EXISTS</mark> / <mark>NOT EXISTS</mark> operator TEST </u></h4>
     <pre class="cmd">
     mysql> SELECT * FROM Students;
     +------------+------------+-----------+---------------------+
@@ -871,9 +873,9 @@
     +------------+------------+-----------+---------------------+
     8 rows in set (0.00 sec)
     </pre>
-<hr>
-<!---------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>ANY</mark> / <mark>ALL</mark> operators TEST </u></h4>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>ANY</mark> / <mark>ALL</mark> operators TEST </u></h4>
     <pre class="cmd">
     mysql> SELECT * FROM test_1;
     +------+
@@ -931,9 +933,9 @@
     +------+
     2 rows in set (0.00 sec)
     </pre>
-<hr>
-<!---------------------------------------------------------------------------------------------------------->
-<h4 style="color:darkblue;"><u> <mark>ANY</mark> / <mark>ALL</mark> operators TEST-2 </u></h4>
+    <hr>
+    <!---------------------------------------------------------------------------------------------------------->
+    <h4 style="color:darkblue;"><u> <mark>ANY</mark> / <mark>ALL</mark> operators TEST-2 </u></h4>
     <pre class="cmd">
     mysql> TABLE Students;
     +------------+------------+-----------+
@@ -989,7 +991,8 @@
     |         13 | Marton     | Aron      |
     +------------+------------+-----------+
     </pre>
-</details>
-    <br><br>
+  </details>
+  <br><br>
 </body>
+
 </html>

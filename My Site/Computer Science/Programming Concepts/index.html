@@ -47,20 +47,15 @@
   <h2 class='headerExtra'> Programming Principles </h2>
   <h2 class='header'> The SOLID principle </h2>
   <p> Ojbect Oriented Programming principle : </p>
-  <p style='text-indent:30px;'> - <b>S</b>ingle Responsibility Principle (a Class hould have only one respoinsibility)
-  </p>
-  <p style='text-indent:30px;'> - <b>O</b>pen for extension but closed for modification (a Class should be open for
-    extension but closed for modification) </p>
-  <p style='text-indent:30px;'> - <b>L</b>iskov Substitution (a Class should be able to replace any of its superclasses
-    without breaking the program, we should never modify inherited stuff) </p>
-  <p style='text-indent:30px;'> - <b>I</b>nterface Segregation (interfaces should be split so implemented clients don't
-    implement functions that they don't need) </p>
+  <p style='text-indent:30px;'> - <b>S</b>ingle Responsibility Principle (a Class hould have only one respoinsibility) </p>
+  <p style='text-indent:30px;'> - <b>O</b>pen for extension but closed for modification (a Class should be open for extension but closed for modification) </p>
+  <p style='text-indent:30px;'> - <b>L</b>iskov Substitution (a Class should be able to replace any of its superclasses without breaking the program, we should never modify inherited stuff) </p>
+  <p style='text-indent:30px;'> - <b>I</b>nterface Segregation (interfaces should be split so implemented clients don't implement functions that they don't need) </p>
   <p style='text-indent:30px;'> - <b>D</b>ependency Inversion (modules should be losely coupled, between two couple modules should be an adapter layer so they are not dependent on each other) </p>
   <hr>
   <!-------------------------------------------------------------------------->
   <h2 class='header'> The KISS principle </h2>
-  <p> - <b>K</b>eep <b>I</b>tt <b>S</b>imple and <b>S</b>tupid (keep the code base as simple as possible, no need for
-    any fancy unnecessary stuff!) </p>
+  <p> - <b>K</b>eep <b>I</b>tt <b>S</b>imple and <b>S</b>tupid (keep the code base as simple as possible, no need for any fancy unnecessary stuff!) </p>
   <hr>
   <!-------------------------------------------------------------------------->
   <h2 class='header'> The DRY principle </h2>
@@ -69,8 +64,7 @@
   <!-------------------------------------------------------------------------->
   <h2 class='header'> Composition over Inheritance </h2>
   <p> - with inheritance we create objects bases on what <b>they are</b> </p>
-  <p> - with composition we create objects based on what <b>they do</b> (we are composing objects based on what they need
-    to do)</p>
+  <p> - with composition we create objects based on what <b>they do</b> (we are composing objects based on what they need to do)</p>
   <p> - with the composition principle we only implement functionalities that the object needs </p>
   <details class="example">
     <summary> DEMO </summary>
@@ -237,6 +231,22 @@
         pass
     </pre>
   </details>
+  <hr>
+  <!-------------------------------------------------------------------------->
+  <h2 class='header'> ACID Database Properties </h2>
+  <p> - These database properties are ensure that database transactions are processed reliably </p>
+  <p class="indent-lv1"> - <b>A</b>tomicity - the transaction is fully happening or not happening at all </p>
+  <p class="indent-lv1"> - <b>C</b>onsistency - data change is permantent and can be changed only in the allowed way </p>
+  <p class="indent-lv1"> - <b>I</b>solation - concurrent transactions are isolated from each other (no dirty reads) </p>
+  <p class="indent-lv1"> - <b>D</b>urability - transactions are permanent, even on system failure (written in non volatile memory) </p>
+  <hr>
+  <!-------------------------------------------------------------------------->
+  <h2 class='header'> CAP Distributed System Theorem </h2>
+  <p> - in a distributed system simultaneously we can only garantee 2 at the expence of 1 of these properties </p>
+  <p> - for example, a system that prioritizes availability and partition tolerance may experience data inconsistencies across nodes </p>
+  <p class="indent-lv1"> - <b>C</b>onsistency - all nodes store and return the same data at the same time </p>
+  <p class="indent-lv1"> - <b>A</b>vailability - every request returns response, even if some nodes are down or network failure </p>
+  <p class="indent-lv1"> - <b>P</b>artition Tollerance - the system continues to function, even if some nodes are down or network failure </p>
 
 
   <br><br>

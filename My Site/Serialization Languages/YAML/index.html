@@ -27,9 +27,9 @@
   <h2 style="color:green;"><u> Remember This : </u></h2>
 
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
-  <p> - YAML stands for (YAML Ain't Markup Languate), the file extenssion can be <mark>.yml</mark> or <mark>.yaml</mark> </p>
-  <p> - yaml uses indentations to separate code blocks (like Python does) </p>
-  <p> - yaml files are commonly used by DevOps tools, because they have an easy to read syntax </p>
+  <p> - YAML stands for (YAML Ain't Markup Language), the file extenssion can be <mark>.yml</mark> or <mark>.yaml</mark> </p>
+  <p class="indent-lv1"> - uses indentations to separate code blocks (like Python does) </p>
+  <p class="indent-lv1"> - commonly used by DevOps tools, because they have an easy to read syntax </p>
   <pre class="syntax">
     # <optval>comment</optval>          // comment 
     
@@ -178,7 +178,7 @@
       level: medior
     
 // variable-like approach ------------
-    default_config: &config           //  we are anchoring the all configs & each value individualy
+    default_config: &config           //  we are anchoring all configs & each value individualy
       host: &default_host localhost
       port: &default_port 80
       path: &default_path /

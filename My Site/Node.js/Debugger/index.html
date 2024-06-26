@@ -14,13 +14,13 @@
 
 <body>
   <h1> Debugger </h1>
-  <p> Updated ( 2019-08-06 / 2024-06-114 )</p>
+  <p> Updated ( 2019-08-06 / 2024-06-14 )</p>
   <p class="sitenav"> <a href="../../index.html">MySite></a>
     <a href="../index.html">Node.js></a> Debugger
   </p>
   <table class="table">
     <tr>
-      <th> Command </th>
+      <th style="width:30%;"> Command </th>
       <th> Description </th>
     </tr>
     <tr>
@@ -40,26 +40,25 @@
       <td></td>
     </tr>
     <tr>
+      <td> exec <strong>exp</strong> </td>
+      <td>
+        - executes an expression
+      </td>
+    </tr>
+    <tr>
+      <td> repl </td>
+      <td>
+        - opens the repl
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td> cont | c </td>
       <td>
         - continue program execution
-      </td>
-    </tr>
-    <tr>
-      <td> kill </td>
-      <td>
-        - kills the <u>script</u> (not debugger exit)
-      </td>
-    </tr>
-    
-    
-    
-    
-    
-    <tr>
-      <td> next | n </td>
-      <td>
-        - step next line <u>without executing it</u>
       </td>
     </tr>
     <tr >
@@ -68,7 +67,17 @@
         - step next line <u>by executing it</u>
       </td>
     </tr>
-    <tr >
+    <tr>
+      <td> next | n </td>
+      <td>
+        - step next line <u>without executing it</u>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
       <td> out | o </td>
       <td>
         - step out current stack frame (exit function)
@@ -79,19 +88,10 @@
       <td></td>
     </tr>
     <tr>
-      <td>|</td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td> exec <strong>exp</strong> </td>
+      <td> kill </td>
       <td>
-        - executes an expression
+        - kills the <u>script</u> (not debugger exit)
       </td>
-    </tr>
-    <tr>
-      <td>|</td>
-      <td></td>
     </tr>
     <tr>
       <td> restart </td>
@@ -99,13 +99,11 @@
         - restart the script
       </td>
     </tr>
-    <tr class="15.04">
-      <td> repl </td>
-      <td>
-        - opens the repl
-      </td>
+    <tr>
+      <td>|</td>
+      <td></td>
     </tr>
-    <tr class="20.01">
+    <tr>
       <td> <a href="https://nodejs.org/dist/latest-v19.x/docs/api/debugger.html#command-reference" target="_blank">
           other commands </a></td>
       <td>

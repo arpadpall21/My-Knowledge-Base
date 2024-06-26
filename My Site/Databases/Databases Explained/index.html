@@ -4,8 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title> Databases Explained </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../../Assets/stylesPages.css">
   <script src="../../Assets/scriptPages.js"></script>
@@ -25,44 +24,43 @@
   <h2 style="color:green;"><u> Useful Links : </u></h2>
 
   <h2 style="color:green;"><u> Remember This : </u></h2>
-  <p> - NoSQL is faster and suited better for large data bases VS SQL is better for smaller databases and has strong
-    legacy </p>
+  <p> - NoSQL is faster and suited better for large data bases VS SQL is better for smaller databases and has strong legacy </p>
   <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
   <p> - the <b>Database</b> is a collection of sturctured (or semi-structured) data </p>
-  <p> - the <b>DBMS</b> (<b>D</b>ata<b>b</b>ase <b>M</b>anagement <b>S</b>ystem) is a system which accesses and manages
-    the data stored in the database </p>
+  <p> - the <b>DBMS</b> (<b>D</b>ata<b>b</b>ase <b>M</b>anagement <b>S</b>ystem) is a system which accesses and manages the data stored in the database </p>
   <p> - a <b>database system or (database in short)</b> = <span style="background-color:lightslategray">data</span> +
-    <span style="background-color:lightslategray">DBMS</span> + <span
-      style="background-color:lightslategray">application</span>
+    <span style="background-color:lightslategray">DBMS</span> + <span style="background-color:lightslategray">application</span>
   </p>
   <p> - <b>MySQL, MongoDB, etc...</b> are basically database servers, they manage their own data </p>
-  <p> - we can connect to these DB servers and communicate with them through <u>database query languages (SQL or
-      NoSQL)</u> </p>
-  <p> - <b>ACID</b> concept is a set of properties that the database transation intended to guarantee data validity
-    despite errors, power failures, and other mishaps: </p>
-  <p style="text-indent: 30px;"> <b>A</b>tomicity - the transaction is fully happening or not happening at all </p>
-  <p style="text-indent: 30px;"> <b>C</b>onsistency - data can be changed only in the allowed way </p>
-  <p style="text-indent: 30px;"> <b>I</b>solation - one transaction are happening sequentially (no dirty reads) </p>
-  <p style="text-indent: 30px;"> <b>D</b>urability - ensures that the transaction is permanently happened even in system
-    failure (written in non volatile memory) </p>
+  <p> - we can connect to these DB servers and communicate with them through <u>database query languages (SQL or NoSQL)</u> </p>
+  <hr>
+  <!--------------------------------------------------------------------------------------------------->
+  <h2 class="header"> Cursor </h2>
+  <p> - it's a session a temporary work area created in memory, its used to retrieve data from the database chunk by chunk in sequential manner </p>
+  <p> - same principal as video streaming, we only have the current portion what we watch not the whole video is downloaded </p>
+  <hr>
+  <!--------------------------------------------------------------------------------------------------->
+  <h2 class="header"> Indexing </h2>
+  <p> - indexes are basically pointers to database records (ex: an SQL table that stores 100000 records an index points directly to the queried record(s) instead of searching through all of them) </p>
+  <p> - indexes significantly increase the READ performance but at the expese of CREAD, UPDATE, DELETE performance because indexes must be processed and maintained by the database </p>
+  <p> Index types: </p>
+  <p class="indent-lv1"> - <mark class="mark">default index</mark> - indexes records, so the lookup and sort operations are much faster </p>
+  <p class="indent-lv1"> - <mark class="mark">full-text index</mark> - indexes full text, so searching in the text is much faster </p>
   <hr>
   <!--------------------------------------------------------------------------------------------------->
   <h2 class="headerExtra"><u> Relational Database VS Document-Oriented Database </u></h2>
   <h2 style="color:darkblue;"><u> Data Storage Structure </u></h2>
-  <p> - in <b><u>Relational Databases</u></b> the data is stored in tables, hence the name 'structured' (all rows in the
-    table must have follow the same schema) </p>
+  <p> - in <b><u>Relational Databases</u></b> the data is stored in tables, hence the name 'structured' (all rows in the table must have follow the same schema) </p>
   <p style="text-indent:25px;"> - every table must have a primary key that uniquely identifies its row (a record) in the database </p>
   <p style="text-indent:25px;"> - foreign keys in the table reference a primary key in the 'parent' table (this is how the relationship is described between tables) </p>
-  <p> - in <b><u>Document-Oriented Databases</u></b> the data is stored in documents, this model follows an object
-    oriented structure <u>(which is schemaless = data storage model can be structured freely)</u></p>
-  <p style="text-indent:25px;"> - it's a "programing way" to store data, objects have key/value pairs, structured
-    hierarchically and can be easly stretched when needed </p>
+  <p> - in <b><u>Document-Oriented Databases</u></b> the data is stored in documents, this model follows an object oriented structure <u>(which is schemaless = data storage model can be structured freely)</u></p>
+  <p style="text-indent:25px;"> - it's a "programing way" to store data, objects have key/value pairs, structured hierarchically and can be easly stretched when needed </p>
   <img src="Relational VS Document-Oriented DB.jpg" alt="Relational VS Document-Oriented DB" height="300">
   <img src="Relational Database Schema.jpg" alt="Relational Database Schema" height="300">
-    <hr>
+  <hr>
   <!--------------------------------------------------------------------------------------------------->
   <h2 class="header"><u> Relation types between tables in SQL databases </u></h2>
-    <p> - SQL is a 'relational' database system where tables 'relate' to each other, there are 3 main ways how 2 tables can relate to each other </p>
+  <p> - SQL is a 'relational' database system where tables 'relate' to each other, there are 3 main ways how 2 tables can relate to each other </p>
   <p style="text-indent:30px;"> - 1:1 (one to one) one record has relation with only one record in the other table </p>
   <p style="text-indent:30px;"> - 1:M (one to many) one record has relation with many records in the other table </p>
   <p style="text-indent:30px;"> - M:M (many to many) many records have relations with many records in the other table (for this we usually use a Linking table) </p>
