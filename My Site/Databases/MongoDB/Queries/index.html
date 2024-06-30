@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Queries </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Queries </h1>
+  <p> Updated ( 2024-06-26 ) </p>
+  <nav class="sitenav"> <a href="../../../index.html">MySite ></a>
+    <a href="../../index.html" title="Learn WebDesign">Databases ></a>
+    <a href="../index.html" title="Learn WebDesign">MongoDB ></a> Queries
+  </nav>
+
+  <table class="table">
+    <caption>
+      Queries
+    </caption>
+    <tr>
+      <th style="width:30%;"> Method </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.find(<reqval>filterObj</reqval>, <optval class="openable">{ key: 1|0, ... }<div>
+            <p> <mark>Projection</mark> </p>
+            <p> - controlls what fields to include|exclude in the returned documents </p>
+            <p> - <mark>1</mark> - include field</p>
+            <p> - <mark>0</mark> - exclude field</p>
+          </div>
+        </optval>, <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.find/#mongodb-method-db.collection.find" target="_blank">options</a>)
+      </td>
+      <td>
+        - returns a <reqval>cursor</reqval> containing all documents filtered by <reqval>filterObj</reqval> <br>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.findOne(<reqval>filterObj</reqval>, <optval class="openable">{ key: 1|0, ... }<div>
+            <p> <mark>Projection</mark> </p>
+            <p> - controlls what fields to include|exclude in the returned documents </p>
+            <p> - <mark>1</mark> - include field</p>
+            <p> - <mark>0</mark> - exclude field</p>
+          </div>
+        </optval>, <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.find/#mongodb-method-db.collection.find" target="_blank">options</a>)
+      </td>
+      <td>
+        - returns the document filtered by <reqval>filterObj</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.distinct(<reqval>key</reqval>, <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.distinct/#mongodb-method-db.collection.distinct" target="_blank">options</a>)
+      </td>
+      <td>
+        - returns an Array with the distinct values (one of each values for each document)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.insertOne(<reqval>BSON</reqval>, <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.insertOne/#syntax" target="_blank">options</a>)
+      </td>
+      <td>
+        - insert one <reqval>BSON</reqval> document <br>
+        - creates the database and|or the collection if not yet exist <br>
+        - the <mark>_id</mark> unique field is required (but automatically created if we don't add one)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.insertMany([<reqval>BSON</reqval>
+        <optval>, ...</optval>], <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.insertMany/#syntax" target="_blank">options</a>)
+      </td>
+      <td>
+        - insert multiple <reqval>BSON</reqval> documents <br>
+        - creates the database and|or the collection if not yet exist <br>
+        - the <mark>_id</mark> unique field is required for each (but automatically created if we don't add one)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.updateOne(<reqval>filterObj</reqval>, <reqval>updateObj</reqval>, <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.updateOne/#syntax" target="_blank">options</a>)
+      </td>
+      <td>
+        - updates the 1st document filtered by <reqval>filterObj</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.updateMany(<reqval>filterObj</reqval>, <reqval>updateObj</reqval>, <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.updateMany/#syntax" target="_blank">options</a>)
+      </td>
+      <td>
+        - updates all documents filtered by <reqval>filterObj</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.replaceOne(<reqval>filterObj</reqval>, <reqval>BSON</reqval>, <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.replaceOne/#syntax" target="_blank">options</a>)
+      </td>
+      <td>
+        - completely replaces the 1st document filtered by <reqval>filterObj</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.deleteOne(<reqval>filterObj</reqval>, <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteOne/#syntax" target="_blank">options</a>)
+      </td>
+      <td>
+        - deletes the 1st document filtered by <reqval>filterObj</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.deleteMany(<reqval>filterObj</reqval>, <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteMany/#syntax" target="_blank">options</a>)
+      </td>
+      <td>
+        - deletes all documents filtered by <reqval>filterObj</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        db.<reqval>collection.queryCombinationMethod()</reqval>
+      </td>
+      <td>
+        - there are several query methods combining query operations (like <mark>findOneAndUpdate()</mark>) <br>
+        - <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.findAndModify/#db.collection.findandmodify--" target="_blank">[link]</a>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.countDocuments(<reqval>filterObj</reqval>, <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.countDocuments/#syntax" target="_blank">options</a>)
+      </td>
+      <td>
+        - returns the number of documents filtered by <reqval>filterObj</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.estimatedDocumentCount()
+      </td>
+      <td>
+        - return how many doucments are in the current collection (faster than <mark>countDocuments()</mark> because it only counts documents' metadata)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2"> <mark>
+          <reqval>filterObj</reqval>
+        </mark> </td>
+    </tr>
+    <tr>
+      <td>
+        { <reqval>key</reqval>: <reqval>val|operatorExp</reqval>
+        <optval>, ...</optval>}
+      </td>
+      <td>
+        - matches documents where key have <reqval>val</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { <reqval>key</reqval>: { $eq: <reqval>val|[val, ...]</reqval>
+        <optval>, ...</optval> } }
+      </td>
+      <td>
+        - operator expression matches documents where key have <reqval>val</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { <reqval>key</reqval>: { $ne: <reqval>val|[val, ...]</reqval>
+        <optval>, ...</optval> } }
+      </td>
+      <td>
+        - operator matches documents where key don't have <reqval>val</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { <reqval>key</reqval>: { $in: [<reqval>val</reqval>
+        <optval>, ...</optval>] } }
+      </td>
+      <td>
+        - operator matches documents where key have any of the listed <reqval>val</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { <reqval>key</reqval>: { $nin: [<reqval>val</reqval>
+        <optval>, ...</optval>] } }
+      </td>
+      <td>
+        - operator matches documents where key don't have any of the listed <reqval>val</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        { <reqval>key</reqval>: { $exists: 1|0 } }
+      </td>
+      <td>
+        - operator expression matches documents where: <br>
+        - <mark>1</mark> -> have the <reqval>key</reqval> <br>
+        - <mark>0</mark> -> don't have the <reqval>key</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { <reqval>key</reqval>: { $regex: <reqval>regExp</reqval> } }
+      </td>
+      <td>
+        - operator expression matches documents where key values match <reqval>regExp</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { <reqval>key</reqval>: { $not: <reqval>regExp</reqval> } }
+      </td>
+      <td>
+        - operator expression matches documents where key values don't match <reqval>regExp</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        { <reqval>key</reqval>: { $lt: <reqval>val:nr</reqval> } }
+      </td>
+      <td>
+        - operator expression matches documents where the key values are lower <reqval>val</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { <reqval>key</reqval>: { $lte: <reqval>val:nr</reqval> } }
+      </td>
+      <td>
+        - operator expression matches documents where the key values are lower or equal <reqval>val</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { <reqval>key</reqval>: { $gt: <reqval>val:nr</reqval> } }
+      </td>
+      <td>
+        - operator expression matches documents where the key values are greater <reqval>val</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { <reqval>key</reqval>: { $gte: <reqval>val:nr</reqval> } }
+      </td>
+      <td>
+        - operator expression matches documents where the key values are greater or equal <reqval>val</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        { $or: [<lit>{<reqval>key</reqval>: <reqval>val|operatorExp</reqval>}</lit>
+        <optval>, ...</optval>] }
+      </td>
+      <td>
+        - matches documents where any of the listed condition is true
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { $and: [<lit>{<reqval>key</reqval>: <reqval>val|operatorExp</reqval>}</lit>
+        <optval>, ...</optval>] }
+      </td>
+      <td>
+        - matches documents where all of the listed conditions are true
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { $nor: [<lit>{<reqval>key</reqval>: <reqval>val|operatorExp</reqval>}</lit>
+        <optval>, ...</optval>] }
+      </td>
+      <td>
+        - matches documents where all of the listed conditions are false
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2"> <mark>
+          <reqval>updateObj</reqval>
+        </mark> </td>
+    </tr>
+    <tr>
+      <td>
+        { $set: { <reqval>key</reqval>: <reqval>val</reqval>
+        <optval>, ...</optval> } }
+      </td>
+      <td>
+        - sets the key / value pair(s)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { $unset: { <reqval>key</reqval>: 1<optval>, ...</optval> } }
+      </td>
+      <td>
+        - deletes the specified <reqval>key</reqval>(s)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { $setOnInsert: { <reqval>key</reqval>: <reqval>val</reqval>
+        <optval>, ...</optval> } { upsert: 1 } }
+      </td>
+      <td>
+        - only sets the key / value pair(s) on new document creation
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { $rename: { <reqval>key</reqval>: <reqval>newNaem</reqval>
+        <optval>, ...</optval> } }
+      </td>
+      <td>
+        - renames the specified document <reqval>key</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        { $currentDate: { <reqval>key</reqval>: 1|{ $type: 'date|timestamp' }<optval>, ...</optval> } }
+      </td>
+      <td>
+        - inserts the current date (as Date or timestamp data type (Default: Date))
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        { $inc: { <reqval>key</reqval>: <reqval>nr</reqval>
+        <optval>, ...</optval> } }
+      </td>
+      <td>
+        - increment the numerical value by <reqval>nr</reqval> <br>
+        - use negative values to decrement (ex: <mark>{ $inc: { someKey: -1 } }</mark> )
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { $mul: { <reqval>key</reqval>: <reqval>nr</reqval>
+        <optval>, ...</optval> } }
+      </td>
+      <td>
+        - multiplies the targeted field's numerical value by <reqval>nr</reqval> <br>
+        - use decimals for division (ex: <mark>{ $mul: { someKey: 0.5 } }</mark> )
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { $max: { <reqval>key</reqval>: <reqval>nr</reqval>
+        <optval>, ...</optval> } }
+      </td>
+      <td>
+        - only sets the <reqval>key</reqval> numerical value if the original value is smaller than <reqval>nr</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { $min: { <reqval>key</reqval>: <reqval>nr</reqval>
+        <optval>, ...</optval> } }
+      </td>
+      <td>
+        - only sets the <reqval>key</reqval> numerical value if the original value is bigger than <reqval>nr</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        { $set: { '<reqval>key.idx</reqval>': <reqval>val</reqval>
+        <optval>, ...</optval> } }
+      </td>
+      <td>
+        - in an array sets the <reqval>idx</reqval> element to <reqval>val</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { $set: { '<reqval>key.$[]</reqval>': <reqval>val</reqval>
+        <optval>, ...</optval> } }
+      </td>
+      <td>
+        - in an array sets all members to <reqval>val</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { $push: { <reqval>key</reqval>: <reqval>val</reqval>
+        <optval>, ...</optval> } }
+      </td>
+      <td>
+        - in an array pushes <reqval>val</reqval> as last element
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { $pushAll: { <reqval>key</reqval>: { $each: [<reqval>val</reqval>
+        <optval>, ...</optval>] } } }
+      </td>
+      <td>
+        - in an array pushes the listed <reqval>val</reqval>s as last elements
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { $addToSet: { <reqval>key</reqval>: <reqval>val</reqval>
+        <optval>, ...</optval> } }
+      </td>
+      <td>
+        - in an array only pushes <reqval>val</reqval> if not yet exist (as last element)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { $pop: { <reqval>key</reqval>: 1|-1<optval>, ...</optval> } }
+      </td>
+      <td>
+        - from an array removes the <mark>1</mark> last / <mark>-1</mark> first element
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { $pull: { <reqval>key</reqval>: <reqval>val</reqval>
+        <optval>, ...</optval> } }
+      </td>
+      <td>
+        - from an array removes <reqval>val</reqval> (all matching values are removed)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        { $pullAll: { <reqval>key</reqval>: [<reqval>val</reqval>
+        <optval>, ...</optval>] } }
+      </td>
+      <td>
+        - from an array removes the listed <reqval>val</reqval> (all matching values are removed)
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      Cursor
+    </caption>
+    <tr>
+      <th style="width:30%;"> Method </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td>
+        <reqval>cursor</reqval>
+      </td>
+      <td>
+        - in mongo shell when we print the cursor its content is printed <br>
+        - paginated by 20 documents, to see the next page type <mark>it</mark>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <reqval>cursor</reqval>.forEach(<reqval>fn(doc)</reqval>)
+      </td>
+      <td>
+        - iterates over the cursor's document (JavaScirpt style method) <br>
+        - does not return
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <reqval>cursor</reqval>.map(<reqval>fn(doc)</reqval>)
+      </td>
+      <td>
+        - iterates over the cursor's document (JavaScirpt style method <br>
+        - returns a Array according to the callback logic
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <reqval>cursor</reqval>.toArray()
+      </td>
+      <td>
+        - returns all the documents in an Array (loads all the content in memory)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <reqval>cursor</reqval>.next()
+      </td>
+      <td>
+        - returns the next document from the cursor
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <reqval>cursor</reqval>.hasNext()
+      </td>
+      <td>
+        - returns <mark>true</mark> if the cursor can return the next document, otherwise returns <mark>false</mark>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <reqval>cursor</reqval>.sort({ <reqval>key</reqval>: 1|-1<optval>, ...</optval> })
+      </td>
+      <td>
+        - sorts the documents according to the <reqval>key</reqval> and returs a new sorted <reqval>cursor</reqval> <br>
+        - can grouped sort (passing multiple <reqval>key</reqval>)
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <reqval>cursor</reqval>.limit(<reqval>nr</reqval>)
+      </td>
+      <td>
+        - returns only the first <reqval>nr</reqval> documents <br>
+        - returns a new <reqval>cursor</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <reqval>cursor</reqval>.skip(<reqval>nr</reqval>)
+      </td>
+      <td>
+        - skip the first <reqval>nr</reqval> documents <br>
+        - returns a new <reqval>cursor</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <reqval>cursor</reqval>.close()
+      </td>
+      <td>
+        - closes the <reqval>cursor</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <reqval>cursor</reqval>.isClosed()
+      </td>
+      <td>
+        - returns <mark>true</mark> if the <reqval>cursor</reqval> is closed, otherwise returs <mark>false</mark>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <reqval>cursor</reqval>.explain(<opt>'executionStats'</opt>)
+      </td>
+      <td>
+        - returns metadata about the cursor
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <reqval>cursor.method()</reqval>
+      </td>
+      <td>
+        - other <reqval>cursor</reqval> methods <a href="https://www.mongodb.com/docs/manual/reference/method/js-cursor/" target="_blank">[link]</a>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <p> - methods such as <mark>insert()</mark> / <mark>update()</mark> / <mark>remove()</mark> are deprecated, the concept behind these methods that they can operate on a single or multiple documents </p>
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <h2 class="headerExtra"> Queries </h2>
+  <pre class="syntax">
+    db.<reqval>collection.someQueryMethod({ 'key.key' })    // to target nested keys use JavaScript style object accessor wrapped in quotes
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 class="header"> Nested objects (documents) </h4>
+    <pre class="cmd">
+    db.col1.find({ 'address.city': 'Budapest' })
+    
+    db.col1.updateOne({ _id: ObjectId('667f7fc1560470a85596e179') }, { $set: { 'address.street': 'Duck street' } })
+    </pre>
+    <h4 class="header"> The <mark>find()</mark> / <mark>findOne()</mark> / <mark>distinct()</mark> query </h4>
+    <pre class="cmd">
+    db.col1.find()                              // returns all documents in the collection
+    db.col1.find({ name: { $exsits: 1 } })      // returns all documents in the collections having the <mark>name</mark> key
+    
+    db.col1.findOne({ _id: ObjectId('667862853966adac087e93de') })      // returns the filtered document 
+    db.col1.findOne({ name: { $exsits: 1 } })      // -! although multiple documents are filtered this method only returns the 1st one
+    
+    db.c1.distinct('price')                     // -> [ 1.2, 2.8, 3.3, 4.2 ]
+                                                // distinct field values returned 
+  </pre>
+    <!------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>insertOne()</mark> and <mark>insertMany()</mark> query </h4>
+    <pre class="cmd">
+    db.col1.insertOne({ name: 'Arpad' })             // inserts the passed document (document <mark>_id</mark> automatically created)  
+    db.col1.insertMany([{ name: 'Arpad' }, { name: 'Bir' }])             // inserts the passed documents    
+  </pre>
+    <!------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>updateOne()</mark> and <mark>updateMany()</mark> query </h4>
+    <pre class="cmd">
+    db.col1.updateOne({ _id: ObjectId('667862853966adac087e93de') }, { $set: { age: 39 } })    // updates the filtered document
+    db.col1.updateOne({ age: { $exists: 1 } }, { $set: { age: 39 } })    // -! only updates the 1st document
+    
+    db.col1.updateMany({ age: { $exists: 1 } }, { $set: { age: null } })             // updates the age field in all documents having the age field    
+  </pre>
+    <!------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>deleteOne()</mark> and <mark>deleteMany()</mark> query </h4>
+    <pre class="cmd">
+    db.col1.deleteOne({ _id: ObjectId('667862853966adac087e93de') })        // deletes the filtered document
+    db.col1.deleteOne({ age: { $exists: 1 } })             // -! this only deleted the 1st found document    
+    
+    db.col1.deleteMany({ age: { $exists: 1 } })             // deletes all documents having the age field    
+  </pre>
+    <!------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>
+        <reqval>filterObj</reqval>
+      </mark> </h4>
+    <pre class="cmd">
+ // literal filter / <mark>$eq</mark> / <mark>$ne</mark> / <mark>$in</mark> / <mark>$nin</mark> ---------------------------
+    db.col1.find({ name: 'Arpad' })               // find documents where the name field value is Arpad
+    db.col1.find({ name: { $eq: 'Arpad' } })      // same as above
+    
+    db.col1.find({ name: { $ne: 'Arpad' } })      // find documents where the name field value is not Arpad
+    
+    db.col1.find({ name: { $in: ['Arpad', 'Bir', 'Steve'] } })      // find documents where the name field value is any of the listed
+    db.col1.find({ name: { $nin: ['Arpad', 'Bir', 'Steve'] } })     // find documents where the name field value is not any of the listed one
+    
+    db.col1.find({ name: { $in: ['Arpad', 'Bir', 'Steve'] }, { age: { $gte: 20, $lte: 40 } } })     // complex query
+  
+  
+ // <mark>$exists</mark> / <mark>$regex</mark> / <mark>$not</mark> -------------------------------------------
+    db.col1.find({ name: { $exist: 1 } })         // find documents where the name field exist      
+    
+    db.col1.find({ name: { $regex: /^A/ } })      // find documents where name field values start with A    
+    db.col1.find({ name: { $not: /^A/ } })        // find documents where name field values do not start with A    
+  
+  
+ // <mark>$gt</mark> / <mark>$gte</mark> / <mark>$lt</mark> / <mark>$lte</mark> -------------------------------------------
+    db.col1.find({ age: { $gt: 30, $lt: 38 } })         // finds all documents where the age field's value is greater than 30 but lower than 38
+    db.col1.find({ age: { $gte: 30, $lte: 38 } })       // finds all documents where the age field's value is greater or equal than 30 but lower or equal than 38
+    
+  
+ // <mark>$or</mark> / <mark>$and</mark> / <mark>$nor</mark> -------------------------------------------------
+    db.col1.find({ $or: [{ name: 'Arpad'}, {name: 'Pista' }] })      // find all documents where the name field's value is either Arpad or Pista
+    db.col1.find({ $and: [{ name: 'Arpad' }, { age: 39 }] })         // find all documents where the name field's value is Arpad and the age field's value is 39
+    db.col1.find({ $nor: [{ name: 'Arpad'}, {name: 'Pista' }] })     // find all documents where the name field's value is not Arpad nor Pista
+  </pre>
+    <!------------------------------------------------------------------------------------->
+    <hr>
+    <h4 class="header"> The <mark>
+        <reqval>updateObj</reqval>
+      </mark> </h4>
+    <pre class="cmd">
+ // <mark>$set</mark> / <mark>$unset</mark> / <mark>$rename</mark> -------------------------------------------
+    db.col1.updateMany({ name: { $exists: 1 } }, { $set: { gender: null } })        // sets the gender field
+    db.col1.updateMany({ name: { $exists: 1 } }, { $rename: { gender: 'sex' } })    // renames the gender field to sex
+    db.col1.updateMany({ name: { $exists: 1 } }, { $unset: { set: 1 } })            // deletes the sex field
+    
+    
+ // <mark>$currentDate</mark> ------------------------------------------------------
+    db.col1.updateMany({ name: { $exists: 1 } }, { $currentDate: { updated: true } })     // set a new updated field with the current date (as date object)
+    db.col1.updateMany({ name: { $exists: 1 } }, { $currentDate: { updated: { $type: 'timestamp' } } })     // set a new updated field with the current date (as timestamp object)
+    
+    
+ // <mark>$inc</mark> / <mark>$mul</mark> / <mark>$max</mark> / <mark>$min</mark> -----------------------------------------
+    db.col1.updateMany({ name: { $exists: 1 } }, { $inc: { age: 1 } })              // increments the age field by 1
+    db.col1.updateMany({ name: { $exists: 1 } }, { $inc: { age: -2 } })             // decrements the age field by -2
+    
+    db.col1.updateMany({ price: { $exists: 1 } }, { $mul: { price: 2 } })          // multiplies the price fields with 2
+    db.col1.updateMany({ price: { $exists: 1 } }, { $mul: { price: 0.5 } })        // divides the price fields by 2
+    
+    db.col1.update({ name: 'Arpad' }, { $max: { age: 39 }})             // updates the age field to 39 if the orignal value is smaller than 39 (if the original value is greater than 39 does nothing)
+    db.col1.update({ name: 'Arpad' }, { $mix: { age: 39 }})             // updates the age field to 39 if the orignal value is greater than 39 (if the original value is smaller than 39 does nothing)
+    
+    
+ // Array methods / <mark>$push</mark> / <mark>$pushAll</mark> / <mark>$addToSet</mark> / <mark>$pop</mark> / <mark>$pull</mark> / <mark>$pullAll</mark> ---
+    db.col1.updateOne({ test_array: { $exists: 1 } }, { $set: { 'test_array.0': 'one' } })        // sets the array's 0 indexed element's to 'one'
+    db.col1.updateOne({ test_array: { $exists: 1 } }, { $set: { 'test_array.$[]': null } })       // sets all the arrays's elements to null
+    
+    db.col1.updateOne({ test_array: { $exists: 1 } }, { $push: { test_array: 'ten' } })                     // pushes 'ten' as last element in the array
+    db.col1.updateOne({ test_array: { $exists: 1 } }, { $pushAll: { test_array: ['eleven', 'twelve'] } })    // pushes the listed eleements are last elements in the array
+    
+    db.col1.updateOne({ test_array: { $exists: 1 } }, { $addToSet: { test_array: 'ten' } })    // pushes the 'ten' element as last member in the array <u>if not yet exist</u>
+    
+    db.col1.updateOne({ test_array: { $exists: 1 } }, { $pop: { test_array: 1 } })              // removes the last element from the array
+    db.col1.updateOne({ test_array: { $exists: 1 } }, { $pop: { test_array: -1 } })             // removes the first element from the array
+    
+    db.col1.updateOne({ test_array: { $exists: 1 } }, { $pull: { test_array: 'ten' } })                     // removes the value 'ten' from the array (all 'ten' values)
+    db.col1.updateOne({ test_array: { $exists: 1 } }, { $pullAll: { test_array: ['ten', 'eleven'] } })      // removes all the listed values from the array (all occurences)
+    </pre>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------------------------------->
+  <h2 class="header"> Bulk Operations </h2>
+  <p> - we can execute multiple query operations within the same transaction in 2 different ways: </p>
+  <p class="indent-lv1"> - <mark class="mark">ordered execution</mark>: queries executed sequencially, on error all further queries are cancelled </p>
+  <p class="indent-lv1"> - <mark class="mark">unordered execution</mark>: queries executed in parallel, only the errored query fails (faster than ordered) </p>
+  <pre class="syntax">
+// Bulk builder ---------------------
+    var bulk = db.<reqval>collection</reqval>.initializeUnorderedBulkOp()|initializeOrderedBulkOp();
+    
+    bulk.<a href="https:\/\/www.mongodb.com/docs/manual/reference/method/Bulk.insert/" target="_blank">bulkMethod()</a>
+    // ...
+    
+    bulk.execute();
+  
+  
+// <mark>bulkWrite()</mark> methods ------
+    db.<reqval>collection</reqval>.bulkWrite([
+      <opt>{ insertOne: <optval>BSON</optval> },</opt>
+      <opt>{ </opt>
+      <opt>  updateOne|updateMany: {</opt>
+        <opt>  filter: <optval>filterObj</optval>,</opt>
+        <opt>  update: <optval>updateObj</optval>,</opt>
+        <opt>}</opt>
+      <opt>},</opt>
+      <opt>{ </opt>
+        <opt>repalceOne: {</opt>
+          <opt>filter: <optval>filterObj</optval>,</opt>
+          <opt>replacement: <optval>BSON</optval>,</opt>
+        <opt>}</opt>
+      <opt>},</opt>
+      <opt>{ </opt>
+        <opt>deleteOne|deleteMany: {</opt>
+          <opt>filter: <optval>filterObj</optval>,</opt>
+        <opt>}</opt>
+      <opt>},</opt>
+    ], ordered: <reqval>bool</reqval>)          // ordered default <mark>true</mark>
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <h4 class="header"> Bulk builder <mark>initializeUnorderedBulkOp()</mark> / <mark>initializeOrderedBulkOp()</mark> </h4>
+    <pre class="cmd">
+    var bulk = db.c1.initializeUnorderedBulkOp()
+    
+    bulk.insert({ name: 'Pall' })
+    bulk.insert({ name: 'Bob' })
+    bulk.insert({ name: 'Steven' })
+    bulk.insert({ name: 'Melanie' })
+    
+    bluk.execute()
+    </pre>
+    <!------------------------------------------------------------------------------>
+    <hr>
+    <h4 class="header"> The <mark>bulkWrite()</mark> method </h4>
+    <pre class="cmd">
+    db.c1.bulkWrite([
+      { insertOne: { name: 'Pall' } },
+      { insertOne: { name: 'Bob' } },
+      { insertOne: { name: 'Steven' } }
+    ], { ordered: false })
+    </pre>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------------------------------->
+  <h2 class="header"> Text Search in collection </h2>
+  <p> - MongoDB provides an efficient way to perform text search within a collection, for this we have to apply a full-text index on fields that we want to be searchable </p>
+  <pre class="syntax">
+    db.<reqval>collection</reqval>.find({ $text: { $search: <reqval>val:str</reqval> } })     // searches for the word <reqval>val</reqval> in all full-text indexed fields in this <reqval>collection</reqval>
+                                                                                          // <mark>\"<reqval>sentence</reqval>\"</mark> for full sentence search (ex: <mark>'\"hello world\"'</mark>) 
+                                                                                          // returns all found documents in a <reqval>cursor</reqval>
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre class="cmd">
+    db.c1.createIndex({ name: 'text' })                       // creating full-text index
+    
+    var cursor = db.c1.find({ $text: { $search: 'Bob' } })    // searching for the word 'Bob' in all name fields 
+    var cursor = db.c1.find({ $text: { $search: '\"Bob Marley\"' } })    // sentence search 
+    </pre>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------------------------------->
+  <h2 class="headerExtra"> Cursor </h2>
+  <p> - the MongoDB default cursor batch size is <mark>101</mark> documents </p>
+  <p> - in Mongo shell the cursor gets iterated when we print it </p>
+  <p> - from the application perspective the cursor is just an Array where we can interate to get the members </p>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre class="cmd">
+ // <mark>forEach()</mark> / <mark>mark()</mark> ---------------------------------------------------------------
+    var cursor =  db.col1.find({ name: { $exists: 1 } }).map((doc) => console.log('Name is: ' + doc.name))
+    cursor                                                                                                          // cursor contains the processed values
+    
+    var cursor =  db.col1.find({ name: { $exists: 1 } }).forEach((doc) => console.log('Name is: ' + doc.name))      // prints as side effect
+    cursor                                                                                                          // cursor empty (the forEach method does no return the result)
+    
+    
+ // <mark>toArray()</mark> ------------------------------------------------------------------------
+    var cursor =  db.col1.find({ name: { $exists: 1 } }).toArray()                                                  // loads all the records in memory
+    cursor                                                                                                          // cursor contains all records
+    
+    
+ // <mark>next()</mark> / <mark>hasNext()</mark> ---------------------------------------------------------------
+    var cursor =  db.col1.find({ name: { $exists: 1 } })
+    
+    cursor.next()                                             // gets the next document 
+    cursor.next()
+    
+    cursor.hasNext()                                          // -> false
+    cursor.next()
+  
+  
+ // <mark>close()</mark> / <mark>isClosed()</mark> -------------------------------------------------------------
+    var cursor =  db.col1.find({ name: { $exists: 1 } })
+    
+    cursor.isClosed()                                         // -> false
+    cursor.close()                                            // closes the cursor
+    cursor.isClosed()                                         // -> true
+    </pre>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------------------------------->
+  <h2 class="headerExtra"> Aggregation Pipeline </h2>
+  <p> - MongoDB aggregation pipeline is used for data processing operations, it's a powerfull data analysis </p>
+  <p> - the aggregation pipeline is composed of stages where each stage does some data processing and hands over the result to the next step </p>
+  <pre class="syntax">
+    db.<reqval>collection</reqval>.aggregate([
+      <reqval>aggregationStage</reqval>,             // <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation-pipeline/" target="_blank">aggregate stages</a>    // <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/" target="_blank">aggregate operators</a>
+      <optval>...</optval>,
+    ])
+  </pre>
+  <details class="example">
+    <summary> Example : </summary>
+    <pre class="cmd">
+    db.orders.aggregate([
+      {
+        $match: {                                     // filter date range 
+          order_date: {
+            $gte: ISODate("2022-01-01T00:00:00Z"),
+            $lt: ISODate("2022-02-01T00:00:00Z")
+          }
+        }
+      },
+      {
+        $unwind: "$items"                             // flatten the array so each item is a document for the next stage
+      },
+      {
+        $project: {                                   // calculate revenue for by each item
+          customer_id: 1,
+          revenue: { $multiply: [ "$items.quantity", "$items.price" ] }
+        }
+      },
+      {
+        $group: {                                     // group documents by customer_id and calculate the total revenue generated by each customer
+          _id: "$customer_id",
+          total_revenue: { $sum: "$revenue" }
+        }
+      },
+      {                                               // sort the result
+        $sort: {
+          total_revenue: -1
+        }
+      }
+    ])
+    </pre>
+  </details>
+  <hr>
+  <!-------------------------------------------------------------------------------------------------->
+  <h2 class="headerExtra"> View </h2>
+  <p> - a view is a read-only virtual collection that allows us to see an aggregated underlying data </p>
+  <p> - the concept is to 'view' a custom aggregated underlying data (like: summary of grouped sales) </p>
+  <pre class="syntax">
+    db.createView('<reqval>viewName</reqval>', '<reqval>collection</reqval>', [<reqval>aggregationStage</reqval><optval>, ...</optval>], <a href="https:\/\/www.mongodb.com/docs/manual/reference/method/db.createView/#syntax" target="_blank">options</a>)     // creating view 
+    
+    
+    db.<reqval>viewName</reqval>.find(<optval>...</optval>)           // the view can be queried as a normal collection 
+  </pre>
+  <img style="display:block; margin:auto;" src="Aggregation.png" height="300">
+  <details class="example">
+    <summary> Example : </summary>
+    <pre class="cmd">
+    db.createView('twenty_nine', 'col1', [{ $match: { age: 29 } }])     // view of all document where the age field value is 29
+    
+    db.twenty_nine.find()                                     // view queried as normal collection 
+    </pre>
+  </details>
+
+  <br><br>
+</body>
+
+</html>

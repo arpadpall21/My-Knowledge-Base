@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Indexing </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Indexing </h1>
+  <p> Updated ( 2024-06-27 ) </p>
+  <nav class="sitenav"> <a href="../../../index.html">MySite ></a>
+    <a href="../../index.html" title="Learn WebDesign">Databases ></a>
+    <a href="../index.html" title="Learn WebDesign">MongoDB ></a> Indexing
+  </nav>
+  <table class="table">
+    <tr>
+      <th style="width:30%;"> Method </th>
+      <th> Description </th>
+    </tr>
+
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.createIndex({ <reqval>key</reqval>: 1|-1|'text'<optval>, ...</optval> })
+      </td>
+      <td>
+        - indexes the targeted <reqval>key</reqval>(s) <br>
+        - <mark class="mark">default index</mark>: single key with <mark>1|-1</mark> value for ascending VS descending indexing <br>
+        - <mark class="mark">multikey index</mark>: single key having Array value indexed with <mark>1|-1</mark> <br>
+        - <mark class="mark">multikey index</mark>: single key with <mark>'text'</mark> value for full-text indexing <br>
+        - <mark class="mark">compound index</mark>: multiple keys with <mark>1|-1</mark> for default or <mark>text</mark> for full-text indexing
+      </td>
+    </tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.getIndexes()
+      </td>
+      <td>
+        - returns all indexes with their name in the current <reqval>collection</reqval>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.dropIndex('<reqval>indexName</reqval>')
+      </td>
+      <td>
+        - drops the index <reqval>indexName</reqval>, we can get the index name with <mark>getIndexes()</mark>
+      </td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.totalIndexSize()
+      </td>
+      <td>
+        - returns the index size as bytes in the current <reqval>collection</reqval>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+  <p> - the <mark>_id</mark> document field is automatically indexed </p>
+  <p> - deleting indexed fields won't remove indexes automatically </p>
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - MongoDB provides the following indexing solutions: </p>
+  <p class="indent-lv1"> - <mark class="mark">Default Index</mark> </p>
+  <p class="indent-lv2"> - fields are indexed individually so lookup and sort operations are much faster </p>
+  <p class="indent-lv1"> - <mark class="mark">Multikey index</mark> </p>
+  <p class="indent-lv2"> - default field indexing Array members for lookup and sort operations </p>
+  <p class="indent-lv2"> - MongoDB automatically do this when we index fields where the value is an Array </p>
+  <p class="indent-lv1"> - <mark class="mark">Full-Text index</mark> </p> 
+  <p class="indent-lv2"> - increases the text search performance, only one allowed within a single collection (use compound index to index multiple fields) </p>
+  <p class="indent-lv1"> - <mark class="mark">Compound index</mark> </p>
+  <p class="indent-lv2"> - default Indexing multiple fields, increases lookup and sort performance on queries where multiple fields are queried </p>
+  <p class="indent-lv2"> - if we want to index multiple fileds it's highly recommended to use compound index rather than individual index for each field, because the database needs maintain a single compound index tree rather than multiple onces</p>
+  <pre class="syntax">
+    db.<reqval>collection</reqval>.createIndex({ <reqval>key</reqval>: 1|-1 })           // default index
+    
+    db.<reqval>collection</reqval>.createIndex({ <reqval>key:arr</reqval>: 1|-1 })       // multikey index (<reqval>key</reqval> value is an array)
+    
+    db.<reqval>collection</reqval>.createIndex({ <reqval>key</reqval>: 'text' })       // full-text index
+    
+    db.<reqval>collection</reqval>.createIndex({ <reqval>key1</reqval>: 1|-1, <reqval>key2</reqval>: 1|-1 })           // compound index
+    db.<reqval>collection</reqval>.createIndex({ <reqval>key1</reqval>: 'text', <reqval>key2</reqval>: 'text' })           // compound index for full-text indexing
+  </pre>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <h4 class="header"> Creating different index types </h4>
+    <pre class="cmd">
+// default index -----------------
+    db.col1.createIndex({ name: 1 })        // default indexes the name filed (ascending indexing)
+    
+// multikey index ------------------
+    db.col1.createIndex({ hobies: 1 })      // multikey indexes the hobies array (the hobies key has an Array value holding strings)
+    
+// full-text index --------------------
+    db.col1.createIndex({ name: 'text' })   // full-text indexes name field
+                                            // searching with <mark>db.<reqval>collection</reqval>.find({ $text: { $search: <reval>val</reval> } } )</mark> will search for <mark><reqval>val</reqval></mark> in all name fields   
+    
+// compound index ---------------------
+    db.col1.createIndex({ name: 'text', surname: 'text' })      // full-text compound index (so the seach will be performed on both field values)
+    db.col1.createIndex({ age: 1, grade: 1 })                 // default compound index
+    
+  // compound VS several default index -----
+    db.col1.createIndex({ age: 1 })                           // -! this is not recommended because the database must keep 2 different index trees and does nothing if we perform a compound lookup for these fields
+    db.col1.createIndex({ grade: 1 })
+    
+    db.col1.createIndex({ age: 1, grade: 1 })                 // use compound keys even when performing individual field lookups 
+    </pre>
+    <hr>
+    <!----------------------------------------------------------------->
+    <h4 class="header"> The <mark>getIndexes()</mark> / <mark>dropIndex()</mark> / <mark>totalIndexSize()</mark> methods </h4>
+    <pre class="cmd">
+    db.col1.getIndexes()                              // returns all indexes in the current collections
+      [
+        { v: 2, key: { _id: 1 }, name: '_id_' },
+        { v: 2, key: { name: 1 }, name: 'name_1' }
+      ]
+    
+    db.col1.totalIndexSize()                      // -> 57344
+    db.col1.dropIndex('name_1')                    //  drops the <mark>name_1</mark> index 
+    db.col1.totalIndexSize()                      // -> 36864
+    </pre>
+  </details>
+
+
+  <br><br>
+</body>
+
+</html>

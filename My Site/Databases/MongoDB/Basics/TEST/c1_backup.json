@@ -1,0 +1,95 @@
+{"_id":{"$oid":"6673dd272fcd8fb198d3236c"},"p2":120,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6672c03b256dfb1290965a98"},"p2":120,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6672c06e256dfb1290965a99"},"newBody2":"test2","p2":120,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6676499ed90ae6499d03f648"},"timestamp":{"$timestamp":{"t":123,"i":0}},"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"66765eefd90ae6499d03f64a"},"time":{"$date":"2024-06-22T05:19:32Z"},"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"66767374d90ae6499d03f64b"},"reg_exp":{"$regularExpression":{"pattern":"^test","options":"i"}},"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"667673a5d90ae6499d03f64c"},"reg_exp":{"$regularExpression":{"pattern":"test","options":"i"}},"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6672b8e1256dfb1290965a95"},"else":55,"esle":55,"newObj":{"child":32},"p2":120,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"667673b7d90ae6499d03f64d"},"reg_exp":{"$regularExpression":{"pattern":"^test","options":"i"}},"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"66768d9fd90ae6499d03f64f"},"number":2,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"66768da1d90ae6499d03f650"},"number":3,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"66768da6d90ae6499d03f652"},"number":5,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"66768da4d90ae6499d03f651"},"number":4,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"66768da8d90ae6499d03f653"},"number":6,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"66768db0d90ae6499d03f656"},"number":9,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"66768dabd90ae6499d03f654"},"number":7,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"66768db3d90ae6499d03f657"},"number":21,"date":{"$date":"2024-06-23T06:27:59.549Z"},"arr":[null,null,null,null,null]}
+{"_id":{"$oid":"6676cdfad90ae6499d03f65d"},"bulkInserted":"ok","date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6676cef8d90ae6499d03f65e"},"bulkInserted":"ok","date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6673e7512fcd8fb198d3236d"},"arr":[1,3,2,10,11,12],"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"66768dadd90ae6499d03f655"},"number":8,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6672c08c256dfb1290965a9a"},"newBody2":"test2","p2":120,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"667647abd90ae6499d03f647"},"js_code":{"$code":"function add(a, b) { return a + b }"},"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6672b8e3256dfb1290965a96"},"else":33,"p2":120,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6672b8e6256dfb1290965a97"},"else":34,"p2":120,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"66764aafd90ae6499d03f649"},"decimal":{"$numberDecimal":"21.23"},"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"66764679d90ae6499d03f646"},"test_regex":{"$regularExpression":{"pattern":"one","options":""}},"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6676d3f5d90ae6499d03f660"},"test":"ok","date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6676d3f5d90ae6499d03f661"},"test":"ok","date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6676db1cd90ae6499d03f662"},"primar":"a","secondary":"a","date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6676db21d90ae6499d03f663"},"primar":"a","secondary":"b","date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6676db26d90ae6499d03f664"},"primar":"b","secondary":"a","date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6676db28d90ae6499d03f665"},"primar":"b","secondary":"b","date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6676db2ed90ae6499d03f666"},"primar":"c","secondary":"a","date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6676db30d90ae6499d03f667"},"primar":"c","secondary":"b","date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6676db32d90ae6499d03f668"},"primar":"c","secondary":"c","date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6677033c3966adac087e93c1"},"demo":1,"demo2":2,"demo3":3,"demo4":4,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"667703453966adac087e93c2"},"demo":2,"demo2":3,"demo3":4,"demo4":5,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6677034e3966adac087e93c3"},"demo":3,"demo2":4,"demo3":5,"demo4":6,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6677036b3966adac087e93c5"},"demo":5,"demo2":6,"demo3":7,"demo4":8,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"667703603966adac087e93c4"},"demo":4,"demo2":5,"demo3":6,"demo4":7,"date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"667709bd3966adac087e93c8"},"idx":"three","idx2":"three","date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"667709b43966adac087e93c7"},"idx":"two","idx2":"two","date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"667709ab3966adac087e93c6"},"idx":"one","idx2":"one","date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"6676d3f1d90ae6499d03f65f"},"test":"ok","date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"667709c43966adac087e93c9"},"idx":"four","idx2":"four","date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":{"$oid":"667709cb3966adac087e93ca"},"idx":"five","idx2":"five","date":{"$date":"2024-06-23T06:27:59.549Z"}}
+{"_id":1,"employee":"Linda","newProp":1,"newProp2":2}
+{"_id":{"$oid":"6677c2f23966adac087e93cc"},"employee":"Evelyn","income":6.5}
+{"_id":{"$oid":"6677c2ea3966adac087e93cb"},"employee":"Pall","income":6.5}
+{"_id":{"$oid":"66785c2d3966adac087e93d7"},"sometihg":"egyszer egy","something2":"ketszer ketto"}
+{"_id":{"$oid":"66785c423966adac087e93d8"},"sometihg":"egy erik a meggy","something2":"ketto csipkebokor vesszo"}
+{"_id":{"$oid":"6677c2fa3966adac087e93cd"},"employee":"Gabor","income":6.5}
+{"_id":{"$oid":"667860383966adac087e93da"},"something2":"ketto ","p3":23}
+{"_id":{"$oid":"6678625c3966adac087e93db"},"test_s1":"one two three","test_s2":"four five six","test_s3":"harom kis kacsa","test_s4":"fourth field","s3":"harom kis kacsa"}
+{"_id":{"$oid":"6678626c3966adac087e93dc"},"test_s1":"two three four","test_s2":"five six seven","test_s3":"harom nagy malac","test_s4":"fourth field","s3":"harom nagy malac"}
+{"_id":{"$oid":"667862793966adac087e93dd"},"test_s1":"three four five","test_s2":"six seven eight","test_s3":"third field","test_s4":"fourth field"}
+{"_id":{"$oid":"66790282260b786c2d21b489"},"test_s1":"egy ketto","test_s2":"harom negy","test_s3":"third field","test_s4":"fourth field"}
+{"_id":{"$oid":"667862853966adac087e93de"},"test_s1":"four five six","test_s2":"seven eight nine","test_s3":"third field","test_s4":"fourth field"}
+{"_id":{"$oid":"6677c9c23966adac087e93d2"},"employee":"Linda","newProp":1,"newProp2":2}
+{"_id":{"$oid":"66785c0b3966adac087e93d5"},"sometihg":"Hello World","something2":"lorem ipsum"}
+{"_id":{"$oid":"66785c1b3966adac087e93d6"},"sometihg":"kicsi kacsa","something2":"feher kutya"}
+{"_id":{"$oid":"6677c3023966adac087e93ce"},"employee":"Lilla","income":6.5}
+{"_id":{"$oid":"6677c9cf3966adac087e93d3"},"newProp":1,"newProp2":2}
+{"_id":{"$oid":"667860303966adac087e93d9"},"something2":"is it love","p2":23}
+{"_id":{"$oid":"6677e0fd3966adac087e93d4"},"test_arr":[1,2,3,4,5,6,7,-1],"newProperty":{"parent":{"child1":{"test":"modified neseted value"}}}}
+{"_id":{"$oid":"667e4e91327246bc41ab21fa"},"name":"Arpad","age":46,"sex":null,"updated":{"$timestamp":{"t":1719560573,"i":1}},"surname":"Surname"}
+{"_id":{"$oid":"667e4e99327246bc41ab21fb"},"name":"Bir","age":39,"sex":null,"updated":{"$timestamp":{"t":1719560573,"i":2}},"surname":"Surname"}
+{"_id":{"$oid":"667e4ea0327246bc41ab21fc"},"name":"Barni","age":37,"sex":null,"updated":{"$timestamp":{"t":1719560573,"i":3}},"surname":"Surname"}
+{"_id":{"$oid":"667e4ea9327246bc41ab21fd"},"name":"Pista","age":36,"sex":null,"updated":{"$timestamp":{"t":1719560573,"i":4}},"surname":"Surname"}
+{"_id":{"$oid":"667e6105327246bc41ab21fe"},"name":"Steven","age":34,"sex":null,"updated":{"$timestamp":{"t":1719560573,"i":5}},"surname":"Surname"}
+{"_id":{"$oid":"667e610d327246bc41ab21ff"},"name":"Lewis","age":32,"sex":null,"updated":{"$timestamp":{"t":1719560573,"i":6}},"surname":"Surname"}
+{"_id":{"$oid":"667e6116327246bc41ab2200"},"name":"Chuck","age":31,"sex":null,"updated":{"$timestamp":{"t":1719560573,"i":7}},"surname":"Surname"}
+{"_id":{"$oid":"667e6121327246bc41ab2201"},"name":"Lui","age":29,"sex":null,"updated":{"$timestamp":{"t":1719560573,"i":8}},"surname":"Surname"}
+{"_id":{"$oid":"667e6125327246bc41ab2202"},"name":"Alis","age":29,"sex":null,"updated":{"$timestamp":{"t":1719560573,"i":9}},"surname":"Surname"}
+{"_id":{"$oid":"667e612d327246bc41ab2203"},"name":"Astonia","age":27,"sex":null,"updated":{"$timestamp":{"t":1719560573,"i":10}},"surname":"Surname"}
+{"_id":{"$oid":"667e6f67327246bc41ab2204"},"test_array":["one",2,3,4,5,"last element"]}
+{"_id":{"$oid":"667e7308327246bc41ab2205"},"price":1.2}
+{"_id":{"$oid":"667e7308327246bc41ab2206"},"price":1.2}
+{"_id":{"$oid":"667e7308327246bc41ab2207"},"price":3.3}
+{"_id":{"$oid":"667e7308327246bc41ab2208"},"price":2.8}
+{"_id":{"$oid":"667e7308327246bc41ab2209"},"price":4.2}
+{"_id":{"$oid":"667e7308327246bc41ab220a"},"price":3.3}
+{"_id":{"$oid":"667ec275560470a85596e16f"},"name":"Pall","surname":"Surname"}
+{"_id":{"$oid":"667ec27a560470a85596e170"},"name":"Bob","surname":"Surname"}
+{"_id":{"$oid":"667ec281560470a85596e171"},"name":"Steven","surname":"Surname"}
+{"_id":{"$oid":"667ec287560470a85596e172"},"name":"Melanie","surname":"Surname"}
+{"_id":{"$oid":"667ec98a560470a85596e173"},"name":"Pall","surname":"Surname"}
+{"_id":{"$oid":"667ec98a560470a85596e174"},"name":"Bob","surname":"Surname"}
+{"_id":{"$oid":"667ec98a560470a85596e175"},"name":"Steven","surname":"Surname"}
+{"_id":{"$oid":"667ec9ff560470a85596e176"},"name":"Pall","surname":"Surname"}
+{"_id":{"$oid":"667ec9ff560470a85596e177"},"name":"Bob","surname":"Surname"}
+{"_id":{"$oid":"667ec9ff560470a85596e178"},"name":"Steven","surname":"Surname"}
+{"_id":{"$oid":"667f7fc1560470a85596e179"},"name":"Pall","address":{"city":"Budapest","street":"Duck street"},"surname":"Surname"}
+{"_id":{"$oid":"667f7fda560470a85596e17a"},"name":"Bir","address":{"city":"Ingolstadt","street":"Some street"},"surname":"Surname"}

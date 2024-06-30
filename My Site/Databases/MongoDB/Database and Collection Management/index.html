@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title> Database and Collection Management </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../Assets/stylesPages.css">
+  <script src="../../../Assets/scriptPages.js"></script>
+</head>
+
+<body>
+  <h1> Database and Collection Management </h1>
+  <p> Updated ( 2024-06-26 ) </p>
+  <nav class="sitenav"> <a href="../../../index.html">MySite ></a>
+    <a href="../../index.html" title="Learn WebDesign">Databases ></a>
+    <a href="../index.html" title="Learn WebDesign">MongoDB ></a> Database and Collection Management
+  </nav>
+
+  <table class="table">
+    <caption>
+      Database
+    </caption>
+    <tr>
+      <th style="width:30%;"> Command / Method </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td>
+        show dbs
+      </td>
+      <td>
+        - list all databases
+      </td>
+    </tr>
+    <tr>
+      <td>
+        use <reqval>db</reqval>
+      </td>
+      <td>
+        - selects the specified <reqval>db</reqval> (the database does not need to exist, will be create when we insert a collection or document)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        db
+      </td>
+      <td>
+        - show the currently used database
+      </td>
+    </tr>
+    <tr>
+      <td>
+        db.dropDatabase()
+      </td>
+      <td>
+        - deletes the currently used database
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table class="table">
+    <caption>
+      Collection
+    </caption>
+    <tr>
+      <th style="width:30%;"> Command / Method </th>
+      <th> Description </th>
+    </tr>
+    <tr>
+      <td>
+        show collections
+      </td>
+      <td>
+        - list all collections in the current database
+      </td>
+    </tr>
+    <tr>
+      <td>
+        db.createCollection('<reqval>colleciton</reqval>', <a href="https://www.mongodb.com/docs/manual/reference/method/db.createCollection/#mongodb-method-db.createCollection" target="_blank">options</a>)
+      </td>
+      <td>
+        - creates <reqval>collection</reqval> in the current database 
+      </td>
+    </tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.drop()
+      </td>
+      <td>
+        - deletes <reqval>collection</reqval> from the current database
+      </td>
+    </tr>
+    <tr><td>|</td><td></td></tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.isCapped()
+      </td>
+      <td>
+        - returns <mark>true</mark> if <reqval>collection</reqval> is capped, otherwise returns <mark>false</mark>
+      </td>
+    </tr>
+    <tr><td>|</td><td></td></tr>
+    <tr>
+      <td>
+        db.<reqval>collection</reqval>.totalSize()
+      </td>
+      <td>
+        - returns the <reqval>collection</reqval> size as bytes
+      </td>
+    </tr>
+  </table>
+  <br>
+  <details class="example" id="notes">
+    <summary> Notes & Tips :</summary>
+    <!-- <p> - paragraph removes the 'empty' message from the detail TAG -->
+  </details>
+  <h2 style="color:green;"><u> Useful Links : </u></h2>
+
+  <h2 style="color:green;"><u> Remember This : </u></h2>
+
+  <h2 style="color:green;"><u> Description and Demonstration : </u></h2>
+  <p> - we can select a database that does not need to exist yet, on document insertion both the database and the colleciton will created </p>
+  <p> - <mark class="mark">Capped Collection</mark> <a href="https://www.mongodb.com/docs/manual/core/capped-collections/" target="_blank">[link]</a> (mostly used for log storage) </p>
+  <p class="indent-lv1"> - fixed sized collection where records are inserted in round-robin fashion, the newest record overwrites the oldest one </p>
+  <details class="example">
+    <summary> DEMO (can be pseudocode) </summary>
+    <pre class="cmd">
+      test> show dbs                    // list all databases
+          admin     40.00 KiB
+          config   108.00 KiB
+          local     40.00 KiB
+          test_db  112.00 KiB
+      
+      test> use test_db                 // -! the database doesn't need to exist (on document/collection insertion MongoDB creates the new database)
+          // ...
+      
+      test_db> db.createCollection('c1')    // creates the <mark>c1</mark> collections <u>(and the database)</u>
+          { ok: 1 }
+      
+      test_db> db.createCollection('c2')    // creates the <mark>c2</mark> collections
+          { ok: 1 }
+      
+      test_db> show collections             // displays all collections in the current database
+          c1
+          c2
+      
+      test_db> db.c1.drop()                 // deletes the <mark>c1</mark> collection
+          true
+      
+      test_db> show collections
+          c1
+      
+      test_db> db.dropDatabase()            // deletes this database 
+          { ok: 1, dropped: 'test_db' }
+      
+      test_db> show databases               // -! (notice how the selected database is still <mark>test_db</mark> but it doesn't exist already)
+          admin     40.00 KiB
+          config   108.00 KiB
+          local     40.00 KiB
+    </pre>
+  </details>
+
+
+  <br><br>
+</body>
+
+</html>
